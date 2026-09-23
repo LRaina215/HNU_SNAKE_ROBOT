@@ -13,3 +13,9 @@ Including MuJoCo model files, references, code files with Chinese annotations, g
 Email: xjxf0923@gmail.com 3332407087@qq.com
 
 WeChat: xjxf0923
+
+
+
+做出改动
+
+1. 热键兼容MAC
