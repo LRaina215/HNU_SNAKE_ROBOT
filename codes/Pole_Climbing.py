@@ -10,10 +10,10 @@ import math
 import time
 import queue
 import mujoco
-import keyboard
 import threading
 import numpy as np
 import mujoco.viewer
+from pynput import keyboard
 
 
 NUM_JOINTS = 20
@@ -66,12 +66,26 @@ def single_step():
     print(f"step = {step}, time_step > 0")
 
 # 注册热键 ，，，
-keyboard.add_hotkey('up', increase_a)           # ↑增大a
-keyboard.add_hotkey('down', decrease_a)         # ↓减小a
-keyboard.add_hotkey('right', increase_v)        # ←减小v
-keyboard.add_hotkey('left', decrease_v)         # →增大v
-keyboard.add_hotkey('f5', reverse_single_step)   # 反向[单步调试]
-keyboard.add_hotkey('f6', single_step)           # 正向[单步调试]
+HOTKEYS = {
+    keyboard.Key.up: increase_a,       # ↑增大a
+    keyboard.Key.down: decrease_a,     # ↓减小a
+    keyboard.Key.right: increase_v,    # ←减小v
+    keyboard.Key.left: decrease_v,     # →增大v
+}
+CHAR_HOTKEYS = {
+    '9': reverse_single_step,          # 反向[单步调试]
+    '0': single_step,                  # 正向[单步调试]
+}
+
+def on_key_press(key):
+    if key in HOTKEYS:
+        HOTKEYS[key]()
+    elif hasattr(key, 'char') and key.char in CHAR_HOTKEYS:
+        CHAR_HOTKEYS[key.char]()
+
+key_listener = keyboard.Listener(on_press=on_key_press)
+key_listener.daemon = True
+key_listener.start()
 
 '''
 通过字符串快速设置参数

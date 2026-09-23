@@ -22,7 +22,7 @@ l_s = 0      # horizontal interval between the steps of the ladder
 alpha = 120 / angle_rad # the angle between ladder steps and the body of snake robot
 r_c = 90  # the radius of all circular arcs 89.1
 
-k_max = 0.011  # the maximum curvature that the snake robot can achieve
+# k_max = 0.011  # the maximum curvature that the snake robot can achieve
 beta = math.atan(l_s / (h_s - 2 * r_c))
 K_n = 1
 K_max = 1.1
@@ -118,6 +118,9 @@ with mujoco.viewer.launch_passive(m, d) as viewer:
             else:
                 angle_rad = integrate.quad(Ky, s_h - (j + 1) * l, s_h - (j - 1) * l)[0]
             data_ctrl[j - 1] = angle_rad
+
+        print('s_h', s_h, 'data', data_ctrl)
+
         with viewer.lock():
             d.ctrl = data_ctrl
             for i in range(steps):
