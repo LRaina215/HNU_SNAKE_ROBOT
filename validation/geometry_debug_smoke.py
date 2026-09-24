@@ -32,6 +32,7 @@ def run_gait(mode):
 
     SnakeControlClient.request = request
     gait.DEBUG = mode != "off"
+    gait.COMPLIANCE_ENABLED = False  # 本测试只比较调试窗口开销，固定阶段一运动目标。
     gait.DEBUG_DRAW_CURVE = mode == "curve"
     timings, frames = [], []
     if gait.DEBUG:

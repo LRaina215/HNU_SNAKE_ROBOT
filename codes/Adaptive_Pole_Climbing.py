@@ -1,12 +1,12 @@
-"""阶段 1：以 Pole_Climbing.py 为模板的 Yamada 螺旋滚动。
+"""Adaptive Pole：以 Pole_Climbing.py 为模板的 Yamada 螺旋滚动与顺应性目标生成。
 
 沿用 H-Crawler.py 的 K/Psi/Kp/Ky + scipy.integrate.quad 积分结构，
 以及 Parallel_Crossing.py 的标准螺旋曲率/挠率公式。
-已接入阶段 2 双向通信（完整几何反馈/整组目标预览）；尚未加入顺应性变形。
+已接入阶段 3：实测截面顺应性变形、三维重建及 Yamada 输出。实机下发仍留待阶段 4。
 
 保留 a（有符号角度幅值）、v（相邻关节空间相位差）、omega、time_step
-和原 Pole 的键盘/控制台操作。a/v 先转换为标准螺旋，再由 Yamada 积分
-生成目标，实际输出不再直接调用旧步态正弦公式。几何长度统一使用 mm。
+和原 Pole 的键盘/控制台操作。启动阶段 a/v 先转换为标准螺旋，再由 Yamada
+积分生成目标；有效反馈到来后使用顺应性骨架。几何长度统一使用 mm。
 默认 v=0 是平面圆弧退化情形，与原 Pole 从地面横滚开始的行为一致。
 
 一轮统一提交全部目标，保持原 Pole 每轮 N*10 个仿真步和 N*time_sleep
@@ -29,6 +29,10 @@ from scipy import integrate
 # True：打开接收曲线的调试窗口；False：不启动调试界面。
 DEBUG = True
 DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
+COMPLIANCE_ENABLED = True
+COMPLIANCE_GAIN = 0.04  # K_i；可改为按关节顺序排列的列表。
+COMPLIANCE_PITCH_RAD = 0.25  # 论文的设计螺距角 alpha，单位 rad。
+COMPLIANCE_INSIDE = False  # False 管外收紧；True 管内撑开（此时 K_i < 1）。
 
 
 @dataclass(frozen=True)
@@ -61,8 +65,8 @@ class HelixBackbone:
         return self.tau
 
     def Psi(self, s, roll_phase):
-        # 论文式 (33)：-∫τ ds + ψroll。常挠率积分精确等于 τ*s。
-        # 不照搬 H-Crawler 的分段 Psi/T=0 占位，因为这里是完整标准螺旋。
+        # 阶段 1 保留 Pole 空间相位的符号约定；这里的 tau 与阶段 3
+        # 重建曲线使用的有向 Frenet 挠率不能直接混用。原论文 (33) 为 +∫τds。
         return -self.tau * s + roll_phase + self.phase_offset
 
     def Kp(self, s, roll_phase):
@@ -243,11 +247,14 @@ def main():
     bridge = None
     exchange = None
     debug_view = None
-    traces = {name: [] for name in ("qpos", "ctrl", "sim_time", "step_ms", "roll_phase", "kappa", "tau")}
+    compliance = None
+    compliance_status = None
+    traces = {name: [] for name in ("qpos", "ctrl", "sim_time", "step_ms", "roll_phase", "kappa", "tau",
+                                   "compliance_active", "target_kappa", "target_tau")}
     last_error = None
     t = 0.0
     steps = 10
-    print(f"YAMADA stage=2 joints={joint_count} nominal_link_mm={link_mm:.6f} "
+    print(f"YAMADA stage=3 joints={joint_count} nominal_link_mm={link_mm:.6f} "
           f"spacing_range_mm=[{min(spacings):.6f},{max(spacings):.6f}]", flush=True)
     if not headless:
         key_listener = keyboard.Listener(on_press=on_key_press)
@@ -265,6 +272,11 @@ def main():
                 sys.path.insert(0, str(client_dir))
                 from python_client import GeometryExchange
                 exchange = GeometryExchange(port=bridge.port, expected_lengths=bridge.lengths)
+                if COMPLIANCE_ENABLED:
+                    from pole_compliance import ComplianceController, ComplianceParameters
+                    parameters = ComplianceParameters(COMPLIANCE_GAIN, COMPLIANCE_PITCH_RAD, COMPLIANCE_INSIDE)
+                    parameters.gains(joint_count)
+                    compliance = ComplianceController(parameters, bridge.lengths)
         if DEBUG:
             from geometry_debug_view import GeometryDebugView
             debug_view = GeometryDebugView(draw_curve=DEBUG_DRAW_CURVE)
@@ -275,11 +287,25 @@ def main():
                 frame_a, frame_v = a, v
                 frame_sleep, frame_dt = time_sleep, time_step
                 phase = omega * t
+                feedback = None
+                compliant_targets = None
+                advance_phase = True
                 try:
                     if not math.isfinite(frame_sleep) or frame_sleep < 0 or not math.isfinite(frame_dt):
                         raise ValueError("time_sleep 必须非负且有限，time_step 必须有限")
                     curve = helix_from_pole_parameters(frame_a, frame_v, link_mm)
                     targets = curve.joint_angles(joint_count, link_mm, phase)
+                    if compliance is not None:
+                        feedback = exchange.latest_geometry()
+                        compliant_targets = compliance.compute(feedback, phase, d.ctrl.copy())
+                        if compliant_targets is not None:
+                            targets = compliant_targets
+                        elif compliance.started:
+                            targets = d.ctrl.copy()
+                            advance_phase = False
+                        if compliance.status != compliance_status:
+                            print(f"COMPLIANCE {compliance.status}", flush=True)
+                            compliance_status = compliance.status
                     joint_ids = m.actuator_trnid[:, 0]
                     limited = m.jnt_limited[joint_ids].astype(bool)
                     limits = m.jnt_range[joint_ids]
@@ -312,10 +338,11 @@ def main():
                             mujoco.mj_step(m, d)
                         if bridge is not None:
                             bridge.publish(d)
-                        if exchange is not None:
-                            # 阶段 2 仅回传预览。MuJoCo 仍只由本循环的 Yamada 目标驱动。
+                        if exchange is not None and (compliance is None or not compliance.started or compliant_targets is not None):
+                            # 仍只回传预览；真实串口下发留待阶段 4。
                             # bridge 的方向映射 [+1,-1,...]，发送可视化约定的角度（度）。
-                            exchange.publish_targets(np.rad2deg(targets * bridge.signs).tolist())
+                            exchange.publish_targets(np.rad2deg(targets * bridge.signs).tolist(),
+                                                     source_geometry=feedback if compliant_targets is not None else None)
                         if trace_path:
                             traces["qpos"].append(d.qpos.copy())
                             traces["ctrl"].append(d.ctrl.copy())
@@ -324,6 +351,14 @@ def main():
                             traces["roll_phase"].append(phase)
                             traces["kappa"].append(curve.kappa)
                             traces["tau"].append(curve.tau)
+                            traces["compliance_active"].append(compliant_targets is not None)
+                            if compliance is not None and compliance.started:
+                                sample_s = np.cumsum(compliance.backbone.links)[:-1]
+                                ks, ts = compliance.backbone.curvature_torsion(sample_s)
+                            else:
+                                ks, ts = np.full(joint_count, curve.kappa), np.full(joint_count, -curve.tau)
+                            traces["target_kappa"].append(ks)
+                            traces["target_tau"].append(ts)
                     if debug_view is not None:
                         debug_view.update(exchange)
                     if viewer is not None:
@@ -333,7 +368,8 @@ def main():
                     time.sleep(frame_sleep)
                     if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
                         break
-                t += frame_dt
+                if advance_phase:
+                    t += frame_dt
                 if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
                     break
     finally:
