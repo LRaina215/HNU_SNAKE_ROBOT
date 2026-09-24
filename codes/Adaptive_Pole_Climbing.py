@@ -2,7 +2,7 @@
 
 沿用 H-Crawler.py 的 K/Psi/Kp/Ky + scipy.integrate.quad 积分结构，
 以及 Parallel_Crossing.py 的标准螺旋曲率/挠率公式。
-仅完成运动生成替换；尚未加入顺应性变形和新的双向通信。
+已接入阶段 2 双向通信（完整几何反馈/整组目标预览）；尚未加入顺应性变形。
 
 保留 a（有符号角度幅值）、v（相邻关节空间相位差）、omega、time_step
 和原 Pole 的键盘/控制台操作。a/v 先转换为标准螺旋，再由 Yamada 积分
@@ -16,6 +16,7 @@
 import math
 import os
 import queue
+import sys
 import threading
 import time
 from contextlib import nullcontext
@@ -24,6 +25,10 @@ from pathlib import Path
 
 import numpy as np
 from scipy import integrate
+
+# True：打开接收曲线的调试窗口；False：不启动调试界面。
+DEBUG = True
+DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
 
 
 @dataclass(frozen=True)
@@ -236,11 +241,13 @@ def main():
     max_seconds = float(os.environ.get("SNAKE_MUJOCO_MAX_SECONDS", "0"))
     trace_path = os.environ.get("SNAKE_MUJOCO_TRACE")
     bridge = None
+    exchange = None
+    debug_view = None
     traces = {name: [] for name in ("qpos", "ctrl", "sim_time", "step_ms", "roll_phase", "kappa", "tau")}
     last_error = None
     t = 0.0
     steps = 10
-    print(f"YAMADA stage=1 joints={joint_count} nominal_link_mm={link_mm:.6f} "
+    print(f"YAMADA stage=2 joints={joint_count} nominal_link_mm={link_mm:.6f} "
           f"spacing_range_mm=[{min(spacings):.6f},{max(spacings):.6f}]", flush=True)
     if not headless:
         key_listener = keyboard.Listener(on_press=on_key_press)
@@ -249,9 +256,18 @@ def main():
         threading.Thread(target=uart_listener, daemon=True).start()
         threading.Thread(target=command_processor, daemon=True).start()
     try:
-        # 沿用原有单向可视化桥；阶段 1 不增加双向控制接口。
+        # 保留原有实测上传桥；另一个持久连接负责阶段 2 几何反馈/目标预览。
         if os.environ.get("SNAKE_VISUALIZER_ENABLED", "1") != "0":
             bridge = VisualizerBridge(m, d)
+            if os.environ.get("SNAKE_GEOMETRY_EXCHANGE", "1") != "0":
+                client_dir = Path(os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
+                    Path(__file__).resolve().parents[3] / "two_joint_visualizer")))
+                sys.path.insert(0, str(client_dir))
+                from python_client import GeometryExchange
+                exchange = GeometryExchange(port=bridge.port, expected_lengths=bridge.lengths)
+        if DEBUG:
+            from geometry_debug_view import GeometryDebugView
+            debug_view = GeometryDebugView(draw_curve=DEBUG_DRAW_CURVE)
         with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d)) as viewer:
             start_wall = time.monotonic()
             while step > 0 and (viewer is None or viewer.is_running()):
@@ -278,6 +294,8 @@ def main():
                         print(f"参数被拒绝：{error}", flush=True)
                         last_error = str(error)
                     # 不推进相位，不提交无效目标；等待交互修正或关闭。
+                    if debug_view is not None:
+                        debug_view.update(exchange)
                     time.sleep(0.05)
                     if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
                         break
@@ -294,6 +312,10 @@ def main():
                             mujoco.mj_step(m, d)
                         if bridge is not None:
                             bridge.publish(d)
+                        if exchange is not None:
+                            # 阶段 2 仅回传预览。MuJoCo 仍只由本循环的 Yamada 目标驱动。
+                            # bridge 的方向映射 [+1,-1,...]，发送可视化约定的角度（度）。
+                            exchange.publish_targets(np.rad2deg(targets * bridge.signs).tolist())
                         if trace_path:
                             traces["qpos"].append(d.qpos.copy())
                             traces["ctrl"].append(d.ctrl.copy())
@@ -302,6 +324,8 @@ def main():
                             traces["roll_phase"].append(phase)
                             traces["kappa"].append(curve.kappa)
                             traces["tau"].append(curve.tau)
+                    if debug_view is not None:
+                        debug_view.update(exchange)
                     if viewer is not None:
                         viewer.sync()
                         if not viewer.is_running():
@@ -313,8 +337,15 @@ def main():
                 if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
                     break
     finally:
+        if debug_view is not None:
+            debug_view.close()
         if key_listener is not None:
             key_listener.stop()
+        if exchange is not None:
+            exchange.close()
+            print(f"GEOMETRY_EXCHANGE received={exchange.received} sent={exchange.sent} "
+                  f"replaced={exchange.dropped} failures={exchange.failures} "
+                  f"last_error={exchange.last_error!r}", flush=True)
         if bridge is not None:
             bridge.close()
             p99 = np.percentile(bridge.enqueue_ms, 99) if bridge.enqueue_ms else 0.0

@@ -1,3 +1,27 @@
+# 阶段 2 更新：双向通信已接入
+
+当前脚本保留下面阶段 1 的 Yamada 计算，新增后台几何读取和整组目标角预览。请启动 `Paper Code\蛇形机器人可视化程序_v1.3.0` 的 EXE。默认向可视化程序发送实测角，同时读取完整截面并回传目标预览；截面尚未进入顺应性算法，不改变 MuJoCo 的运动目标。
+
+共用客户端位于 `Paper Code\two_joint_visualizer\python_client.py`；设置 `SNAKE_GEOMETRY_EXCHANGE=0` 可关闭新交换，`SNAKE_VISUALIZER_ENABLED=0` 可关闭全部可视化通信。协议详见 `Paper Code\two_joint_visualizer\COMMUNICATION_V2.md`。
+
+## 接收曲线调试窗口
+
+在 `Adaptive_Pole_Climbing.py` 顶部设置 `DEBUG = True`（默认）即可打开窗口；改为 `False` 后重启脚本，不创建调试窗口。此开关独立于 MuJoCo 的 `SNAKE_MUJOCO_HEADLESS`，只影响调试显示，不关闭双向通信。
+
+`DEBUG_DRAW_CURVE = True` 同时显示曲线和参数表；设为 `False` 只显示参数表，跳过曲线采样和绘制。窗口在独立进程中运行，主控制循环不等待绘图。
+
+左侧显示可视化程序实际回传的二维连续曲线，右侧按段列出关节编号、圆弧半径（mm）、有符号圆心角（°）和段长（mm），直线段不显示半径/圆心角。点击表格高亮对应曲线段。这里的半径是该圆弧段的半径，不是到螺旋轴的距离。协议中的角度仍为 rad，仅显示时转换为度。
+
+窗口读取现有 `GeometryExchange` 缓存，每秒最多刷新 5 次；不新增网络连接、不重新估计曲线、不参与关节角计算。标题栏下方显示帧号与曲线有效性；反馈过期或断开会提示，收到反馈不等于曲线必然有效。可单独关闭窗口，步态继续运行；重启脚本可再次打开。依赖 Python 自带的 tkinter，无需额外绘图库。
+
+验证：Windows 原生 Tk 窗口的绘图、表格、高亮、过期/无效/断开提示均通过；在隔离端口 18783 上，关闭调试、仅表格、曲线加表格分别运行 4 秒 MuJoCo。两种显示模式均投递了 20 个不同反馈帧，与关闭调试时重叠仿真步的目标角和 qpos 差异均为零。主循环调试更新调用 P99 分别为 1.29/1.03 ms；这是本机短程测量，不是实时性保证。首次启动尚无几何帧时出现两次 `no_frame`，随后自动恢复。未访问实机串口。
+
+复验：`python validation/geometry_debug_smoke.py`，结果位于 `validation/results/geometry-debug/`。
+
+---
+
+以下是阶段 1 的实现和验收历史：
+
 # Adaptive_Pole_Climbing：阶段 1
 
 本文件对应 `Adaptive_Pole_Climbing.py`。以现有 `Pole_Climbing.py` 为运行模板，将目标角生成替换为 Yamada 积分；没有加入顺应性控制或新的双向通信。原 Pole、其他步态、模型、可视化程序均未修改。
