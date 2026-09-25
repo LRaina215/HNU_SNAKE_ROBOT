@@ -1,0 +1,21 @@
+{
+  "numerical": {
+    "segments": 56,
+    "joints": 28,
+    "total_length_mm": 1918.0000000000018,
+    "stage1_regression": {
+      "comparison_cases": 120,
+      "pole_target_max_error_rad": 3.497202527569243e-15,
+      "dense_integral_max_error_rad": 2.2593149573424398e-11
+    },
+    "yamada_error_rad": 2.220446049250313e-16,
+    "derivative_kappa_error": 5.638957703557601e-11,
+    "derivative_tau_error": 4.561972589523064e-07
+  },
+  "integration": {
+    "samples": 516,
+    "adaptive_samples": 436,
+    "max_target_rad": 1.3258998302982268,
+    "sim_seconds": 5.160000000000058
+  }
+}

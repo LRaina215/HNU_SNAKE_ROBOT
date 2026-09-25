@@ -67,6 +67,7 @@ def smoke(out, label, model=None, amplitude=30, spatial=0):
     env = os.environ.copy()
     path = out / (label + '.npz')
     env.update(SNAKE_MUJOCO_HEADLESS='1', SNAKE_VISUALIZER_ENABLED='0',
+               SNAKE_CONTROL_VIA_VISUALIZER='0',
                SNAKE_MUJOCO_MAX_SECONDS='3', SNAKE_MUJOCO_TRACE=str(path),
                SNAKE_MUJOCO_A=str(amplitude), SNAKE_MUJOCO_V=str(spatial))
     if model:
@@ -112,7 +113,7 @@ def main():
     result = {"numerical": numerical_checks(), "runs": {}}
     result['runs']['20_planar'] = smoke(out, '20_planar')
     result['runs']['20_helix'] = smoke(out, '20_helix', amplitude=-76, spatial=0.05)
-    model28 = ROOT.parents[1] / 'two_joint_visualizer/validation/mujoco/generated/pole28.xml'
+    model28 = ROOT / 'validation/fixtures/pole28.xml'
     assert model28.is_file(), f'28-joint verification model missing: {model28}'
     result['runs']['28_helix'] = smoke(out, '28_helix', model28, -76, 0.05)
     assert hashlib.sha256(pole.read_bytes()).hexdigest() == before

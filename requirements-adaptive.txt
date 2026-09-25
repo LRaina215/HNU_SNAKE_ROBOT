@@ -1,0 +1,5 @@
+# Versions verified with Windows Python 3.9; tkinter comes with Python/Conda.
+numpy==1.23.5
+scipy==1.13.1
+mujoco==3.2.7
+pynput==1.8.2

@@ -1,3 +1,9 @@
+> 2026-09-25 目录整理：可视化源码和客户端已纳入本仓库 `visualizer/`；完整启动、开关和验证入口以[主 README](../README.md)为准。下文旧外部目录为历史路径。
+
+# 阶段 4 更新：默认经 EXE 转发执行
+
+当前默认 `CONTROL_VIA_VISUALIZER=True`，需启动 **v1.4.0** EXE。计算出的目标经 EXE 回传后才写入 MuJoCo，见 [阶段四说明](Adaptive_Pole_Climbing_阶段四.md)。阶段三已提交并推送为 `6cb07e2`；下面保留各阶段历史。
+
 # 阶段 3 更新：顺应性目标生成已接入
 
 当前默认启用 `COMPLIANCE_ENABLED=True`，使用实测截面生成顺应性目标。参数、公式约定、非等长归一化和失效行为见 [阶段三说明](Adaptive_Pole_Climbing_阶段三.md)。`False` 可恢复阶段一标准运动；DEBUG 开关保持不变。下文阶段二/阶段一内容为对应阶段的实现历史。

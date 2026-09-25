@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-25",
+  "version": "1.4.1",
+  "platform": "Windows native, Python 3.9, MuJoCo 3.2.7",
+  "suites": [
+    "CoreModel",
+    "PaperGeometry",
+    "Communication",
+    "Feature",
+    "ProtocolPacket",
+    "CameraReference",
+    "UiSmoke",
+    "Soak"
+  ],
+  "all_suites_passed": true,
+  "ui": {
+    "measurement_seconds": 11,
+    "minimum_rate_hz": 9.5,
+    "observed_sequence_rate_hz": 9.982,
+    "paint_count_3d": 111,
+    "paint_count_2d": 111
+  },
+  "exe_sha256": "a012c1f38bd93502ccc683ba0ad15b9a5da362b1c29f19fd6af4cb6480c6ec30"
+}

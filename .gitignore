@@ -18,3 +18,8 @@ venv/
 # Editor
 *.swp
 *~
+
+# Adaptive Pole: generated binaries, local state and bulky traces
+/visualizer/windows_app/bin/
+/visualizer/artifacts/
+/validation/results/

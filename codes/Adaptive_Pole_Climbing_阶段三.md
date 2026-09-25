@@ -1,3 +1,5 @@
+> 2026-09-25 目录整理：可视化源码和客户端已纳入本仓库 `visualizer/`；完整启动、开关和验证入口以[主 README](../README.md)为准。下文旧外部目录为历史路径。
+
 # 阶段三：基于实测截面的顺应性目标生成
 
 实现位于 `pole_compliance.py`，由 `Adaptive_Pole_Climbing.py` 调用。依据 Takemori 等的 *Adaptive Helical Rolling of a Snake Robot to a Straight Pipe With Irregular Cross-Sectional Shape*，IEEE T-RO 39(1), 2023，III-B5—B7、式 (23)—(33)。本地原文位于 `D:\Desktop\SNAKE\顺应性运动\2023【 Adaptive Helical Rolling of a Snake Robot to a Straight Pipe with Irregular Cross-Sectional Shape.pdf`，印刷页 444—445。

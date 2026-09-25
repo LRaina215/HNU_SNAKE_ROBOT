@@ -2,7 +2,7 @@
 
 沿用 H-Crawler.py 的 K/Psi/Kp/Ky + scipy.integrate.quad 积分结构，
 以及 Parallel_Crossing.py 的标准螺旋曲率/挠率公式。
-已接入阶段 3：实测截面顺应性变形、三维重建及 Yamada 输出。实机下发仍留待阶段 4。
+阶段 4 默认经可视化 EXE 转发目标到 MuJoCo，实际关节角再回传用于顺应性计算。
 
 保留 a（有符号角度幅值）、v（相邻关节空间相位差）、omega、time_step
 和原 Pole 的键盘/控制台操作。启动阶段 a/v 先转换为标准螺旋，再由 Yamada
@@ -33,6 +33,7 @@ COMPLIANCE_ENABLED = True
 COMPLIANCE_GAIN = 0.04  # K_i；可改为按关节顺序排列的列表。
 COMPLIANCE_PITCH_RAD = 0.25  # 论文的设计螺距角 alpha，单位 rad。
 COMPLIANCE_INSIDE = False  # False 管外收紧；True 管内撑开（此时 K_i < 1）。
+CONTROL_VIA_VISUALIZER = True  # 阶段 4：目标必须经 EXE 转发后才写入 MuJoCo。
 
 
 @dataclass(frozen=True)
@@ -215,6 +216,10 @@ def main():
     from mujoco_visualizer_bridge import VisualizerBridge
 
     headless = os.environ.get("SNAKE_MUJOCO_HEADLESS") == "1"
+    relay = os.environ.get("SNAKE_CONTROL_VIA_VISUALIZER", str(int(CONTROL_VIA_VISUALIZER))) != "0"
+    if relay and (os.environ.get("SNAKE_VISUALIZER_ENABLED", "1") == "0" or
+                  os.environ.get("SNAKE_GEOMETRY_EXCHANGE", "1") == "0"):
+        raise ValueError("转发执行模式要求可视化通信开启；离线回归请设 SNAKE_CONTROL_VIA_VISUALIZER=0")
     key_listener = None
     if not headless:
         from pynput import keyboard
@@ -249,12 +254,14 @@ def main():
     debug_view = None
     compliance = None
     compliance_status = None
+    relay_status = None
     traces = {name: [] for name in ("qpos", "ctrl", "sim_time", "step_ms", "roll_phase", "kappa", "tau",
-                                   "compliance_active", "target_kappa", "target_tau")}
+                                   "compliance_active", "target_kappa", "target_tau", "requested_ctrl",
+                                   "applied_delivery_id", "applied_command_id", "applied_run_id", "wall_unix_ms")}
     last_error = None
     t = 0.0
     steps = 10
-    print(f"YAMADA stage=3 joints={joint_count} nominal_link_mm={link_mm:.6f} "
+    print(f"YAMADA stage=4 execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} nominal_link_mm={link_mm:.6f} "
           f"spacing_range_mm=[{min(spacings):.6f},{max(spacings):.6f}]", flush=True)
     if not headless:
         key_listener = keyboard.Listener(on_press=on_key_press)
@@ -263,15 +270,21 @@ def main():
         threading.Thread(target=uart_listener, daemon=True).start()
         threading.Thread(target=command_processor, daemon=True).start()
     try:
-        # 保留原有实测上传桥；另一个持久连接负责阶段 2 几何反馈/目标预览。
+        # 两条连接职责独立：执行端上传实测并领取目标，控制端接收几何并提交候选目标。
         if os.environ.get("SNAKE_VISUALIZER_ENABLED", "1") != "0":
-            bridge = VisualizerBridge(m, d)
+            client_dir = Path(os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
+                Path(__file__).resolve().parents[1] / "visualizer")))
+            sys.path.insert(0, str(client_dir))
+            if relay:
+                from mujoco_execution_bridge import MujocoExecutionBridge
+                bridge = MujocoExecutionBridge(m, d)
+                bridge.record_commands = bool(trace_path)
+            else:
+                bridge = VisualizerBridge(m, d)
             if os.environ.get("SNAKE_GEOMETRY_EXCHANGE", "1") != "0":
-                client_dir = Path(os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
-                    Path(__file__).resolve().parents[3] / "two_joint_visualizer")))
-                sys.path.insert(0, str(client_dir))
                 from python_client import GeometryExchange
-                exchange = GeometryExchange(port=bridge.port, expected_lengths=bridge.lengths)
+                exchange = GeometryExchange(port=bridge.port, expected_lengths=bridge.lengths,
+                                            execution="mujoco" if relay else "preview")
                 if COMPLIANCE_ENABLED:
                     from pole_compliance import ComplianceController, ComplianceParameters
                     parameters = ComplianceParameters(COMPLIANCE_GAIN, COMPLIANCE_PITCH_RAD, COMPLIANCE_INSIDE)
@@ -283,10 +296,16 @@ def main():
         with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d)) as viewer:
             start_wall = time.monotonic()
             while step > 0 and (viewer is None or viewer.is_running()):
+                if relay:
+                    status = "转发执行端已连接" if bridge.executor_ready else (bridge.last_error or "等待 v1.4.0 可视化执行端")
+                    if status != relay_status:
+                        print(f"MUJOCO_RELAY {status}", flush=True)
+                        relay_status = status
                 # 一帧内所有关节共享同一份参数及相位，后台交互只影响下一帧。
                 frame_a, frame_v = a, v
                 frame_sleep, frame_dt = time_sleep, time_step
                 phase = omega * t
+                applied_before = bridge.applied if relay else 0
                 feedback = None
                 compliant_targets = None
                 advance_phase = True
@@ -327,25 +346,34 @@ def main():
                         break
                     continue
 
-                with (nullcontext() if viewer is None else viewer.lock()):
-                    d.ctrl[:] = targets
-                # 保持原 Pole 每轮的仿真步数/等待量，但整轮只提交这一组目标。
-                # 这一同步化会改变瞬态动力学，因此不声称 qpos 与原脚本相同。
+                # 候选 targets 不等于执行目标；转发模式唯一写入口为 apply_received。
+                if not relay:
+                    with (nullcontext() if viewer is None else viewer.lock()):
+                        d.ctrl[:] = targets
+                # 每轮生成一组候选目标；转发模式在每个物理步组开始前应用
+                # 最新收到的完整目标。异步执行时刻与旧直接模式不保证相同。
                 for _ in range(joint_count):
                     step_started = time.perf_counter()
                     with (nullcontext() if viewer is None else viewer.lock()):
+                        if relay:
+                            bridge.apply_received(d)
                         for _ in range(steps):
                             mujoco.mj_step(m, d)
                         if bridge is not None:
                             bridge.publish(d)
                         if exchange is not None and (compliance is None or not compliance.started or compliant_targets is not None):
-                            # 仍只回传预览；真实串口下发留待阶段 4。
+                            # execution=mujoco 经 EXE 转发，或旧模式的 preview。
                             # bridge 的方向映射 [+1,-1,...]，发送可视化约定的角度（度）。
                             exchange.publish_targets(np.rad2deg(targets * bridge.signs).tolist(),
                                                      source_geometry=feedback if compliant_targets is not None else None)
                         if trace_path:
                             traces["qpos"].append(d.qpos.copy())
                             traces["ctrl"].append(d.ctrl.copy())
+                            traces["requested_ctrl"].append(targets.copy())
+                            traces["applied_delivery_id"].append(bridge.applied_delivery_id if relay else 0)
+                            traces["applied_command_id"].append(bridge.applied_command_id if relay else 0)
+                            traces["applied_run_id"].append(bridge.applied_run_id if relay else "")
+                            traces["wall_unix_ms"].append(time.time() * 1000)
                             traces["sim_time"].append(d.time)
                             traces["step_ms"].append((time.perf_counter() - step_started) * 1000)
                             traces["roll_phase"].append(phase)
@@ -368,7 +396,8 @@ def main():
                     time.sleep(frame_sleep)
                     if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
                         break
-                if advance_phase:
+                # 未收到可执行目标时冻结滚动相位，避免重连后跳过未执行的运动。
+                if advance_phase and (not relay or bridge.applied > applied_before):
                     t += frame_dt
                 if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
                     break
@@ -384,11 +413,18 @@ def main():
                   f"last_error={exchange.last_error!r}", flush=True)
         if bridge is not None:
             bridge.close()
+            if relay:
+                print(f"MUJOCO_RELAY applied={bridge.applied} expired={bridge.expired} "
+                      f"last_delivery={bridge.applied_delivery_id}", flush=True)
             p99 = np.percentile(bridge.enqueue_ms, 99) if bridge.enqueue_ms else 0.0
             print(f"VISUALIZER_BRIDGE sent={bridge.sent} rejected={bridge.rejected} "
                   f"joints={joint_count} enqueue_p99_ms={p99:.4f} last_error={bridge.last_error!r}", flush=True)
         if trace_path:
             np.savez(trace_path, **traces, nominal_link_mm=link_mm)
+            if relay and bridge is not None:
+                import json
+                Path(str(trace_path) + ".received.json").write_text(
+                    json.dumps(bridge.received_commands), encoding="utf-8")
 
 
 if __name__ == "__main__":

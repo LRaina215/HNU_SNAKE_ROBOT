@@ -1,0 +1,44 @@
+{
+  "no_exe": {
+    "joints": 20,
+    "samples": 131,
+    "received": 0,
+    "applied": 0,
+    "adaptive_samples": 0,
+    "run_ids": []
+  },
+  "relay20": {
+    "joints": 20,
+    "samples": 516,
+    "received": 71,
+    "applied": 71,
+    "adaptive_samples": 416,
+    "run_ids": [
+      "ccbfa07d9b164176aaf5f97afed32a25"
+    ]
+  },
+  "acknowledged20": 70,
+  "relay28": {
+    "joints": 28,
+    "samples": 480,
+    "received": 42,
+    "applied": 41,
+    "adaptive_samples": 112,
+    "run_ids": [
+      "1be14f429d6349568331874ffbbed572"
+    ]
+  },
+  "restart": {
+    "joints": 20,
+    "samples": 782,
+    "received": 74,
+    "applied": 73,
+    "adaptive_samples": 462,
+    "run_ids": [
+      "082bcf6b50be4e8f8130d0c1dbd92297",
+      "bdde073d1e4947d18e0a2168db71fd01"
+    ],
+    "held_samples_during_outage": 59
+  },
+  "scope": "No real servo bus; exact EXE packet to d.ctrl mapping; reconnect/hold; short MuJoCo run, not climbing acceptance"
+}

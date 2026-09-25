@@ -1,5 +1,7 @@
 # 蛇形机器人步态
 
+新增顺应性 Pole 闭环的代码结构、启动方法与验证入口见[主 README](README.md)。本页保留原步态与论文说明。
+
 ### 介绍
 使用MuJoCo开源物理引擎，仿真实现蛇形机器人各种步态。<font color=red size=4>注意: 某些浏览器下公式无法正常显示。读者可阅读[**pdf版本**](README_zh.pdf)或通过Pycharm或Visual Studio Code等编辑器安装Markdown插件查看.</font>
 

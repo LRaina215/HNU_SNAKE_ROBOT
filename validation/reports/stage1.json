@@ -1,0 +1,35 @@
+{
+  "numerical": {
+    "comparison_cases": 120,
+    "pole_target_max_error_rad": 3.497202527569243e-15,
+    "dense_integral_max_error_rad": 2.2593149573424398e-11
+  },
+  "runs": {
+    "20_planar": {
+      "joints": 20,
+      "samples": 178,
+      "sim_seconds": 1.7799999999999148,
+      "nominal_link_mm": 68.44736842105266,
+      "target_max_error_rad": 5.551115123125783e-16,
+      "same_schedule_qpos_max_error": 9.908413325931953e-10
+    },
+    "20_helix": {
+      "joints": 20,
+      "samples": 194,
+      "sim_seconds": 1.9399999999998971,
+      "nominal_link_mm": 68.44736842105266,
+      "target_max_error_rad": 1.5543122344752192e-15,
+      "same_schedule_qpos_max_error": 4.587930496624537e-08
+    },
+    "28_helix": {
+      "joints": 28,
+      "samples": 157,
+      "sim_seconds": 1.569999999999938,
+      "nominal_link_mm": 68.46296296296302,
+      "target_max_error_rad": 1.9984014443252818e-15,
+      "same_schedule_qpos_max_error": 2.752431732533367e-08
+    }
+  },
+  "original_pole_sha256": "7c991ad721855d406aec8e38282fa25fd5b5ec8b5020bab06d14aa9259ff0caa",
+  "scope": "Numerical and headless MuJoCo only; no stable climbing, interactive viewer or hardware acceptance."
+}

@@ -1,0 +1,11 @@
+{
+  "joints": 20,
+  "samples": 262,
+  "received": 24,
+  "applied": 24,
+  "adaptive_samples": 40,
+  "run_ids": [
+    "af33a8ef328d46b88e735c02f8860e23"
+  ],
+  "exe_sha256": "a012c1f38bd93502ccc683ba0ad15b9a5da362b1c29f19fd6af4cb6480c6ec30"
+}

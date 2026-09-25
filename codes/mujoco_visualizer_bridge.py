@@ -69,6 +69,7 @@ class VisualizerBridge:
                   "head_origin_world_mm": head_origin_world_mm,
                   "head_basis_world": head_basis_world,
                   "sim_time": float(data.time), "captured_unix": time.time()}
+        packet.update(self._packet_extra())
         try:
             self.latest.put_nowait(packet)
         except queue.Full:
@@ -78,6 +79,9 @@ class VisualizerBridge:
                 pass
             self.latest.put_nowait(packet)
         self.enqueue_ms.append((time.perf_counter() - started) * 1000)
+
+    def _packet_extra(self):
+        return {}
 
     def _send_loop(self):
         while not self.stopping:

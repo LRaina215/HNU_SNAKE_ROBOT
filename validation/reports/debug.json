@@ -1,0 +1,28 @@
+{
+  "off": {
+    "mode": "off",
+    "distinct_frames": 0,
+    "startup_no_frame": 1,
+    "update_p99_ms": 0,
+    "update_max_ms": 0
+  },
+  "table": {
+    "mode": "table",
+    "distinct_frames": 20,
+    "startup_no_frame": 0,
+    "update_p99_ms": 0.7997549999999336,
+    "update_max_ms": 1.1427999999999994,
+    "ctrl_max_difference": 0.0,
+    "qpos_max_difference": 0.0
+  },
+  "curve": {
+    "mode": "curve",
+    "distinct_frames": 20,
+    "startup_no_frame": 0,
+    "update_p99_ms": 0.8926799999998004,
+    "update_max_ms": 1.180300000000023,
+    "ctrl_max_difference": 0.0,
+    "qpos_max_difference": 0.0
+  },
+  "checks": "Tk drawing/table/selection/stale/invalid/disconnect; isolated EXE feedback; DEBUG off; trajectory equality"
+}

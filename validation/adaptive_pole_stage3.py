@@ -14,7 +14,7 @@ import numpy as np
 from scipy.integrate import quad
 
 ROOT = Path(__file__).resolve().parents[1]
-VIS = ROOT.parents[1] / "two_joint_visualizer"
+VIS = ROOT / "visualizer"
 OUT = ROOT / "validation/results/adaptive-pole-stage3"
 sys.path[:0] = [str(ROOT / "codes"), str(VIS)]
 from pole_compliance import ComplianceParameters, ComplianceController, build_backbone
@@ -29,7 +29,7 @@ def reject(fn):
 
 
 def numerical():
-    geometry = json.loads((VIS / "validation/communication/results/geometry_example.json").read_text(encoding="utf-8"))
+    geometry = json.loads((ROOT / "validation/fixtures/geometry_example.json").read_text(encoding="utf-8"))
     geometry.update(age_ms=0, sample_unix_ms=1000, feedback_usable=True)
     count = geometry["config"]["joint_count"]
     parameters = ComplianceParameters(gain=[.04 if j < 4 or j >= count - 4 else .08 for j in range(count)])
@@ -146,6 +146,7 @@ def numerical():
     exchange.expected_lengths = curve.links
     exchange._pending = None
     exchange.dropped = 0
+    exchange.execution = "preview"
     assert exchange.publish_targets([0.] * count, source_geometry=source)
     assert exchange._pending[0]["sequence"] == source["sequence"]
     source["sample_unix_ms"] -= 1000
@@ -176,6 +177,7 @@ def numerical():
 def run_gait():
     import Adaptive_Pole_Climbing as gait
     gait.DEBUG = False
+    gait.CONTROL_VIA_VISUALIZER = False
     gait.COMPLIANCE_ENABLED = True
     gait.main()
 
@@ -186,7 +188,7 @@ def integration():
     appdir.mkdir(exist_ok=True)
     exe = appdir / "SnakeRobotVisualizer.exe"
     shutil.copy2(VIS / "windows_app/bin" / exe.name, exe)
-    state = json.loads((VIS / "windows_app/bin/app-state.json").read_text(encoding="utf-8"))
+    state = json.loads((ROOT / "validation/fixtures/app-state.json").read_text(encoding="utf-8"))
     state["Display"]["DisplayMode"] = 2
     (appdir / "app-state.json").write_text(json.dumps(state), encoding="utf-8")
     env = os.environ.copy()

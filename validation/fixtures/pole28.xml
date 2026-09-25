@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="snake-dgist">
+
+    <option timestep="0.001" iterations="100" tolerance="1e-8" solver="Newton" cone="elliptic" />
+
+    <asset>
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".8 .8 .8" rgb2=".1 0.15 0.2" width="512" height="512" mark="cross" markrgb=".8 .8 .8" />
+
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01" />
+
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="2 2" texuniform="true" />
+
+        <material name="matgeom" texture="texgeom" texuniform="true" rgba="0.8 0.6 .4 1" />
+
+        <hfield name="terrain" ncol="201" nrow="201" size="30 30 5 .1" />
+
+        <mesh name="head_link" file="../../mujoco_model/asset/c_head.stl" />
+        <mesh name="v_link" file="../../mujoco_model/asset/c_link_V.stl" />
+        <mesh name="h_link" file="../../mujoco_model/asset/c_link_H.stl" />
+        <mesh name="tail_link" file="../../mujoco_model/asset/c_tail.stl" />
+    </asset>
+
+    <worldbody>
+
+        //显示X-Y-Z坐标轴
+
+
+
+
+
+
+
+
+
+        <body name="pipe_v" pos="-0.60 -0.08 0" euler="0 0 0">
+            <geom name="pipe" type="cylinder" size="0.15 2.5" rgba=".5 .5 1 1" friction="2 0.1 0.1" />
+            <geom name="flange_base" type="cylinder" size="0.15 0.02" pos="0 0 1" euler="0 0 0" rgba="0.7 0.7 0.1 1" mass="0.5" />
+        </body>
+
+        <geom name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="matplane" condim="6" friction="0.25 0.1 0.01" />
+
+        <light directional="false" diffuse="1 1 1" specular="0 0 0" pos="0 0 15" dir="0 0 -1" castshadow="false" />
+
+        <body name="head" pos="0 0.1 0.033" euler="0 90 -90">
+            <site name="s_head" pos="0 0 0.0295" euler="90 0 90" />
+            <freejoint name="root" />
+            <geom type="mesh" mesh="head_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link1" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link1" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint1" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link2" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link2" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint2" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link3" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link3" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint3" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link4" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link4" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint4" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link5" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link5" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint5" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link6" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link6" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint6" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link7" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link7" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint7" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link8" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link8" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint8" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link9" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link9" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint9" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link10" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link10" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint10" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link11" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link11" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint11" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link12" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link12" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint12" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link13" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link13" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint13" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link14" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link14" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint14" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link15" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link15" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint15" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link16" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link16" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint16" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link17" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link17" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint17" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link18" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link18" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint18" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link19" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link19" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint19" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+
+
+        <body name="link20" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link20" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint20" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link21" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link21" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint21" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link22" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link22" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint22" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link23" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link23" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint23" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link24" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link24" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint24" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link25" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link25" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint25" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link26" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_link26" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint26" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="v_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="link27" pos="0  0 -0.0695" euler="0 0 -180">
+            <site name="s_link27" pos="0 0 0.0295" euler="-90 0 -90" />
+            <joint name="joint27" type="hinge" pos="0 0 0.0685" axis="1 0 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="h_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        <body name="tail" pos="0  0 -0.0675" euler="0 0 -180">
+            <site name="s_tail" pos="0 0 0.0295" euler="90 0 90" />
+            <joint name="joint28" type="hinge" pos="0 0 0.0685" axis="0 -1 0" limited="true" range="-90 90" damping="0.6" armature="0.01" />
+            <geom type="mesh" mesh="tail_link" mass="0.2" condim="6" friction="1 0.15 0.015" />
+
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <position name="servo_1" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint1" kp="4" />
+        <position name="servo_2" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint2" kp="4" />
+        <position name="servo_3" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint3" kp="4" />
+        <position name="servo_4" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint4" kp="4" />
+        <position name="servo_5" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint5" kp="4" />
+        <position name="servo_6" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint6" kp="4" />
+        <position name="servo_7" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint7" kp="4" />
+        <position name="servo_8" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint8" kp="4" />
+        <position name="servo_9" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint9" kp="4" />
+        <position name="servo_10" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint10" kp="4" />
+        <position name="servo_11" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint11" kp="4" />
+        <position name="servo_12" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint12" kp="4" />
+        <position name="servo_13" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint13" kp="4" />
+        <position name="servo_14" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint14" kp="4" />
+        <position name="servo_15" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint15" kp="4" />
+        <position name="servo_16" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint16" kp="4" />
+        <position name="servo_17" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint17" kp="4" />
+        <position name="servo_18" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint18" kp="4" />
+        <position name="servo_19" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint19" kp="4" />
+        <position name="servo_20" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint20" kp="4" />
+
+    <position name="servo_21" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint21" kp="4" />
+        <position name="servo_22" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint22" kp="4" />
+        <position name="servo_23" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint23" kp="4" />
+        <position name="servo_24" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint24" kp="4" />
+        <position name="servo_25" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint25" kp="4" />
+        <position name="servo_26" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint26" kp="4" />
+        <position name="servo_27" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint27" kp="4" />
+        <position name="servo_28" ctrllimited="true" ctrlrange="-1.5708 1.5708" forcelimited="true" forcerange="-3.0 3.0" gear="1" joint="joint28" kp="4" />
+        </actuator>
+
+    </mujoco>

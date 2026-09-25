@@ -29,6 +29,7 @@ class ComplianceParameters:
 
 @dataclass(frozen=True)
 class TargetSegment:
+    """目标曲线的一段：length 为三维弧长 mm，radius 为截面半径 mm，turn 为有向 rad。"""
     joint_index: object
     length: float
     radius: float
@@ -228,6 +229,7 @@ class ComplianceController:
                     not joint["minimum_deg"] <= angle <= joint["maximum_deg"]
                     for joint, angle in zip(config["joints"], visual_targets)):
                 raise ValueError("顺应性目标超出关节范围，保持上一组目标")
+            # 全部角度校验通过才提交状态；坏反馈不污染下一轮骨架和相位。
             self.backbone, self.phase_offset, self.key = backbone, phase_offset, key
             self.started = True
             self.status = "顺应性控制运行中"

@@ -10,7 +10,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-VISUALIZER = ROOT.parents[1] / "two_joint_visualizer"
+VISUALIZER = ROOT / "visualizer"
 OUT = ROOT / "validation/results/geometry-debug"
 sys.path.insert(0, str(ROOT / "codes"))
 sys.path.insert(0, str(VISUALIZER))
@@ -32,6 +32,7 @@ def run_gait(mode):
 
     SnakeControlClient.request = request
     gait.DEBUG = mode != "off"
+    gait.CONTROL_VIA_VISUALIZER = False
     gait.COMPLIANCE_ENABLED = False  # 本测试只比较调试窗口开销，固定阶段一运动目标。
     gait.DEBUG_DRAW_CURVE = mode == "curve"
     timings, frames = [], []
@@ -71,7 +72,7 @@ def test_window():
         segment = dict(start_mm=[0, 0], tangent=[1, 0], kind="arc", radius_mm=10,
                        turn_rad=turn, length_mm=10 * abs(turn))
         assert math.dist(segment_points(segment)[-1], endpoint) < 1e-10
-    geometry = json.loads((VISUALIZER / "validation/communication/results/geometry_example.json").read_text(encoding="utf-8"))
+    geometry = json.loads((ROOT / "validation/fixtures/geometry_example.json").read_text(encoding="utf-8"))
     for draw_curve in (True, False):
         root = tk.Tk()
         try:
@@ -114,7 +115,7 @@ def main():
     source = VISUALIZER / "windows_app/bin"
     exe = appdir / "SnakeRobotVisualizer.exe"
     shutil.copy2(source / exe.name, exe)
-    state = json.loads((source / "app-state.json").read_text(encoding="utf-8"))
+    state = json.loads((ROOT / "validation/fixtures/app-state.json").read_text(encoding="utf-8"))
     state["Display"]["DisplayMode"] = 2
     (appdir / "app-state.json").write_text(json.dumps(state), encoding="utf-8")
     env = os.environ.copy()
