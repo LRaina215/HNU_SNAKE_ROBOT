@@ -1,6 +1,6 @@
 """Adaptive Pole：几何参数 → 曲率/挠率 → Yamada → EXE → MuJoCo。
 
-默认单步：F7 应用 R/P 初始螺旋，F6 正向一步，F5 反向一步。
+默认单步：U 应用 R/P 初始螺旋，J 正向一步，H 反向一步。
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
@@ -28,7 +28,7 @@ CONTROL_VIA_VISUALIZER = True  # 目标必须经 EXE 转发后才写入 MuJoCo�
 SINGLE_STEP_MODE = True
 HELIX_RADIUS_MM = 110.0  # 机器人中心线半径，不是管道表面半径。
 HELIX_PITCH_MM = 180.0  # 每圈轴向位移；有符号，0 为平面圆弧。
-ROLL_STEP_RAD = 0.15  # 每次 F5/F6 的相位增量，与形状参数分开。
+ROLL_STEP_RAD = 0.15  # 每次 H/J 的相位增量，与形状参数分开。
 FRAME_SLEEP = 0.01  # 每组 10 个物理步之后的刷新等待。
 
 
@@ -177,21 +177,23 @@ def main():
     last_notice = None
     print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
           f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm", flush=True)
-    print("F7/apply：应用初始螺旋；F6/step：正向一步；F5/back：反向一步。\n"
-          "上下：R ±5mm；左右：P ±10mm；或输入 r=110 p=180，修改后按 F7 应用。", flush=True)
+    print("U/apply：应用初始螺旋；J/step：正向一步；H/back：反向一步。\n"
+          "上下：R ±5mm；左右：P ±10mm；或输入 r=110 p=180，修改后按 U 应用。", flush=True)
 
 
 
     try:
         if not headless:
             from pynput import keyboard
-            hotkeys = {keyboard.Key.f7: "apply", keyboard.Key.f6: "step", keyboard.Key.f5: "back",
-                       keyboard.Key.up: "r+", keyboard.Key.down: "r-",
+            letter_hotkeys = {"u": "apply", "j": "step", "h": "back"}
+            hotkeys = {keyboard.Key.up: "r+", keyboard.Key.down: "r-",
                        keyboard.Key.right: "p+", keyboard.Key.left: "p-"}
             # 松开一次只产生一个事件，避免长按的系统自动重复。
             def on_release(key):
-                if key in hotkeys:
-                    command_queue.put(hotkeys[key])
+                char = getattr(key, "char", None)
+                command = letter_hotkeys.get(char.lower()) if char else hotkeys.get(key)
+                if command is not None:
+                    command_queue.put(command)
             key_listener = keyboard.Listener(on_release=on_release)
             key_listener.start()
             threading.Thread(target=uart_listener, daemon=True).start()
@@ -252,10 +254,10 @@ def main():
                                         raise ValueError("只支持 r=半径mm p=螺距mm；运动用 apply/step/back")
                             HelixBackbone.from_radius_pitch(new_r, new_p)
                             radius, pitch = new_r, new_p
-                            print(f"待应用 R={radius:g}mm P={pitch:g}mm；F7 应用并重新初始化顺应性", flush=True)
+                            print(f"待应用 R={radius:g}mm P={pitch:g}mm；U 应用并重新初始化顺应性", flush=True)
                         elif command in ("apply", "step", "back"):
                             if command != "apply" and (not initialized or active_shape != (radius, pitch)):
-                                raise ValueError("请先按 F7 应用当前 R/P，再单步滚动")
+                                raise ValueError("请先按 U 应用当前 R/P，再单步滚动")
                             next_phase = 0.0 if command == "apply" else phase + (1 if command == "step" else -1) * ROLL_STEP_RAD
                             curve = HelixBackbone.from_radius_pitch(radius, pitch)
                             feedback = None
