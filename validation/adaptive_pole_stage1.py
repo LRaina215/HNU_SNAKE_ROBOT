@@ -14,7 +14,27 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "codes"))
-from Adaptive_Pole_Climbing import HelixBackbone, helix_from_pole_parameters
+from Adaptive_Pole_Climbing import HelixBackbone
+
+
+def helix_from_pole_parameters(amplitude_deg, spatial_phase, link_mm):
+    """仅用于旧 Pole 数值回归，不参与交互或主控制流程。
+
+    对常曲率螺旋，2l 区间积分的幅值 B=2l*κ*sinc(v)，τ=v/l。
+    因此 κ=|a/57.2958|/(2l*sinc(v))。负 a 用 π 相位差表示。
+    当 κ>0 时对应 r=κ/(κ²+τ²)，b=τ/(κ²+τ²)。
+    名义等间距近似与本地其他 Yamada 步态一致；实际模型不完全等长。
+    限定 |v|<π，避开 sinc 零点导致的不可逆映射。
+    """
+    if not all(math.isfinite(x) for x in (amplitude_deg, spatial_phase, link_mm)):
+        raise ValueError("a、v 和关节间距必须有限")
+    if link_mm <= 0 or abs(spatial_phase) >= math.pi:
+        raise ValueError("要求 link_mm>0 且 |v|<π")
+    sinc = 1.0 if spatial_phase == 0 else math.sin(spatial_phase) / spatial_phase
+    kappa = abs(amplitude_deg / 57.2958) / (2 * link_mm * sinc)
+    tau = spatial_phase / link_mm
+    offset = -spatial_phase + (math.pi if amplitude_deg >= 0 else 0.0)
+    return HelixBackbone(kappa, tau, offset)
 
 
 def numerical_checks():
@@ -42,7 +62,7 @@ def numerical_checks():
     dense_error = 0.0
     for i in range(28):
         s = np.linspace(i * 68.5, (i + 2) * 68.5, 10001)
-        psi = -curve.tau * s + 0.42 + 0.3
+        psi = curve.tau * s + 0.42 + 0.3
         component = -curve.kappa * np.sin(psi) if i % 2 == 0 else curve.kappa * np.cos(psi)
         ds = s[1] - s[0]
         expected_paper = ds * (component[0] / 2 + component[1:-1].sum() + component[-1] / 2)
@@ -63,13 +83,13 @@ def numerical_checks():
             "dense_integral_max_error_rad": dense_error}
 
 
-def smoke(out, label, model=None, amplitude=30, spatial=0):
+def smoke(out, label, model=None, radius=260, pitch=0):
     env = os.environ.copy()
     path = out / (label + '.npz')
     env.update(SNAKE_MUJOCO_HEADLESS='1', SNAKE_VISUALIZER_ENABLED='0',
-               SNAKE_CONTROL_VIA_VISUALIZER='0',
+               SNAKE_CONTROL_VIA_VISUALIZER='0', SNAKE_SINGLE_STEP='0',
                SNAKE_MUJOCO_MAX_SECONDS='3', SNAKE_MUJOCO_TRACE=str(path),
-               SNAKE_MUJOCO_A=str(amplitude), SNAKE_MUJOCO_V=str(spatial))
+               SNAKE_HELIX_RADIUS_MM=str(radius), SNAKE_HELIX_PITCH_MM=str(pitch))
     if model:
         env['SNAKE_MUJOCO_MODEL'] = str(model)
     else:
@@ -81,11 +101,17 @@ def smoke(out, label, model=None, amplitude=30, spatial=0):
     data = np.load(path)
     assert len(data['ctrl']) >= 20
     assert np.all(np.isfinite(data['qpos'])) and np.all(np.isfinite(data['ctrl']))
-    assert np.all(np.diff(data['sim_time']) > 0)
+    assert np.all(np.diff(data['sim_time']) >= 0)
     assert 'WARNING' not in result.stdout + result.stderr
     count = data['ctrl'].shape[1]
-    idx = np.arange(count)
-    expected = amplitude / 57.2958 * np.sin(data['roll_phase'][:, None] + spatial * idx + idx % 2 * math.pi / 2)
+    # 独立解析积分，对照实际非等长连杆及有向 Frenet 挠率。
+    bounds = np.r_[0., np.cumsum(data['link_lengths_mm'])]
+    span, middle = bounds[2:] - bounds[:-2], (bounds[2:] + bounds[:-2]) / 2
+    b = pitch / (2 * math.pi)
+    kappa, tau = radius / (radius**2 + b**2), b / (radius**2 + b**2)
+    amplitude = kappa * span * np.sinc(tau * span / (2 * math.pi))
+    psi = data['roll_phase'][:, None] + tau * middle
+    expected = -amplitude * np.where(np.arange(count) % 2, np.cos(psi), np.sin(psi))
     error = float(np.max(np.abs(data['ctrl'] - expected)))
     assert error < 2e-12, error
     # 以同样调度直接写原 Pole 公式；比较真实物理轨迹以排查循环中的角度/顺序错误。
@@ -94,10 +120,11 @@ def smoke(out, label, model=None, amplitude=30, spatial=0):
     m = mujoco.MjModel.from_xml_path(str(resolved_model))
     d = mujoco.MjData(m)
     qpos_error = 0.0
-    for target, recorded in zip(expected, data['qpos']):
+    for target, recorded, moving in zip(expected, data['qpos'], data['moving']):
         d.ctrl[:] = target
-        for _ in range(10):
-            mujoco.mj_step(m, d)
+        if moving:
+            for _ in range(10):
+                mujoco.mj_step(m, d)
         qpos_error = max(qpos_error, float(np.max(np.abs(d.qpos - recorded))))
     assert qpos_error < 1e-7, qpos_error
     return {"joints": count, "samples": len(data['ctrl']), "sim_seconds": float(data['sim_time'][-1]),
@@ -112,10 +139,10 @@ def main():
     before = hashlib.sha256(pole.read_bytes()).hexdigest()
     result = {"numerical": numerical_checks(), "runs": {}}
     result['runs']['20_planar'] = smoke(out, '20_planar')
-    result['runs']['20_helix'] = smoke(out, '20_helix', amplitude=-76, spatial=0.05)
+    result['runs']['20_helix'] = smoke(out, '20_helix', radius=110, pitch=180)
     model28 = ROOT / 'validation/fixtures/pole28.xml'
     assert model28.is_file(), f'28-joint verification model missing: {model28}'
-    result['runs']['28_helix'] = smoke(out, '28_helix', model28, -76, 0.05)
+    result['runs']['28_helix'] = smoke(out, '28_helix', model28, 110, 180)
     assert hashlib.sha256(pole.read_bytes()).hexdigest() == before
     result['original_pole_sha256'] = before
     result['scope'] = 'Numerical and headless MuJoCo only; no stable climbing, interactive viewer or hardware acceptance.'

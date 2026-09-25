@@ -200,7 +200,7 @@ class ComplianceController:
         self.started = False
         self.status = "等待有效截面"
 
-    def compute(self, geometry, roll_phase, reference, now_ms=None):
+    def compute(self, geometry, roll_phase, reference, now_ms=None, reference_phase=None):
         try:
             if geometry is None:
                 raise ValueError("等待新鲜反馈")
@@ -220,7 +220,8 @@ class ComplianceController:
                 backbone = build_backbone(geometry, self.parameters)
                 phase_offset = self.phase_offset
                 if not self.started or key[:2] != self.key[:2]:
-                    phase_offset = backbone.align_phase(reference, roll_phase)
+                    # 对齐上一已执行相位，再计算下一步；否则首次接入会抵消本步增量。
+                    phase_offset = backbone.align_phase(reference, roll_phase if reference_phase is None else reference_phase)
             else:
                 backbone, phase_offset = self.backbone, self.phase_offset
             targets = backbone.joint_angles(roll_phase + phase_offset)

@@ -1,7 +1,7 @@
 """MuJoCo 执行端：实测上传与 EXE 目标回传共用一条持久连接。
 
 网络线程只维护最新命令槽；主仿真线程在 mj_step 前调用 apply_received。
-命令失效时保留上一组 ctrl，不以本地候选目标兜底；位姿仍由物理引擎推进。
+命令失效时保留上一组 ctrl，不以本地候选目标兜底；是否推进物理时间由主循环决定。
 """
 import queue
 import threading
@@ -76,7 +76,7 @@ class MujocoExecutionBridge(VisualizerBridge):
         finally:
             client.close()
 
-    def apply_received(self, data):
+    def apply_received(self, data, expected_targets=None):
         """只由仿真线程在物理步进前调用；网络线程不访问 mjData。"""
         with self._command_lock:
             # 领取后即清空；同一目标不会因多次物理步进被反复执行。
@@ -96,6 +96,9 @@ class MujocoExecutionBridge(VisualizerBridge):
                 if targets.shape != (self.joint_count,) or not np.all(np.isfinite(targets)):
                     raise ValueError("回传目标角数量或数值无效")
                 targets = np.deg2rad(targets * self.signs)
+                # 单步等待只能领取本次候选，不能执行上一次在网络中迟到的目标。
+                if expected_targets is not None and not np.allclose(targets, expected_targets, rtol=0, atol=1e-12):
+                    return False
                 joint_ids = self.model.actuator_trnid[:, 0]
                 limited = self.model.jnt_limited[joint_ids].astype(bool)
                 limits = self.model.jnt_range[joint_ids]

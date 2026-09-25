@@ -80,6 +80,11 @@ def verify_receiver_guards():
     assert not bridge.apply_received(data)
     bridge._command = dict(command, delivery_id=2, targets_deg=[999.] * model.nu)
     assert not bridge.apply_received(data) and np.array_equal(last, data.ctrl)
+    bridge._command = dict(command, delivery_id=2)
+    assert not bridge.apply_received(data, expected_targets=np.zeros(model.nu))
+    assert np.array_equal(last, data.ctrl)  # 迟到的上一目标不能被当作本次单步回传。
+    bridge._command = dict(command, delivery_id=2)
+    assert bridge.apply_received(data, expected_targets=last)
 
 
 def main():
@@ -98,9 +103,9 @@ def main():
     state["Display"]["DisplayMode"] = 2
     (appdir / "app-state.json").write_text(json.dumps(state), encoding="utf-8")
     env = os.environ.copy()
-    env.update(SNAKE_VISUALIZER_PORT=str(PORT), SNAKE_MUJOCO_HEADLESS="1", SNAKE_VISUALIZER_ENABLED="1",
+    env.update(SNAKE_VISUALIZER_PORT=str(PORT), SNAKE_MUJOCO_HEADLESS="1", SNAKE_SINGLE_STEP="0", SNAKE_VISUALIZER_ENABLED="1",
                SNAKE_GEOMETRY_EXCHANGE="1", SNAKE_CONTROL_VIA_VISUALIZER="1", PYTHONIOENCODING="utf-8",
-               SNAKE_MUJOCO_A="-76", SNAKE_MUJOCO_V=".05")
+               SNAKE_HELIX_RADIUS_MM="110", SNAKE_HELIX_PITCH_MM="180")
     env.pop("SNAKE_MUJOCO_MODEL", None)
     app, gait = None, None
     client = SnakeControlClient(port=PORT)

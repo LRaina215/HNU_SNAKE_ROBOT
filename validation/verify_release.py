@@ -26,10 +26,10 @@ def main():
         probe.bind(("127.0.0.1", port))
     OUT.mkdir(parents=True, exist_ok=True)
     env = os.environ.copy()
-    env.update(SNAKE_VISUALIZER_PORT=str(port), SNAKE_MUJOCO_HEADLESS="1",
+    env.update(SNAKE_VISUALIZER_PORT=str(port), SNAKE_MUJOCO_HEADLESS="1", SNAKE_SINGLE_STEP="0",
                SNAKE_CONTROL_VIA_VISUALIZER="1", SNAKE_VISUALIZER_ENABLED="1",
                SNAKE_GEOMETRY_EXCHANGE="1", SNAKE_MUJOCO_MAX_SECONDS="4",
-               SNAKE_MUJOCO_A="-76", SNAKE_MUJOCO_V=".05",
+               SNAKE_HELIX_RADIUS_MM="110", SNAKE_HELIX_PITCH_MM="180",
                SNAKE_MUJOCO_TRACE=str(OUT / "release.npz"),
                SNAKE_CONTROL_CLIENT_DIR=str(release), PYTHONIOENCODING="utf-8")
     env.pop("SNAKE_MUJOCO_MODEL", None)

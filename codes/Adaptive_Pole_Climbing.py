@@ -1,17 +1,9 @@
-"""Adaptive Pole：以 Pole_Climbing.py 为模板的 Yamada 螺旋滚动与顺应性目标生成。
+"""Adaptive Pole：几何参数 → 曲率/挠率 → Yamada → EXE → MuJoCo。
 
-沿用 H-Crawler.py 的 K/Psi/Kp/Ky + scipy.integrate.quad 积分结构，
-以及 Parallel_Crossing.py 的标准螺旋曲率/挠率公式。
-阶段 4 默认经可视化 EXE 转发目标到 MuJoCo，实际关节角再回传用于顺应性计算。
-
-保留 a（有符号角度幅值）、v（相邻关节空间相位差）、omega、time_step
-和原 Pole 的键盘/控制台操作。启动阶段 a/v 先转换为标准螺旋，再由 Yamada
-积分生成目标；有效反馈到来后使用顺应性骨架。几何长度统一使用 mm。
-默认 v=0 是平面圆弧退化情形，与原 Pole 从地面横滚开始的行为一致。
-
-一轮统一提交全部目标，保持原 Pole 每轮 N*10 个仿真步和 N*time_sleep
-的等待量；t 仍是原程序的相位时钟，不是 MuJoCo 的物理时间。
-原脚本的爬杆参数不构成本脚本已通过稳定攀爬验证的证据。
+默认单步：F7 应用 R/P 初始螺旋，F6 正向一步，F5 反向一步。
+等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
+R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
+长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
 """
 import math
 import os
@@ -31,9 +23,13 @@ DEBUG = True
 DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
 COMPLIANCE_ENABLED = True
 COMPLIANCE_GAIN = 0.04  # K_i；可改为按关节顺序排列的列表。
-COMPLIANCE_PITCH_RAD = 0.25  # 论文的设计螺距角 alpha，单位 rad。
 COMPLIANCE_INSIDE = False  # False 管外收紧；True 管内撑开（此时 K_i < 1）。
-CONTROL_VIA_VISUALIZER = True  # 阶段 4：目标必须经 EXE 转发后才写入 MuJoCo。
+CONTROL_VIA_VISUALIZER = True  # 目标必须经 EXE 转发后才写入 MuJoCo。
+SINGLE_STEP_MODE = True
+HELIX_RADIUS_MM = 110.0  # 机器人中心线半径，不是管道表面半径。
+HELIX_PITCH_MM = 180.0  # 每圈轴向位移；有符号，0 为平面圆弧。
+ROLL_STEP_RAD = 0.15  # 每次 F5/F6 的相位增量，与形状参数分开。
+FRAME_SLEEP = 0.01  # 每组 10 个物理步之后的刷新等待。
 
 
 @dataclass(frozen=True)
@@ -66,9 +62,8 @@ class HelixBackbone:
         return self.tau
 
     def Psi(self, s, roll_phase):
-        # 阶段 1 保留 Pole 空间相位的符号约定；这里的 tau 与阶段 3
-        # 重建曲线使用的有向 Frenet 挠率不能直接混用。原论文 (33) 为 +∫τds。
-        return -self.tau * s + roll_phase + self.phase_offset
+        # 与顺应性 PiecewiseBackbone 相同：沿头→尾弧长累计有向挠率。
+        return self.tau * s + roll_phase + self.phase_offset
 
     def Kp(self, s, roll_phase):
         # 沿用本地 Yamada 步态的函数名；实际奇偶轴映射见 joint_angles。
@@ -80,201 +75,129 @@ class HelixBackbone:
     def joint_angles(self, joint_count, link_mm, roll_phase):
         """Yamada 式 (32)，先算整组，再转换到现有 MuJoCo 的正负方向。
 
-        j=1..N，积分区间 [(j-1)l,(j+1)l]，s 从头侧向尾侧递增。
+        j=1..N，积分覆盖关节两侧连杆；link_mm 可为等长标量或 N+1 个实际长度。
         论文/可视化约定奇数关节 -κsinψ，偶数 +κcosψ。
         现有桥接的 MuJoCo→可视化符号为 [+1,-1,...]，反向映射相同。
         """
-        if joint_count < 1 or not math.isfinite(link_mm) or link_mm <= 0:
-            raise ValueError("关节数和名义关节间距必须为正")
+        links = np.broadcast_to(np.asarray(link_mm, dtype=float), (joint_count + 1,))
+        if joint_count < 1 or not np.all(np.isfinite(links)) or np.any(links <= 0):
+            raise ValueError("关节数和连杆长度必须为正")
+        bounds = np.r_[0., np.cumsum(links)]
         if not math.isfinite(roll_phase):
             raise ValueError("滚动相位必须有限")
         result = np.empty(joint_count)
         for j in range(1, joint_count + 1):
             component = self.Kp if j % 2 else self.Ky
-            angle = integrate.quad(component, (j - 1) * link_mm, (j + 1) * link_mm,
+            angle = integrate.quad(component, bounds[j - 1], bounds[j + 1],
                                    args=(roll_phase,), epsabs=1e-10, epsrel=1e-10)[0]
             result[j - 1] = angle if j % 2 else -angle
         return result
 
 
-def helix_from_pole_parameters(amplitude_deg, spatial_phase, link_mm):
-    """保留 Pole 的 a/v 操作语义，转换成 κ/τ 而非直接生成关节角。
-
-    对常曲率螺旋，2l 区间积分的幅值 B=2l*κ*sinc(v)，τ=-v/l。
-    因此 κ=|a/57.2958|/(2l*sinc(v))。负 a 用 π 相位差表示。
-    当 κ>0 时对应 r=κ/(κ²+τ²)，b=τ/(κ²+τ²)。
-    名义等间距近似与本地其他 Yamada 步态一致；实际模型不完全等长。
-    限定 |v|<π，避开 sinc 零点导致的不可逆映射。
-    """
-    if not all(math.isfinite(x) for x in (amplitude_deg, spatial_phase, link_mm)):
-        raise ValueError("a、v 和关节间距必须有限")
-    if link_mm <= 0 or abs(spatial_phase) >= math.pi:
-        raise ValueError("要求 link_mm>0 且 |v|<π")
-    sinc = 1.0 if spatial_phase == 0 else math.sin(spatial_phase) / spatial_phase
-    kappa = abs(amplitude_deg / 57.2958) / (2 * link_mm * sinc)
-    tau = -spatial_phase / link_mm
-    offset = -spatial_phase + (math.pi if amplitude_deg >= 0 else 0.0)
-    return HelixBackbone(kappa, tau, offset)
-
-
-# 与 Pole 相同的交互参数。模块导入不会启动仿真、键盘或网络。
-a = 30.0
-v = 0.0
-omega = 1.57
-time_sleep = 0.01
-time_step = 0.3
-step = 1
+# 键盘/控制台只入队；参数、相位与 mjData 均由主线程修改。
 command_queue = queue.Queue()
 
-def increase_a():
-    global a
-    a += 1
-    print(f"a增加到: {a}")
-
-def decrease_a():
-    global a
-    a -= 1
-    print(f"a减少到: {a}")
-
-def increase_v():
-    global v
-    v += 0.01
-    print(f"v增加到: {v}")
-
-def decrease_v():
-    global v
-    v -= 0.01
-    print(f"v减少到: {v}")
-
-def reverse_single_step():
-    global step, time_step
-    time_step = -abs(time_step)
-    step += 1
-    print(f"step = {step}, time_step < 0")
 
 def single_step():
-    global step, time_step
-    time_step = abs(time_step)
-    step += 1
-    print(f"step = {step}, time_step > 0")
+    command_queue.put("step")
+
+
+def reverse_single_step():
+    command_queue.put("back")
+
+
+def apply_helix():
+    command_queue.put("apply")
+
 
 def uart_listener():
-    """保留 Pole 的函数名；实际读取控制台输入，不打开串口。"""
+    """沿用 Pole 的入口名，实际读取控制台，不打开串口。"""
     while True:
         try:
-            user_input = input("Enter command, please!")
-            command_queue.put(user_input)
-            time.sleep(0.1)  # 防止过度占用CPU
-        except KeyboardInterrupt:
-            break
-        except EOFError:
-            break
-
-def command_processor():
-    """命令处理线程 - 相当于中断处理"""
-    global a, v, time_sleep, time_step, step
-
-    while True:
-        try:
-            # 从队列获取命令（非阻塞）
-            command = command_queue.get(timeout = 0.1)
-
-            # 解析命令并修改变量
-            if '=' in command:
-                for subcommand in command.split():
-                    key, value = subcommand.split('=')
-                    key = key.strip().lower()
-
-                    if key == 'a':
-                        a = float(value)
-                    elif key == 'v':
-                        v = float(value)
-                    elif key == 'time_sleep':
-                        time_sleep = float(value)
-                    elif key == 'time_step':
-                        time_step = float(value)
-                    elif key == 'step':
-                        step = float(value)
-                    else:
-                        print(f"未知命令: {subcommand}")
-                print(f"[参数更新] a = {a}, v = {v}, time_sleep = {time_sleep}, time_step = {time_step}, step = {step}")
-
-            command_queue.task_done()
-
-        except queue.Empty:
-            continue
-        except ValueError as e:
-            print(f"命令格式错误: {e}")
-        except KeyboardInterrupt:
+            command_queue.put(input())
+        except (EOFError, KeyboardInterrupt):
             break
 
 
 def main():
-    global a, v
     import mujoco
     import mujoco.viewer
     from mujoco_visualizer_bridge import VisualizerBridge
+    from pole_compliance import ComplianceController, ComplianceParameters
+
+
+
 
     headless = os.environ.get("SNAKE_MUJOCO_HEADLESS") == "1"
     relay = os.environ.get("SNAKE_CONTROL_VIA_VISUALIZER", str(int(CONTROL_VIA_VISUALIZER))) != "0"
+    manual = os.environ.get("SNAKE_SINGLE_STEP", str(int(SINGLE_STEP_MODE))) != "0"
     if relay and (os.environ.get("SNAKE_VISUALIZER_ENABLED", "1") == "0" or
                   os.environ.get("SNAKE_GEOMETRY_EXCHANGE", "1") == "0"):
-        raise ValueError("转发执行模式要求可视化通信开启；离线回归请设 SNAKE_CONTROL_VIA_VISUALIZER=0")
-    key_listener = None
-    if not headless:
-        from pynput import keyboard
-        hotkeys = {keyboard.Key.up: increase_a, keyboard.Key.down: decrease_a,
-                   keyboard.Key.right: increase_v, keyboard.Key.left: decrease_v}
-        char_hotkeys = {"9": reverse_single_step, "0": single_step}
-
-        def on_key_press(key):
-            if key in hotkeys:
-                hotkeys[key]()
-            elif getattr(key, "char", None) in char_hotkeys:
-                char_hotkeys[key.char]()
-
+        raise ValueError("转发执行模式要求可视化通信开启")
+    radius = float(os.environ.get("SNAKE_HELIX_RADIUS_MM", HELIX_RADIUS_MM))
+    pitch = float(os.environ.get("SNAKE_HELIX_PITCH_MM", HELIX_PITCH_MM))
+    HelixBackbone.from_radius_pitch(radius, pitch)
+    if not math.isfinite(ROLL_STEP_RAD) or ROLL_STEP_RAD <= 0:
+        raise ValueError("ROLL_STEP_RAD 必须为有限正数")
     model_path = os.environ.get("SNAKE_MUJOCO_MODEL") or str(
-        Path(__file__).resolve().parent.parent / "mujoco_model" / "Snake_Robot_o20_Pole_Climbing.xml")
+        Path(__file__).resolve().parents[1] / "mujoco_model/Snake_Robot_o20_Pole_Climbing.xml")
     m = mujoco.MjModel.from_xml_path(model_path)
     d = mujoco.MjData(m)
-    joint_count = m.nu
     mujoco.mj_forward(m, d)
-    # 采用模型内部相邻关节的平均间距作为名义 l，避免硬编码其他模型的 70 mm。
-    anchors = np.array([d.joint(f"joint{j}").xanchor.copy() for j in range(1, joint_count + 1)])
-    spacings = np.linalg.norm(np.diff(anchors, axis=0), axis=1) * 1000
-    if joint_count < 2 or not np.all(np.isfinite(spacings)) or np.any(spacings <= 0):
-        raise ValueError("模型需要至少两个具有有效间距的关节")
-    link_mm = float(np.mean(spacings))
-    a = float(os.environ.get("SNAKE_MUJOCO_A", a))
-    v = float(os.environ.get("SNAKE_MUJOCO_V", v))
+
+
+
+    joint_count = m.nu
+    points = [d.site("s_head").xpos.copy()]
+    points.extend(d.joint(f"joint{j}").xanchor.copy() for j in range(1, joint_count + 1))
+    points.append(d.site("s_tail").xpos.copy())
+    links = np.linalg.norm(np.diff(points, axis=0), axis=1) * 1000
+    link_mm = float(np.mean(links[1:-1]))
+    joint_ids = m.actuator_trnid[:, 0]
+    limited, limits = m.jnt_limited[joint_ids].astype(bool), m.jnt_range[joint_ids]
+
+
+
     max_seconds = float(os.environ.get("SNAKE_MUJOCO_MAX_SECONDS", "0"))
     trace_path = os.environ.get("SNAKE_MUJOCO_TRACE")
-    bridge = None
-    exchange = None
-    debug_view = None
-    compliance = None
-    compliance_status = None
-    relay_status = None
+    bridge = exchange = debug_view = key_listener = compliance = None
     traces = {name: [] for name in ("qpos", "ctrl", "sim_time", "step_ms", "roll_phase", "kappa", "tau",
                                    "compliance_active", "target_kappa", "target_tau", "requested_ctrl",
-                                   "applied_delivery_id", "applied_command_id", "applied_run_id", "wall_unix_ms")}
-    last_error = None
-    t = 0.0
-    steps = 10
-    print(f"YAMADA stage=4 execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} nominal_link_mm={link_mm:.6f} "
-          f"spacing_range_mm=[{min(spacings):.6f},{max(spacings):.6f}]", flush=True)
-    if not headless:
-        key_listener = keyboard.Listener(on_press=on_key_press)
-        key_listener.daemon = True
-        key_listener.start()
-        threading.Thread(target=uart_listener, daemon=True).start()
-        threading.Thread(target=command_processor, daemon=True).start()
+                                   "applied_delivery_id", "applied_command_id", "applied_run_id", "wall_unix_ms",
+                                   "moving", "completed_steps")}
+    phase = 0.0
+    initialized = False
+    active_shape = None
+    pending = None
+    remaining = completed = 0
+    curve = HelixBackbone.from_radius_pitch(radius, pitch)
+    targets = d.ctrl.copy()
+    compliant = False
+    relay_status = None
+    last_notice = None
+    print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
+          f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm", flush=True)
+    print("F7/apply：应用初始螺旋；F6/step：正向一步；F5/back：反向一步。\n"
+          "上下：R ±5mm；左右：P ±10mm；或输入 r=110 p=180，修改后按 F7 应用。", flush=True)
+
+
+
     try:
-        # 两条连接职责独立：执行端上传实测并领取目标，控制端接收几何并提交候选目标。
+        if not headless:
+            from pynput import keyboard
+            hotkeys = {keyboard.Key.f7: "apply", keyboard.Key.f6: "step", keyboard.Key.f5: "back",
+                       keyboard.Key.up: "r+", keyboard.Key.down: "r-",
+                       keyboard.Key.right: "p+", keyboard.Key.left: "p-"}
+            # 松开一次只产生一个事件，避免长按的系统自动重复。
+            def on_release(key):
+                if key in hotkeys:
+                    command_queue.put(hotkeys[key])
+            key_listener = keyboard.Listener(on_release=on_release)
+            key_listener.start()
+            threading.Thread(target=uart_listener, daemon=True).start()
         if os.environ.get("SNAKE_VISUALIZER_ENABLED", "1") != "0":
-            client_dir = Path(os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
+            sys.path.insert(0, os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
                 Path(__file__).resolve().parents[1] / "visualizer")))
-            sys.path.insert(0, str(client_dir))
             if relay:
                 from mujoco_execution_bridge import MujocoExecutionBridge
                 bridge = MujocoExecutionBridge(m, d)
@@ -285,122 +208,155 @@ def main():
                 from python_client import GeometryExchange
                 exchange = GeometryExchange(port=bridge.port, expected_lengths=bridge.lengths,
                                             execution="mujoco" if relay else "preview")
-                if COMPLIANCE_ENABLED:
-                    from pole_compliance import ComplianceController, ComplianceParameters
-                    parameters = ComplianceParameters(COMPLIANCE_GAIN, COMPLIANCE_PITCH_RAD, COMPLIANCE_INSIDE)
-                    parameters.gains(joint_count)
-                    compliance = ComplianceController(parameters, bridge.lengths)
         if DEBUG:
             from geometry_debug_view import GeometryDebugView
             debug_view = GeometryDebugView(draw_curve=DEBUG_DRAW_CURVE)
+
+
+
         with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d)) as viewer:
             start_wall = time.monotonic()
-            while step > 0 and (viewer is None or viewer.is_running()):
+            while viewer is None or viewer.is_running():
+                now = time.monotonic()
+                if max_seconds > 0 and now - start_wall >= max_seconds:
+                    break
                 if relay:
-                    status = "转发执行端已连接" if bridge.executor_ready else (bridge.last_error or "等待 v1.4.0 可视化执行端")
+                    status = "已连接" if bridge.executor_ready else (bridge.last_error or "等待可视化执行端")
                     if status != relay_status:
                         print(f"MUJOCO_RELAY {status}", flush=True)
                         relay_status = status
-                # 一帧内所有关节共享同一份参数及相位，后台交互只影响下一帧。
-                frame_a, frame_v = a, v
-                frame_sleep, frame_dt = time_sleep, time_step
-                phase = omega * t
-                applied_before = bridge.applied if relay else 0
-                feedback = None
-                compliant_targets = None
-                advance_phase = True
-                try:
-                    if not math.isfinite(frame_sleep) or frame_sleep < 0 or not math.isfinite(frame_dt):
-                        raise ValueError("time_sleep 必须非负且有限，time_step 必须有限")
-                    curve = helix_from_pole_parameters(frame_a, frame_v, link_mm)
-                    targets = curve.joint_angles(joint_count, link_mm, phase)
-                    if compliance is not None:
-                        feedback = exchange.latest_geometry()
-                        compliant_targets = compliance.compute(feedback, phase, d.ctrl.copy())
-                        if compliant_targets is not None:
-                            targets = compliant_targets
-                        elif compliance.started:
-                            targets = d.ctrl.copy()
-                            advance_phase = False
-                        if compliance.status != compliance_status:
-                            print(f"COMPLIANCE {compliance.status}", flush=True)
-                            compliance_status = compliance.status
-                    joint_ids = m.actuator_trnid[:, 0]
-                    limited = m.jnt_limited[joint_ids].astype(bool)
-                    limits = m.jnt_range[joint_ids]
-                    if (np.any(targets[limited] < limits[limited, 0]) or
-                            np.any(targets[limited] > limits[limited, 1])):
-                        raise ValueError("目标角超出模型关节范围，请减小 a")
-                    last_error = None
-                except ValueError as error:
-                    if headless:
-                        raise
-                    if str(error) != last_error:
-                        print(f"参数被拒绝：{error}", flush=True)
-                        last_error = str(error)
-                    # 不推进相位，不提交无效目标；等待交互修正或关闭。
-                    if debug_view is not None:
-                        debug_view.update(exchange)
-                    time.sleep(0.05)
-                    if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
-                        break
-                    continue
 
-                # 候选 targets 不等于执行目标；转发模式唯一写入口为 apply_received。
-                if not relay:
-                    with (nullcontext() if viewer is None else viewer.lock()):
-                        d.ctrl[:] = targets
-                # 每轮生成一组候选目标；转发模式在每个物理步组开始前应用
-                # 最新收到的完整目标。异步执行时刻与旧直接模式不保证相同。
-                for _ in range(joint_count):
-                    step_started = time.perf_counter()
-                    with (nullcontext() if viewer is None else viewer.lock()):
-                        if relay:
-                            bridge.apply_received(d)
-                        for _ in range(steps):
-                            mujoco.mj_step(m, d)
-                        if bridge is not None:
-                            bridge.publish(d)
-                        if exchange is not None and (compliance is None or not compliance.started or compliant_targets is not None):
-                            # execution=mujoco 经 EXE 转发，或旧模式的 preview。
-                            # bridge 的方向映射 [+1,-1,...]，发送可视化约定的角度（度）。
-                            exchange.publish_targets(np.rad2deg(targets * bridge.signs).tolist(),
-                                                     source_geometry=feedback if compliant_targets is not None else None)
-                        if trace_path:
-                            traces["qpos"].append(d.qpos.copy())
-                            traces["ctrl"].append(d.ctrl.copy())
-                            traces["requested_ctrl"].append(targets.copy())
-                            traces["applied_delivery_id"].append(bridge.applied_delivery_id if relay else 0)
-                            traces["applied_command_id"].append(bridge.applied_command_id if relay else 0)
-                            traces["applied_run_id"].append(bridge.applied_run_id if relay else "")
-                            traces["wall_unix_ms"].append(time.time() * 1000)
-                            traces["sim_time"].append(d.time)
-                            traces["step_ms"].append((time.perf_counter() - step_started) * 1000)
-                            traces["roll_phase"].append(phase)
-                            traces["kappa"].append(curve.kappa)
-                            traces["tau"].append(curve.tau)
-                            traces["compliance_active"].append(compliant_targets is not None)
-                            if compliance is not None and compliance.started:
-                                sample_s = np.cumsum(compliance.backbone.links)[:-1]
-                                ks, ts = compliance.backbone.curvature_torsion(sample_s)
+
+
+                # 空闲时仍上传实测快照，因此 EXE/控制端的反馈和连接不会因暂停过期。
+                if pending is None and remaining == 0:
+                    try:
+                        command = command_queue.get_nowait().strip().lower()
+                    except queue.Empty:
+                        command = ("step" if initialized else "apply") if not manual else ""
+                    try:
+                        if command in ("r+", "r-", "p+", "p-") or "=" in command:
+                            new_r, new_p = radius, pitch
+                            if command in ("r+", "r-"):
+                                new_r += 5 if command == "r+" else -5
+                            elif command in ("p+", "p-"):
+                                new_p += 10 if command == "p+" else -10
                             else:
-                                ks, ts = np.full(joint_count, curve.kappa), np.full(joint_count, -curve.tau)
-                            traces["target_kappa"].append(ks)
-                            traces["target_tau"].append(ts)
-                    if debug_view is not None:
-                        debug_view.update(exchange)
-                    if viewer is not None:
-                        viewer.sync()
-                        if not viewer.is_running():
-                            break
-                    time.sleep(frame_sleep)
-                    if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
-                        break
-                # 未收到可执行目标时冻结滚动相位，避免重连后跳过未执行的运动。
-                if advance_phase and (not relay or bridge.applied > applied_before):
-                    t += frame_dt
-                if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
-                    break
+                                for assignment in command.split():
+                                    key, value = assignment.split("=")
+                                    if key == "r":
+                                        new_r = float(value)
+                                    elif key == "p":
+                                        new_p = float(value)
+                                    else:
+                                        raise ValueError("只支持 r=半径mm p=螺距mm；运动用 apply/step/back")
+                            HelixBackbone.from_radius_pitch(new_r, new_p)
+                            radius, pitch = new_r, new_p
+                            print(f"待应用 R={radius:g}mm P={pitch:g}mm；F7 应用并重新初始化顺应性", flush=True)
+                        elif command in ("apply", "step", "back"):
+                            if command != "apply" and (not initialized or active_shape != (radius, pitch)):
+                                raise ValueError("请先按 F7 应用当前 R/P，再单步滚动")
+                            next_phase = 0.0 if command == "apply" else phase + (1 if command == "step" else -1) * ROLL_STEP_RAD
+                            curve = HelixBackbone.from_radius_pitch(radius, pitch)
+                            feedback = None
+                            compliant = False
+                            candidate = curve.joint_angles(joint_count, links, next_phase)
+                            if command != "apply" and compliance is not None:
+                                feedback = exchange.latest_geometry()
+                                adaptive_target = compliance.compute(feedback, next_phase, d.ctrl.copy(), reference_phase=phase)
+                                if adaptive_target is not None:
+                                    candidate = adaptive_target
+                                    compliant = True
+                                elif compliance.started:
+                                    raise ValueError(compliance.status + "；本步未执行")
+                                else:
+                                    # 直线启动尚无截面，必须允许手动形成初始螺旋；
+                                    # 一旦顺应性接管，坏反馈不能退回名义形状。
+                                    feedback = None
+                                    print("标准螺旋初始化：尚无有效截面，本次仅推进一步", flush=True)
+                            if np.any(candidate[limited] < limits[limited, 0]) or np.any(candidate[limited] > limits[limited, 1]):
+                                raise ValueError("目标角超出模型范围，请增大半径或调整螺距")
+                            targets = candidate
+                            pending = dict(command=command, phase=next_phase, feedback=feedback, since=now)
+                            last_notice = None
+                        elif command:
+                            raise ValueError("命令：r=110 p=180 / apply / step / back")
+                    except ValueError as error:
+                        if str(error) != last_notice:
+                            print(f"未执行：{error}", flush=True)
+                            last_notice = str(error)
+
+
+
+
+
+                step_started = time.perf_counter()
+                with (nullcontext() if viewer is None else viewer.lock()):
+                    if pending is not None:
+                        feedback = pending["feedback"]
+                        stale = feedback is not None and time.time() * 1000 - feedback["sample_unix_ms"] > 500
+                        if stale or now - pending["since"] > 2:
+                            print("本步取消：反馈过期或未收到 EXE 转发；相位与物理时间未推进，请重新按键。", flush=True)
+                            pending = None
+                        else:
+                            if exchange is not None:
+                                exchange.publish_targets(np.rad2deg(targets * bridge.signs).tolist(), source_geometry=feedback)
+                            applied = bridge.apply_received(d, expected_targets=targets) if relay else True
+                            if applied:
+                                if not relay:
+                                    d.ctrl[:] = targets
+                                phase = pending["phase"]
+                                if pending["command"] == "apply":
+                                    initialized = True
+                                    active_shape = (radius, pitch)
+                                    # R/P 只在明确应用时设定设计螺距角，不逐帧覆盖局部顺应性半径。
+                                    if COMPLIANCE_ENABLED and exchange is not None:
+                                        alpha = math.atan2(pitch, 2 * math.pi * radius)
+                                        compliance = ComplianceController(
+                                            ComplianceParameters(COMPLIANCE_GAIN, alpha, COMPLIANCE_INSIDE), links)
+                                remaining = joint_count
+                                pending = None
+                    moving = remaining > 0
+                    if moving:
+                        # 一次操作保留 Pole 的 N*10 个物理步，下一次按键前完全暂停。
+                        # 只在本步开始接收一次整组目标，迟到帧不能在空闲时改写 ctrl。
+                        for _ in range(10):
+                            mujoco.mj_step(m, d)
+                        remaining -= 1
+                        if remaining == 0:
+                            completed += 1
+                            print(f"完成第 {completed} 步 phase={phase:.6f}rad sim={d.time:.3f}s "
+                                  f"{'顺应性' if compliant else '标准螺旋'}；等待下一步" if manual else
+                                  f"完成第 {completed} 步 phase={phase:.6f}rad", flush=True)
+                    if bridge is not None:
+                        bridge.publish(d)
+                    if trace_path:
+                        traces["qpos"].append(d.qpos.copy())
+                        traces["ctrl"].append(d.ctrl.copy())
+                        traces["requested_ctrl"].append(targets.copy())
+                        traces["applied_delivery_id"].append(bridge.applied_delivery_id if relay else 0)
+                        traces["applied_command_id"].append(bridge.applied_command_id if relay else 0)
+                        traces["applied_run_id"].append(bridge.applied_run_id if relay else "")
+                        traces["wall_unix_ms"].append(time.time() * 1000)
+                        traces["sim_time"].append(d.time)
+                        traces["step_ms"].append((time.perf_counter() - step_started) * 1000)
+                        traces["roll_phase"].append(phase)
+                        traces["kappa"].append(curve.kappa)
+                        traces["tau"].append(curve.tau)
+                        traces["compliance_active"].append(compliant and moving)
+                        traces["moving"].append(moving)
+                        traces["completed_steps"].append(completed)
+                        if compliant and compliance is not None and compliance.started:
+                            ks, ts = compliance.backbone.curvature_torsion(np.cumsum(links)[:-1])
+                        else:
+                            ks, ts = np.full(joint_count, curve.kappa), np.full(joint_count, curve.tau)
+                        traces["target_kappa"].append(ks)
+                        traces["target_tau"].append(ts)
+                if debug_view is not None:
+                    debug_view.update(exchange)
+                if viewer is not None:
+                    viewer.sync()
+                time.sleep(FRAME_SLEEP)
     finally:
         if debug_view is not None:
             debug_view.close()
@@ -409,18 +365,15 @@ def main():
         if exchange is not None:
             exchange.close()
             print(f"GEOMETRY_EXCHANGE received={exchange.received} sent={exchange.sent} "
-                  f"replaced={exchange.dropped} failures={exchange.failures} "
-                  f"last_error={exchange.last_error!r}", flush=True)
+                  f"failures={exchange.failures} last_error={exchange.last_error!r}", flush=True)
         if bridge is not None:
             bridge.close()
             if relay:
-                print(f"MUJOCO_RELAY applied={bridge.applied} expired={bridge.expired} "
-                      f"last_delivery={bridge.applied_delivery_id}", flush=True)
-            p99 = np.percentile(bridge.enqueue_ms, 99) if bridge.enqueue_ms else 0.0
+                print(f"MUJOCO_RELAY applied={bridge.applied} expired={bridge.expired}", flush=True)
             print(f"VISUALIZER_BRIDGE sent={bridge.sent} rejected={bridge.rejected} "
-                  f"joints={joint_count} enqueue_p99_ms={p99:.4f} last_error={bridge.last_error!r}", flush=True)
+                  f"last_error={bridge.last_error!r}", flush=True)
         if trace_path:
-            np.savez(trace_path, **traces, nominal_link_mm=link_mm)
+            np.savez(trace_path, **traces, nominal_link_mm=link_mm, link_lengths_mm=links)
             if relay and bridge is not None:
                 import json
                 Path(str(trace_path) + ".received.json").write_text(

@@ -192,9 +192,9 @@ def integration():
     state["Display"]["DisplayMode"] = 2
     (appdir / "app-state.json").write_text(json.dumps(state), encoding="utf-8")
     env = os.environ.copy()
-    env.update(SNAKE_VISUALIZER_PORT="18785", SNAKE_MUJOCO_HEADLESS="1", SNAKE_VISUALIZER_ENABLED="1",
+    env.update(SNAKE_VISUALIZER_PORT="18785", SNAKE_MUJOCO_HEADLESS="1", SNAKE_SINGLE_STEP="0", SNAKE_VISUALIZER_ENABLED="1",
                SNAKE_GEOMETRY_EXCHANGE="1", SNAKE_MUJOCO_MAX_SECONDS="8", PYTHONIOENCODING="utf-8",
-               SNAKE_MUJOCO_TRACE=str(OUT / "integration.npz"), SNAKE_MUJOCO_A="-76", SNAKE_MUJOCO_V=".05")
+               SNAKE_MUJOCO_TRACE=str(OUT / "integration.npz"), SNAKE_HELIX_RADIUS_MM="110", SNAKE_HELIX_PITCH_MM="180")
     env.pop("SNAKE_MUJOCO_MODEL", None)
     app = subprocess.Popen([str(exe)], cwd=appdir, env=env)
     client = SnakeControlClient(port=18785)
