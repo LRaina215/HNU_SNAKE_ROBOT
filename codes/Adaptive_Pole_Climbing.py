@@ -1,6 +1,7 @@
 """Adaptive Pole：几何参数 → 曲率/挠率 → Yamada → EXE → MuJoCo。
 
-默认单步：U 应用 R/P 初始螺旋，J 正向一步，H 反向一步。
+默认单步：Ctrl+U 应用 R/P，Ctrl+J 正向一步，Ctrl+H 反向一步。
+使用 --scene variable 加载连续变径管道，空格暂停，Ctrl+R 恢复实验初始条件。
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
@@ -124,6 +125,7 @@ def main():
     import mujoco.viewer
     from mujoco_visualizer_bridge import VisualizerBridge
     from pole_compliance import ComplianceController, ComplianceParameters
+    from adaptive_debug import HELP, viewer_key_callback, measurements
 
 
 
@@ -143,9 +145,13 @@ def main():
         Path(__file__).resolve().parents[1] / "mujoco_model/Snake_Robot_o20_Pole_Climbing.xml")
     m = mujoco.MjModel.from_xml_path(model_path)
     d = mujoco.MjData(m)
+    start_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_KEY, "experiment_start")
+    if start_key >= 0:
+        mujoco.mj_resetDataKeyframe(m, d, start_key)
+        preset = m.numeric("experiment_helix_mm").data
+        radius = float(os.environ.get("SNAKE_HELIX_RADIUS_MM", preset[0]))
+        pitch = float(os.environ.get("SNAKE_HELIX_PITCH_MM", preset[1]))
     mujoco.mj_forward(m, d)
-
-
 
     joint_count = m.nu
     points = [d.site("s_head").xpos.copy()]
@@ -160,12 +166,17 @@ def main():
 
     max_seconds = float(os.environ.get("SNAKE_MUJOCO_MAX_SECONDS", "0"))
     trace_path = os.environ.get("SNAKE_MUJOCO_TRACE")
-    bridge = exchange = debug_view = key_listener = compliance = None
+    bridge = exchange = debug_view = compliance = None
     traces = {name: [] for name in ("qpos", "ctrl", "sim_time", "step_ms", "roll_phase", "kappa", "tau",
                                    "compliance_active", "target_kappa", "target_tau", "requested_ctrl",
                                    "applied_delivery_id", "applied_command_id", "applied_run_id", "wall_unix_ms",
-                                   "moving", "completed_steps")}
+                                   "moving", "completed_steps", "reset_count", "robot_height_m", "pipe_contacts", "tracking_error_rad")}
     phase = 0.0
+    phase_step = ROLL_STEP_RAD
+    compliance_enabled = COMPLIANCE_ENABLED
+    reset_count = 0
+    feedback_after_ms = 0.
+    gravity = m.opt.gravity.copy()
     initialized = False
     active_shape = None
     pending = None
@@ -173,29 +184,26 @@ def main():
     curve = HelixBackbone.from_radius_pitch(radius, pitch)
     targets = d.ctrl.copy()
     compliant = False
+    action_label = "标准螺旋"
     relay_status = None
     last_notice = None
     print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
           f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm", flush=True)
-    print("U/apply：应用初始螺旋；J/step：正向一步；H/back：反向一步。\n"
-          "上下：R ±5mm；左右：P ±10mm；或输入 r=110 p=180，修改后按 U 应用。", flush=True)
+    print(HELP, flush=True)
+    print(f"场景：{Path(model_path).name}；重力={m.opt.gravity.tolist()}；{'启动暂停，先 Ctrl+U' if manual else '连续运行'}", flush=True)
 
-
+    def show_status():
+        height, contact_count, error = measurements(m, d)
+        feedback = exchange.latest_geometry() if exchange is not None else None
+        feedback_state = "有效" if feedback and feedback.get("feedback_usable") else "未就绪/无效"
+        print(f"STATUS {'单步/暂停' if manual else '连续'} R={radius:g} P={pitch:g} "
+              f"phase={phase:.4f} delta={phase_step:g} sim={d.time:.3f}s "
+              f"顺应性={'开' if compliance_enabled else '关'} 反馈={feedback_state} "
+              f"关节平均高度={height:.3f}m 管道接触={contact_count} "
+              f"最大跟踪误差={np.degrees(error):.2f}deg 重力={'开' if np.any(m.opt.gravity) else '关'}", flush=True)
 
     try:
         if not headless:
-            from pynput import keyboard
-            letter_hotkeys = {"u": "apply", "j": "step", "h": "back"}
-            hotkeys = {keyboard.Key.up: "r+", keyboard.Key.down: "r-",
-                       keyboard.Key.right: "p+", keyboard.Key.left: "p-"}
-            # 松开一次只产生一个事件，避免长按的系统自动重复。
-            def on_release(key):
-                char = getattr(key, "char", None)
-                command = letter_hotkeys.get(char.lower()) if char else hotkeys.get(key)
-                if command is not None:
-                    command_queue.put(command)
-            key_listener = keyboard.Listener(on_release=on_release)
-            key_listener.start()
             threading.Thread(target=uart_listener, daemon=True).start()
         if os.environ.get("SNAKE_VISUALIZER_ENABLED", "1") != "0":
             sys.path.insert(0, os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
@@ -216,7 +224,13 @@ def main():
 
 
 
-        with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d)) as viewer:
+        with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d, key_callback=viewer_key_callback(command_queue))) as viewer:
+            if viewer is not None and start_key >= 0:
+                with viewer.lock():
+                    viewer.cam.lookat[:] = [0., 0., .85]
+                    viewer.cam.distance = 3.4
+                    viewer.cam.azimuth = 135
+                    viewer.cam.elevation = -12
             start_wall = time.monotonic()
             while viewer is None or viewer.is_running():
                 now = time.monotonic()
@@ -230,14 +244,62 @@ def main():
 
 
 
-                # 空闲时仍上传实测快照，因此 EXE/控制端的反馈和连接不会因暂停过期。
-                if pending is None and remaining == 0:
+                # 每个刷新周期都检查命令，暂停/重置不必等待当前动作结束。
+                try:
+                    command = command_queue.get_nowait().strip().lower()
+                except queue.Empty:
+                    command = ""
+                if command in ("pause", "reset"):
+                    manual, pending, remaining = True, None, 0
+                    while not command_queue.empty():
+                        command_queue.get_nowait()
+                    if command == "reset":
+                        with (nullcontext() if viewer is None else viewer.lock()):
+                            if start_key >= 0:
+                                mujoco.mj_resetDataKeyframe(m, d, start_key)
+                            else:
+                                mujoco.mj_resetData(m, d)
+                            mujoco.mj_forward(m, d)
+                        if relay:
+                            bridge.reset_execution()
+                        phase, completed = 0., 0
+                        initialized, active_shape, compliance = False, None, None
+                        compliant = False
+                        targets = d.ctrl.copy()
+                        reset_count += 1
+                        feedback_after_ms = time.time() * 1000
+                        print("实验已重置并暂停；保留当前 R/P、步长、顺应性和重力选项，Ctrl+U 重新应用", flush=True)
+                    else:
+                        print("已暂停；候选和剩余物理步已取消，未执行后续排队动作", flush=True)
+                    show_status()
+                    command = ""
+                elif command in ("status", "help"):
+                    print(HELP, flush=True) if command == "help" else show_status()
+                    command = ""
+                elif command == "run":
+                    manual = not manual
+                    if manual:
+                        pending, remaining = None, 0
+                    show_status()
+                    command = ""
+                if command and (pending is not None or remaining > 0):
+                    print("当前一步尚未完成；该操作未排队，空格可立即暂停", flush=True)
+                    command = ""
+                if not command and not manual and pending is None and remaining == 0:
+                    command = "step" if initialized else "apply"
+                if command:
                     try:
-                        command = command_queue.get_nowait().strip().lower()
-                    except queue.Empty:
-                        command = ("step" if initialized else "apply") if not manual else ""
-                    try:
-                        if command in ("r+", "r-", "p+", "p-") or "=" in command:
+                        if command == "compliance":
+                            compliance_enabled = not compliance_enabled
+                            compliance = None
+                            if initialized and compliance_enabled and exchange is not None:
+                                compliance = ComplianceController(ComplianceParameters(COMPLIANCE_GAIN,
+                                    math.atan2(active_shape[1], 2*math.pi*active_shape[0]), COMPLIANCE_INSIDE), links)
+                            show_status()
+                        elif command in ("delta-", "delta+"):
+                            phase_step = max(.01, phase_step/2) if command == "delta-" else min(.6, phase_step*2)
+                            show_status()
+                        elif command in ("r+", "r-", "p+", "p-") or "=" in command:
                             new_r, new_p = radius, pitch
                             if command in ("r+", "r-"):
                                 new_r += 5 if command == "r+" else -5
@@ -250,21 +312,32 @@ def main():
                                         new_r = float(value)
                                     elif key == "p":
                                         new_p = float(value)
+                                    elif key == "delta":
+                                        value = float(value)
+                                        if not math.isfinite(value) or value <= 0:
+                                            raise ValueError("delta 必须为正数 rad")
+                                        phase_step = value
+                                    elif key == "gravity" and value in ("0", "1"):
+                                        with (nullcontext() if viewer is None else viewer.lock()):
+                                            m.opt.gravity[:] = gravity if value == "1" else 0.
                                     else:
-                                        raise ValueError("只支持 r=半径mm p=螺距mm；运动用 apply/step/back")
+                                        raise ValueError("参数：r=半径mm p=螺距mm delta=步长rad gravity=0或1")
                             HelixBackbone.from_radius_pitch(new_r, new_p)
                             radius, pitch = new_r, new_p
-                            print(f"待应用 R={radius:g}mm P={pitch:g}mm；U 应用并重新初始化顺应性", flush=True)
-                        elif command in ("apply", "step", "back"):
-                            if command != "apply" and (not initialized or active_shape != (radius, pitch)):
-                                raise ValueError("请先按 U 应用当前 R/P，再单步滚动")
-                            next_phase = 0.0 if command == "apply" else phase + (1 if command == "step" else -1) * ROLL_STEP_RAD
+                            print(f"参数 R={radius:g}mm P={pitch:g}mm delta={phase_step:g}rad；"
+                                  f"重力={'开' if np.any(m.opt.gravity) else '关'}。R/P 修改后 Ctrl+U 应用", flush=True)
+                        elif command in ("apply", "step", "back", "hold"):
+                            if command != "apply" and (not initialized or (command != "hold" and active_shape != (radius, pitch))):
+                                raise ValueError("请先 Ctrl+U 应用当前 R/P，再单步滚动")
+                            next_phase = 0.0 if command == "apply" else phase if command == "hold" else phase + (1 if command == "step" else -1) * phase_step
                             curve = HelixBackbone.from_radius_pitch(radius, pitch)
                             feedback = None
                             compliant = False
-                            candidate = curve.joint_angles(joint_count, links, next_phase)
-                            if command != "apply" and compliance is not None:
+                            candidate = d.ctrl.copy() if command == "hold" else curve.joint_angles(joint_count, links, next_phase)
+                            if command in ("step", "back") and compliance is not None:
                                 feedback = exchange.latest_geometry()
+                                if feedback and feedback["sample_unix_ms"] <= feedback_after_ms:
+                                    raise ValueError("等待重置后的新反馈")
                                 adaptive_target = compliance.compute(feedback, next_phase, d.ctrl.copy(), reference_phase=phase)
                                 if adaptive_target is not None:
                                     candidate = adaptive_target
@@ -282,7 +355,7 @@ def main():
                             pending = dict(command=command, phase=next_phase, feedback=feedback, since=now)
                             last_notice = None
                         elif command:
-                            raise ValueError("命令：r=110 p=180 / apply / step / back")
+                            raise ValueError("未知命令；输入 help 查看操作")
                     except ValueError as error:
                         if str(error) != last_notice:
                             print(f"未执行：{error}", flush=True)
@@ -312,10 +385,11 @@ def main():
                                     initialized = True
                                     active_shape = (radius, pitch)
                                     # R/P 只在明确应用时设定设计螺距角，不逐帧覆盖局部顺应性半径。
-                                    if COMPLIANCE_ENABLED and exchange is not None:
+                                    if compliance_enabled and exchange is not None:
                                         alpha = math.atan2(pitch, 2 * math.pi * radius)
                                         compliance = ComplianceController(
                                             ComplianceParameters(COMPLIANCE_GAIN, alpha, COMPLIANCE_INSIDE), links)
+                                action_label = "保持目标" if pending["command"] == "hold" else "顺应性" if compliant else "标准螺旋"
                                 remaining = joint_count
                                 pending = None
                     moving = remaining > 0
@@ -328,7 +402,7 @@ def main():
                         if remaining == 0:
                             completed += 1
                             print(f"完成第 {completed} 步 phase={phase:.6f}rad sim={d.time:.3f}s "
-                                  f"{'顺应性' if compliant else '标准螺旋'}；等待下一步" if manual else
+                                  f"{action_label}；等待下一步" if manual else
                                   f"完成第 {completed} 步 phase={phase:.6f}rad", flush=True)
                     if bridge is not None:
                         bridge.publish(d)
@@ -348,6 +422,11 @@ def main():
                         traces["compliance_active"].append(compliant and moving)
                         traces["moving"].append(moving)
                         traces["completed_steps"].append(completed)
+                        traces["reset_count"].append(reset_count)
+                        height, contact_count, error = measurements(m, d)
+                        traces["robot_height_m"].append(height)
+                        traces["pipe_contacts"].append(contact_count)
+                        traces["tracking_error_rad"].append(error)
                         if compliant and compliance is not None and compliance.started:
                             ks, ts = compliance.backbone.curvature_torsion(np.cumsum(links)[:-1])
                         else:
@@ -362,8 +441,6 @@ def main():
     finally:
         if debug_view is not None:
             debug_view.close()
-        if key_listener is not None:
-            key_listener.stop()
         if exchange is not None:
             exchange.close()
             print(f"GEOMETRY_EXCHANGE received={exchange.received} sent={exchange.sent} "
@@ -383,4 +460,11 @@ def main():
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Yamada 管道实验；默认保持原 Pole 场景")
+    parser.add_argument("--scene", choices=("pole", "variable"), default=None)
+    args = parser.parse_args()
+    if args.scene is not None:
+        filename = "Snake_Robot_o20_Variable_Pipe.xml" if args.scene == "variable" else "Snake_Robot_o20_Pole_Climbing.xml"
+        os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" / filename)
     main()

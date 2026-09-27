@@ -3,3 +3,6 @@ numpy==1.23.5
 scipy==1.13.1
 mujoco==3.2.7
 pynput==1.8.2
+
+# Scene validation screenshot output
+Pillow==11.2.1

@@ -1,0 +1,175 @@
+{
+  "geometry": {
+    "joints": 20,
+    "diameter_mm": [
+      180.0,
+      230.0
+    ],
+    "transition_z_m": [
+      0.7,
+      1.3
+    ],
+    "height_m": 1.8,
+    "radial_surface_error_mm": 0.07052742170750304,
+    "contact_probe_error_mm": 0.01069038778745519,
+    "initial_contacts": 0
+  },
+  "controls": {
+    "native_viewer_keys": true,
+    "initial_actions": 5,
+    "autorepeat_ignored": true,
+    "hold_phase_unchanged": true,
+    "reset_exact": true,
+    "paused_samples": 1527,
+    "applied_packets": 7,
+    "adaptive_samples": 40,
+    "gravity_for_controls_test": 0
+  },
+  "gravity_observation": {
+    "gravity_m_s2": 9.81,
+    "sim_seconds": 2.7999999999998026,
+    "mean_joint_height_start_m": 0.5000000000003361,
+    "mean_joint_height_end_m": 0.05455522237139003,
+    "maximum_pipe_contacts": 8,
+    "completed_steps": 14,
+    "adaptive_samples": 260,
+    "stable_climbing_verified": false
+  },
+  "scope": "Scene/contact and control workflow validation, not stable climbing or real hardware acceptance.",
+  "regressions": {
+    "adaptive-pole-stage1": {
+      "numerical": {
+        "comparison_cases": 120,
+        "pole_target_max_error_rad": 3.497202527569243e-15,
+        "dense_integral_max_error_rad": 2.2548518607834467e-11
+      },
+      "runs": {
+        "20_planar": {
+          "joints": 20,
+          "samples": 188,
+          "sim_seconds": 1.8799999999999037,
+          "nominal_link_mm": 68.44736842105266,
+          "target_max_error_rad": 1.1102230246251565e-16,
+          "same_schedule_qpos_max_error": 6.238065619612598e-15
+        },
+        "20_helix": {
+          "joints": 20,
+          "samples": 197,
+          "sim_seconds": 1.9699999999998938,
+          "nominal_link_mm": 68.44736842105266,
+          "target_max_error_rad": 4.440892098500626e-16,
+          "same_schedule_qpos_max_error": 8.428042677643965e-08
+        },
+        "28_helix": {
+          "joints": 28,
+          "samples": 186,
+          "sim_seconds": 1.859999999999906,
+          "nominal_link_mm": 68.46296296296302,
+          "target_max_error_rad": 5.551115123125783e-16,
+          "same_schedule_qpos_max_error": 3.320628605418818e-08
+        }
+      },
+      "original_pole_sha256": "7c991ad721855d406aec8e38282fa25fd5b5ec8b5020bab06d14aa9259ff0caa",
+      "scope": "Numerical and headless MuJoCo only; no stable climbing, interactive viewer or hardware acceptance."
+    },
+    "adaptive-pole-stage3": {
+      "numerical": {
+        "segments": 56,
+        "joints": 28,
+        "total_length_mm": 1918.0000000000018,
+        "stage1_regression": {
+          "comparison_cases": 120,
+          "pole_target_max_error_rad": 3.497202527569243e-15,
+          "dense_integral_max_error_rad": 2.2548518607834467e-11
+        },
+        "yamada_error_rad": 2.220446049250313e-16,
+        "derivative_kappa_error": 5.638957703557601e-11,
+        "derivative_tau_error": 4.561972589523064e-07
+      },
+      "integration": {
+        "samples": 507,
+        "adaptive_samples": 427,
+        "max_target_rad": 1.1618124521012811,
+        "sim_seconds": 5.070000000000028
+      }
+    },
+    "adaptive-pole-stage4": {
+      "no_exe": {
+        "joints": 20,
+        "samples": 131,
+        "received": 0,
+        "applied": 0,
+        "adaptive_samples": 0,
+        "run_ids": []
+      },
+      "relay20": {
+        "joints": 20,
+        "samples": 517,
+        "received": 38,
+        "applied": 19,
+        "adaptive_samples": 289,
+        "run_ids": [
+          "4c181586fa8c44baa1bc1d3e037add70"
+        ]
+      },
+      "acknowledged20": 37,
+      "relay28": {
+        "joints": 28,
+        "samples": 515,
+        "received": 29,
+        "applied": 14,
+        "adaptive_samples": 336,
+        "run_ids": [
+          "ceeab35884e243539b683ef051470677"
+        ]
+      },
+      "restart": {
+        "joints": 20,
+        "samples": 788,
+        "received": 35,
+        "applied": 18,
+        "adaptive_samples": 280,
+        "run_ids": [
+          "e4d2015364024f5e8dd9f88d97be8b7f",
+          "f1c170f5011d417580b7de3e316d2db8"
+        ],
+        "held_samples_during_outage": 60
+      },
+      "scope": "No real servo bus; exact EXE packet to d.ctrl mapping; reconnect/hold; short MuJoCo run, not climbing acceptance"
+    },
+    "adaptive-pole-single-step": {
+      "math": {
+        "nominal_piecewise_max_error_rad": 4.440892098500626e-16,
+        "first_adaptive_phase_increment_rad": 0.15
+      },
+      "no_exe": {
+        "joints": 20,
+        "completed_steps": 0,
+        "idle_samples": 264,
+        "adaptive_samples": 0,
+        "final_sim_seconds": 0.0
+      },
+      "nominal20": {
+        "joints": 20,
+        "completed_steps": 5,
+        "idle_samples": 1088,
+        "adaptive_samples": 0,
+        "final_sim_seconds": 1.0000000000000007
+      },
+      "adaptive20": {
+        "joints": 20,
+        "completed_steps": 5,
+        "idle_samples": 1089,
+        "adaptive_samples": 0,
+        "final_sim_seconds": 1.0000000000000007
+      },
+      "adaptive28": {
+        "joints": 28,
+        "completed_steps": 5,
+        "idle_samples": 1036,
+        "adaptive_samples": 84,
+        "final_sim_seconds": 1.3999999999999566
+      }
+    }
+  }
+}

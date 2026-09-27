@@ -116,6 +116,13 @@ class MujocoExecutionBridge(VisualizerBridge):
                 self.last_error = str(error)
                 return False
 
+    def reset_execution(self):
+        """实验重置时清空已领取目标与确认状态；只能由暂停的主线程调用。"""
+        with self._command_lock:
+            self._command = None
+            self.applied_run_id = ""
+            self.applied_delivery_id = self.applied_command_id = 0
+
     def close(self):
         self.stopping = True
         self.worker.join(timeout=1.5)

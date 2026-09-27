@@ -11,6 +11,7 @@ codes/
   mujoco_visualizer_bridge.py  实测角、头部世界位姿、当前 ctrl 的快照上传
   mujoco_execution_bridge.py   接收 EXE 返回目标，由仿真主线程写入 ctrl
   geometry_debug_view.py       独立进程显示实际收到的曲线/段参数
+  adaptive_debug.py            MuJoCo 窗口快捷键及状态读数
 visualizer/
   python_client.py             TCP 客户端、几何反馈与最新目标交换
   windows_app/                 Windows 可视化、几何重建、目标校验与转发源码
@@ -20,7 +21,8 @@ validation/
   geometry_debug_smoke.py      调试窗口、表格模式及关闭行为验证
   fixtures/                   固定反馈、初始显示配置、28 关节模型
   results/                    本地生成的日志和轨迹，不纳入 Git
-mujoco_model/                 原 MuJoCo 模型与网格资源
+tools/build_variable_pipe_scene.py  生成连续变径管道与初始姿态
+mujoco_model/                 原模型、网格与新增 Variable_Pipe 场景
 ```
 
 后续可视化源码统一维护在本仓库 `visualizer/`。原 `Paper Code/two_joint_visualizer` 目录保留为迁移前副本；旧发布目录继续可用。新克隆不再依赖该外部源码目录或特定盘符。
@@ -58,20 +60,37 @@ python .\codes\Adaptive_Pole_Climbing.py
 
 构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.1 EXE，再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
 
-程序启动后保持暂停，先按 **U** 应用初始螺旋，再按 **J** 正向一步或 **H** 反向一步。按键在松开时生效，长按不会连续推进。每一步提交一次整组目标，经 EXE 返回后，执行 N×10 个物理步；等待时物理时间和滚动相位都不变，但通信、调试窗口和 viewer 持续刷新。
+**变径实验使用下面的命令**；不带 `--scene` 时仍打开原 Pole 场景。新场景为竖直管外攀爬，管外径 180 → 230 mm，高 1.8 m；20 关节机器人从下段预缠绕姿态开始，R=130 mm、P=180 mm。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
+
+```powershell
+python .\codes\Adaptive_Pole_Climbing.py --scene variable
+```
+
+程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+J 正向一步或 Ctrl+H 反向一步。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。
 
 | 操作 | 含义 |
 | --- | --- |
-| 上 / 下 | 待应用半径 R 增加 / 减少 5 mm |
-| 右 / 左 | 待应用螺距 P 增加 / 减少 10 mm |
-| U，或控制台 `apply` | 应用 R/P，滚动相位置零，重新初始化顺应性 |
-| J，或 `step` | 滚动相位增加 `ROLL_STEP_RAD`，执行一步后暂停 |
-| H，或 `back` | 滚动相位减少 `ROLL_STEP_RAD`，执行一步后暂停 |
-| 控制台 `r=130 p=180` | 修改待应用几何参数，之后按 U 应用 |
+| Ctrl+U / 控制台 `apply` | 应用 R/P，相位置零，重新初始化顺应性 |
+| Ctrl+J / `step`；Ctrl+H / `back` | 正向 / 反向一步 |
+| Ctrl+N / `hold` | 保持当前目标角，再推进一段物理时间，相位不变 |
+| 空格 / `pause` | 中断动作并暂停；通信和窗口继续刷新 |
+| Ctrl+R / `reset` | 恢复初始姿态、清零物理时间并暂停 |
+| Ctrl+G / `run` | 连续运行 / 暂停 |
+| Ctrl+E / `compliance` | 切换顺应性，下一次滚动生效 |
+| Ctrl+K / `status` | 打印相位、反馈、高度、管道接触数、跟踪误差 |
+| Ctrl+上 / 下；Ctrl+右 / 左 | R ±5 mm；P ±10 mm，之后 Ctrl+U 应用 |
+| Ctrl+- / Ctrl+= | 相位步长减半 / 加倍，快捷键范围 0.01–0.6 rad |
+| 控制台 `r=130 p=180` / `delta=0.05` | 修改几何 / 相位步长；几何修改需重新应用 |
+| 控制台 `gravity=0` / `gravity=1` | 关闭 / 恢复场景重力；默认开启 |
+| 控制台 `help` | 查看操作提示 |
 
-R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R 不是管道表面半径。默认 R=110、P=180 用于调试，不保证模型已抱管。顺应性启用时，H/J 使用实测反馈构造局部形状；R/P 仅用于显式初始化及设计螺距角 `alpha=atan2(P, 2*pi*R)`，不会逐帧覆盖顺应性形状。反向一步是反向推进相位，不是倒放物理状态。
+每一步提交一次整组目标，经 EXE 返回后执行 N×10 个物理步；当前 20 关节模型是 0.2 秒模拟时间。等待时物理时间和相位不变，但通信持续刷新。运动中重复运动操作不排队，空格可提前中断。`hold` 用于观察是否继续接近目标、是否滑落，不能保证机器人空间位置不动。
 
-需要只检查标准螺旋时设置 `COMPLIANCE_ENABLED=False`。默认保持顺应性开启。首次取得有效截面前，按键以标准螺旋推进一步并打印“标准螺旋初始化”；这是从直线初始姿态形成可用截面的过程。顺应性首次接管后，反馈无效则本步不执行，不再退回标准螺旋。旧 a/v、omega、time_step 已退出运行参数。
+R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R 不是管道表面半径。原 Pole 默认 R=110、P=180；变径场景采用 XML 中的 130/180 预设。顺应性启用时，Ctrl+H/J 使用实测反馈构造局部形状；R/P 用于显式初始化及设计螺距角，不逐帧覆盖顺应性目标。反向一步不是倒放物理状态。
+
+首次取得有效截面前，以标准螺旋推进；顺应性首次接管后，反馈无效则本步不执行。Ctrl+R 是实验重置，保留 R/P、步长、顺应性及重力选项，之后需 Ctrl+U。日常关节目标仍全部经 EXE 转发。旧 a/v、omega、time_step 已退出运行参数。
+
+**当前边界：场景、单步操作和转发链路已验证，稳定攀爬尚未实现。** 保留原机器人动力学及驱动参数的重力短测中会滑落。`gravity=0` 仅用于形状、相位和通信调试，不能证明爬升能力；重力实验应恢复 `gravity=1` 并 reset。
 
 ## 常用开关
 
@@ -83,7 +102,7 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 | `COMPLIANCE_ENABLED` | `True` | 使用有效实测截面生成顺应性目标 |
 | `COMPLIANCE_GAIN` | `0.04` | 标量或按关节排序的 K_i |
 | `SINGLE_STEP_MODE` | `True` | 默认等待按键；False 为连续运行 |
-| `HELIX_RADIUS_MM` | `110.0` | 初始中心线半径 R |
+| `HELIX_RADIUS_MM` | `110.0` | 原场景初始 R；变径场景取 XML 的 130 |
 | `HELIX_PITCH_MM` | `180.0` | 初始每圈螺距 P |
 | `ROLL_STEP_RAD` | `0.15` | 每一步滚动相位增量 |
 | `COMPLIANCE_INSIDE` | `False` | 管外模式；True 为管内模式 |
@@ -115,11 +134,14 @@ python .\validation\adaptive_pole_stage3.py
 python .\validation\adaptive_pole_stage4.py
 python .\validation\geometry_debug_smoke.py
 python .\validation\adaptive_pole_single_step.py
+python .\validation\variable_pipe_experiment.py
 ```
 
 测试使用隔离端口与临时程序目录，不接触真实串口。阶段四逐项比对 EXE 回传目标与实际 `d.ctrl`，覆盖 20/28 关节、无 EXE、过期/重复/越界和断开重启。日志与轨迹写入 `validation/results/`，可视化回归日志写入 `visualizer/artifacts/`。
 
 单步专项另核对空闲时 qpos/ctrl/物理时间/相位不变、正反步数、R/P 重新应用、顺应性首次相位增量及 EXE 回传来源，结果写入 `validation/results/adaptive-pole-single-step/`。
+
+变径专项检查碰撞表面、接触探针、原生 viewer 快捷键、保持、重置、暂停及 EXE 返回角来源；另记录有重力下的短程表现。
 
 本次及历史阶段验收状态与限制见[阶段四验收记录](visualizer/STAGE4_RESULTS.md)。短程模拟执行闭环不等同于稳定攀爬、接触力效果或实机已完成。协议见[通信与执行说明](visualizer/COMMUNICATION_V3.md)，操作细节见[阶段四说明](codes/Adaptive_Pole_Climbing_阶段四.md)。
 
