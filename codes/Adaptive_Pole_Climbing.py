@@ -125,7 +125,7 @@ def main():
     import mujoco.viewer
     from mujoco_visualizer_bridge import VisualizerBridge
     from pole_compliance import ComplianceController, ComplianceParameters
-    from adaptive_debug import HELP, viewer_key_callback, measurements
+    from adaptive_debug import HELP, viewer_key_callback, measurements, circle_radius_mm, pipe_geometry
 
 
 
@@ -196,6 +196,16 @@ def main():
         height, contact_count, error = measurements(m, d)
         feedback = exchange.latest_geometry() if exchange is not None else None
         feedback_state = "有效" if feedback and feedback.get("feedback_usable") else "未就绪/无效"
+        # R 只是 Ctrl+U 应用的初始螺旋；顺应性运行中实际与目标截面半径另行显示。
+        measured = circle_radius_mm(feedback["projected_mm"][1:-1]) if feedback and feedback.get("feedback_usable") else None
+        if compliant and compliance is not None and compliance.started:
+            target = circle_radius_mm(compliance.backbone.sample(world=False)[:, :2])
+        else:
+            target = radius if initialized else None
+        axis_distance, pipe_radius = pipe_geometry(m, d)
+        text = lambda value: "—" if value is None else f"{value:.1f}"
+        print(f"RADIUS 实测截面={text(measured)}mm 当前目标截面={text(target)}mm "
+              f"关节到管轴(仿真)={axis_distance:.1f}mm 同高度管半径={text(pipe_radius)}mm", flush=True)
         print(f"STATUS {'单步/暂停' if manual else '连续'} R={radius:g} P={pitch:g} "
               f"phase={phase:.4f} delta={phase_step:g} sim={d.time:.3f}s "
               f"顺应性={'开' if compliance_enabled else '关'} 反馈={feedback_state} "

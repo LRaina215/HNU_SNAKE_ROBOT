@@ -46,3 +46,26 @@ def measurements(model, data):
     actual = np.array([data.joint(f'joint{i}').qpos[0] for i in range(1, model.nu+1)])
     heights = [data.joint(f'joint{i}').xanchor[2] for i in range(1, model.nu+1)]
     return float(np.mean(heights)), contacts, float(np.max(np.abs(actual-data.ctrl)))
+
+
+def circle_radius_mm(xy):
+    """截面点的最小二乘圆半径；点数不足或近似共线时返回 None。"""
+    xy = np.asarray(xy, dtype=float)
+    if len(xy) < 3:
+        return None
+    a = np.c_[2 * xy, np.ones(len(xy))]
+    (cx, cy, c), *_ = np.linalg.lstsq(a, (xy ** 2).sum(axis=1), rcond=None)
+    value = c + cx * cx + cy * cy
+    return float(np.sqrt(value)) if value > 0 else None
+
+
+def pipe_geometry(model, data):
+    """仿真专用：关节到世界 z 轴的平均距离，及变径场景同高度处的平均管半径（mm）。"""
+    points = np.array([data.joint(f'joint{i}').xanchor for i in range(1, model.nu+1)])
+    radial = float(np.linalg.norm(points[:, :2], axis=1).mean() * 1000)
+    try:
+        bottom, top, z0, z1, _ = model.numeric('pipe_profile').data
+    except KeyError:
+        return radial, None
+    u = np.clip((points[:, 2] - z0) / (z1 - z0), 0, 1)
+    return radial, float(np.mean(bottom + (top - bottom) * (10*u**3 - 15*u**4 + 6*u**5)) * 1000)
