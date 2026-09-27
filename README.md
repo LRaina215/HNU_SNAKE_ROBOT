@@ -21,8 +21,11 @@ validation/
   geometry_debug_smoke.py      调试窗口、表格模式及关闭行为验证
   fixtures/                   固定反馈、初始显示配置、28 关节模型
   results/                    本地生成的日志和轨迹，不纳入 Git
-tools/build_variable_pipe_scene.py  生成连续变径管道与初始姿态
-mujoco_model/                 原模型、网格与新增 Variable_Pipe 场景
+tools/
+  build_variable_pipe_scene.py 生成连续变径管道、初始姿态，并设置本场景 kp 与摩擦
+  build_twin_pipe_scene.py     生成论文实验 2 的单管 → 双管场景（复用上面的姿态与参数）
+mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe 场景
+交接记录.md                    各轮调试结论、数据位置与待办；接手前先读
 ```
 
 后续可视化源码统一维护在本仓库 `visualizer/`。原 `Paper Code/two_joint_visualizer` 目录保留为迁移前副本；旧发布目录继续可用。新克隆不再依赖该外部源码目录或特定盘符。
@@ -60,24 +63,32 @@ python .\codes\Adaptive_Pole_Climbing.py
 
 构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.1 EXE，再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
 
-**变径实验使用下面的命令**；不带 `--scene` 时仍打开原 Pole 场景。新场景为竖直管外攀爬，管外径 180 → 230 mm，高 1.8 m；20 关节机器人从下段预缠绕姿态开始（R=130 mm、P=180 mm），Ctrl+U 默认应用 R=110 mm；本场景位置伺服 kp=20，扭转/滚动摩擦按橡胶-管面量级取 0.005/0.002 m。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
+**管道实验用 `--scene` 选择场景**；不带 `--scene` 时仍打开原 Pole 场景。
+
+| 场景 | 命令 | 说明 |
+| --- | --- | --- |
+| 连续变径 | `--scene variable` | 竖直管外攀爬，外径 180 → 230 mm（z 0.70–1.30 m 过渡），高 1.8 m |
+| 单管 → 双管 | `--scene twin` | 论文实验 2（Fig. 14）×0.9：下段外径 180 mm；z 0.70–1.00 m 过渡；上段为外径 90/135 mm 的两根分离圆管 |
+
+两个场景共用：20 关节机器人从下段预缠绕姿态开始（R=130 mm、P=180 mm），Ctrl+U 默认应用 R=110 mm；位置伺服 kp=20（原 Pole 场景为 4），扭转/滚动摩擦按橡胶-管面量级取 0.005/0.002 m。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
 
 ```powershell
 python .\codes\Adaptive_Pole_Climbing.py --scene variable
+python .\codes\Adaptive_Pole_Climbing.py --scene twin
 ```
 
-程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+J 正向一步或 Ctrl+H 反向一步。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。
+程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+H 或 Ctrl+J 滚动一步。**两个管道场景（P=180）中 Ctrl+H 向上爬、Ctrl+J 向下**；螺距符号取反时方向随之反转。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。
 
 | 操作 | 含义 |
 | --- | --- |
 | Ctrl+U / 控制台 `apply` | 应用 R/P，沿用当前滚动相位，重新初始化顺应性 |
-| Ctrl+J / `step`；Ctrl+H / `back` | 正向 / 反向一步 |
+| Ctrl+J / `step`；Ctrl+H / `back` | 相位 + / − 一步（管道场景中分别为下行 / 上行） |
 | Ctrl+N / `hold` | 保持当前目标角，再推进一段物理时间，相位不变 |
 | 空格 / `pause` | 中断动作并暂停；通信和窗口继续刷新 |
 | Ctrl+R / `reset` | 恢复初始姿态、清零物理时间并暂停 |
 | Ctrl+G / `run` | 连续运行 / 暂停 |
 | Ctrl+E / `compliance` | 切换顺应性，下一次滚动生效 |
-| Ctrl+K / `status` | 打印相位、反馈、高度、管道接触数、跟踪误差 |
+| Ctrl+K / `status` | 打印相位、反馈、高度、管道接触数、跟踪误差；`RADIUS` 行给出实测截面半径、当前目标截面半径，以及仿真专用的关节到管轴距离、同高度管半径 |
 | Ctrl+上 / 下；Ctrl+右 / 左 | R ±5 mm；P ±10 mm，之后 Ctrl+U 应用 |
 | Ctrl+- / Ctrl+= | 相位步长减半 / 加倍，快捷键范围 0.01–0.6 rad |
 | 控制台 `r=130 p=180` / `delta=0.05` | 修改几何 / 相位步长；几何修改需重新应用 |
@@ -86,9 +97,9 @@ python .\codes\Adaptive_Pole_Climbing.py --scene variable
 
 每一步提交一次整组目标，经 EXE 返回后执行 N×10 个物理步；当前 20 关节模型是 0.2 秒模拟时间。等待时物理时间和相位不变，但通信持续刷新。运动中重复运动操作不排队，空格可提前中断。`hold` 用于观察是否继续接近目标、是否滑落，不能保证机器人空间位置不动。
 
-R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R 不是管道表面半径。原 Pole 默认 R=110、P=180；变径场景采用 XML 中的 130/180 预设。顺应性启用时，Ctrl+H/J 使用实测反馈构造局部形状；R/P 用于显式初始化及设计螺距角，不逐帧覆盖顺应性目标。反向一步不是倒放物理状态。
+R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R 不是管道表面半径。原 Pole 默认 R=110、P=180；管道场景初始姿态为 130/180，Ctrl+U 默认应用 XML 预设 110/180。顺应性启用时，Ctrl+H/J 使用实测反馈构造局部形状；R/P 用于显式初始化及设计螺距角，不逐帧覆盖顺应性目标。反向一步不是倒放物理状态。
 
-首次取得有效截面前，以标准螺旋推进；顺应性首次接管后，反馈无效则本步不执行。Ctrl+R 是实验重置，保留 R/P、步长、顺应性及重力选项，之后需 Ctrl+U。日常关节目标仍全部经 EXE 转发。旧 a/v、omega、time_step 已退出运行参数。
+首次取得有效截面前，以标准螺旋推进；顺应性首次接管后，反馈无效则本步不执行。顺应性目标个别关节超出关节范围时，只把该关节裁剪到极限，整步照常执行（整步停住会失去夹紧）。Ctrl+R 是实验重置，保留 R/P、步长、顺应性及重力选项，之后需 Ctrl+U。日常关节目标仍全部经 EXE 转发。旧 a/v、omega、time_step 已退出运行参数。
 
 **当前边界：** 默认顺应性增益 K 首尾 0.04、中部 0.12，目标按关节范围限幅。重力下连续 Ctrl+H 300 步：变径场景（`--scene variable`）从 0.47 m 爬到管顶 1.80 m；论文实验 2 的等比缩小场景（`--scene twin`，单管 → 双管）爬到 1.65 m，已进入双管段约 0.65 m。两个场景均用 kp=20、扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
 
@@ -100,9 +111,9 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 | --- | --- | --- |
 | `CONTROL_VIA_VISUALIZER` | `True` | 目标经 EXE 转发才执行 |
 | `COMPLIANCE_ENABLED` | `True` | 使用有效实测截面生成顺应性目标 |
-| `COMPLIANCE_GAIN` | `0.04` | 标量或按关节排序的 K_i |
+| `COMPLIANCE_GAIN` | `(0.04, 0.12)` | K_i：标量、按关节排序的列表，或（首尾各 4 个关节, 中部）；论文式 (34) 为 0.04/0.08，本模型中部需 0.12 |
 | `SINGLE_STEP_MODE` | `True` | 默认等待按键；False 为连续运行 |
-| `HELIX_RADIUS_MM` | `110.0` | 原场景初始 R；变径场景取 XML 的 130 |
+| `HELIX_RADIUS_MM` | `110.0` | 原场景初始 R；管道场景取 XML 预设 |
 | `HELIX_PITCH_MM` | `180.0` | 初始每圈螺距 P |
 | `ROLL_STEP_RAD` | `0.15` | 每一步滚动相位增量 |
 | `COMPLIANCE_INSIDE` | `False` | 管外模式；True 为管内模式 |
@@ -141,7 +152,7 @@ python .\validation\variable_pipe_experiment.py
 
 单步专项另核对空闲时 qpos/ctrl/物理时间/相位不变、正反步数、R/P 重新应用、顺应性首次相位增量及 EXE 回传来源，结果写入 `validation/results/adaptive-pole-single-step/`。
 
-变径专项检查碰撞表面、接触探针、原生 viewer 快捷键、保持、重置、暂停及 EXE 返回角来源；另记录有重力下的短程表现。
+变径专项检查碰撞表面、接触探针、原生 viewer 快捷键、保持、重置、暂停及 EXE 返回角来源。重力下的长程爬升（连续 300 步）用于调参，脚本和数据在本地 `validation/results/kp-sweep/`、`twin-pipe/`，结论与数据说明见[交接记录](交接记录.md)。
 
 本次及历史阶段验收状态与限制见[阶段四验收记录](visualizer/STAGE4_RESULTS.md)。短程模拟执行闭环不等同于稳定攀爬、接触力效果或实机已完成。协议见[通信与执行说明](visualizer/COMMUNICATION_V3.md)，操作细节见[阶段四说明](codes/Adaptive_Pole_Climbing_阶段四.md)。
 
