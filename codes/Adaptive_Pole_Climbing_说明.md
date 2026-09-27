@@ -9,13 +9,17 @@ python Adaptive_Pole_Climbing.py                  :: 原 Pole 场景（kp=4）
 python Adaptive_Pole_Climbing.py --scene variable :: 连续变径管，外径 180 → 230 mm
 python Adaptive_Pole_Climbing.py --scene twin     :: 论文实验 2 ×0.9，单管 → 双管
 python Adaptive_Pole_Climbing.py --scene twin_full :: 论文实验 2 原尺寸
+python Adaptive_Pole_Climbing.py --scene inner     :: 论文实验 3 ×0.8，管内圆管 → 矩形管道
+python Adaptive_Pole_Climbing.py --scene inner_full :: 论文实验 3 原尺寸
 ```
 
 管道场景由 `tools/build_variable_pipe_scene.py`、`tools/build_twin_pipe_scene.py` 生成，共用初始缠绕姿态（R=130、P=180；原尺寸 R=140）、Ctrl+U 默认 R=110（原尺寸 120）、位置伺服 kp=20 和扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
 
+管内场景由 `tools/build_inner_pipe_scene.py` 生成：空心管用薄壁块拼成（MuJoCo 按凸包碰撞），初始螺旋比管壁小，Ctrl+U 预设比管壁大（×0.8：R=125、P=243；原尺寸：R=160、P=311，按论文 α=0.30 rad），靠向外撑开夹紧。XML 中 `experiment_inside=1` 使程序自动切换为管内顺应性（K̂=1−K），启动行显示“管内”。
+
 ## 操作
 
-- 先点击 MuJoCo 窗口。启动后暂停；Ctrl+U 应用初始螺旋，Ctrl+J 相位 + 一步，Ctrl+H 相位 − 一步。**管道场景（P=180）中 Ctrl+H 上爬、Ctrl+J 下行。**
+- 先点击 MuJoCo 窗口。启动后暂停；Ctrl+U 应用初始螺旋，Ctrl+J 相位 + 一步，Ctrl+H 相位 − 一步。**管外场景（variable / twin）中 Ctrl+H 上爬、Ctrl+J 下行；管内场景（inner）相反，Ctrl+J 上爬。**
 - Ctrl+上/下修改 R，Ctrl+右/左修改 P；或控制台输入 `r=130 p=180`。修改后 Ctrl+U 重新应用，**应用时沿用当前滚动相位**（清零会让已滚动的关节目标跳变上百度而脱管）。
 - Ctrl+E 切换顺应性，Ctrl+K 查看状态。状态中的 `RADIUS` 行：实测截面半径、当前目标截面半径（顺应性运行时取目标曲线截面），以及仿真专用的关节到管轴距离和同高度管半径。R 只是 Ctrl+U 应用的初始值，不代表顺应性运行中的当前形状。
 - 控制台 `apply`、`step`、`back`、`status`、`compliance` 与对应按键等价；`gravity=0/1` 切换重力。完整按键表见[主 README](../README.md)。
@@ -36,6 +40,8 @@ python Adaptive_Pole_Climbing.py --scene twin_full :: 论文实验 2 原尺寸
 | `--scene variable` | 0.466 → 1.799 m，到达管顶 | 1.519 m，上段头部约 1/4 身体离管 |
 | `--scene twin` | 0.466 → 1.653 m，进入双管段约 0.65 m | 1.701 m |
 | `--scene twin_full` | 0.470 → 1.547 m，仍在上升 | 约 1.34 m 停滞 |
+| `--scene inner`（连续 Ctrl+J 360 步） | 4 步后停止：轴估计失效 | 0.438 → 1.362 m，进入矩形段 |
+| `--scene inner_full`（360 步） | 0.457 → 0.901 m，缓慢上升 | 0.457 → 0.885 m |
 
 舵机负载（由轨迹重算 `clip(kp·(目标−实际), ±3 N·m)`，只统计运动中）：
 
@@ -44,6 +50,8 @@ python Adaptive_Pole_Climbing.py --scene twin_full :: 论文实验 2 原尺寸
 | variable | 1.22 N·m / 3.6% | 1.70 N·m / 28.0% |
 | twin | 1.22 N·m / 4.9% | 1.70 N·m / 27.9% |
 | twin_full | 1.17 N·m / 3.7% | 1.57 N·m / 23.4% |
+
+**管内顺应性尚未跑通。** 撑开后身体被管壁挡住，各段螺距角变散，可视化程序的轴置信度跌破 `RollingAxis.cs` 的门限 0.42，反馈被标为“不可用：轴无效”，顺应性按规则停止；减小预设 R 后又会停在过渡段附近。
 
 仿真不模拟电机发热和过载保护，所以高度差别不大时标准螺旋看起来也能爬；但它靠比管子紧得多的固定目标长期顶住力矩上限（单个关节最多约 46–49% 的时间）。实机上这对应持续堵转电流，飞特舵机可能触发过载保护而卸力。顺应性目标只比实际形状紧 K，负载明显更低。摩擦、kp 均为仿真估计值，不代表实机。调参过程、数据位置与待办见[交接记录](../交接记录.md)。
 

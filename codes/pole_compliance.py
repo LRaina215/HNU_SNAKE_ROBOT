@@ -212,9 +212,11 @@ class ComplianceController:
             if geometry is None:
                 raise ValueError("等待新鲜反馈")
             now_ms = time.time() * 1000 if now_ms is None else now_ms
-            if (not geometry.get("feedback_usable", False) or geometry["age_ms"] > 500 or
-                    now_ms - geometry["sample_unix_ms"] > 500):
-                raise ValueError("反馈过期、轴无效或关节离线")
+            if not geometry.get("feedback_usable", False):
+                raise ValueError("反馈不可用：轴无效或关节离线")
+            if geometry["age_ms"] > 500 or now_ms - geometry["sample_unix_ms"] > 500:
+                raise ValueError(f"反馈过期：age={geometry['age_ms']:.0f}ms，"
+                                 f"距采样 {now_ms - geometry['sample_unix_ms']:.0f}ms")
             config = geometry["config"]
             lengths = [config["head_length_mm"]] + [j["link_length_mm"] for j in config["joints"]]
             if (len(lengths) != len(self.expected_lengths) or

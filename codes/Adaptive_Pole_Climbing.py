@@ -1,7 +1,7 @@
 """Adaptive Pole：几何参数 → 曲率/挠率 → Yamada → EXE → MuJoCo。
 
 默认单步：Ctrl+U 应用 R/P，Ctrl+J 正向一步，Ctrl+H 反向一步。
-使用 --scene variable 加载连续变径管道，--scene twin / twin_full 加载论文实验 2 的单管→双管场景（×0.9 / 原尺寸），空格暂停，Ctrl+R 恢复实验初始条件。
+使用 --scene variable 加载连续变径管道，--scene twin / twin_full 加载论文实验 2 的单管→双管场景（×0.9 / 原尺寸），--scene inner / inner_full 加载实验 3 的管内圆→矩形场景（×0.8 / 原尺寸），空格暂停，Ctrl+R 恢复实验初始条件。
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
@@ -151,6 +151,9 @@ def main():
         preset = m.numeric("experiment_helix_mm").data
         radius = float(os.environ.get("SNAKE_HELIX_RADIUS_MM", preset[0]))
         pitch = float(os.environ.get("SNAKE_HELIX_PITCH_MM", preset[1]))
+    # 场景可声明管内实验；否则沿用顶部开关。
+    inside_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_NUMERIC, "experiment_inside")
+    inside = bool(m.numeric_data[m.numeric_adr[inside_key]]) if inside_key >= 0 else COMPLIANCE_INSIDE
     mujoco.mj_forward(m, d)
 
     joint_count = m.nu
@@ -188,7 +191,7 @@ def main():
     relay_status = None
     last_notice = None
     print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
-          f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm", flush=True)
+          f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm {'管内' if inside else '管外'}", flush=True)
     print(HELP, flush=True)
     print(f"场景：{Path(model_path).name}；重力={m.opt.gravity.tolist()}；{'启动暂停，先 Ctrl+U' if manual else '连续运行'}", flush=True)
 
@@ -304,7 +307,7 @@ def main():
                             compliance = None
                             if initialized and compliance_enabled and exchange is not None:
                                 compliance = ComplianceController(ComplianceParameters(COMPLIANCE_GAIN,
-                                    math.atan2(active_shape[1], 2*math.pi*active_shape[0]), COMPLIANCE_INSIDE), links)
+                                    math.atan2(active_shape[1], 2*math.pi*active_shape[0]), inside), links)
                             show_status()
                         elif command in ("delta-", "delta+"):
                             phase_step = max(.01, phase_step/2) if command == "delta-" else min(.6, phase_step*2)
@@ -399,7 +402,7 @@ def main():
                                     if compliance_enabled and exchange is not None:
                                         alpha = math.atan2(pitch, 2 * math.pi * radius)
                                         compliance = ComplianceController(
-                                            ComplianceParameters(COMPLIANCE_GAIN, alpha, COMPLIANCE_INSIDE), links)
+                                            ComplianceParameters(COMPLIANCE_GAIN, alpha, inside), links)
                                 action_label = "保持目标" if pending["command"] == "hold" else "顺应性" if compliant else "标准螺旋"
                                 remaining = joint_count
                                 pending = None
@@ -473,11 +476,12 @@ def main():
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Yamada 管道实验；默认保持原 Pole 场景")
-    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full"), default=None)
+    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full"), default=None)
     args = parser.parse_args()
     if args.scene is not None:
         filename = {"pole": "Snake_Robot_o20_Pole_Climbing.xml", "variable": "Snake_Robot_o20_Variable_Pipe.xml",
                     "twin": "Snake_Robot_o20_Twin_Pipe.xml",
-                    "twin_full": "Snake_Robot_o20_Twin_Pipe_Full.xml"}[args.scene]
+                    "twin_full": "Snake_Robot_o20_Twin_Pipe_Full.xml",
+                    "inner": "Snake_Robot_o20_Inner_Pipe.xml", "inner_full": "Snake_Robot_o20_Inner_Pipe_Full.xml"}[args.scene]
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" / filename)
     main()

@@ -24,7 +24,8 @@ validation/
 tools/
   build_variable_pipe_scene.py 生成连续变径管道、初始姿态，并设置本场景 kp 与摩擦
   build_twin_pipe_scene.py     生成论文实验 2 的单管 → 双管场景（复用上面的姿态与参数）
-mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe 场景
+  build_inner_pipe_scene.py    生成论文实验 3 的管内圆管 → 矩形管道场景
+mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe 场景
 交接记录.md                    各轮调试结论、数据位置与待办；接手前先读
 ```
 
@@ -70,21 +71,25 @@ python .\codes\Adaptive_Pole_Climbing.py
 | 连续变径 | `--scene variable` | 竖直管外攀爬，外径 180 → 230 mm（z 0.70–1.30 m 过渡），高 1.8 m |
 | 单管 → 双管 | `--scene twin` | 论文实验 2（Fig. 14）×0.9：下段外径 180 mm；z 0.70–1.00 m 过渡；上段为外径 90/135 mm 的两根分离圆管 |
 | 单管 → 双管（原尺寸） | `--scene twin_full` | 论文实验 2 原尺寸：下段外径 200 mm，上段 100/150 mm 两管，圆心各距原轴 77.5 mm |
+| 管内圆 → 矩形 | `--scene inner` | 论文实验 3（Fig. 15）×0.8：内径 272 mm 圆管，z 0.75–1.15 m 过渡到 280×400 mm 矩形管道；管壁半透明 |
+| 管内圆 → 矩形（原尺寸） | `--scene inner_full` | 论文实验 3 原尺寸：内径 340 mm → 350×500 mm |
 
-管道场景共用：20 关节机器人从下段预缠绕姿态开始（R=130 mm、P=180 mm；原尺寸场景为 140 mm），Ctrl+U 默认应用 R=110 mm（原尺寸场景 120 mm）；位置伺服 kp=20（原 Pole 场景为 4），扭转/滚动摩擦按橡胶-管面量级取 0.005/0.002 m。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
+管道场景共用：20 关节机器人从下段预缠绕姿态开始（R=130 mm、P=180 mm；原尺寸场景为 140 mm），Ctrl+U 默认应用 R=110 mm（原尺寸场景 120 mm）；位置伺服 kp=20（原 Pole 场景为 4），扭转/滚动摩擦按橡胶-管面量级取 0.005/0.002 m。管内场景从比管壁略小的螺旋开始，Ctrl+U 预设比管壁大（×0.8：R=125、P=243；原尺寸：R=160、P=311，P 按论文 α=0.30 rad 算出），靠向外撑开夹紧；场景内 `experiment_inside=1` 使程序自动切换为管内顺应性。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
 
 ```powershell
 python .\codes\Adaptive_Pole_Climbing.py --scene variable
 python .\codes\Adaptive_Pole_Climbing.py --scene twin
 python .\codes\Adaptive_Pole_Climbing.py --scene twin_full
+python .\codes\Adaptive_Pole_Climbing.py --scene inner
+python .\codes\Adaptive_Pole_Climbing.py --scene inner_full
 ```
 
-程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+H 或 Ctrl+J 滚动一步。**两个管道场景（P=180）中 Ctrl+H 向上爬、Ctrl+J 向下**；螺距符号取反时方向随之反转。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。
+程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+H 或 Ctrl+J 滚动一步。**管外场景（variable / twin，P>0）中 Ctrl+H 向上爬、Ctrl+J 向下；管内场景（inner）相反，Ctrl+J 向上**；螺距符号取反时方向随之反转。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。
 
 | 操作 | 含义 |
 | --- | --- |
 | Ctrl+U / 控制台 `apply` | 应用 R/P，沿用当前滚动相位，重新初始化顺应性 |
-| Ctrl+J / `step`；Ctrl+H / `back` | 相位 + / − 一步（管道场景中分别为下行 / 上行） |
+| Ctrl+J / `step`；Ctrl+H / `back` | 相位 + / − 一步（管外场景为下行 / 上行，管内场景为上行 / 下行） |
 | Ctrl+N / `hold` | 保持当前目标角，再推进一段物理时间，相位不变 |
 | 空格 / `pause` | 中断动作并暂停；通信和窗口继续刷新 |
 | Ctrl+R / `reset` | 恢复初始姿态、清零物理时间并暂停 |
@@ -103,7 +108,7 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 
 首次取得有效截面前，以标准螺旋推进；顺应性首次接管后，反馈无效则本步不执行。顺应性目标个别关节超出关节范围时，只把该关节裁剪到极限，整步照常执行（整步停住会失去夹紧）。Ctrl+R 是实验重置，保留 R/P、步长、顺应性及重力选项，之后需 Ctrl+U。日常关节目标仍全部经 EXE 转发。旧 a/v、omega、time_step 已退出运行参数。
 
-**当前边界：** 默认顺应性增益 K 首尾 0.04、中部 0.12，目标按关节范围限幅。重力下连续 Ctrl+H 300 步：变径场景（`--scene variable`）从 0.47 m 爬到管顶 1.80 m；论文实验 2 的等比缩小场景（`--scene twin`，单管 → 双管）爬到 1.65 m，已进入双管段约 0.65 m；原尺寸场景（`--scene twin_full`）爬到 1.55 m 且仍在上升，标准螺旋停在约 1.34 m。仿真不模拟舵机过载，但标准螺旋有 23–28% 的时间顶在力矩上限，顺应性只有 4–5%。各场景均用 kp=20、扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
+**当前边界：** 默认顺应性增益 K 首尾 0.04、中部 0.12，目标按关节范围限幅。重力下连续 Ctrl+H 300 步：变径场景（`--scene variable`）从 0.47 m 爬到管顶 1.80 m；论文实验 2 的等比缩小场景（`--scene twin`，单管 → 双管）爬到 1.65 m，已进入双管段约 0.65 m；原尺寸场景（`--scene twin_full`）爬到 1.55 m 且仍在上升，标准螺旋停在约 1.34 m。仿真不模拟舵机过载，但标准螺旋有 23–28% 的时间顶在力矩上限，顺应性只有 4–5%。管内场景（`--scene inner`）已搭建，标准螺旋能爬进矩形段（1.36 m），**管内顺应性尚未跑通**：撑开后可视化程序的轴估计置信度跌破门限、反馈被标为不可用，或停滞在过渡段附近，详见[交接记录](交接记录.md)。各场景均用 kp=20、扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
 
 ## 常用开关
 
@@ -118,7 +123,7 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 | `HELIX_RADIUS_MM` | `110.0` | 原场景初始 R；管道场景取 XML 预设 |
 | `HELIX_PITCH_MM` | `180.0` | 初始每圈螺距 P |
 | `ROLL_STEP_RAD` | `0.15` | 每一步滚动相位增量 |
-| `COMPLIANCE_INSIDE` | `False` | 管外模式；True 为管内模式 |
+| `COMPLIANCE_INSIDE` | `False` | 管外模式；True 为管内模式。管内场景 XML 的 `experiment_inside=1` 会覆盖此项 |
 | `DEBUG` | `True` | 显示实际收到的曲线反馈 |
 | `DEBUG_DRAW_CURVE` | `True` | False 时仅显示各段参数表 |
 
