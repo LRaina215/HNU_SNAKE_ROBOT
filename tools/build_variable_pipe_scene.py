@@ -15,7 +15,7 @@ from scipy.spatial.transform import Rotation
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'codes'))
-from Adaptive_Pole_Climbing import HelixBackbone
+from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
 
 OUTPUT = ROOT / 'mujoco_model/Snake_Robot_o20_Variable_Pipe.xml'
 R_BOTTOM, R_TOP = .090, .115

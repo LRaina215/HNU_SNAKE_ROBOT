@@ -18,7 +18,7 @@ sys.path.insert(0, str(VISUALIZER))
 
 def run_gait(mode):
     import numpy as np
-    import Adaptive_Pole_Climbing as gait
+    import Adaptive_Pole_Climbing_Mujoco as gait
     from python_client import SnakeControlClient, ProtocolError
     startup_errors = []
     original_request = SnakeControlClient.request

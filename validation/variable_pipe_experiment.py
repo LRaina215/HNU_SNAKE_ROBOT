@@ -68,7 +68,7 @@ def geometry_checks():
 
 
 def run_gait():
-    import Adaptive_Pole_Climbing as gait
+    import Adaptive_Pole_Climbing_Mujoco as gait
     gait.DEBUG=False
     gait.main()
 

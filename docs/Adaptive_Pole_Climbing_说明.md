@@ -1,16 +1,20 @@
 # 当前操作：几何参数与单步调试
 
+> 2026-09-28：仿真入口改名为 `codes/Adaptive_Pole_Climbing_Mujoco.py`，新增实机入口 `codes/Adaptive_Pole_Climbing_Real.py`（手动逐节缠绕后 Ctrl+U 启动单步顺应性，见[主 README](../README.md)“实机版”）。本文件已从 `codes/` 移到 `docs/`；下文历史记录里的 `Adaptive_Pole_Climbing.py` 即现在的 Mujoco 版。
+
 以 Pole 为模板保留程序组织方式；运行参数已改为半径 R、每圈螺距 P 和滚动相位。旧 a/v 仅保留在 validation/ 的历史数学回归辅助函数中，不参与主循环。
 
 ## 场景
 
 ```bat
-python Adaptive_Pole_Climbing.py                  :: 原 Pole 场景（kp=4）
-python Adaptive_Pole_Climbing.py --scene variable :: 连续变径管，外径 180 → 230 mm
-python Adaptive_Pole_Climbing.py --scene twin     :: 论文实验 2 ×0.9，单管 → 双管
-python Adaptive_Pole_Climbing.py --scene twin_full :: 论文实验 2 原尺寸
-python Adaptive_Pole_Climbing.py --scene inner     :: 论文实验 3 ×0.8，管内圆管 → 矩形管道
-python Adaptive_Pole_Climbing.py --scene inner_full :: 论文实验 3 原尺寸
+python codes/Adaptive_Pole_Climbing_Mujoco.py                    :: 原 Pole 场景（kp=4）
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene variable   :: 连续变径管，外径 180 → 230 mm
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene twin       :: 论文实验 2 ×0.9，单管 → 双管
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene twin_full  :: 论文实验 2 原尺寸
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene inner      :: 论文实验 3 ×0.8，管内圆管 → 矩形管道
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene inner_full :: 论文实验 3 原尺寸
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene tree       :: 不规则树干近似（仅搭建，未做攀爬测试）
+python codes/Adaptive_Pole_Climbing_Real.py                      :: 实机：手动逐节缠绕 → Ctrl+U → 单步顺应性
 ```
 
 管道场景由 `tools/build_variable_pipe_scene.py`、`tools/build_twin_pipe_scene.py` 生成，共用初始缠绕姿态（R=130、P=180；原尺寸 R=140）、Ctrl+U 默认 R=110（原尺寸 120）、位置伺服 kp=20 和扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。

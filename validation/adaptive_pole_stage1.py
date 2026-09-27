@@ -14,7 +14,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "codes"))
-from Adaptive_Pole_Climbing import HelixBackbone
+from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
 
 
 def helix_from_pole_parameters(amplitude_deg, spatial_phase, link_mm):
@@ -94,7 +94,7 @@ def smoke(out, label, model=None, radius=260, pitch=0):
         env['SNAKE_MUJOCO_MODEL'] = str(model)
     else:
         env.pop('SNAKE_MUJOCO_MODEL', None)
-    result = subprocess.run([sys.executable, str(ROOT / 'codes/Adaptive_Pole_Climbing.py')],
+    result = subprocess.run([sys.executable, str(ROOT / 'codes/Adaptive_Pole_Climbing_Mujoco.py')],
                             env=env, capture_output=True, text=True, errors='replace', timeout=45)
     (out / (label + '.log')).write_text(result.stdout + result.stderr, encoding='utf-8')
     assert result.returncode == 0, result.stdout + result.stderr

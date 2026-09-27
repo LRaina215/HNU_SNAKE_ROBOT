@@ -18,7 +18,7 @@ sys.path[:0] = [str(ROOT / "codes"), str(VIS)]
 
 
 def run_gait():
-    import Adaptive_Pole_Climbing as gait
+    import Adaptive_Pole_Climbing_Mujoco as gait
     gait.DEBUG = False
     gait.CONTROL_VIA_VISUALIZER = True
     gait.main()

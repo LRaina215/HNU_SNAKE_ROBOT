@@ -139,14 +139,14 @@ class SnakeControlClient:
 class GeometryExchange:
     """后台读取几何并提交最新目标；主步态线程不等待网络。
 
-    支持 preview 或 mujoco；实机仍需显式 submit_targets(execution="live")。
+    支持 preview、mujoco 与 live（实机，EXE 需处于实机模式并已手动使能扭矩）。
     反馈缓存只用于本次连接；断连或配置变化清空，旧目标不重试。
     """
     def __init__(self, host="127.0.0.1", port=8765, rate_hz=10, expected_lengths=None, execution="preview"):
         if rate_hz <= 0:
             raise ValueError("rate_hz 必须为正")
-        if execution not in ("preview", "mujoco"):
-            raise ValueError("后台交换只支持 preview 或 mujoco")
+        if execution not in ("preview", "mujoco", "live"):
+            raise ValueError("后台交换只支持 preview、mujoco 或 live")
         self.execution = execution
         self.client = SnakeControlClient(host, port, timeout=0.5)
         self.period = 1.0 / rate_hz
@@ -158,6 +158,7 @@ class GeometryExchange:
         self.received = self.sent = self.dropped = self.failures = 0
         self.last_error = ""
         self.last_ack = None
+        self.last_command_id = 0
         self.roundtrip_ms = 0.0
         self._worker = threading.Thread(target=self._run, name="Geometry feedback exchange", daemon=True)
         self._worker.start()
@@ -176,8 +177,10 @@ class GeometryExchange:
         # 网络线程负责发送；缓存复制后才释放锁，调用者可继续修改自己的数组。
         with self._lock:
             geometry = self._latest
+            # 实机只接受 Live 反馈；preview 与 mujoco 保持原来的 MuJoCo 数据源要求。
+            source_mode = "Live" if self.execution == "live" else "Mujoco"
             if (geometry is None or time.monotonic() - self._received_at > 0.5 or
-                    geometry["age_ms"] > 500 or geometry["mode"] != "Mujoco"):
+                    geometry["age_ms"] > 500 or geometry["mode"] != source_mode):
                 return False
             if self.execution == "mujoco" and not geometry.get("target_state", {}).get("mujoco_executor_ready"):
                 return False
@@ -221,6 +224,7 @@ class GeometryExchange:
                     if (source["run_id"], source["config_id"]) == current:
                         command_id += 1
                         self.last_ack = self.client.submit_targets(source, targets, command_id, execution=self.execution)
+                        self.last_command_id = command_id
                         self.sent += 1
                 self.last_error = ""
             except (OSError, ValueError, ProtocolError) as error:

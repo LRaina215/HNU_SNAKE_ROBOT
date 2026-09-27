@@ -39,6 +39,41 @@ def viewer_key_callback(queue):
     return on_key
 
 
+def global_key_listener(queue):
+    """实机版用：系统全局热键，键位与 MuJoCo 窗口相同（Ctrl+字母/方向键、空格暂停）。
+
+    在任何窗口按下都会触发；只入队命令。按住不放的自动重复被忽略。
+    Windows 下按住 Ctrl 时 key.char 是控制字符，因此按虚拟键码识别字母。
+    """
+    from pynput import keyboard
+    held, ctrl = set(), {keyboard.Key.ctrl, keyboard.Key.ctrl_l, keyboard.Key.ctrl_r}
+    arrows = {keyboard.Key.up: 'r+', keyboard.Key.down: 'r-', keyboard.Key.right: 'p+', keyboard.Key.left: 'p-'}
+    symbols = {189: '-', 187: '='}  # VK_OEM_MINUS / VK_OEM_PLUS
+
+    def on_press(key):
+        if key in held:
+            return
+        held.add(key)
+        if key == keyboard.Key.space:
+            queue.put('pause')
+            return
+        if not held & ctrl:
+            return
+        vk = getattr(key, 'vk', None)
+        name = chr(vk) if vk is not None and 65 <= vk <= 90 else symbols.get(vk)
+        command = arrows.get(key) or HOTKEYS.get(name or '')
+        if command:
+            queue.put(command)
+
+    def on_release(key):
+        held.discard(key)
+
+    listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+    listener.daemon = True
+    listener.start()
+    return listener
+
+
 def measurements(model, data):
     """观察真实执行误差与管道接触；不把这些指标作为已实现的力控制器。"""
     pipe = {i for i in range(model.ngeom) if (model.geom(i).name or '').startswith('pipe')}

@@ -44,7 +44,7 @@ class TargetSegment:
 
 
 class PiecewiseBackbone:
-    def __init__(self, segments, links, pitch, start_xy, tangent_xy, axis, start_z):
+    def __init__(self, segments, links, pitch, start_xy, tangent_xy, axis, start_z, axial_sign=-1.):
         self.segments = tuple(segments)
         self.links = np.asarray(links, dtype=float)
         self.bounds = np.r_[0., np.cumsum([p.length for p in segments])]
@@ -54,6 +54,7 @@ class PiecewiseBackbone:
         self.heading = math.atan2(tangent_xy[1], tangent_xy[0])
         self.axis = axis
         self.start_z = start_z
+        self.axial_sign = axial_sign
 
     def curvature_torsion(self, s):
         s = np.asarray(s, dtype=float)
@@ -110,8 +111,8 @@ class PiecewiseBackbone:
                 radius = math.copysign(segment.radius, segment.turn)
                 xy = point[:2] + radius * (np.sin(angles)[:, None] * tangent +
                                           (2 * np.sin(angles / 2) ** 2)[:, None] * normal)
-            # 协议轴正向指向头，曲线从头走向尾，所以轴向分量为负。
-            path = np.column_stack((xy, point[2] - distances * sine))
+            # 曲线从头走向尾；axial_sign 为尾部相对头部在协议轴上的方向。
+            path = np.column_stack((xy, point[2] + self.axial_sign * distances * sine))
             points.extend(path)
             point = path[-1]
             heading += segment.turn
@@ -161,6 +162,11 @@ def build_backbone(geometry, parameters):
     if any(not group for group in groups) or len(winding) != 1:
         raise ValueError("模块缺失或截面弯曲内侧方向不一致")
     lengths = np.r_[links[0] / 2, (links[:-1] + links[1:]) / 2, links[-1] / 2]
+    # 轴估计为保持连续不随姿态翻转，正向不一定指向头部（例如从直线逐节缠绕时）。
+    # 挠率符号取决于身体沿轴前进的方向，按实测头尾位置判断，否则会重建出镜像螺旋。
+    axis = geometry["projection_axis"]
+    ends = np.asarray(geometry["points_mm"], dtype=float)
+    axial_sign = math.copysign(1., float(np.dot(ends[-1] - ends[0], axis["direction"])))
     c, sine = math.cos(parameters.pitch_angle), math.sin(parameters.pitch_angle)
     result = []
     for group, target_length in zip(groups, lengths):
@@ -175,11 +181,10 @@ def build_backbone(geometry, parameters):
                 radius *= scale / factor
                 turn *= factor
                 kappa = c * c / radius
-                tau = -math.copysign(1, turn) * sine * c / radius
+                tau = axial_sign * math.copysign(1, turn) * sine * c / radius
             else:
                 kappa = tau = 0.
             result.append(TargetSegment(joint, scale * length / c, radius, turn, kappa, tau))
-    axis = geometry["projection_axis"]
     basis = np.column_stack([axis[name] for name in ("horizontal", "vertical", "direction")])
     origin_data = np.r_[axis["point_mm"], geometry["points_mm"][0], source[0]["start_mm"], source[0]["tangent"]]
     if (basis.shape != (3, 3) or not np.all(np.isfinite(basis)) or
@@ -189,7 +194,7 @@ def build_backbone(geometry, parameters):
         raise ValueError("目标重建坐标基或初始切向无效")
     start_z = float(np.dot(np.asarray(geometry["points_mm"][0]) - axis["point_mm"], axis["direction"]))
     backbone = PiecewiseBackbone(result, links, parameters.pitch_angle,
-                                 source[0]["start_mm"], source[0]["tangent"], axis, start_z)
+                                 source[0]["start_mm"], source[0]["tangent"], axis, start_z, axial_sign)
     if not math.isclose(backbone.bounds[-1], sum(links), rel_tol=1e-12):
         raise ValueError("归一化后的目标长度不匹配")
     return backbone

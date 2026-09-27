@@ -19,7 +19,7 @@ sys.path[:0] = [str(ROOT / 'codes'), str(ROOT / 'visualizer')]
 
 
 def run_gait():
-    import Adaptive_Pole_Climbing as gait
+    import Adaptive_Pole_Climbing_Mujoco as gait
     gait.DEBUG = False
     gait.COMPLIANCE_ENABLED = '--nominal' not in sys.argv
     gain = os.environ.get('SNAKE_COMPLIANCE_GAIN')  # 标量，或 "端部:中部"
@@ -33,7 +33,7 @@ def run_gait():
 
 def math_checks():
     import copy
-    from Adaptive_Pole_Climbing import HelixBackbone
+    from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
     from pole_compliance import PiecewiseBackbone, TargetSegment, ComplianceController, ComplianceParameters, build_backbone
     # 同一常曲率/挠率输入，在非等长连杆上，两种 Yamada 实现应一致。
     links = np.array([35., 67.5, 69.5, 68.5, 34.])

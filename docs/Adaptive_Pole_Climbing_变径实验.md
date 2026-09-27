@@ -5,7 +5,7 @@
 先启动 v1.4.1 可视化 EXE，在 `mujoco` 环境、`codes` 目录执行：
 
 ```powershell
-python Adaptive_Pole_Climbing.py --scene variable
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene variable
 ```
 
 无需重编可视化程序。本次新增的是 MuJoCo 场景和 Python 调试操作，EXE 仍承担几何反馈和执行转发。同一端口只启动一个 EXE。

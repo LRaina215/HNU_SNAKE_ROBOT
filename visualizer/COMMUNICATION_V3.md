@@ -5,7 +5,7 @@
 ## 使用
 
 1. 关闭旧 EXE，启动 `visualizer/windows_app/bin/SnakeRobotVisualizer.exe`（或发布版 v1.4.0 及以上）。默认端口仍为 8765；应用启动为空闲，不自动连接真实串口。
-2. 在原 `mujoco` 环境运行 `codes/Adaptive_Pole_Climbing.py`。顶部 `CONTROL_VIA_VISUALIZER=True` 为默认。
+2. 在原 `mujoco` 环境运行 `codes/Adaptive_Pole_Climbing_Mujoco.py`（原 `Adaptive_Pole_Climbing.py`）。顶部 `CONTROL_VIA_VISUALIZER=True` 为默认。
 3. 等待终端出现“转发执行端已连接”。现在目标必须经过 EXE，随后才写入 MuJoCo；EXE 没启动时仿真仍推进，初始目标保持零。程序不会自动改走直接输出路径。
 4. DEBUG 曲线/表格开关仍有效。停止 Python 或关闭 EXE 后，新的目标不再执行。MuJoCo 在连接中断后保持最后目标并继续物理步进；保持目标不代表物理姿态被锁定，重力和接触仍然作用。
 

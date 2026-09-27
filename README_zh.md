@@ -119,7 +119,7 @@ x(s)=\int_0^scos(\xi_\sigma)d\sigma,\ \ \ \ y(s)=\int_0^ssin(\xi_\sigma)d\sigma,
 $$
 其中a、b、c为标量，s为弧长（表示从原点到该点的曲线长度），则称该曲线为一条Serpenoid曲线。
 
-参数a决定了曲线的波动程度，参数b决定了单位长度内的周期数，参数c决定了宏观的圆形形状。可视化如下图所示。[可视化代码](./codes/Serpentine_Curve_Params_zh.m)
+参数a决定了曲线的波动程度，参数b决定了单位长度内的周期数，参数c决定了宏观的圆形形状。可视化如下图所示。[可视化代码](./tools/matlab/Serpentine_Curve_Params.m)
 <figure>
 <img src="./images/Serpentine_Curve_Params_a.png" width=300 title="Params a"/>
 <img src="./images/Serpentine_Curve_Params_b.png" width=300 title="Params b"/>

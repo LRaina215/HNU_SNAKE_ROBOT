@@ -175,7 +175,7 @@ def numerical():
 
 
 def run_gait():
-    import Adaptive_Pole_Climbing as gait
+    import Adaptive_Pole_Climbing_Mujoco as gait
     gait.DEBUG = False
     gait.CONTROL_VIA_VISUALIZER = False
     gait.COMPLIANCE_ENABLED = True
