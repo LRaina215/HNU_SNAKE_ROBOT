@@ -8,9 +8,10 @@
 python Adaptive_Pole_Climbing.py                  :: 原 Pole 场景（kp=4）
 python Adaptive_Pole_Climbing.py --scene variable :: 连续变径管，外径 180 → 230 mm
 python Adaptive_Pole_Climbing.py --scene twin     :: 论文实验 2 ×0.9，单管 → 双管
+python Adaptive_Pole_Climbing.py --scene twin_full :: 论文实验 2 原尺寸
 ```
 
-两个管道场景由 `tools/build_variable_pipe_scene.py`、`tools/build_twin_pipe_scene.py` 生成，共用初始缠绕姿态（R=130、P=180）、Ctrl+U 默认 R=110、位置伺服 kp=20 和扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
+管道场景由 `tools/build_variable_pipe_scene.py`、`tools/build_twin_pipe_scene.py` 生成，共用初始缠绕姿态（R=130、P=180；原尺寸 R=140）、Ctrl+U 默认 R=110（原尺寸 120）、位置伺服 kp=20 和扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
 
 ## 操作
 
@@ -34,8 +35,17 @@ python Adaptive_Pole_Climbing.py --scene twin     :: 论文实验 2 ×0.9，单�
 | --- | --- | --- |
 | `--scene variable` | 0.466 → 1.799 m，到达管顶 | 1.519 m，上段头部约 1/4 身体离管 |
 | `--scene twin` | 0.466 → 1.653 m，进入双管段约 0.65 m | 1.701 m |
+| `--scene twin_full` | 0.470 → 1.547 m，仍在上升 | 约 1.34 m 停滞 |
 
-双管场景里顺应性尚未体现出优于标准螺旋；摩擦、kp 均为仿真估计值，不代表实机。调参过程、数据位置与待办见[交接记录](../交接记录.md)。
+舵机负载（由轨迹重算 `clip(kp·(目标−实际), ±3 N·m)`，只统计运动中）：
+
+| 场景 | 顺应性：平均力矩 / 顶到上限时间 | 标准螺旋：平均力矩 / 顶到上限时间 |
+| --- | --- | --- |
+| variable | 1.22 N·m / 3.6% | 1.70 N·m / 28.0% |
+| twin | 1.22 N·m / 4.9% | 1.70 N·m / 27.9% |
+| twin_full | 1.17 N·m / 3.7% | 1.57 N·m / 23.4% |
+
+仿真不模拟电机发热和过载保护，所以高度差别不大时标准螺旋看起来也能爬；但它靠比管子紧得多的固定目标长期顶住力矩上限（单个关节最多约 46–49% 的时间）。实机上这对应持续堵转电流，飞特舵机可能触发过载保护而卸力。顺应性目标只比实际形状紧 K，负载明显更低。摩擦、kp 均为仿真估计值，不代表实机。调参过程、数据位置与待办见[交接记录](../交接记录.md)。
 
 标准与顺应性骨架都使用 `psi=∫tau ds+phase`，按实际 N+1 个连杆长度积分。首次顺应性相位拟合对齐上一已执行相位，然后再施加本步增量。完整配置和失效行为见[主 README](../README.md)。
 

@@ -1,8 +1,10 @@
 """论文实验 2（Fig. 14）的等比缩小场景：单圆管 → 连续过渡 → 两根分离的圆管。单位 m。
 
-运行：python tools/build_twin_pipe_scene.py
+运行：python tools/build_twin_pipe_scene.py（同时生成两个比例）
 原尺寸：下段外径 200 mm；上段两管外径 100/150 mm，圆心各距原管轴 77.5 mm。
-整体乘 SCALE=0.9，使下段与变径场景（外径 180 mm）相同，沿用其初始缠绕姿态、kp 与摩擦。
+- ×0.9：下段与变径场景（外径 180 mm）相同，沿用其初始缠绕姿态（R=130）与 Ctrl+U 预设（R=110）。
+- ×1.0：论文原尺寸；下段半径大 10 mm，初始姿态与预设各加 10 mm（R=140 / 120）。
+两者均沿用变径场景的 kp 与摩擦。
 过渡段截面取圆与双圆凸包的 Minkowski 线性插值，各切片均为凸形；
 上段是两根独立圆柱，中间保留缝隙（非凸截面），不用凸包代替。
 """
@@ -17,16 +19,22 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 import build_variable_pipe_scene as base
 
-OUTPUT = ROOT / 'mujoco_model/Snake_Robot_o20_Twin_Pipe.xml'
-SCALE = .9
-R_MAIN = .100 * SCALE
-TWIN = ((-.0775 * SCALE, .050 * SCALE), (.0775 * SCALE, .075 * SCALE))  # (圆心 x, 半径)
+VARIANTS = {  # 名称: (缩放, 初始缠绕 R, Ctrl+U 预设 R)，R 单位 mm
+    'Snake_Robot_o20_Twin_Pipe.xml': (.9, 130., 110.),
+    'Snake_Robot_o20_Twin_Pipe_Full.xml': (1., 140., 120.),
+}
 Z_START, Z_END, HEIGHT = .70, 1.00, 1.80
 AXIAL_SEGMENTS, SIDES = 30, 96
 
 
-def section(u, sides=SIDES):
+def dimensions(scale):
+    """返回 (下段半径, ((圆心 x, 半径), (圆心 x, 半径)))，单位 m。"""
+    return .100 * scale, ((-.0775 * scale, .050 * scale), (.0775 * scale, .075 * scale))
+
+
+def section(u, scale, sides=SIDES):
     """过渡段 u∈[0,1] 的截面边界点：圆与双圆凸包的支撑点线性组合（保持凸性）。"""
+    R_MAIN, TWIN = dimensions(scale)
     theta = np.arange(sides) * 2 * np.pi / sides
     normal = np.c_[np.cos(theta), np.sin(theta)]
     centers = np.array([[x, 0.] for x, _ in TWIN])
@@ -37,7 +45,9 @@ def section(u, sides=SIDES):
     return (1 - u) * R_MAIN * normal + u * twin
 
 
-def build():
+def build(filename, scale, initial_radius_mm, apply_radius_mm):
+    R_MAIN, TWIN = dimensions(scale)
+    output = ROOT / 'mujoco_model' / filename
     tree = ET.parse(ROOT / 'mujoco_model/Snake_Robot_o20_Pole_Climbing.xml')
     root = tree.getroot()
     root.set('model', 'adaptive-twin-pipe')
@@ -57,7 +67,7 @@ def build():
     ET.SubElement(root, 'statistic', center='0 0 .8', extent='1.8')
     custom = ET.SubElement(root, 'custom')
     ET.SubElement(custom, 'numeric', name='experiment_helix_mm',
-                  data=base.numbers([base.APPLY_RADIUS_MM, base.HELIX_PITCH_MM]))
+                  data=base.numbers([apply_radius_mm, base.HELIX_PITCH_MM]))
     ET.SubElement(custom, 'numeric', name='twin_pipe_profile',
                   data=base.numbers([R_MAIN, *np.ravel(TWIN), Z_START, Z_END, HEIGHT]))
     pipe = ET.SubElement(world, 'body', name='twin_pipe')
@@ -73,7 +83,7 @@ def build():
         faces.extend([(0, i + 1, i), (SIDES, SIDES + i, SIDES + i + 1)])
     zs = np.linspace(Z_START, Z_END, AXIAL_SEGMENTS + 1)
     for i, (lo, hi) in enumerate(zip(zs[:-1], zs[1:])):
-        vertices = np.vstack([np.c_[section((z - Z_START) / (Z_END - Z_START)), np.full(SIDES, z - (lo + hi) / 2)]
+        vertices = np.vstack([np.c_[section((z - Z_START) / (Z_END - Z_START), scale), np.full(SIDES, z - (lo + hi) / 2)]
                               for z in (lo, hi)])
         name = f'pipe_transition_{i:02d}'
         ET.SubElement(asset, 'mesh', name=name, vertex=base.numbers(vertices),
@@ -88,14 +98,15 @@ def build():
         ET.SubElement(world, 'site', name=name, type='sphere', size='.008',
                       pos=base.numbers([0, -(R_MAIN + .018), z]), rgba='1 .65 .1 1')
     ET.indent(tree, space='  ')
-    tree.write(OUTPUT, encoding='utf-8', xml_declaration=True)
-    model = mujoco.MjModel.from_xml_path(str(OUTPUT))
+    tree.write(output, encoding='utf-8', xml_declaration=True)
+    model = mujoco.MjModel.from_xml_path(str(output))
     keyframes = ET.SubElement(root, 'keyframe')
-    ET.SubElement(keyframes, 'key', name='experiment_start', qpos=base.numbers(base.initial_pose(model)))
+    ET.SubElement(keyframes, 'key', name='experiment_start', qpos=base.numbers(base.initial_pose(model, initial_radius_mm)))
     ET.indent(tree, space='  ')
-    tree.write(OUTPUT, encoding='utf-8', xml_declaration=True)
-    print(OUTPUT)
+    tree.write(output, encoding='utf-8', xml_declaration=True)
+    print(output)
 
 
 if __name__ == '__main__':
-    build()
+    for filename, variant in VARIANTS.items():
+        build(filename, *variant)

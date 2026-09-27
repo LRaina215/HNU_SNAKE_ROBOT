@@ -43,7 +43,7 @@ def numbers(values):
     return ' '.join(f'{float(x):.12g}' for x in np.asarray(values).ravel())
 
 
-def initial_pose(model):
+def initial_pose(model, radius_mm=HELIX_RADIUS_MM):
     """只设实验初始条件；不会在执行循环中直接覆写关节状态。"""
     data = mujoco.MjData(model)
     mujoco.mj_forward(model, data)
@@ -52,7 +52,7 @@ def initial_pose(model):
                         [data.joint(f'joint{i}').xanchor.copy() for i in range(1, model.nu+1)] +
                         [data.site('s_tail').xpos.copy()])
     links = np.linalg.norm(np.diff(points(), axis=0), axis=1) * 1000
-    data.qpos[7:] = HelixBackbone.from_radius_pitch(HELIX_RADIUS_MM, HELIX_PITCH_MM).joint_angles(model.nu, links, 0.)
+    data.qpos[7:] = HelixBackbone.from_radius_pitch(radius_mm, HELIX_PITCH_MM).joint_angles(model.nu, links, 0.)
     mujoco.mj_forward(model, data)
     points = points()[1:-1]
     center = points.mean(axis=0)
@@ -65,7 +65,7 @@ def initial_pose(model):
     rotation = Rotation.align_vectors([[0, 0, 1]], [axis])[0]
     aligned = rotation.apply(points - center)
     circle = least_squares(lambda x: np.linalg.norm(aligned[:, :2] - x[:2], axis=1) - x[2],
-                           [0., 0., HELIX_RADIUS_MM / 1000]).x
+                           [0., 0., radius_mm / 1000]).x
     data.qpos[:3] = rotation.apply(data.qpos[:3] - center) - np.r_[circle[:2], 0.] + [0., 0., START_CENTER_Z]
     quaternion = (rotation * Rotation.from_quat(data.qpos[[4, 5, 6, 3]])).as_quat()
     data.qpos[3:7] = quaternion[[3, 0, 1, 2]]
