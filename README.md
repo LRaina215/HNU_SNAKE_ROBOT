@@ -70,7 +70,7 @@ python .\codes\Adaptive_Pole_Climbing.py --scene variable
 
 | 操作 | 含义 |
 | --- | --- |
-| Ctrl+U / 控制台 `apply` | 应用 R/P，相位置零，重新初始化顺应性 |
+| Ctrl+U / 控制台 `apply` | 应用 R/P，沿用当前滚动相位，重新初始化顺应性 |
 | Ctrl+J / `step`；Ctrl+H / `back` | 正向 / 反向一步 |
 | Ctrl+N / `hold` | 保持当前目标角，再推进一段物理时间，相位不变 |
 | 空格 / `pause` | 中断动作并暂停；通信和窗口继续刷新 |

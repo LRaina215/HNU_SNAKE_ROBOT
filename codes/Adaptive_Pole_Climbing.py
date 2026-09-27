@@ -329,7 +329,8 @@ def main():
                         elif command in ("apply", "step", "back", "hold"):
                             if command != "apply" and (not initialized or (command != "hold" and active_shape != (radius, pitch))):
                                 raise ValueError("请先 Ctrl+U 应用当前 R/P，再单步滚动")
-                            next_phase = 0.0 if command == "apply" else phase if command == "hold" else phase + (1 if command == "step" else -1) * phase_step
+                            # 应用新 R/P 时沿用当前相位：清零会让已滚动的关节目标跳变上百度而脱管。
+                            next_phase = phase if command in ("apply", "hold") else phase + (1 if command == "step" else -1) * phase_step
                             curve = HelixBackbone.from_radius_pitch(radius, pitch)
                             feedback = None
                             compliant = False

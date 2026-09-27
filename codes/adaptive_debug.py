@@ -6,7 +6,8 @@ HOTKEYS = {'U': 'apply', 'J': 'step', 'H': 'back', 'N': 'hold',
            'R': 'reset', 'G': 'run', 'E': 'compliance', 'K': 'status',
            '-': 'delta-', '=': 'delta+'}
 HELP = """机器人调试（先点击 MuJoCo 窗口；Ctrl+字母，不用 F 键）：
-  Ctrl+U 应用 R/P    Ctrl+J 正向一步    Ctrl+H 反向一步
+  Ctrl+U 应用 R/P    Ctrl+J 相位+一步       Ctrl+H 相位-一步
+  （变径场景 P=180 时 Ctrl+H 上行、Ctrl+J 下行；改变螺距符号方向随之反转）
   Ctrl+N 保持目标再走一段物理时间（相位不变）
   空格 立即暂停     Ctrl+G 连续运行/暂停     Ctrl+R 重置实验并暂停
   Ctrl+E 顺应性开/关 Ctrl+K 查看状态         Ctrl+-/= 减半/加倍相位步长
