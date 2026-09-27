@@ -232,11 +232,14 @@ class ComplianceController:
             else:
                 backbone, phase_offset = self.backbone, self.phase_offset
             targets = backbone.joint_angles(roll_phase + phase_offset)
-            visual_targets = np.degrees(targets) * np.where(np.arange(len(targets)) % 2, -1, 1)
-            if not np.all(np.isfinite(targets)) or any(
-                    not joint["minimum_deg"] <= angle <= joint["maximum_deg"]
-                    for joint, angle in zip(config["joints"], visual_targets)):
-                raise ValueError("顺应性目标超出关节范围，保持上一组目标")
+            if not np.all(np.isfinite(targets)):
+                raise ValueError("顺应性目标无效，保持上一组目标")
+            # 个别无管壁支撑的关节会短暂收紧到极限；按关节限幅继续滚动，而不是整步拒绝（整步停住会失去夹紧）。
+            # 可视化方向为奇 +1/偶 -1，范围关于 0 不一定对称，先换算回 MuJoCo 方向。
+            signs = np.where(np.arange(len(targets)) % 2, -1, 1)
+            bounds = np.radians([[j["minimum_deg"], j["maximum_deg"]] for j in config["joints"]]) + [.01, -.01]
+            low, high = np.sort(bounds * signs[:, None], axis=1).T
+            targets = np.clip(targets, low, high)
             # 全部角度校验通过才提交状态；坏反馈不污染下一轮骨架和相位。
             self.backbone, self.phase_offset, self.key = backbone, phase_offset, key
             self.started = True

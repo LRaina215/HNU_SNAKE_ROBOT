@@ -1,7 +1,7 @@
 """Adaptive Pole：几何参数 → 曲率/挠率 → Yamada → EXE → MuJoCo。
 
 默认单步：Ctrl+U 应用 R/P，Ctrl+J 正向一步，Ctrl+H 反向一步。
-使用 --scene variable 加载连续变径管道，空格暂停，Ctrl+R 恢复实验初始条件。
+使用 --scene variable 加载连续变径管道，--scene twin 加载论文实验 2 的单管→双管场景，空格暂停，Ctrl+R 恢复实验初始条件。
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
@@ -23,7 +23,7 @@ from scipy import integrate
 DEBUG = True
 DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
 COMPLIANCE_ENABLED = True
-COMPLIANCE_GAIN = (0.04, 0.08)  # K_i：标量，或论文式 (34) 的（首尾各 4 个关节, 中部）。
+COMPLIANCE_GAIN = (0.04, 0.12)  # K_i：标量，或（首尾各 4 个关节, 中部）；论文式 (34) 为 0.04/0.08，本模型中部需 0.12。
 COMPLIANCE_INSIDE = False  # False 管外收紧；True 管内撑开（此时 K_i < 1）。
 CONTROL_VIA_VISUALIZER = True  # 目标必须经 EXE 转发后才写入 MuJoCo。
 SINGLE_STEP_MODE = True
@@ -473,9 +473,10 @@ def main():
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Yamada 管道实验；默认保持原 Pole 场景")
-    parser.add_argument("--scene", choices=("pole", "variable"), default=None)
+    parser.add_argument("--scene", choices=("pole", "variable", "twin"), default=None)
     args = parser.parse_args()
     if args.scene is not None:
-        filename = "Snake_Robot_o20_Variable_Pipe.xml" if args.scene == "variable" else "Snake_Robot_o20_Pole_Climbing.xml"
+        filename = {"pole": "Snake_Robot_o20_Pole_Climbing.xml", "variable": "Snake_Robot_o20_Variable_Pipe.xml",
+                    "twin": "Snake_Robot_o20_Twin_Pipe.xml"}[args.scene]
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" / filename)
     main()
