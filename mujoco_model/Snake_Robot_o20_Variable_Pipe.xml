@@ -320,6 +320,7 @@
   <statistic center="0 0 .8" extent="1.8" />
   <custom>
     <numeric name="experiment_helix_mm" data="110 180" />
+    <numeric name="experiment_inside" data="0" />
     <numeric name="pipe_profile" data="0.09 0.115 0.7 1.3 1.8" />
   </custom>
   <keyframe>

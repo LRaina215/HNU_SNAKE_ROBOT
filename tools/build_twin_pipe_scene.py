@@ -68,6 +68,8 @@ def build(filename, scale, initial_radius_mm, apply_radius_mm):
     custom = ET.SubElement(root, 'custom')
     ET.SubElement(custom, 'numeric', name='experiment_helix_mm',
                   data=base.numbers([apply_radius_mm, base.HELIX_PITCH_MM]))
+    # 仿真场景自带管外/管内标记，优先于 COMPLIANCE_INSIDE；实机没有该标记，由开关手动选择。
+    ET.SubElement(custom, 'numeric', name='experiment_inside', data='0')
     ET.SubElement(custom, 'numeric', name='twin_pipe_profile',
                   data=base.numbers([R_MAIN, *np.ravel(TWIN), Z_START, Z_END, HEIGHT]))
     pipe = ET.SubElement(world, 'body', name='twin_pipe')

@@ -1,8 +1,10 @@
 """论文实验 3（Fig. 15）：管内攀爬，内径 340 mm 圆管连续过渡到 350×500 mm 矩形管道。单位 m。
 
 运行：python tools/build_inner_pipe_scene.py（同时生成两个比例）
-MuJoCo 网格按凸包碰撞，空心管用薄壁块拼成：圆管段和矩形段是长方体，
-过渡段每层每条边是一个由上下两圈边界点构成的凸薄壁块。
+MuJoCo 网格按凸包碰撞，空心管不能用一个网格表示。沿用 Pipe_Crawling 的做法，
+用一圈光滑圆棒围成管壁：ROD_COUNT 根棒按内壁周长等分排列，棒心在内壁外法向偏移棒半径处；
+圆管段、矩形段各是一根竖直胶囊，过渡段每层一段首尾相接的胶囊。整根管没有棱边。
+（最初用平板/薄壁块拼接，块间棱边会卡住连杆，管内顺应性很快因轴估计失效而停止。）
 论文机器人 28 节×89.5 mm，本模型 20 节×68.5 mm；原尺寸矩形段中心线一圈约 1.5 m，
 身体绕不满一圈，因此另生成 ×0.8 版本（矩形段约 1.2 圈）。
 管内姿态比管壁小一圈间隙，Ctrl+U 预设比管壁中心线大，依靠向外撑开夹紧。
@@ -25,9 +27,12 @@ VARIANTS = {  # 名称: (缩放, 初始缠绕 R, Ctrl+U 预设 R)，R 为机器�
     'Snake_Robot_o20_Inner_Pipe.xml': (.8, 96., 125.),
     'Snake_Robot_o20_Inner_Pipe_Full.xml': (1., 128., 160.),
 }
-Z_START, Z_END, HEIGHT = .75, 1.15, 1.80
-WALL = .010
-SIDES, LAYERS = 48, 20
+Z_START, Z_END, HEIGHT = .95, 1.35, 2.20  # 初始姿态顶端约 0.73 m，下方留足等径段
+# 棒数与棒径取 Pipe_Crawling 的做法：18 根，r ≈ 0.43 × 圆管内半径（原文 30 mm / 内切 70 mm）。
+# 直管对照（内半径 136 mm，管内顺应性，100 步）：18 根粗棒（胶囊或圆柱）均跑满并上爬；
+# 24 根粗棒、48 根 r=30 mm 细棒、平板管壁都在第 5 步左右因轴估计失效停止。
+ROD_COUNT, ROD_RATIO = 18, .43
+LAYERS = 20
 START_CENTER_Z = .50
 
 
@@ -36,14 +41,29 @@ def dimensions(scale):
     return .170 * scale, .175 * scale, .250 * scale
 
 
-def boundary(u, scale, sides=SIDES):
-    """过渡段 u∈[0,1] 的内壁边界：按极角在圆与矩形之间线性插值半径。"""
+def rods(u, scale, count=None, dense=2048):
+    """过渡段 u∈[0,1] 的棒心位置：内壁按周长等分，沿外法向偏移棒半径。
+
+    内壁在圆与矩形之间按极角线性插值半径；等分周长使各处棒距一致，
+    同一根棒在各层取相同的周长比例，因此沿高度连续移动。
+    """
+    count = ROD_COUNT if count is None else count
     radius, half_x, half_y = dimensions(scale)
-    theta = (np.arange(sides) + .5) * 2 * np.pi / sides
+    theta = np.arange(dense) * 2 * np.pi / dense
     c, s = np.abs(np.cos(theta)), np.abs(np.sin(theta))
     rect = np.minimum(half_x / np.maximum(c, 1e-9), half_y / np.maximum(s, 1e-9))
     r = (1 - u) * radius + u * rect
-    return np.c_[r * np.cos(theta), r * np.sin(theta)]
+    wall = np.c_[r * np.cos(theta), r * np.sin(theta)]
+    edge = np.roll(wall, -1, axis=0) - wall
+    arc = np.r_[0., np.cumsum(np.linalg.norm(edge, axis=1))]
+    # 法向取前后各约一个棒半径范围的平均切向，矩形角处得到角平分方向。
+    rod_radius = ROD_RATIO * radius
+    window = max(1, int(rod_radius / (arc[-1] / dense)))
+    tangent = np.roll(wall, -window, axis=0) - np.roll(wall, window, axis=0)
+    normal = np.c_[tangent[:, 1], -tangent[:, 0]]
+    normal /= np.linalg.norm(normal, axis=1)[:, None]
+    index = np.searchsorted(arc, np.arange(count) * arc[-1] / count) % dense
+    return wall[index] + rod_radius * normal[index]
 
 
 def smooth(u):
@@ -80,41 +100,21 @@ def build(filename, scale, initial_radius_mm, apply_radius_mm):
     # 半透明，便于看到管内机器人；group 1 可在 viewer 中单独隐藏。
     common = dict(friction=f'2 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}', condim='6',
                   group='1', rgba='.28 .52 .72 .3')
-    # 圆管段：SIDES 块长方体，内表面相切于内半径，宽度略放大以消除缝隙。
-    width = 2 * (radius + WALL) * math.tan(math.pi / SIDES) * 1.02
-    for k in range(SIDES):
-        angle = (k + .5) * 2 * math.pi / SIDES
-        center = (radius + WALL / 2) * np.array([math.cos(angle), math.sin(angle)])
-        ET.SubElement(pipe, 'geom', name=f'pipe_round_{k:02d}', type='box',
-                      size=base.numbers([WALL / 2, width / 2, Z_START / 2]),
-                      pos=base.numbers([*center, Z_START / 2]), euler=f'0 0 {angle:.9g}', **common)
-    # 过渡段：每层每条边一个凸薄壁块（上下两圈内壁点及其外移点）。
     zs = np.linspace(Z_START, Z_END, LAYERS + 1)
-    for layer, (lo, hi) in enumerate(zip(zs[:-1], zs[1:])):
-        rings = [boundary(smooth((z - Z_START) / (Z_END - Z_START)), scale) for z in (lo, hi)]
-        mid = (lo + hi) / 2
-        for k in range(SIDES):
-            j = (k + 1) % SIDES
-            points = []
-            for ring, z in zip(rings, (lo, hi)):
-                for p in (ring[k], ring[j]):
-                    outward = p / np.linalg.norm(p)
-                    points += [[*p, z - mid], [*(p + WALL * outward), z - mid]]
-            name = f'pipe_transition_{layer:02d}_{k:02d}'
-            ET.SubElement(asset, 'mesh', name=name, vertex=base.numbers(points))
-            ET.SubElement(pipe, 'geom', name=name, type='mesh', mesh=name, pos=base.numbers([0, 0, mid]), **common)
-    # 矩形段：四块板，角部互相搭接。
-    top = HEIGHT - Z_END
-    for name, size, pos in (
-            ('pipe_rect_px', [WALL / 2, half_y + WALL, top / 2], [half_x + WALL / 2, 0]),
-            ('pipe_rect_nx', [WALL / 2, half_y + WALL, top / 2], [-half_x - WALL / 2, 0]),
-            ('pipe_rect_py', [half_x + WALL, WALL / 2, top / 2], [0, half_y + WALL / 2]),
-            ('pipe_rect_ny', [half_x + WALL, WALL / 2, top / 2], [0, -half_y - WALL / 2])):
-        ET.SubElement(pipe, 'geom', name=name, type='box', size=base.numbers(size),
-                      pos=base.numbers([*pos, (HEIGHT + Z_END) / 2]), **common)
+    centers = [rods(smooth((z - Z_START) / (Z_END - Z_START)), scale) for z in zs]
+    spacing = max(np.linalg.norm(np.roll(c, -1, axis=0) - c, axis=1).max() for c in centers)
+    rod_radius = ROD_RATIO * radius
+    if spacing >= 2 * rod_radius:
+        raise ValueError(f"相邻棒心距 {spacing*1000:.1f} mm 不小于棒径，管壁会有缝隙；请增加 ROD_COUNT")
+    for k in range(ROD_COUNT):
+        # 圆管段与矩形段各一根竖直胶囊；过渡段逐层连接相邻两圈棒心。
+        path = [np.r_[centers[0][k], 0.]] + [np.r_[c[k], z] for c, z in zip(centers, zs)] +                [np.r_[centers[-1][k], HEIGHT]]
+        for n, (a, b) in enumerate(zip(path[:-1], path[1:])):
+            ET.SubElement(pipe, 'geom', name=f'pipe_rod_{k:02d}_{n:02d}', type='capsule',
+                          size=f'{rod_radius:g}', fromto=base.numbers([*a, *b]), **common)
     for z, name in ((Z_START, 'transition_start'), (Z_END, 'transition_end')):
         ET.SubElement(world, 'site', name=name, type='sphere', size='.008',
-                      pos=base.numbers([0, -(radius + WALL + .012), z]), rgba='1 .65 .1 1')
+                      pos=base.numbers([0, -(radius + 2 * rod_radius + .012), z]), rgba='1 .65 .1 1')
     ET.indent(tree, space='  ')
     tree.write(output, encoding='utf-8', xml_declaration=True)
     model = mujoco.MjModel.from_xml_path(str(output))

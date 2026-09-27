@@ -93,6 +93,8 @@ def build():
     ET.SubElement(root, 'statistic', center='0 0 .8', extent='1.8')
     custom = ET.SubElement(root, 'custom')
     ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([APPLY_RADIUS_MM, HELIX_PITCH_MM]))
+    # 仿真场景自带管外/管内标记，优先于 COMPLIANCE_INSIDE；实机没有该标记，由开关手动选择。
+    ET.SubElement(custom, 'numeric', name='experiment_inside', data='0')
     ET.SubElement(custom, 'numeric', name='pipe_profile', data=numbers([R_BOTTOM, R_TOP, Z_START, Z_END, HEIGHT]))
     pipe = ET.SubElement(world, 'body', name='variable_pipe')
     common = dict(friction=f'2 {TORSIONAL_FRICTION:g} {ROLLING_FRICTION:g}', condim='6', group='1', rgba='.28 .52 .72 1')
