@@ -25,7 +25,8 @@ tools/
   build_variable_pipe_scene.py 生成连续变径管道、初始姿态，并设置本场景 kp 与摩擦
   build_twin_pipe_scene.py     生成论文实验 2 的单管 → 双管场景（复用上面的姿态与参数）
   build_inner_pipe_scene.py    生成论文实验 3 的管内圆管 → 矩形管道场景
-mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe 场景
+  build_tree_scene.py          生成树干近似场景：不规则截面、局部鼓包和收窄
+mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe / Tree 场景
 交接记录.md                    各轮调试结论、数据位置与待办；接手前先读
 ```
 
@@ -73,6 +74,9 @@ python .\codes\Adaptive_Pole_Climbing.py
 | 单管 → 双管（原尺寸） | `--scene twin_full` | 论文实验 2 原尺寸：下段外径 200 mm，上段 100/150 mm 两管，圆心各距原轴 77.5 mm |
 | 管内圆 → 矩形 | `--scene inner` | 论文实验 3（Fig. 15）×0.8：内径 272 mm 圆管，z 0.95–1.35 m 过渡到 280×400 mm 矩形管道，高 2.2 m；管壁仿 `Pipe_Crawling` 由 18 根半透明圆棒围成 |
 | 管内圆 → 矩形（原尺寸） | `--scene inner_full` | 论文实验 3 原尺寸：内径 340 mm → 350×500 mm |
+| 不规则树干 | `--scene tree` | 高 2 m；下段外径 180 mm，z=0.75 m 后转为不规则椭圆，z≈1.25 m 局部鼓包，至 z=1.75 m 收窄；仅完成场景搭建，未做攀爬测试 |
+
+树干场景受论文实验 4 启发，尺寸是人为设定，并非论文树木的精确复刻。主轴保持竖直，截面为椭圆叠加小幅三瓣起伏，不包含树枝、分叉或树皮沟槽；统一沿用管外摩擦与 kp。它使用分段凸网格保留鼓包后的收窄，避免整个树干被一个碰撞凸包填平。初始 R=130、P=180 mm，Ctrl+U 预设 R=110、P=180 mm，XML 标记自动选择管外模式。Ctrl+K 可统计树干接触，但不输出圆管专用的同高度管半径。重新生成：`python tools/build_tree_scene.py`。
 
 管道场景共用：20 关节机器人从下段预缠绕姿态开始（R=130 mm、P=180 mm；原尺寸场景为 140 mm），Ctrl+U 默认应用 R=110 mm（原尺寸场景 120 mm）；位置伺服 kp=20（原 Pole 场景为 4），扭转/滚动摩擦按橡胶-管面量级取 0.005/0.002 m。管内场景从贴近管壁的螺旋开始（与管壁留约 2 mm 间隙），Ctrl+U 预设比管壁大（×0.8：R=125、P=243；原尺寸：R=160、P=311，P 按论文 α=0.30 rad 算出），靠向外撑开夹紧；仿真场景 XML 都带 `experiment_inside` 标记（管内 1、管外 0），优先于 `COMPLIANCE_INSIDE`；实机没有该标记，由 `COMPLIANCE_INSIDE` 手动选择。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
 
@@ -82,6 +86,7 @@ python .\codes\Adaptive_Pole_Climbing.py --scene twin
 python .\codes\Adaptive_Pole_Climbing.py --scene twin_full
 python .\codes\Adaptive_Pole_Climbing.py --scene inner
 python .\codes\Adaptive_Pole_Climbing.py --scene inner_full
+python .\codes\Adaptive_Pole_Climbing.py --scene tree
 ```
 
 程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+H 或 Ctrl+J 滚动一步。**管外场景（variable / twin，P>0）中 Ctrl+H 向上爬、Ctrl+J 向下；管内场景（inner）相反，Ctrl+J 向上**；螺距符号取反时方向随之反转。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。

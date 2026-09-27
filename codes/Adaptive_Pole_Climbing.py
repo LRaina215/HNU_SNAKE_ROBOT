@@ -3,6 +3,7 @@
 默认单步：Ctrl+U 应用 R/P，Ctrl+J 正向一步，Ctrl+H 反向一步。
 使用 --scene variable 加载连续变径管道，--scene twin / twin_full 加载论文实验 2 的单管→双管场景（×0.9 / 原尺寸），--scene inner / inner_full 加载实验 3 的管内圆→矩形场景（×0.8 / 原尺寸），空格暂停，Ctrl+R 恢复实验初始条件。
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
+--scene tree 加载不规则树干近似场景（只完成搭建，尚未验证攀爬）。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
 """
@@ -476,12 +477,13 @@ def main():
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Yamada 管道实验；默认保持原 Pole 场景")
-    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full"), default=None)
+    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full", "tree"), default=None)
     args = parser.parse_args()
     if args.scene is not None:
         filename = {"pole": "Snake_Robot_o20_Pole_Climbing.xml", "variable": "Snake_Robot_o20_Variable_Pipe.xml",
                     "twin": "Snake_Robot_o20_Twin_Pipe.xml",
                     "twin_full": "Snake_Robot_o20_Twin_Pipe_Full.xml",
-                    "inner": "Snake_Robot_o20_Inner_Pipe.xml", "inner_full": "Snake_Robot_o20_Inner_Pipe_Full.xml"}[args.scene]
+                    "inner": "Snake_Robot_o20_Inner_Pipe.xml", "inner_full": "Snake_Robot_o20_Inner_Pipe_Full.xml",
+                    "tree": "Snake_Robot_o20_Tree.xml"}[args.scene]
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" / filename)
     main()
