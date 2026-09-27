@@ -60,7 +60,7 @@ python .\codes\Adaptive_Pole_Climbing.py
 
 构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.1 EXE，再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
 
-**变径实验使用下面的命令**；不带 `--scene` 时仍打开原 Pole 场景。新场景为竖直管外攀爬，管外径 180 → 230 mm，高 1.8 m；20 关节机器人从下段预缠绕姿态开始，R=130 mm、P=180 mm。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
+**变径实验使用下面的命令**；不带 `--scene` 时仍打开原 Pole 场景。新场景为竖直管外攀爬，管外径 180 → 230 mm，高 1.8 m；20 关节机器人从下段预缠绕姿态开始（R=130 mm、P=180 mm），Ctrl+U 默认应用 R=110 mm；本场景位置伺服 kp=20。详细步骤见[变径实验与调试指南](codes/Adaptive_Pole_Climbing_变径实验.md)。
 
 ```powershell
 python .\codes\Adaptive_Pole_Climbing.py --scene variable
@@ -90,7 +90,7 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 
 首次取得有效截面前，以标准螺旋推进；顺应性首次接管后，反馈无效则本步不执行。Ctrl+R 是实验重置，保留 R/P、步长、顺应性及重力选项，之后需 Ctrl+U。日常关节目标仍全部经 EXE 转发。旧 a/v、omega、time_step 已退出运行参数。
 
-**当前边界：场景、单步操作和转发链路已验证，稳定攀爬尚未实现。** 保留原机器人动力学及驱动参数的重力短测中会滑落。`gravity=0` 仅用于形状、相位和通信调试，不能证明爬升能力；重力实验应恢复 `gravity=1` 并 reset。
+**当前边界：** 变径场景（kp=20）重力下连续 Ctrl+H 260 步，顺应性模式从 0.47 m 爬到 1.10 m，进入变径区；标准螺旋在约 1.0 m 处脱管。尚未验证爬完变径区及上段。原 Pole 场景 kp=4 过软，顺应性模式会下滑。`gravity=0` 仅用于形状、相位和通信调试，不能证明爬升能力；重力实验应恢复 `gravity=1` 并 reset。
 
 ## 常用开关
 

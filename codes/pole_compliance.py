@@ -12,12 +12,17 @@ import numpy as np
 
 @dataclass(frozen=True)
 class ComplianceParameters:
-    gain: object = 0.04  # 标量或按关节顺序给出的 K_i；不按曲线段编号索引。
+    # 标量、（首尾各 4 个关节, 中部）二元组，或按关节顺序的 K_i；不按曲线段编号索引。
+    gain: object = 0.04
     pitch_angle: float = 0.25
     inside: bool = False
 
     def gains(self, count):
-        values = np.broadcast_to(np.asarray(self.gain, dtype=float), (count,)).copy()
+        gain = self.gain
+        if isinstance(gain, tuple) and len(gain) == 2 and count != 2:
+            # 论文式 (34)：两端悬臂减小增益，避免端部离管或无约束收紧。
+            gain = [gain[0] if i < 4 or i >= count - 4 else gain[1] for i in range(count)]
+        values = np.broadcast_to(np.asarray(gain, dtype=float), (count,)).copy()
         if not np.all(np.isfinite(values)) or np.any(values < 0):
             raise ValueError("顺应性增益必须非负且有限")
         if self.inside and np.any(values >= 1):

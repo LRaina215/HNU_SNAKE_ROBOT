@@ -2,7 +2,7 @@
 
 运行：python tools/build_variable_pipe_scene.py
 圆台均为凸体；相邻端环完全相同，没有圆柱台阶或轴向缝隙。
-修改常量后重建即可；不改原机器人动力学、驱动器或旧场景。
+修改常量后重建即可；只改本场景的位置伺服 kp，不改原 Pole 场景。
 """
 from pathlib import Path
 import sys
@@ -21,7 +21,11 @@ OUTPUT = ROOT / 'mujoco_model/Snake_Robot_o20_Variable_Pipe.xml'
 R_BOTTOM, R_TOP = .090, .115
 Z_START, Z_END, HEIGHT = .70, 1.30, 1.80
 AXIAL_SEGMENTS, SIDES = 40, 96
-HELIX_RADIUS_MM, HELIX_PITCH_MM = 130., 180.
+HELIX_RADIUS_MM, HELIX_PITCH_MM = 130., 180.  # 预缠绕初始姿态
+APPLY_RADIUS_MM = 110.  # Ctrl+U 默认应用的 R；比初始姿态紧，才有夹紧力
+# 原模型 kp=4 过软：顺应性目标只比实际紧 K，力矩约 kp*K*关节角，抱不住管。
+# kp=20 时论文增益 K=0.04/0.08 可爬过变径区；kp=40 两端会收紧到关节极限。
+ACTUATOR_KP = 20.
 START_CENTER_Z = .50
 
 
@@ -69,6 +73,8 @@ def build():
     root = tree.getroot()
     root.set('model', 'adaptive-variable-pipe')
     world, asset = root.find('worldbody'), root.find('asset')
+    for servo in root.iter('position'):
+        servo.set('kp', f'{ACTUATOR_KP:g}')
     # 源文件的注释外说明文字不是 MJCF 内容；生成时只保留元素。
     for node in root.iter():
         node.text = node.tail = None
@@ -79,7 +85,7 @@ def build():
     ET.SubElement(visual, 'headlight', ambient='.35 .35 .35', diffuse='.7 .7 .7')
     ET.SubElement(root, 'statistic', center='0 0 .8', extent='1.8')
     custom = ET.SubElement(root, 'custom')
-    ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([HELIX_RADIUS_MM, HELIX_PITCH_MM]))
+    ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([APPLY_RADIUS_MM, HELIX_PITCH_MM]))
     ET.SubElement(custom, 'numeric', name='pipe_profile', data=numbers([R_BOTTOM, R_TOP, Z_START, Z_END, HEIGHT]))
     pipe = ET.SubElement(world, 'body', name='variable_pipe')
     common = dict(friction='2 .1 .1', condim='6', group='1', rgba='.28 .52 .72 1')

@@ -157,7 +157,7 @@ def main():
             send('status');child.stdin.close();child.wait(timeout=40)
             assert child.returncode==0,logpath.read_text(encoding='utf-8')
         assert 'saved screenshot' not in logpath.read_text(encoding='utf-8')
-        assert 'R=135mm' in logpath.read_text(encoding='utf-8') and 'P=190mm' in logpath.read_text(encoding='utf-8')
+        assert 'R=115mm' in logpath.read_text(encoding='utf-8') and 'P=190mm' in logpath.read_text(encoding='utf-8')
         data=np.load(OUT/'controls.npz');records=json.loads((OUT/'controls.npz.received.json').read_text())
         packets={(x['run_id'],x['delivery_id']):x for x in records};signs=np.where(np.arange(20)%2,-1,1)
         for ctrl,run,delivery in zip(data['ctrl'],data['applied_run_id'],data['applied_delivery_id']):

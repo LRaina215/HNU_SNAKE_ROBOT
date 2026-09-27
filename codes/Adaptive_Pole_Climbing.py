@@ -23,7 +23,7 @@ from scipy import integrate
 DEBUG = True
 DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
 COMPLIANCE_ENABLED = True
-COMPLIANCE_GAIN = 0.04  # K_i；可改为按关节顺序排列的列表。
+COMPLIANCE_GAIN = (0.04, 0.08)  # K_i：标量，或论文式 (34) 的（首尾各 4 个关节, 中部）。
 COMPLIANCE_INSIDE = False  # False 管外收紧；True 管内撑开（此时 K_i < 1）。
 CONTROL_VIA_VISUALIZER = True  # 目标必须经 EXE 转发后才写入 MuJoCo。
 SINGLE_STEP_MODE = True
