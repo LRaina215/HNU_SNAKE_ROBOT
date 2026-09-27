@@ -24,8 +24,8 @@ import build_variable_pipe_scene as base
 
 PITCH_ANGLE = .30  # 论文实验 3 的设计螺距角 α
 VARIANTS = {  # 名称: (缩放, 初始缠绕 R, Ctrl+U 预设 R)，R 为机器人中心线半径 mm
-    'Snake_Robot_o20_Inner_Pipe.xml': (.8, 96., 125.),
-    'Snake_Robot_o20_Inner_Pipe_Full.xml': (1., 128., 160.),
+    'Snake_Robot_o20_Inner_Pipe.xml': (.8, 102., 125.),
+    'Snake_Robot_o20_Inner_Pipe_Full.xml': (1., 134., 160.),
 }
 Z_START, Z_END, HEIGHT = .95, 1.35, 2.20  # 初始姿态顶端约 0.73 m，下方留足等径段
 # 棒数与棒径取 Pipe_Crawling 的做法：18 根，r ≈ 0.43 × 圆管内半径（原文 30 mm / 内切 70 mm）。
