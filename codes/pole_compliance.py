@@ -165,8 +165,10 @@ def build_backbone(geometry, parameters):
             joint = segment["joint_index"]
             if radius:
                 factor = 1 + (-1 if parameters.inside else 1) * gains[joint - 1]
-                radius *= factor * scale
-                turn /= factor  # 式 (23)(24)，弧长不变。
+                # 式 (23) 字面 (K̂r, φ/K̂) 在管外 K̂=1+K 时减小转角，闭环实测逐步张开，
+                # 与论文正文“管外收紧、管内撑开”相反；按正文取 (r/K̂, K̂φ)，弧长不变。
+                radius *= scale / factor
+                turn *= factor
                 kappa = c * c / radius
                 tau = -math.copysign(1, turn) * sine * c / radius
             else:

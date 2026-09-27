@@ -22,6 +22,11 @@ def run_gait():
     import Adaptive_Pole_Climbing as gait
     gait.DEBUG = False
     gait.COMPLIANCE_ENABLED = '--nominal' not in sys.argv
+    gain = os.environ.get('SNAKE_COMPLIANCE_GAIN')
+    if gain:
+        # "端部:中部" 仿论文式 (34)，前 4 / 后 4 个关节用端部增益。
+        ends, middle = (float(x) for x in gain.split(':')) if ':' in gain else (float(gain),) * 2
+        gait.COMPLIANCE_GAIN = [ends if i < 4 or i >= 16 else middle for i in range(20)] if ':' in gain else ends
     # 无 viewer 的测试进程也用正式控制台命令入口；不伪造算法或网络。
     if os.environ.get('SNAKE_MUJOCO_HEADLESS') == '1':
         threading.Thread(target=gait.uart_listener, daemon=True).start()
