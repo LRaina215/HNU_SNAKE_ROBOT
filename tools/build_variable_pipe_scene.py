@@ -2,7 +2,7 @@
 
 运行：python tools/build_variable_pipe_scene.py
 圆台均为凸体；相邻端环完全相同，没有圆柱台阶或轴向缝隙。
-修改常量后重建即可；只改本场景的位置伺服 kp，不改原 Pole 场景。
+修改常量后重建即可；只改本场景的位置伺服 kp 与扭转/滚动摩擦，不改原 Pole 场景。
 """
 from pathlib import Path
 import sys
@@ -26,6 +26,10 @@ APPLY_RADIUS_MM = 110.  # Ctrl+U 默认应用的 R；比初始姿态紧，才有
 # 原模型 kp=4 过软：顺应性目标只比实际紧 K，力矩约 kp*K*关节角，抱不住管。
 # kp=20 时论文增益 K=0.04/0.08 可爬过变径区；kp=40 两端会收紧到关节极限。
 ACTUATOR_KP = 20.
+# 扭转/滚动摩擦（单位 m，MuJoCo 取接触双方较大值）。原值 0.15/0.1 远大于橡胶-管面的
+# 接触斑尺度，身体自滚阻力矩与舵机力矩同量级，变径段约 1.08 m 处打滑停滞；
+# 改为接近 MuJoCo 默认量级后可爬过变径区到达上段。滑动摩擦保持机器人 1、管 2。
+TORSIONAL_FRICTION, ROLLING_FRICTION = .005, .002
 START_CENTER_Z = .50
 
 
@@ -75,6 +79,9 @@ def build():
     world, asset = root.find('worldbody'), root.find('asset')
     for servo in root.iter('position'):
         servo.set('kp', f'{ACTUATOR_KP:g}')
+    for geom in root.iter('geom'):
+        if geom.get('friction') == '1 0.15 0.015':  # 机器人各连杆
+            geom.set('friction', f'1 {TORSIONAL_FRICTION:g} {ROLLING_FRICTION:g}')
     # 源文件的注释外说明文字不是 MJCF 内容；生成时只保留元素。
     for node in root.iter():
         node.text = node.tail = None
@@ -88,7 +95,7 @@ def build():
     ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([APPLY_RADIUS_MM, HELIX_PITCH_MM]))
     ET.SubElement(custom, 'numeric', name='pipe_profile', data=numbers([R_BOTTOM, R_TOP, Z_START, Z_END, HEIGHT]))
     pipe = ET.SubElement(world, 'body', name='variable_pipe')
-    common = dict(friction='2 .1 .1', condim='6', group='1', rgba='.28 .52 .72 1')
+    common = dict(friction=f'2 {TORSIONAL_FRICTION:g} {ROLLING_FRICTION:g}', condim='6', group='1', rgba='.28 .52 .72 1')
     ET.SubElement(pipe, 'geom', name='pipe_lower', type='cylinder', size=numbers([R_BOTTOM, Z_START/2]),
                   pos=numbers([0, 0, Z_START/2]), **common)
     zs = np.linspace(Z_START, Z_END, AXIAL_SEGMENTS+1)
