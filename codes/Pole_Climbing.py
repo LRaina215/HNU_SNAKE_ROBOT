@@ -14,6 +14,10 @@ import threading
 import numpy as np
 import mujoco.viewer
 from pynput import keyboard
+import os
+from pathlib import Path
+from contextlib import nullcontext
+from mujoco_visualizer_bridge import VisualizerBridge
 
 
 NUM_JOINTS = 20
@@ -83,9 +87,11 @@ def on_key_press(key):
     elif hasattr(key, 'char') and key.char in CHAR_HOTKEYS:
         CHAR_HOTKEYS[key.char]()
 
-key_listener = keyboard.Listener(on_press=on_key_press)
-key_listener.daemon = True
-key_listener.start()
+headless = os.environ.get('SNAKE_MUJOCO_HEADLESS') == '1'
+if not headless:
+    key_listener = keyboard.Listener(on_press=on_key_press)
+    key_listener.daemon = True
+    key_listener.start()
 
 '''
 通过字符串快速设置参数
@@ -103,6 +109,8 @@ def uart_listener():
             command_queue.put(user_input)
             time.sleep(0.1)  # 防止过度占用CPU
         except KeyboardInterrupt:
+            break
+        except EOFError:
             break
 
 def command_processor():
@@ -144,20 +152,30 @@ def command_processor():
             break
 
 # 启动监听线程
-listener_thread = threading.Thread(target=uart_listener, daemon=True)
-processor_thread = threading.Thread(target=command_processor, daemon=True)
-
-listener_thread.start()
-processor_thread.start()
+if not headless:
+    listener_thread = threading.Thread(target=uart_listener, daemon=True)
+    processor_thread = threading.Thread(target=command_processor, daemon=True)
+    listener_thread.start()
+    processor_thread.start()
 
 steps = 10  # step次数
 
-m = mujoco.MjModel.from_xml_path('../mujoco_model/Snake_Robot_o20_Pole_Climbing.xml')
+model_path = os.environ.get('SNAKE_MUJOCO_MODEL') or str(
+    Path(__file__).resolve().parent.parent / 'mujoco_model' / 'Snake_Robot_o20_Pole_Climbing.xml')
+m = mujoco.MjModel.from_xml_path(model_path)
 d = mujoco.MjData(m)
+NUM_JOINTS = m.nu
 data_ctrl = np.zeros(NUM_JOINTS)
+bridge = VisualizerBridge(m, d)
+max_seconds = float(os.environ.get('SNAKE_MUJOCO_MAX_SECONDS', '0'))
+a = float(os.environ.get('SNAKE_MUJOCO_A', a))
+v = float(os.environ.get('SNAKE_MUJOCO_V', v))
+trace_path = os.environ.get('SNAKE_MUJOCO_TRACE')
+trace_qpos, trace_ctrl, trace_time, trace_step_ms, trace_points = [], [], [], [], []
 
 
-with mujoco.viewer.launch_passive(m, d) as viewer:
+with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d)) as viewer:
+    start_wall = time.monotonic()
     while(step > 0):
         for i in range(NUM_JOINTS):
             if (i % 2 == 0):
@@ -165,14 +183,36 @@ with mujoco.viewer.launch_passive(m, d) as viewer:
             else:
                 y = a / angle_rad * math.sin(omega * t + v * i + math.pi / 2)
             data_ctrl[i] = y
-            with viewer.lock():
+            step_started = time.perf_counter()
+            with (nullcontext() if headless else viewer.lock()):
                 d.ctrl = data_ctrl
                 for k in range(steps):
                     mujoco.mj_step(m, d)
-                viewer.sync()
+                step_elapsed_ms = (time.perf_counter() - step_started) * 1000
+                if viewer is not None:
+                    viewer.sync()
+                bridge.publish(d)
+                if trace_path:
+                    trace_qpos.append(d.qpos.copy())
+                    trace_ctrl.append(d.ctrl.copy())
+                    trace_time.append(d.time)
+                    trace_step_ms.append(step_elapsed_ms)
+                    trace_points.append(bridge.world_points(d).copy())
                 time.sleep(time_sleep)
+            if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
+                break
         t = t + time_step
+        if max_seconds > 0 and time.monotonic() - start_wall >= max_seconds:
+            break
         # step = step - 1
+
+bridge.close()
+if trace_path:
+    np.savez(trace_path, qpos=trace_qpos, ctrl=trace_ctrl, sim_time=trace_time,
+             step_ms=trace_step_ms, points_world_m=trace_points)
+print(f'VISUALIZER_BRIDGE sent={bridge.sent} rejected={bridge.rejected} joints={NUM_JOINTS} '
+      f'enqueue_p99_ms={np.percentile(bridge.enqueue_ms, 99):.4f} '
+      f'last_error={bridge.last_error!r}', flush=True)
 
 
 

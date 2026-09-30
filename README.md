@@ -80,10 +80,10 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 | 管内圆 → 矩形 | `--scene inner` | 论文实验 3（Fig. 15）×0.8：内径 272 mm 圆管，z 0.95–1.35 m 过渡到 280×400 mm 矩形管道，高 2.2 m；管壁仿 `Pipe_Crawling` 由 18 根半透明圆棒围成 |
 | 管内圆 → 矩形（原尺寸） | `--scene inner_full` | 论文实验 3 原尺寸：内径 340 mm → 350×500 mm |
 | 不规则树干 | `--scene tree` | 高 2 m；下段外径 180 mm，z=0.75 m 后转为不规则椭圆，z≈1.25 m 局部鼓包，至 z=1.75 m 收窄；仅完成场景搭建，未做攀爬测试 |
-| 实物：小管 → 大管 | `--scene real_s2l` | **26 关节实物参数**；UPVC 外径 110 mm，z=0.95 m 起经 16.6 mm 锥面（斜边 30 mm）变为 160 mm，高 1.9 m |
-| 实物：大管 → 小管 | `--scene real_l2s` | 同上，大管在下、小管在上 |
+| 实物：小管 → 大管（实验室布置） | `--scene real_s2l` | **26 关节实物参数**；UPVC 外径 110 mm，z=0.95 m 起经 16.6 mm 锥面（斜边 30 mm）变为 160 mm，高 1.9 m |
+| 实物：大管 → 小管 | `--scene real_l2s` | 同上，大管在下、小管在上（备用） |
 
-实物场景（`python tools/build_real_pipe_scene.py` 重新生成）按实机测量搭建：26 关节，头长与连杆均 64.5 mm，外壳半径 29 mm（原网格按比例缩放），单节 136 g、头部估 40 g；位置伺服 kp=127 N·m/rad（悬臂实测），力矩上限 ±2.355 N·m（手册堵转 7.85 N·m × EXE 转矩限制 300/1000），关节阻尼 1.5（保持原模型阻尼比）；摩擦未实测，沿用管外场景。螺距 220 mm；初始半径取不穿透管面的最小值（小管在下 98 mm，大管在下 126 mm），Ctrl+U 预设比贴管中心线紧 4 mm（80 / 105 mm）。XML 自带顺应性增益 `experiment_compliance_gain=0.01/0.02`（优先于 `COMPLIANCE_GAIN`）：舵机比原模型硬约 6 倍，沿用 0.04/0.12 会一直顶在力矩上限。
+实物场景（`python tools/build_real_pipe_scene.py` 重新生成）按实机测量搭建：26 关节，头长与连杆均 64.5 mm，外壳半径 29 mm（原网格按比例缩放），每节（含头部，头部模块也带舵机）136 g，整机 3.67 kg；位置伺服 kp=127 N·m/rad（悬臂实测），力矩上限 ±2.355 N·m（手册堵转 7.85 N·m × EXE 转矩限制 300/1000），关节阻尼 1.5（保持原模型阻尼比）；摩擦未实测，沿用管外场景。螺距 220 mm；初始半径取不穿透管面的最小值（小管在下 98 mm，大管在下 126 mm），Ctrl+U 预设比贴管中心线紧 4 mm（80 / 105 mm）。XML 自带顺应性增益 `experiment_compliance_gain=0.01/0.02`（优先于 `COMPLIANCE_GAIN`）：舵机比原模型硬约 6 倍，沿用 0.04/0.12 会一直顶在力矩上限。
 
 树干场景受论文实验 4 启发，尺寸是人为设定，并非论文树木的精确复刻。主轴保持竖直，截面为椭圆叠加小幅三瓣起伏，不包含树枝、分叉或树皮沟槽；统一沿用管外摩擦与 kp。它使用分段凸网格保留鼓包后的收窄，避免整个树干被一个碰撞凸包填平。初始 R=130、P=180 mm，Ctrl+U 预设 R=110、P=180 mm，XML 标记自动选择管外模式。Ctrl+K 可统计树干接触，但不输出圆管专用的同高度管半径。重新生成：`python tools/build_tree_scene.py`。
 
@@ -227,9 +227,3 @@ Including MuJoCo model files, references, code files with Chinese annotations, g
 Email: xjxf0923@gmail.com 3332407087@qq.com
 
 WeChat: xjxf0923
-
-
-
-做出改动
-
-1. 热键兼容MAC

@@ -1,7 +1,7 @@
 """按实物生成 26 关节蛇形机器人与 UPVC 变径管场景。单位 m（常量注明 mm 的除外）。
 
 运行：python tools/build_real_pipe_scene.py
-一次生成两个方向：小管在下爬向大管（real_s2l），大管在下爬向小管（real_l2s）。
+一次生成两个方向：小管在下爬向大管（real_s2l，实验室布置），大管在下爬向小管（real_l2s，备用）。
 机器人参数来自实机（2026-09-30）：26 关节、头长与连杆 64.5 mm、外壳半径 29 mm、单节 135.85 g；
 舵机 SM-80BL-C001 悬臂实测等效刚度约 127 N·m/rad，力矩上限按手册堵转扭矩 × EXE 转矩限制。
 关节轴、正负方向与原 20 关节模型相同，桥接与 EXE 不需要改动。
@@ -20,7 +20,7 @@ import build_variable_pipe_scene as base
 JOINTS = 26
 LINK_M = .0645  # 相邻关节间距；头部尖端到关节 1、关节 26 到尾端也是 64.5 mm
 BODY_RADIUS_M = .029  # 外壳 CAD（零件 1.1/1.2）外圆柱面半径
-LINK_MASS, HEAD_MASS = .136, .040  # 头部无舵机，按单节 135.85 g − 舵机 97.5 g 估计
+LINK_MASS = HEAD_MASS = .136  # 实测单节 135.85 g（舵机 + 外壳）；头部模块同样带舵机
 STALL_TORQUE_NM = 7.85  # 手册：80 kg·cm @12 V
 TORQUE_LIMIT_PERMILLE = 300  # EXE 使能时写入地址 48 的默认转矩限制
 FORCE_LIMIT_NM = STALL_TORQUE_NM * TORQUE_LIMIT_PERMILLE / 1000
