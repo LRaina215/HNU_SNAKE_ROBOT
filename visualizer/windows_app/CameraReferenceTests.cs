@@ -39,6 +39,32 @@ namespace SnakeRobotVisualizer
                 throw new Exception("robot-center mode did not follow the bent pose");
             }
             Console.WriteLine("robot-center mode follows pose passed");
+
+            // 轴竖直显示：X/Y 与二维投影一致，Z 为沿 rolling 轴的坐标，且不产生镜像。
+            RollingAxisState axis = new RollingAxisState
+            {
+                Valid = true,
+                Point = new Point3D(10, -20, 5),
+                Direction = new Point3D(1, 2, 2).Normalized()
+            };
+            RollingProjection.SetBasis(axis, null, false);
+            Point3D[] pose = Kinematics.Forward(0.7, -0.5, 89.5);
+            RobotFrame aligned = SnakeCanvas.AlignToRollingAxis(new RobotFrame { Points = pose, RollingAxis = axis });
+            ProjectionPoint[] projected = RollingProjection.Project(pose, axis);
+            for (int i = 0; i < pose.Length; i++)
+            {
+                ExpectNear("aligned point " + i, aligned.Points[i], projected[i].X, projected[i].Y,
+                    Point3D.Dot(pose[i] - axis.Point, axis.Direction));
+            }
+            Point3D a = pose[1] - pose[0], b = pose[2] - pose[1];
+            Point3D alignedCross = Point3D.Cross(aligned.Points[1] - aligned.Points[0], aligned.Points[2] - aligned.Points[1]);
+            Point3D expectedCross = Point3D.Cross(a, b);
+            if (Math.Abs(alignedCross.Length - expectedCross.Length) > Tolerance ||
+                Math.Abs(alignedCross.Z - Point3D.Dot(expectedCross, axis.Direction)) > Tolerance)
+            {
+                throw new Exception("aligned view is not a proper rotation");
+            }
+            Console.WriteLine("aligned view is a proper rotation passed");
             return 0;
         }
     }

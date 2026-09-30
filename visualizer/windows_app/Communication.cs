@@ -184,7 +184,25 @@ namespace SnakeRobotVisualizer
                 { "raw_axis", FullAxisForApi(f.RawAxis) },
                 { "curve", CurveForApi(f.Curve, f.CurveGammaRadians) },
                 { "feedback_usable", age <= 500 && f.Joints.All(x => x.Online) && axisReady && f.Curve != null && f.Curve.Valid },
-                { "target_state", commandStatus }
+                { "target_state", commandStatus },
+                { "telemetry", TelemetryForApi(f.Joints) }
+            };
+        }
+
+        // 实机状态块；从未读到时为 null。某关节缺值时对应 sample_unix_ms 为 0。
+        internal static Dictionary<string, object> TelemetryForApi(JointRuntimeState[] joints)
+        {
+            if (joints == null || !joints.Any(x => x.Telemetry != null)) return null;
+            Func<Func<ServoTelemetry, object>, object[]> column = read =>
+                joints.Select(x => x.Telemetry == null ? (object)0 : read(x.Telemetry)).ToArray();
+            return new Dictionary<string, object> {
+                { "load_permille", column(x => x.LoadPermille) },
+                { "current_raw", column(x => x.CurrentRaw) },
+                { "temperature_c", column(x => x.TemperatureC) },
+                { "voltage_v", column(x => x.VoltageVolts) },
+                { "servo_status", column(x => x.ServoStatus) },
+                { "moving", joints.Select(x => x.Telemetry != null && x.Telemetry.Moving).ToArray() },
+                { "sample_unix_ms", joints.Select(x => x.Telemetry == null ? 0.0 : UnixMs(x.TelemetryUtc)).ToArray() }
             };
         }
 

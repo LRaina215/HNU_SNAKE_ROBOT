@@ -105,6 +105,7 @@ namespace SnakeRobotVisualizer
         private readonly CheckBox labelsBox = new CheckBox();
         private readonly CheckBox targetOverlayBox = new CheckBox();
         private readonly CheckBox followBox = new CheckBox();
+        private readonly CheckBox alignAxisBox = new CheckBox();
         private readonly Button resetViewButton = new Button();
         private readonly Button lockAxisButton = new Button();
         private readonly ComboBox axisModeBox = new ComboBox();
@@ -315,10 +316,12 @@ namespace SnakeRobotVisualizer
                     ? ViewReference.RobotCenter
                     : ViewReference.WorldOrigin);
             });
+            // 实机只有关节角，三维图以头部为原点；勾选后按 rolling 轴竖直显示，只影响绘制。
+            ConfigureToggle(alignAxisBox, "轴竖直", delegate { applicationState.Display.AlignRollingAxis = alignAxisBox.Checked; });
             toolbar.Controls.AddRange(new Control[]
             {
                 axesBox, rollingAxisBox, localAxesBox, gridBox,
-                nodesBox, labelsBox, targetOverlayBox, followBox
+                nodesBox, labelsBox, targetOverlayBox, followBox, alignAxisBox
             });
 
             resetViewButton.Text = "重置视角";
@@ -466,6 +469,9 @@ namespace SnakeRobotVisualizer
             jointGrid.Columns.Add("Target", "目标角");
             jointGrid.Columns.Add("Status", "状态");
             jointGrid.Columns.Add("Raw", "原始值");
+            // 实机状态块：负载为最大输出的百分比（相对指标），温度 ℃；非实机模式显示 —。
+            jointGrid.Columns.Add("Load", "负载");
+            jointGrid.Columns.Add("Temp", "温度");
             jointGrid.Columns["Joint"].FillWeight = 48;
             jointGrid.Columns["Id"].FillWeight = 42;
             jointGrid.Columns["Axis"].FillWeight = 48;
@@ -679,7 +685,7 @@ namespace SnakeRobotVisualizer
                     "—",
                     "0.0°",
                     "未运行",
-                    "—");
+                    "—", "—", "—");
             }
             if (jointGrid.Rows.Count > 0)
             {
@@ -871,6 +877,10 @@ namespace SnakeRobotVisualizer
                 row.Cells["Target"].Value = state.TargetDegrees.ToString("0.0") + "°";
                 row.Cells["Status"].Value = state.Status;
                 row.Cells["Raw"].Value = state.Raw;
+                row.Cells["Load"].Value = state.Telemetry == null ? "—" :
+                    (state.Telemetry.LoadPermille / 10.0).ToString("0.0") + "%";
+                row.Cells["Temp"].Value = state.Telemetry == null ? "—" :
+                    state.Telemetry.TemperatureC + "℃";
                 row.DefaultCellStyle.ForeColor = state.Online
                     ? jointGrid.DefaultCellStyle.ForeColor
                     : Color.FromArgb(205, 82, 82);
@@ -911,6 +921,7 @@ namespace SnakeRobotVisualizer
             labelsBox.Checked = display.ShowLabels;
             targetOverlayBox.Checked = display.ShowTarget;
             followBox.Checked = display.FollowRobot;
+            alignAxisBox.Checked = display.AlignRollingAxis;
         }
 
         private void ApplyDisplayMode()
@@ -1629,7 +1640,7 @@ namespace SnakeRobotVisualizer
                     "J" + joint.Index,
                     joint.ServoId,
                     joint.AxisType == JointAxisType.Yaw ? "yaw" : "pitch",
-                    "—", "—", "回放", "—");
+                    "—", "—", "回放", "—", "—", "—");
             }
             if (jointGrid.Rows.Count > 0)
             {

@@ -218,6 +218,9 @@ namespace SnakeRobotVisualizer
         public bool Online;
         public string Status = "未连接";
         public DateTime LastSeenUtc = DateTime.MinValue;
+        // 实机状态块（负载、温度等）；只在实机模式按周期读取，未读到时为 null。
+        public ServoTelemetry Telemetry;
+        public DateTime TelemetryUtc = DateTime.MinValue;
 
         public JointRuntimeState Clone()
         {
@@ -228,7 +231,9 @@ namespace SnakeRobotVisualizer
                 TargetDegrees = TargetDegrees,
                 Online = Online,
                 Status = Status,
-                LastSeenUtc = LastSeenUtc
+                LastSeenUtc = LastSeenUtc,
+                Telemetry = Telemetry,
+                TelemetryUtc = TelemetryUtc
             };
         }
     }
@@ -335,6 +340,7 @@ namespace SnakeRobotVisualizer
         public bool ShowLabels = true;
         public bool ShowTarget = false;
         public bool FollowRobot = false;
+        public bool AlignRollingAxis = false;
         public bool ShowPipeOutline = false;
         public bool PipeEllipse = false;
         public double PipeRadiusX = 160.0;

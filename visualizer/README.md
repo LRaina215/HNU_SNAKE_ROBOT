@@ -35,7 +35,9 @@ windows_app\bin\SnakeRobotVisualizer.exe
 
 ## 通信
 
-默认 `127.0.0.1:8765`。两端均可用 `SNAKE_VISUALIZER_PORT` 改端口。控制器与 MuJoCo 使用两条持久连接：前者取 geometry/提交 target_frame，后者上传 mujoco_frame/领取 simulation_target。协议版本仍为 2，v1.4.0 新增 MuJoCo 转发字段。
+默认 `127.0.0.1:8765`。两端均可用 `SNAKE_VISUALIZER_PORT` 改端口。控制器与 MuJoCo 使用两条持久连接：前者取 geometry/提交 target_frame，后者上传 mujoco_frame/领取 simulation_target。协议版本仍为 2，v1.4.0 新增 MuJoCo 转发字段，v1.4.2 新增实机舵机状态 `telemetry`（负载、温度、电流、电压）。
+
+v1.4.2 界面：关节表格增加「负载」「温度」两列（仅实机模式有值）；工具栏「轴竖直」按 rolling 轴与二维投影基重画三维视图（Z 为 rolling 轴），用于实机没有头部世界位姿、画面绕头部转动的情况，只影响显示。
 
 - [完整执行协议](COMMUNICATION_V3.md)
 - [几何帧与目标提交协议](COMMUNICATION_V2.md)

@@ -35,6 +35,17 @@ Python 控制器计算整组目标 → `GeometryExchange(execution="mujoco")` �
 
 `geometry.target_state` 增加 `mujoco_executor_ready`、`mujoco_delivery_id`、`mujoco_applied_delivery_id`；发送给执行端的状态为 `dispatched_mujoco`。接受、转发、实际写入三个环节可以分别核对。
 
+## v1.4.2：实机舵机状态（`geometry.telemetry`）
+
+实机模式下 EXE 每 5 个读取周期（`RobotRuntime.TelemetryEveryCycles`）改为从地址 56 连续读 15 字节（位置、速度、负载、电压、温度、状态、移动标志、电流），其余周期只读位置。几何反馈新增 `telemetry`，从未读到时为 null（MuJoCo、模拟模式始终为 null）：
+
+```json
+{"load_permille": [-168, 90], "current_raw": [0, 3], "temperature_c": [36, 41], "voltage_v": [12.3, 12.3],
+ "servo_status": [0, 0], "moving": [false, false], "sample_unix_ms": [1790000000000.0, 1790000000000.0]}
+```
+
+按关节顺序排列。`load_permille` 为最大输出的千分比，bit10 为符号，只作相对比较（实测静态托举 3.9 N·m 时读数约 168，不能直接换算成力矩）；`current_raw` bit15 为符号，SM 系列手册未给单位；`servo_status` 为地址 65 的飞特状态位。某关节未读到时对应 `sample_unix_ms` 为 0。状态块读取失败时同一周期退回只读位置；累计 3 次失败后本次连接停用状态块读取，位置反馈不受影响。
+
 ## 失效与所有权
 
 同一时刻只有一个持久连接可作为 MuJoCo 执行端，其上传的模型产生反馈。其他连接不能覆盖这个运行的实测帧。执行连接断开或超过 1 秒未更新会清除未执行目标；控制连接断开、取消、目标过期、配置切换和停止也会清除相应待执行目标。

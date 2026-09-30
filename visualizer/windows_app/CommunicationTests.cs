@@ -30,7 +30,7 @@ namespace SnakeRobotVisualizer
         }
         static int Main()
         {
-            try { TestGeometryPreview(); TestMujocoExecution(); TestLiveMock(); Console.WriteLine("ALL COMMUNICATION TESTS PASSED"); return 0; }
+            try { TestGeometryPreview(); TestMujocoExecution(); TestLiveMock(); TestLiveTelemetry(); Console.WriteLine("ALL COMMUNICATION TESTS PASSED"); return 0; }
             catch (Exception e) { Console.WriteLine(e); return 1; }
         }
         static void TestGeometryPreview()
@@ -172,6 +172,51 @@ namespace SnakeRobotVisualizer
                 r.Stop();
                 Reject(delegate { r.GeometryForApi(); }, "stopped runtime exports no active feedback");
             }
+        }
+        static void TestLiveTelemetry()
+        {
+            RobotProfile p = RobotProfile.CreateDefaultTwoJoint();
+            using (RobotRuntime r = new RobotRuntime(delegate { return new TelemetryBus(); }))
+            {
+                r.Start(p, RuntimeMode.Live);
+                Dictionary<string, object> telemetry = null;
+                Stopwatch w = Stopwatch.StartNew();
+                while (telemetry == null && w.ElapsedMilliseconds < 2000)
+                {
+                    try { telemetry = (Dictionary<string, object>)r.GeometryForApi()["telemetry"]; } catch (InvalidOperationException) { }
+                    Thread.Sleep(10);
+                }
+                Check(telemetry != null, "live runtime reads servo state block");
+                object[] load = (object[])telemetry["load_permille"];
+                Check(Convert.ToInt32(load[0]) == -168 && Convert.ToInt32(load[1]) == 90, "state block load keeps sign and joint order");
+                Check(Convert.ToInt32(((object[])telemetry["temperature_c"])[1]) == 41, "state block temperature exported");
+                Check(((double[])telemetry["sample_unix_ms"]).All(x => x > 0), "state block sample time exported per joint");
+                r.Stop();
+            }
+            using (RobotRuntime r = new RobotRuntime(delegate { return new FakeBus(); }))
+            {
+                r.Start(p, RuntimeMode.Live); Wait(r);
+                Check(r.GeometryForApi()["telemetry"] == null, "bus without state block exports no telemetry");
+                r.Stop();
+            }
+        }
+        sealed class TelemetryBus : IServoBus, IServoTelemetryBus
+        {
+            public bool IsOpen { get; private set; }
+            public void Open() { IsOpen = true; }
+            public void Close() { IsOpen = false; }
+            public void Dispose() { Close(); }
+            public ServoReadResult[] ReadPositionsTolerant(int[] ids) { return ids.Select(id => new ServoReadResult { Id = id, Success = true, Position = 2048 }).ToArray(); }
+            public ServoReadResult[] ReadStatesTolerant(int[] ids)
+            {
+                return ids.Select((id, i) => new ServoReadResult { Id = id, Success = true, Position = 2048,
+                    Telemetry = new ServoTelemetry { LoadPermille = i == 0 ? -168 : 90, TemperatureC = 36 + 5 * i, VoltageVolts = 12.3 } }).ToArray();
+            }
+            public void SetTargetPositions(int[] ids, int[] targets, int speed) { }
+            public void SetTorqueEnabled(int[] ids, bool enabled) { }
+            public void SetTorqueLimit(int[] ids, int limit) { }
+            public void SetAcceleration(int[] ids, int acceleration) { }
+            public void EnableSafely(int[] ids, int[] positions, int torque, int speed, int acceleration) { }
         }
         sealed class FakeBus : IServoBus
         {

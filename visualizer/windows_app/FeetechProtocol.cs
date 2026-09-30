@@ -17,6 +17,26 @@ namespace SnakeRobotVisualizer
         public bool Success;
         public int Position;
         public string Error;
+        // 仅状态块读取成功时非空；位置读取成功而状态块失败时 TelemetryFailed 为真。
+        public ServoTelemetry Telemetry;
+        public bool TelemetryFailed;
+    }
+
+    // SMS/STS 内存表地址 56–70 一次读出；负载与电流只作相对指标，不换算为力矩。
+    internal sealed class ServoTelemetry
+    {
+        public int LoadPermille;     // 地址 60，bit10 为符号，0.1% 最大输出
+        public double VoltageVolts;  // 地址 62，0.1 V
+        public int TemperatureC;     // 地址 63
+        public int ServoStatus;      // 地址 65，飞特状态位（电压、角度、过热、过流、过载等）
+        public bool Moving;          // 地址 66
+        public int CurrentRaw;       // 地址 69，bit15 为符号，原始单位（SM 系列手册未给换算）
+    }
+
+    // 可选能力：一次读出位置与状态；伪总线可不实现，运行时退回只读位置。
+    internal interface IServoTelemetryBus
+    {
+        ServoReadResult[] ReadStatesTolerant(int[] servoIds);
     }
 
     internal interface IServoBus : IDisposable
@@ -37,7 +57,7 @@ namespace SnakeRobotVisualizer
             int acceleration);
     }
 
-    internal sealed class FeetechBus : IServoBus
+    internal sealed class FeetechBus : IServoBus, IServoTelemetryBus
     {
         private const int TorqueEnableAddress = 0x28;
         private const int AccelerationAddress = 0x29;
@@ -46,6 +66,7 @@ namespace SnakeRobotVisualizer
         private const int TorqueLimitAddress = 0x30;
         private const int PresentPositionAddress = 0x38;
         private const int OperatingModeAddress = 0x21;
+        internal const int StateBlockLength = 15;  // 地址 56–70
         private readonly SerialPort port;
 
         public FeetechBus(string portName, int baudRate, int readTimeoutMilliseconds = 60)
@@ -129,6 +150,78 @@ namespace SnakeRobotVisualizer
                     Error = ex.Message
                 };
             }
+        }
+
+        public ServoReadResult[] ReadStatesTolerant(int[] servoIds)
+        {
+            ServoReadResult[] result = new ServoReadResult[servoIds.Length];
+            for (int i = 0; i < servoIds.Length; i++)
+            {
+                try
+                {
+                    port.DiscardInBuffer();
+                    byte[] request = BuildReadPacket(servoIds[i], PresentPositionAddress, StateBlockLength);
+                    port.Write(request, 0, request.Length);
+                    result[i] = ParseStateStatus(ReadStatusPacket(), servoIds[i]);
+                }
+                catch (Exception ex)
+                {
+                    try { port.DiscardInBuffer(); } catch { }
+                    // 状态块失败时仍保证本周期的位置反馈。
+                    result[i] = TryReadPosition(servoIds[i]);
+                    if (result[i].Success)
+                    {
+                        result[i].TelemetryFailed = true;
+                        result[i].Error = "状态块读取失败：" + ex.Message;
+                    }
+                }
+            }
+            return result;
+        }
+
+        internal static ServoReadResult ParseStateStatus(FeetechStatusPacket status, int expectedId)
+        {
+            if (status == null)
+            {
+                throw new TimeoutException("没有收到舵机应答");
+            }
+            if (status.Id != expectedId)
+            {
+                throw new InvalidOperationException(
+                    String.Format("请求 ID {0}，但收到 ID {1}", expectedId, status.Id));
+            }
+            if (status.Error != 0)
+            {
+                throw new InvalidOperationException(
+                    String.Format("舵机 {0} 返回错误 0x{1:X2}", expectedId, status.Error));
+            }
+            byte[] p = status.Parameters;
+            if (p == null || p.Length != StateBlockLength)
+            {
+                throw new InvalidOperationException("状态块应答长度无效");
+            }
+            return new ServoReadResult
+            {
+                Id = expectedId,
+                Success = true,
+                Position = p[0] | (p[1] << 8),
+                Error = String.Empty,
+                Telemetry = new ServoTelemetry
+                {
+                    LoadPermille = SignMagnitude(p[4] | (p[5] << 8), 10),
+                    VoltageVolts = p[6] / 10.0,
+                    TemperatureC = p[7],
+                    ServoStatus = p[9],
+                    Moving = p[10] != 0,
+                    CurrentRaw = SignMagnitude(p[13] | (p[14] << 8), 15)
+                }
+            };
+        }
+
+        private static int SignMagnitude(int raw, int signBit)
+        {
+            int magnitude = raw & ((1 << signBit) - 1);
+            return (raw & (1 << signBit)) != 0 ? -magnitude : magnitude;
         }
 
         public int ReadByte(int servoId, int address)

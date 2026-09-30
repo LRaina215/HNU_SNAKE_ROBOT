@@ -4,6 +4,7 @@
 使用 --scene variable 加载连续变径管道，--scene twin / twin_full 加载论文实验 2 的单管→双管场景（×0.9 / 原尺寸），--scene inner / inner_full 加载实验 3 的管内圆→矩形场景（×0.8 / 原尺寸），空格暂停，Ctrl+R 恢复实验初始条件。
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
 --scene tree 加载不规则树干近似场景（只完成搭建，尚未验证攀爬）。
+--scene real_s2l / real_l2s 加载按实物尺寸的 26 关节机器人与 UPVC 变径管（小管→大管 / 大管→小管）。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
 """
@@ -155,6 +156,11 @@ def main():
     # 场景可声明管内实验；否则沿用顶部开关。
     inside_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_NUMERIC, "experiment_inside")
     inside = bool(m.numeric_data[m.numeric_adr[inside_key]]) if inside_key >= 0 else COMPLIANCE_INSIDE
+    # 实物刚度场景自带顺应性增益；测试脚本用 SNAKE_COMPLIANCE_GAIN 指定增益时不覆盖。
+    gain = COMPLIANCE_GAIN
+    gain_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_NUMERIC, "experiment_compliance_gain")
+    if gain_key >= 0 and not os.environ.get("SNAKE_COMPLIANCE_GAIN"):
+        gain = tuple(float(x) for x in m.numeric("experiment_compliance_gain").data)
     mujoco.mj_forward(m, d)
 
     joint_count = m.nu
@@ -192,7 +198,7 @@ def main():
     relay_status = None
     last_notice = None
     print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
-          f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm {'管内' if inside else '管外'}", flush=True)
+          f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm {'管内' if inside else '管外'} K={gain}", flush=True)
     print(HELP, flush=True)
     print(f"场景：{Path(model_path).name}；重力={m.opt.gravity.tolist()}；{'启动暂停，先 Ctrl+U' if manual else '连续运行'}", flush=True)
 
@@ -307,7 +313,7 @@ def main():
                             compliance_enabled = not compliance_enabled
                             compliance = None
                             if initialized and compliance_enabled and exchange is not None:
-                                compliance = ComplianceController(ComplianceParameters(COMPLIANCE_GAIN,
+                                compliance = ComplianceController(ComplianceParameters(gain,
                                     math.atan2(active_shape[1], 2*math.pi*active_shape[0]), inside), links)
                             show_status()
                         elif command in ("delta-", "delta+"):
@@ -403,7 +409,7 @@ def main():
                                     if compliance_enabled and exchange is not None:
                                         alpha = math.atan2(pitch, 2 * math.pi * radius)
                                         compliance = ComplianceController(
-                                            ComplianceParameters(COMPLIANCE_GAIN, alpha, inside), links)
+                                            ComplianceParameters(gain, alpha, inside), links)
                                 action_label = "保持目标" if pending["command"] == "hold" else "顺应性" if compliant else "标准螺旋"
                                 remaining = joint_count
                                 pending = None
@@ -477,13 +483,14 @@ def main():
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Yamada 管道实验；默认保持原 Pole 场景")
-    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full", "tree"), default=None)
+    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full", "tree", "real_s2l", "real_l2s"), default=None)
     args = parser.parse_args()
     if args.scene is not None:
         filename = {"pole": "Snake_Robot_o20_Pole_Climbing.xml", "variable": "Snake_Robot_o20_Variable_Pipe.xml",
                     "twin": "Snake_Robot_o20_Twin_Pipe.xml",
                     "twin_full": "Snake_Robot_o20_Twin_Pipe_Full.xml",
                     "inner": "Snake_Robot_o20_Inner_Pipe.xml", "inner_full": "Snake_Robot_o20_Inner_Pipe_Full.xml",
-                    "tree": "Snake_Robot_o20_Tree.xml"}[args.scene]
+                    "tree": "Snake_Robot_o20_Tree.xml",
+                    "real_s2l": "Snake_Robot_o26_Real_Pipe_S2L.xml", "real_l2s": "Snake_Robot_o26_Real_Pipe_L2S.xml"}[args.scene]
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" / filename)
     main()

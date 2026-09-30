@@ -28,9 +28,10 @@ tools/
   build_twin_pipe_scene.py     生成论文实验 2 的单管 → 双管场景（复用上面的姿态与参数）
   build_inner_pipe_scene.py    生成论文实验 3 的管内圆管 → 矩形管道场景
   build_tree_scene.py          生成树干近似场景：不规则截面、局部鼓包和收窄
+  build_real_pipe_scene.py     按实物参数生成 26 关节机器人与 UPVC 变径管（110 ↔ 160 mm）
   matlab/                      蛇形曲线参数可视化（Serpentine_Curve_Params.m）
 docs/                         Adaptive Pole 说明、阶段三/四记录、变径实验指南
-mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe / Tree 场景
+mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe / Tree / o26_Real_Pipe 场景
 交接记录.md                    各轮调试结论、数据位置与待办；接手前先读
 ```
 
@@ -67,7 +68,7 @@ Start-Process .\visualizer\windows_app\bin\SnakeRobotVisualizer.exe
 python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 ```
 
-构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.1 EXE，再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
+构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.2 EXE（`Paper Code/蛇形机器人可视化程序_v1.4.2/`，v1.4.1 保留），再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
 
 **管道实验用 `--scene` 选择场景**；不带 `--scene` 时仍打开原 Pole 场景。
 
@@ -79,6 +80,10 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 | 管内圆 → 矩形 | `--scene inner` | 论文实验 3（Fig. 15）×0.8：内径 272 mm 圆管，z 0.95–1.35 m 过渡到 280×400 mm 矩形管道，高 2.2 m；管壁仿 `Pipe_Crawling` 由 18 根半透明圆棒围成 |
 | 管内圆 → 矩形（原尺寸） | `--scene inner_full` | 论文实验 3 原尺寸：内径 340 mm → 350×500 mm |
 | 不规则树干 | `--scene tree` | 高 2 m；下段外径 180 mm，z=0.75 m 后转为不规则椭圆，z≈1.25 m 局部鼓包，至 z=1.75 m 收窄；仅完成场景搭建，未做攀爬测试 |
+| 实物：小管 → 大管 | `--scene real_s2l` | **26 关节实物参数**；UPVC 外径 110 mm，z=0.95 m 起经 16.6 mm 锥面（斜边 30 mm）变为 160 mm，高 1.9 m |
+| 实物：大管 → 小管 | `--scene real_l2s` | 同上，大管在下、小管在上 |
+
+实物场景（`python tools/build_real_pipe_scene.py` 重新生成）按实机测量搭建：26 关节，头长与连杆均 64.5 mm，外壳半径 29 mm（原网格按比例缩放），单节 136 g、头部估 40 g；位置伺服 kp=127 N·m/rad（悬臂实测），力矩上限 ±2.355 N·m（手册堵转 7.85 N·m × EXE 转矩限制 300/1000），关节阻尼 1.5（保持原模型阻尼比）；摩擦未实测，沿用管外场景。螺距 220 mm；初始半径取不穿透管面的最小值（小管在下 98 mm，大管在下 126 mm），Ctrl+U 预设比贴管中心线紧 4 mm（80 / 105 mm）。XML 自带顺应性增益 `experiment_compliance_gain=0.01/0.02`（优先于 `COMPLIANCE_GAIN`）：舵机比原模型硬约 6 倍，沿用 0.04/0.12 会一直顶在力矩上限。
 
 树干场景受论文实验 4 启发，尺寸是人为设定，并非论文树木的精确复刻。主轴保持竖直，截面为椭圆叠加小幅三瓣起伏，不包含树枝、分叉或树皮沟槽；统一沿用管外摩擦与 kp。它使用分段凸网格保留鼓包后的收窄，避免整个树干被一个碰撞凸包填平。初始 R=130、P=180 mm，Ctrl+U 预设 R=110、P=180 mm，XML 标记自动选择管外模式。Ctrl+K 可统计树干接触，但不输出圆管专用的同高度管半径。重新生成：`python tools/build_tree_scene.py`。
 
@@ -91,6 +96,8 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py --scene twin_full
 python .\codes\Adaptive_Pole_Climbing_Mujoco.py --scene inner
 python .\codes\Adaptive_Pole_Climbing_Mujoco.py --scene inner_full
 python .\codes\Adaptive_Pole_Climbing_Mujoco.py --scene tree
+python .\codes\Adaptive_Pole_Climbing_Mujoco.py --scene real_s2l
+python .\codes\Adaptive_Pole_Climbing_Mujoco.py --scene real_l2s
 ```
 
 程序启动后保持暂停。**先点击 MuJoCo 窗口**，按 Ctrl+U 应用初始目标，再按 Ctrl+H 或 Ctrl+J 滚动一步。**管外场景（variable / twin，P>0）中 Ctrl+H 向上爬、Ctrl+J 向下；管内场景（inner）相反，Ctrl+J 向上**；螺距符号取反时方向随之反转。按下时生效，忽略长按自动重复；终端、EXE 和调试表格中的按键不会触发运动。加 Ctrl 是为避开 MuJoCo 内置的单字母显示快捷键。
@@ -119,17 +126,23 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 
 **当前边界：** 默认顺应性增益 K 首尾 0.04、中部 0.12，目标按关节范围限幅。重力下连续 Ctrl+H 300 步：变径场景（`--scene variable`）从 0.47 m 爬到管顶 1.80 m；论文实验 2 的等比缩小场景（`--scene twin`，单管 → 双管）爬到 1.65 m，已进入双管段约 0.65 m；原尺寸场景（`--scene twin_full`）爬到 1.55 m 且仍在上升，标准螺旋停在约 1.34 m。仿真不模拟舵机过载，但标准螺旋有 23–28% 的时间顶在力矩上限，顺应性只有 4–5%。管内场景（`--scene inner`，Ctrl+J 上爬）420 步：顺应性 0.45→1.40 m（最高 1.42 m），穿过过渡段进入矩形段，与标准螺旋相当（最高 1.42 m）；原尺寸场景顺应性 0.43→1.01 m 仍在上升。初始缠绕半径须贴近管壁，否则 Ctrl+U 时尾部下坠、轴估计偏斜，详见[交接记录](交接记录.md)。各场景均用 kp=20、扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
 
+**实物参数场景（`real_s2l`，重力开，连续 Ctrl+H）：** 前 100 步都在小管上，三种设置高度相近（关节平均高度 0.34→0.76 m）。标准螺旋在过渡段后滑落到地面；顺应性 K=0.04/0.12 有 73% 的时间顶在力矩上限，第 102 步在过渡段因轴估计失效停止；K=0.01/0.02 顶到上限的时间降到 41%，150 步爬到 0.98 m，已有约一半身体上到大管。实物尺寸下 64.5 mm 连杆绕小管时离散关节点径向偏离约 ±17 mm，这是离散链本身的限制。
+
 ## 实机版（`Adaptive_Pole_Climbing_Real.py`）
 
 实机版不依赖 MuJoCo，关节数和连杆长度取自 EXE 反馈；目标以 `live` 方式交给 EXE，由 EXE 这一唯一串口所有者整组写入舵机。**启动后不下发任何目标**，也不会自动生成螺旋：
 
 1. 启动 EXE，选择实机模式并连接串口；在 EXE 界面**手动解锁并使能扭矩**（Python 无法使能扭矩，急停也用 EXE 的紧急释放）。
-2. 设置 `codes/Adaptive_Pole_Climbing_Real.py` 顶部的 `COMPLIANCE_INSIDE`（管外 False、管内 True；实机没有场景标记），运行 `python .\codes\Adaptive_Pole_Climbing_Real.py`。
+2. 设置 `codes/Adaptive_Pole_Climbing_Real.py` 顶部的 `COMPLIANCE_INSIDE`（管外 False、管内 True；实机没有场景标记），运行 `python .\codes\Adaptive_Pole_Climbing_Real.py`。默认 R=105、P=220 mm 对应大管（外径 160 mm）；小管（外径 110 mm）先输入 `r=80`。
 3. **缠绕阶段**：Ctrl+J 从头部开始一节一节缠成目标螺旋（R/P），Ctrl+H 退回。每次推进 `WIND_STEP_JOINTS=0.25` 节（一节分四次到位），Ctrl+-/= 减半/加倍；以第一次 Ctrl+J 时的实测姿态为起点，未缠到的关节保持不动。
 4. 位置合适后按 **Ctrl+U**：以当前姿态为起点进入单步滚动，本操作不下发目标；默认开顺应性，Ctrl+E 可切换为标准 Yamada。
 5. **滚动阶段**：Ctrl+J / Ctrl+H 相位 + / − 一步，与仿真相同（管外、P>0 时 Ctrl+H 上爬）。Ctrl+R 回到缠绕阶段而不移动机器人；Ctrl+N 重发当前目标；Ctrl+K 状态；空格中断等待。
 
-热键为系统全局热键，**在任何窗口按下都会响应**，键位与 MuJoCo 窗口一致；控制台命令同样可用（`step`、`back`、`apply`、`hold`、`compliance`、`status`、`reset`、`r=110 p=180`、`delta=0.05`、`wind=0.25`、`quit`）。实机版只支持单步，没有连续运行、重力和仿真读数。
+热键为系统全局热键，**在任何窗口按下都会响应**，键位与 MuJoCo 窗口一致；控制台命令同样可用（`step`、`back`、`apply`、`hold`、`compliance`、`status`、`reset`、`r=105 p=220`、`delta=0.05`、`wind=0.25`、`quit`）。实机版只支持单步，没有连续运行、重力和仿真读数。
+
+**舵机状态（需 EXE v1.4.2）：** 实机模式下 EXE 每 5 个读取周期改读一次状态块（地址 56–70），在关节表格显示负载（最大输出的百分比，只作相对比较，不能换算成 N·m）和温度，并在几何反馈中给出 `telemetry`。实机版每步完成时打印最大/平均负载、最高温度和最低电压，Ctrl+K 同样显示；运行期间每秒把实测角、目标角、负载、温度、电流、电压写入 `validation/results/real-robot/real_时间.csv`（不入库，`TELEMETRY_LOG=False` 关闭）。若舵机不支持连续读状态块，EXE 在连续 3 次失败后停用该读取，位置反馈不受影响。
+
+**三维视图「轴竖直」：** 实机只有关节角，三维图以头部为原点，滚动时画面绕头部转。勾选 EXE 工具栏「轴竖直」后，按 rolling 轴与二维投影基重画：Z 为 rolling 轴，X/Y 与二维投影相同。只影响显示，轴无效时退回原坐标。
 
 | 配置 | 默认值 | 含义 |
 | --- | --- | --- |
@@ -137,6 +150,9 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 | `MAX_JOINT_STEP_DEG` | `30` | 任一关节单步目标变化上限，超过则拒绝本步 |
 | `STEP_SETTLE_S` | `1.0` | EXE 确认下发后等待舵机运动的时间，之后报告跟踪误差 |
 | `COMPLIANCE_INSIDE` | `False` | 手动选择管内 / 管外 |
+| `COMPLIANCE_GAIN` | `(0.01, 0.02)` | 按实物刚度仿真得到；实机尚未验证 |
+| `HELIX_RADIUS_MM` / `HELIX_PITCH_MM` | `105` / `220` | 缠绕目标，按大管 |
+| `TELEMETRY_LOG` / `LOG_PERIOD_S` | `True` / `1.0` | 本地 CSV 遥测记录 |
 
 无硬件时可用 `--execution mujoco` 让 MuJoCo 执行端代替舵机检查流程（见 `validation/real_flow_mujoco.py`），`--execution preview` 只在 EXE 中预览，`--no-hotkeys` 只用控制台。该验证只覆盖按键流程与目标生成，**不代表实机已验证**。
 

@@ -226,6 +226,59 @@ namespace SnakeRobotVisualizer
                 return;
             }
 
+            // 只改绘制坐标：实机没有头部世界位姿，按 rolling 轴与二维投影基重画，使轴竖直、画面不随头部转动。
+            RobotFrame source = frame;
+            bool aligned = settings.AlignRollingAxis && CanAlign(source);
+            if (aligned)
+            {
+                frame = AlignToRollingAxis(source);
+            }
+            try
+            {
+                PaintFrame(g, aligned);
+            }
+            finally
+            {
+                frame = source;
+            }
+        }
+
+        internal static bool CanAlign(RobotFrame value)
+        {
+            return value != null && value.RollingAxis != null && value.RollingAxis.Valid &&
+                value.RollingAxis.HasBasis && value.Points != null;
+        }
+
+        // 新坐标：X/Y 为二维投影的水平/竖直基，Z 为 rolling 轴，原点为轴上一点；(H, V, D) 为右手系，不产生镜像。
+        internal static RobotFrame AlignToRollingAxis(RobotFrame value)
+        {
+            RollingAxisState axis = value.RollingAxis;
+            Matrix3 rotation = new Matrix3
+            {
+                M11 = axis.Horizontal.X, M12 = axis.Horizontal.Y, M13 = axis.Horizontal.Z,
+                M21 = axis.Vertical.X, M22 = axis.Vertical.Y, M23 = axis.Vertical.Z,
+                M31 = axis.Direction.X, M32 = axis.Direction.Y, M33 = axis.Direction.Z
+            };
+            Func<Point3D[], Point3D[]> map = points => points == null ? null :
+                points.Select(x => rotation.Transform(x - axis.Point)).ToArray();
+            RollingAxisState alignedAxis = axis.Clone();
+            alignedAxis.Point = new Point3D(0, 0, 0);
+            alignedAxis.Direction = new Point3D(0, 0, 1);
+            alignedAxis.Horizontal = new Point3D(1, 0, 0);
+            alignedAxis.Vertical = new Point3D(0, 1, 0);
+            return new RobotFrame
+            {
+                Joints = value.Joints,
+                Points = map(value.Points),
+                TargetPoints = map(value.TargetPoints),
+                JointOrientations = value.JointOrientations == null ? null :
+                    value.JointOrientations.Select(x => rotation * x).ToArray(),
+                RollingAxis = alignedAxis
+            };
+        }
+
+        private void PaintFrame(Graphics g, bool aligned)
+        {
             Point3D center = ComputeViewCenter(frame.Points, viewReference);
             double extent = ComputeExtent(frame.Points, center);
             double scale = Math.Max(0.02, Math.Min(ClientSize.Width, ClientSize.Height)
@@ -254,7 +307,7 @@ namespace SnakeRobotVisualizer
             {
                 DrawLocalAxes(g, center, scale, extent);
             }
-            DrawOverlay(g);
+            DrawOverlay(g, aligned);
         }
 
         private static double ComputeExtent(Point3D[] points, Point3D center)
@@ -422,11 +475,19 @@ namespace SnakeRobotVisualizer
             }
         }
 
-        private void DrawOverlay(Graphics g)
+        private void DrawOverlay(Graphics g, bool aligned)
         {
             string reference = viewReference == ViewReference.WorldOrigin
                 ? "固定世界原点"
                 : "跟随机器人中心";
+            if (aligned)
+            {
+                reference += " · 螺旋轴竖直（Z=rolling 轴）";
+            }
+            else if (settings.AlignRollingAxis)
+            {
+                reference += " · 轴无效，暂按原坐标显示";
+            }
             string axisText = frame.RollingAxis == null
                 ? ""
                 : String.Format(

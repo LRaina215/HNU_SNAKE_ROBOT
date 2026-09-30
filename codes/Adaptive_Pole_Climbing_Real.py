@@ -9,6 +9,7 @@
 长度 mm，相位 rad。模块导入不会启动网络或键盘监听。
 """
 import argparse
+import csv
 import math
 import queue
 import sys
@@ -24,16 +25,23 @@ from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
 DEBUG = True
 DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
 COMPLIANCE_ENABLED = True  # Ctrl+U 之后默认开顺应性；Ctrl+E 随时切换。
-COMPLIANCE_GAIN = (0.04, 0.12)  # K_i：标量，或（首尾各 4 个关节, 中部）。
+# K_i：标量，或（首尾各 4 个关节, 中部）。实机舵机刚度约 127 N·m/rad（仿真原 kp=20），
+# 按实物参数仿真（--scene real_s2l）：0.04/0.12 时 73% 时间顶在力矩上限并在过渡段停止，0.01/0.02 可爬过。
+COMPLIANCE_GAIN = (0.01, 0.02)
 COMPLIANCE_INSIDE = False  # 手动选择：False 管外收紧；True 管内撑开。
-HELIX_RADIUS_MM = 110.0  # 缠绕目标：机器人中心线螺旋半径，不是管道表面半径。
-HELIX_PITCH_MM = 180.0  # 缠绕目标：每圈轴向位移。
+# 缠绕目标：机器人中心线螺旋半径（≈ 管半径 + 外壳半径 29 mm，再略小以夹紧），不是管道表面半径。
+# 默认按大管（外径 160 mm，贴管中心线约 109 mm）；小管（外径 110 mm）约 r=80。
+HELIX_RADIUS_MM = 105.0
+HELIX_PITCH_MM = 220.0  # 缠绕目标：每圈轴向位移。
 ROLL_STEP_RAD = 0.15  # 滚动阶段每次 Ctrl+J/H 的相位增量。
 WIND_STEP_JOINTS = 0.25  # 缠绕阶段每次 Ctrl+J/H 推进的关节数；0.25 表示一节分四次到位。
 MAX_JOINT_STEP_DEG = 30.0  # 任一关节单步目标变化上限，超过则本步不执行；仿真中顺应性单步最大约 22°，缠绕步长 0.25 约 17°。
 STEP_SETTLE_S = 1.0  # 目标下发后等待舵机运动的时间，之后才报告本步完成。
 DISPATCH_TIMEOUT_S = 2.0  # 等待 EXE 确认已下发的时间。
 PORT = 8765
+# 每 LOG_PERIOD_S 秒把实测角、目标角与 EXE 读到的负载/温度/电流写入本地 CSV（validation/results/real-robot/，不入库）。
+TELEMETRY_LOG = True
+LOG_PERIOD_S = 1.0
 
 HELP = """实机调试（全局热键，任何窗口都会响应；Ctrl+字母）：
   缠绕阶段：Ctrl+J 从头部多缠一节   Ctrl+H 退回一节   Ctrl+-/= 缠绕步长减半/加倍
@@ -42,7 +50,7 @@ HELP = """实机调试（全局热键，任何窗口都会响应；Ctrl+字母�
   Ctrl+N 重发当前目标   Ctrl+E 顺应性开/关   Ctrl+K 状态   Ctrl+R 回到缠绕阶段（不动机器人）
   Ctrl+上下 修改半径；Ctrl+左右 修改螺距（缠绕阶段下一步生效）   空格 暂停/中断等待
 控制台：step / back / apply / hold / compliance / status / reset / pause / help / quit
-参数：r=110 p=180 / delta=0.05 / wind=0.25
+参数：r=105 p=220 / delta=0.05 / wind=0.25
 扭矩使能与紧急释放只在 EXE 界面操作。
 """
 
@@ -86,6 +94,52 @@ def winding_targets(start, helix, progress):
     return start + weights * (helix - start)
 
 
+def telemetry_text(feedback):
+    """舵机状态块摘要；负载为最大输出的千分比，只作相对比较。"""
+    telemetry = (feedback or {}).get("telemetry")
+    if not telemetry:
+        return "负载/温度=—（EXE 未读到状态块：需 v1.4.2 及以上且处于实机模式）"
+    load = np.abs(np.asarray(telemetry["load_permille"], dtype=float)) / 10
+    temperature = np.asarray(telemetry["temperature_c"], dtype=float)
+    voltage = np.asarray(telemetry["voltage_v"], dtype=float)
+    hot, heavy = int(np.argmax(temperature)), int(np.argmax(load))
+    return (f"负载 最大={load[heavy]:.1f}%(J{heavy + 1}) 平均={load.mean():.1f}% "
+            f"温度 最高={temperature[hot]:.0f}℃(J{hot + 1}) 电压 最低={voltage.min():.1f}V")
+
+
+class TelemetryLog:
+    """按固定周期追加一行；只记录，不参与控制判断。"""
+
+    def __init__(self, path):
+        self.path, self.writer, self.file, self.last = path, None, None, -math.inf
+
+    def tick(self, feedback, **context):
+        now = time.monotonic()
+        if feedback is None or now - self.last < LOG_PERIOD_S:
+            return
+        self.last = now
+        count = len(feedback["angles_deg"])
+        telemetry = feedback.get("telemetry") or {}
+        if self.writer is None:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            self.file = self.path.open("w", newline="", encoding="utf-8-sig")
+            self.writer = csv.writer(self.file)
+            self.writer.writerow(["wall_unix_ms", "sequence", *context] +
+                                 [f"{name}_J{j + 1}" for name in ("angle_deg", "target_deg", "load_permille",
+                                                                   "temperature_c", "current_raw", "voltage_v")
+                                  for j in range(count)])
+            print(f"遥测记录：{self.path}", flush=True)
+        columns = [feedback["angles_deg"], feedback["targets_deg"]] + [
+            telemetry.get(key, [""] * count) for key in ("load_permille", "temperature_c", "current_raw", "voltage_v")]
+        self.writer.writerow([round(time.time() * 1000), feedback["sequence"], *context.values()] +
+                             [value for column in columns for value in column])
+        self.file.flush()
+
+    def close(self):
+        if self.file is not None:
+            self.file.close()
+
+
 def executed(state, command_id, execution):
     """EXE 是否已把该命令号交给执行端（实机：已写串口；MuJoCo：执行端已写入 ctrl）。"""
     if execution == "live":
@@ -117,6 +171,13 @@ def main(execution="live", hotkeys=True, port=PORT):
     last_notice = None
     exchange = GeometryExchange(port=port, execution=execution)
     debug_view = None
+    log = TelemetryLog(Path(__file__).resolve().parents[1] / "validation/results/real-robot" /
+                       time.strftime("real_%Y%m%d_%H%M%S.csv")) if TELEMETRY_LOG else None
+
+    def log_tick():
+        if log is not None:
+            log.tick(exchange.latest_geometry(), stage=stage, completed=completed, phase=round(phase, 6),
+                     compliance=int(compliance is not None))
 
     def fresh_feedback(require_usable):
         feedback = exchange.latest_geometry()
@@ -145,6 +206,7 @@ def main(execution="live", hotkeys=True, port=PORT):
                 print("当前一步尚未完成；该操作未排队，空格可中断等待", flush=True)
             if debug_view is not None:
                 debug_view.update(exchange)
+            log_tick()
             time.sleep(.02)
         return False
 
@@ -177,7 +239,7 @@ def main(execution="live", hotkeys=True, port=PORT):
         completed += 1
         latest = exchange.latest_geometry()
         error = "—" if latest is None else f"{np.degrees(np.abs(controller_angles(latest['angles_deg']) - targets)).max():.1f}"
-        print(f"完成第 {completed} 步 {label} 最大跟踪误差={error}deg；等待下一步", flush=True)
+        print(f"完成第 {completed} 步 {label} 最大跟踪误差={error}deg {telemetry_text(latest)}；等待下一步", flush=True)
         return True
 
     def show_status():
@@ -201,6 +263,7 @@ def main(execution="live", hotkeys=True, port=PORT):
               f"反馈={'有效' if usable else '未就绪/无效'} "
               f"在线={online} "
               f"最大跟踪误差={text(error)}deg", flush=True)
+        print(f"TELEMETRY {telemetry_text(feedback)}", flush=True)
 
     print(f"YAMADA 实机版 execution={execution} R={radius:g}mm P={pitch:g}mm "
           f"顺应性={'开' if compliance_enabled else '关'} 模式={'管内' if COMPLIANCE_INSIDE else '管外'}"
@@ -222,6 +285,7 @@ def main(execution="live", hotkeys=True, port=PORT):
                 command = ""
             if debug_view is not None:
                 debug_view.update(exchange)
+            log_tick()
             if not command:
                 continue
             try:
@@ -333,6 +397,8 @@ def main(execution="live", hotkeys=True, port=PORT):
             listener.stop()
         if debug_view is not None:
             debug_view.close()
+        if log is not None:
+            log.close()
         exchange.close()
         print(f"GEOMETRY_EXCHANGE received={exchange.received} sent={exchange.sent} "
               f"failures={exchange.failures} last_error={exchange.last_error!r}", flush=True)

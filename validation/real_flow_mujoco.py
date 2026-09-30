@@ -53,6 +53,8 @@ def run_controller():
     real.STEP_SETTLE_S = .3
     # 空中没有管壁约束，K>0 会每步继续收紧；这里只验证流程，滚动时不做收紧。
     real.COMPLIANCE_GAIN = 0.
+    # 下面的逐位比较与单步上限用例按 20 关节原模型的 R=110、P=180 设计，不随实机默认值变化。
+    real.HELIX_RADIUS_MM, real.HELIX_PITCH_MM = 110., 180.
     real.main('mujoco', hotkeys=False, port=PORT)
 
 
@@ -128,6 +130,8 @@ def main():
         assert controller.returncode == 0, text[-1500:]
         completed = len(re.findall(r'完成第 \d+ 步', text))
         assert completed == 80 + 2 + 5 + 1 + 1, completed
+        # MuJoCo 模式没有舵机状态块：遥测列为空，但记录文件照常生成，打印明确说明。
+        assert '遥测记录' in text and '负载/温度=—' in text, text[-800:]
     finally:
         client.close()
         (OUT / 'executor.stop').touch()

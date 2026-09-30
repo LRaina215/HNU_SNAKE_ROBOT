@@ -444,6 +444,9 @@ namespace SnakeRobotVisualizer
             }
         }
 
+        internal const int TelemetryEveryCycles = 5;
+        internal const int TelemetryFailureLimit = 3;
+
         private void RunLive()
         {
             RobotProfile localProfile = Profile;
@@ -455,12 +458,27 @@ namespace SnakeRobotVisualizer
                 SetStatus("已连接 " + localProfile.Port + "，正在读取 " + ids.Length + " 个关节", false);
                 Stopwatch rateWatch = Stopwatch.StartNew();
                 long rateSamples = 0;
+                IServoTelemetryBus telemetryBus = localBus as IServoTelemetryBus;
+                long cycle = 0;
+                int telemetryFailures = 0;
+                string telemetryNote = "";
                 try
                 {
                     while (!stopping)
                     {
                         Stopwatch loop = Stopwatch.StartNew();
-                        ServoReadResult[] reads = localBus.ReadPositionsTolerant(ids);
+                        // 每 TelemetryEveryCycles 个周期改读状态块（多约 13 字节/舵机），其余周期只读位置。
+                        bool readTelemetry = telemetryBus != null && cycle++ % TelemetryEveryCycles == 0;
+                        ServoReadResult[] reads = readTelemetry
+                            ? telemetryBus.ReadStatesTolerant(ids)
+                            : localBus.ReadPositionsTolerant(ids);
+                        if (readTelemetry && reads.Any(x => x.TelemetryFailed) &&
+                            ++telemetryFailures >= TelemetryFailureLimit)
+                        {
+                            // 舵机不支持连续读状态块时停用，避免每次都等超时拖慢位置反馈。
+                            telemetryBus = null;
+                            telemetryNote = "；状态块读取多次失败，已停用负载/温度读取";
+                        }
                         DateTime now = DateTime.UtcNow;
                         int onlineCount;
                         lock (sync)
@@ -482,9 +500,9 @@ namespace SnakeRobotVisualizer
                             lock (sync)
                             {
                                 samplesPerSecond = rateSamples / rateWatch.Elapsed.TotalSeconds;
-                                status = onlineCount == ids.Length
+                                status = (onlineCount == ids.Length
                                     ? "全部关节在线"
-                                    : String.Format("{0}/{1} 个关节在线", onlineCount, ids.Length);
+                                    : String.Format("{0}/{1} 个关节在线", onlineCount, ids.Length)) + telemetryNote;
                                 statusError = onlineCount == 0;
                             }
                             rateWatch.Restart();
@@ -794,6 +812,11 @@ namespace SnakeRobotVisualizer
                     state.Online = true;
                     state.LastSeenUtc = timestampUtc;
                     state.Status = recovered ? "已恢复" : "在线";
+                    if (read.Telemetry != null)
+                    {
+                        state.Telemetry = read.Telemetry;
+                        state.TelemetryUtc = timestampUtc;
+                    }
                     onlineCount++;
                 }
                 else

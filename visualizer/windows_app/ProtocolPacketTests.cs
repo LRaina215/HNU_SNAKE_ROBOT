@@ -116,6 +116,37 @@ namespace SnakeRobotVisualizer
                         ParseHex("FF FF 03 03 00 DA 1F"));
                     FeetechBus.ValidatePositionStatus(status, 3);
                 });
+            ExpectSuccess(
+                "state block status (position, signed load, voltage, temperature, current)",
+                delegate
+                {
+                    // 状态包与指令包同格式：FF FF ID LEN ERR 参数 CHK。负载 -168（bit10 符号），电流 -25（bit15 符号）。
+                    byte[] packet = FeetechBus.BuildInstructionPacket(3, 0x00, new byte[]
+                    {
+                        0xDA, 0x08, 0x00, 0x00, 0xA8, 0x04, 0x7B, 0x24,
+                        0x00, 0x20, 0x01, 0x00, 0x00, 0x19, 0x80
+                    });
+                    ServoReadResult result = FeetechBus.ParseStateStatus(
+                        FeetechBus.ParseStatusPacketBytes(packet), 3);
+                    ServoTelemetry t = result.Telemetry;
+                    if (result.Position != 2266 || t.LoadPermille != -168 || Math.Abs(t.VoltageVolts - 12.3) > 1e-9 ||
+                        t.TemperatureC != 36 || t.ServoStatus != 0x20 || !t.Moving || t.CurrentRaw != -25)
+                    {
+                        throw new InvalidOperationException("状态块解析结果错误");
+                    }
+                });
+            Expect(
+                "state block read request (56, 15 bytes)",
+                FeetechBus.BuildInstructionPacket(1, 0x02, new byte[] { 0x38, (byte)FeetechBus.StateBlockLength }),
+                "FF FF 01 04 02 38 0F B1");
+            ExpectFailure<InvalidOperationException>(
+                "short state block rejected",
+                delegate
+                {
+                    FeetechStatusPacket status = FeetechBus.ParseStatusPacketBytes(
+                        ParseHex("FF FF 03 04 00 DA 08 16"));
+                    FeetechBus.ParseStateStatus(status, 3);
+                });
 
             return failures == 0 ? 0 : 1;
         }
