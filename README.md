@@ -29,9 +29,10 @@ tools/
   build_inner_pipe_scene.py    生成论文实验 3 的管内圆管 → 矩形管道场景
   build_tree_scene.py          生成树干近似场景：不规则截面、局部鼓包和收窄
   build_real_pipe_scene.py     按实物参数生成 26 关节机器人与 UPVC 变径管（110 ↔ 160 mm）
+  build_pipe_network_scenes.py 同一实物机器人的弯管、组合变径弯管、法兰、偏心异径、三通、倾斜、低摩擦带场景
   matlab/                      蛇形曲线参数可视化（Serpentine_Curve_Params.m）
 docs/                         Adaptive Pole 说明、阶段三/四记录、变径实验指南
-mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe / Tree / o26_Real_Pipe 场景
+mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe / Tree / o26_Real_Pipe / o26_Pipe_* 场景
 交接记录.md                    各轮调试结论、数据位置与待办；接手前先读
 ```
 
@@ -84,6 +85,22 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 | 实物：大管 → 小管 | `--scene real_l2s` | 同上，大管在下、小管在上（备用） |
 
 实物场景（`python tools/build_real_pipe_scene.py` 重新生成）按实机测量搭建：26 关节，头长与连杆均 64.5 mm，外壳半径 29 mm（原网格按比例缩放），每节（含头部，头部模块也带舵机）136 g，整机 3.67 kg；位置伺服 kp=127 N·m/rad（悬臂实测），力矩上限 ±2.355 N·m（手册堵转 7.85 N·m × EXE 转矩限制 300/1000），关节阻尼 1.5（保持原模型阻尼比）；摩擦未实测，沿用管外场景。螺距 220 mm；初始半径取不穿透管面的最小值（小管在下 98 mm，大管在下 126 mm），Ctrl+U 预设比贴管中心线紧 4 mm（80 / 105 mm）。XML 自带顺应性增益 `experiment_compliance_gain=0.01/0.02`（优先于 `COMPLIANCE_GAIN`）：舵机比原模型硬约 6 倍，沿用 0.04/0.12 会一直顶在力矩上限。
+
+**管道网络场景**（`python tools/build_pipe_network_scenes.py [名称…]` 生成，`--scene pipe_<名称>` 加载）：机器人与 `real_s2l` 相同（26 关节实物参数、K=0.01/0.02），都从外径 110 mm 的竖直起始段开始，预缠在 z≈0.5 m；所有特征都在 z≥0.95 m，所有弯曲都在 x-z 平面内。Ctrl+K 的 `RADIUS` 行对这些场景按 XML 中的管中心线（`pipe_centerline`）计算关节到管轴距离、同位置管半径，并给出「沿管进度」（m，从地面起沿中心线计）；弯管上请看沿管进度而不是关节平均高度。
+
+| 名称 | 管道 | 研究用途 |
+| --- | --- | --- |
+| `bend90` / `bend90_tight` / `bend45` | 90° 弯头（弯曲半径 300 mm / 165 mm=1.5D）、45° 弯头 | 管轴弯曲时轴估计与螺旋跟随；弯曲半径对通过性的影响 |
+| `offset` | 两个反向 45° 弯头组成的 S 形错位，出口仍竖直 | 连续反向曲率 |
+| `taper_bend` / `bend_taper` | 先异径（110→160）再 45° 弯 / 先 45° 弯再异径 | 组合特征的顺序影响 |
+| `flange10` / `flange25` / `flange40` / `flange55` | 单个法兰，凸起 10 / 25 / 40 / 55 mm（DN100 PVC 法兰约 55 mm），厚 22 mm | 非连续截面；可越过的凸起高度上限 |
+| `flange_pair` | 两个带 8×M16 螺栓头的法兰（凸起 55 mm），间距 300 mm | 真实法兰接头与短间距连续障碍 |
+| `eccentric` | 偏心异径：−x 侧母线平齐，另一侧单边突变 50 mm | 非对称截面变化（顺应性只在一侧需要放松） |
+| `tee` | 三通：外径 75 mm、伸出 250 mm 的侧向支管 | 侧向分支障碍 |
+| `incline30` | 偏离竖直 30° 的直管 | 重力方向与管轴不一致时的夹紧余量 |
+| `slip_band` | z 0.95–1.25 m 一段滑动摩擦 0.3（其余 2，蓝色显示） | 局部低摩擦（潮湿 / 油污）下顺应性与标准螺旋的打滑差异 |
+
+这些场景只做了静态检查（加载、初始无接触、0.3 s 保持无发散），**没有做攀爬测试**。
 
 树干场景受论文实验 4 启发，尺寸是人为设定，并非论文树木的精确复刻。主轴保持竖直，截面为椭圆叠加小幅三瓣起伏，不包含树枝、分叉或树皮沟槽；统一沿用管外摩擦与 kp。它使用分段凸网格保留鼓包后的收窄，避免整个树干被一个碰撞凸包填平。初始 R=130、P=180 mm，Ctrl+U 预设 R=110、P=180 mm，XML 标记自动选择管外模式。Ctrl+K 可统计树干接触，但不输出圆管专用的同高度管半径。重新生成：`python tools/build_tree_scene.py`。
 

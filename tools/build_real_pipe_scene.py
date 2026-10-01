@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 
 import mujoco
 import numpy as np
+from scipy.spatial.transform import Rotation
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -74,8 +75,9 @@ def robot(world):
         parent = body
 
 
-def build(filename, r_bottom, r_top):
-    root = ET.Element('mujoco', model='real-snake26-pipe')
+def new_scene(model_name='real-snake26-pipe'):
+    """场景公共部分：求解器、地面、灯光、26 关节机器人；返回 (root, asset, world)。管道由调用者加入 world。"""
+    root = ET.Element('mujoco', model=model_name)
     ET.SubElement(root, 'option', timestep='0.001', iterations='100', tolerance='1e-8', solver='Newton', cone='elliptic')
     asset = ET.SubElement(root, 'asset')
     ET.SubElement(asset, 'texture', name='texplane', type='2d', builtin='checker', rgb1='.8 .8 .8', rgb2='.1 .15 .2',
@@ -88,9 +90,53 @@ def build(filename, r_bottom, r_top):
                   friction='0.25 0.1 0.01')
     ET.SubElement(world, 'light', directional='false', diffuse='1 1 1', specular='0 0 0', pos='0 0 15', dir='0 0 -1',
                   castshadow='false')
+    return root, asset, world
+
+
+PIPE_GEOM = dict(friction=f'2 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}', condim='6', group='1',
+                 rgba='.92 .92 .9 1')
+
+
+def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, center='0 0 .8', extent='1.8'):
+    """加入机器人、执行器、显示与实验标记，按起始管半径求初始姿态并写出 XML。
+
+    管道起始段必须沿 rotation·z 方向（默认竖直）且过原点；初始螺旋中心在该轴上 0.5 m 处。
+    """
+    robot(world)
+    actuator = ET.SubElement(root, 'actuator')
+    for j in range(1, JOINTS+1):
+        ET.SubElement(actuator, 'position', name=f'servo_{j}', joint=f'joint{j}', kp=f'{ACTUATOR_KP:g}', gear='1',
+                      ctrllimited='true', ctrlrange='-1.5708 1.5708', forcelimited='true',
+                      forcerange=numbers([-FORCE_LIMIT_NM, FORCE_LIMIT_NM]))
+    visual = ET.SubElement(root, 'visual')
+    ET.SubElement(visual, 'global', offwidth='1280', offheight='960', azimuth='135', elevation='-15')
+    ET.SubElement(visual, 'headlight', ambient='.35 .35 .35', diffuse='.7 .7 .7')
+    ET.SubElement(root, 'statistic', center=center, extent=extent)
+    contact_mm = (r_start + BODY_RADIUS_M) * 1000  # 贴管时机器人中心线半径
+    custom = ET.SubElement(root, 'custom')
+    ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([contact_mm - APPLY_TIGHTEN_MM, PITCH_MM]))
+    ET.SubElement(custom, 'numeric', name='experiment_inside', data='0')
+    ET.SubElement(custom, 'numeric', name='experiment_compliance_gain', data=numbers(COMPLIANCE_GAIN))
+    for name, data in extra_numeric:
+        ET.SubElement(custom, 'numeric', name=name, data=numbers(data))
+    output = ROOT / 'mujoco_model' / filename
+    tree = ET.ElementTree(root)
+    ET.indent(tree, space='  ')
+    tree.write(output, encoding='utf-8', xml_declaration=True)
+    model = mujoco.MjModel.from_xml_path(str(output))
+    keyframes = ET.SubElement(root, 'keyframe')
+    radius_mm, qpos = start_pose(model, contact_mm, rotation)
+    ET.SubElement(keyframes, 'key', name='experiment_start', qpos=numbers(qpos))
+    ET.indent(tree, space='  ')
+    tree.write(output, encoding='utf-8', xml_declaration=True)
+    print(output, f'初始 R={radius_mm:g} mm，Ctrl+U 预设 R={contact_mm - APPLY_TIGHTEN_MM:g} mm')
+    return output
+
+
+def build(filename, r_bottom, r_top):
+    root, asset, world = new_scene()
     pipe = ET.SubElement(world, 'body', name='real_pipe')
-    common = dict(friction=f'2 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}', condim='6', group='1',
-                  rgba='.92 .92 .9 1')
+    common = PIPE_GEOM
     z_end = Z_TAPER + TAPER_LENGTH
     ET.SubElement(pipe, 'geom', name='pipe_lower', type='cylinder', size=numbers([r_bottom, Z_TAPER/2]),
                   pos=numbers([0, 0, Z_TAPER/2]), **common)
@@ -104,42 +150,24 @@ def build(filename, r_bottom, r_top):
                   pos=numbers([0, 0, (HEIGHT+z_end)/2]), **common)
     for z, r, name in ((Z_TAPER, r_bottom, 'taper_start'), (z_end, r_top, 'taper_end')):
         ET.SubElement(world, 'site', name=name, type='sphere', size='.008', pos=numbers([r+.018, 0, z]), rgba='1 .65 .1 1')
-    robot(world)
-    actuator = ET.SubElement(root, 'actuator')
-    for j in range(1, JOINTS+1):
-        ET.SubElement(actuator, 'position', name=f'servo_{j}', joint=f'joint{j}', kp=f'{ACTUATOR_KP:g}', gear='1',
-                      ctrllimited='true', ctrlrange='-1.5708 1.5708', forcelimited='true',
-                      forcerange=numbers([-FORCE_LIMIT_NM, FORCE_LIMIT_NM]))
-    visual = ET.SubElement(root, 'visual')
-    ET.SubElement(visual, 'global', offwidth='1280', offheight='960', azimuth='135', elevation='-15')
-    ET.SubElement(visual, 'headlight', ambient='.35 .35 .35', diffuse='.7 .7 .7')
-    ET.SubElement(root, 'statistic', center='0 0 .8', extent='1.8')
-    contact_mm = (r_bottom + BODY_RADIUS_M) * 1000  # 贴管时机器人中心线半径
-    custom = ET.SubElement(root, 'custom')
-    ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([contact_mm - APPLY_TIGHTEN_MM, PITCH_MM]))
-    ET.SubElement(custom, 'numeric', name='experiment_inside', data='0')
-    ET.SubElement(custom, 'numeric', name='experiment_compliance_gain', data=numbers(COMPLIANCE_GAIN))
-    ET.SubElement(custom, 'numeric', name='pipe_profile', data=numbers([r_bottom, r_top, Z_TAPER, z_end, HEIGHT]))
-    output = ROOT / 'mujoco_model' / filename
-    tree = ET.ElementTree(root)
-    ET.indent(tree, space='  ')
-    tree.write(output, encoding='utf-8', xml_declaration=True)
-    model = mujoco.MjModel.from_xml_path(str(output))
-    keyframes = ET.SubElement(root, 'keyframe')
-    radius_mm, qpos = start_pose(model, contact_mm)
-    ET.SubElement(keyframes, 'key', name='experiment_start', qpos=numbers(qpos))
-    ET.indent(tree, space='  ')
-    tree.write(output, encoding='utf-8', xml_declaration=True)
-    print(output, f'初始 R={radius_mm:g} mm，Ctrl+U 预设 R={contact_mm - APPLY_TIGHTEN_MM:g} mm')
+    finalize(root, world, filename, r_bottom,
+             extra_numeric=[('pipe_profile', [r_bottom, r_top, Z_TAPER, z_end, HEIGHT])])
 
 
-def start_pose(model, contact_mm):
-    """从贴管半径起逐毫米增大，返回第一个整条机器人离管面不小于 START_CLEARANCE_M 的预缠绕姿态。"""
+def start_pose(model, contact_mm, rotation=None):
+    """从贴管半径起逐毫米增大，返回第一个整条机器人离管面不小于 START_CLEARANCE_M 的预缠绕姿态。
+
+    rotation（scipy Rotation）把绕竖直轴的姿态整体转到倾斜起始管上。
+    """
     data = mujoco.MjData(model)
     pipe = [i for i in range(model.ngeom) if (model.geom(i).name or '').startswith('pipe')]
     body = [i for i in range(model.ngeom) if model.geom_bodyid[i] != 0 and i not in pipe]
     for radius_mm in np.arange(np.ceil(contact_mm), contact_mm + 60):
         data.qpos[:] = base.initial_pose(model, radius_mm=radius_mm, pitch_mm=PITCH_MM)
+        if rotation is not None:
+            data.qpos[:3] = rotation.apply(data.qpos[:3])
+            quaternion = (rotation * Rotation.from_quat(data.qpos[[4, 5, 6, 3]])).as_quat()
+            data.qpos[3:7] = quaternion[[3, 0, 1, 2]]
         mujoco.mj_forward(model, data)
         gap = min(mujoco.mj_geomDistance(model, data, a, b, .05, None) for a in body for b in pipe)
         if gap >= START_CLEARANCE_M:

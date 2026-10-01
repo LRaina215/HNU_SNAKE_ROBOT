@@ -5,6 +5,7 @@
 等待按键时物理时间与滚动相位冻结，通信、反馈和窗口继续刷新。
 --scene tree 加载不规则树干近似场景（只完成搭建，尚未验证攀爬）。
 --scene real_s2l / real_l2s 加载按实物尺寸的 26 关节机器人与 UPVC 变径管（小管→大管 / 大管→小管）。
+--scene pipe_<名称> 加载 tools/build_pipe_network_scenes.py 生成的弯管、法兰、三通等场景（同一实物机器人）。
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
 """
@@ -127,7 +128,7 @@ def main():
     import mujoco.viewer
     from mujoco_visualizer_bridge import VisualizerBridge
     from pole_compliance import ComplianceController, ComplianceParameters
-    from adaptive_debug import HELP, viewer_key_callback, measurements, circle_radius_mm, pipe_geometry
+    from adaptive_debug import HELP, viewer_key_callback, measurements, circle_radius_mm, pipe_geometry, pipe_progress
 
 
 
@@ -213,9 +214,11 @@ def main():
         else:
             target = radius if initialized else None
         axis_distance, pipe_radius = pipe_geometry(m, d)
+        progress = pipe_progress(m, d)
         text = lambda value: "—" if value is None else f"{value:.1f}"
         print(f"RADIUS 实测截面={text(measured)}mm 当前目标截面={text(target)}mm "
-              f"关节到管轴(仿真)={axis_distance:.1f}mm 同高度管半径={text(pipe_radius)}mm", flush=True)
+              f"关节到管轴(仿真)={axis_distance:.1f}mm 同位置管半径={text(pipe_radius)}mm"
+              + ("" if progress is None else f" 沿管进度={progress:.3f}m"), flush=True)
         print(f"STATUS {'单步/暂停' if manual else '连续'} R={radius:g} P={pitch:g} "
               f"phase={phase:.4f} delta={phase_step:g} sim={d.time:.3f}s "
               f"顺应性={'开' if compliance_enabled else '关'} 反馈={feedback_state} "
@@ -483,9 +486,15 @@ def main():
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Yamada 管道实验；默认保持原 Pole 场景")
-    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full", "tree", "real_s2l", "real_l2s"), default=None)
+    network = sorted(path.stem.removeprefix("Snake_Robot_o26_Pipe_") for path in
+                     (Path(__file__).resolve().parents[1] / "mujoco_model").glob("Snake_Robot_o26_Pipe_*.xml"))
+    parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full", "tree",
+                                            "real_s2l", "real_l2s", *(f"pipe_{name}" for name in network)), default=None)
     args = parser.parse_args()
-    if args.scene is not None:
+    if args.scene is not None and args.scene.startswith("pipe_"):
+        os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" /
+                                               f"Snake_Robot_o26_Pipe_{args.scene[5:]}.xml")
+    elif args.scene is not None:
         filename = {"pole": "Snake_Robot_o20_Pole_Climbing.xml", "variable": "Snake_Robot_o20_Variable_Pipe.xml",
                     "twin": "Snake_Robot_o20_Twin_Pipe.xml",
                     "twin_full": "Snake_Robot_o20_Twin_Pipe_Full.xml",

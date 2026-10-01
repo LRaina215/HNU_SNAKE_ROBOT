@@ -94,9 +94,47 @@ def circle_radius_mm(xy):
     return float(np.sqrt(value)) if value > 0 else None
 
 
-def pipe_geometry(model, data):
-    """仿真专用：关节到世界 z 轴的平均距离，及变径场景同高度处的平均管半径（mm）。"""
+def centerline_nearest(model, points):
+    """弯管等场景：各点到 pipe_centerline 折线的距离、该处管半径与沿管弧长（m）；无该标记时返回 None。"""
+    key = mujoco_numeric(model, 'pipe_centerline')
+    if key is None:
+        return None
+    samples = key.reshape(-1, 4)
+    a, b = samples[:-1, :3], samples[1:, :3]
+    ab = b - a
+    lengths = np.linalg.norm(ab, axis=1)
+    start = np.r_[0., np.cumsum(lengths)][:-1]
+    u = np.clip(np.einsum('pij,ij->pi', points[:, None] - a, ab) / np.maximum(lengths**2, 1e-12), 0, 1)
+    nearest = a + u[..., None] * ab
+    distance = np.linalg.norm(points[:, None] - nearest, axis=2)
+    k = np.argmin(distance, axis=1)
+    i = np.arange(len(points))
+    radius = samples[k, 3] + u[i, k] * (samples[k + 1, 3] - samples[k, 3])
+    return distance[i, k], radius, start[k] + u[i, k] * lengths[k]
+
+
+def mujoco_numeric(model, name):
+    import mujoco
+    key = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_NUMERIC, name)
+    return None if key < 0 else model.numeric_data[model.numeric_adr[key]:model.numeric_adr[key] + model.numeric_size[key]]
+
+
+def pipe_progress(model, data):
+    """沿管中心线的平均弧长（m，从地面处起算）；只有带 pipe_centerline 的场景有值。"""
     points = np.array([data.joint(f'joint{i}').xanchor for i in range(1, model.nu+1)])
+    nearest = centerline_nearest(model, points)
+    return None if nearest is None else float(nearest[2].mean())
+
+
+def pipe_geometry(model, data):
+    """仿真专用：关节到管轴的平均距离，及同位置的平均管半径（mm）。
+
+    带 pipe_centerline 的场景（弯管、法兰等）按中心线折线计算；否则管轴为世界 z 轴。
+    """
+    points = np.array([data.joint(f'joint{i}').xanchor for i in range(1, model.nu+1)])
+    nearest = centerline_nearest(model, points)
+    if nearest is not None:
+        return float(nearest[0].mean() * 1000), float(nearest[1].mean() * 1000)
     radial = float(np.linalg.norm(points[:, :2], axis=1).mean() * 1000)
     try:
         bottom, top, z0, z1, _ = model.numeric('pipe_profile').data
