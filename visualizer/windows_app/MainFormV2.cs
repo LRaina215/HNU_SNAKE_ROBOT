@@ -150,7 +150,7 @@ namespace SnakeRobotVisualizer
             string storagePathOverride)
         {
             this.busScanOverride = busScanOverride;
-            Text = "蛇形机器人实时运动学重建 v1.4.1";
+            Text = "蛇形机器人实时运动学重建 v1.4.3";
             StartPosition = FormStartPosition.CenterScreen;
             MinimumSize = new Size(1160, 720);
             Size = new Size(1520, 900);

@@ -30,7 +30,7 @@ namespace SnakeRobotVisualizer
         }
         static int Main()
         {
-            try { TestGeometryPreview(); TestMujocoExecution(); TestLiveMock(); TestLiveTelemetry(); Console.WriteLine("ALL COMMUNICATION TESTS PASSED"); return 0; }
+            try { TestGeometryPreview(); TestMujocoExecution(); TestLiveMock(); TestDisableTorqueCapturesCurrentAngle(); TestLiveTelemetry(); Console.WriteLine("ALL COMMUNICATION TESTS PASSED"); return 0; }
             catch (Exception e) { Console.WriteLine(e); return 1; }
         }
         static void TestGeometryPreview()
@@ -171,6 +171,39 @@ namespace SnakeRobotVisualizer
                 Check(!r.TorqueActive, "release clears controller and disables fake bus");
                 r.Stop();
                 Reject(delegate { r.GeometryForApi(); }, "stopped runtime exports no active feedback");
+            }
+        }
+        static void TestDisableTorqueCapturesCurrentAngle()
+        {
+            // 回归：紧急释放扭矩后，目标角曾冻结在释放前的最后一次目标值，
+            // 导致下次使能时安全使能逻辑与界面显示的目标角不一致，必须断开重连才能恢复。
+            RobotProfile p = RobotProfile.CreateDefaultTwoJoint();
+            FakeBus b = new FakeBus();
+            using (RobotRuntime r = new RobotRuntime(delegate { return b; }))
+            {
+                r.Start(p, RuntimeMode.Live);
+                RobotFrame f = Wait(r);
+                double[] angleBeforeRelease = f.Joints.Select(x => x.AngleDegrees).ToArray();
+
+                r.QueueEnableTorque(300, 800, 20);
+                Stopwatch w = Stopwatch.StartNew();
+                while (!r.TorqueActive && w.ElapsedMilliseconds < 1500) Thread.Sleep(10);
+                Check(r.TorqueActive, "torque enabled before release test");
+
+                Dictionary<string, object> g = r.GeometryForApi();
+                r.SubmitTargetFrame(Request(g, 1, new double[] { 12, -8 }, "live"), 800);
+                w.Restart(); while (b.Calls == 0 && w.ElapsedMilliseconds < 1500) Thread.Sleep(10);
+                f = Wait(r);
+                Check(f.Joints.Select(x => x.TargetDegrees).SequenceEqual(new double[] { 12, -8 }),
+                    "target set away from current angle before release");
+
+                r.QueueDisableTorque();
+                w.Restart(); while (r.TorqueActive && w.ElapsedMilliseconds < 1500) Thread.Sleep(10);
+                Check(!r.TorqueActive, "torque disabled for release test");
+
+                f = Wait(r);
+                Check(f.Joints.Select(x => x.TargetDegrees).SequenceEqual(angleBeforeRelease),
+                    "disable torque resets target to current angle instead of freezing stale target");
             }
         }
         static void TestLiveTelemetry()

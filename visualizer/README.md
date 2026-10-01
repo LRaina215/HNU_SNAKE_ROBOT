@@ -39,6 +39,8 @@ windows_app\bin\SnakeRobotVisualizer.exe
 
 v1.4.2 界面：关节表格增加「负载」「温度」两列（仅实机模式有值）；工具栏「轴竖直」按 rolling 轴与二维投影基重画三维视图（Z 为 rolling 轴），用于实机没有头部世界位姿、画面绕头部转动的情况，只影响显示。
 
+v1.4.3：修复紧急释放扭矩后「目标角」列冻结在释放前最后一次目标值的问题（`RuntimeEngine.cs` 的 `DisableTorque` 分支补齐 `TargetDegrees` 同步），不涉及协议改动。
+
 - [完整执行协议](COMMUNICATION_V3.md)
 - [几何帧与目标提交协议](COMMUNICATION_V2.md)
 - [验收记录](STAGE4_RESULTS.md)
