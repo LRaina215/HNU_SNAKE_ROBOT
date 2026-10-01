@@ -115,9 +115,12 @@ def main():
     parser = argparse.ArgumentParser(description='弯曲轴顺应性 Yamada 管道实验；键位与原入口相同')
     parser.add_argument('--scene', choices=sorted(SCENES), default=None)
     parser.add_argument('--variant', choices=sorted(VARIANTS), default='curved')
+    parser.add_argument("--joints", type=int, choices=(20, 26), default=26,
+                        help="Joint count for real_* / pipe_* scenes (default: 26)")
     args = parser.parse_args()
     if args.scene is not None:
-        os.environ['SNAKE_MUJOCO_MODEL'] = str(MODELS / SCENES[args.scene])
+        filename = SCENES[args.scene].replace('o26_', f'o{args.joints}_')
+        os.environ['SNAKE_MUJOCO_MODEL'] = str(MODELS / filename)
     gain = os.environ.get('SNAKE_COMPLIANCE_GAIN')  # 与 validation/adaptive_pole_single_step.py 相同：标量或 "端部:中部"
     if gain:
         gait.COMPLIANCE_GAIN = tuple(map(float, gain.split(':'))) if ':' in gain else float(gain)

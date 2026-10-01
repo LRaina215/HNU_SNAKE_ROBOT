@@ -1,6 +1,6 @@
-"""按实物生成 26 关节蛇形机器人与 UPVC 变径管场景。单位 m（常量注明 mm 的除外）。
+"""按实物生成 20/26 关节蛇形机器人与 UPVC 变径管场景。单位 m（常量注明 mm 的除外）。
 
-运行：python tools/build_real_pipe_scene.py
+运行：python tools/build_real_pipe_scene.py --joints 20（默认 26，另存 XML，不覆盖另一种关节数）
 一次生成两个方向：小管在下爬向大管（real_s2l，实验室布置），大管在下爬向小管（real_l2s，备用）。
 机器人参数来自实机（2026-09-30）：26 关节、头长与连杆 64.5 mm、外壳半径 29 mm、单节 135.85 g；
 舵机 SM-80BL-C001 悬臂实测等效刚度约 127 N·m/rad，力矩上限按手册堵转扭矩 × EXE 转矩限制。
@@ -52,8 +52,8 @@ def numbers(values):
     return base.numbers(values)
 
 
-def robot(world):
-    """头部 → 关节 1…26 → 尾端；各 body 与原模型相同地绕 z 翻转 180°，关节轴交替 x / −y。"""
+def robot(world, joints=JOINTS):
+    """头部 → joints 个关节 → 尾端；各 body 绕 z 翻转 180°，关节轴交替 x / −y。"""
     head = ET.SubElement(world, 'body', name='head', pos='0 0 .1', euler='0 90 -90')
     ET.SubElement(head, 'freejoint', name='root')
     ET.SubElement(head, 'site', name='s_head', pos=numbers([0, 0, LINK_M]))
@@ -62,21 +62,21 @@ def robot(world):
                   pos=numbers([0, 0, LINK_M/2]), mass=f'{HEAD_MASS:g}', condim='6', friction=FRICTION,
                   rgba='.15 .15 .15 1')
     parent = head
-    for j in range(1, JOINTS+1):
-        name = 'tail' if j == JOINTS else f'link{j}'
+    for j in range(1, joints+1):
+        name = 'tail' if j == joints else f'link{j}'
         body = ET.SubElement(parent, 'body', name=name, pos=numbers([0, 0, -LINK_M]), euler='0 0 -180')
         ET.SubElement(body, 'joint', name=f'joint{j}', type='hinge', pos=numbers([0, 0, LINK_M]),
                       axis='1 0 0' if j % 2 else '0 -1 0', limited='true', range='-90 90',
                       damping=f'{JOINT_DAMPING:g}', armature=f'{ARMATURE:g}')
         ET.SubElement(body, 'geom', type='mesh', mesh='h_link' if j % 2 else 'v_link', mass=f'{LINK_MASS:g}',
                       condim='6', friction=FRICTION, rgba='.2 .2 .2 1')
-        if j == JOINTS:
+        if j == joints:
             ET.SubElement(body, 'site', name='s_tail', pos='0 0 0')
         parent = body
 
 
 def new_scene(model_name='real-snake26-pipe'):
-    """场景公共部分：求解器、地面、灯光、26 关节机器人；返回 (root, asset, world)。管道由调用者加入 world。"""
+    """场景公共部分：求解器、地面、灯光；机器人由 finalize 按 joints 加入。"""
     root = ET.Element('mujoco', model=model_name)
     ET.SubElement(root, 'option', timestep='0.001', iterations='100', tolerance='1e-8', solver='Newton', cone='elliptic')
     asset = ET.SubElement(root, 'asset')
@@ -97,14 +97,14 @@ PIPE_GEOM = dict(friction=f'2 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION
                  rgba='.92 .92 .9 1')
 
 
-def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, center='0 0 .8', extent='1.8'):
+def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, center='0 0 .8', extent='1.8', joints=JOINTS):
     """加入机器人、执行器、显示与实验标记，按起始管半径求初始姿态并写出 XML。
 
     管道起始段必须沿 rotation·z 方向（默认竖直）且过原点；初始螺旋中心在该轴上 0.5 m 处。
     """
-    robot(world)
+    robot(world, joints)
     actuator = ET.SubElement(root, 'actuator')
-    for j in range(1, JOINTS+1):
+    for j in range(1, joints+1):
         ET.SubElement(actuator, 'position', name=f'servo_{j}', joint=f'joint{j}', kp=f'{ACTUATOR_KP:g}', gear='1',
                       ctrllimited='true', ctrlrange='-1.5708 1.5708', forcelimited='true',
                       forcerange=numbers([-FORCE_LIMIT_NM, FORCE_LIMIT_NM]))
@@ -133,8 +133,8 @@ def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, ce
     return output
 
 
-def build(filename, r_bottom, r_top):
-    root, asset, world = new_scene()
+def build(filename, r_bottom, r_top, joints=JOINTS):
+    root, asset, world = new_scene(f'real-snake{joints}-pipe')
     pipe = ET.SubElement(world, 'body', name='real_pipe')
     common = PIPE_GEOM
     z_end = Z_TAPER + TAPER_LENGTH
@@ -151,7 +151,7 @@ def build(filename, r_bottom, r_top):
     for z, r, name in ((Z_TAPER, r_bottom, 'taper_start'), (z_end, r_top, 'taper_end')):
         ET.SubElement(world, 'site', name=name, type='sphere', size='.008', pos=numbers([r+.018, 0, z]), rgba='1 .65 .1 1')
     finalize(root, world, filename, r_bottom,
-             extra_numeric=[('pipe_profile', [r_bottom, r_top, Z_TAPER, z_end, HEIGHT])])
+             extra_numeric=[('pipe_profile', [r_bottom, r_top, Z_TAPER, z_end, HEIGHT])], joints=joints)
 
 
 def matched_pitch_mm(radius_mm, apply_radius_mm, apply_pitch_mm=PITCH_MM):
@@ -194,5 +194,9 @@ def start_pose(model, contact_mm, rotation=None):
 
 
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--joints', type=int, choices=(20, 26), default=26)
+    args = parser.parse_args()
     for name, (bottom, top) in VARIANTS.items():
-        build(name, bottom, top)
+        build(name.replace('o26_', f'o{args.joints}_'), bottom, top, args.joints)

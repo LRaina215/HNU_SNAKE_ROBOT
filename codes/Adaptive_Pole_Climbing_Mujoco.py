@@ -523,16 +523,18 @@ if __name__ == "__main__":
                      (Path(__file__).resolve().parents[1] / "mujoco_model").glob("Snake_Robot_o26_Pipe_*.xml"))
     parser.add_argument("--scene", choices=("pole", "variable", "twin", "twin_full", "inner", "inner_full", "tree",
                                             "real_s2l", "real_l2s", *(f"pipe_{name}" for name in network)), default=None)
+    parser.add_argument("--joints", type=int, choices=(20, 26), default=26,
+                        help="Joint count for real_* / pipe_* scenes (default: 26)")
     args = parser.parse_args()
     if args.scene is not None and args.scene.startswith("pipe_"):
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" /
-                                               f"Snake_Robot_o26_Pipe_{args.scene[5:]}.xml")
+                                               f"Snake_Robot_o{args.joints}_Pipe_{args.scene[5:]}.xml")
     elif args.scene is not None:
         filename = {"pole": "Snake_Robot_o20_Pole_Climbing.xml", "variable": "Snake_Robot_o20_Variable_Pipe.xml",
                     "twin": "Snake_Robot_o20_Twin_Pipe.xml",
                     "twin_full": "Snake_Robot_o20_Twin_Pipe_Full.xml",
                     "inner": "Snake_Robot_o20_Inner_Pipe.xml", "inner_full": "Snake_Robot_o20_Inner_Pipe_Full.xml",
                     "tree": "Snake_Robot_o20_Tree.xml",
-                    "real_s2l": "Snake_Robot_o26_Real_Pipe_S2L.xml", "real_l2s": "Snake_Robot_o26_Real_Pipe_L2S.xml"}[args.scene]
+                    "real_s2l": f"Snake_Robot_o{args.joints}_Real_Pipe_S2L.xml", "real_l2s": f"Snake_Robot_o{args.joints}_Real_Pipe_L2S.xml"}[args.scene]
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" / filename)
     main()

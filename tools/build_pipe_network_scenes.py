@@ -1,6 +1,6 @@
 """弯管、变径 + 弯管、法兰、偏心异径、三通、倾斜管、低摩擦带等管外攀爬场景（26 关节实物参数）。单位 m。
 
-运行：python tools/build_pipe_network_scenes.py [场景名 ...]（不带参数生成全部）
+运行：python tools/build_pipe_network_scenes.py [场景名 ...] --joints 20（默认 26；无场景名时生成全部）
 管道由中心线上依次排列的段描述：直管（可变径）、圆弧弯头、偏心异径、法兰、侧向支管。
 等径直管用圆柱；其余按中心线细分，每片取相邻两个截面圆的凸包（MuJoCo 网格碰撞本身就是凸包），
 相邻片共用截面圆，表面连续，没有台阶或缝隙。
@@ -200,26 +200,31 @@ class PipeBuilder:
         return np.asarray(self.samples)
 
 
-def build(name):
+def build(name, joints=26):
     spec = SCENES[name]
-    root, asset, world = real.new_scene(f'real-snake26-{name}')
+    root, asset, world = real.new_scene(f'real-snake{joints}-{name}')
     builder = PipeBuilder(world, asset, spec.get('tilt_deg', 0.))
     samples = builder.build(spec['segments'])
     # 管轴采样只保留地面以上的部分，避免 Ctrl+K 最近点落到地下段
     above = samples[samples[:, 2] > -1e-6]
     low, high = above[:, :3].min(axis=0), above[:, :3].max(axis=0)
     rotation = Rotation.from_euler('y', spec.get('tilt_deg', 0.), degrees=True) if spec.get('tilt_deg') else None
-    return real.finalize(root, world, f'Snake_Robot_o26_Pipe_{name}.xml', spec['segments'][0][2],
+    return real.finalize(root, world, f'Snake_Robot_o{joints}_Pipe_{name}.xml', spec['segments'][0][2],
                          extra_numeric=[('pipe_centerline', above.ravel()),
                                         # 特征所在沿管弧长 [起点, 终点]（m，从地面起）；无特征的倾斜直管取 1.0 m 处一条参考线，
                                         # 与其他场景特征位置相当，用于统一判定“整条身体越过”
                                         ('feature_span', [min(a for a, _ in builder.features), max(b for _, b in builder.features)]
                                          if builder.features else [1., 1.])],
-                         rotation=rotation,
+                         rotation=rotation, joints=joints,
                          center=numbers((low + high) / 2), extent=f'{max(1.2, float(np.max(high - low))):g}')
 
 
 if __name__ == '__main__':
-    for scene in sys.argv[1:] or SCENES:
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('scenes', nargs='*')
+    parser.add_argument('--joints', type=int, choices=(20, 26), default=26)
+    args = parser.parse_args()
+    for scene in args.scenes or SCENES:
         print(SCENES[scene]['title'], end='：')
-        build(scene)
+        build(scene, args.joints)

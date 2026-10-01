@@ -64,6 +64,27 @@ flowchart LR
 
 ## 启动（Windows PowerShell）
 
+### 20 / 26 关节实物参数模型
+
+两个 MuJoCo 入口均支持 `--joints 20` / `--joints 26`，作用于 `real_s2l`、`real_l2s` 和全部 `pipe_*` 场景。默认仍为 26，保持已有实验命令与基线不变。旧 `pole/variable/twin/inner/tree` 属于历史模型，不随此选项改变。
+
+```powershell
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene real_s2l --joints 20
+python codes/Adaptive_Pole_Climbing_CurvedAxis_Mujoco.py --scene pipe_bend90_tight --joints 20
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene real_s2l --joints 26
+```
+
+新增 17 个 `Snake_Robot_o20_Real_Pipe_* / Snake_Robot_o20_Pipe_*` XML。20 关节版沿用实机参数：64.5 mm 间距、29 mm 外壳半径、每模块 136 g、kp=127、力矩上限 ±2.355 N·m；保留 K=0.01/0.02、P=220 mm、小/大管目标 R=80/105 mm。模型包含头部及 20 个关节后的连杆，共 21 个质量模块，合计 2.856 kg；这不是新整机的称重结果。摩擦和阻尼仍为原先估计值。初始姿态为 20 关节重新求解，未直接截断 26 关节关键帧。
+
+重新生成（使用与已有基线一致的 MuJoCo 3.3.0）：
+
+```powershell
+python tools/build_real_pipe_scene.py --joints 20
+python tools/build_pipe_network_scenes.py --joints 20
+```
+
+20 关节版只完成静态模型检查，尚未验证攀爬；26 关节实验结果不能视为它的结果。原 26 关节 XML 与历史实验数据保留。
+
 已验证环境为 Windows、Python 3.9、MuJoCo 3.2.7。使用现有 `mujoco` 环境即可；新环境可按下列命令安装本功能所需的依赖。Tkinter 随 Python/Conda 安装，交互 viewer 还需要可用的图形环境。
 
 ```powershell
