@@ -125,11 +125,11 @@ def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, ce
     tree.write(output, encoding='utf-8', xml_declaration=True)
     model = mujoco.MjModel.from_xml_path(str(output))
     keyframes = ET.SubElement(root, 'keyframe')
-    radius_mm, qpos = start_pose(model, contact_mm, rotation)
+    radius_mm, pitch_mm, qpos = start_pose(model, contact_mm, rotation)
     ET.SubElement(keyframes, 'key', name='experiment_start', qpos=numbers(qpos))
     ET.indent(tree, space='  ')
     tree.write(output, encoding='utf-8', xml_declaration=True)
-    print(output, f'初始 R={radius_mm:g} mm，Ctrl+U 预设 R={contact_mm - APPLY_TIGHTEN_MM:g} mm')
+    print(output, f'初始 R={radius_mm:g} P={pitch_mm:.0f} mm，Ctrl+U 预设 R={contact_mm - APPLY_TIGHTEN_MM:g} P={PITCH_MM:g} mm')
     return output
 
 
@@ -154,16 +154,34 @@ def build(filename, r_bottom, r_top):
              extra_numeric=[('pipe_profile', [r_bottom, r_top, Z_TAPER, z_end, HEIGHT])])
 
 
+def matched_pitch_mm(radius_mm, apply_radius_mm, apply_pitch_mm=PITCH_MM):
+    """与 Ctrl+U 预设螺旋挠率相同、半径为 radius_mm 的螺距；无解时返回 None。
+
+    Yamada 关节角的相位沿身体按 τ·s 累积。初始姿态若只放大半径、螺距不变，挠率不同，
+    26 关节尾部相位差可达 127°，Ctrl+U 时尾部会剧烈反拧。挠率相同则只差曲率（幅值）。
+    """
+    b1 = apply_pitch_mm / (2 * np.pi)
+    tau = b1 / (apply_radius_mm ** 2 + b1 ** 2)
+    disc = 1 - 4 * tau ** 2 * radius_mm ** 2
+    if disc < 0:
+        return None
+    return 2 * np.pi * (1 - np.sqrt(disc)) / (2 * tau)  # 取较小的螺距（更紧的缠绕）
+
+
 def start_pose(model, contact_mm, rotation=None):
     """从贴管半径起逐毫米增大，返回第一个整条机器人离管面不小于 START_CLEARANCE_M 的预缠绕姿态。
 
-    rotation（scipy Rotation）把绕竖直轴的姿态整体转到倾斜起始管上。
+    挠率与 Ctrl+U 预设（贴管半径 − APPLY_TIGHTEN_MM，PITCH_MM）相同，见 matched_pitch_mm。
+    rotation（scipy Rotation）把绕竖直轴的姿态整体转到倾斜起始管上。返回 (半径, 螺距, qpos)。
     """
     data = mujoco.MjData(model)
     pipe = [i for i in range(model.ngeom) if (model.geom(i).name or '').startswith('pipe')]
     body = [i for i in range(model.ngeom) if model.geom_bodyid[i] != 0 and i not in pipe]
     for radius_mm in np.arange(np.ceil(contact_mm), contact_mm + 60):
-        data.qpos[:] = base.initial_pose(model, radius_mm=radius_mm, pitch_mm=PITCH_MM)
+        pitch_mm = matched_pitch_mm(radius_mm, contact_mm - APPLY_TIGHTEN_MM)
+        if pitch_mm is None:
+            break
+        data.qpos[:] = base.initial_pose(model, radius_mm=radius_mm, pitch_mm=pitch_mm)
         if rotation is not None:
             data.qpos[:3] = rotation.apply(data.qpos[:3])
             quaternion = (rotation * Rotation.from_quat(data.qpos[[4, 5, 6, 3]])).as_quat()
@@ -171,7 +189,7 @@ def start_pose(model, contact_mm, rotation=None):
         mujoco.mj_forward(model, data)
         gap = min(mujoco.mj_geomDistance(model, data, a, b, .05, None) for a in body for b in pipe)
         if gap >= START_CLEARANCE_M:
-            return float(radius_mm), data.qpos.copy()
+            return float(radius_mm), float(pitch_mm), data.qpos.copy()
     raise RuntimeError('找不到不穿透管面的初始姿态')
 
 

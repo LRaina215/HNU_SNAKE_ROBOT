@@ -98,6 +98,34 @@ class HelixBackbone:
         return result
 
 
+def trial_perturbation(model, seed):
+    """重复实验的可复现扰动（seed 为 None 时不扰动）：管道滑动摩擦 ×U(0.8, 1.2)，
+    初始姿态绕起始管轴随机转动 [0, 360°)。返回把初始姿态扰动应用到 mjData 的函数。
+    """
+    if seed is None:
+        return lambda data: None
+    from scipy.spatial.transform import Rotation
+    rng = np.random.default_rng(int(seed))
+    scale, roll = rng.uniform(.8, 1.2), rng.uniform(0, 2 * math.pi)
+    pipe = [i for i in range(model.ngeom) if (model.geom(i).name or "").startswith("pipe")]
+    model.geom_friction[pipe, 0] *= scale
+    axis = np.array([0., 0., 1.])
+    try:
+        line = model.numeric("pipe_centerline").data.reshape(-1, 4)[:, :3]
+        axis = (line[1] - line[0]) / np.linalg.norm(line[1] - line[0])
+        origin = line[0] - np.dot(line[0], axis) * axis  # 起始管轴上离原点最近的点
+    except KeyError:
+        origin = np.zeros(3)
+    rotation = Rotation.from_rotvec(axis * roll)
+    print(f"TRIAL seed={seed} 管道摩擦×{scale:.3f} 初始绕管轴转动={math.degrees(roll):.1f}°", flush=True)
+
+    def apply(data):
+        data.qpos[:3] = origin + rotation.apply(data.qpos[:3] - origin)
+        quaternion = (rotation * Rotation.from_quat(data.qpos[[4, 5, 6, 3]])).as_quat()
+        data.qpos[3:7] = quaternion[[3, 0, 1, 2]]
+    return apply
+
+
 # 键盘/控制台只入队；参数、相位与 mjData 均由主线程修改。
 command_queue = queue.Queue()
 
@@ -149,8 +177,10 @@ def main():
     m = mujoco.MjModel.from_xml_path(model_path)
     d = mujoco.MjData(m)
     start_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_KEY, "experiment_start")
+    trial = trial_perturbation(m, os.environ.get("SNAKE_TRIAL_SEED"))
     if start_key >= 0:
         mujoco.mj_resetDataKeyframe(m, d, start_key)
+        trial(d)
         preset = m.numeric("experiment_helix_mm").data
         radius = float(os.environ.get("SNAKE_HELIX_RADIUS_MM", preset[0]))
         pitch = float(os.environ.get("SNAKE_HELIX_PITCH_MM", preset[1]))
@@ -218,7 +248,7 @@ def main():
         text = lambda value: "—" if value is None else f"{value:.1f}"
         print(f"RADIUS 实测截面={text(measured)}mm 当前目标截面={text(target)}mm "
               f"关节到管轴(仿真)={axis_distance:.1f}mm 同位置管半径={text(pipe_radius)}mm"
-              + ("" if progress is None else f" 沿管进度={progress:.3f}m"), flush=True)
+              f" 沿管进度 平均/最后/最前={progress[0]:.3f}/{progress[1]:.3f}/{progress[2]:.3f}m", flush=True)
         print(f"STATUS {'单步/暂停' if manual else '连续'} R={radius:g} P={pitch:g} "
               f"phase={phase:.4f} delta={phase_step:g} sim={d.time:.3f}s "
               f"顺应性={'开' if compliance_enabled else '关'} 反馈={feedback_state} "
@@ -272,6 +302,8 @@ def main():
                     command = command_queue.get_nowait().strip().lower()
                 except queue.Empty:
                     command = ""
+                if command in ("quit", "exit"):
+                    break
                 if command in ("pause", "reset"):
                     manual, pending, remaining = True, None, 0
                     while not command_queue.empty():
@@ -280,6 +312,7 @@ def main():
                         with (nullcontext() if viewer is None else viewer.lock()):
                             if start_key >= 0:
                                 mujoco.mj_resetDataKeyframe(m, d, start_key)
+                                trial(d)
                             else:
                                 mujoco.mj_resetData(m, d)
                             mujoco.mj_forward(m, d)

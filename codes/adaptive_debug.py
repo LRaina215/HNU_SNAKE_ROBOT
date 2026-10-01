@@ -12,7 +12,7 @@ HELP = """机器人调试（先点击 MuJoCo 窗口；Ctrl+字母，不用 F 键
   空格 立即暂停     Ctrl+G 连续运行/暂停     Ctrl+R 重置实验并暂停
   Ctrl+E 顺应性开/关 Ctrl+K 查看状态         Ctrl+-/= 减半/加倍相位步长
   Ctrl+上下 修改半径；Ctrl+左右 修改螺距；修改后 Ctrl+U 应用
-控制台：apply / step / back / hold / pause / run / reset / compliance / status / help
+控制台：apply / step / back / hold / pause / run / reset / compliance / status / help / quit
 参数：r=130 p=180 / delta=0.05 / gravity=0（几何调试）或 gravity=1（重力实验）
 """
 
@@ -120,10 +120,12 @@ def mujoco_numeric(model, name):
 
 
 def pipe_progress(model, data):
-    """沿管中心线的平均弧长（m，从地面处起算）；只有带 pipe_centerline 的场景有值。"""
+    """各关节沿管进度的 (平均, 最小, 最大)（m，从地面起）。带 pipe_centerline 的场景沿中心线弧长，
+    其余竖直管场景取关节高度；最小值即最靠后（尾部一侧）的关节。"""
     points = np.array([data.joint(f'joint{i}').xanchor for i in range(1, model.nu+1)])
     nearest = centerline_nearest(model, points)
-    return None if nearest is None else float(nearest[2].mean())
+    progress = points[:, 2] if nearest is None else nearest[2]
+    return float(progress.mean()), float(progress.min()), float(progress.max())
 
 
 def pipe_geometry(model, data):

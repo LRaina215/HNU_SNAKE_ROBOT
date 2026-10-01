@@ -93,6 +93,8 @@ class PipeBuilder:
         self.count = 0
         self.samples = []  # (x, y, z, r)，沿中心线
         self.markers = []
+        self.s = -BELOW_FLOOR  # 沿中心线弧长，从地面起算
+        self.features = []  # 各特征的 (起点, 终点) 弧长
 
     def name(self, kind):
         self.count += 1
@@ -126,6 +128,9 @@ class PipeBuilder:
             self.hull('taper', [ring(self.point, self.direction, r0), ring(end, self.direction, r1)], **extra)
             self.markers += [(self.point, r0), (end, r1)]
         self.sample(self.point, end, r0, r1)
+        if abs(r0 - r1) > 1e-12 or options:
+            self.features.append((self.s, self.s + length))
+        self.s += length
         self.point, self.radius = end, r1
 
     def bend(self, bend_radius, angle_deg, toward):
@@ -134,6 +139,8 @@ class PipeBuilder:
         center = self.point + bend_radius * toward
         steps = int(np.ceil(angle_deg / BEND_STEP_DEG))
         self.markers.append((self.point, self.radius))
+        self.features.append((self.s, self.s + bend_radius * np.radians(angle_deg)))
+        self.s = self.features[-1][1]
         for i in range(steps):
             turn = Rotation.from_rotvec(axis * np.radians(angle_deg) / steps)
             point = center + turn.apply(self.point - center)
@@ -150,6 +157,8 @@ class PipeBuilder:
         self.hull('eccentric', [ring(self.point, self.direction, r0), ring(end, self.direction, r1)])
         self.markers += [(self.point, r0), (end, r1)]
         self.sample(self.point, end, r0, r1)
+        self.features.append((self.s, self.s + np.linalg.norm(end - self.point)))
+        self.s = self.features[-1][1]
         self.point, self.radius = end, r1
 
     def flange(self, height, bolts):
@@ -170,12 +179,14 @@ class PipeBuilder:
                                   fromto=numbers([*face, *(face + sign * BOLT_H * self.direction)]),
                                   **{**real.PIPE_GEOM, 'rgba': '.6 .6 .65 1'})
         self.markers.append((self.point, outer))
+        self.features.append((self.s - FLANGE_T / 2 - (BOLT_H if bolts else 0), self.s + FLANGE_T / 2 + (BOLT_H if bolts else 0)))
 
     def branch(self, radius, length, toward):
         side = unit(np.asarray(WORLD[toward]) - np.dot(WORLD[toward], self.direction) * self.direction)
         ET.SubElement(self.body, 'geom', name=self.name('branch'), type='cylinder', size=f'{radius:g}',
                       fromto=numbers([*self.point, *(self.point + length * side)]), **real.PIPE_GEOM)
         self.markers.append((self.point, self.radius))
+        self.features.append((self.s - radius, self.s + radius))
 
     def build(self, segments):
         self.radius = segments[0][2]
@@ -199,7 +210,12 @@ def build(name):
     low, high = above[:, :3].min(axis=0), above[:, :3].max(axis=0)
     rotation = Rotation.from_euler('y', spec.get('tilt_deg', 0.), degrees=True) if spec.get('tilt_deg') else None
     return real.finalize(root, world, f'Snake_Robot_o26_Pipe_{name}.xml', spec['segments'][0][2],
-                         extra_numeric=[('pipe_centerline', above.ravel())], rotation=rotation,
+                         extra_numeric=[('pipe_centerline', above.ravel()),
+                                        # 特征所在沿管弧长 [起点, 终点]（m，从地面起）；无特征的倾斜直管取 1.0 m 处一条参考线，
+                                        # 与其他场景特征位置相当，用于统一判定“整条身体越过”
+                                        ('feature_span', [min(a for a, _ in builder.features), max(b for _, b in builder.features)]
+                                         if builder.features else [1., 1.])],
+                         rotation=rotation,
                          center=numbers((low + high) / 2), extent=f'{max(1.2, float(np.max(high - low))):g}')
 
 

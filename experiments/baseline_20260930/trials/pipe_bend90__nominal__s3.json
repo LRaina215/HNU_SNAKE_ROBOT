@@ -1,0 +1,235 @@
+{
+ "scene": "pipe_bend90",
+ "method": "nominal",
+ "seed": 3,
+ "goal_m": 1.47123889804,
+ "runner_outcome": "success",
+ "status": [
+  {
+   "step": 10,
+   "mean": 0.525,
+   "last": 0.186,
+   "first": 0.862,
+   "height": 0.525
+  },
+  {
+   "step": 20,
+   "mean": 0.571,
+   "last": 0.227,
+   "first": 0.923,
+   "height": 0.571
+  },
+  {
+   "step": 30,
+   "mean": 0.619,
+   "last": 0.274,
+   "first": 0.958,
+   "height": 0.619
+  },
+  {
+   "step": 40,
+   "mean": 0.665,
+   "last": 0.322,
+   "first": 1.015,
+   "height": 0.665
+  },
+  {
+   "step": 50,
+   "mean": 0.712,
+   "last": 0.362,
+   "first": 1.052,
+   "height": 0.713
+  },
+  {
+   "step": 60,
+   "mean": 0.759,
+   "last": 0.421,
+   "first": 1.105,
+   "height": 0.763
+  },
+  {
+   "step": 70,
+   "mean": 0.805,
+   "last": 0.454,
+   "first": 1.131,
+   "height": 0.808
+  },
+  {
+   "step": 80,
+   "mean": 0.857,
+   "last": 0.52,
+   "first": 1.19,
+   "height": 0.858
+  },
+  {
+   "step": 90,
+   "mean": 0.909,
+   "last": 0.548,
+   "first": 1.236,
+   "height": 0.905
+  },
+  {
+   "step": 100,
+   "mean": 0.958,
+   "last": 0.617,
+   "first": 1.314,
+   "height": 0.949
+  },
+  {
+   "step": 110,
+   "mean": 1.005,
+   "last": 0.643,
+   "first": 1.364,
+   "height": 0.988
+  },
+  {
+   "step": 120,
+   "mean": 1.057,
+   "last": 0.723,
+   "first": 1.439,
+   "height": 1.03
+  },
+  {
+   "step": 130,
+   "mean": 1.104,
+   "last": 0.747,
+   "first": 1.478,
+   "height": 1.065
+  },
+  {
+   "step": 140,
+   "mean": 1.154,
+   "last": 0.825,
+   "first": 1.544,
+   "height": 1.101
+  },
+  {
+   "step": 150,
+   "mean": 1.197,
+   "last": 0.837,
+   "first": 1.566,
+   "height": 1.13
+  },
+  {
+   "step": 160,
+   "mean": 1.242,
+   "last": 0.915,
+   "first": 1.603,
+   "height": 1.159
+  },
+  {
+   "step": 170,
+   "mean": 1.29,
+   "last": 0.952,
+   "first": 1.644,
+   "height": 1.188
+  },
+  {
+   "step": 180,
+   "mean": 1.348,
+   "last": 1.031,
+   "first": 1.72,
+   "height": 1.223
+  },
+  {
+   "step": 190,
+   "mean": 1.4,
+   "last": 1.076,
+   "first": 1.768,
+   "height": 1.255
+  },
+  {
+   "step": 200,
+   "mean": 1.453,
+   "last": 1.137,
+   "first": 1.834,
+   "height": 1.279
+  },
+  {
+   "step": 210,
+   "mean": 1.504,
+   "last": 1.173,
+   "first": 1.889,
+   "height": 1.294
+  },
+  {
+   "step": 220,
+   "mean": 1.542,
+   "last": 1.223,
+   "first": 1.906,
+   "height": 1.285
+  },
+  {
+   "step": 230,
+   "mean": 1.585,
+   "last": 1.257,
+   "first": 1.861,
+   "height": 1.262
+  },
+  {
+   "step": 240,
+   "mean": 1.636,
+   "last": 1.305,
+   "first": 1.921,
+   "height": 1.273
+  },
+  {
+   "step": 250,
+   "mean": 1.692,
+   "last": 1.352,
+   "first": 1.988,
+   "height": 1.285
+  },
+  {
+   "step": 260,
+   "mean": 1.739,
+   "last": 1.398,
+   "first": 2.039,
+   "height": 1.29
+  },
+  {
+   "step": 270,
+   "mean": 1.798,
+   "last": 1.465,
+   "first": 2.118,
+   "height": 1.291
+  },
+  {
+   "step": 280,
+   "mean": 1.851,
+   "last": 1.51,
+   "first": 2.18,
+   "height": 1.291
+  }
+ ],
+ "outcome": "success",
+ "success": true,
+ "steps": 280,
+ "steps_to_success": 272,
+ "start_progress_m": 0.4792655830789201,
+ "max_rise_m": 1.371559257747708,
+ "final_rise_m": 1.371559257747708,
+ "max_mean_progress_m": 1.8508248408266281,
+ "max_tail_progress_m": 1.5102922996237145,
+ "max_head_progress_m": 2.1796184390654427,
+ "max_mean_height_m": 1.2952422013985583,
+ "max_joint_height_m": 1.4539244711524182,
+ "max_head_height_m": 1.3851267093158364,
+ "rise_per_step_mm": 4.8984259205275285,
+ "slip_back_m": 0.0041806677602953535,
+ "saturation_fraction": 0.764682347490998,
+ "worst_joint_saturation_fraction": 0.915822611552149,
+ "worst_joint": 13,
+ "longest_saturation_s": 5.339999999999931,
+ "overload_events": 248,
+ "overload_joints": 24,
+ "rms_torque_nm": 2.125558898267326,
+ "peak_mean_abs_torque_nm": 2.2479953571195406,
+ "heat_proxy_n2m2s": 8582.213276729275,
+ "max_tracking_error_deg": 68.2306620211373,
+ "mean_pipe_contacts": 15.412811387900355,
+ "compliance_step_fraction": 0.0,
+ "retries": 0,
+ "rejections": 0,
+ "wall_s": 144.0
+}

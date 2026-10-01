@@ -1,0 +1,95 @@
+{
+ "scene": "pipe_tee",
+ "method": "compliance",
+ "seed": 1,
+ "goal_m": 1.0375,
+ "runner_outcome": "stalled",
+ "status": [
+  {
+   "step": 10,
+   "mean": 0.489,
+   "last": 0.173,
+   "first": 0.805,
+   "height": 0.489
+  },
+  {
+   "step": 20,
+   "mean": 0.537,
+   "last": 0.208,
+   "first": 0.865,
+   "height": 0.537
+  },
+  {
+   "step": 30,
+   "mean": 0.589,
+   "last": 0.263,
+   "first": 0.91,
+   "height": 0.589
+  },
+  {
+   "step": 40,
+   "mean": 0.637,
+   "last": 0.307,
+   "first": 0.969,
+   "height": 0.637
+  },
+  {
+   "step": 50,
+   "mean": 0.688,
+   "last": 0.359,
+   "first": 1.014,
+   "height": 0.688
+  },
+  {
+   "step": 60,
+   "mean": 0.735,
+   "last": 0.404,
+   "first": 1.067,
+   "height": 0.735
+  },
+  {
+   "step": 70,
+   "mean": 0.771,
+   "last": 0.445,
+   "first": 1.103,
+   "height": 0.771
+  },
+  {
+   "step": 80,
+   "mean": 0.781,
+   "last": 0.444,
+   "first": 1.106,
+   "height": 0.781
+  }
+ ],
+ "outcome": "stalled",
+ "success": false,
+ "steps": 82,
+ "steps_to_success": null,
+ "start_progress_m": 0.4806385145427721,
+ "max_rise_m": 0.30849738362207463,
+ "final_rise_m": 0.30849738362207463,
+ "max_mean_progress_m": 0.7891358981648467,
+ "max_tail_progress_m": 0.4568277285175089,
+ "max_head_progress_m": 1.1364510537509165,
+ "max_mean_height_m": 0.7891358981648467,
+ "max_joint_height_m": 1.1364510537509165,
+ "max_head_height_m": 1.1585531647669376,
+ "rise_per_step_mm": 3.762163214903349,
+ "slip_back_m": 0.03082978481843185,
+ "saturation_fraction": 0.4401333143223783,
+ "worst_joint_saturation_fraction": 0.6617238183503243,
+ "worst_joint": 8,
+ "longest_saturation_s": 4.939999999999939,
+ "overload_events": 9,
+ "overload_joints": 9,
+ "rms_torque_nm": 1.7116228856452453,
+ "peak_mean_abs_torque_nm": 1.8704201409754324,
+ "heat_proxy_n2m2s": 1643.7696506270293,
+ "max_tracking_error_deg": 43.42993557096196,
+ "mean_pipe_contacts": 10.566265060240964,
+ "compliance_step_fraction": 1.0,
+ "retries": 6,
+ "rejections": 2,
+ "wall_s": 93.8
+}
