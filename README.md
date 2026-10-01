@@ -75,7 +75,7 @@ Start-Process .\visualizer\windows_app\bin\SnakeRobotVisualizer.exe
 python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 ```
 
-构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.2 EXE（`Paper Code/蛇形机器人可视化程序_v1.4.2/`，v1.4.1 保留），再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
+构建使用 Windows 自带的 .NET Framework C# 编译器，不需要 Visual Studio。也可先启动已发布的 v1.4.3 EXE（`Paper Code/蛇形机器人可视化程序_v1.4.3/`，v1.4.2 及更早版本保留），再运行本仓库的 Python。默认本机端口为 8765，同一端口只运行一个可视化实例；模拟模式不需要选择串口或使能扭矩。
 
 **管道实验用 `--scene` 选择场景**；不带 `--scene` 时仍打开原 Pole 场景。
 

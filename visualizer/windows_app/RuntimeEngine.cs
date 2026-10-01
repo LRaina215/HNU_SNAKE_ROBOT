@@ -716,6 +716,13 @@ namespace SnakeRobotVisualizer
                         int[] ids = localProfile.Joints.Select(x => x.ServoId).ToArray();
                         localBus.SetTorqueEnabled(ids, false);
                         torqueActive = false;
+                        lock (sync)
+                        {
+                            for (int i = 0; i < states.Length; i++)
+                            {
+                                states[i].TargetDegrees = states[i].AngleDegrees;
+                            }
+                        }
                         SetStatus("扭矩已释放", false);
                     }
                     else if (command.Type == RuntimeControlType.SetTarget)
