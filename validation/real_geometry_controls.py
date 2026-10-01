@@ -50,7 +50,7 @@ def main():
     exchange = Exchange()
     commands = ['wind=2', 'step', 'wind=0.25'] + ['step']*4
     commands += ['r=104', 'r=105'] + ['step']*76
-    commands += ['r=104', 'r=1', 'status', 'apply', 'r=103', 'compliance']
+    commands += ['r=104', 'r+', 'r-', 'r=1', 'status', 'apply', 'r=103', 'compliance']
     commands += ['back']*3 + ['r=103', 'apply', 'status', 'back', 'r=102', 'status']
     commands += ['reset', 'back', 'step', 'status', 'quit']
 
@@ -90,6 +90,8 @@ def main():
     assert [c for c, _ in edits] == ['r=104', 'r=105', 'r=104', 'r=103']
     np.testing.assert_allclose(edits[0][1], real.winding_targets(np.zeros(20), helix(104), 1))
     np.testing.assert_allclose(edits[2][1], helix(104))  # 缠满时修改几何不解缠。
+    np.testing.assert_allclose(next(q for c, q in exchange.frames if c == 'r+'), helix(105))
+    np.testing.assert_allclose(next(q for c, q in exchange.frames if c == 'r-'), helix(104))
     np.testing.assert_allclose(edits[3][1], helix(103, -.45))
     np.testing.assert_allclose(exchange.frames[-1][1], real.winding_targets(np.zeros(20), helix(103), .25))
     print('PASS: partial/full winding edits, nonzero phase, rejected edits, reset after pose change; no hardware')

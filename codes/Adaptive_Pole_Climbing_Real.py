@@ -35,6 +35,7 @@ COMPLIANCE_INSIDE = False  # 手动选择：False 管外收紧；True 管内撑�
 HELIX_RADIUS_MM = 105.0
 HELIX_PITCH_MM = 220.0  # 缠绕目标：每圈轴向位移。
 ROLL_STEP_RAD = 0.15  # 滚动阶段每次 Ctrl+J/H 的相位增量。
+RADIUS_STEP_MM = 1.0  # 实机半径微调：R=80/P=220/20关节时，±5 mm 可引起约 43–51° 目标变化。
 WIND_STEP_JOINTS = 0.25  # 缠绕阶段每次 Ctrl+J/H 推进的关节数；0.25 表示一节分四次到位。
 MAX_JOINT_STEP_DEG = 30.0  # 任一关节单步目标变化上限，超过则本步不执行；仿真中顺应性单步最大约 22°，缠绕步长 0.25 约 17°。
 STEP_SETTLE_S = 1.0  # 目标下发后等待舵机运动的时间，之后才报告本步完成。
@@ -44,12 +45,12 @@ PORT = 8765
 TELEMETRY_LOG = True
 LOG_PERIOD_S = 1.0
 
-HELP = """实机调试（全局热键，任何窗口都会响应；Ctrl+字母）：
+HELP = f"""实机调试（全局热键，任何窗口都会响应；Ctrl+字母）：
   缠绕阶段：Ctrl+J 从头部多缠一节   Ctrl+H 退回一节   Ctrl+-/= 缠绕步长减半/加倍
   Ctrl+U 确认当前姿态，进入单步滚动（默认开顺应性）
   滚动阶段：Ctrl+J 相位+一步   Ctrl+H 相位-一步   Ctrl+-/= 相位步长减半/加倍
   Ctrl+N 重发当前目标   Ctrl+E 顺应性开/关   Ctrl+K 状态   Ctrl+R 回到缠绕阶段（不动机器人）
-  Ctrl+上下 半径±5mm；Ctrl+左右 螺距±10mm：已有缠绕时直接应用，保持进度/相位
+  Ctrl+上下 半径±{RADIUS_STEP_MM:g}mm；Ctrl+左右 螺距±10mm：已有缠绕时直接应用，保持进度/相位
   顺应性滚动时改 R/P 请先 Ctrl+E 关闭顺应性；空格 暂停/中断等待
 控制台：step / back / apply / hold / compliance / status / reset / pause / help / quit
 参数：r=105 p=220 / delta=0.05 / wind=0.25
@@ -321,7 +322,7 @@ def main(execution="live", hotkeys=True, port=PORT):
                 elif command in ("r+", "r-", "p+", "p-") or "=" in command:
                     new_r, new_p = radius, pitch
                     if command in ("r+", "r-"):
-                        new_r += 5 if command == "r+" else -5
+                        new_r += RADIUS_STEP_MM if command == "r+" else -RADIUS_STEP_MM
                     elif command in ("p+", "p-"):
                         new_p += 10 if command == "p+" else -10
                     else:
