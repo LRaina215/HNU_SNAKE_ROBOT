@@ -1,0 +1,277 @@
+{
+ "scene": "pipe_offset",
+ "method": "curved_local",
+ "seed": 1,
+ "goal_m": 1.72123889804,
+ "runner_outcome": "success",
+ "status": [
+  {
+   "step": 10,
+   "mean": 0.494,
+   "last": 0.174,
+   "first": 0.807,
+   "height": 0.494
+  },
+  {
+   "step": 20,
+   "mean": 0.544,
+   "last": 0.211,
+   "first": 0.874,
+   "height": 0.544
+  },
+  {
+   "step": 30,
+   "mean": 0.596,
+   "last": 0.265,
+   "first": 0.918,
+   "height": 0.596
+  },
+  {
+   "step": 40,
+   "mean": 0.646,
+   "last": 0.31,
+   "first": 0.981,
+   "height": 0.646
+  },
+  {
+   "step": 50,
+   "mean": 0.695,
+   "last": 0.36,
+   "first": 1.02,
+   "height": 0.696
+  },
+  {
+   "step": 60,
+   "mean": 0.745,
+   "last": 0.411,
+   "first": 1.06,
+   "height": 0.746
+  },
+  {
+   "step": 70,
+   "mean": 0.793,
+   "last": 0.459,
+   "first": 1.099,
+   "height": 0.794
+  },
+  {
+   "step": 80,
+   "mean": 0.843,
+   "last": 0.506,
+   "first": 1.131,
+   "height": 0.844
+  },
+  {
+   "step": 90,
+   "mean": 0.893,
+   "last": 0.558,
+   "first": 1.183,
+   "height": 0.891
+  },
+  {
+   "step": 100,
+   "mean": 0.942,
+   "last": 0.6,
+   "first": 1.237,
+   "height": 0.936
+  },
+  {
+   "step": 110,
+   "mean": 0.99,
+   "last": 0.651,
+   "first": 1.308,
+   "height": 0.979
+  },
+  {
+   "step": 120,
+   "mean": 1.04,
+   "last": 0.692,
+   "first": 1.385,
+   "height": 1.024
+  },
+  {
+   "step": 130,
+   "mean": 1.09,
+   "last": 0.756,
+   "first": 1.433,
+   "height": 1.07
+  },
+  {
+   "step": 140,
+   "mean": 1.143,
+   "last": 0.802,
+   "first": 1.502,
+   "height": 1.114
+  },
+  {
+   "step": 150,
+   "mean": 1.19,
+   "last": 0.866,
+   "first": 1.538,
+   "height": 1.154
+  },
+  {
+   "step": 160,
+   "mean": 1.236,
+   "last": 0.931,
+   "first": 1.566,
+   "height": 1.196
+  },
+  {
+   "step": 170,
+   "mean": 1.282,
+   "last": 1.0,
+   "first": 1.596,
+   "height": 1.236
+  },
+  {
+   "step": 180,
+   "mean": 1.326,
+   "last": 1.052,
+   "first": 1.617,
+   "height": 1.273
+  },
+  {
+   "step": 190,
+   "mean": 1.379,
+   "last": 1.079,
+   "first": 1.665,
+   "height": 1.315
+  },
+  {
+   "step": 200,
+   "mean": 1.426,
+   "last": 1.122,
+   "first": 1.713,
+   "height": 1.356
+  },
+  {
+   "step": 210,
+   "mean": 1.472,
+   "last": 1.147,
+   "first": 1.776,
+   "height": 1.395
+  },
+  {
+   "step": 220,
+   "mean": 1.517,
+   "last": 1.186,
+   "first": 1.839,
+   "height": 1.434
+  },
+  {
+   "step": 230,
+   "mean": 1.568,
+   "last": 1.232,
+   "first": 1.918,
+   "height": 1.476
+  },
+  {
+   "step": 240,
+   "mean": 1.621,
+   "last": 1.294,
+   "first": 1.951,
+   "height": 1.522
+  },
+  {
+   "step": 250,
+   "mean": 1.674,
+   "last": 1.348,
+   "first": 2.026,
+   "height": 1.567
+  },
+  {
+   "step": 260,
+   "mean": 1.721,
+   "last": 1.427,
+   "first": 2.056,
+   "height": 1.608
+  },
+  {
+   "step": 270,
+   "mean": 1.768,
+   "last": 1.485,
+   "first": 2.118,
+   "height": 1.651
+  },
+  {
+   "step": 280,
+   "mean": 1.815,
+   "last": 1.526,
+   "first": 2.154,
+   "height": 1.695
+  },
+  {
+   "step": 290,
+   "mean": 1.86,
+   "last": 1.554,
+   "first": 2.206,
+   "height": 1.736
+  },
+  {
+   "step": 300,
+   "mean": 1.905,
+   "last": 1.586,
+   "first": 2.24,
+   "height": 1.782
+  },
+  {
+   "step": 310,
+   "mean": 1.952,
+   "last": 1.624,
+   "first": 2.291,
+   "height": 1.831
+  },
+  {
+   "step": 320,
+   "mean": 1.999,
+   "last": 1.666,
+   "first": 2.333,
+   "height": 1.879
+  },
+  {
+   "step": 330,
+   "mean": 2.048,
+   "last": 1.708,
+   "first": 2.384,
+   "height": 1.928
+  },
+  {
+   "step": 340,
+   "mean": 2.097,
+   "last": 1.763,
+   "first": 2.429,
+   "height": 1.977
+  }
+ ],
+ "outcome": "success",
+ "success": true,
+ "steps": 340,
+ "steps_to_success": 333,
+ "start_progress_m": 0.4806385145427721,
+ "max_rise_m": 1.616727083733667,
+ "final_rise_m": 1.616727083733667,
+ "max_mean_progress_m": 2.097365598276439,
+ "max_tail_progress_m": 1.763467087596956,
+ "max_head_progress_m": 2.4293070046715224,
+ "max_mean_height_m": 1.977316978738822,
+ "max_joint_height_m": 2.309258385133905,
+ "max_head_height_m": 2.3436268387154775,
+ "rise_per_step_mm": 4.755079658040197,
+ "slip_back_m": 0.022789345417450924,
+ "saturation_fraction": 0.4853329053080914,
+ "worst_joint_saturation_fraction": 0.7487029099932325,
+ "worst_joint": 15,
+ "longest_saturation_s": 4.949999999999939,
+ "overload_events": 52,
+ "overload_joints": 9,
+ "rms_torque_nm": 1.7999264903621839,
+ "peak_mean_abs_torque_nm": 2.0828400176579467,
+ "heat_proxy_n2m2s": 7468.108387140167,
+ "max_tracking_error_deg": 33.30705767338316,
+ "mean_pipe_contacts": 11.970674486803519,
+ "compliance_step_fraction": 1.0,
+ "retries": 0,
+ "rejections": 0,
+ "wall_s": 169.4
+}

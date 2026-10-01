@@ -34,6 +34,11 @@ SCENES = ['real_s2l'] + [f'pipe_{name}' for name in (
     'bend45', 'bend90', 'bend90_tight', 'offset', 'taper_bend', 'bend_taper', 'flange10', 'flange25', 'flange40',
     'flange55', 'flange_pair', 'eccentric', 'tee', 'incline30', 'slip_band')]
 METHODS = ('compliance', 'nominal')
+# 步态 → 子进程命令（在 python -X utf8 之后）；其他实验脚本可增加条目，例如弯曲轴顺应性。
+SINGLE_STEP = str(ROOT / 'validation/adaptive_pole_single_step.py')
+LAUNCHERS = {'compliance': [SINGLE_STEP, '--run'], 'nominal': [SINGLE_STEP, '--run', '--nominal']}
+METHOD_STYLE = {'compliance': ('顺应性 K=0.01/0.02', '#2b7bba'), 'nominal': ('标准 Yamada 螺旋', '#d9772b')}
+TITLE = '基线：现有步态在实物参数管道场景上的重复攀爬（每组 5 次）'
 TRIALS = 5
 MAX_STEPS = 450
 STATUS_EVERY = 10
@@ -81,9 +86,7 @@ def run_trial(trial, port, appdir, out):
                SNAKE_MUJOCO_MAX_SECONDS=str(trial.max_steps * 12 + 300), SNAKE_MUJOCO_TRACE=str(trace),
                PYTHONIOENCODING='utf-8')
     env.pop('SNAKE_COMPLIANCE_GAIN', None)  # 使用场景 XML 自带的增益
-    args = [sys.executable, '-X', 'utf8', str(ROOT / 'validation/adaptive_pole_single_step.py'), '--run']
-    if trial.method == 'nominal':
-        args.append('--nominal')
+    args = [sys.executable, '-X', 'utf8', *LAUNCHERS[trial.method]]
     record = dict(scene=trial.scene, method=trial.method, seed=trial.seed, goal_m=goal, outcome='budget',
                   steps=0, retries=0, status=[], wall_s=0.)
     started = time.monotonic()
@@ -285,8 +288,10 @@ def worker(port, jobs, results, lock):
             app.wait(timeout=10)
 
 
-def summarize():
-    rows = [json.loads(path.read_text(encoding='utf-8')) for path in sorted((OUT / 'trials').glob('*.json'))]
+def summarize(extra_dirs=()):
+    """汇总 OUT/trials；extra_dirs 中其他实验的 trials 一并列入（用于新方法与基线对比）。"""
+    paths = [path for folder in (OUT, *extra_dirs) for path in sorted((Path(folder) / 'trials').glob('*.json'))]
+    rows = [json.loads(path.read_text(encoding='utf-8')) for path in paths]
     rows = [r for r in rows if 'error' not in r]
     trial_fields = ['scene', 'method', 'seed', 'outcome', 'success', 'steps', 'steps_to_success', 'goal_m',
                     'start_progress_m', 'max_rise_m', 'final_rise_m', 'max_mean_progress_m', 'max_tail_progress_m',
@@ -298,7 +303,7 @@ def summarize():
     with (OUT / 'trials.csv').open('w', newline='', encoding='utf-8-sig') as f:
         writer = csv.DictWriter(f, trial_fields, extrasaction='ignore')
         writer.writeheader()
-        writer.writerows(sorted(rows, key=lambda r: (SCENES.index(r['scene']), r['method'], r['seed'])))
+        writer.writerows(sorted(rows, key=lambda r: (SCENES.index(r['scene']), METHODS.index(r['method']), r['seed'])))
     summary = []
     for scene in SCENES:
         for method in METHODS:
@@ -335,24 +340,27 @@ def plot(summary):
     scenes = [s for s in SCENES if any(x['scene'] == s for x in summary)]
     get = lambda scene, method, key: next((x[key] for x in summary if x['scene'] == scene and x['method'] == method), np.nan)
     x = np.arange(len(scenes))
+    methods = [m for m in METHODS if any(s['method'] == m for s in summary)]
+    width = .8 / len(methods)
     fig, axes = plt.subplots(3, 1, figsize=(14, 11), sharex=True)
-    for offset, method, color in ((-.2, 'compliance', '#2b7bba'), (.2, 'nominal', '#d9772b')):
-        label = {'compliance': '顺应性 K=0.01/0.02', 'nominal': '标准 Yamada 螺旋'}[method]
+    for k, method in enumerate(methods):
+        offset = (k - (len(methods) - 1) / 2) * width
+        label, color = METHOD_STYLE[method]
         rate = [get(s, method, 'success') / get(s, method, 'trials') for s in scenes]
-        axes[0].bar(x + offset, rate, .4, color=color, label=label)
-        axes[1].bar(x + offset, [get(s, method, 'max_rise_m_mean') for s in scenes], .4,
+        axes[0].bar(x + offset, rate, width, color=color, label=label)
+        axes[1].bar(x + offset, [get(s, method, 'max_rise_m_mean') for s in scenes], width,
                     yerr=[get(s, method, 'max_rise_m_std') for s in scenes], color=color, capsize=2)
-        axes[2].bar(x + offset, [100 * get(s, method, 'saturation_fraction_mean') for s in scenes], .4,
+        axes[2].bar(x + offset, [100 * get(s, method, 'saturation_fraction_mean') for s in scenes], width,
                     yerr=[100 * get(s, method, 'saturation_fraction_std') for s in scenes], color=color, capsize=2)
     axes[0].set_ylabel('成功率')
     axes[0].set_ylim(0, 1.05)
-    axes[0].legend(loc='lower left', bbox_to_anchor=(0, 1.0), ncol=2, frameon=False)
+    axes[0].legend(loc='lower left', bbox_to_anchor=(0, 1.0), ncol=len(methods), frameon=False)
     axes[1].set_ylabel('最大沿管上升 (m)')
     axes[2].set_ylabel('顶到力矩上限的时间 (%)')
     axes[2].set_xticks(x, [s.replace('pipe_', '') for s in scenes], rotation=40, ha='right')
     for ax in axes:
         ax.grid(axis='y', alpha=.3)
-    fig.suptitle('基线：现有步态在实物参数管道场景上的重复攀爬（每组 5 次）')
+    fig.suptitle(TITLE)
     fig.tight_layout()
     fig.savefig(OUT / 'summary.png', dpi=150)
     plt.close(fig)

@@ -1,0 +1,123 @@
+{
+ "scene": "pipe_tee",
+ "method": "curved",
+ "seed": 1,
+ "goal_m": 1.0375,
+ "runner_outcome": "stalled",
+ "status": [
+  {
+   "step": 10,
+   "mean": 0.491,
+   "last": 0.173,
+   "first": 0.806,
+   "height": 0.491
+  },
+  {
+   "step": 20,
+   "mean": 0.542,
+   "last": 0.212,
+   "first": 0.871,
+   "height": 0.542
+  },
+  {
+   "step": 30,
+   "mean": 0.592,
+   "last": 0.258,
+   "first": 0.915,
+   "height": 0.592
+  },
+  {
+   "step": 40,
+   "mean": 0.643,
+   "last": 0.306,
+   "first": 0.979,
+   "height": 0.643
+  },
+  {
+   "step": 50,
+   "mean": 0.691,
+   "last": 0.354,
+   "first": 1.018,
+   "height": 0.691
+  },
+  {
+   "step": 60,
+   "mean": 0.741,
+   "last": 0.405,
+   "first": 1.078,
+   "height": 0.741
+  },
+  {
+   "step": 70,
+   "mean": 0.783,
+   "last": 0.452,
+   "first": 1.121,
+   "height": 0.783
+  },
+  {
+   "step": 80,
+   "mean": 0.823,
+   "last": 0.505,
+   "first": 1.163,
+   "height": 0.823
+  },
+  {
+   "step": 90,
+   "mean": 0.847,
+   "last": 0.537,
+   "first": 1.093,
+   "height": 0.847
+  },
+  {
+   "step": 100,
+   "mean": 0.877,
+   "last": 0.578,
+   "first": 1.069,
+   "height": 0.877
+  },
+  {
+   "step": 110,
+   "mean": 0.895,
+   "last": 0.621,
+   "first": 1.08,
+   "height": 0.895
+  },
+  {
+   "step": 120,
+   "mean": 0.86,
+   "last": 0.642,
+   "first": 1.082,
+   "height": 0.86
+  }
+ ],
+ "outcome": "stalled",
+ "success": false,
+ "steps": 120,
+ "steps_to_success": null,
+ "start_progress_m": 0.4806385145427721,
+ "max_rise_m": 0.4331468303853248,
+ "final_rise_m": 0.3792362633239725,
+ "max_mean_progress_m": 0.9137853449280969,
+ "max_tail_progress_m": 0.6659367688727784,
+ "max_head_progress_m": 1.1656174602854597,
+ "max_mean_height_m": 0.9137853449280969,
+ "max_joint_height_m": 1.1656174602854597,
+ "max_head_height_m": 1.2246134854706026,
+ "rise_per_step_mm": 3.7340243998734897,
+ "slip_back_m": 0.09106713164075098,
+ "saturation_fraction": 0.4794733238789183,
+ "worst_joint_saturation_fraction": 0.7574698029243484,
+ "worst_joint": 7,
+ "longest_saturation_s": 6.059999999999915,
+ "overload_events": 12,
+ "overload_joints": 7,
+ "rms_torque_nm": 1.7822122932506692,
+ "peak_mean_abs_torque_nm": 2.058684546108022,
+ "heat_proxy_n2m2s": 2598.070527192567,
+ "max_tracking_error_deg": 108.41244368926698,
+ "mean_pipe_contacts": 10.636363636363637,
+ "compliance_step_fraction": 1.0,
+ "retries": 6,
+ "rejections": 2,
+ "wall_s": 107.8
+}

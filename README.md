@@ -9,6 +9,8 @@ codes/
   Adaptive_Pole_Climbing_Mujoco.py  仿真入口：标准螺旋 Yamada、滚动相位与 MuJoCo 调度
   Adaptive_Pole_Climbing_Real.py    实机入口：手动逐节缠绕 → Ctrl+U → 单步顺应性，目标经 EXE 下发舵机
   pole_compliance.py           实测截面 → 目标形状 → 曲率/挠率 → Yamada 目标角
+  curved_axis_compliance.py    弯曲轴顺应性（论文扩展）：局部轴、局部截面、螺距角调制；不修改上一行
+  Adaptive_Pole_Climbing_CurvedAxis_Mujoco.py  弯曲轴顺应性的 MuJoCo 入口（键位、场景与原入口相同）
   mujoco_visualizer_bridge.py  实测角、头部世界位姿、当前 ctrl 的快照上传
   mujoco_execution_bridge.py   接收 EXE 返回目标，由仿真主线程写入 ctrl
   geometry_debug_view.py       独立进程显示实际收到的曲线/段参数
@@ -22,6 +24,8 @@ validation/
   geometry_debug_smoke.py      调试窗口、表格模式及关闭行为验证
   real_flow_mujoco.py          实机版按键流程验证（EXE + MuJoCo 执行端代替舵机）
   baseline_experiment.py       基线实验：两种步态 × 16 个实物参数管道场景 × 5 次，结果在 experiments/
+  curved_axis_unit.py          弯曲轴顺应性离线检查（直管退化为原方法、合成弯管形状重建）
+  curved_axis_experiment.py    弯曲轴顺应性与基线的对比实验（同场景、同种子）
   fixtures/                   固定反馈、初始显示配置、28 关节模型
   results/                    本地生成的日志和轨迹，不纳入 Git
 tools/
@@ -32,7 +36,7 @@ tools/
   build_real_pipe_scene.py     按实物参数生成 26 关节机器人与 UPVC 变径管（110 ↔ 160 mm）
   build_pipe_network_scenes.py 同一实物机器人的弯管、组合变径弯管、法兰、偏心异径、三通、倾斜、低摩擦带场景
   matlab/                      蛇形曲线参数可视化（Serpentine_Curve_Params.m）
-docs/                         Adaptive Pole 说明、阶段三/四记录、变径实验指南
+docs/                         Adaptive Pole 说明、阶段三/四记录、变径实验指南、弯曲轴顺应性方法说明
 experiments/                  实验数据与实验说明（基线：baseline_20260930/）
 mujoco_model/                 原模型、网格与新增 Variable_Pipe / Twin_Pipe / Inner_Pipe / Tree / o26_Real_Pipe / o26_Pipe_* 场景
 交接记录.md                    各轮调试结论、数据位置与待办；接手前先读
@@ -146,6 +150,8 @@ R 是机器人中心线的螺旋半径，P 是每圈轴向位移，均用 mm；R
 **当前边界：** 默认顺应性增益 K 首尾 0.04、中部 0.12，目标按关节范围限幅。重力下连续 Ctrl+H 300 步：变径场景（`--scene variable`）从 0.47 m 爬到管顶 1.80 m；论文实验 2 的等比缩小场景（`--scene twin`，单管 → 双管）爬到 1.65 m，已进入双管段约 0.65 m；原尺寸场景（`--scene twin_full`）爬到 1.55 m 且仍在上升，标准螺旋停在约 1.34 m。仿真不模拟舵机过载，但标准螺旋有 23–28% 的时间顶在力矩上限，顺应性只有 4–5%。管内场景（`--scene inner`，Ctrl+J 上爬）420 步：顺应性 0.45→1.40 m（最高 1.42 m），穿过过渡段进入矩形段，与标准螺旋相当（最高 1.42 m）；原尺寸场景顺应性 0.43→1.01 m 仍在上升。初始缠绕半径须贴近管壁，否则 Ctrl+U 时尾部下坠、轴估计偏斜，详见[交接记录](交接记录.md)。各场景均用 kp=20、扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
 
 **基线实验（2026-10-01）：** 现有两种步态在 16 个实物参数管道场景上各做 5 次（`validation/baseline_experiment.py`），数据与[实验说明](experiments/baseline_20260930/实验说明.md)在 `experiments/baseline_20260930/`。顺应性 56/80 成功、顶到力矩上限 43% 的时间；标准螺旋 18/80、72%。顺应性在高法兰（≥40 mm）、三通、短弯头处因轴估计失效而停滞；标准螺旋碰到截面变化即跌落。
+
+**弯曲轴顺应性（论文扩展，2026-10-01）：** 论文第 V 节把“把螺旋轴从直线扩展为曲线”列为未来工作。新方法放在独立文件中，不修改原顺应性代码与可视化程序：`codes/curved_axis_compliance.py`（局部轴、局部截面、螺距角调制）、入口 `codes/Adaptive_Pole_Climbing_CurvedAxis_Mujoco.py`（键位与场景同原入口，例如 `--scene pipe_bend90_tight`）。与基线同条件对比：60/80 成功（原方法 56/80），短弯头和先弯后变径由 3/5 提高到 5/5，0 次跌落；负载比原方法高约 3 个百分点。原理与推导见 [弯曲轴顺应性方法说明](docs/弯曲轴顺应性_方法说明.md)，数据见 `experiments/curved_axis_20261001/`。
 
 ## 实机版（`Adaptive_Pole_Climbing_Real.py`）
 

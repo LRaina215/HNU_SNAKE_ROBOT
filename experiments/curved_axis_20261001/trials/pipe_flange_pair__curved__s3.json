@@ -1,0 +1,109 @@
+{
+ "scene": "pipe_flange_pair",
+ "method": "curved",
+ "seed": 3,
+ "goal_m": 1.321,
+ "runner_outcome": "stalled",
+ "status": [
+  {
+   "step": 10,
+   "mean": 0.49,
+   "last": 0.171,
+   "first": 0.804,
+   "height": 0.49
+  },
+  {
+   "step": 20,
+   "mean": 0.541,
+   "last": 0.211,
+   "first": 0.87,
+   "height": 0.541
+  },
+  {
+   "step": 30,
+   "mean": 0.591,
+   "last": 0.258,
+   "first": 0.914,
+   "height": 0.591
+  },
+  {
+   "step": 40,
+   "mean": 0.638,
+   "last": 0.305,
+   "first": 0.95,
+   "height": 0.638
+  },
+  {
+   "step": 50,
+   "mean": 0.69,
+   "last": 0.362,
+   "first": 0.985,
+   "height": 0.69
+  },
+  {
+   "step": 60,
+   "mean": 0.745,
+   "last": 0.419,
+   "first": 1.061,
+   "height": 0.745
+  },
+  {
+   "step": 70,
+   "mean": 0.787,
+   "last": 0.464,
+   "first": 1.096,
+   "height": 0.787
+  },
+  {
+   "step": 80,
+   "mean": 0.83,
+   "last": 0.506,
+   "first": 1.179,
+   "height": 0.83
+  },
+  {
+   "step": 90,
+   "mean": 0.878,
+   "last": 0.558,
+   "first": 1.176,
+   "height": 0.878
+  },
+  {
+   "step": 100,
+   "mean": 0.886,
+   "last": 0.606,
+   "first": 1.12,
+   "height": 0.886
+  }
+ ],
+ "outcome": "stalled",
+ "success": false,
+ "steps": 102,
+ "steps_to_success": null,
+ "start_progress_m": 0.4792655830789201,
+ "max_rise_m": 0.42017228140638163,
+ "final_rise_m": 0.37415079189526856,
+ "max_mean_progress_m": 0.8994378644853017,
+ "max_tail_progress_m": 0.6157875433417843,
+ "max_head_progress_m": 1.1820472609510464,
+ "max_mean_height_m": 0.8994378644853017,
+ "max_joint_height_m": 1.1820472609510464,
+ "max_head_height_m": 1.229977472364016,
+ "rise_per_step_mm": 4.287472259248792,
+ "slip_back_m": 0.06936145889556877,
+ "saturation_fraction": 0.4403544551042684,
+ "worst_joint_saturation_fraction": 0.6120238984316654,
+ "worst_joint": 20,
+ "longest_saturation_s": 4.2199999999999545,
+ "overload_events": 9,
+ "overload_joints": 9,
+ "rms_torque_nm": 1.722973726660778,
+ "peak_mean_abs_torque_nm": 1.9183700406374793,
+ "heat_proxy_n2m2s": 2067.003588852851,
+ "max_tracking_error_deg": 67.67146134365623,
+ "mean_pipe_contacts": 10.20388349514563,
+ "compliance_step_fraction": 1.0,
+ "retries": 6,
+ "rejections": 4,
+ "wall_s": 101.5
+}

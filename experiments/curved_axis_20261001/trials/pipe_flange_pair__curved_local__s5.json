@@ -1,0 +1,102 @@
+{
+ "scene": "pipe_flange_pair",
+ "method": "curved_local",
+ "seed": 5,
+ "goal_m": 1.321,
+ "runner_outcome": "stalled",
+ "status": [
+  {
+   "step": 10,
+   "mean": 0.497,
+   "last": 0.179,
+   "first": 0.811,
+   "height": 0.497
+  },
+  {
+   "step": 20,
+   "mean": 0.549,
+   "last": 0.215,
+   "first": 0.878,
+   "height": 0.549
+  },
+  {
+   "step": 30,
+   "mean": 0.6,
+   "last": 0.27,
+   "first": 0.922,
+   "height": 0.6
+  },
+  {
+   "step": 40,
+   "mean": 0.644,
+   "last": 0.314,
+   "first": 0.945,
+   "height": 0.644
+  },
+  {
+   "step": 50,
+   "mean": 0.698,
+   "last": 0.375,
+   "first": 0.984,
+   "height": 0.698
+  },
+  {
+   "step": 60,
+   "mean": 0.749,
+   "last": 0.427,
+   "first": 1.036,
+   "height": 0.749
+  },
+  {
+   "step": 70,
+   "mean": 0.788,
+   "last": 0.467,
+   "first": 1.106,
+   "height": 0.788
+  },
+  {
+   "step": 80,
+   "mean": 0.821,
+   "last": 0.505,
+   "first": 1.17,
+   "height": 0.821
+  },
+  {
+   "step": 90,
+   "mean": 0.832,
+   "last": 0.557,
+   "first": 1.035,
+   "height": 0.832
+  }
+ ],
+ "outcome": "stalled",
+ "success": false,
+ "steps": 99,
+ "steps_to_success": null,
+ "start_progress_m": 0.48233130880957786,
+ "max_rise_m": 0.38249245550066524,
+ "final_rise_m": 0.314309002396452,
+ "max_mean_progress_m": 0.8648237643102431,
+ "max_tail_progress_m": 0.5773413718891537,
+ "max_head_progress_m": 1.1738251110424942,
+ "max_mean_height_m": 0.8648237643102431,
+ "max_joint_height_m": 1.1738251110424942,
+ "max_head_height_m": 1.2052173789064078,
+ "rise_per_step_mm": 4.026236373691213,
+ "slip_back_m": 0.09380993326250037,
+ "saturation_fraction": 0.4594970414201183,
+ "worst_joint_saturation_fraction": 0.6265384615384615,
+ "worst_joint": 6,
+ "longest_saturation_s": 5.0599999999999365,
+ "overload_events": 11,
+ "overload_joints": 10,
+ "rms_torque_nm": 1.7625243455675015,
+ "peak_mean_abs_torque_nm": 1.9547939338224405,
+ "heat_proxy_n2m2s": 2099.988638453469,
+ "max_tracking_error_deg": 71.9225787098553,
+ "mean_pipe_contacts": 10.55,
+ "compliance_step_fraction": 1.0,
+ "retries": 6,
+ "rejections": 4,
+ "wall_s": 101.7
+}
