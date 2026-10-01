@@ -4,6 +4,7 @@
 1. 缠绕阶段：Ctrl+J 从头部开始一节一节缠成标准螺旋（R/P），Ctrl+H 退回一节。
 2. 位置合适后 Ctrl+U：以当前姿态为起点进入单步滚动，默认开顺应性（Ctrl+E 切换）。
 3. 滚动阶段：Ctrl+J / Ctrl+H 相位 + / − 一步，与仿真相同。
+缠绕后修改 R/P 直接在当前进度上应用；标准滚动中保留相位，不需要 Ctrl+R。
 扭矩只能在 EXE 界面手动解锁并使能；急停用 EXE 的紧急释放。
 没有场景标记，管内/管外只由 COMPLIANCE_INSIDE 决定，启动时打印确认。
 长度 mm，相位 rad。模块导入不会启动网络或键盘监听。
@@ -48,7 +49,8 @@ HELP = """实机调试（全局热键，任何窗口都会响应；Ctrl+字母�
   Ctrl+U 确认当前姿态，进入单步滚动（默认开顺应性）
   滚动阶段：Ctrl+J 相位+一步   Ctrl+H 相位-一步   Ctrl+-/= 相位步长减半/加倍
   Ctrl+N 重发当前目标   Ctrl+E 顺应性开/关   Ctrl+K 状态   Ctrl+R 回到缠绕阶段（不动机器人）
-  Ctrl+上下 修改半径；Ctrl+左右 修改螺距（缠绕阶段下一步生效）   空格 暂停/中断等待
+  Ctrl+上下 半径±5mm；Ctrl+左右 螺距±10mm：已有缠绕时直接应用，保持进度/相位
+  顺应性滚动时改 R/P 请先 Ctrl+E 关闭顺应性；空格 暂停/中断等待
 控制台：step / back / apply / hold / compliance / status / reset / pause / help / quit
 参数：r=105 p=220 / delta=0.05 / wind=0.25
 扭矩使能与紧急释放只在 EXE 界面操作。
@@ -222,7 +224,7 @@ def main(execution="live", hotkeys=True, port=PORT):
         reference = targets if targets is not None else controller_angles(feedback["angles_deg"])
         jump = float(np.degrees(np.abs(candidate - reference)).max())
         if jump > MAX_JOINT_STEP_DEG:
-            raise ValueError(f"单步最大关节变化 {jump:.1f}° 超过上限 {MAX_JOINT_STEP_DEG:g}°，请减小步长")
+            raise ValueError(f"单步最大关节变化 {jump:.1f}° 超过上限 {MAX_JOINT_STEP_DEG:g}°，请减小缠绕/相位步长或 R/P 改变量")
         before = exchange.last_command_id
         if not exchange.publish_targets(degrees.tolist(), source_geometry=feedback):
             raise ValueError("EXE 未接受目标：反馈过期、模式不符或未使能扭矩")
@@ -299,6 +301,8 @@ def main(execution="live", hotkeys=True, port=PORT):
                     print("实机版只支持单步，不提供连续运行", flush=True)
                 elif command == "reset":
                     stage, progress, start, compliance, phase = "wind", 0., None, None, 0.
+                    # 重置后的首步以实测角为参考，不能继续与失能前的旧目标比较。
+                    targets, completed = None, 0
                     print("回到缠绕阶段：缠绕进度清零，下次 Ctrl+J 以当前实测姿态为起点；机器人不动", flush=True)
                 elif command == "compliance":
                     controller = None
@@ -335,9 +339,21 @@ def main(execution="live", hotkeys=True, port=PORT):
                             else:
                                 raise ValueError("参数：r=半径mm p=螺距mm delta=相位步长rad wind=缠绕步长(节)")
                     HelixBackbone.from_radius_pitch(new_r, new_p)
+                    geometry_changed = new_r != radius or new_p != pitch
+                    if geometry_changed and stage == "roll" and compliance_enabled:
+                        raise ValueError("顺应性滚动中不能直接应用标准螺旋 R/P；先 Ctrl+E 关闭顺应性，再调整。原参数未改变")
+                    if geometry_changed and (progress > 0 or stage == "roll"):
+                        feedback = fresh_feedback(False)
+                        helix = HelixBackbone.from_radius_pitch(new_r, new_p).joint_angles(
+                            feedback["config"]["joint_count"], feedback_links(feedback), phase)
+                        # 缠绕阶段保持原插值权重；缠满后权重全为 1。标准滚动保持当前相位。
+                        candidate = winding_targets(start, helix, progress) if stage == "wind" else helix
+                        if not execute(candidate, feedback, f"调整几何 R={new_r:g} P={new_p:g}，保持进度/相位"):
+                            continue
+                    # 参数只在目标通过限幅并确认下发后更新；拒绝时仍用原 R/P。
                     radius, pitch = new_r, new_p
                     print(f"参数 R={radius:g}mm P={pitch:g}mm delta={phase_step:g}rad wind={wind_step:g}节；"
-                          f"{'下一步缠绕生效' if stage == 'wind' else '滚动阶段：标准 Yamada 下一步生效，顺应性螺距角需 Ctrl+R 后重新 Ctrl+U'}",
+                          f"{'尚未缠绕，下一步生效' if stage == 'wind' and progress == 0 else '保持当前缠绕进度与滚动相位'}",
                           flush=True)
                 elif command in ("step", "back") and stage == "wind":
                     feedback = fresh_feedback(False)  # 直线状态轴不可辨识，缠绕阶段不要求反馈可用
@@ -355,7 +371,7 @@ def main(execution="live", hotkeys=True, port=PORT):
                     count = feedback["config"]["joint_count"]
                     if targets is None:
                         targets = controller_angles(feedback["angles_deg"])
-                    stage, phase = "roll", 0.
+                    stage = "roll"  # 缠绕阶段本来就是相位 0；重复 Ctrl+U 不应让滚动相位跳回 0。
                     compliance = None
                     if compliance_enabled:
                         compliance = ComplianceController(ComplianceParameters(
