@@ -32,6 +32,13 @@ JOINT_DAMPING, ARMATURE = 1.5, .01
 MESH_SCALE = (BODY_RADIUS_M / .0279, BODY_RADIUS_M / .0279, LINK_M / .0685)
 FRICTION = f'1 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}'  # 未实测，沿用管外场景
 
+# 2026-10-03：实验室 UPVC 管外包一层防滑橡胶，现场报告当前爬行未打滑。
+# 摩擦系数未测量；保留原高摩擦假设，不将“未打滑”转换为无限摩擦或随意增大数值。
+# 橡胶厚度未知，当前仍用裸管尺寸；收到包胶外径后再更新几何和初始姿态。
+PIPE_SLIDING_FRICTION = 2.0
+PIPE_RUBBER_MATERIAL = dict(name='pipe_rubber', rgba='.16 .18 .20 1',
+                            specular='0.05', shininess='0.1', reflectance='0')
+
 R_SMALL, R_LARGE = .055, .080  # GB/T 5836.2 外径 110 / 160 mm
 TAPER_SLANT = .030  # 过渡段斜边
 TAPER_LENGTH = float(np.sqrt(TAPER_SLANT**2 - (R_LARGE - R_SMALL)**2))  # 5√11 ≈ 16.6 mm
@@ -83,6 +90,7 @@ def new_scene(model_name='real-snake26-pipe'):
     ET.SubElement(asset, 'texture', name='texplane', type='2d', builtin='checker', rgb1='.8 .8 .8', rgb2='.1 .15 .2',
                   width='512', height='512', mark='cross', markrgb='.8 .8 .8')
     ET.SubElement(asset, 'material', name='matplane', reflectance='0.3', texture='texplane', texrepeat='2 2', texuniform='true')
+    ET.SubElement(asset, 'material', **PIPE_RUBBER_MATERIAL)
     for mesh, stl in (('h_link', 'c_link_H.stl'), ('v_link', 'c_link_V.stl')):
         ET.SubElement(asset, 'mesh', name=mesh, file=f'./asset/{stl}', scale=numbers(MESH_SCALE))
     world = ET.SubElement(root, 'worldbody')
@@ -93,8 +101,8 @@ def new_scene(model_name='real-snake26-pipe'):
     return root, asset, world
 
 
-PIPE_GEOM = dict(friction=f'2 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}', condim='6', group='1',
-                 rgba='.92 .92 .9 1')
+PIPE_GEOM = dict(friction=f'{PIPE_SLIDING_FRICTION:g} {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}',
+                 condim='6', group='1', material='pipe_rubber', rgba=PIPE_RUBBER_MATERIAL['rgba'])
 
 
 def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, center='0 0 .8', extent='1.8', joints=JOINTS):

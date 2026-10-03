@@ -115,6 +115,8 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 
 实物场景（`python tools/build_real_pipe_scene.py` 重新生成）按实机测量搭建：26 关节，头长与连杆均 64.5 mm，外壳半径 29 mm（原网格按比例缩放），每节（含头部，头部模块也带舵机）136 g，整机 3.67 kg；位置伺服 kp=127 N·m/rad（悬臂实测），力矩上限 ±2.355 N·m（手册堵转 7.85 N·m × EXE 转矩限制 300/1000），关节阻尼 1.5（保持原模型阻尼比）；摩擦未实测，沿用管外场景。螺距 220 mm；初始姿态与 Ctrl+U 预设挠率相同、半径取不穿透管面的最小值（小管在下 R=96、P=361 mm），Ctrl+U 时只收紧不反拧；Ctrl+U 预设比贴管中心线紧 4 mm（80 / 105 mm）。XML 自带顺应性增益 `experiment_compliance_gain=0.01/0.02`（优先于 `COMPLIANCE_GAIN`）：舵机比原模型硬约 6 倍，沿用 0.04/0.12 会一直顶在力矩上限。
 
+**包胶管道更新（2026-10-03）：** 实验室管外已包一层防滑橡胶，用户报告当前爬行未出现打滑。`real_s2l`、`real_l2s` 和 `pipe_*` 的20/26关节模型统一标记为哑光橡胶表面 `pipe_rubber`。接触仍使用原来的滑动/扭转/滚动摩擦 `2 / 0.005 / 0.002`（后两项单位 m），通过生成器 `PIPE_SLIDING_FRICTION` 集中设置；这些是未实测的暂定参数，本次没有提高摩擦或声称已实现无滑移。材质外观与接触参数分开设置，见 [MuJoCo 接触参数说明](https://mujoco.readthedocs.io/en/stable/modeling.html#contact-parameters)。橡胶厚度及包胶外径尚未知，几何暂保留裸管110/160 mm，后续需据测量更新。`pipe_slip_band` 的蓝色低摩擦区仍为0.3，用作独立扰动实验；管内、树干及旧演示场景不变。历史实验数据保留原条件，本轮未重新验证攀爬或校准摩擦。
+
 **管道网络场景**（`python tools/build_pipe_network_scenes.py [名称…]` 生成，`--scene pipe_<名称>` 加载）：机器人与 `real_s2l` 相同（26 关节实物参数、K=0.01/0.02），都从外径 110 mm 的竖直起始段开始，预缠在 z≈0.5 m；所有特征都在 z≥0.95 m，所有弯曲都在 x-z 平面内。Ctrl+K 的 `RADIUS` 行对这些场景按 XML 中的管中心线（`pipe_centerline`）计算关节到管轴距离、同位置管半径，并给出「沿管进度」（m，从地面起沿中心线计）；弯管上请看沿管进度而不是关节平均高度。
 
 运行时请直接使用下表完整的 `pipe_*` 参数，例如 `--scene pipe_bend90`；`--scene bend90` 不被两个入口接受。场景生成脚本使用不带前缀的名称，例如在仓库根目录运行 `python tools/build_pipe_network_scenes.py bend90 --joints 20`。生成名称与启动参数请勿混用。网络场景默认 26 关节，20 关节实机对应模型需显式加 `--joints 20`。
