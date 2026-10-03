@@ -13,6 +13,8 @@ from pathlib import Path
 import numpy as np
 
 from pitch_adaptation_experiment_v5 import ROOT,SCENES,ALPHA,model_path,trial
+from pitch_adaptation_statistics import POLICY
+from pitch_adaptation_training_audit import runtime_versions,model_asset_hashes
 
 BASE=ROOT/'experiments/pitch_adaptation_20261003/repair_v5'
 
@@ -63,6 +65,8 @@ def verify_freeze(path):
                     gain=[.01,.02],movement_budget_s=120.,hold_s=10.,hold_retreat_limit_mm=20.,roll_step_rad=.15,step_s=.2,
                     straight_mean_progress_m=.5,taper_additional_progress_m=.2,no_progress_window_s=10.,no_progress_min_m=.01)
     if freeze['conditions']!=conditions:raise ValueError('Fixed trial conditions changed')
+    if freeze.get('dependencies')!=runtime_versions():raise ValueError('Frozen dependency versions changed')
+    if freeze.get('model_assets')!=model_asset_hashes():raise ValueError('Frozen model mesh/texture assets changed')
     return freeze
 
 
@@ -89,6 +93,7 @@ def main():
     args=parser.parse_args();freeze=verify_freeze(args.freeze);jobs=jobs_for(freeze)
     freeze_hash=digest(args.freeze)
     plan=dict(stage='formal',freeze_sha256=freeze_hash,runner_sha256=digest(Path(__file__)),required=160,
+              statistics_policy=POLICY,statistics_source_sha256=digest(ROOT/'validation/pitch_adaptation_statistics.py'),
               seeds=freeze['test_seeds'],order=[dict(scene=s,method=m,seed=seed,k=k,alpha_deg=math.degrees(a)) for s,m,seed,k,a in jobs])
     if not args.run:
         print(json.dumps(dict(required=len(jobs),freeze_sha256=freeze_hash,B_alpha_deg=freeze['B_alpha_deg'],CD_k=freeze['CD_k'],
@@ -100,12 +105,14 @@ def main():
     def execute(job):
         verify_freeze(args.freeze)
         if digest(Path(__file__))!=plan['runner_sha256']:raise ValueError('Formal orchestrator changed during execution')
+        if digest(ROOT/'validation/pitch_adaptation_statistics.py')!=plan['statistics_source_sha256']:
+            raise ValueError('Formal statistics policy/source changed during execution')
         if digest(args.freeze)!=freeze_hash:raise ValueError('Parameters changed during execution')
         result=trial(*job,args.out)
         if (result['scene'],result['method'],result['seed'])!=job[:3] or abs(result['k']-job[3])>1e-12 or abs(result['alpha_deg']-math.degrees(job[4]))>1e-9:
             raise ValueError('Saved result parameters differ')
         if result.get('formal_freeze_sha256',freeze_hash)!=freeze_hash:raise ValueError('Saved result belongs to another freeze')
-        result.update(stage='formal',formal_freeze_sha256=freeze_hash,formal_orchestrator_sha256=plan['runner_sha256'])
+        result.update(stage='formal',formal_freeze_sha256=freeze_hash,formal_orchestrator_sha256=plan['runner_sha256'],dependencies=runtime_versions())
         folder=args.out/f'{job[0]}__{job[1]}__s{job[2]}__k{job[3]:g}__a{math.degrees(job[4]):.4f}'
         (folder/'result.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf8')
         return result

@@ -11,17 +11,39 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import platform
 import re
 import sys
+import xml.etree.ElementTree as ET
 
 import mujoco
 import numpy as np
+import scipy
 
 from pitch_adaptation_experiment_v5 import ROOT,SCENES,ALPHA,model_path
 sys.path.insert(0,str(ROOT/'codes'))
 from adaptive_debug import pipe_progress
 
 BASE=ROOT/'experiments/pitch_adaptation_20261003/repair_v5'
+
+
+def runtime_versions():
+    return dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__,mujoco=mujoco.__version__)
+
+
+def model_asset_hashes():
+    assets={}
+    for scene in SCENES:
+        model_file=model_path(scene);document=ET.parse(model_file).getroot()
+        compiler=document.find('compiler')
+        for element in document.findall('./asset/*'):
+            filename=element.get('file')
+            if filename is None:continue
+            directory=compiler.get('meshdir' if element.tag=='mesh' else 'texturedir','') if compiler is not None else ''
+            asset=(model_file.parent/directory/filename).resolve()
+            if ROOT not in asset.parents:raise ValueError('Model asset is outside the repository: '+str(asset))
+            assets[str(asset.relative_to(ROOT))]=sha(asset)
+    return assets
 
 
 def sha(path):
@@ -91,7 +113,7 @@ def audit_case(folder,job):
         stored_p=np.array([np.nan if x is None else x for x in row['implied_pitch_mm']])
         if np.any(active&~np.isfinite(expected_p)) or not np.allclose(expected_p[active],stored_p[active],atol=1e-8) or np.any(expected_p[active]<100.-1e-7) or np.any(expected_p[active]>300.+1e-7):
             raise ValueError('Active post-filter pitch bounds violated: '+str(folder))
-        if method in ('B','C') and np.ptp(a)>1e-12:raise ValueError('Uniform control became local')
+        if method in ('A','B','C') and np.ptp(a)>1e-12:raise ValueError('Uniform control became local')
         if row['max_jump_deg']>30.+1e-8 or row['method']!=method or row['version']!=5:
             raise ValueError('Target policy/version differs')
         valid=np.array(row['radius_valid'],bool)
@@ -101,7 +123,7 @@ def audit_case(folder,job):
         max_step=max(max_step,change);alpha_min=min(alpha_min,float(np.degrees(min(a))));alpha_max=max(alpha_max,float(np.degrees(max(a))))
         spreads.append(float(np.degrees(np.ptp(a))));previous_alpha=a
     with np.load(folder/'trace.npz') as trace:
-        qpos=trace['qpos']
+        qpos=trace['qpos'];recorded_contacts=trace['pipe_contacts']
         t=trace['sim_time'];initial_indices=np.flatnonzero(np.isclose(t,2.2,atol=1e-9))
         if not len(initial_indices):raise ValueError('Common initialization absent')
         initial_q=qpos[initial_indices[0]].copy()
@@ -158,11 +180,23 @@ def audit_case(folder,job):
     ground=any(row['ground_contact'] for row in physics)
     if result['success'] and not (hold_ok and goal_at_hold and not ground):raise ValueError('Success contradicted by raw physical data')
     if result['outcome']=='hold_slip' and not (retreat is not None and retreat>20.):raise ValueError('Hold failure contradicted by raw data')
+    if result['outcome']=='ground_collision' and not ground:raise ValueError('Ground failure lacks recorded ground contact')
+    if result['outcome']=='support_loss' and recorded_contacts[-1]!=0:raise ValueError('Support loss lacks final zero-contact observation')
+    if result['outcome']=='time_budget' and motion_s<result['movement_budget_s']-1e-8:raise ValueError('Time-budget failure ended before the physical budget')
+    if result['outcome']=='hold_region_lost' and not (hold_start is not None and progress[-1,1]<=result['goal_feature_m']):
+        raise ValueError('Hold region loss contradicted by reconstructed position')
+    if result['outcome']=='no_progress_10s':
+        checkpoints=result['status'];last=checkpoints[-1]
+        earlier=next((s for s in reversed(checkpoints[:-1]) if last['sim_time']-s['sim_time']>=10.-1e-8),None)
+        if earlier is None:raise ValueError('No-progress failure lacks a full checkpoint window')
+        lo=int(np.argmin(abs(times-earlier['sim_time'])));hi=int(np.argmin(abs(times-last['sim_time'])))
+        if progress[hi,0]-progress[lo,0]>=.01:raise ValueError('No-progress failure contradicted by reconstructed position')
     dt=np.diff(np.r_[0.,times]);torque_squared=float(np.sum(np.sum(forces**2,axis=1)*dt))
     row=dict(scene=scene,method=method,seed=seed,k=k,alpha_deg=math.degrees(alpha),outcome=result['outcome'],success=bool(result['success']),
              friction_multiplier=float(perturbation[0]),initial_axis_rotation_deg=float(np.degrees(perturbation[1])),
              perturbation_evidence='exact seeded draws from verified gait source; rounded execution log checked',
              motion_s=motion_s,mean_progress_m=moved,speed_m_s=speed,rolling_cycles=abs(last_phase)/(2*np.pi),
+             cumulative_retreat_m=float(np.maximum(-np.diff(progress[initial:,0]),0.).sum()),
              progress_per_cycle_m=moved/(abs(last_phase)/(2*np.pi)) if last_phase else None,
              hold_max_retreat_mm=retreat,hold_duration_s=hold_duration,hold_passed=hold_ok,
              torque_rms_nm=float(np.sqrt(np.average(np.mean(forces**2,axis=1),weights=dt))),
@@ -219,6 +253,8 @@ def audit(out,freeze=False):
         with (out/'audited_training.csv').open('w',encoding='utf-8-sig',newline='') as f:
             writer=csv.DictWriter(f,fieldnames=rows[0]);writer.writeheader();writer.writerows(rows)
     report=dict(complete=not missing,audited=len(rows),required=len(jobs),missing=missing,
+                audit_environment=runtime_versions(),
+                audit_source_sha256=sha(Path(__file__)),
                 common_initial_groups_observed=len(initials),
                 common_initial_groups_verified=sum(count>=2 for count in initial_counts.values()),
                 common_initial_group_case_counts={f'{scene}__s{seed}':count for (scene,seed),count in initial_counts.items()},
@@ -263,6 +299,8 @@ def audit(out,freeze=False):
                         audit_source_sha256=sha(Path(__file__)),
                         sources=plan['sources'],models={scene:sha(model_path(scene)) for scene in SCENES},
                         exe_sha256=sha(ROOT/'visualizer/windows_app/bin/SnakeRobotVisualizer.exe'),formal_released=True)
+            frozen['dependencies']=runtime_versions()
+            frozen['model_assets']=model_asset_hashes()
             file=out/'parameter_freeze.json'
             if file.exists() and load(file)!=frozen:
                 freeze_error='Existing freeze differs; no silent refreeze'
