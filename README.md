@@ -117,17 +117,29 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 
 **管道网络场景**（`python tools/build_pipe_network_scenes.py [名称…]` 生成，`--scene pipe_<名称>` 加载）：机器人与 `real_s2l` 相同（26 关节实物参数、K=0.01/0.02），都从外径 110 mm 的竖直起始段开始，预缠在 z≈0.5 m；所有特征都在 z≥0.95 m，所有弯曲都在 x-z 平面内。Ctrl+K 的 `RADIUS` 行对这些场景按 XML 中的管中心线（`pipe_centerline`）计算关节到管轴距离、同位置管半径，并给出「沿管进度」（m，从地面起沿中心线计）；弯管上请看沿管进度而不是关节平均高度。
 
-| 名称 | 管道 | 研究用途 |
+运行时请直接使用下表完整的 `pipe_*` 参数，例如 `--scene pipe_bend90`；`--scene bend90` 不被两个入口接受。场景生成脚本使用不带前缀的名称，例如在仓库根目录运行 `python tools/build_pipe_network_scenes.py bend90 --joints 20`。生成名称与启动参数请勿混用。网络场景默认 26 关节，20 关节实机对应模型需显式加 `--joints 20`。
+
+| `--scene` 参数（原方法与弯曲轴入口通用） | 管道 | 研究用途 |
 | --- | --- | --- |
-| `bend90` / `bend90_tight` / `bend45` | 90° 弯头（弯曲半径 300 mm / 165 mm=1.5D）、45° 弯头 | 管轴弯曲时轴估计与螺旋跟随；弯曲半径对通过性的影响 |
-| `offset` | 两个反向 45° 弯头组成的 S 形错位，出口仍竖直 | 连续反向曲率 |
-| `taper_bend` / `bend_taper` | 先异径（110→160）再 45° 弯 / 先 45° 弯再异径 | 组合特征的顺序影响 |
-| `flange10` / `flange25` / `flange40` / `flange55` | 单个法兰，凸起 10 / 25 / 40 / 55 mm（DN100 PVC 法兰约 55 mm），厚 22 mm | 非连续截面；可越过的凸起高度上限 |
-| `flange_pair` | 两个带 8×M16 螺栓头的法兰（凸起 55 mm），间距 300 mm | 真实法兰接头与短间距连续障碍 |
-| `eccentric` | 偏心异径：−x 侧母线平齐，另一侧单边突变 50 mm | 非对称截面变化（顺应性只在一侧需要放松） |
-| `tee` | 三通：外径 75 mm、伸出 250 mm 的侧向支管 | 侧向分支障碍 |
-| `incline30` | 偏离竖直 30° 的直管 | 重力方向与管轴不一致时的夹紧余量 |
-| `slip_band` | z 0.95–1.25 m 一段滑动摩擦 0.3（其余 2，蓝色显示） | 局部低摩擦（潮湿 / 油污）下顺应性与标准螺旋的打滑差异 |
+| `pipe_bend90` / `pipe_bend90_tight` / `pipe_bend45` | 90° 弯头（弯曲半径 300 mm / 165 mm=1.5D）、45° 弯头 | 管轴弯曲时轴估计与螺旋跟随；弯曲半径对通过性的影响 |
+| `pipe_offset` | 两个反向 45° 弯头组成的 S 形错位，出口仍竖直 | 连续反向曲率 |
+| `pipe_taper_bend` / `pipe_bend_taper` | 先异径（110→160）再 45° 弯 / 先 45° 弯再异径 | 组合特征的顺序影响 |
+| `pipe_flange10` / `pipe_flange25` / `pipe_flange40` / `pipe_flange55` | 单个法兰，凸起 10 / 25 / 40 / 55 mm（DN100 PVC 法兰约 55 mm），厚 22 mm | 非连续截面；可越过的凸起高度上限 |
+| `pipe_flange_pair` | 两个带 8×M16 螺栓头的法兰（凸起 55 mm），间距 300 mm | 真实法兰接头与短间距连续障碍 |
+| `pipe_eccentric` | 偏心异径：−x 侧母线平齐，另一侧单边突变 50 mm | 非对称截面变化（顺应性只在一侧需要放松） |
+| `pipe_tee` | 三通：外径 75 mm、伸出 250 mm 的侧向支管 | 侧向分支障碍 |
+| `pipe_incline30` | 偏离竖直 30° 的直管 | 重力方向与管轴不一致时的夹紧余量 |
+| `pipe_slip_band` | z 0.95–1.25 m 一段滑动摩擦 0.3（其余 2，蓝色显示） | 局部低摩擦（潮湿 / 油污）下顺应性与标准螺旋的打滑差异 |
+
+你若已在 `codes` 目录，可直接运行：
+
+```powershell
+python Adaptive_Pole_Climbing_CurvedAxis_Mujoco.py --scene pipe_bend90 --joints 20
+python Adaptive_Pole_Climbing_CurvedAxis_Mujoco.py --scene pipe_bend90_tight --joints 20
+python Adaptive_Pole_Climbing_CurvedAxis_Mujoco.py --scene pipe_bend45 --joints 20
+```
+
+从仓库根目录运行时，在脚本名前加 `codes/`；使用原方法时，将脚本名替换为 `Adaptive_Pole_Climbing_Mujoco.py`，场景参数相同。26 关节模型使用 `--joints 26`。
 
 攀爬结果见上面的基线实验。
 
