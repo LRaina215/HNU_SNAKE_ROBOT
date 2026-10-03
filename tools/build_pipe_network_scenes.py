@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_real_pipe_scene as real
 
 numbers = real.numbers
-R_SMALL, R_LARGE = real.R_SMALL, real.R_LARGE  # UPVC 外径 110 / 160 mm
+R_SMALL, R_LARGE = real.R_SMALL, real.R_LARGE  # 裸 UPVC 外径 110 / 160 mm + 径向橡胶厚度
 TAPER = real.TAPER_LENGTH  # 实验室异径接头：斜边 30 mm，轴向 16.6 mm
 SIDES = 64
 BEND_STEP_DEG = 5.
@@ -62,7 +62,7 @@ SCENES = {
                       segments=[('straight', 1.15, R_SMALL, R_SMALL), ('eccentric', .06, R_SMALL, R_LARGE, '-x'),
                                 ('straight', 1.0, R_LARGE, R_LARGE)]),
     'tee': dict(title='三通：侧向支管（外径 75 mm，伸出 250 mm）',
-                segments=[('straight', 1.2, R_SMALL, R_SMALL), ('branch', .0375, .25, 'x'), ('straight', 1.2, R_SMALL, R_SMALL)]),
+                segments=[('straight', 1.2, R_SMALL, R_SMALL), ('branch', .0375 + real.RUBBER_THICKNESS_M, .25, 'x'), ('straight', 1.2, R_SMALL, R_SMALL)]),
     'incline30': dict(title='倾斜直管（偏离竖直 30°）', tilt_deg=30,
                       segments=[('straight', 2.4, R_SMALL, R_SMALL)]),
     'slip_band': dict(title='低摩擦带（z 0.95–1.25 m 滑动摩擦 0.3，模拟潮湿 / 油污）',

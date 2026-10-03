@@ -4,19 +4,19 @@
   <asset>
     <texture name="texplane" type="2d" builtin="checker" rgb1=".8 .8 .8" rgb2=".1 .15 .2" width="512" height="512" mark="cross" markrgb=".8 .8 .8" />
     <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="2 2" texuniform="true" />
+    <material name="pipe_rubber" rgba=".16 .18 .20 1" specular="0.05" shininess="0.1" reflectance="0" />
     <mesh name="h_link" file="./asset/c_link_H.stl" scale="1.0394265233 1.0394265233 0.941605839416" />
     <mesh name="v_link" file="./asset/c_link_V.stl" scale="1.0394265233 1.0394265233 0.941605839416" />
-    <material name="pipe_rubber" rgba=".16 .18 .20 1" specular="0.05" shininess="0.1" reflectance="0" />
   </asset>
   <worldbody>
     <geom name="floor" type="plane" size="0 0 .25" material="matplane" condim="6" friction="0.25 0.1 0.01" />
     <light directional="false" diffuse="1 1 1" specular="0 0 0" pos="0 0 15" dir="0 0 -1" castshadow="false" />
     <body name="pipe_network">
-      <geom name="pipe_straight_01" type="cylinder" size="0.055" fromto="-0 -0 -0.2 0 0 1" friction="2 0.005 0.002" condim="6" group="1" rgba=".16 .18 .20 1" material="pipe_rubber" />
-      <geom name="pipe_flange_02" type="cylinder" size="0.11" fromto="0 0 0.989 0 0 1.011" friction="2 0.005 0.002" condim="6" group="1" rgba=".85 .55 .25 1" material="pipe_rubber" />
-      <geom name="pipe_straight_03" type="cylinder" size="0.055" fromto="0 0 1 0 0 2.2" friction="2 0.005 0.002" condim="6" group="1" rgba=".16 .18 .20 1" material="pipe_rubber" />
+      <geom name="pipe_straight_01" type="cylinder" size="0.0565" fromto="-0 -0 -0.2 0 0 1" friction="2 0.005 0.002" condim="6" group="1" material="pipe_rubber" rgba=".16 .18 .20 1" />
+      <geom name="pipe_flange_02" type="cylinder" size="0.1115" fromto="0 0 0.989 0 0 1.011" friction="2 0.005 0.002" condim="6" group="1" material="pipe_rubber" rgba=".85 .55 .25 1" />
+      <geom name="pipe_straight_03" type="cylinder" size="0.0565" fromto="0 0 1 0 0 2.2" friction="2 0.005 0.002" condim="6" group="1" material="pipe_rubber" rgba=".16 .18 .20 1" />
     </body>
-    <site name="feature_00" type="sphere" size=".008" pos="0 -0.128 1" rgba="1 .65 .1 1" />
+    <site name="feature_00" type="sphere" size=".008" pos="0 -0.1295 1" rgba="1 .65 .1 1" />
     <body name="head" pos="0 0 .1" euler="0 90 -90">
       <freejoint name="root" />
       <site name="s_head" pos="0 0 0.0645" />
@@ -162,13 +162,14 @@
   </visual>
   <statistic center="0 0 1.1" extent="2.2" />
   <custom>
-    <numeric name="experiment_helix_mm" data="80 220" />
+    <numeric name="experiment_helix_mm" data="81.5 220" />
     <numeric name="experiment_inside" data="0" />
     <numeric name="experiment_compliance_gain" data="0.01 0.02" />
-    <numeric name="pipe_centerline" data="0 0 -2.77555756156e-17 0.055 0 0 0.05 0.055 0 0 0.1 0.055 0 0 0.15 0.055 0 0 0.2 0.055 0 0 0.25 0.055 0 0 0.3 0.055 0 0 0.35 0.055 0 0 0.4 0.055 0 0 0.45 0.055 0 0 0.5 0.055 0 0 0.55 0.055 0 0 0.6 0.055 0 0 0.65 0.055 0 0 0.7 0.055 0 0 0.75 0.055 0 0 0.8 0.055 0 0 0.85 0.055 0 0 0.9 0.055 0 0 0.95 0.055 0 0 1 0.055 0 0 1.048 0.055 0 0 1.096 0.055 0 0 1.144 0.055 0 0 1.192 0.055 0 0 1.24 0.055 0 0 1.288 0.055 0 0 1.336 0.055 0 0 1.384 0.055 0 0 1.432 0.055 0 0 1.48 0.055 0 0 1.528 0.055 0 0 1.576 0.055 0 0 1.624 0.055 0 0 1.672 0.055 0 0 1.72 0.055 0 0 1.768 0.055 0 0 1.816 0.055 0 0 1.864 0.055 0 0 1.912 0.055 0 0 1.96 0.055 0 0 2.008 0.055 0 0 2.056 0.055 0 0 2.104 0.055 0 0 2.152 0.055 0 0 2.2 0.055" />
+    <numeric name="pipe_rubber_thickness_m" data="0.0015" />
+    <numeric name="pipe_centerline" data="0 0 -2.77555756156e-17 0.0565 0 0 0.05 0.0565 0 0 0.1 0.0565 0 0 0.15 0.0565 0 0 0.2 0.0565 0 0 0.25 0.0565 0 0 0.3 0.0565 0 0 0.35 0.0565 0 0 0.4 0.0565 0 0 0.45 0.0565 0 0 0.5 0.0565 0 0 0.55 0.0565 0 0 0.6 0.0565 0 0 0.65 0.0565 0 0 0.7 0.0565 0 0 0.75 0.0565 0 0 0.8 0.0565 0 0 0.85 0.0565 0 0 0.9 0.0565 0 0 0.95 0.0565 0 0 1 0.0565 0 0 1.048 0.0565 0 0 1.096 0.0565 0 0 1.144 0.0565 0 0 1.192 0.0565 0 0 1.24 0.0565 0 0 1.288 0.0565 0 0 1.336 0.0565 0 0 1.384 0.0565 0 0 1.432 0.0565 0 0 1.48 0.0565 0 0 1.528 0.0565 0 0 1.576 0.0565 0 0 1.624 0.0565 0 0 1.672 0.0565 0 0 1.72 0.0565 0 0 1.768 0.0565 0 0 1.816 0.0565 0 0 1.864 0.0565 0 0 1.912 0.0565 0 0 1.96 0.0565 0 0 2.008 0.0565 0 0 2.056 0.0565 0 0 2.104 0.0565 0 0 2.152 0.0565 0 0 2.2 0.0565" />
     <numeric name="feature_span" data="0.989 1.011" />
   </custom>
   <keyframe>
-    <key name="experiment_start" qpos="-0.0117297301042 -0.0850290858103 0.914260325597 0.66010482857 -0.304300911641 0.424655695564 -0.539750044648 -0.284442677346 -0.808642727747 -0.75642571376 -0.367137359614 -0.97071392761 0.1994422822 -0.854304825404 0.698077058327 -0.446855999941 0.958894900936 0.112825193516 0.893041866471 0.634069739863 0.522952393272 0.939303002968 -0.0252935356677 0.924539845697 -0.564922606312 0.594809696748 -0.912097047047 0.0624431534065 -0.948543438187 -0.49119616933 -0.661845429882 -0.877497566615 -0.149673673771" />
+    <key name="experiment_start" qpos="-0.00987893754665 -0.0871202392764 0.901026003658 0.655786622669 -0.311135341981 0.430217853018 -0.536704111632 -0.279380265893 -0.828660978018 -0.748574102949 -0.404812908663 -0.977782098672 0.148814385067 -0.893522317904 0.65473318172 -0.522807656627 0.950750656854 0.0155142393061 0.94196638239 0.548862415526 0.631196514388 0.906250445587 0.118070959816 0.973103076699 -0.432907037844 0.727987981911 -0.845099096628 0.249486763249 -0.986360305794 -0.308997573375 -0.811403645665 -0.768420184081 -0.376318581684" />
   </keyframe>
 </mujoco>

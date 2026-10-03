@@ -34,12 +34,14 @@ FRICTION = f'1 {base.TORSIONAL_FRICTION:g} {base.ROLLING_FRICTION:g}'  # 未实�
 
 # 2026-10-03：实验室 UPVC 管外包一层防滑橡胶，现场报告当前爬行未打滑。
 # 摩擦系数未测量；保留原高摩擦假设，不将“未打滑”转换为无限摩擦或随意增大数值。
-# 橡胶厚度未知，当前仍用裸管尺寸；收到包胶外径后再更新几何和初始姿态。
+# 用户估计单层厚度 1–2 mm，默认取中值 1.5 mm；按径向增厚近似，不模拟橡胶压缩。
+RUBBER_THICKNESS_M = .0015
 PIPE_SLIDING_FRICTION = 2.0
 PIPE_RUBBER_MATERIAL = dict(name='pipe_rubber', rgba='.16 .18 .20 1',
                             specular='0.05', shininess='0.1', reflectance='0')
 
-R_SMALL, R_LARGE = .055, .080  # GB/T 5836.2 外径 110 / 160 mm
+BARE_R_SMALL, BARE_R_LARGE = .055, .080  # 裸 UPVC 外径 110 / 160 mm
+R_SMALL, R_LARGE = BARE_R_SMALL + RUBBER_THICKNESS_M, BARE_R_LARGE + RUBBER_THICKNESS_M
 TAPER_SLANT = .030  # 过渡段斜边
 TAPER_LENGTH = float(np.sqrt(TAPER_SLANT**2 - (R_LARGE - R_SMALL)**2))  # 5√11 ≈ 16.6 mm
 Z_TAPER, HEIGHT, SIDES = .95, 1.90, 96
@@ -125,6 +127,7 @@ def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, ce
     ET.SubElement(custom, 'numeric', name='experiment_helix_mm', data=numbers([contact_mm - APPLY_TIGHTEN_MM, PITCH_MM]))
     ET.SubElement(custom, 'numeric', name='experiment_inside', data='0')
     ET.SubElement(custom, 'numeric', name='experiment_compliance_gain', data=numbers(COMPLIANCE_GAIN))
+    ET.SubElement(custom, 'numeric', name='pipe_rubber_thickness_m', data=numbers([RUBBER_THICKNESS_M]))
     for name, data in extra_numeric:
         ET.SubElement(custom, 'numeric', name=name, data=numbers(data))
     output = ROOT / 'mujoco_model' / filename
