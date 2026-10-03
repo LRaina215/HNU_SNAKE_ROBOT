@@ -201,9 +201,15 @@ def build_backbone(geometry, parameters):
 
 
 class ComplianceController:
-    """新鲜实测反馈驱动；无效帧返回 None，由调用者保持上次目标。"""
+    """新鲜实测反馈驱动；无效帧返回 None，由调用者保持上次目标。
 
-    def __init__(self, parameters, expected_lengths):
+    ignore_feedback_risk 仅供纯仿真探测方法极限：跳过“轴无效或关节离线”这一检查，
+    用当前能拿到的几何（即使轴置信度低、关节不全在线）强行继续计算目标。
+    默认关闭；绝不应该在驱动真实舵机的入口打开——真实硬件上这意味着把目标发给
+    可能已经断线或过期的关节，而且 Python 端无法撤回已经写出的指令。
+    """
+
+    def __init__(self, parameters, expected_lengths, ignore_feedback_risk=False):
         self.parameters = parameters
         self.expected_lengths = np.asarray(expected_lengths)
         self.backbone = None
@@ -211,13 +217,14 @@ class ComplianceController:
         self.phase_offset = 0.
         self.started = False
         self.status = "等待有效截面"
+        self.ignore_feedback_risk = ignore_feedback_risk
 
     def compute(self, geometry, roll_phase, reference, now_ms=None, reference_phase=None):
         try:
             if geometry is None:
                 raise ValueError("等待新鲜反馈")
             now_ms = time.time() * 1000 if now_ms is None else now_ms
-            if not geometry.get("feedback_usable", False):
+            if not geometry.get("feedback_usable", False) and not self.ignore_feedback_risk:
                 raise ValueError("反馈不可用：轴无效或关节离线")
             if geometry["age_ms"] > 500 or now_ms - geometry["sample_unix_ms"] > 500:
                 raise ValueError(f"反馈过期：age={geometry['age_ms']:.0f}ms，"

@@ -102,6 +102,8 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 
 **管道实验用 `--scene` 选择场景**；不带 `--scene` 时仍打开原 Pole 场景。
 
+**控制台命令 `force`（仅 `Adaptive_Pole_Climbing_Mujoco.py`，纯仿真探限用）**：顺应性遇到“反馈不可用：轴无效或关节离线”时默认跳过本步、保持上一次目标，并在终端打印提示。看到提示后在控制台直接输入 `force`，之后本次运行改为仍强行用当前几何计算并下发目标，可以继续用 Ctrl+U/J/H 调试，用于探测方法在反馈失效时的极限行为；再输入一次 `force` 关闭，恢复默认拒绝执行。只影响这一个仿真入口（`pole_compliance.ComplianceController.ignore_feedback_risk`），不改变默认行为，不改 `curved_axis_compliance.py`（它不检查这个字段，不存在同样问题），**实机入口 `Adaptive_Pole_Climbing_Real.py` 未改动、不支持该命令**。
+
 | 场景 | 命令 | 说明 |
 | --- | --- | --- |
 | 连续变径 | `--scene variable` | 竖直管外攀爬，外径 180 → 230 mm（z 0.70–1.30 m 过渡），高 1.8 m |
