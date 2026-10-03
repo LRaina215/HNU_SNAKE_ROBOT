@@ -1,0 +1,13 @@
+{
+  "cases": 8,
+  "accepted_call_pairs": 128,
+  "maximum_target_difference_rad": 0.0,
+  "limit_replay_passed": true,
+  "rejected_calls_captured_without_state_change": true,
+  "synthetic_inputs_only": true,
+  "sources": {
+    "validation\\pitch_adaptation_capture_checks.py": "c9f7300e1357e463d0b596f5e149dc359250a844f994f2416599abf17435b71c",
+    "validation\\pitch_adaptation_capture.py": "0bc68679a44376583832b7bc5835834f1f1056cccecf26f120416fdc2705d580",
+    "codes\\local_pitch_controller_v5.py": "fd46c67983318e697431c7c42ba2a296f37e2bda1efedef7f3cfa8ee034c27ad"
+  }
+}

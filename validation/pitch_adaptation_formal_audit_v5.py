@@ -13,9 +13,10 @@ import numpy as np
 
 from pitch_adaptation_experiment_v5 import ROOT
 from pitch_adaptation_formal_v5 import BASE,verify_freeze,jobs_for,digest,read
-from pitch_adaptation_training_audit import audit_case,label
+from pitch_adaptation_training_audit import audit_case,label,compare_common_initial,initial_control_history
 from pitch_adaptation_mechanism import replay
 from pitch_adaptation_statistics import summarize
+from pitch_adaptation_capture_audit import audit_capture
 
 
 def plot_statistics(statistics,out):
@@ -64,7 +65,7 @@ def audit(freeze_path,source,out):
     order=[dict(scene=s,method=m,seed=seed,k=k,alpha_deg=float(np.degrees(a))) for s,m,seed,k,a in jobs]
     if len(plan['order'])!=len(order) or any((p['scene'],p['method'],p['seed'],p['k'])!=(q['scene'],q['method'],q['seed'],q['k']) or abs(p['alpha_deg']-q['alpha_deg'])>1e-9 for p,q in zip(plan['order'],order)):
         raise ValueError('Formal randomized schedule differs from prescribed design')
-    rows=[];missing=[];initials={};counts={};folders={}
+    rows=[];missing=[];initials={};initial_histories={};counts={};folders={}
     for job in jobs:
         case=source/label(job)
         if not (case/'result.json').exists():missing.append(label(job));continue
@@ -74,10 +75,16 @@ def audit(freeze_path,source,out):
         if result.get('stage')!='formal' or result.get('formal_freeze_sha256')!=digest(freeze_path) or result.get('formal_orchestrator_sha256')!=plan['runner_sha256']:
             raise ValueError('Trial lacks the required formal provenance: '+str(case))
         if result.get('dependencies')!=freeze['dependencies']:raise ValueError('Formal dependency versions differ: '+str(case))
-        row,initial=audit_case(case,job);rows.append(row);folders[(job[0],job[1],job[2])]=case
+        if result.get('capture_sha256')!=digest(case/'capture.json.gz'):raise ValueError('Formal call capture differs: '+str(case))
+        row,initial=audit_case(case,job)
+        capture=audit_capture(case);row.update(captured_compute_attempts=capture['attempts'],captured_rejected_attempts=capture['rejected'],
+                                              captured_limit_reconstruction_passed=capture['limit_reconstruction_passed'],maximum_capture_call_ms=capture['maximum_capture_call_ms'])
+        row['raw_sha256']['capture.json.gz']=capture['capture_sha256'];row['raw_sha256']['capture_limits.json.gz']=capture['limits_sha256']
         key=(job[0],job[2])
-        if key in initials and not np.array_equal(initials[key],initial):raise ValueError('Formal paired initialization differs: '+str(key))
-        initials[key]=initial;counts[key]=counts.get(key,0)+1
+        history=initial_control_history(case)
+        if key not in initials:initials[key]=initial;initial_histories[key]=history
+        row['common_initial_comparison']=compare_common_initial(initial,initials[key],history,initial_histories[key])
+        rows.append(row);folders[(job[0],job[1],job[2])]=case;counts[key]=counts.get(key,0)+1
     out.mkdir(parents=True,exist_ok=True)
     if rows:
         with (out/'audited_formal.csv').open('w',encoding='utf-8-sig',newline='') as f:

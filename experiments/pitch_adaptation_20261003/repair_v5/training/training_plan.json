@@ -1,0 +1,50 @@
+{
+  "stage": "training",
+  "version": 5,
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "scenes": [
+    "pipe_straight_small",
+    "pipe_straight_large",
+    "pipe_taper_horizontal",
+    "real_s2l"
+  ],
+  "B_alpha_deg": [
+    12.0,
+    18.0,
+    23.249361508757264,
+    28.0
+  ],
+  "CD_shared_k": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "parameter_configurations": 7,
+  "parameter_configuration_limit": 12,
+  "fixed_filters": {
+    "window": 7,
+    "sampler": "measured module centres",
+    "spatial_sigma": 1.0,
+    "time_gain_at_0_2s": 0.2,
+    "alpha_rate_deg_per_0_2s": 1.0,
+    "physical_radius_timeout_s": 0.5,
+    "takeover_s": 2.0
+  },
+  "B_selection": "per-scene: success count descending, median maximum hold retreat ascending, median progress speed descending, smaller alpha as deterministic final tie",
+  "CD_selection": "one k across all scenes/methods: pooled C/D success count descending, median maximum hold retreat ascending, median progress speed descending, smaller k as deterministic final tie",
+  "missing_hold_metric": "infinite retreat; motion/support/target failures cannot win the retreat tie",
+  "formal_released": false,
+  "sources": {
+    "codes\\local_pitch_controller_v5.py": "fd46c67983318e697431c7c42ba2a296f37e2bda1efedef7f3cfa8ee034c27ad",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "codes\\pole_compliance.py": "273c408f235bc285afc95d4d11e6aaa553d8df8f54aa3648aebec7c8859b8e17",
+    "codes\\Adaptive_Pole_Climbing_Mujoco.py": "5b9406aa5d0a86f5cefd36156c9e05ee51a1bcd9a00596b73a48deb662d5cb46",
+    "validation\\pitch_adaptation_training_v5.py": "3201af7d45e190990ba432596efa82b2cf9a9f1bd6549c6b752defe84338b532",
+    "validation\\pitch_adaptation_experiment_v5.py": "3fcfed7190db39f91104709d6566c56efee8d72752f3d86b7976f6e1c6b5c6fb"
+  }
+}

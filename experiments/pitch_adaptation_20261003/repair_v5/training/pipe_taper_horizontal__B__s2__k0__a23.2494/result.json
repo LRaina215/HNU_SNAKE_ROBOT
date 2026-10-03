@@ -1,0 +1,482 @@
+{
+  "scene": "pipe_taper_horizontal",
+  "method": "B",
+  "seed": 2,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "success",
+  "movement_steps": 180,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 0.966583123952,
+  "status": [
+    {
+      "sim_time": 2.1999999999998687,
+      "mean": 0.49406411151464474,
+      "tail": 0.24918282124116986,
+      "head": 0.7506120815434077,
+      "contacts": 12,
+      "height": 0.999,
+      "tracking_deg": 19.88
+    },
+    {
+      "sim_time": 3.1999999999997586,
+      "mean": 0.5209689911864415,
+      "tail": 0.2785895821513697,
+      "head": 0.7662822380079214,
+      "contacts": 10,
+      "height": 0.999,
+      "tracking_deg": 9.78
+    },
+    {
+      "sim_time": 4.199999999999737,
+      "mean": 0.5454369112659427,
+      "tail": 0.3064660179001187,
+      "head": 0.7761080970792814,
+      "contacts": 7,
+      "height": 0.996,
+      "tracking_deg": 4.7
+    },
+    {
+      "sim_time": 5.200000000000071,
+      "mean": 0.573015979396219,
+      "tail": 0.333901352528264,
+      "head": 0.8111927336954516,
+      "contacts": 8,
+      "height": 0.999,
+      "tracking_deg": 2.35
+    },
+    {
+      "sim_time": 6.200000000000405,
+      "mean": 0.600451360173316,
+      "tail": 0.36767876500493285,
+      "head": 0.8393336152834828,
+      "contacts": 8,
+      "height": 0.996,
+      "tracking_deg": 3.26
+    },
+    {
+      "sim_time": 7.200000000000739,
+      "mean": 0.6332533908860054,
+      "tail": 0.38770809188310706,
+      "head": 0.8706359468939646,
+      "contacts": 8,
+      "height": 0.998,
+      "tracking_deg": 2.97
+    },
+    {
+      "sim_time": 8.200000000000895,
+      "mean": 0.6589629632751836,
+      "tail": 0.41585119934572756,
+      "head": 0.8887690506188288,
+      "contacts": 8,
+      "height": 0.999,
+      "tracking_deg": 2.6
+    },
+    {
+      "sim_time": 9.20000000000034,
+      "mean": 0.6866451237131639,
+      "tail": 0.44181342558429454,
+      "head": 0.9199047971775465,
+      "contacts": 9,
+      "height": 0.998,
+      "tracking_deg": 2.81
+    },
+    {
+      "sim_time": 10.199999999999786,
+      "mean": 0.7130555709852635,
+      "tail": 0.4753623549991843,
+      "head": 0.9476454439741735,
+      "contacts": 9,
+      "height": 0.998,
+      "tracking_deg": 2.76
+    },
+    {
+      "sim_time": 11.199999999999232,
+      "mean": 0.745452154917946,
+      "tail": 0.4963440791167763,
+      "head": 0.9818073095116706,
+      "contacts": 10,
+      "height": 0.998,
+      "tracking_deg": 2.63
+    },
+    {
+      "sim_time": 12.199999999998678,
+      "mean": 0.7663469354461123,
+      "tail": 0.5233325561529512,
+      "head": 0.9863325552260341,
+      "contacts": 10,
+      "height": 0.996,
+      "tracking_deg": 7.56
+    },
+    {
+      "sim_time": 13.199999999998123,
+      "mean": 0.7946801274361606,
+      "tail": 0.551564911420706,
+      "head": 1.0075830048186967,
+      "contacts": 8,
+      "height": 0.992,
+      "tracking_deg": 9.28
+    },
+    {
+      "sim_time": 14.19999999999757,
+      "mean": 0.821361482501667,
+      "tail": 0.588611336222522,
+      "head": 1.061369159058645,
+      "contacts": 9,
+      "height": 0.996,
+      "tracking_deg": 4.12
+    },
+    {
+      "sim_time": 15.199999999997015,
+      "mean": 0.8433423851206323,
+      "tail": 0.6112371259642341,
+      "head": 1.0899196185889117,
+      "contacts": 10,
+      "height": 1.002,
+      "tracking_deg": 16.39
+    },
+    {
+      "sim_time": 16.199999999996816,
+      "mean": 0.8660688877299807,
+      "tail": 0.6386469626426936,
+      "head": 1.108612052686279,
+      "contacts": 10,
+      "height": 1.014,
+      "tracking_deg": 18.14
+    },
+    {
+      "sim_time": 17.199999999998038,
+      "mean": 0.8870604238187898,
+      "tail": 0.6625298810019062,
+      "head": 1.1235431254855142,
+      "contacts": 10,
+      "height": 1.022,
+      "tracking_deg": 16.73
+    },
+    {
+      "sim_time": 18.19999999999926,
+      "mean": 0.911152102132251,
+      "tail": 0.6819026439534323,
+      "head": 1.1667505045539612,
+      "contacts": 10,
+      "height": 1.017,
+      "tracking_deg": 10.47
+    },
+    {
+      "sim_time": 19.200000000000482,
+      "mean": 0.937405212465159,
+      "tail": 0.7087228928115361,
+      "head": 1.1897426251251593,
+      "contacts": 8,
+      "height": 1.018,
+      "tracking_deg": 15.36
+    },
+    {
+      "sim_time": 20.200000000001705,
+      "mean": 0.9694281513572068,
+      "tail": 0.7270870219790049,
+      "head": 1.2193263298967236,
+      "contacts": 11,
+      "height": 1.015,
+      "tracking_deg": 10.75
+    },
+    {
+      "sim_time": 21.200000000002927,
+      "mean": 0.9934648864999781,
+      "tail": 0.737929410323732,
+      "head": 1.2438083502025157,
+      "contacts": 9,
+      "height": 1.008,
+      "tracking_deg": 5.93
+    },
+    {
+      "sim_time": 22.20000000000415,
+      "mean": 1.0134199147692695,
+      "tail": 0.7682646870029897,
+      "head": 1.2651110651233832,
+      "contacts": 7,
+      "height": 1.005,
+      "tracking_deg": 7.17
+    },
+    {
+      "sim_time": 23.20000000000537,
+      "mean": 1.039107963520847,
+      "tail": 0.7858326872830304,
+      "head": 1.2855789871149745,
+      "contacts": 10,
+      "height": 1.005,
+      "tracking_deg": 3.74
+    },
+    {
+      "sim_time": 24.200000000006593,
+      "mean": 1.0625216881636501,
+      "tail": 0.8226360952784773,
+      "head": 1.2947009041791664,
+      "contacts": 7,
+      "height": 1.006,
+      "tracking_deg": 3.58
+    },
+    {
+      "sim_time": 25.200000000007815,
+      "mean": 1.0838596770701947,
+      "tail": 0.8431218141806368,
+      "head": 1.3075718734751456,
+      "contacts": 6,
+      "height": 1.01,
+      "tracking_deg": 5.4
+    },
+    {
+      "sim_time": 26.200000000009037,
+      "mean": 1.105669053210264,
+      "tail": 0.868947722432925,
+      "head": 1.3407847164058113,
+      "contacts": 7,
+      "height": 1.011,
+      "tracking_deg": 2.47
+    },
+    {
+      "sim_time": 27.20000000001026,
+      "mean": 1.126060753363242,
+      "tail": 0.8769871966487099,
+      "head": 1.3617084634257737,
+      "contacts": 8,
+      "height": 1.01,
+      "tracking_deg": 4.34
+    },
+    {
+      "sim_time": 28.20000000001148,
+      "mean": 1.1551082230575678,
+      "tail": 0.9150866701236515,
+      "head": 1.3940483640531425,
+      "contacts": 8,
+      "height": 1.007,
+      "tracking_deg": 2.34
+    },
+    {
+      "sim_time": 29.200000000012704,
+      "mean": 1.177653824920164,
+      "tail": 0.9339020415904268,
+      "head": 1.4093321029736334,
+      "contacts": 10,
+      "height": 1.005,
+      "tracking_deg": 2.44
+    },
+    {
+      "sim_time": 30.200000000013926,
+      "mean": 1.2045731679646705,
+      "tail": 0.96813551217484,
+      "head": 1.4471206934441225,
+      "contacts": 8,
+      "height": 1.001,
+      "tracking_deg": 2.68
+    },
+    {
+      "sim_time": 31.200000000015148,
+      "mean": 1.2289600706208397,
+      "tail": 0.9814982715524007,
+      "head": 1.4710012782883772,
+      "contacts": 11,
+      "height": 0.999,
+      "tracking_deg": 2.24
+    },
+    {
+      "sim_time": 32.200000000015656,
+      "mean": 1.258524475791341,
+      "tail": 1.0152231880927765,
+      "head": 1.5048750584502344,
+      "contacts": 5,
+      "height": 0.994,
+      "tracking_deg": 3.74
+    },
+    {
+      "sim_time": 33.200000000013326,
+      "mean": 1.2826511073481874,
+      "tail": 1.0349192991290028,
+      "head": 1.5201074789961708,
+      "contacts": 11,
+      "height": 0.993,
+      "tracking_deg": 2.29
+    },
+    {
+      "sim_time": 34.200000000010995,
+      "mean": 1.3096720580457102,
+      "tail": 1.0687556763733872,
+      "head": 1.5525148661938761,
+      "contacts": 7,
+      "height": 0.989,
+      "tracking_deg": 2.04
+    },
+    {
+      "sim_time": 35.200000000008664,
+      "mean": 1.3329384291663964,
+      "tail": 1.0828698815614073,
+      "head": 1.5808420666429273,
+      "contacts": 7,
+      "height": 0.988,
+      "tracking_deg": 2.68
+    },
+    {
+      "sim_time": 36.200000000006334,
+      "mean": 1.3630347632673856,
+      "tail": 1.1131469405560417,
+      "head": 1.6126752992919886,
+      "contacts": 7,
+      "height": 0.982,
+      "tracking_deg": 2.48
+    },
+    {
+      "sim_time": 37.200000000004,
+      "mean": 1.3876085670186087,
+      "tail": 1.1362785031455767,
+      "head": 1.6308272006563918,
+      "contacts": 8,
+      "height": 0.983,
+      "tracking_deg": 2.28
+    },
+    {
+      "sim_time": 38.20000000000167,
+      "mean": 1.413958770153398,
+      "tail": 1.166749873424804,
+      "head": 1.6590934532509651,
+      "contacts": 8,
+      "height": 0.979,
+      "tracking_deg": 2.39
+    },
+    {
+      "sim_time": 39.19999999999934,
+      "mean": 1.4142117890338999,
+      "tail": 1.1674174728919509,
+      "head": 1.6584800346704252,
+      "contacts": 8,
+      "height": 0.98,
+      "tracking_deg": 2.84
+    },
+    {
+      "sim_time": 40.19999999999701,
+      "mean": 1.414111461475947,
+      "tail": 1.1676035648209726,
+      "head": 1.6572641306127402,
+      "contacts": 8,
+      "height": 0.981,
+      "tracking_deg": 2.88
+    },
+    {
+      "sim_time": 41.19999999999468,
+      "mean": 1.414073831333679,
+      "tail": 1.1678462875890712,
+      "head": 1.6560269269985626,
+      "contacts": 8,
+      "height": 0.981,
+      "tracking_deg": 2.86
+    },
+    {
+      "sim_time": 42.19999999999235,
+      "mean": 1.4141416848548467,
+      "tail": 1.168426347932856,
+      "head": 1.6554399432642228,
+      "contacts": 9,
+      "height": 0.982,
+      "tracking_deg": 2.84
+    },
+    {
+      "sim_time": 43.19999999999002,
+      "mean": 1.4141651978120193,
+      "tail": 1.168709913516635,
+      "head": 1.6554195262062785,
+      "contacts": 9,
+      "height": 0.982,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 44.19999999998769,
+      "mean": 1.4141744188395948,
+      "tail": 1.1687945177550283,
+      "head": 1.6554320081624148,
+      "contacts": 9,
+      "height": 0.982,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 45.19999999998536,
+      "mean": 1.414177320585538,
+      "tail": 1.1688192152405565,
+      "head": 1.6554370207052818,
+      "contacts": 9,
+      "height": 0.981,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 46.19999999998303,
+      "mean": 1.4141780172966834,
+      "tail": 1.1688243708597832,
+      "head": 1.6554387884583102,
+      "contacts": 9,
+      "height": 0.981,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 47.1999999999807,
+      "mean": 1.4141779860685566,
+      "tail": 1.16882314649407,
+      "head": 1.6554393504926601,
+      "contacts": 9,
+      "height": 0.981,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 48.19999999997837,
+      "mean": 1.4141777444502037,
+      "tail": 1.168820329510639,
+      "head": 1.6554394667634482,
+      "contacts": 9,
+      "height": 0.981,
+      "tracking_deg": 2.85
+    }
+  ],
+  "rejections": 0,
+  "canceled_feedback_retries": 0,
+  "git_commit": "0108e43a36cf07ac6e7d2a55e7150bbf6baee2e2",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Pipe_taper_horizontal.xml": "af6f9cb2684e3724efdf13b5f3b3afba6e8b6318c9634ab13708cd6b9030de74",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller_v5.py": "fd46c67983318e697431c7c42ba2a296f37e2bda1efedef7f3cfa8ee034c27ad",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "codes\\pole_compliance.py": "273c408f235bc285afc95d4d11e6aaa553d8df8f54aa3648aebec7c8859b8e17",
+    "codes\\Adaptive_Pole_Climbing_Mujoco.py": "5b9406aa5d0a86f5cefd36156c9e05ee51a1bcd9a00596b73a48deb662d5cb46",
+    "validation\\pitch_adaptation_experiment_v5.py": "3fcfed7190db39f91104709d6566c56efee8d72752f3d86b7976f6e1c6b5c6fb"
+  },
+  "initial": {
+    "sim_time": 2.1999999999998687,
+    "mean": 0.49406411151464474,
+    "tail": 0.24918282124116986,
+    "head": 0.7506120815434077,
+    "contacts": 12,
+    "height": 0.999,
+    "tracking_deg": 19.88
+  },
+  "takeover_ready_sim_time": 2.1999999999998687,
+  "hold_start_s": 38.20000000000167,
+  "hold_start_mean_m": 1.413958770153398,
+  "wall_s": 108.25,
+  "physical_s": 48.19999999997837,
+  "completed_steps": 241,
+  "control_updates": 180,
+  "degraded_update_fraction": 0.45,
+  "compute_ms_max": 20.088299999997616,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.6892292510104558,
+  "torque_squared_integral": 2750.7696258192145,
+  "saturation_fraction": 0.4076659751039055,
+  "radius_valid_fraction": 0.8830808080808081,
+  "alpha_range_deg": [
+    23.249361508757264,
+    23.249361508757264
+  ],
+  "success": true,
+  "controller_version": 5
+}

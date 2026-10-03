@@ -1,0 +1,338 @@
+{
+  "scene": "pipe_straight_small",
+  "method": "B",
+  "seed": 1,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "hold_slip",
+  "movement_steps": 110,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 1.0,
+  "status": [
+    {
+      "sim_time": 2.1999999999998687,
+      "mean": 0.48416270024882707,
+      "tail": 0.23603698388837444,
+      "head": 0.7410753711851115,
+      "contacts": 12,
+      "height": 0.484,
+      "tracking_deg": 18.66
+    },
+    {
+      "sim_time": 3.1999999999997586,
+      "mean": 0.5089082457736274,
+      "tail": 0.2660081543221362,
+      "head": 0.753066167754154,
+      "contacts": 9,
+      "height": 0.509,
+      "tracking_deg": 9.92
+    },
+    {
+      "sim_time": 4.199999999999737,
+      "mean": 0.5279382943699165,
+      "tail": 0.28865854729940543,
+      "head": 0.758028614572249,
+      "contacts": 7,
+      "height": 0.528,
+      "tracking_deg": 4.34
+    },
+    {
+      "sim_time": 5.200000000000071,
+      "mean": 0.5523364873862342,
+      "tail": 0.3106908550892193,
+      "head": 0.7891193709832927,
+      "contacts": 10,
+      "height": 0.552,
+      "tracking_deg": 2.61
+    },
+    {
+      "sim_time": 6.200000000000405,
+      "mean": 0.5766325609367017,
+      "tail": 0.3410235640375127,
+      "head": 0.8144571331735072,
+      "contacts": 7,
+      "height": 0.577,
+      "tracking_deg": 2.96
+    },
+    {
+      "sim_time": 7.200000000000739,
+      "mean": 0.6038135859402455,
+      "tail": 0.35738134954320866,
+      "head": 0.8407780617369511,
+      "contacts": 10,
+      "height": 0.604,
+      "tracking_deg": 3.15
+    },
+    {
+      "sim_time": 8.200000000000895,
+      "mean": 0.6265072024581089,
+      "tail": 0.38230133674757444,
+      "head": 0.8558830656064819,
+      "contacts": 8,
+      "height": 0.627,
+      "tracking_deg": 2.56
+    },
+    {
+      "sim_time": 9.20000000000034,
+      "mean": 0.649960929314868,
+      "tail": 0.40441380764862,
+      "head": 0.8848291694314316,
+      "contacts": 9,
+      "height": 0.65,
+      "tracking_deg": 2.94
+    },
+    {
+      "sim_time": 10.199999999999786,
+      "mean": 0.6724723821630301,
+      "tail": 0.4333681886186018,
+      "head": 0.9108694987369297,
+      "contacts": 9,
+      "height": 0.672,
+      "tracking_deg": 2.75
+    },
+    {
+      "sim_time": 11.199999999999232,
+      "mean": 0.6999974467486296,
+      "tail": 0.45133971535074746,
+      "head": 0.9378448370350252,
+      "contacts": 8,
+      "height": 0.7,
+      "tracking_deg": 3.41
+    },
+    {
+      "sim_time": 12.199999999998678,
+      "mean": 0.7222362165154516,
+      "tail": 0.4765846581173337,
+      "head": 0.9534721749517869,
+      "contacts": 9,
+      "height": 0.722,
+      "tracking_deg": 2.79
+    },
+    {
+      "sim_time": 13.199999999998123,
+      "mean": 0.745127841411214,
+      "tail": 0.4977354771844118,
+      "head": 0.9769303596020794,
+      "contacts": 9,
+      "height": 0.745,
+      "tracking_deg": 3.6
+    },
+    {
+      "sim_time": 14.19999999999757,
+      "mean": 0.7680789906218457,
+      "tail": 0.5283536629580654,
+      "head": 1.0106703808703732,
+      "contacts": 8,
+      "height": 0.768,
+      "tracking_deg": 2.55
+    },
+    {
+      "sim_time": 15.199999999997015,
+      "mean": 0.7947559724821032,
+      "tail": 0.5491933489595047,
+      "head": 1.032635253549909,
+      "contacts": 9,
+      "height": 0.795,
+      "tracking_deg": 3.94
+    },
+    {
+      "sim_time": 16.199999999996816,
+      "mean": 0.8184597520834787,
+      "tail": 0.5741141753774267,
+      "head": 1.0535160167192017,
+      "contacts": 9,
+      "height": 0.818,
+      "tracking_deg": 2.62
+    },
+    {
+      "sim_time": 17.199999999998038,
+      "mean": 0.8401613675320851,
+      "tail": 0.5930682594704721,
+      "head": 1.0699981465779518,
+      "contacts": 6,
+      "height": 0.84,
+      "tracking_deg": 2.61
+    },
+    {
+      "sim_time": 18.19999999999926,
+      "mean": 0.8623744523292685,
+      "tail": 0.6196410916023444,
+      "head": 1.1064768003515448,
+      "contacts": 8,
+      "height": 0.862,
+      "tracking_deg": 3.52
+    },
+    {
+      "sim_time": 19.200000000000482,
+      "mean": 0.8896548631051824,
+      "tail": 0.64627695879907,
+      "head": 1.1282334623028454,
+      "contacts": 9,
+      "height": 0.89,
+      "tracking_deg": 2.86
+    },
+    {
+      "sim_time": 20.200000000001705,
+      "mean": 0.9131157784097068,
+      "tail": 0.670222139747437,
+      "head": 1.1518230262199154,
+      "contacts": 7,
+      "height": 0.913,
+      "tracking_deg": 2.91
+    },
+    {
+      "sim_time": 21.200000000002927,
+      "mean": 0.9361518474918679,
+      "tail": 0.6897511463502458,
+      "head": 1.167025499381118,
+      "contacts": 10,
+      "height": 0.936,
+      "tracking_deg": 3.07
+    },
+    {
+      "sim_time": 22.20000000000415,
+      "mean": 0.9578415102892441,
+      "tail": 0.7133076563736674,
+      "head": 1.2001890818150598,
+      "contacts": 8,
+      "height": 0.958,
+      "tracking_deg": 3.62
+    },
+    {
+      "sim_time": 23.20000000000537,
+      "mean": 0.9832173727501955,
+      "tail": 0.7426530947625046,
+      "head": 1.2210788230930227,
+      "contacts": 10,
+      "height": 0.983,
+      "tracking_deg": 2.22
+    },
+    {
+      "sim_time": 24.200000000006593,
+      "mean": 1.0092883299883002,
+      "tail": 0.7644010161247528,
+      "head": 1.2494833666080052,
+      "contacts": 7,
+      "height": 1.009,
+      "tracking_deg": 3.22
+    },
+    {
+      "sim_time": 25.200000000007815,
+      "mean": 1.0063621296864549,
+      "tail": 0.7618062952299679,
+      "head": 1.2466638109342973,
+      "contacts": 6,
+      "height": 1.006,
+      "tracking_deg": 4.5
+    },
+    {
+      "sim_time": 26.200000000009037,
+      "mean": 1.0035176255330147,
+      "tail": 0.7587254634204762,
+      "head": 1.2442999900274585,
+      "contacts": 6,
+      "height": 1.004,
+      "tracking_deg": 5.27
+    },
+    {
+      "sim_time": 27.20000000001026,
+      "mean": 1.0007527499228308,
+      "tail": 0.755888209947575,
+      "head": 1.2416391078738864,
+      "contacts": 6,
+      "height": 1.001,
+      "tracking_deg": 5.48
+    },
+    {
+      "sim_time": 28.20000000001148,
+      "mean": 0.998004175952676,
+      "tail": 0.7531190839037539,
+      "head": 1.2389101848366604,
+      "contacts": 6,
+      "height": 0.998,
+      "tracking_deg": 5.53
+    },
+    {
+      "sim_time": 29.200000000012704,
+      "mean": 0.9952539507796428,
+      "tail": 0.7503629571580868,
+      "head": 1.2361642407024969,
+      "contacts": 6,
+      "height": 0.995,
+      "tracking_deg": 5.54
+    },
+    {
+      "sim_time": 30.200000000013926,
+      "mean": 0.9925060269496194,
+      "tail": 0.7476130792127955,
+      "head": 1.2334173506470696,
+      "contacts": 6,
+      "height": 0.993,
+      "tracking_deg": 5.54
+    },
+    {
+      "sim_time": 31.200000000015148,
+      "mean": 0.9897584002274904,
+      "tail": 0.7448640559714624,
+      "head": 1.230670168958298,
+      "contacts": 6,
+      "height": 0.99,
+      "tracking_deg": 5.54
+    },
+    {
+      "sim_time": 32.200000000015656,
+      "mean": 0.9870106222828501,
+      "tail": 0.7421155719774793,
+      "head": 1.227922351954607,
+      "contacts": 6,
+      "height": 0.987,
+      "tracking_deg": 5.54
+    }
+  ],
+  "rejections": 0,
+  "canceled_feedback_retries": 0,
+  "git_commit": "a79bdea61fd3afd15d15d0e07dad904d60f06e5b",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Pipe_straight_small.xml": "8745dc15812ded3fcab38788c4b46b7251ab54c44862b2a0abe33d0b6020ac9e",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller_v5.py": "fd46c67983318e697431c7c42ba2a296f37e2bda1efedef7f3cfa8ee034c27ad",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "codes\\pole_compliance.py": "273c408f235bc285afc95d4d11e6aaa553d8df8f54aa3648aebec7c8859b8e17",
+    "codes\\Adaptive_Pole_Climbing_Mujoco.py": "5b9406aa5d0a86f5cefd36156c9e05ee51a1bcd9a00596b73a48deb662d5cb46",
+    "validation\\pitch_adaptation_experiment_v5.py": "3fcfed7190db39f91104709d6566c56efee8d72752f3d86b7976f6e1c6b5c6fb"
+  },
+  "initial": {
+    "sim_time": 2.1999999999998687,
+    "mean": 0.48416270024882707,
+    "tail": 0.23603698388837444,
+    "head": 0.7410753711851115,
+    "contacts": 12,
+    "height": 0.484,
+    "tracking_deg": 18.66
+  },
+  "takeover_ready_sim_time": 2.1999999999998687,
+  "hold_start_s": 24.200000000006593,
+  "hold_start_mean_m": 1.0092883299883002,
+  "wall_s": 71.86000000000058,
+  "physical_s": 32.200000000015656,
+  "completed_steps": 161,
+  "control_updates": 110,
+  "degraded_update_fraction": 0.7909090909090909,
+  "compute_ms_max": 19.87570000000005,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.6767597145001574,
+  "torque_squared_integral": 1810.6209022707787,
+  "saturation_fraction": 0.3970031055899832,
+  "radius_valid_fraction": 0.7801652892561983,
+  "alpha_range_deg": [
+    23.249361508757264,
+    23.249361508757264
+  ],
+  "success": false,
+  "controller_version": 5
+}

@@ -1,0 +1,309 @@
+{
+  "cases": 35,
+  "phase_samples": 73,
+  "adjacent_pairs": 20,
+  "zero_angle_minimum_convex_geom_distance_mm": -12.947084234859338,
+  "minimum_convex_geom_distance_mm": -22.342847794185243,
+  "maximum_active_adjacent_contacts": 0,
+  "parent_child_collision_filter_enabled": {
+    "pipe_straight_small": true,
+    "pipe_straight_large": true,
+    "pipe_taper_horizontal": true,
+    "real_s2l": true
+  },
+  "hardware_shell_clearance_proven": false,
+  "simulation_scope": "original ideal hinge model excludes parent-child collision; nonadjacent/model-pipe behavior may be compared, actual hinge-shell clearance remains unverified",
+  "official_reference": "https://mujoco.readthedocs.io/en/3.3.0/computation/index.html#collision-detection",
+  "inputs_sha256": {
+    "experiments\\pitch_adaptation_20261003\\stage0\\scan.csv": "be6cf3494e8ed56cf083d4cea1b6885518132e9db2e25e24aa5a6265f2f5aad5",
+    "experiments\\pitch_adaptation_20261003\\stage0\\scan_targets.npz": "803bc384637cace52675e3accc6f5d4a9738bfecf3a4bdb500e4a61451d27db4",
+    "mujoco_model\\Snake_Robot_o20_Pipe_straight_small.xml": "8745dc15812ded3fcab38788c4b46b7251ab54c44862b2a0abe33d0b6020ac9e",
+    "validation\\pitch_adaptation_stage0_adjacent.py": "ba493a0bef8fa0a43a006c989f23b8f6a999310c45b8d923a90dcf57c625ac56"
+  },
+  "model_assets": {
+    "mujoco_model\\asset\\c_link_H.stl": "ecb1da5ad7fc609cb33da9ccc4f98d9c9c0dfa88dc2330169bef11d897bcdd59",
+    "mujoco_model\\asset\\c_link_V.stl": "58a7674d9dc67d25d2398cae6ac1eb46d257bff54b4551233ab190e5fb5f79c1"
+  },
+  "rows": [
+    {
+      "radius_mm": 85.5,
+      "candidate": "fixed_12",
+      "alpha_deg": 12.000000000000002,
+      "adjacent_minimum_convex_geom_distance_mm": -22.342847794185243,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 85.5,
+      "candidate": "fixed_18",
+      "alpha_deg": 18.0,
+      "adjacent_minimum_convex_geom_distance_mm": -21.67354053694894,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 85.5,
+      "candidate": "fixed_23.2494",
+      "alpha_deg": 23.249361508757264,
+      "adjacent_minimum_convex_geom_distance_mm": -20.87590111765137,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 85.5,
+      "candidate": "fixed_28",
+      "alpha_deg": 28.0,
+      "adjacent_minimum_convex_geom_distance_mm": -20.045529754564985,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 85.5,
+      "candidate": "rule_k0",
+      "alpha_deg": 22.270154157258858,
+      "adjacent_minimum_convex_geom_distance_mm": -21.03908046748976,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 85.5,
+      "candidate": "rule_k0.5",
+      "alpha_deg": 22.270154157258858,
+      "adjacent_minimum_convex_geom_distance_mm": -21.03908046748976,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 85.5,
+      "candidate": "rule_k1",
+      "alpha_deg": 22.270154157258858,
+      "adjacent_minimum_convex_geom_distance_mm": -21.03908046748976,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "fixed_12",
+      "alpha_deg": 12.000000000000002,
+      "adjacent_minimum_convex_geom_distance_mm": -21.190870613341954,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "fixed_18",
+      "alpha_deg": 18.0,
+      "adjacent_minimum_convex_geom_distance_mm": -20.55774799869712,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "fixed_23.2494",
+      "alpha_deg": 23.249361508757264,
+      "adjacent_minimum_convex_geom_distance_mm": -19.860253659250493,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "fixed_28",
+      "alpha_deg": 28.0,
+      "adjacent_minimum_convex_geom_distance_mm": -19.53690847550805,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "rule_k0",
+      "alpha_deg": 20.232340003013803,
+      "adjacent_minimum_convex_geom_distance_mm": -20.280485022068106,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "rule_k0.5",
+      "alpha_deg": 19.27246403815026,
+      "adjacent_minimum_convex_geom_distance_mm": -20.40322964184533,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 95.0,
+      "candidate": "rule_k1",
+      "alpha_deg": 18.351323239471583,
+      "adjacent_minimum_convex_geom_distance_mm": -20.516008903583053,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "fixed_12",
+      "alpha_deg": 12.000000000000002,
+      "adjacent_minimum_convex_geom_distance_mm": -19.69028125824604,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "fixed_18",
+      "alpha_deg": 18.0,
+      "adjacent_minimum_convex_geom_distance_mm": -19.536908368579095,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "fixed_23.2494",
+      "alpha_deg": 23.249361508757264,
+      "adjacent_minimum_convex_geom_distance_mm": -19.504898614358897,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "fixed_28",
+      "alpha_deg": 28.0,
+      "adjacent_minimum_convex_geom_distance_mm": -19.37363252555346,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "rule_k0",
+      "alpha_deg": 17.581824131381023,
+      "adjacent_minimum_convex_geom_distance_mm": -19.536908475754128,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "rule_k0.5",
+      "alpha_deg": 15.574705613560084,
+      "adjacent_minimum_convex_geom_distance_mm": -19.536908406038044,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 110.5,
+      "candidate": "rule_k1",
+      "alpha_deg": 13.776009093591147,
+      "adjacent_minimum_convex_geom_distance_mm": -19.552477344260463,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "fixed_12",
+      "alpha_deg": 12.000000000000002,
+      "adjacent_minimum_convex_geom_distance_mm": -19.512190582373997,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "fixed_18",
+      "alpha_deg": 18.0,
+      "adjacent_minimum_convex_geom_distance_mm": -19.434290246194507,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "fixed_23.2494",
+      "alpha_deg": 23.249361508757264,
+      "adjacent_minimum_convex_geom_distance_mm": -19.28011538624936,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "fixed_28",
+      "alpha_deg": 28.0,
+      "adjacent_minimum_convex_geom_distance_mm": -18.92310584111499,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "rule_k0",
+      "alpha_deg": 15.64823406506765,
+      "adjacent_minimum_convex_geom_distance_mm": -19.47462241836796,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "rule_k0.5",
+      "alpha_deg": 13.04334831547502,
+      "adjacent_minimum_convex_geom_distance_mm": -19.504013709663873,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 125.0,
+      "candidate": "rule_k1",
+      "alpha_deg": 10.846259205551041,
+      "adjacent_minimum_convex_geom_distance_mm": -19.519300883370036,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "fixed_12",
+      "alpha_deg": 12.000000000000002,
+      "adjacent_minimum_convex_geom_distance_mm": -19.320389275845262,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "fixed_18",
+      "alpha_deg": 18.0,
+      "adjacent_minimum_convex_geom_distance_mm": -19.10812919932682,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "fixed_23.2494",
+      "alpha_deg": 23.249361508757264,
+      "adjacent_minimum_convex_geom_distance_mm": -18.779601105382405,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "fixed_28",
+      "alpha_deg": 28.0,
+      "adjacent_minimum_convex_geom_distance_mm": -18.40136624467811,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "rule_k0",
+      "alpha_deg": 14.041669579173101,
+      "adjacent_minimum_convex_geom_distance_mm": -19.278227078693202,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "rule_k0.5",
+      "alpha_deg": 11.058999356936264,
+      "adjacent_minimum_convex_geom_distance_mm": -19.336678302424417,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    },
+    {
+      "radius_mm": 140.0,
+      "candidate": "rule_k1",
+      "alpha_deg": 8.684240801527636,
+      "adjacent_minimum_convex_geom_distance_mm": -19.369958748658952,
+      "adjacent_overlap_observations": 1460,
+      "maximum_active_adjacent_contacts": 0
+    }
+  ]
+}
