@@ -107,10 +107,11 @@ PIPE_GEOM = dict(friction=f'{PIPE_SLIDING_FRICTION:g} {base.TORSIONAL_FRICTION:g
                  condim='6', group='1', material='pipe_rubber', rgba=PIPE_RUBBER_MATERIAL['rgba'])
 
 
-def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, center='0 0 .8', extent='1.8', joints=JOINTS):
+def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, center='0 0 .8', extent='1.8', joints=JOINTS, origin=None):
     """加入机器人、执行器、显示与实验标记，按起始管半径求初始姿态并写出 XML。
 
-    管道起始段必须沿 rotation·z 方向（默认竖直）且过原点；初始螺旋中心在该轴上 0.5 m 处。
+    管道起始段必须沿 rotation·z 方向（默认竖直）且经过 origin（默认原点）；
+    初始螺旋中心在起始轴坐标 0.5 m 处。管道几何须由调用者施加相同变换。
     """
     robot(world, joints)
     actuator = ET.SubElement(root, 'actuator')
@@ -136,7 +137,7 @@ def finalize(root, world, filename, r_start, extra_numeric=(), rotation=None, ce
     tree.write(output, encoding='utf-8', xml_declaration=True)
     model = mujoco.MjModel.from_xml_path(str(output))
     keyframes = ET.SubElement(root, 'keyframe')
-    radius_mm, pitch_mm, qpos = start_pose(model, contact_mm, rotation)
+    radius_mm, pitch_mm, qpos = start_pose(model, contact_mm, rotation, origin)
     ET.SubElement(keyframes, 'key', name='experiment_start', qpos=numbers(qpos))
     ET.indent(tree, space='  ')
     tree.write(output, encoding='utf-8', xml_declaration=True)
@@ -179,7 +180,7 @@ def matched_pitch_mm(radius_mm, apply_radius_mm, apply_pitch_mm=PITCH_MM):
     return 2 * np.pi * (1 - np.sqrt(disc)) / (2 * tau)  # 取较小的螺距（更紧的缠绕）
 
 
-def start_pose(model, contact_mm, rotation=None):
+def start_pose(model, contact_mm, rotation=None, origin=None):
     """从贴管半径起逐毫米增大，返回第一个整条机器人离管面不小于 START_CLEARANCE_M 的预缠绕姿态。
 
     挠率与 Ctrl+U 预设（贴管半径 − APPLY_TIGHTEN_MM，PITCH_MM）相同，见 matched_pitch_mm。
@@ -197,6 +198,8 @@ def start_pose(model, contact_mm, rotation=None):
             data.qpos[:3] = rotation.apply(data.qpos[:3])
             quaternion = (rotation * Rotation.from_quat(data.qpos[[4, 5, 6, 3]])).as_quat()
             data.qpos[3:7] = quaternion[[3, 0, 1, 2]]
+        if origin is not None:
+            data.qpos[:3] += np.asarray(origin)
         mujoco.mj_forward(model, data)
         gap = min(mujoco.mj_geomDistance(model, data, a, b, .05, None) for a in body for b in pipe)
         if gap >= START_CLEARANCE_M:

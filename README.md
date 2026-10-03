@@ -117,13 +117,21 @@ python .\codes\Adaptive_Pole_Climbing_Mujoco.py
 
 **包胶管道更新（2026-10-03）：** 实验室管外已包一层防滑橡胶，用户报告当前爬行未出现打滑。`real_s2l`、`real_l2s` 和 `pipe_*` 的20/26关节模型统一标记为哑光橡胶表面 `pipe_rubber`。接触仍使用原来的滑动/扭转/滚动摩擦 `2 / 0.005 / 0.002`（后两项单位 m），通过生成器 `PIPE_SLIDING_FRICTION` 集中设置；这些是未实测的暂定参数，本次没有提高摩擦或声称已实现无滑移。材质外观与接触参数分开设置，见 [MuJoCo 接触参数说明](https://mujoco.readthedocs.io/en/stable/modeling.html#contact-parameters)。用户估计单层厚度1–2 mm，仿真取中值1.5 mm（RUBBER_THICKNESS_M），包胶外径为113/163 mm，估计范围为112–114/162–164 mm。采用均匀径向增厚近似，不模拟橡胶压缩、接缝和圆台法向厚度；三通支管由75增至78 mm，法兰相对凸起高度保持原值。34个模型的初始姿态重新求解，Ctrl+U默认中心线半径更新为81.5/106.5 mm，P=220 mm；此前80/105 mm及旧初始姿态属于包胶前配置。场景表中的110/160/75 mm为裸管标称尺寸。`pipe_slip_band` 的蓝色低摩擦区仍为0.3，用作独立扰动实验；管内、树干及旧演示场景不变。历史实验数据保留原条件，本轮未重新验证攀爬或校准摩擦。
 
-**管道网络场景**（`python tools/build_pipe_network_scenes.py [名称…]` 生成，`--scene pipe_<名称>` 加载）：机器人与 `real_s2l` 相同（26 关节实物参数、K=0.01/0.02），都从外径 110 mm 的竖直起始段开始，预缠在 z≈0.5 m；所有特征都在 z≥0.95 m，所有弯曲都在 x-z 平面内。Ctrl+K 的 `RADIUS` 行对这些场景按 XML 中的管中心线（`pipe_centerline`）计算关节到管轴距离、同位置管半径，并给出「沿管进度」（m，从地面起沿中心线计）；弯管上请看沿管进度而不是关节平均高度。
+**新增实验室急弯场景（2026-10-03）：** 原 bend90/bend90_tight 是圆弧对照，新增直角 L、水平/竖直 T、U 型、大小直管及横向变径，共14类、20/26关节各一套。完整参数表与工况定义见 [实验室急弯与T型场景](docs/实验室急弯与T型场景.md)。新增场景只完成静态验证，尚未做攀爬测试。
+
+**管道网络场景**（`python tools/build_pipe_network_scenes.py [名称…]` 生成，`--scene pipe_<名称>` 加载）：机器人与 `real_s2l` 相同（26 关节实物参数、K=0.01/0.02），下表原有网络场景从裸外径 110 mm 的竖直起始段开始，预缠在 z≈0.5 m；所有特征都在 z≥0.95 m，下表原有弯曲都在 x-z 平面内；新增水平/竖直场景的朝向见上述专门说明。Ctrl+K 的 `RADIUS` 行对这些场景按 XML 中的管中心线（`pipe_centerline`）计算关节到管轴距离、同位置管半径，并给出「沿管进度」（m，从地面起沿中心线计）；弯管上请看沿管进度而不是关节平均高度。
 
 运行时请直接使用下表完整的 `pipe_*` 参数，例如 `--scene pipe_bend90`；`--scene bend90` 不被两个入口接受。场景生成脚本使用不带前缀的名称，例如在仓库根目录运行 `python tools/build_pipe_network_scenes.py bend90 --joints 20`。生成名称与启动参数请勿混用。网络场景默认 26 关节，20 关节实机对应模型需显式加 `--joints 20`。
 
 | `--scene` 参数（原方法与弯曲轴入口通用） | 管道 | 研究用途 |
 | --- | --- | --- |
 | `pipe_bend90` / `pipe_bend90_tight` / `pipe_bend45` | 90° 弯头（弯曲半径 300 mm / 165 mm=1.5D）、45° 弯头 | 管轴弯曲时轴估计与螺旋跟随；弯曲半径对通过性的影响 |
+| `pipe_elbow90_up_horizontal` / `pipe_elbow90_horizontal` | 轴线直接折转90°的 L：竖直上行→水平 / 水平→水平 | 实验室急弯，非圆弧 |
+| `pipe_elbow90_horizontal_up` / `pipe_elbow90_horizontal_down` | 水平→竖直向上 / 向下的直角 L | 重力方向与重新缠绕 |
+| `pipe_tee_horizontal` | 水平 T，从横杆转入支管 | 水平转管 |
+| `pipe_tee_vertical_up` / `pipe_tee_vertical_down` / `pipe_tee_vertical_stem` | 竖直 T：水平转上 / 转下 / 从下方立管转横杆 | 支撑转移，预先指定目标支路 |
+| `pipe_u_horizontal` / `pipe_u_horizontal_tight` / `pipe_u_vertical` | 180° U：水平R300 / 水平R165 / 竖直R300 mm | 持续弯曲轴 |
+| `pipe_straight_small` / `pipe_straight_large` / `pipe_taper_horizontal` | 包胶113/163 mm直管、水平113→163 mm变径 | 螺距策略对照及横向实机工况 |
 | `pipe_offset` | 两个反向 45° 弯头组成的 S 形错位，出口仍竖直 | 连续反向曲率 |
 | `pipe_taper_bend` / `pipe_bend_taper` | 先异径（110→160）再 45° 弯 / 先 45° 弯再异径 | 组合特征的顺序影响 |
 | `pipe_flange10` / `pipe_flange25` / `pipe_flange40` / `pipe_flange55` | 单个法兰，凸起 10 / 25 / 40 / 55 mm（DN100 PVC 法兰约 55 mm），厚 22 mm | 非连续截面；可越过的凸起高度上限 |

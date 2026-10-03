@@ -3,7 +3,7 @@
 运行：python tools/build_pipe_network_scenes.py [场景名 ...] --joints 20（默认 26；无场景名时生成全部）
 管道由中心线上依次排列的段描述：直管（可变径）、圆弧弯头、偏心异径、法兰、侧向支管。
 等径直管用圆柱；其余按中心线细分，每片取相邻两个截面圆的凸包（MuJoCo 网格碰撞本身就是凸包），
-相邻片共用截面圆，表面连续，没有台阶或缝隙。
+圆弧相邻片共用截面圆；sharp 为斜切直管拼接，tee_turn 为相交圆柱，均无圆弧过渡。
 机器人、执行器、初始姿态与 build_real_pipe_scene.py 相同；所有管道从竖直（或倾斜）起始段开始，
 机器人预缠在起始段 0.5 m 处。中心线采样写入 XML 的 pipe_centerline，供 Ctrl+K 显示到管轴距离与沿管进度。
 """
@@ -69,6 +69,42 @@ SCENES = {
                       segments=[('straight', 1.15, R_SMALL, R_SMALL), ('straight', .30, R_SMALL, R_SMALL, dict(friction=.3)),
                                 ('straight', 1.0, R_SMALL, R_SMALL)]),
 }
+
+# 实验室急弯扩展：先在局部 z→x 平面构造，再整体旋转/平移管道与机器人。
+# T 的 pipe_centerline 仅记录预先指定的转弯路线，另一支是碰撞几何，不代表自动选路。
+LAB_SCENES = {
+    'elbow90_up_horizontal': dict(title='直角 L：竖直向上→水平', layout='upright'),
+    'elbow90_horizontal': dict(title='直角 L：水平→水平', layout='horizontal'),
+    'elbow90_horizontal_up': dict(title='直角 L：水平→竖直向上', layout='up'),
+    'elbow90_horizontal_down': dict(title='直角 L：水平→竖直向下', layout='down'),
+    'tee_horizontal': dict(title='水平 T：从横杆转入水平支管', layout='horizontal', tee='side'),
+    'tee_vertical_up': dict(title='竖直 T：从水平横杆转入向上支管', layout='up', tee='side'),
+    'tee_vertical_down': dict(title='竖直 T：从水平横杆转入向下支管', layout='down', tee='side'),
+    'tee_vertical_stem': dict(title='竖直 T：从下方立管转入水平横杆', layout='upright', tee='stem'),
+    'u_horizontal': dict(title='水平 U：180° 连续弯，半径300 mm', layout='horizontal', u_radius=.30),
+    'u_horizontal_tight': dict(title='水平 U：180° 连续弯，半径165 mm', layout='horizontal', u_radius=.165),
+    'u_vertical': dict(title='竖直 U：上行绕顶后下行，半径300 mm', layout='upright', u_radius=.30),
+    'straight_small': dict(title='包胶小直管对照', layout='upright', straight_radius=R_SMALL),
+    'straight_large': dict(title='包胶大直管对照', layout='upright', straight_radius=R_LARGE),
+    'taper_horizontal': dict(title='横向包胶110→160变径', layout='horizontal', taper=True),
+}
+for _name, _spec in LAB_SCENES.items():
+    _radius = _spec.get('straight_radius', R_SMALL)
+    if 'straight_radius' in _spec:
+        _segments = [('straight', 2.6, _radius, _radius)]
+    elif _spec.get('taper'):
+        _segments = [('straight', 1.15, R_SMALL, R_SMALL), ('straight', TAPER, R_SMALL, R_LARGE),
+                     ('straight', 1.2, R_LARGE, R_LARGE)]
+    elif 'u_radius' in _spec:
+        _segments = [('straight', 1.15, R_SMALL, R_SMALL), ('bend', _spec['u_radius'], 180, 'x'),
+                     ('straight', .85, R_SMALL, R_SMALL)]
+    elif _spec.get('tee'):
+        _segments = [('straight', 1.30, R_SMALL, R_SMALL), ('tee_turn', _spec['tee'], 1.2),
+                     ('straight', 1.2, R_SMALL, R_SMALL)]
+    else:
+        _segments = [('straight', 1.15, R_SMALL, R_SMALL), ('sharp', .15, 'x'),
+                     ('straight', 1.05, R_SMALL, R_SMALL)]
+    SCENES[_name] = dict(_spec, segments=_segments, lab=True)
 WORLD = {'x': (1., 0, 0), '-x': (-1., 0, 0), 'y': (0, 1., 0), '-y': (0, -1., 0)}
 
 
@@ -161,6 +197,38 @@ class PipeBuilder:
         self.s = self.features[-1][1]
         self.point, self.radius = end, r1
 
+    def sharp(self, reach, toward):
+        """两段直管在45°斜切面拼接，轴线瞬间转90°；无圆弧过渡。"""
+        outgoing = unit(np.asarray(WORLD[toward]) - np.dot(WORLD[toward], self.direction) * self.direction)
+        incoming = self.direction.copy()
+        corner = self.point + reach * incoming
+        end = corner + reach * outgoing
+        normal = unit(incoming + outgoing)
+        offsets = ring(np.zeros(3), incoming, self.radius)
+        miter = corner + offsets - np.outer(offsets @ normal / (incoming @ normal), incoming)
+        self.hull('sharp_in', [ring(self.point, incoming, self.radius), miter])
+        self.hull('sharp_out', [miter, ring(end, outgoing, self.radius)])
+        self.sample(self.point, corner, self.radius, self.radius)
+        self.sample(corner, end, self.radius, self.radius)
+        self.features.append((self.s, self.s + 2 * reach))
+        self.markers.append((corner, self.radius))
+        self.s += 2 * reach
+        self.point, self.direction = end, outgoing
+
+    def tee_turn(self, entry, unused_length):
+        """相交等径圆柱近似 T 接头；路线沿局部 z 进入并转向 +x。"""
+        outgoing = np.array([1., 0, 0])
+        unused = self.direction if entry == 'side' else -outgoing
+        ET.SubElement(self.body, 'geom', name=self.name('unused_branch'), type='cylinder',
+                      size=f'{self.radius:g}', fromto=numbers([*self.point, *(self.point + unused_length * unused)]),
+                      **real.PIPE_GEOM)
+        # 单独保存非目标支路，避免将分叉拼成一条虚假的中心线。
+        self.unused_branch = np.array([[*self.point, self.radius],
+                                       [*(self.point + unused_length * unused), self.radius]])
+        self.features.append((self.s - self.radius, self.s + self.radius + .20))
+        self.markers.append((self.point, self.radius))
+        self.direction = outgoing
+
     def flange(self, height, bolts):
         half = FLANGE_T / 2 * self.direction
         outer = self.radius + height
@@ -207,15 +275,40 @@ def build(name, joints=26):
     samples = builder.build(spec['segments'])
     # 管轴采样只保留地面以上的部分，避免 Ctrl+K 最近点落到地下段
     above = samples[samples[:, 2] > -1e-6]
-    low, high = above[:, :3].min(axis=0), above[:, :3].max(axis=0)
+    origin = None
     rotation = Rotation.from_euler('y', spec.get('tilt_deg', 0.), degrees=True) if spec.get('tilt_deg') else None
+    extra = []
+    if spec.get('lab'):
+        # 列向量分别为局部 x,y,z 在世界坐标中的方向，保持右手系。
+        matrices = {'upright': np.eye(3),
+                    'horizontal': np.array([[0, 0, 1], [1, 0, 0], [0, 1, 0]]),
+                    'up': np.array([[0, 0, 1], [0, -1, 0], [1, 0, 0]]),
+                    'down': np.array([[0, 0, 1], [0, 1, 0], [-1, 0, 0]])}
+        rotation = Rotation.from_matrix(matrices[spec['layout']])
+        origin = np.array([0., 0., 1.6 if spec['layout'] == 'down' else (1.0 if spec['layout'] in ('horizontal', 'up') else 0.)])
+        xyzw = rotation.as_quat()
+        builder.body.set('quat', numbers(xyzw[[3, 0, 1, 2]]))
+        builder.body.set('pos', numbers(origin))
+        # 先按局部入管坐标裁切，再变换；避免水平管中心线被 z=0 过滤。
+        above[:, :3] = rotation.apply(above[:, :3]) + origin
+        for site in world.findall('site'):
+            site.set('pos', numbers(rotation.apply(np.fromstring(site.get('pos'), sep=' ')) + origin))
+        extra.append(('experiment_scene_unvalidated', [1]))
+        if hasattr(builder, 'unused_branch'):
+            branch = builder.unused_branch.copy()
+            branch[:, :3] = rotation.apply(branch[:, :3]) + origin
+            extra += [('pipe_unused_branch', branch.ravel()), ('experiment_route_requires_turn', [1])]
+    bounds = above[:, :3]
+    if spec.get('lab') and hasattr(builder, 'unused_branch'):
+        bounds = np.vstack([bounds, branch[:, :3]])
+    low, high = bounds.min(axis=0), bounds.max(axis=0)
     return real.finalize(root, world, f'Snake_Robot_o{joints}_Pipe_{name}.xml', spec['segments'][0][2],
                          extra_numeric=[('pipe_centerline', above.ravel()),
                                         # 特征所在沿管弧长 [起点, 终点]（m，从地面起）；无特征的倾斜直管取 1.0 m 处一条参考线，
                                         # 与其他场景特征位置相当，用于统一判定“整条身体越过”
                                         ('feature_span', [min(a for a, _ in builder.features), max(b for _, b in builder.features)]
-                                         if builder.features else [1., 1.])],
-                         rotation=rotation, joints=joints,
+                                         if builder.features else [1., 1.])] + extra,
+                         rotation=rotation, joints=joints, origin=origin,
                          center=numbers((low + high) / 2), extent=f'{max(1.2, float(np.max(high - low))):g}')
 
 
