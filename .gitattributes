@@ -10,4 +10,6 @@ validation/pitch_adaptation_experiment_v?.py text eol=lf
 validation/pitch_adaptation_v?_checks.py text eol=lf
 validation/pitch_adaptation_repair*.py text eol=lf
 validation/pitch_adaptation_training_v?.py text eol=lf
+validation/pitch_adaptation_training_audit.py text eol=lf
+validation/pitch_adaptation_formal_v?.py text eol=lf
 experiments/pitch_adaptation_20261003/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
