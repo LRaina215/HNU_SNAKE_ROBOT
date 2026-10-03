@@ -1,0 +1,2 @@
+# Scope line endings to the contact-turn experiment; other validation is unchanged.
+contact_turn_*.py text eol=lf

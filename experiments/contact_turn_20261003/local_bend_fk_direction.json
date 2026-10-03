@@ -1,0 +1,38 @@
+[
+  {
+    "direction_rad": 0.0,
+    "posterior_anchored_head_displacement_mm": [
+      10.276195008400268,
+      -8.147761613042773,
+      -5.6293306958812295
+    ],
+    "max_target_deg": 67.57564587308147
+  },
+  {
+    "direction_rad": 1.5707963267948966,
+    "posterior_anchored_head_displacement_mm": [
+      -8.032661575182342,
+      4.71286788500222,
+      -5.4376209861606295
+    ],
+    "max_target_deg": 67.80811928084603
+  },
+  {
+    "direction_rad": 3.141592653589793,
+    "posterior_anchored_head_displacement_mm": [
+      -5.670855262996932,
+      13.878293125410861,
+      -32.21314122622765
+    ],
+    "max_target_deg": 67.57564587308147
+  },
+  {
+    "direction_rad": 4.71238898038469,
+    "posterior_anchored_head_displacement_mm": [
+      14.565673019723446,
+      0.2399050230912081,
+      -31.883262974713112
+    ],
+    "max_target_deg": 67.34317246531694
+  }
+]

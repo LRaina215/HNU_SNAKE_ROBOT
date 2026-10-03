@@ -1,0 +1,366 @@
+{
+  "completed": 12,
+  "required": 12,
+  "rows": [
+    {
+      "label": "f4_w64.5_turn45_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.058389442010091844,
+      "final_head_world_m": [
+        1.050140734744836,
+        -0.058389442010091844,
+        0.9237873538394167
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.2846249668684178,
+      "saturation_fraction": 0.12841004184100419,
+      "trace_sha256": "04b49b2406355ebf1093d198150c8c967cab046c9052714cab3304e07d08bbdd",
+      "command_sha256": "55674f5a642b0368400ba4a00be6b1ff5673898e9c458d80f5ee1bd224f57506",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f4_w64.5_turn60_p0_geometry_scoring_repair",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.07372202696887112,
+      "final_head_world_m": [
+        1.061600373413135,
+        -0.07372202696887112,
+        0.9348741067012933
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.2771246516919426,
+      "saturation_fraction": 0.12841004184100419,
+      "trace_sha256": "38d1a9eeee91224a7e7e2be000e5ce159df0cfd0e8822c77415b7f95bad98860",
+      "command_sha256": "cf2a5e9f5d9646d3e4a82d7f1966e6215b4a20106f99c7b9639be8be5ea59528",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f4_w64.5_turn90_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.09748844051619716,
+      "final_head_world_m": [
+        1.0853086475245615,
+        -0.09748844051619716,
+        0.9634048900488917
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.2737809641824964,
+      "saturation_fraction": 0.12841004184100419,
+      "trace_sha256": "abd332fd94b618ddcb889dab8eb60b5ea8efd761d345c4bf67414b922a4db604",
+      "command_sha256": "89683028f6d73aa9e5c4c32ffe6d7c61fba2e88c7aced03b93715f679902b80e",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f4_w129_turn45_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.0923055436805365,
+      "final_head_world_m": [
+        1.0940318890082161,
+        -0.0923055436805365,
+        0.9426466940300013
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.280744885976052,
+      "saturation_fraction": 0.13288702928870294,
+      "trace_sha256": "9a317b1e5fd83405e2087207527f896e3df860c5529826dd9152810d5825651f",
+      "command_sha256": "b241de3f966fd304d1433b0a93aeda1e67aa23a174f7a045388232168edc1f6a",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f4_w129_turn60_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.0956540921760688,
+      "final_head_world_m": [
+        1.13114826306177,
+        -0.0956540921760688,
+        0.9718742392084845
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.2733152487723447,
+      "saturation_fraction": 0.13518828451882844,
+      "trace_sha256": "691ed2dd732328ecfad1501908c8bfc4fc26f7e6198be9d2bebebb88ed327b3c",
+      "command_sha256": "2cd61d5b7c1ab1d4483b343818726877efe89cebe861c48310b897366f06f8e4",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f4_w129_turn90_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.04452531443767997,
+      "final_head_world_m": [
+        1.2079174188249329,
+        -0.04452531443767997,
+        1.0239076060970218
+      ],
+      "tracking_max_deg": 12.28715526731341,
+      "torque_rms_nm": 1.3183043660074267,
+      "saturation_fraction": 0.13763598326359833,
+      "trace_sha256": "f3614b138afd98df704a53fef6f95899ddb1036757df78fb05f6a8a460526320",
+      "command_sha256": "ccc732095c9fbdeef7b0bf73104fb7f06db688fc5997d669bfb26c921a7ccca6",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f6_w64.5_turn45_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.05889966415326128,
+      "final_head_world_m": [
+        1.067254901461342,
+        -0.05889966415326128,
+        0.9368469841974112
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.3068770164235122,
+      "saturation_fraction": 0.0992050209205021,
+      "trace_sha256": "b24084e92d380fd0f2721d9cd1a48c4870fa0cce51393fcb185a5bf3af54728e",
+      "command_sha256": "2c172d76edc0f82061da238a04d4f1a2d99f2e09a55b473fac6b479cdb63a202",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f6_w64.5_turn60_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.06969875196685316,
+      "final_head_world_m": [
+        1.0849289017552834,
+        -0.06969875196685316,
+        0.9516045281111445
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.4045315382555457,
+      "saturation_fraction": 0.10849372384937238,
+      "trace_sha256": "dc5637932a3d7996c9c3384a08799a01d70023b7dea0e4d8d575f605aded6757",
+      "command_sha256": "4b891db552a9bc1e755d31d26ee811cbe9fa4d11b0c4d8316d0756894f889ade",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f6_w64.5_turn90_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.08375131454829803,
+      "final_head_world_m": [
+        1.1211132527479066,
+        -0.08375131454829803,
+        0.9936456369942451
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.4641600606105631,
+      "saturation_fraction": 0.16169456066945606,
+      "trace_sha256": "dbe9b110408ce013fe85db8fb212e537adceb978fac2d9f64692d5ab045e2b33",
+      "command_sha256": "78d5915dba1277722d437dbb0ed8ea3dbc8782f5ca9499767a765b994f326fb2",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f6_w129_turn45_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.09790551240059711,
+      "final_head_world_m": [
+        1.107331786316733,
+        -0.09790551240059711,
+        0.9491052653340116
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.2276205120675097,
+      "saturation_fraction": 0.11133891213389122,
+      "trace_sha256": "fefefc9771b4df416e8cc36b04c76448e24f964f80c92bc15f22cfc0154565af",
+      "command_sha256": "6a891ee008c973b294ecc316d8d729e8e442b844aca69704b1c376c2668f16c4",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f6_w129_turn60_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.09933424245223091,
+      "final_head_world_m": [
+        1.1466708537480736,
+        -0.09933424245223091,
+        0.9864692580865754
+      ],
+      "tracking_max_deg": 9.320453188292078,
+      "torque_rms_nm": 1.164442012091728,
+      "saturation_fraction": 0.10225941422594143,
+      "trace_sha256": "4be7ba9baf77511e26a662cff0859cf063fcd7d4ee55440d34b53e93887fabb6",
+      "command_sha256": "111a13302e8984bfcd6a48f76056b8547e9006d36d14af3b426ff6b5f9712502",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    },
+    {
+      "label": "f6_w129_turn90_p0_training_v1",
+      "outcome": "no_progress_or_no_target_support",
+      "success": false,
+      "decision_states_audited": 478,
+      "raw_samples": 2841,
+      "max_fk_error_m": 0.0,
+      "actual_target_contact_modules": 0,
+      "actual_target_contact_at_start": 0,
+      "ground_contact": false,
+      "self_contact": false,
+      "maximum_head_target_progress_m": 0.086981156619749,
+      "final_head_target_progress_m": -0.09994171923528666,
+      "final_head_world_m": [
+        1.1871708382748283,
+        -0.09994171923528666,
+        1.0097812729394218
+      ],
+      "tracking_max_deg": 19.222159006363608,
+      "torque_rms_nm": 1.2570479108233277,
+      "saturation_fraction": 0.13778242677824268,
+      "trace_sha256": "537219ef03f39d9fb34001398ef955bed62b9a50bf9284adba74cb3c5b0d55fe",
+      "command_sha256": "9b36c1bc5ca49185be2e72a5c39915f40dd86302a1c2d79a3828fbe012bd09af",
+      "source_hashes": {
+        "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+        "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+        "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+        "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Raw traces, source snapshots and JSON provenance are byte-hashed.
+** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -1,0 +1,2 @@
+# Preserve the delivered report byte hash, including its recorded line endings.
+局部负载主动探测与急弯跨越_阶段验证报告.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

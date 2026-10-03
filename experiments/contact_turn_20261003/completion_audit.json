@@ -1,0 +1,14 @@
+{
+  "stage0_proven": true,
+  "geometry_proven": true,
+  "stage1_training_proven": true,
+  "stage1_verification_proven": true,
+  "stage1_passed": false,
+  "allowed_stop_condition_satisfied": true,
+  "stage2_tested": false,
+  "stage3_tested": false,
+  "report_sha256": "54bc19208b4759fc40e06c0740a7cae8369ba6360eaab393b79a68dd97cb93c8",
+  "verification_audit_sha256": "2db51e400591f7b5fa00ce193350ce775395778041ee405924ca8292d26ece92",
+  "delivery_independent_audit_passed": true,
+  "delivery_audit_sha256": "8e125be148f986e12f2cf01b4c08f753d9c818bd68d1fffdb48eabaa5eb5944a"
+}

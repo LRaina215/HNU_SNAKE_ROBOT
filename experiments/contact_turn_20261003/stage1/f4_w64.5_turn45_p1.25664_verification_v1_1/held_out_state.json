@@ -1,0 +1,9 @@
+{
+  "state": {
+    "phase": 1.2566370614359172,
+    "source_position_offset_m": 0.0
+  },
+  "freeze_sha256": "75a95655632c86fe801fc340992d781ae0df7dd366000e516f33ff41d4582bf9",
+  "verification_entry_sha256": "9542d156ee3b3057a7dddc8fb20a0e556000be8425b0e04d795f37c20a8c1ea8",
+  "initial_offset_applied_before_first_physics": true
+}

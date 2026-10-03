@@ -1,0 +1,26 @@
+{
+  "method": "K_nominal",
+  "privileged_geometry": true,
+  "autonomous": false,
+  "front": 4,
+  "width_mm": 64.5,
+  "maximum_turn_deg": 45.0,
+  "initial_phase": 0.0,
+  "physical_budget_s": 60.0,
+  "hold_gate_s": 10,
+  "hold_slip_limit_mm": 20,
+  "torque_limit_nm": 2.355,
+  "kp": 127,
+  "gravity": true,
+  "dt": 0.001,
+  "rolling_phase_rate_rad_s": -0.75,
+  "initialization": "round2: one 50% measured-error relaxation",
+  "code_hash": {
+    "validation\\contact_turn_stage1.py": "101a89ab63f9eb5740b40cd34a6f59ecd850783777f50dac4e1b876706a482d4",
+    "codes\\local_bend_backbone.py": "2bdb12f5d291d20e59e81c21c4af86957a74bc8bf2db249ac4ab1412ccdad3cf",
+    "codes\\contact_turn_controller.py": "b5638c25d3627af103c621ea126a03675cd1099dc468188aa58b257313f1aa21",
+    "validation\\contact_turn_experiment.py": "2b622325d094e95767d27da5b8eca3a031efc4f3ebf7d4db72aeca5ec26bf6d3"
+  },
+  "model_hash": "a9b94ff2a9174fcf53761d0a76a231c9216b9a68ab6de945fc058aa015deb16f",
+  "exe_hash": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c"
+}
