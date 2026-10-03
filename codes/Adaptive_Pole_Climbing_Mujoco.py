@@ -24,10 +24,10 @@ from scipy import integrate
 
 # True：打开接收曲线的调试窗口；False：不启动调试界面。
 DEBUG = True
-DEBUG_DRAW_CURVE = True  # False：调试窗口只显示各段参数表，不绘图。
+DEBUG_DRAW_CURVE = False  # False：调试窗口只显示各段参数表，不绘图。
 COMPLIANCE_ENABLED = True
 COMPLIANCE_GAIN = (0.04, 0.12)  # K_i：标量，或（首尾各 4 个关节, 中部）；论文式 (34) 为 0.04/0.08，本模型中部需 0.12。
-COMPLIANCE_INSIDE = True  # 实机手动选择：False 管外收紧；True 管内撑开（此时 K_i < 1）。仿真场景 XML 的 experiment_inside 标记优先。
+COMPLIANCE_INSIDE = False  # 实机手动选择：False 管外收紧；True 管内撑开（此时 K_i < 1）。仿真场景 XML 的 experiment_inside 标记优先。
 CONTROL_VIA_VISUALIZER = True  # 目标必须经 EXE 转发后才写入 MuJoCo。
 SINGLE_STEP_MODE = True
 HELIX_RADIUS_MM = 110.0  # 机器人中心线半径，不是管道表面半径。
@@ -228,9 +228,16 @@ def main():
     action_label = "标准螺旋"
     relay_status = None
     last_notice = None
+    # 仅供纯仿真探测顺应性方法极限：控制台命令 force 开/关；打开后遇到“反馈不可用：
+    # 轴无效或关节离线”仍强行用当前几何计算并下发目标，而不是本步拒绝执行。
+    # 本次运行一直生效，直到再输入 force 关闭或重新启动；不影响实机入口。
+    ignore_feedback_risk = False
     print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
           f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm {'管内' if inside else '管外'} K={gain}", flush=True)
     print(HELP, flush=True)
+    print("控制台追加命令：force（仅本仿真入口）—— 出现“未执行：反馈不可用：轴无效或关节离线”时输入 force，"
+          "本次运行持续改为强行计算目标，可继续用 Ctrl+U/J/H 调试；再输入 force 关闭。仅供探测顺应性方法极限，"
+          "算出的角度可能基于失效/过期的轴估计，不代表方法在正常条件下的行为。", flush=True)
     print(f"场景：{Path(model_path).name}；重力={m.opt.gravity.tolist()}；{'启动暂停，先 Ctrl+U' if manual else '连续运行'}", flush=True)
 
     def show_status():
@@ -332,6 +339,15 @@ def main():
                 elif command in ("status", "help"):
                     print(HELP, flush=True) if command == "help" else show_status()
                     command = ""
+                elif command == "force":
+                    ignore_feedback_risk = not ignore_feedback_risk
+                    if compliance is not None:
+                        compliance.ignore_feedback_risk = ignore_feedback_risk
+                    print("已开启：反馈不可用时仍强行计算目标（本次运行持续生效，仅供探测方法极限，"
+                          "算出的角度可能基于失效/过期的轴估计）" if ignore_feedback_risk else
+                          "已关闭：恢复反馈不可用时拒绝执行", flush=True)
+                    last_notice = None
+                    command = ""
                 elif command == "run":
                     manual = not manual
                     if manual:
@@ -350,7 +366,8 @@ def main():
                             compliance = None
                             if initialized and compliance_enabled and exchange is not None:
                                 compliance = ComplianceController(ComplianceParameters(gain,
-                                    math.atan2(active_shape[1], 2*math.pi*active_shape[0]), inside), links)
+                                    math.atan2(active_shape[1], 2*math.pi*active_shape[0]), inside), links,
+                                    ignore_feedback_risk=ignore_feedback_risk)
                             show_status()
                         elif command in ("delta-", "delta+"):
                             phase_step = max(.01, phase_step/2) if command == "delta-" else min(.6, phase_step*2)
@@ -445,7 +462,8 @@ def main():
                                     if compliance_enabled and exchange is not None:
                                         alpha = math.atan2(pitch, 2 * math.pi * radius)
                                         compliance = ComplianceController(
-                                            ComplianceParameters(gain, alpha, inside), links)
+                                            ComplianceParameters(gain, alpha, inside), links,
+                                            ignore_feedback_risk=ignore_feedback_risk)
                                 action_label = "保持目标" if pending["command"] == "hold" else "顺应性" if compliant else "标准螺旋"
                                 remaining = joint_count
                                 pending = None
