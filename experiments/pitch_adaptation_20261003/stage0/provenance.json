@@ -1,0 +1,48 @@
+{
+  "stage": "offline_geometry_only",
+  "joints": 20,
+  "mujoco": "3.3.0",
+  "numpy": "1.23.5",
+  "python": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\Li\\AppData\\Local\\Temp\\snake-mujoco330\\Scripts\\python.exe",
+  "git_commit": "5558a48951731c4e95fe2b876d64e57c01d2d823",
+  "models": {
+    "pipe_straight_small": {
+      "path": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\mujoco_model\\Snake_Robot_o20_Pipe_straight_small.xml",
+      "sha256": "8745dc15812ded3fcab38788c4b46b7251ab54c44862b2a0abe33d0b6020ac9e"
+    },
+    "pipe_straight_large": {
+      "path": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\mujoco_model\\Snake_Robot_o20_Pipe_straight_large.xml",
+      "sha256": "a5cef668f09607e068b7afc96c85ff0d9dec93ad9f13e34af1e8466ac938d05e"
+    },
+    "pipe_taper_horizontal": {
+      "path": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\mujoco_model\\Snake_Robot_o20_Pipe_taper_horizontal.xml",
+      "sha256": "af6f9cb2684e3724efdf13b5f3b3afba6e8b6318c9634ab13708cd6b9030de74"
+    },
+    "real_s2l": {
+      "path": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\mujoco_model\\Snake_Robot_o20_Real_Pipe_S2L.xml",
+      "sha256": "4cb8760f5c36b4eac2a99d522a00cc8ad1b997922ed37170b5d61813be0fde18"
+    }
+  },
+  "exe_sha256": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+  "sources": {
+    "codes/local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "validation/pitch_adaptation_stage0.py": "7ec4a965c60817899df63ff346b7054574ebd2e577ccfdd8bf6335b4cad8ef51",
+    "codes/pole_compliance.py": "273c408f235bc285afc95d4d11e6aaa553d8df8f54aa3648aebec7c8859b8e17"
+  },
+  "frozen_scan": {
+    "radii_mm": [
+      85.5,
+      95.0,
+      110.5,
+      125.0,
+      140.0
+    ],
+    "phase_samples": 73,
+    "gain": [
+      0.01,
+      0.02
+    ],
+    "encoder_noise": "FK joint-angle perturbation +/- half of 4096-count revolution; protocol diagnostic, not calibrated encoder accuracy"
+  }
+}

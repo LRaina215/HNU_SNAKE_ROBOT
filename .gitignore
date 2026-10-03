@@ -23,3 +23,6 @@ venv/
 /visualizer/windows_app/bin/
 /visualizer/artifacts/
 /validation/results/
+
+# Pitch pilots: private EXE work copies and local UI state; raw data remain tracked.
+/experiments/pitch_adaptation_20261003/**/app/

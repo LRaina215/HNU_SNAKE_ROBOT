@@ -1,0 +1,10 @@
+{
+  "all_k_fallback_targets_max_difference_rad": 0.0,
+  "all_k_fallback": true,
+  "stale_and_out_of_order_state_preserved": true,
+  "baseline_math": {
+    "nominal_piecewise_max_error_rad": 4.440892098500626e-16,
+    "first_adaptive_phase_increment_rad": 0.15
+  },
+  "source_feedback": "experiments\\pitch_adaptation_20261003\\matched_pilots_v2\\pipe_straight_small__D__s1__k0__a23.2494\\feedback_0161.json.gz"
+}

@@ -1,0 +1,214 @@
+{
+  "scene": "pipe_taper_horizontal",
+  "method": "D",
+  "seed": 1,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "communication_failure",
+  "movement_steps": 86,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 0.966583123952,
+  "status": [
+    {
+      "sim_time": 2.2,
+      "mean": 0.5,
+      "tail": 0.256,
+      "head": 0.758,
+      "contacts": 12,
+      "height": 1.0,
+      "tracking_deg": 19.76
+    },
+    {
+      "sim_time": 3.2,
+      "mean": 0.526,
+      "tail": 0.279,
+      "head": 0.783,
+      "contacts": 12,
+      "height": 0.999,
+      "tracking_deg": 19.8
+    },
+    {
+      "sim_time": 4.2,
+      "mean": 0.55,
+      "tail": 0.292,
+      "head": 0.794,
+      "contacts": 13,
+      "height": 1.0,
+      "tracking_deg": 21.22
+    },
+    {
+      "sim_time": 5.2,
+      "mean": 0.576,
+      "tail": 0.316,
+      "head": 0.847,
+      "contacts": 10,
+      "height": 0.999,
+      "tracking_deg": 17.87
+    },
+    {
+      "sim_time": 6.2,
+      "mean": 0.607,
+      "tail": 0.383,
+      "head": 0.848,
+      "contacts": 5,
+      "height": 0.999,
+      "tracking_deg": 0.94
+    },
+    {
+      "sim_time": 7.2,
+      "mean": 0.636,
+      "tail": 0.394,
+      "head": 0.873,
+      "contacts": 7,
+      "height": 0.999,
+      "tracking_deg": 2.8
+    },
+    {
+      "sim_time": 8.2,
+      "mean": 0.661,
+      "tail": 0.418,
+      "head": 0.891,
+      "contacts": 10,
+      "height": 0.999,
+      "tracking_deg": 3.21
+    },
+    {
+      "sim_time": 9.2,
+      "mean": 0.689,
+      "tail": 0.444,
+      "head": 0.927,
+      "contacts": 8,
+      "height": 0.999,
+      "tracking_deg": 2.88
+    },
+    {
+      "sim_time": 10.2,
+      "mean": 0.715,
+      "tail": 0.478,
+      "head": 0.944,
+      "contacts": 9,
+      "height": 0.998,
+      "tracking_deg": 3.23
+    },
+    {
+      "sim_time": 11.2,
+      "mean": 0.744,
+      "tail": 0.496,
+      "head": 0.974,
+      "contacts": 10,
+      "height": 0.999,
+      "tracking_deg": 3.09
+    },
+    {
+      "sim_time": 12.2,
+      "mean": 0.765,
+      "tail": 0.523,
+      "head": 0.976,
+      "contacts": 9,
+      "height": 0.999,
+      "tracking_deg": 14.64
+    },
+    {
+      "sim_time": 13.2,
+      "mean": 0.796,
+      "tail": 0.55,
+      "head": 1.016,
+      "contacts": 7,
+      "height": 1.007,
+      "tracking_deg": 6.85
+    },
+    {
+      "sim_time": 14.2,
+      "mean": 0.819,
+      "tail": 0.588,
+      "head": 1.051,
+      "contacts": 10,
+      "height": 1.008,
+      "tracking_deg": 10.21
+    },
+    {
+      "sim_time": 15.2,
+      "mean": 0.84,
+      "tail": 0.604,
+      "head": 1.078,
+      "contacts": 11,
+      "height": 1.01,
+      "tracking_deg": 14.58
+    },
+    {
+      "sim_time": 16.2,
+      "mean": 0.867,
+      "tail": 0.635,
+      "head": 1.103,
+      "contacts": 8,
+      "height": 1.008,
+      "tracking_deg": 9.15
+    },
+    {
+      "sim_time": 17.2,
+      "mean": 0.893,
+      "tail": 0.657,
+      "head": 1.125,
+      "contacts": 10,
+      "height": 0.993,
+      "tracking_deg": 10.56
+    },
+    {
+      "sim_time": 18.2,
+      "mean": 0.922,
+      "tail": 0.691,
+      "head": 1.177,
+      "contacts": 8,
+      "height": 0.987,
+      "tracking_deg": 6.6
+    },
+    {
+      "sim_time": 19.2,
+      "mean": 0.955,
+      "tail": 0.702,
+      "head": 1.194,
+      "contacts": 9,
+      "height": 0.984,
+      "tracking_deg": 4.9
+    }
+  ],
+  "rejections": 0,
+  "git_commit": "5558a48951731c4e95fe2b876d64e57c01d2d823",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Pipe_taper_horizontal.xml": "af6f9cb2684e3724efdf13b5f3b3afba6e8b6318c9634ab13708cd6b9030de74",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller.py": "2229d559dd347ba103b2efa8fa08edea14463c421de95a65d6c9a983648b9c51",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "validation\\pitch_adaptation_experiment.py": "4257191f4dd76fcda18ba5fb60107b84d6e5b1069e3b0807d43137138027c2d9"
+  },
+  "initial": {
+    "sim_time": 2.2,
+    "mean": 0.5,
+    "tail": 0.256,
+    "head": 0.758,
+    "contacts": 12,
+    "height": 1.0,
+    "tracking_deg": 19.76
+  },
+  "error": "communication or step timeout: phase=-12.600000rad sim=19.000s 顺应性；等待下一步\n完成第 96 步 phase=-12.750000rad sim=19.200s 顺应性；等待下一步\nRADIUS 实测截面=110.4mm 当前目标截面=113.4mm 关节到管轴(仿真)=104.8mm 同位置管半径=68.4mm 沿管进度 平均/最后/最前=0.955/0.702/1.194m\nSTATUS 单步/暂停 R=81.5 P=220 phase=-12.7500 delta=0.15 sim=19.200s 顺应性=开 反馈=有效 关节平均高度=0.984m 管道接触=9 最大跟踪误差=4.90deg 重力=开\n完成第 97 步 phase=-12.900000rad sim=19.400s 顺应性；等待下一步\n本步取消：反馈过期或未收到 EXE 转发；相位与物理时间未推进，请重新按键。\n",
+  "wall_s": 77.92199999999957,
+  "physical_s": 19.400000000000727,
+  "completed_steps": 97,
+  "control_updates": 71,
+  "degraded_update_fraction": 1.0,
+  "compute_ms_max": 234.15625,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.9074258169670446,
+  "torque_squared_integral": 1411.6500199262232,
+  "saturation_fraction": 0.5833505154639224,
+  "radius_valid_fraction": 0.03841229193341869,
+  "alpha_range_deg": [
+    16.79512578100467,
+    23.249361508757264
+  ],
+  "success": false
+}

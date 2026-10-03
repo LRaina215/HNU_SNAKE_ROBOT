@@ -1,0 +1,7 @@
+# Preserve byte hashes used by the pitch experiment provenance across checkouts.
+codes/local_pitch_controller.py text eol=lf
+codes/local_pitch_geometry.py text eol=lf
+validation/pitch_adaptation_stage0.py text eol=lf
+validation/pitch_adaptation_experiment.py text eol=lf
+validation/pitch_adaptation_analyze.py text eol=lf
+experiments/pitch_adaptation_20261003/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

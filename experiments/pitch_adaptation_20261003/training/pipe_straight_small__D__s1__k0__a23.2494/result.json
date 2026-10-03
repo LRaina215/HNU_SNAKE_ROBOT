@@ -1,0 +1,322 @@
+{
+  "scene": "pipe_straight_small",
+  "method": "D",
+  "seed": 1,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "hold_slip",
+  "movement_steps": 105,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 1.0,
+  "status": [
+    {
+      "sim_time": 2.2,
+      "mean": 0.484,
+      "tail": 0.236,
+      "head": 0.741,
+      "contacts": 12,
+      "height": 0.484,
+      "tracking_deg": 18.66
+    },
+    {
+      "sim_time": 3.2,
+      "mean": 0.509,
+      "tail": 0.261,
+      "head": 0.764,
+      "contacts": 12,
+      "height": 0.509,
+      "tracking_deg": 20.38
+    },
+    {
+      "sim_time": 4.2,
+      "mean": 0.53,
+      "tail": 0.27,
+      "head": 0.769,
+      "contacts": 11,
+      "height": 0.53,
+      "tracking_deg": 20.7
+    },
+    {
+      "sim_time": 5.2,
+      "mean": 0.555,
+      "tail": 0.295,
+      "head": 0.823,
+      "contacts": 10,
+      "height": 0.555,
+      "tracking_deg": 17.49
+    },
+    {
+      "sim_time": 6.2,
+      "mean": 0.578,
+      "tail": 0.35,
+      "head": 0.817,
+      "contacts": 6,
+      "height": 0.578,
+      "tracking_deg": 3.26
+    },
+    {
+      "sim_time": 7.2,
+      "mean": 0.604,
+      "tail": 0.364,
+      "head": 0.842,
+      "contacts": 8,
+      "height": 0.604,
+      "tracking_deg": 2.97
+    },
+    {
+      "sim_time": 8.2,
+      "mean": 0.627,
+      "tail": 0.385,
+      "head": 0.856,
+      "contacts": 9,
+      "height": 0.627,
+      "tracking_deg": 3.18
+    },
+    {
+      "sim_time": 9.2,
+      "mean": 0.651,
+      "tail": 0.407,
+      "head": 0.891,
+      "contacts": 9,
+      "height": 0.651,
+      "tracking_deg": 2.54
+    },
+    {
+      "sim_time": 10.2,
+      "mean": 0.676,
+      "tail": 0.44,
+      "head": 0.913,
+      "contacts": 8,
+      "height": 0.676,
+      "tracking_deg": 3.05
+    },
+    {
+      "sim_time": 11.2,
+      "mean": 0.702,
+      "tail": 0.456,
+      "head": 0.94,
+      "contacts": 9,
+      "height": 0.702,
+      "tracking_deg": 2.89
+    },
+    {
+      "sim_time": 12.2,
+      "mean": 0.724,
+      "tail": 0.48,
+      "head": 0.954,
+      "contacts": 8,
+      "height": 0.724,
+      "tracking_deg": 2.86
+    },
+    {
+      "sim_time": 13.2,
+      "mean": 0.748,
+      "tail": 0.503,
+      "head": 0.983,
+      "contacts": 8,
+      "height": 0.748,
+      "tracking_deg": 3.0
+    },
+    {
+      "sim_time": 14.2,
+      "mean": 0.77,
+      "tail": 0.533,
+      "head": 1.011,
+      "contacts": 9,
+      "height": 0.77,
+      "tracking_deg": 2.78
+    },
+    {
+      "sim_time": 15.2,
+      "mean": 0.797,
+      "tail": 0.549,
+      "head": 1.037,
+      "contacts": 7,
+      "height": 0.797,
+      "tracking_deg": 3.56
+    },
+    {
+      "sim_time": 16.2,
+      "mean": 0.82,
+      "tail": 0.577,
+      "head": 1.052,
+      "contacts": 9,
+      "height": 0.82,
+      "tracking_deg": 2.74
+    },
+    {
+      "sim_time": 17.2,
+      "mean": 0.843,
+      "tail": 0.598,
+      "head": 1.077,
+      "contacts": 9,
+      "height": 0.843,
+      "tracking_deg": 2.9
+    },
+    {
+      "sim_time": 18.2,
+      "mean": 0.865,
+      "tail": 0.625,
+      "head": 1.107,
+      "contacts": 7,
+      "height": 0.865,
+      "tracking_deg": 2.61
+    },
+    {
+      "sim_time": 19.2,
+      "mean": 0.892,
+      "tail": 0.647,
+      "head": 1.131,
+      "contacts": 9,
+      "height": 0.892,
+      "tracking_deg": 3.94
+    },
+    {
+      "sim_time": 20.2,
+      "mean": 0.915,
+      "tail": 0.671,
+      "head": 1.149,
+      "contacts": 9,
+      "height": 0.915,
+      "tracking_deg": 2.61
+    },
+    {
+      "sim_time": 21.2,
+      "mean": 0.937,
+      "tail": 0.691,
+      "head": 1.166,
+      "contacts": 7,
+      "height": 0.937,
+      "tracking_deg": 2.77
+    },
+    {
+      "sim_time": 22.2,
+      "mean": 0.96,
+      "tail": 0.718,
+      "head": 1.204,
+      "contacts": 7,
+      "height": 0.96,
+      "tracking_deg": 3.23
+    },
+    {
+      "sim_time": 23.2,
+      "mean": 0.988,
+      "tail": 0.745,
+      "head": 1.226,
+      "contacts": 10,
+      "height": 0.988,
+      "tracking_deg": 2.56
+    },
+    {
+      "sim_time": 24.2,
+      "mean": 0.986,
+      "tail": 0.743,
+      "head": 1.223,
+      "contacts": 9,
+      "height": 0.986,
+      "tracking_deg": 3.03
+    },
+    {
+      "sim_time": 25.2,
+      "mean": 0.983,
+      "tail": 0.741,
+      "head": 1.221,
+      "contacts": 9,
+      "height": 0.983,
+      "tracking_deg": 3.17
+    },
+    {
+      "sim_time": 26.2,
+      "mean": 0.981,
+      "tail": 0.739,
+      "head": 1.219,
+      "contacts": 9,
+      "height": 0.981,
+      "tracking_deg": 3.28
+    },
+    {
+      "sim_time": 27.2,
+      "mean": 0.979,
+      "tail": 0.737,
+      "head": 1.217,
+      "contacts": 9,
+      "height": 0.979,
+      "tracking_deg": 3.3
+    },
+    {
+      "sim_time": 28.2,
+      "mean": 0.976,
+      "tail": 0.735,
+      "head": 1.215,
+      "contacts": 9,
+      "height": 0.976,
+      "tracking_deg": 3.31
+    },
+    {
+      "sim_time": 29.2,
+      "mean": 0.974,
+      "tail": 0.732,
+      "head": 1.213,
+      "contacts": 9,
+      "height": 0.974,
+      "tracking_deg": 3.3
+    },
+    {
+      "sim_time": 30.2,
+      "mean": 0.972,
+      "tail": 0.73,
+      "head": 1.211,
+      "contacts": 8,
+      "height": 0.972,
+      "tracking_deg": 3.3
+    },
+    {
+      "sim_time": 31.2,
+      "mean": 0.97,
+      "tail": 0.728,
+      "head": 1.208,
+      "contacts": 9,
+      "height": 0.97,
+      "tracking_deg": 3.29
+    },
+    {
+      "sim_time": 32.2,
+      "mean": 0.967,
+      "tail": 0.726,
+      "head": 1.206,
+      "contacts": 9,
+      "height": 0.967,
+      "tracking_deg": 3.29
+    }
+  ],
+  "rejections": 0,
+  "initial": {
+    "sim_time": 2.2,
+    "mean": 0.484,
+    "tail": 0.236,
+    "head": 0.741,
+    "contacts": 12,
+    "height": 0.484,
+    "tracking_deg": 18.66
+  },
+  "wall_s": 80.45300000000043,
+  "physical_s": 32.200000000015656,
+  "completed_steps": 161,
+  "control_updates": 89,
+  "degraded_update_fraction": 1.0,
+  "compute_ms_max": 177.083740234375,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.7070443598233673,
+  "torque_squared_integral": 1876.6162874855845,
+  "saturation_fraction": 0.4353571428570623,
+  "radius_valid_fraction": 0.0,
+  "alpha_range_deg": [
+    23.249361508757264,
+    23.249361508757264
+  ],
+  "success": false
+}

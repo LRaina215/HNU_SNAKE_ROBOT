@@ -1,0 +1,8583 @@
+[
+  {
+    "sim_time": 0.20000000000000015,
+    "phase": 0.0,
+    "mean_progress_m": 0.4885247019817525,
+    "minimum_progress_m": 0.2158085852067796,
+    "signed_geometric_turns": -1.9859094542931865,
+    "axial_coverage_m": 0.6257261391015609,
+    "mean_axis_radius_mm": 92.83029339059613,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.9859094542931863,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      8,
+      12,
+      13,
+      15,
+      17,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 0.4000000000000003,
+    "phase": 0.0,
+    "mean_progress_m": 0.4876216310384591,
+    "minimum_progress_m": 0.22032490371524133,
+    "signed_geometric_turns": -1.9968585666229095,
+    "axial_coverage_m": 0.6171374026007634,
+    "mean_axis_radius_mm": 92.39143828154315,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.99685856662291,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 0.6000000000000004,
+    "phase": 0.0,
+    "mean_progress_m": 0.48695992058200976,
+    "minimum_progress_m": 0.2232564557933297,
+    "signed_geometric_turns": -2.004685243840885,
+    "axial_coverage_m": 0.6079861997585807,
+    "mean_axis_radius_mm": 92.32707150042113,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.004685243840885,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 0.8000000000000006,
+    "phase": 0.0,
+    "mean_progress_m": 0.48627950963847066,
+    "minimum_progress_m": 0.22596503922569278,
+    "signed_geometric_turns": -2.011612696672209,
+    "axial_coverage_m": 0.5993574564663035,
+    "mean_axis_radius_mm": 92.26021559088485,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0116126966722097,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 1.0000000000000007,
+    "phase": 0.0,
+    "mean_progress_m": 0.48570151550056656,
+    "minimum_progress_m": 0.22893306955209147,
+    "signed_geometric_turns": -2.0174034600493984,
+    "axial_coverage_m": 0.5914201726575159,
+    "mean_axis_radius_mm": 92.18778672215242,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0174034600493984,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 1.1999999999999786,
+    "phase": 0.0,
+    "mean_progress_m": 0.48544768122944937,
+    "minimum_progress_m": 0.23086135043741116,
+    "signed_geometric_turns": -2.0210075842951536,
+    "axial_coverage_m": 0.5885679821900215,
+    "mean_axis_radius_mm": 92.0671984515166,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0210075842951536,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 1.3999999999999566,
+    "phase": 0.0,
+    "mean_progress_m": 0.4852327256653089,
+    "minimum_progress_m": 0.23237245710621252,
+    "signed_geometric_turns": -2.025116162630361,
+    "axial_coverage_m": 0.586644656588674,
+    "mean_axis_radius_mm": 91.92030697302957,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.025116162630361,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 1.5999999999999346,
+    "phase": 0.0,
+    "mean_progress_m": 0.48499893820604373,
+    "minimum_progress_m": 0.23363231137397097,
+    "signed_geometric_turns": -2.0290301449711237,
+    "axial_coverage_m": 0.5849963609670326,
+    "mean_axis_radius_mm": 91.78148757209358,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.029030144971123,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 838.5
+  },
+  {
+    "sim_time": 1.7999999999999126,
+    "phase": 0.0,
+    "mean_progress_m": 0.4847292705414665,
+    "minimum_progress_m": 0.23454155046324762,
+    "signed_geometric_turns": -2.031307815931252,
+    "axial_coverage_m": 0.5837735465089529,
+    "mean_axis_radius_mm": 91.70424547402916,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.031307815931252,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 838.5
+  },
+  {
+    "sim_time": 1.9999999999998905,
+    "phase": 0.0,
+    "mean_progress_m": 0.4844514395363394,
+    "minimum_progress_m": 0.23532411664357433,
+    "signed_geometric_turns": -2.0325907754117383,
+    "axial_coverage_m": 0.5827914029790848,
+    "mean_axis_radius_mm": 91.66341819336033,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0325907754117383,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 838.5
+  },
+  {
+    "sim_time": 2.1999999999998687,
+    "phase": 0.0,
+    "mean_progress_m": 0.4841647303396324,
+    "minimum_progress_m": 0.23602521363419754,
+    "signed_geometric_turns": -2.033515816002942,
+    "axial_coverage_m": 0.5819248796609499,
+    "mean_axis_radius_mm": 91.63570450121475,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0335158160029425,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 2.3999999999998467,
+    "phase": -0.15,
+    "mean_progress_m": 0.48790986306369044,
+    "minimum_progress_m": 0.2412651899228564,
+    "signed_geometric_turns": -2.0136502440940443,
+    "axial_coverage_m": 0.5924062188571779,
+    "mean_axis_radius_mm": 91.93442196570206,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0136502440940443,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      17,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 2.5999999999998247,
+    "phase": -0.3,
+    "mean_progress_m": 0.4931107878276156,
+    "minimum_progress_m": 0.24818593403319514,
+    "signed_geometric_turns": -2.0011115860292454,
+    "axial_coverage_m": 0.5970649688668149,
+    "mean_axis_radius_mm": 92.16926646532431,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0011115860292454,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      14,
+      17,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 2.7999999999998026,
+    "phase": -0.44999999999999996,
+    "mean_progress_m": 0.49845104921427075,
+    "minimum_progress_m": 0.2533430153893766,
+    "signed_geometric_turns": -1.9925297386068894,
+    "axial_coverage_m": 0.6012219470632405,
+    "mean_axis_radius_mm": 92.2794477980795,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.992529738606889,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      7,
+      9,
+      10,
+      12,
+      14,
+      17,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 2.9999999999997806,
+    "phase": -0.6,
+    "mean_progress_m": 0.5039503405624867,
+    "minimum_progress_m": 0.2575650541560093,
+    "signed_geometric_turns": -1.9901333581581153,
+    "axial_coverage_m": 0.6038129633822931,
+    "mean_axis_radius_mm": 92.20867425890025,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.9901333581581162,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      14,
+      17,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 3.1999999999997586,
+    "phase": -0.75,
+    "mean_progress_m": 0.5091407447241895,
+    "minimum_progress_m": 0.26149071395757734,
+    "signed_geometric_turns": -1.991348430545951,
+    "axial_coverage_m": 0.6024980106802182,
+    "mean_axis_radius_mm": 92.17955440985743,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.991348430545951,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 3.3999999999997366,
+    "phase": -0.9,
+    "mean_progress_m": 0.5140243687349354,
+    "minimum_progress_m": 0.2646877139177296,
+    "signed_geometric_turns": -1.9953957929206905,
+    "axial_coverage_m": 0.5983865769829717,
+    "mean_axis_radius_mm": 92.23176310605432,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.9953957929206905,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 3.5999999999997145,
+    "phase": -1.05,
+    "mean_progress_m": 0.5184771242848705,
+    "minimum_progress_m": 0.2674111633520052,
+    "signed_geometric_turns": -2.0021503476479303,
+    "axial_coverage_m": 0.5919646178323397,
+    "mean_axis_radius_mm": 92.25789938136873,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0021503476479308,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 3.7999999999996925,
+    "phase": -1.2,
+    "mean_progress_m": 0.5223177376290697,
+    "minimum_progress_m": 0.2683599364450844,
+    "signed_geometric_turns": -2.0121929907660374,
+    "axial_coverage_m": 0.5853737326524511,
+    "mean_axis_radius_mm": 92.12757700077604,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0121929907660374,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      11,
+      12,
+      16,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 3.9999999999996705,
+    "phase": -1.3499999999999999,
+    "mean_progress_m": 0.526045987919207,
+    "minimum_progress_m": 0.268543593754759,
+    "signed_geometric_turns": -2.024527105462828,
+    "axial_coverage_m": 0.5788645857613748,
+    "mean_axis_radius_mm": 91.86127449714046,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0245271054628278,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 4.199999999999737,
+    "phase": -1.4999999999999998,
+    "mean_progress_m": 0.5301415135955829,
+    "minimum_progress_m": 0.2704747217336048,
+    "signed_geometric_turns": -2.0354565910700946,
+    "axial_coverage_m": 0.5699828216988181,
+    "mean_axis_radius_mm": 91.7416243594263,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0354565910700946,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      9,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 4.399999999999804,
+    "phase": -1.6499999999999997,
+    "mean_progress_m": 0.5350257793694694,
+    "minimum_progress_m": 0.2724454247250065,
+    "signed_geometric_turns": -2.0393159762696413,
+    "axial_coverage_m": 0.5687537965835762,
+    "mean_axis_radius_mm": 91.85371426741008,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0393159762696422,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      8,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 4.599999999999871,
+    "phase": -1.7999999999999996,
+    "mean_progress_m": 0.5399111286566196,
+    "minimum_progress_m": 0.27512801563052786,
+    "signed_geometric_turns": -2.0391893791128886,
+    "axial_coverage_m": 0.5697497163190699,
+    "mean_axis_radius_mm": 92.00496487860383,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0391893791128886,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      8,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 4.799999999999938,
+    "phase": -1.9499999999999995,
+    "mean_progress_m": 0.5448845530542861,
+    "minimum_progress_m": 0.2796518418226497,
+    "signed_geometric_turns": -2.033393584550465,
+    "axial_coverage_m": 0.5703302358578471,
+    "mean_axis_radius_mm": 92.34939350273669,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.033393584550465,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 838.5
+  },
+  {
+    "sim_time": 5.000000000000004,
+    "phase": -2.0999999999999996,
+    "mean_progress_m": 0.550062457675718,
+    "minimum_progress_m": 0.2862053012172089,
+    "signed_geometric_turns": -2.0229852187588873,
+    "axial_coverage_m": 0.5714600115040391,
+    "mean_axis_radius_mm": 92.86868105853632,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0229852187588873,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      18,
+      20,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 774.0
+  },
+  {
+    "sim_time": 5.200000000000071,
+    "phase": -2.2499999999999996,
+    "mean_progress_m": 0.5551468716435175,
+    "minimum_progress_m": 0.2946944123746469,
+    "signed_geometric_turns": -2.0123562325326136,
+    "axial_coverage_m": 0.5723043458387295,
+    "mean_axis_radius_mm": 93.35763757003238,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0123562325326136,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      18,
+      20,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 5.400000000000138,
+    "phase": -2.3999999999999995,
+    "mean_progress_m": 0.5598323125324564,
+    "minimum_progress_m": 0.3044393686462905,
+    "signed_geometric_turns": -2.0052589652004555,
+    "axial_coverage_m": 0.5718285610483763,
+    "mean_axis_radius_mm": 93.68939480365661,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.005258965200455,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      18,
+      20,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 5.600000000000205,
+    "phase": -2.5499999999999994,
+    "mean_progress_m": 0.5586826840134964,
+    "minimum_progress_m": 0.32431243317856967,
+    "signed_geometric_turns": -1.9795314413263871,
+    "axial_coverage_m": 0.5392572204596057,
+    "mean_axis_radius_mm": 96.02075854088334,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.9795314413263867,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      8,
+      10,
+      13,
+      15,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 5.800000000000272,
+    "phase": -2.6999999999999993,
+    "mean_progress_m": 0.5647510411524971,
+    "minimum_progress_m": 0.34378954722895666,
+    "signed_geometric_turns": -1.9719830411684915,
+    "axial_coverage_m": 0.527724481691009,
+    "mean_axis_radius_mm": 96.9160682509782,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.9719830411684915,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      8,
+      10,
+      13,
+      15,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 6.000000000000338,
+    "phase": -2.849999999999999,
+    "mean_progress_m": 0.5709605648521648,
+    "minimum_progress_m": 0.347477113215455,
+    "signed_geometric_turns": -1.9883072195266507,
+    "axial_coverage_m": 0.5357613538521223,
+    "mean_axis_radius_mm": 96.04985040871014,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -1.9883072195266511,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      8,
+      10,
+      13,
+      14,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 6.200000000000405,
+    "phase": -2.999999999999999,
+    "mean_progress_m": 0.5766972593390604,
+    "minimum_progress_m": 0.3491676899472131,
+    "signed_geometric_turns": -2.0244918842040587,
+    "axial_coverage_m": 0.5349531688655199,
+    "mean_axis_radius_mm": 94.36939822153653,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0244918842040587,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      10,
+      12,
+      14,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 6.400000000000472,
+    "phase": -3.149999999999999,
+    "mean_progress_m": 0.5834531909114274,
+    "minimum_progress_m": 0.3517906676066048,
+    "signed_geometric_turns": -2.0561785333446405,
+    "axial_coverage_m": 0.531953822363107,
+    "mean_axis_radius_mm": 92.63695932258634,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0561785333446405,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      10,
+      12,
+      14,
+      15,
+      19,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 6.600000000000539,
+    "phase": -3.299999999999999,
+    "mean_progress_m": 0.5891722203451611,
+    "minimum_progress_m": 0.3542621690406635,
+    "signed_geometric_turns": -2.0611536937682082,
+    "axial_coverage_m": 0.5315437454608923,
+    "mean_axis_radius_mm": 92.05813110029281,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0611536937682082,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      10,
+      12,
+      17,
+      19,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 322.5
+  },
+  {
+    "sim_time": 6.800000000000606,
+    "phase": -3.449999999999999,
+    "mean_progress_m": 0.5932490998899375,
+    "minimum_progress_m": 0.35502908267306066,
+    "signed_geometric_turns": -2.0601622299005093,
+    "axial_coverage_m": 0.5382206366246638,
+    "mean_axis_radius_mm": 91.85911938514552,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0601622299005085,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      10,
+      12,
+      14,
+      17,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 7.000000000000672,
+    "phase": -3.5999999999999988,
+    "mean_progress_m": 0.5984091408358835,
+    "minimum_progress_m": 0.3572018723136702,
+    "signed_geometric_turns": -2.062227015246289,
+    "axial_coverage_m": 0.5421891470856509,
+    "mean_axis_radius_mm": 91.84719400301755,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0622270152462887,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      21,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 7.200000000000739,
+    "phase": -3.7499999999999987,
+    "mean_progress_m": 0.6027814142483091,
+    "minimum_progress_m": 0.3618606012951266,
+    "signed_geometric_turns": -2.0601664910377213,
+    "axial_coverage_m": 0.5409013589869494,
+    "mean_axis_radius_mm": 92.17341364511688,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0601664910377213,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      17,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 7.400000000000806,
+    "phase": -3.8999999999999986,
+    "mean_progress_m": 0.6067366291553171,
+    "minimum_progress_m": 0.3649317415147234,
+    "signed_geometric_turns": -2.063210829276715,
+    "axial_coverage_m": 0.5412412518417952,
+    "mean_axis_radius_mm": 92.09222522576393,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.063210829276715,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      18,
+      19,
+      22
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 7.600000000000873,
+    "phase": -4.049999999999999,
+    "mean_progress_m": 0.6107240051702905,
+    "minimum_progress_m": 0.3660054843964638,
+    "signed_geometric_turns": -2.0643280855987207,
+    "axial_coverage_m": 0.5413917250815008,
+    "mean_axis_radius_mm": 92.03865258020042,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0643280855987207,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 7.8000000000009395,
+    "phase": -4.199999999999999,
+    "mean_progress_m": 0.6151043715519516,
+    "minimum_progress_m": 0.3692381425205831,
+    "signed_geometric_turns": -2.067996315142477,
+    "axial_coverage_m": 0.5386361676294411,
+    "mean_axis_radius_mm": 91.92384659419935,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0679963151424774,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 8.000000000001005,
+    "phase": -4.35,
+    "mean_progress_m": 0.6203167087031206,
+    "minimum_progress_m": 0.37568892697262496,
+    "signed_geometric_turns": -2.0775293449157504,
+    "axial_coverage_m": 0.5336406606399083,
+    "mean_axis_radius_mm": 91.45074223446913,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0775293449157504,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 8.200000000000895,
+    "phase": -4.5,
+    "mean_progress_m": 0.6248875465243449,
+    "minimum_progress_m": 0.3826146885398587,
+    "signed_geometric_turns": -2.0674037593271404,
+    "axial_coverage_m": 0.531146499932568,
+    "mean_axis_radius_mm": 91.69876714856656,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0674037593271404,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      4,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 8.400000000000784,
+    "phase": -4.65,
+    "mean_progress_m": 0.6304540769143558,
+    "minimum_progress_m": 0.38939813299523707,
+    "signed_geometric_turns": -2.0566117584104227,
+    "axial_coverage_m": 0.5303381462597972,
+    "mean_axis_radius_mm": 91.94293507654488,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.056611758410422,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      9,
+      11,
+      13,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 8.600000000000673,
+    "phase": -4.800000000000001,
+    "mean_progress_m": 0.6346351707989996,
+    "minimum_progress_m": 0.3929248175353067,
+    "signed_geometric_turns": -2.0498800965956216,
+    "axial_coverage_m": 0.5310467517953219,
+    "mean_axis_radius_mm": 92.05116387957811,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0498800965956216,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 8.800000000000562,
+    "phase": -4.950000000000001,
+    "mean_progress_m": 0.640204238673296,
+    "minimum_progress_m": 0.3974807078564396,
+    "signed_geometric_turns": -2.041369224264652,
+    "axial_coverage_m": 0.5375553047118338,
+    "mean_axis_radius_mm": 92.39653071053397,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.041369224264652,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 9.000000000000451,
+    "phase": -5.100000000000001,
+    "mean_progress_m": 0.6455836939864157,
+    "minimum_progress_m": 0.40293460583297225,
+    "signed_geometric_turns": -2.0306209437191773,
+    "axial_coverage_m": 0.5409058700277298,
+    "mean_axis_radius_mm": 93.05326944458523,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0306209437191773,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      16,
+      18,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 9.20000000000034,
+    "phase": -5.250000000000002,
+    "mean_progress_m": 0.6493080242835896,
+    "minimum_progress_m": 0.4055061201753394,
+    "signed_geometric_turns": -2.0294530001292,
+    "axial_coverage_m": 0.5482010388691627,
+    "mean_axis_radius_mm": 93.03232732577473,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0294530001292,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 9.40000000000023,
+    "phase": -5.400000000000002,
+    "mean_progress_m": 0.6532304896077523,
+    "minimum_progress_m": 0.4077353725131545,
+    "signed_geometric_turns": -2.0379671558089676,
+    "axial_coverage_m": 0.5484247341383538,
+    "mean_axis_radius_mm": 92.71593522570069,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.037967155808968,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 9.600000000000119,
+    "phase": -5.5500000000000025,
+    "mean_progress_m": 0.6575933066999066,
+    "minimum_progress_m": 0.41432930709621363,
+    "signed_geometric_turns": -2.0547375895700917,
+    "axial_coverage_m": 0.5432361760408847,
+    "mean_axis_radius_mm": 92.11877755105867,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0547375895700912,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      12,
+      13,
+      15,
+      17,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 9.800000000000008,
+    "phase": -5.700000000000003,
+    "mean_progress_m": 0.6621180381814644,
+    "minimum_progress_m": 0.4226412993849735,
+    "signed_geometric_turns": -2.0599026347428837,
+    "axial_coverage_m": 0.5387999893629005,
+    "mean_axis_radius_mm": 91.98078810481282,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0599026347428833,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 9.999999999999897,
+    "phase": -5.850000000000003,
+    "mean_progress_m": 0.6678105311434949,
+    "minimum_progress_m": 0.43145469488970795,
+    "signed_geometric_turns": -2.0530985082615003,
+    "axial_coverage_m": 0.5341561069340088,
+    "mean_axis_radius_mm": 92.21719531563643,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0530985082615008,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 10.199999999999786,
+    "phase": -6.0000000000000036,
+    "mean_progress_m": 0.6739997836365388,
+    "minimum_progress_m": 0.4380321153461973,
+    "signed_geometric_turns": -2.047606543629502,
+    "axial_coverage_m": 0.530455557752407,
+    "mean_axis_radius_mm": 92.252652308988,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0476065436295023,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 10.399999999999675,
+    "phase": -6.150000000000004,
+    "mean_progress_m": 0.6798497379982983,
+    "minimum_progress_m": 0.4434807684037354,
+    "signed_geometric_turns": -2.0504206336998445,
+    "axial_coverage_m": 0.5262643197316499,
+    "mean_axis_radius_mm": 91.90483498894267,
+    "region_length_mm": [
+      1354.5,
+      0.0,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0504206336998445,
+      0.0,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      5,
+      8,
+      10,
+      12,
+      14,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 10.599999999999564,
+    "phase": -6.300000000000004,
+    "mean_progress_m": 0.6859813441290517,
+    "minimum_progress_m": 0.44531345878694695,
+    "signed_geometric_turns": -2.038201825762805,
+    "axial_coverage_m": 0.5355428191581997,
+    "mean_axis_radius_mm": 92.10204809597153,
+    "region_length_mm": [
+      1352.2694170036787,
+      2.2305829963212767,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.036174628037393,
+      -0.0020271977254114693,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      8,
+      9,
+      10,
+      12,
+      14,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 10.799999999999454,
+    "phase": -6.450000000000005,
+    "mean_progress_m": 0.6905863669340543,
+    "minimum_progress_m": 0.44579226653935183,
+    "signed_geometric_turns": -2.0276440757831105,
+    "axial_coverage_m": 0.5431904930153335,
+    "mean_axis_radius_mm": 92.44405304758601,
+    "region_length_mm": [
+      1335.8121439341369,
+      18.687856065863162,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.01013589559409,
+      -0.0175081801890199,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      10,
+      12,
+      14,
+      15,
+      16,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 10.999999999999343,
+    "phase": -6.600000000000005,
+    "mean_progress_m": 0.6953441000910014,
+    "minimum_progress_m": 0.4478967716957715,
+    "signed_geometric_turns": -2.0342709297994066,
+    "axial_coverage_m": 0.5465089579452327,
+    "mean_axis_radius_mm": 92.20483521805082,
+    "region_length_mm": [
+      1322.5701341480858,
+      31.929865851914208,
+      0.0
+    ],
+    "region_signed_turns": [
+      -2.0014878557494526,
+      -0.032783074049954,
+      0.0
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      10,
+      12,
+      14,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 11.199999999999232,
+    "phase": -6.750000000000005,
+    "mean_progress_m": 0.7005994379288916,
+    "minimum_progress_m": 0.45356999792534275,
+    "signed_geometric_turns": -2.034694408629328,
+    "axial_coverage_m": 0.5427951003260729,
+    "mean_axis_radius_mm": 92.5373586899321,
+    "region_length_mm": [
+      1316.7801347240097,
+      35.84316270528635,
+      1.876702570703863
+    ],
+    "region_signed_turns": [
+      -1.9925737938147927,
+      -0.040300796548813085,
+      -0.001819818265721789
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 11.399999999999121,
+    "phase": -6.900000000000006,
+    "mean_progress_m": 0.7049032754373954,
+    "minimum_progress_m": 0.458866823827079,
+    "signed_geometric_turns": -2.030618890243766,
+    "axial_coverage_m": 0.5380706040857014,
+    "mean_axis_radius_mm": 93.02477752833201,
+    "region_length_mm": [
+      1315.2934684782804,
+      37.29932865484935,
+      1.9072028668701966
+    ],
+    "region_signed_turns": [
+      -1.9854687151769372,
+      -0.04324343931347504,
+      -0.0019067357533535398
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 11.59999999999901,
+    "phase": -7.050000000000006,
+    "mean_progress_m": 0.70930852750065,
+    "minimum_progress_m": 0.4640758512237826,
+    "signed_geometric_turns": -2.023380602249194,
+    "axial_coverage_m": 0.5334569448067481,
+    "mean_axis_radius_mm": 93.5471474865432,
+    "region_length_mm": [
+      1314.7718468683743,
+      37.99825191775073,
+      1.7299012138750585
+    ],
+    "region_signed_turns": [
+      -1.976841990108585,
+      -0.0447761412498689,
+      -0.0017624708907396321
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 11.7999999999989,
+    "phase": -7.200000000000006,
+    "mean_progress_m": 0.7141971867835664,
+    "minimum_progress_m": 0.46747766904182236,
+    "signed_geometric_turns": -2.019820402988226,
+    "axial_coverage_m": 0.5302340076493401,
+    "mean_axis_radius_mm": 93.73790026829964,
+    "region_length_mm": [
+      1312.7266532902327,
+      39.480958643599145,
+      2.2923880661681406
+    ],
+    "region_signed_turns": [
+      -1.9705110520299374,
+      -0.04696833252351881,
+      -0.0023410184347701464
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      14,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 11.999999999998789,
+    "phase": -7.350000000000007,
+    "mean_progress_m": 0.7185409489505891,
+    "minimum_progress_m": 0.47247253372148057,
+    "signed_geometric_turns": -2.0244001983058353,
+    "axial_coverage_m": 0.5238366849225193,
+    "mean_axis_radius_mm": 93.49450250925119,
+    "region_length_mm": [
+      1309.9042781402413,
+      41.01841179454261,
+      3.577310065216059
+    ],
+    "region_signed_turns": [
+      -1.9724540575678489,
+      -0.04839157568120969,
+      -0.003554565056776793
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 12.199999999998678,
+    "phase": -7.500000000000007,
+    "mean_progress_m": 0.7231091696370469,
+    "minimum_progress_m": 0.4770013152210882,
+    "signed_geometric_turns": -2.0288856885792796,
+    "axial_coverage_m": 0.5226834304154052,
+    "mean_axis_radius_mm": 93.01095793691148,
+    "region_length_mm": [
+      1298.8548275256446,
+      39.87499948835314,
+      15.770172986002262
+    ],
+    "region_signed_turns": [
+      -1.9658905588724387,
+      -0.04767565827667034,
+      -0.015319471430170038
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 12.399999999998567,
+    "phase": -7.6500000000000075,
+    "mean_progress_m": 0.7275827273968452,
+    "minimum_progress_m": 0.48178149849470137,
+    "signed_geometric_turns": -2.0257736483937707,
+    "axial_coverage_m": 0.5233770375205421,
+    "mean_axis_radius_mm": 92.87905701144649,
+    "region_length_mm": [
+      1291.595848425654,
+      35.59118567107604,
+      27.31296590327017
+    ],
+    "region_signed_turns": [
+      -1.9591065991186152,
+      -0.04109388304292314,
+      -0.025573166232232564
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      4,
+      6,
+      9,
+      11,
+      13,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 12.599999999998456,
+    "phase": -7.800000000000008,
+    "mean_progress_m": 0.731876345733547,
+    "minimum_progress_m": 0.4836503072089978,
+    "signed_geometric_turns": -2.011628987136474,
+    "axial_coverage_m": 0.5301451294537101,
+    "mean_axis_radius_mm": 93.30359523780888,
+    "region_length_mm": [
+      1272.4632510999702,
+      42.14164708019956,
+      39.89510181983022
+    ],
+    "region_signed_turns": [
+      -1.9262633564917733,
+      -0.04867215862599588,
+      -0.03669347201870498
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      6,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 12.799999999998345,
+    "phase": -7.950000000000008,
+    "mean_progress_m": 0.7366993643091553,
+    "minimum_progress_m": 0.4879570333541327,
+    "signed_geometric_turns": -1.9975191631596283,
+    "axial_coverage_m": 0.5342465194603747,
+    "mean_axis_radius_mm": 94.01858044206715,
+    "region_length_mm": [
+      1247.8192392837714,
+      51.87685293223704,
+      54.8039077839917
+    ],
+    "region_signed_turns": [
+      -1.8838218650630179,
+      -0.06225568002223669,
+      -0.05144161807437403
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 12.999999999998234,
+    "phase": -8.100000000000009,
+    "mean_progress_m": 0.7428719911300659,
+    "minimum_progress_m": 0.4955703631931197,
+    "signed_geometric_turns": -1.9862574085301747,
+    "axial_coverage_m": 0.5365128838312772,
+    "mean_axis_radius_mm": 94.84520005799648,
+    "region_length_mm": [
+      1225.0576340498806,
+      53.02378386983566,
+      76.4185820802837
+    ],
+    "region_signed_turns": [
+      -1.8476734314909995,
+      -0.06583783813553734,
+      -0.07274613890363786
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      16,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 13.199999999998123,
+    "phase": -8.250000000000009,
+    "mean_progress_m": 0.7477265908536391,
+    "minimum_progress_m": 0.500823661998583,
+    "signed_geometric_turns": -1.981036995426024,
+    "axial_coverage_m": 0.5422062557372966,
+    "mean_axis_radius_mm": 95.20771136893069,
+    "region_length_mm": [
+      1213.533521670279,
+      39.900580824671884,
+      101.06589750504914
+    ],
+    "region_signed_turns": [
+      -1.8276217351775121,
+      -0.05123681381107147,
+      -0.10217844643744033
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 13.399999999998013,
+    "phase": -8.40000000000001,
+    "mean_progress_m": 0.7515807837863313,
+    "minimum_progress_m": 0.503056835194672,
+    "signed_geometric_turns": -1.979460162831409,
+    "axial_coverage_m": 0.5458847190406629,
+    "mean_axis_radius_mm": 95.35444793044273,
+    "region_length_mm": [
+      1204.7198031801267,
+      35.187973857765584,
+      114.5922229621076
+    ],
+    "region_signed_turns": [
+      -1.811275907387585,
+      -0.045953273930834815,
+      -0.1222309815129893
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 13.599999999997902,
+    "phase": -8.55000000000001,
+    "mean_progress_m": 0.7554987880654294,
+    "minimum_progress_m": 0.508350427669583,
+    "signed_geometric_turns": -1.9796827713067495,
+    "axial_coverage_m": 0.5410989880650952,
+    "mean_axis_radius_mm": 95.57870115909847,
+    "region_length_mm": [
+      1198.9551946358736,
+      36.59521527329556,
+      118.94959009083095
+    ],
+    "region_signed_turns": [
+      -1.800761702421881,
+      -0.04887558557191901,
+      -0.13004548331294966
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      13,
+      15,
+      17,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 13.799999999997791,
+    "phase": -8.70000000000001,
+    "mean_progress_m": 0.7592968113091398,
+    "minimum_progress_m": 0.5168596021581572,
+    "signed_geometric_turns": -1.9797711182385496,
+    "axial_coverage_m": 0.5341045777153385,
+    "mean_axis_radius_mm": 95.74955405047909,
+    "region_length_mm": [
+      1193.8219449975938,
+      39.8476524942387,
+      120.83040250816738
+    ],
+    "region_signed_turns": [
+      -1.7908059180592528,
+      -0.05429991500665615,
+      -0.13466528517264112
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      7,
+      8,
+      10,
+      12,
+      13,
+      15,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 13.99999999999768,
+    "phase": -8.85000000000001,
+    "mean_progress_m": 0.7633712994351454,
+    "minimum_progress_m": 0.5248413124713631,
+    "signed_geometric_turns": -1.974602248123539,
+    "axial_coverage_m": 0.5295683109179081,
+    "mean_axis_radius_mm": 96.03622257774529,
+    "region_length_mm": [
+      1187.9534591598265,
+      44.795831613929735,
+      121.75070922624383
+    ],
+    "region_signed_turns": [
+      -1.7761839675352398,
+      -0.06190540250862262,
+      -0.13651287807967696
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      4,
+      7,
+      8,
+      10,
+      12,
+      13,
+      15,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 14.19999999999757,
+    "phase": -9.00000000000001,
+    "mean_progress_m": 0.7682844728225103,
+    "minimum_progress_m": 0.5307352767138955,
+    "signed_geometric_turns": -1.9685732679391736,
+    "axial_coverage_m": 0.5251920804602269,
+    "mean_axis_radius_mm": 96.26629705779031,
+    "region_length_mm": [
+      1176.299296824257,
+      56.51987119738354,
+      121.68083197835944
+    ],
+    "region_signed_turns": [
+      -1.75507662339407,
+      -0.07891245887216825,
+      -0.13458418567293587
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      7,
+      8,
+      10,
+      12,
+      15,
+      17,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 14.399999999997458,
+    "phase": -9.150000000000011,
+    "mean_progress_m": 0.7728933756380004,
+    "minimum_progress_m": 0.5338780443312288,
+    "signed_geometric_turns": -1.9643400682832406,
+    "axial_coverage_m": 0.524780708037641,
+    "mean_axis_radius_mm": 96.2561576738153,
+    "region_length_mm": [
+      1159.4040789437367,
+      73.03900726281043,
+      122.05691379345294
+    ],
+    "region_signed_turns": [
+      -1.7335983304558413,
+      -0.10048178536688755,
+      -0.13025995246051159
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      7,
+      8,
+      10,
+      12,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 14.599999999997348,
+    "phase": -9.300000000000011,
+    "mean_progress_m": 0.7776870394464065,
+    "minimum_progress_m": 0.5363962928705074,
+    "signed_geometric_turns": -1.9580393132509732,
+    "axial_coverage_m": 0.5263425603834878,
+    "mean_axis_radius_mm": 96.37407761789176,
+    "region_length_mm": [
+      1149.6558413091088,
+      79.62943890259928,
+      125.21471978829175
+    ],
+    "region_signed_turns": [
+      -1.725907161347919,
+      -0.10724506390924578,
+      -0.12488708799380831
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      7,
+      10,
+      12,
+      14,
+      15,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 14.799999999997237,
+    "phase": -9.450000000000012,
+    "mean_progress_m": 0.7846181992302041,
+    "minimum_progress_m": 0.541113848740605,
+    "signed_geometric_turns": -1.9484427638217896,
+    "axial_coverage_m": 0.535380517591178,
+    "mean_axis_radius_mm": 96.71034798958543,
+    "region_length_mm": [
+      1138.8062216993344,
+      50.87135026770294,
+      164.8224280329628
+    ],
+    "region_signed_turns": [
+      -1.7136337549292013,
+      -0.06599475464991834,
+      -0.16881425424267016
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      16,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 14.999999999997126,
+    "phase": -9.600000000000012,
+    "mean_progress_m": 0.7904605177696278,
+    "minimum_progress_m": 0.5442021058014452,
+    "signed_geometric_turns": -1.9240199098353103,
+    "axial_coverage_m": 0.5420565378172111,
+    "mean_axis_radius_mm": 98.31140695872145,
+    "region_length_mm": [
+      1132.8808486750565,
+      36.42232719605539,
+      185.19682412888812
+    ],
+    "region_signed_turns": [
+      -1.7036660298859991,
+      -0.042579120135508776,
+      -0.17777475981380284
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      10,
+      11,
+      12,
+      14,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 15.199999999997015,
+    "phase": -9.750000000000012,
+    "mean_progress_m": 0.797047153944833,
+    "minimum_progress_m": 0.5519878169976279,
+    "signed_geometric_turns": -1.9052815407255026,
+    "axial_coverage_m": 0.5427151995456847,
+    "mean_axis_radius_mm": 99.99945114505645,
+    "region_length_mm": [
+      1122.8417803206398,
+      31.128859066181146,
+      200.52936061317888
+    ],
+    "region_signed_turns": [
+      -1.68744228141871,
+      -0.03416354037380544,
+      -0.18367571893298731
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      11,
+      12,
+      14,
+      16,
+      17,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 15.399999999996904,
+    "phase": -9.900000000000013,
+    "mean_progress_m": 0.803759163221969,
+    "minimum_progress_m": 0.5605933236456615,
+    "signed_geometric_turns": -1.8976115003636564,
+    "axial_coverage_m": 0.5393668254471492,
+    "mean_axis_radius_mm": 100.98473887229689,
+    "region_length_mm": [
+      1105.618421210499,
+      31.249817981860282,
+      217.6317608076406
+    ],
+    "region_signed_turns": [
+      -1.6613671714860663,
+      -0.03538708037735709,
+      -0.2008572485002327
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 15.599999999996793,
+    "phase": -10.050000000000013,
+    "mean_progress_m": 0.8080069042753564,
+    "minimum_progress_m": 0.5646170112534652,
+    "signed_geometric_turns": -1.8879100894303742,
+    "axial_coverage_m": 0.5405847577913216,
+    "mean_axis_radius_mm": 101.6552292651598,
+    "region_length_mm": [
+      1097.755901615707,
+      31.429190034231187,
+      225.3149083500619
+    ],
+    "region_signed_turns": [
+      -1.6419095363354879,
+      -0.035076580216311895,
+      -0.2109239728785745
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      9,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 15.799999999996682,
+    "phase": -10.200000000000014,
+    "mean_progress_m": 0.8117691734723698,
+    "minimum_progress_m": 0.5697778005805895,
+    "signed_geometric_turns": -1.8875122335624333,
+    "axial_coverage_m": 0.5363009543124393,
+    "mean_axis_radius_mm": 101.72412334785076,
+    "region_length_mm": [
+      1074.018559685385,
+      49.940176214421584,
+      230.5412641001934
+    ],
+    "region_signed_turns": [
+      -1.6085096788452775,
+      -0.05561313903085855,
+      -0.22338941568629778
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      9,
+      13,
+      14,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 15.999999999996572,
+    "phase": -10.350000000000014,
+    "mean_progress_m": 0.8154372069779438,
+    "minimum_progress_m": 0.5762415186623969,
+    "signed_geometric_turns": -1.8910780356552372,
+    "axial_coverage_m": 0.5318575004555376,
+    "mean_axis_radius_mm": 101.44821081912517,
+    "region_length_mm": [
+      1056.2807068585646,
+      61.00590938263743,
+      237.21338375879796
+    ],
+    "region_signed_turns": [
+      -1.5822178018759776,
+      -0.06983478483414719,
+      -0.23902544894511238
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 16.199999999996816,
+    "phase": -10.500000000000014,
+    "mean_progress_m": 0.8181554953106647,
+    "minimum_progress_m": 0.5797867464785955,
+    "signed_geometric_turns": -1.9001611681949029,
+    "axial_coverage_m": 0.5307633089622865,
+    "mean_axis_radius_mm": 100.72983659642514,
+    "region_length_mm": [
+      1044.8572202010223,
+      65.37650787172386,
+      244.26627192725385
+    ],
+    "region_signed_turns": [
+      -1.5663807990027085,
+      -0.07644751475500763,
+      -0.25733285443718623
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 16.39999999999706,
+    "phase": -10.650000000000015,
+    "mean_progress_m": 0.8211635626763887,
+    "minimum_progress_m": 0.583611263378624,
+    "signed_geometric_turns": -1.9045996444935176,
+    "axial_coverage_m": 0.529678375967311,
+    "mean_axis_radius_mm": 100.42397837525937,
+    "region_length_mm": [
+      1036.904435498355,
+      65.3963030225599,
+      252.19926147908504
+    ],
+    "region_signed_turns": [
+      -1.5584793106089323,
+      -0.076831428246565,
+      -0.2692889056380202
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      9,
+      11,
+      13,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 16.599999999997305,
+    "phase": -10.800000000000015,
+    "mean_progress_m": 0.8263826523851778,
+    "minimum_progress_m": 0.5895031846426111,
+    "signed_geometric_turns": -1.9060783317137293,
+    "axial_coverage_m": 0.5340556815216081,
+    "mean_axis_radius_mm": 100.14920030095728,
+    "region_length_mm": [
+      1029.5415641842376,
+      53.83311480921967,
+      271.1253210065427
+    ],
+    "region_signed_turns": [
+      -1.554926340843909,
+      -0.06589943334487705,
+      -0.2852525575249432
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 16.79999999999755,
+    "phase": -10.950000000000015,
+    "mean_progress_m": 0.8296616941647175,
+    "minimum_progress_m": 0.5918243603553839,
+    "signed_geometric_turns": -1.902130295417842,
+    "axial_coverage_m": 0.5401298809556504,
+    "mean_axis_radius_mm": 100.14700012507696,
+    "region_length_mm": [
+      1024.5180928635875,
+      48.33994173216412,
+      281.6419654042484
+    ],
+    "region_signed_turns": [
+      -1.5496324895151576,
+      -0.06121913637916949,
+      -0.29127866952351483
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      6,
+      7,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 16.999999999997794,
+    "phase": -11.100000000000016,
+    "mean_progress_m": 0.8320617018536478,
+    "minimum_progress_m": 0.5967453015893842,
+    "signed_geometric_turns": -1.898236794673054,
+    "axial_coverage_m": 0.5410510961875321,
+    "mean_axis_radius_mm": 100.17750074621165,
+    "region_length_mm": [
+      1032.339078361908,
+      42.78036943468846,
+      279.3805522034035
+    ],
+    "region_signed_turns": [
+      -1.567386716673433,
+      -0.05176968819489567,
+      -0.27908038980472555
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      10,
+      11,
+      13,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 17.199999999998038,
+    "phase": -11.250000000000016,
+    "mean_progress_m": 0.8356434524013677,
+    "minimum_progress_m": 0.6016857542967737,
+    "signed_geometric_turns": -1.9009262947870644,
+    "axial_coverage_m": 0.5425792135731577,
+    "mean_axis_radius_mm": 100.20034388130958,
+    "region_length_mm": [
+      1034.4701278329871,
+      35.26986698838155,
+      284.7600051786313
+    ],
+    "region_signed_turns": [
+      -1.577275639582056,
+      -0.04193817814437025,
+      -0.28171247706063823
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      10,
+      11,
+      13,
+      15,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 17.399999999998283,
+    "phase": -11.400000000000016,
+    "mean_progress_m": 0.8391652954179285,
+    "minimum_progress_m": 0.6051690040219396,
+    "signed_geometric_turns": -1.900351624480309,
+    "axial_coverage_m": 0.5459244204705194,
+    "mean_axis_radius_mm": 100.38449796474859,
+    "region_length_mm": [
+      1034.4281854011683,
+      30.8534713497432,
+      289.2183432490884
+    ],
+    "region_signed_turns": [
+      -1.582565227441368,
+      -0.03589319147952958,
+      -0.2818932055594109
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      11,
+      13,
+      15,
+      18,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 17.599999999998527,
+    "phase": -11.550000000000017,
+    "mean_progress_m": 0.8421880921184346,
+    "minimum_progress_m": 0.6077620052411841,
+    "signed_geometric_turns": -1.8953307486727795,
+    "axial_coverage_m": 0.5494547494378876,
+    "mean_axis_radius_mm": 100.61253472468732,
+    "region_length_mm": [
+      1034.315713216501,
+      28.20856269621023,
+      291.9757240872886
+    ],
+    "region_signed_turns": [
+      -1.583689564107209,
+      -0.03187657992908829,
+      -0.27976460463648245
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 17.79999999999877,
+    "phase": -11.700000000000017,
+    "mean_progress_m": 0.8457112688448707,
+    "minimum_progress_m": 0.6117052564467129,
+    "signed_geometric_turns": -1.889363799271604,
+    "axial_coverage_m": 0.5500902889852357,
+    "mean_axis_radius_mm": 100.97481378711406,
+    "region_length_mm": [
+      1033.5908223291372,
+      26.159753874314493,
+      294.7494237965485
+    ],
+    "region_signed_turns": [
+      -1.5827470543668665,
+      -0.028150421134246425,
+      -0.27846632377049124
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      10,
+      11,
+      12,
+      13,
+      15,
+      17,
+      18,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 709.5
+  },
+  {
+    "sim_time": 17.999999999999016,
+    "phase": -11.850000000000017,
+    "mean_progress_m": 0.850029844231028,
+    "minimum_progress_m": 0.6193211275520559,
+    "signed_geometric_turns": -1.8799394122902913,
+    "axial_coverage_m": 0.5450970574683551,
+    "mean_axis_radius_mm": 101.82487474170892,
+    "region_length_mm": [
+      1001.4447949047092,
+      53.48059045881932,
+      299.57461463647155
+    ],
+    "region_signed_turns": [
+      -1.534207016349665,
+      -0.06410954661016818,
+      -0.2816228493304585
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      10,
+      12,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 18.19999999999926,
+    "phase": -12.000000000000018,
+    "mean_progress_m": 0.8541704528134717,
+    "minimum_progress_m": 0.6283628351532132,
+    "signed_geometric_turns": -1.8668136140897522,
+    "axial_coverage_m": 0.5389883147524385,
+    "mean_axis_radius_mm": 102.86418037669307,
+    "region_length_mm": [
+      961.3723259724823,
+      88.02310661988749,
+      305.1045674076302
+    ],
+    "region_signed_turns": [
+      -1.4673233896878581,
+      -0.11213674448603142,
+      -0.2873534799158628
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      8,
+      10,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 18.399999999999505,
+    "phase": -12.150000000000018,
+    "mean_progress_m": 0.8585675489634177,
+    "minimum_progress_m": 0.6361660131814989,
+    "signed_geometric_turns": -1.8560021956522226,
+    "axial_coverage_m": 0.5326852093817286,
+    "mean_axis_radius_mm": 103.91579520007156,
+    "region_length_mm": [
+      955.6004683468974,
+      87.71332697884688,
+      311.18620467425575
+    ],
+    "region_signed_turns": [
+      -1.4552833681145723,
+      -0.10610121548142773,
+      -0.29461761205622283
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      8,
+      10,
+      13,
+      14,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 18.59999999999975,
+    "phase": -12.300000000000018,
+    "mean_progress_m": 0.8640729202727357,
+    "minimum_progress_m": 0.6450012945357673,
+    "signed_geometric_turns": -1.850100072740276,
+    "axial_coverage_m": 0.5219012398440863,
+    "mean_axis_radius_mm": 104.77492901726689,
+    "region_length_mm": [
+      945.5483755508865,
+      84.13048734689164,
+      324.8211371022218
+    ],
+    "region_signed_turns": [
+      -1.4355935895613272,
+      -0.09832731142824373,
+      -0.316179171750705
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      8,
+      9,
+      10,
+      12,
+      14,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 18.799999999999994,
+    "phase": -12.450000000000019,
+    "mean_progress_m": 0.8694834418627068,
+    "minimum_progress_m": 0.646343410863338,
+    "signed_geometric_turns": -1.8571409645997523,
+    "axial_coverage_m": 0.5236031349894994,
+    "mean_axis_radius_mm": 104.32999506292155,
+    "region_length_mm": [
+      934.7450538853609,
+      50.26351471433385,
+      369.4914314003052
+    ],
+    "region_signed_turns": [
+      -1.4161931795652178,
+      -0.062143489487738575,
+      -0.37880429554679546
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      12,
+      14,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 19.000000000000238,
+    "phase": -12.60000000000002,
+    "mean_progress_m": 0.87468259370875,
+    "minimum_progress_m": 0.6436628811958198,
+    "signed_geometric_turns": -1.8601885210964053,
+    "axial_coverage_m": 0.5335690647162367,
+    "mean_axis_radius_mm": 103.82666305833986,
+    "region_length_mm": [
+      921.6576648542159,
+      52.311984004989,
+      380.5303511407951
+    ],
+    "region_signed_turns": [
+      -1.3961860668858084,
+      -0.06521727959189796,
+      -0.3987851746186993
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      12,
+      14,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 19.200000000000482,
+    "phase": -12.75000000000002,
+    "mean_progress_m": 0.8821419124480595,
+    "minimum_progress_m": 0.6485532945820368,
+    "signed_geometric_turns": -1.8444013225153983,
+    "axial_coverage_m": 0.5528542953297665,
+    "mean_axis_radius_mm": 104.27040889534553,
+    "region_length_mm": [
+      895.4784341643428,
+      73.46477408056211,
+      385.55679175509505
+    ],
+    "region_signed_turns": [
+      -1.3693297703358704,
+      -0.08991999042722648,
+      -0.38515156175230125
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      12,
+      14,
+      16,
+      17,
+      19,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 19.400000000000727,
+    "phase": -12.90000000000002,
+    "mean_progress_m": 0.8910175209403874,
+    "minimum_progress_m": 0.6591999749857964,
+    "signed_geometric_turns": -1.843394508920059,
+    "axial_coverage_m": 0.5483127569745225,
+    "mean_axis_radius_mm": 105.23606244500104,
+    "region_length_mm": [
+      856.1303106661072,
+      74.04020499043921,
+      424.3294843434536
+    ],
+    "region_signed_turns": [
+      -1.3237546634974917,
+      -0.08571981423780435,
+      -0.43392003118476274
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 19.60000000000097,
+    "phase": -13.05000000000002,
+    "mean_progress_m": 0.8975717371536472,
+    "minimum_progress_m": 0.6619655406317421,
+    "signed_geometric_turns": -1.8389846562025838,
+    "axial_coverage_m": 0.5529787634926833,
+    "mean_axis_radius_mm": 105.67213069347213,
+    "region_length_mm": [
+      845.8357781274024,
+      46.10082289889805,
+      462.5633989736995
+    ],
+    "region_signed_turns": [
+      -1.3064518498236086,
+      -0.053793378951503414,
+      -0.4787394274274718
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 19.800000000001216,
+    "phase": -13.20000000000002,
+    "mean_progress_m": 0.9023310354681338,
+    "minimum_progress_m": 0.6685697419157037,
+    "signed_geometric_turns": -1.8408991247080366,
+    "axial_coverage_m": 0.5491340526509564,
+    "mean_axis_radius_mm": 105.7590700340151,
+    "region_length_mm": [
+      843.1364169290443,
+      37.21797968327044,
+      474.1456033876852
+    ],
+    "region_signed_turns": [
+      -1.3033899897719303,
+      -0.04465102232580183,
+      -0.4928581126103043
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      10,
+      13,
+      14,
+      16,
+      19,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 20.00000000000146,
+    "phase": -13.350000000000021,
+    "mean_progress_m": 0.9077374093799552,
+    "minimum_progress_m": 0.674631817435053,
+    "signed_geometric_turns": -1.8398540927975855,
+    "axial_coverage_m": 0.5443206727285161,
+    "mean_axis_radius_mm": 106.05018589692001,
+    "region_length_mm": [
+      840.0960245170013,
+      31.06173046963057,
+      483.34224501336814
+    ],
+    "region_signed_turns": [
+      -1.29558648831657,
+      -0.03683491228783936,
+      -0.5074326921931762
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      10,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 20.200000000001705,
+    "phase": -13.500000000000021,
+    "mean_progress_m": 0.9124116062179631,
+    "minimum_progress_m": 0.6781708273511942,
+    "signed_geometric_turns": -1.84004671755478,
+    "axial_coverage_m": 0.542435887235007,
+    "mean_axis_radius_mm": 106.0397609650557,
+    "region_length_mm": [
+      834.4087317483169,
+      31.265641914806622,
+      488.8256263368765
+    ],
+    "region_signed_turns": [
+      -1.2845537054477292,
+      -0.03658604362715409,
+      -0.5189069684798971
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      10,
+      13,
+      14,
+      15,
+      16,
+      18,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 20.40000000000195,
+    "phase": -13.650000000000022,
+    "mean_progress_m": 0.9163741315480219,
+    "minimum_progress_m": 0.6818967066524226,
+    "signed_geometric_turns": -1.8384350388804396,
+    "axial_coverage_m": 0.5373107381693167,
+    "mean_axis_radius_mm": 106.13574776246249,
+    "region_length_mm": [
+      812.7786771705989,
+      48.08487519860217,
+      493.6364476307989
+    ],
+    "region_signed_turns": [
+      -1.2483098607336272,
+      -0.059324518078183515,
+      -0.5308006600686289
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      10,
+      13,
+      14,
+      15,
+      16,
+      18,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 20.600000000002193,
+    "phase": -13.800000000000022,
+    "mean_progress_m": 0.9211106627611295,
+    "minimum_progress_m": 0.6851515591590548,
+    "signed_geometric_turns": -1.8377649470844082,
+    "axial_coverage_m": 0.5361912496033387,
+    "mean_axis_radius_mm": 106.1143081822249,
+    "region_length_mm": [
+      773.3484125635333,
+      81.47023689643392,
+      499.6813505400328
+    ],
+    "region_signed_turns": [
+      -1.1858784378198912,
+      -0.10624394595167501,
+      -0.545642563312842
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      10,
+      13,
+      15,
+      16,
+      18,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 20.800000000002438,
+    "phase": -13.950000000000022,
+    "mean_progress_m": 0.9248931977173033,
+    "minimum_progress_m": 0.687149036142769,
+    "signed_geometric_turns": -1.8417386682894346,
+    "axial_coverage_m": 0.5359152395408192,
+    "mean_axis_radius_mm": 105.72667931329723,
+    "region_length_mm": [
+      761.8578736228027,
+      81.5430817535362,
+      511.0990446236611
+    ],
+    "region_signed_turns": [
+      -1.1694577249797815,
+      -0.10335593290457448,
+      -0.5689250104050783
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      10,
+      11,
+      13,
+      16,
+      17,
+      18,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 21.000000000002682,
+    "phase": -14.100000000000023,
+    "mean_progress_m": 0.9279026957272081,
+    "minimum_progress_m": 0.685954614815665,
+    "signed_geometric_turns": -1.831482463029323,
+    "axial_coverage_m": 0.5449595826855617,
+    "mean_axis_radius_mm": 105.98598365610398,
+    "region_length_mm": [
+      755.4722892583634,
+      61.94111466625306,
+      537.0865960753836
+    ],
+    "region_signed_turns": [
+      -1.1542871642666774,
+      -0.07996637899197284,
+      -0.5972289197706725
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      11,
+      13,
+      15,
+      16,
+      17,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 21.200000000002927,
+    "phase": -14.250000000000023,
+    "mean_progress_m": 0.931972076351364,
+    "minimum_progress_m": 0.6871112070691483,
+    "signed_geometric_turns": -1.828946532676788,
+    "axial_coverage_m": 0.5508578932808003,
+    "mean_axis_radius_mm": 105.53940636294851,
+    "region_length_mm": [
+      747.8568421221512,
+      39.026200420557984,
+      567.6169574572907
+    ],
+    "region_signed_turns": [
+      -1.1393751128366922,
+      -0.050656402061965866,
+      -0.6389150177781301
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      11,
+      13,
+      15,
+      17,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 21.40000000000317,
+    "phase": -14.400000000000023,
+    "mean_progress_m": 0.9348382575754594,
+    "minimum_progress_m": 0.6919766725177436,
+    "signed_geometric_turns": -1.822173274066768,
+    "axial_coverage_m": 0.5568953930055407,
+    "mean_axis_radius_mm": 105.59265994571368,
+    "region_length_mm": [
+      742.7209808571004,
+      34.18992371671112,
+      577.5890954261886
+    ],
+    "region_signed_turns": [
+      -1.126927374278749,
+      -0.04409543533126139,
+      -0.651150464456758
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      6,
+      11,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 21.600000000003416,
+    "phase": -14.550000000000024,
+    "mean_progress_m": 0.9399810581534082,
+    "minimum_progress_m": 0.701666761767932,
+    "signed_geometric_turns": -1.8118341474237698,
+    "axial_coverage_m": 0.5526077659113829,
+    "mean_axis_radius_mm": 106.42413566829946,
+    "region_length_mm": [
+      732.6784333576868,
+      36.16853972907872,
+      585.6530269132345
+    ],
+    "region_signed_turns": [
+      -1.1045197995460454,
+      -0.04756948471376964,
+      -0.6597448631639546
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      11,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 258.0
+  },
+  {
+    "sim_time": 21.80000000000366,
+    "phase": -14.700000000000024,
+    "mean_progress_m": 0.9439871894152899,
+    "minimum_progress_m": 0.7062119422911776,
+    "signed_geometric_turns": -1.8058336908692243,
+    "axial_coverage_m": 0.5549676818952779,
+    "mean_axis_radius_mm": 106.73901418305918,
+    "region_length_mm": [
+      719.2423013910076,
+      43.30514608691162,
+      591.9525525220809
+    ],
+    "region_signed_turns": [
+      -1.0793242695297782,
+      -0.057656652002298116,
+      -0.6688527693371481
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      8,
+      11,
+      15,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 22.000000000003904,
+    "phase": -14.850000000000025,
+    "mean_progress_m": 0.949431482242115,
+    "minimum_progress_m": 0.7081792205659599,
+    "signed_geometric_turns": -1.8157442640568928,
+    "axial_coverage_m": 0.5580937446684637,
+    "mean_axis_radius_mm": 105.57927464210943,
+    "region_length_mm": [
+      701.9764210731546,
+      54.39222825728941,
+      598.131350669556
+    ],
+    "region_signed_turns": [
+      -1.0534054941451754,
+      -0.06975729592807742,
+      -0.6925814739836401
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      8,
+      11,
+      14,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 22.20000000000415,
+    "phase": -15.000000000000025,
+    "mean_progress_m": 0.9537691824736981,
+    "minimum_progress_m": 0.7124750767380674,
+    "signed_geometric_turns": -1.8348180978701547,
+    "axial_coverage_m": 0.5527424420425291,
+    "mean_axis_radius_mm": 104.1016534731993,
+    "region_length_mm": [
+      689.5899978539107,
+      60.45321753618017,
+      604.456784609909
+    ],
+    "region_signed_turns": [
+      -1.0348429261073173,
+      -0.07466764443027903,
+      -0.7253075273325582
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      8,
+      11,
+      12,
+      14,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 22.400000000004393,
+    "phase": -15.150000000000025,
+    "mean_progress_m": 0.957026965786792,
+    "minimum_progress_m": 0.7131577640705639,
+    "signed_geometric_turns": -1.8377251739254936,
+    "axial_coverage_m": 0.5528444279396232,
+    "mean_axis_radius_mm": 103.81639886172556,
+    "region_length_mm": [
+      681.3619719782058,
+      59.34756645329489,
+      613.7904615684993
+    ],
+    "region_signed_turns": [
+      -1.022981996056017,
+      -0.07117876733392804,
+      -0.7435644105355492
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      7,
+      8,
+      10,
+      12,
+      14,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 22.600000000004638,
+    "phase": -15.300000000000026,
+    "mean_progress_m": 0.961060796377177,
+    "minimum_progress_m": 0.7145292660484431,
+    "signed_geometric_turns": -1.8394646621643456,
+    "axial_coverage_m": 0.5552416830977627,
+    "mean_axis_radius_mm": 103.65318230872079,
+    "region_length_mm": [
+      674.3457248380219,
+      39.40322974030101,
+      640.7510454216772
+    ],
+    "region_signed_turns": [
+      -1.0161897466561662,
+      -0.04352777876057721,
+      -0.7797471367476022
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      7,
+      8,
+      10,
+      12,
+      14,
+      15,
+      16,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 22.800000000004882,
+    "phase": -15.450000000000026,
+    "mean_progress_m": 0.9655171253572776,
+    "minimum_progress_m": 0.7137777619296749,
+    "signed_geometric_turns": -1.8356281061170623,
+    "axial_coverage_m": 0.5598537117717097,
+    "mean_axis_radius_mm": 103.80296494199438,
+    "region_length_mm": [
+      667.3083781043472,
+      30.9575284406487,
+      656.2340934550041
+    ],
+    "region_signed_turns": [
+      -1.006081005932627,
+      -0.03505307592451079,
+      -0.7944940242599249
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      7,
+      8,
+      12,
+      15,
+      16,
+      17,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 23.000000000005127,
+    "phase": -15.600000000000026,
+    "mean_progress_m": 0.9704691319252143,
+    "minimum_progress_m": 0.717531419705273,
+    "signed_geometric_turns": -1.8333976562394645,
+    "axial_coverage_m": 0.560160511391447,
+    "mean_axis_radius_mm": 103.99773656268606,
+    "region_length_mm": [
+      658.939097596154,
+      27.928054987637445,
+      667.6328474162085
+    ],
+    "region_signed_turns": [
+      -0.9976346652249692,
+      -0.032156646400863215,
+      -0.803606344613632
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      5,
+      7,
+      12,
+      16,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 23.20000000000537,
+    "phase": -15.750000000000027,
+    "mean_progress_m": 0.9752947055954028,
+    "minimum_progress_m": 0.720989078252555,
+    "signed_geometric_turns": -1.8272973240056472,
+    "axial_coverage_m": 0.562397323914459,
+    "mean_axis_radius_mm": 104.52706997609842,
+    "region_length_mm": [
+      651.2821927035507,
+      26.736627758729668,
+      676.4811795377196
+    ],
+    "region_signed_turns": [
+      -0.9867397347373055,
+      -0.030605315598092275,
+      -0.8099522736702498
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      5,
+      7,
+      12,
+      13,
+      16,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 23.400000000005615,
+    "phase": -15.900000000000027,
+    "mean_progress_m": 0.9797630649843885,
+    "minimum_progress_m": 0.7259110766080746,
+    "signed_geometric_turns": -1.8211753297804396,
+    "axial_coverage_m": 0.5647349825927334,
+    "mean_axis_radius_mm": 104.82640943351002,
+    "region_length_mm": [
+      649.720448191473,
+      27.569193976624206,
+      677.2103578319028
+    ],
+    "region_signed_turns": [
+      -0.9784967179965844,
+      -0.03160023517056036,
+      -0.8110783766132946
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      7,
+      12,
+      13,
+      16,
+      19,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 23.60000000000586,
+    "phase": -16.050000000000026,
+    "mean_progress_m": 0.9832929678346805,
+    "minimum_progress_m": 0.7287331380306906,
+    "signed_geometric_turns": -1.8178976604477513,
+    "axial_coverage_m": 0.5678428706121702,
+    "mean_axis_radius_mm": 104.96571216113179,
+    "region_length_mm": [
+      646.166578137552,
+      28.506335764753814,
+      679.8270860976942
+    ],
+    "region_signed_turns": [
+      -0.9688827024691521,
+      -0.031822796762983316,
+      -0.817192161215616
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      13,
+      16,
+      19,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 23.800000000006104,
+    "phase": -16.200000000000024,
+    "mean_progress_m": 0.9866929923766905,
+    "minimum_progress_m": 0.7339444657518024,
+    "signed_geometric_turns": -1.8161872322001462,
+    "axial_coverage_m": 0.5605943448388019,
+    "mean_axis_radius_mm": 105.31986469382393,
+    "region_length_mm": [
+      613.79999471373,
+      56.48978934891127,
+      684.2102159373587
+    ],
+    "region_signed_turns": [
+      -0.9235372152782185,
+      -0.06681175118106875,
+      -0.8258382657408588
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      8,
+      9,
+      13,
+      16,
+      19,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 24.00000000000635,
+    "phase": -16.350000000000023,
+    "mean_progress_m": 0.9906393453767004,
+    "minimum_progress_m": 0.739243716314374,
+    "signed_geometric_turns": -1.810382019138137,
+    "axial_coverage_m": 0.5532758340391435,
+    "mean_axis_radius_mm": 105.82091695181694,
+    "region_length_mm": [
+      586.8785379709207,
+      74.91731725456549,
+      692.7041447745139
+    ],
+    "region_signed_turns": [
+      -0.8789108686464387,
+      -0.09296156677450271,
+      -0.8385095837171958
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      8,
+      9,
+      13,
+      16,
+      18,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 24.200000000006593,
+    "phase": -16.50000000000002,
+    "mean_progress_m": 0.9946524072421263,
+    "minimum_progress_m": 0.7438186937702944,
+    "signed_geometric_turns": -1.80688415472144,
+    "axial_coverage_m": 0.5499433812023091,
+    "mean_axis_radius_mm": 106.04951170185477,
+    "region_length_mm": [
+      578.1519813322477,
+      69.88791084840503,
+      706.4601078193472
+    ],
+    "region_signed_turns": [
+      -0.863878560434404,
+      -0.08678881764012354,
+      -0.8562167766469126
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      8,
+      9,
+      13,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 24.400000000006838,
+    "phase": -16.65000000000002,
+    "mean_progress_m": 0.9987690620960807,
+    "minimum_progress_m": 0.747614627473003,
+    "signed_geometric_turns": -1.804902824188155,
+    "axial_coverage_m": 0.5474756286999122,
+    "mean_axis_radius_mm": 106.1475519207826,
+    "region_length_mm": [
+      572.3127706050349,
+      51.01092999116642,
+      731.1762994037988
+    ],
+    "region_signed_turns": [
+      -0.8520511765506913,
+      -0.06622041751808236,
+      -0.8866312301193813
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      8,
+      9,
+      13,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 24.600000000007082,
+    "phase": -16.80000000000002,
+    "mean_progress_m": 1.0028432688069302,
+    "minimum_progress_m": 0.7499125209554299,
+    "signed_geometric_turns": -1.8028020501504898,
+    "axial_coverage_m": 0.5463518011853861,
+    "mean_axis_radius_mm": 106.27496859760905,
+    "region_length_mm": [
+      562.6564357600431,
+      43.204870508350396,
+      748.6386937316065
+    ],
+    "region_signed_turns": [
+      -0.8338256303462264,
+      -0.05819497189466049,
+      -0.9107814479096031
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      3,
+      4,
+      8,
+      9,
+      13,
+      14,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 24.800000000007326,
+    "phase": -16.950000000000017,
+    "mean_progress_m": 1.0072014372806328,
+    "minimum_progress_m": 0.7546298078188283,
+    "signed_geometric_turns": -1.8028455786407491,
+    "axial_coverage_m": 0.5469630089393979,
+    "mean_axis_radius_mm": 106.28920427089106,
+    "region_length_mm": [
+      552.8365110247125,
+      44.60991653894018,
+      757.0535724363472
+    ],
+    "region_signed_turns": [
+      -0.82033834413781,
+      -0.061703603336465976,
+      -0.9208036311664735
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      14,
+      16,
+      17,
+      18,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 25.00000000000757,
+    "phase": -17.100000000000016,
+    "mean_progress_m": 1.0111043425370718,
+    "minimum_progress_m": 0.7582434855717473,
+    "signed_geometric_turns": -1.7953653433662937,
+    "axial_coverage_m": 0.549700002055542,
+    "mean_axis_radius_mm": 106.62687289648315,
+    "region_length_mm": [
+      543.9635419694575,
+      50.7190114096491,
+      759.8174466208934
+    ],
+    "region_signed_turns": [
+      -0.8019681834970336,
+      -0.0710947165048469,
+      -0.9223024433644135
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      17,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 25.200000000007815,
+    "phase": -17.250000000000014,
+    "mean_progress_m": 1.0146778566345342,
+    "minimum_progress_m": 0.7589619063725848,
+    "signed_geometric_turns": -1.771496664718048,
+    "axial_coverage_m": 0.5564346891051102,
+    "mean_axis_radius_mm": 107.68632504918207,
+    "region_length_mm": [
+      520.2765852450548,
+      73.0423107126027,
+      761.1811040423424
+    ],
+    "region_signed_turns": [
+      -0.7490068359285365,
+      -0.10177626170193327,
+      -0.9207135670875785
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      13,
+      14,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 25.40000000000806,
+    "phase": -17.400000000000013,
+    "mean_progress_m": 1.0183540247409981,
+    "minimum_progress_m": 0.7632397666277598,
+    "signed_geometric_turns": -1.7603026079524096,
+    "axial_coverage_m": 0.5590860207796576,
+    "mean_axis_radius_mm": 108.21369913359474,
+    "region_length_mm": [
+      500.77193189331024,
+      90.39058712945882,
+      763.3374809772309
+    ],
+    "region_signed_turns": [
+      -0.7178654967563479,
+      -0.12011523861479033,
+      -0.9223218725812716
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      14,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 25.600000000008304,
+    "phase": -17.55000000000001,
+    "mean_progress_m": 1.020710433818428,
+    "minimum_progress_m": 0.7719077279442559,
+    "signed_geometric_turns": -1.7683452670227042,
+    "axial_coverage_m": 0.5509539439931286,
+    "mean_axis_radius_mm": 108.15524331804022,
+    "region_length_mm": [
+      491.42217729862324,
+      93.7952437097063,
+      769.2825789916704
+    ],
+    "region_signed_turns": [
+      -0.7161518631794453,
+      -0.12307359914777348,
+      -0.9291198046954854
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      14,
+      15,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 25.80000000000855,
+    "phase": -17.70000000000001,
+    "mean_progress_m": 1.0236893166934364,
+    "minimum_progress_m": 0.7789651781090438,
+    "signed_geometric_turns": -1.7584261774255194,
+    "axial_coverage_m": 0.5458402067202708,
+    "mean_axis_radius_mm": 108.86016324888806,
+    "region_length_mm": [
+      490.0584549549897,
+      90.92423827351224,
+      773.517306771498
+    ],
+    "region_signed_turns": [
+      -0.7064279811733553,
+      -0.12019900132206432,
+      -0.9317991949301004
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      14,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 26.000000000008793,
+    "phase": -17.85000000000001,
+    "mean_progress_m": 1.0273117126882298,
+    "minimum_progress_m": 0.7836612930372244,
+    "signed_geometric_turns": -1.751172681017005,
+    "axial_coverage_m": 0.5446591174029559,
+    "mean_axis_radius_mm": 109.26623321273897,
+    "region_length_mm": [
+      488.257527982556,
+      35.80186997197426,
+      830.4406020454697
+    ],
+    "region_signed_turns": [
+      -0.6972918821716001,
+      -0.04315730960835663,
+      -1.0107234892370485
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      15,
+      17,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 26.200000000009037,
+    "phase": -18.000000000000007,
+    "mean_progress_m": 1.0306827265853342,
+    "minimum_progress_m": 0.7876416816103282,
+    "signed_geometric_turns": -1.7495003704819476,
+    "axial_coverage_m": 0.5392516291101486,
+    "mean_axis_radius_mm": 109.39937311604895,
+    "region_length_mm": [
+      485.2587211412023,
+      28.71890639362996,
+      840.5223724651678
+    ],
+    "region_signed_turns": [
+      -0.6887572094554086,
+      -0.03382402850593677,
+      -1.0269191325206026
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 322.5
+  },
+  {
+    "sim_time": 26.400000000009282,
+    "phase": -18.150000000000006,
+    "mean_progress_m": 1.0338720876811525,
+    "minimum_progress_m": 0.7899543783674515,
+    "signed_geometric_turns": -1.7536209729701453,
+    "axial_coverage_m": 0.5352338831489931,
+    "mean_axis_radius_mm": 109.1691695695312,
+    "region_length_mm": [
+      480.7799471639392,
+      29.606383283811024,
+      844.1136695522498
+    ],
+    "region_signed_turns": [
+      -0.6812480622188708,
+      -0.036148160131548784,
+      -1.0362247506197257
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      5,
+      7,
+      8,
+      10,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 26.600000000009526,
+    "phase": -18.300000000000004,
+    "mean_progress_m": 1.0375642808034198,
+    "minimum_progress_m": 0.7912231066711257,
+    "signed_geometric_turns": -1.7533638293873886,
+    "axial_coverage_m": 0.5359297848475929,
+    "mean_axis_radius_mm": 109.14466681785902,
+    "region_length_mm": [
+      475.1369963220153,
+      30.716494620956066,
+      848.6465090570287
+    ],
+    "region_signed_turns": [
+      -0.6756172229655382,
+      -0.03830270766969047,
+      -1.0394438987521604
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      7,
+      8,
+      10,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 26.80000000000977,
+    "phase": -18.450000000000003,
+    "mean_progress_m": 1.0420368786955734,
+    "minimum_progress_m": 0.7938711527365031,
+    "signed_geometric_turns": -1.751560646774091,
+    "axial_coverage_m": 0.5355960359965558,
+    "mean_axis_radius_mm": 109.21636300451262,
+    "region_length_mm": [
+      465.7829372326863,
+      33.935589214709964,
+      854.7814735526036
+    ],
+    "region_signed_turns": [
+      -0.663427722110474,
+      -0.04308388336673261,
+      -1.045049041296885
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      5,
+      7,
+      8,
+      10,
+      15,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 27.000000000010015,
+    "phase": -18.6,
+    "mean_progress_m": 1.0467229721519515,
+    "minimum_progress_m": 0.798745157576153,
+    "signed_geometric_turns": -1.7473741495914612,
+    "axial_coverage_m": 0.5334614661252077,
+    "mean_axis_radius_mm": 109.48242185689483,
+    "region_length_mm": [
+      452.5572436623972,
+      40.66261386285836,
+      861.2801424747445
+    ],
+    "region_signed_turns": [
+      -0.6430288305072825,
+      -0.05156412568614581,
+      -1.052781193398033
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      5,
+      7,
+      9,
+      10,
+      15,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 27.20000000001026,
+    "phase": -18.75,
+    "mean_progress_m": 1.0501505892550331,
+    "minimum_progress_m": 0.8019208676072082,
+    "signed_geometric_turns": -1.7319136346343726,
+    "axial_coverage_m": 0.5334508670095613,
+    "mean_axis_radius_mm": 110.21794350779987,
+    "region_length_mm": [
+      437.9759561289319,
+      57.25330224332338,
+      859.2707416277448
+    ],
+    "region_signed_turns": [
+      -0.615674047033123,
+      -0.07067461394610151,
+      -1.0455649736551482
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      10,
+      15,
+      16,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 27.400000000010504,
+    "phase": -18.9,
+    "mean_progress_m": 1.0531246398744138,
+    "minimum_progress_m": 0.8083662877195881,
+    "signed_geometric_turns": -1.7189578925323192,
+    "axial_coverage_m": 0.5289275580096441,
+    "mean_axis_radius_mm": 111.03576372953148,
+    "region_length_mm": [
+      424.8266175729708,
+      63.075068460055505,
+      866.5983139669737
+    ],
+    "region_signed_turns": [
+      -0.5905960105954613,
+      -0.07538481554965253,
+      -1.0529770663872056
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 27.60000000001075,
+    "phase": -19.049999999999997,
+    "mean_progress_m": 1.057358111062645,
+    "minimum_progress_m": 0.8139002712704656,
+    "signed_geometric_turns": -1.7100905554900707,
+    "axial_coverage_m": 0.5290992090635818,
+    "mean_axis_radius_mm": 111.47503536552236,
+    "region_length_mm": [
+      414.92762682513114,
+      45.2979383333609,
+      894.274434841508
+    ],
+    "region_signed_turns": [
+      -0.5748320205629024,
+      -0.049905186749569216,
+      -1.085353348177599
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      11,
+      12,
+      16,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 27.800000000010993,
+    "phase": -19.199999999999996,
+    "mean_progress_m": 1.0610527212962824,
+    "minimum_progress_m": 0.8176731378367638,
+    "signed_geometric_turns": -1.7078465550787427,
+    "axial_coverage_m": 0.5306153736528798,
+    "mean_axis_radius_mm": 111.5704867297214,
+    "region_length_mm": [
+      408.83385702475323,
+      33.3812182351971,
+      912.2849247400497
+    ],
+    "region_signed_turns": [
+      -0.5652890286521701,
+      -0.03785772636835347,
+      -1.1046998000582189
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      11,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 28.000000000011237,
+    "phase": -19.349999999999994,
+    "mean_progress_m": 1.0651488014736725,
+    "minimum_progress_m": 0.8251599708697129,
+    "signed_geometric_turns": -1.7048165770002952,
+    "axial_coverage_m": 0.5247048426031238,
+    "mean_axis_radius_mm": 112.09512371284885,
+    "region_length_mm": [
+      403.72577360741593,
+      30.02011606614954,
+      920.7541103264346
+    ],
+    "region_signed_turns": [
+      -0.5574516100125251,
+      -0.03482927089273317,
+      -1.1125356960950374
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      11,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 258.0
+  },
+  {
+    "sim_time": 28.20000000001148,
+    "phase": -19.499999999999993,
+    "mean_progress_m": 1.0687586655551586,
+    "minimum_progress_m": 0.8281471624848099,
+    "signed_geometric_turns": -1.7121684731260123,
+    "axial_coverage_m": 0.5245233967990184,
+    "mean_axis_radius_mm": 111.79689651554591,
+    "region_length_mm": [
+      398.15161615809853,
+      28.702855274862966,
+      927.6455285670385
+    ],
+    "region_signed_turns": [
+      -0.5530273349902853,
+      -0.03377887126933343,
+      -1.1253622668663936
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 322.5
+  },
+  {
+    "sim_time": 28.400000000011726,
+    "phase": -19.64999999999999,
+    "mean_progress_m": 1.0720953826752786,
+    "minimum_progress_m": 0.830367542160434,
+    "signed_geometric_turns": -1.7232954390391353,
+    "axial_coverage_m": 0.5246892540498052,
+    "mean_axis_radius_mm": 111.21732134917178,
+    "region_length_mm": [
+      391.62974917933735,
+      28.37109189079753,
+      934.4991589298651
+    ],
+    "region_signed_turns": [
+      -0.547545601528087,
+      -0.033492946402274584,
+      -1.1422568911087736
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 28.60000000001197,
+    "phase": -19.79999999999999,
+    "mean_progress_m": 1.0754912475427014,
+    "minimum_progress_m": 0.8343808649814498,
+    "signed_geometric_turns": -1.7296814120069166,
+    "axial_coverage_m": 0.5228256425813426,
+    "mean_axis_radius_mm": 110.9556797336688,
+    "region_length_mm": [
+      380.4482012910988,
+      34.544354849257985,
+      939.5074438596432
+    ],
+    "region_signed_turns": [
+      -0.5346203676234076,
+      -0.041732227736890476,
+      -1.1533288166466187
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      9,
+      11,
+      16,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 28.800000000012215,
+    "phase": -19.94999999999999,
+    "mean_progress_m": 1.0783012424777145,
+    "minimum_progress_m": 0.8349200696123258,
+    "signed_geometric_turns": -1.729939603269499,
+    "axial_coverage_m": 0.5243885947698544,
+    "mean_axis_radius_mm": 110.96856988734376,
+    "region_length_mm": [
+      362.8095700801023,
+      49.82219727623965,
+      941.8682326436581
+    ],
+    "region_signed_turns": [
+      -0.5096210647655759,
+      -0.06233346944384549,
+      -1.1579850690600773
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      11,
+      16,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 29.00000000001246,
+    "phase": -20.099999999999987,
+    "mean_progress_m": 1.0819251435604316,
+    "minimum_progress_m": 0.8367008667457946,
+    "signed_geometric_turns": -1.7217667288029552,
+    "axial_coverage_m": 0.5264071749601119,
+    "mean_axis_radius_mm": 111.46270587332417,
+    "region_length_mm": [
+      327.3132703637719,
+      79.33416192079886,
+      947.8525677154292
+    ],
+    "region_signed_turns": [
+      -0.4522572306293723,
+      -0.10480352752099162,
+      -1.1647059706525913
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      11,
+      13,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 29.200000000012704,
+    "phase": -20.249999999999986,
+    "mean_progress_m": 1.085494095095806,
+    "minimum_progress_m": 0.8423341083173927,
+    "signed_geometric_turns": -1.7080565075194358,
+    "axial_coverage_m": 0.5272413119817567,
+    "mean_axis_radius_mm": 112.27863345613903,
+    "region_length_mm": [
+      317.8941693340586,
+      78.35833132400614,
+      958.2474993419353
+    ],
+    "region_signed_turns": [
+      -0.4299476745637006,
+      -0.10184840878919617,
+      -1.1762604241665393
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      10,
+      11,
+      13,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 29.400000000012948,
+    "phase": -20.399999999999984,
+    "mean_progress_m": 1.0898997607324576,
+    "minimum_progress_m": 0.8474164452992988,
+    "signed_geometric_turns": -1.6998851769251686,
+    "axial_coverage_m": 0.5286915015172534,
+    "mean_axis_radius_mm": 112.70772900808534,
+    "region_length_mm": [
+      312.4332207991523,
+      58.21215289457927,
+      983.8546263062684
+    ],
+    "region_signed_turns": [
+      -0.42046814449914377,
+      -0.0773514427738092,
+      -1.2020655896522157
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 29.600000000013193,
+    "phase": -20.549999999999983,
+    "mean_progress_m": 1.0946394604289025,
+    "minimum_progress_m": 0.8560759047134654,
+    "signed_geometric_turns": -1.6963227792990776,
+    "axial_coverage_m": 0.527798544957529,
+    "mean_axis_radius_mm": 112.92138758954714,
+    "region_length_mm": [
+      306.1537246121513,
+      43.68500370876221,
+      1004.6612716790866
+    ],
+    "region_signed_turns": [
+      -0.41659739419848163,
+      -0.05896448960016509,
+      -1.220760895500431
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      17
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 29.800000000013437,
+    "phase": -20.69999999999998,
+    "mean_progress_m": 1.097864888269394,
+    "minimum_progress_m": 0.8606285828750777,
+    "signed_geometric_turns": -1.6909157140327995,
+    "axial_coverage_m": 0.5277058885719706,
+    "mean_axis_radius_mm": 113.30781759085323,
+    "region_length_mm": [
+      301.8852971699479,
+      38.23989238244957,
+      1014.3748104476026
+    ],
+    "region_signed_turns": [
+      -0.4136340407657557,
+      -0.051414515388589106,
+      -1.2258671578784546
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      12,
+      13,
+      18
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 30.00000000001368,
+    "phase": -20.84999999999998,
+    "mean_progress_m": 1.1016631046329834,
+    "minimum_progress_m": 0.8649201906559865,
+    "signed_geometric_turns": -1.6899666047392714,
+    "axial_coverage_m": 0.5272628618183558,
+    "mean_axis_radius_mm": 113.418212004757,
+    "region_length_mm": [
+      296.00022774482045,
+      38.84684928140285,
+      1019.6529229737766
+    ],
+    "region_signed_turns": [
+      -0.40616585711261244,
+      -0.052814890163455405,
+      -1.2309858574632035
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 30.200000000013926,
+    "phase": -20.99999999999998,
+    "mean_progress_m": 1.1052712012428667,
+    "minimum_progress_m": 0.8678306649914851,
+    "signed_geometric_turns": -1.6925846199194317,
+    "axial_coverage_m": 0.528196609749294,
+    "mean_axis_radius_mm": 113.23503036863926,
+    "region_length_mm": [
+      290.0769759079557,
+      43.04630841349114,
+      1021.3767156785532
+    ],
+    "region_signed_turns": [
+      -0.397087247229791,
+      -0.05908204913437781,
+      -1.2364153235552633
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      14,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 30.40000000001417,
+    "phase": -21.149999999999977,
+    "mean_progress_m": 1.1091454218368253,
+    "minimum_progress_m": 0.8721343810598536,
+    "signed_geometric_turns": -1.7039407990872113,
+    "axial_coverage_m": 0.5271637857392786,
+    "mean_axis_radius_mm": 112.52199625733627,
+    "region_length_mm": [
+      274.8037052956509,
+      54.43239063977655,
+      1025.2639040645727
+    ],
+    "region_signed_turns": [
+      -0.3758712503090958,
+      -0.07558214764977499,
+      -1.2524874011283407
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      14,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 30.600000000014415,
+    "phase": -21.299999999999976,
+    "mean_progress_m": 1.112523541994671,
+    "minimum_progress_m": 0.8738396691582032,
+    "signed_geometric_turns": -1.7148064400290768,
+    "axial_coverage_m": 0.5280906533589831,
+    "mean_axis_radius_mm": 111.93761283716344,
+    "region_length_mm": [
+      253.63852850386135,
+      71.82774609273525,
+      1029.0337254034034
+    ],
+    "region_signed_turns": [
+      -0.3515297866284273,
+      -0.0969609630110606,
+      -1.266315690389589
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 30.80000000001466,
+    "phase": -21.449999999999974,
+    "mean_progress_m": 1.1162256016967995,
+    "minimum_progress_m": 0.8725805488909719,
+    "signed_geometric_turns": -1.7209767095711421,
+    "axial_coverage_m": 0.532535485553283,
+    "mean_axis_radius_mm": 111.56688525406221,
+    "region_length_mm": [
+      242.5336219555547,
+      68.14510357629065,
+      1043.8212744681546
+    ],
+    "region_signed_turns": [
+      -0.3453059828554266,
+      -0.08730167692123032,
+      -1.2883690497944855
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 31.000000000014904,
+    "phase": -21.599999999999973,
+    "mean_progress_m": 1.120472061846138,
+    "minimum_progress_m": 0.8737948550432134,
+    "signed_geometric_turns": -1.7243492972242371,
+    "axial_coverage_m": 0.5344502961710786,
+    "mean_axis_radius_mm": 111.34993295610741,
+    "region_length_mm": [
+      234.1969170286124,
+      38.61931615707174,
+      1081.683766814316
+    ],
+    "region_signed_turns": [
+      -0.3383014976768054,
+      -0.04290794846314351,
+      -1.3431398510842878
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      9,
+      10,
+      12,
+      14,
+      18,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 31.200000000015148,
+    "phase": -21.74999999999997,
+    "mean_progress_m": 1.1245918501674905,
+    "minimum_progress_m": 0.8751247469203536,
+    "signed_geometric_turns": -1.7111758139863302,
+    "axial_coverage_m": 0.5371861326653198,
+    "mean_axis_radius_mm": 112.13603071414009,
+    "region_length_mm": [
+      227.90882504314584,
+      24.954820278622748,
+      1101.6363546782313
+    ],
+    "region_signed_turns": [
+      -0.3190569529126808,
+      -0.025173088132146096,
+      -1.366945772941503
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      5,
+      9,
+      10,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 31.400000000015392,
+    "phase": -21.89999999999997,
+    "mean_progress_m": 1.1301515847130608,
+    "minimum_progress_m": 0.8812945532032045,
+    "signed_geometric_turns": -1.6892289879142148,
+    "axial_coverage_m": 0.5390895220141543,
+    "mean_axis_radius_mm": 113.48949414765494,
+    "region_length_mm": [
+      220.68153306299547,
+      25.32639156699994,
+      1108.4920753700046
+    ],
+    "region_signed_turns": [
+      -0.2963773804779576,
+      -0.027805124094258137,
+      -1.3650464833419993
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      9,
+      10,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 31.600000000015637,
+    "phase": -22.04999999999997,
+    "mean_progress_m": 1.1350998189127879,
+    "minimum_progress_m": 0.8898381192713909,
+    "signed_geometric_turns": -1.6701104019704287,
+    "axial_coverage_m": 0.5370887391167746,
+    "mean_axis_radius_mm": 114.7521424264168,
+    "region_length_mm": [
+      211.55793151224526,
+      27.72243557600496,
+      1115.2196329117498
+    ],
+    "region_signed_turns": [
+      -0.27276847614699423,
+      -0.032419151668088154,
+      -1.3649227741553465
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 31.80000000001588,
+    "phase": -22.199999999999967,
+    "mean_progress_m": 1.1410841061341053,
+    "minimum_progress_m": 0.8962887821464006,
+    "signed_geometric_turns": -1.6592678100618599,
+    "axial_coverage_m": 0.5380989218277525,
+    "mean_axis_radius_mm": 115.43459278762319,
+    "region_length_mm": [
+      200.29999291452708,
+      30.644953136790413,
+      1123.5550539486826
+    ],
+    "region_signed_turns": [
+      -0.2521257797258796,
+      -0.03610826111209205,
+      -1.3710337692238879
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      12,
+      14,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 32.00000000001612,
+    "phase": -22.349999999999966,
+    "mean_progress_m": 1.1464706558184725,
+    "minimum_progress_m": 0.9045014029532484,
+    "signed_geometric_turns": -1.6556893996441273,
+    "axial_coverage_m": 0.5354380622406566,
+    "mean_axis_radius_mm": 115.77922498977532,
+    "region_length_mm": [
+      180.57816349317068,
+      41.27786882170705,
+      1132.6439676851223
+    ],
+    "region_signed_turns": [
+      -0.22784641470653252,
+      -0.04917050523224253,
+      -1.378672479705352
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      14,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 322.5
+  },
+  {
+    "sim_time": 32.200000000015656,
+    "phase": -22.499999999999964,
+    "mean_progress_m": 1.1499421742111973,
+    "minimum_progress_m": 0.9075675345693441,
+    "signed_geometric_turns": -1.6627470143932503,
+    "axial_coverage_m": 0.5360402353672511,
+    "mean_axis_radius_mm": 115.3989857516522,
+    "region_length_mm": [
+      167.6215044817562,
+      46.38896053183663,
+      1140.489534986407
+    ],
+    "region_signed_turns": [
+      -0.21562693253624907,
+      -0.05584417255336629,
+      -1.391275909303635
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      14,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 322.5
+  },
+  {
+    "sim_time": 32.40000000001519,
+    "phase": -22.649999999999963,
+    "mean_progress_m": 1.1532456812791558,
+    "minimum_progress_m": 0.908822233958283,
+    "signed_geometric_turns": -1.6757098063060867,
+    "axial_coverage_m": 0.537832432636734,
+    "mean_axis_radius_mm": 114.59958766377872,
+    "region_length_mm": [
+      163.3599364664243,
+      46.23491252571559,
+      1144.90515100786
+    ],
+    "region_signed_turns": [
+      -0.21456882242810432,
+      -0.05482159821218815,
+      -1.4063193856657947
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      14,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 322.5
+  },
+  {
+    "sim_time": 32.600000000014724,
+    "phase": -22.79999999999996,
+    "mean_progress_m": 1.15525002297418,
+    "minimum_progress_m": 0.9073063769154297,
+    "signed_geometric_turns": -1.688815670296725,
+    "axial_coverage_m": 0.5396123182284522,
+    "mean_axis_radius_mm": 113.76892520220672,
+    "region_length_mm": [
+      168.07062682166696,
+      43.79373262961688,
+      1142.635640548716
+    ],
+    "region_signed_turns": [
+      -0.2290640899152591,
+      -0.05068896891856685,
+      -1.4090626114628988
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      13,
+      14,
+      15,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 32.80000000001426,
+    "phase": -22.94999999999996,
+    "mean_progress_m": 1.157494933909553,
+    "minimum_progress_m": 0.9077197367970895,
+    "signed_geometric_turns": -1.6932874044551722,
+    "axial_coverage_m": 0.5402270189888134,
+    "mean_axis_radius_mm": 113.58950149702105,
+    "region_length_mm": [
+      166.81204771271518,
+      42.391475981031704,
+      1145.2964763062532
+    ],
+    "region_signed_turns": [
+      -0.23305905270867813,
+      -0.04756575895192899,
+      -1.412662592794565
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      13,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 33.00000000001379,
+    "phase": -23.09999999999996,
+    "mean_progress_m": 1.1608991071734294,
+    "minimum_progress_m": 0.9092428658874616,
+    "signed_geometric_turns": -1.690825819707708,
+    "axial_coverage_m": 0.5423621901235086,
+    "mean_axis_radius_mm": 113.78086537146953,
+    "region_length_mm": [
+      159.24493484481872,
+      32.76183830994985,
+      1162.4932268452314
+    ],
+    "region_signed_turns": [
+      -0.22138805164664618,
+      -0.03373354409988745,
+      -1.4357042239611741
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      3,
+      4,
+      9,
+      11,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 33.200000000013326,
+    "phase": -23.249999999999957,
+    "mean_progress_m": 1.1650428385336988,
+    "minimum_progress_m": 0.9122460846343501,
+    "signed_geometric_turns": -1.6814725782182722,
+    "axial_coverage_m": 0.5468558431225824,
+    "mean_axis_radius_mm": 114.20549739403855,
+    "region_length_mm": [
+      151.89250741190892,
+      28.595917575136934,
+      1174.0115750129542
+    ],
+    "region_signed_turns": [
+      -0.20688033763006058,
+      -0.03018941692033316,
+      -1.4444028236678788
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      11,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 33.40000000001286,
+    "phase": -23.399999999999956,
+    "mean_progress_m": 1.1694927776578132,
+    "minimum_progress_m": 0.9197832350582963,
+    "signed_geometric_turns": -1.6674697575595776,
+    "axial_coverage_m": 0.5474477617250957,
+    "mean_axis_radius_mm": 114.96969710086542,
+    "region_length_mm": [
+      142.61531301944072,
+      26.8303646407795,
+      1185.0543223397797
+    ],
+    "region_signed_turns": [
+      -0.18547984699774325,
+      -0.029814452338752705,
+      -1.4521754582230815
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 33.60000000001239,
+    "phase": -23.549999999999955,
+    "mean_progress_m": 1.172725563128941,
+    "minimum_progress_m": 0.9268951466027857,
+    "signed_geometric_turns": -1.6584296416363191,
+    "axial_coverage_m": 0.5478410414407101,
+    "mean_axis_radius_mm": 115.47495523259946,
+    "region_length_mm": [
+      133.18589642305125,
+      25.98983625306376,
+      1195.324267323885
+    ],
+    "region_signed_turns": [
+      -0.16666797747952738,
+      -0.029079594067581455,
+      -1.4626820700892103
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      10,
+      11,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 33.80000000001193,
+    "phase": -23.699999999999953,
+    "mean_progress_m": 1.1773558386462484,
+    "minimum_progress_m": 0.9353876018664485,
+    "signed_geometric_turns": -1.6540437133208077,
+    "axial_coverage_m": 0.5501968803295219,
+    "mean_axis_radius_mm": 115.55958888085709,
+    "region_length_mm": [
+      117.15091752531498,
+      33.82080822213125,
+      1203.5282742525537
+    ],
+    "region_signed_turns": [
+      -0.14021331402482395,
+      -0.04091554308382798,
+      -1.4729148562121555
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 34.00000000001146,
+    "phase": -23.84999999999995,
+    "mean_progress_m": 1.181775539690093,
+    "minimum_progress_m": 0.9427656368545876,
+    "signed_geometric_turns": -1.6492826256049273,
+    "axial_coverage_m": 0.5495144380613122,
+    "mean_axis_radius_mm": 115.79534170713609,
+    "region_length_mm": [
+      93.20579911717778,
+      49.430402898144685,
+      1211.8637979846776
+    ],
+    "region_signed_turns": [
+      -0.10281185498826119,
+      -0.06350273132266682,
+      -1.4829680392939988
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 34.200000000010995,
+    "phase": -23.99999999999995,
+    "mean_progress_m": 1.1869110467247048,
+    "minimum_progress_m": 0.9483325392805841,
+    "signed_geometric_turns": -1.6519147633605633,
+    "axial_coverage_m": 0.5449751105114441,
+    "mean_axis_radius_mm": 115.75208434268959,
+    "region_length_mm": [
+      70.97012760938495,
+      61.23417950217962,
+      1222.2956928884355
+    ],
+    "region_signed_turns": [
+      -0.07229747416496518,
+      -0.07960581495199527,
+      -1.500011474243603
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 34.40000000001053,
+    "phase": -24.14999999999995,
+    "mean_progress_m": 1.1913676300568157,
+    "minimum_progress_m": 0.9523056926119333,
+    "signed_geometric_turns": -1.6519282050381807,
+    "axial_coverage_m": 0.5452277596238844,
+    "mean_axis_radius_mm": 115.73112962160255,
+    "region_length_mm": [
+      58.664371246069685,
+      58.769005906172794,
+      1237.0666228477576
+    ],
+    "region_signed_turns": [
+      -0.057037260603269815,
+      -0.0752397968845427,
+      -1.5196511475503682
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      12,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 34.60000000001006,
+    "phase": -24.299999999999947,
+    "mean_progress_m": 1.1946640989138264,
+    "minimum_progress_m": 0.9540505942936791,
+    "signed_geometric_turns": -1.6547234371544528,
+    "axial_coverage_m": 0.5436935672811808,
+    "mean_axis_radius_mm": 115.6710706567007,
+    "region_length_mm": [
+      53.910907166365064,
+      52.67535277239864,
+      1247.9137400612362
+    ],
+    "region_signed_turns": [
+      -0.05204784749562023,
+      -0.06651720776219068,
+      -1.536158381896642
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      12,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 387.0
+  },
+  {
+    "sim_time": 34.8000000000096,
+    "phase": -24.449999999999946,
+    "mean_progress_m": 1.1988459665842688,
+    "minimum_progress_m": 0.9561204051708099,
+    "signed_geometric_turns": -1.6570720424019911,
+    "axial_coverage_m": 0.5416043246739999,
+    "mean_axis_radius_mm": 115.73518740789966,
+    "region_length_mm": [
+      48.27512471283234,
+      47.46124984133645,
+      1258.7636254458312
+    ],
+    "region_signed_turns": [
+      -0.04730699749336126,
+      -0.059538783440319897,
+      -1.55022626146831
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 35.00000000000913,
+    "phase": -24.599999999999945,
+    "mean_progress_m": 1.202923715986423,
+    "minimum_progress_m": 0.9547357105338246,
+    "signed_geometric_turns": -1.6579294853372442,
+    "axial_coverage_m": 0.5451863141228136,
+    "mean_axis_radius_mm": 115.65073489465752,
+    "region_length_mm": [
+      51.96071267775241,
+      43.69774572405183,
+      1258.8415415981958
+    ],
+    "region_signed_turns": [
+      -0.05489133370327806,
+      -0.05666454030574961,
+      -1.5463736113282167
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 35.200000000008664,
+    "phase": -24.749999999999943,
+    "mean_progress_m": 1.2072267997867359,
+    "minimum_progress_m": 0.9572154181207951,
+    "signed_geometric_turns": -1.660123445904469,
+    "axial_coverage_m": 0.5457865189648523,
+    "mean_axis_radius_mm": 115.42466709246405,
+    "region_length_mm": [
+      44.71569316693656,
+      41.9156183675607,
+      1267.8686884655028
+    ],
+    "region_signed_turns": [
+      -0.04748493452878152,
+      -0.05363757956861648,
+      -1.5590009318070708
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 35.4000000000082,
+    "phase": -24.89999999999994,
+    "mean_progress_m": 1.2108580392809782,
+    "minimum_progress_m": 0.9599141191630476,
+    "signed_geometric_turns": -1.6621301400197106,
+    "axial_coverage_m": 0.5457539399862606,
+    "mean_axis_radius_mm": 115.20734764440981,
+    "region_length_mm": [
+      37.203194822802025,
+      41.12896249262935,
+      1276.1678426845685
+    ],
+    "region_signed_turns": [
+      -0.039790173868982495,
+      -0.051996540945959784,
+      -1.5703434252047686
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      9,
+      10,
+      12,
+      14,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 35.60000000000773,
+    "phase": -25.04999999999994,
+    "mean_progress_m": 1.2146537627119778,
+    "minimum_progress_m": 0.9642308034951119,
+    "signed_geometric_turns": -1.6650356081144553,
+    "axial_coverage_m": 0.5492364508627229,
+    "mean_axis_radius_mm": 114.68155539006177,
+    "region_length_mm": [
+      26.664650338254564,
+      42.236731599788115,
+      1285.5986180619573
+    ],
+    "region_signed_turns": [
+      -0.027591880230685987,
+      -0.051780501822605886,
+      -1.585663226061163
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      5,
+      10,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 35.800000000007266,
+    "phase": -25.19999999999994,
+    "mean_progress_m": 1.2194133777173544,
+    "minimum_progress_m": 0.970942858297521,
+    "signed_geometric_turns": -1.6561950263196763,
+    "axial_coverage_m": 0.5511896898945406,
+    "mean_axis_radius_mm": 115.06326974773954,
+    "region_length_mm": [
+      6.968293593431939,
+      45.55516754000668,
+      1301.9765388665614
+    ],
+    "region_signed_turns": [
+      -0.006580110108828317,
+      -0.050715735563113484,
+      -1.5988991806477346
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 36.0000000000068,
+    "phase": -25.349999999999937,
+    "mean_progress_m": 1.2256942775182549,
+    "minimum_progress_m": 0.9773071652935446,
+    "signed_geometric_turns": -1.647682876224124,
+    "axial_coverage_m": 0.5536465813505825,
+    "mean_axis_radius_mm": 115.51603160142443,
+    "region_length_mm": [
+      0.0,
+      34.036677619299205,
+      1320.463322380701
+    ],
+    "region_signed_turns": [
+      0.0,
+      -0.03392269793975571,
+      -1.613760178284368
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      11,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 36.200000000006334,
+    "phase": -25.499999999999936,
+    "mean_progress_m": 1.2318647434106105,
+    "minimum_progress_m": 0.985898890675048,
+    "signed_geometric_turns": -1.64230927190001,
+    "axial_coverage_m": 0.5511435781240581,
+    "mean_axis_radius_mm": 115.93676600084969,
+    "region_length_mm": [
+      0.0,
+      4.712846683950303,
+      1349.7871533160496
+    ],
+    "region_signed_turns": [
+      0.0,
+      -0.004067764155935356,
+      -1.6382415077440748
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 36.40000000000587,
+    "phase": -25.649999999999935,
+    "mean_progress_m": 1.2360257583464918,
+    "minimum_progress_m": 0.9909259333146113,
+    "signed_geometric_turns": -1.647272244643845,
+    "axial_coverage_m": 0.5486996614205963,
+    "mean_axis_radius_mm": 115.76061611114191,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6472722446438446
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 36.6000000000054,
+    "phase": -25.799999999999933,
+    "mean_progress_m": 1.2398763269408257,
+    "minimum_progress_m": 0.9946379346497128,
+    "signed_geometric_turns": -1.651468942616903,
+    "axial_coverage_m": 0.5457244223408122,
+    "mean_axis_radius_mm": 115.72838081139874,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6514689426169036
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 36.800000000004935,
+    "phase": -25.949999999999932,
+    "mean_progress_m": 1.2437521639559737,
+    "minimum_progress_m": 0.9953774554423358,
+    "signed_geometric_turns": -1.6525235939363996,
+    "axial_coverage_m": 0.547287950940189,
+    "mean_axis_radius_mm": 115.77070853565814,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6525235939363994
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      13,
+      14,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 37.00000000000447,
+    "phase": -26.09999999999993,
+    "mean_progress_m": 1.2477489793970094,
+    "minimum_progress_m": 0.9990069756188351,
+    "signed_geometric_turns": -1.6561774243875156,
+    "axial_coverage_m": 0.5454993408678139,
+    "mean_axis_radius_mm": 115.73535008811837,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6561774243875156
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 37.200000000004,
+    "phase": -26.24999999999993,
+    "mean_progress_m": 1.2516035084826493,
+    "minimum_progress_m": 1.0022075280669775,
+    "signed_geometric_turns": -1.657869069189487,
+    "axial_coverage_m": 0.5464321649146382,
+    "mean_axis_radius_mm": 115.69961500575907,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6578690691894875
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      13,
+      15,
+      16,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 37.40000000000354,
+    "phase": -26.399999999999928,
+    "mean_progress_m": 1.2548021460446026,
+    "minimum_progress_m": 1.0044195413940868,
+    "signed_geometric_turns": -1.660580409068389,
+    "axial_coverage_m": 0.548915102092873,
+    "mean_axis_radius_mm": 115.31042504359093,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6605804090683889
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      9,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 37.60000000000307,
+    "phase": -26.549999999999926,
+    "mean_progress_m": 1.258168712777678,
+    "minimum_progress_m": 1.0101813964253243,
+    "signed_geometric_turns": -1.6582836452549168,
+    "axial_coverage_m": 0.5495956029555619,
+    "mean_axis_radius_mm": 115.27952186217549,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6582836452549168
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 37.800000000002605,
+    "phase": -26.699999999999925,
+    "mean_progress_m": 1.2613818208004166,
+    "minimum_progress_m": 1.0138905353801466,
+    "signed_geometric_turns": -1.6520234447742592,
+    "axial_coverage_m": 0.553977209039257,
+    "mean_axis_radius_mm": 115.38738431585007,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6520234447742592
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      10,
+      11,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 38.00000000000214,
+    "phase": -26.849999999999923,
+    "mean_progress_m": 1.2668676185757748,
+    "minimum_progress_m": 1.0219273051726314,
+    "signed_geometric_turns": -1.6465714617674863,
+    "axial_coverage_m": 0.5581743624654099,
+    "mean_axis_radius_mm": 115.48586551528142,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6465714617674865
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 38.20000000000167,
+    "phase": -26.999999999999922,
+    "mean_progress_m": 1.2717547850109443,
+    "minimum_progress_m": 1.0297478471011252,
+    "signed_geometric_turns": -1.6422981745635417,
+    "axial_coverage_m": 0.5558783463716908,
+    "mean_axis_radius_mm": 115.78075733969665,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.642298174563542
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 38.40000000000121,
+    "phase": -27.14999999999992,
+    "mean_progress_m": 1.2767707565201265,
+    "minimum_progress_m": 1.034584755401802,
+    "signed_geometric_turns": -1.6471364297004667,
+    "axial_coverage_m": 0.5530676015020204,
+    "mean_axis_radius_mm": 115.54618085028066,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647136429700467
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      6,
+      8,
+      10,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 38.60000000000074,
+    "phase": -27.29999999999992,
+    "mean_progress_m": 1.2808748328881463,
+    "minimum_progress_m": 1.0377197372222862,
+    "signed_geometric_turns": -1.6479597803350403,
+    "axial_coverage_m": 0.5506812525360609,
+    "mean_axis_radius_mm": 115.60766924993042,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.64795978033504
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      6,
+      8,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 38.800000000000274,
+    "phase": -27.449999999999918,
+    "mean_progress_m": 1.2846632874727255,
+    "minimum_progress_m": 1.0404029016816636,
+    "signed_geometric_turns": -1.6511262160043776,
+    "axial_coverage_m": 0.5491545038673555,
+    "mean_axis_radius_mm": 115.54505428344005,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6511262160043776
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 38.99999999999981,
+    "phase": -27.599999999999916,
+    "mean_progress_m": 1.2888903156081628,
+    "minimum_progress_m": 1.042576687419953,
+    "signed_geometric_turns": -1.6540220921403972,
+    "axial_coverage_m": 0.5472311447780818,
+    "mean_axis_radius_mm": 115.59185241285483,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6540220921403972
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 39.19999999999934,
+    "phase": -27.749999999999915,
+    "mean_progress_m": 1.293040348892409,
+    "minimum_progress_m": 1.0417855843249924,
+    "signed_geometric_turns": -1.6546545204391268,
+    "axial_coverage_m": 0.5505261596207893,
+    "mean_axis_radius_mm": 115.52482123832729,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.654654520439127
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 39.399999999998876,
+    "phase": -27.899999999999913,
+    "mean_progress_m": 1.297542308001519,
+    "minimum_progress_m": 1.045262880070461,
+    "signed_geometric_turns": -1.6565255710381241,
+    "axial_coverage_m": 0.5507934141305155,
+    "mean_axis_radius_mm": 115.33925265599791,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.656525571038124
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      9,
+      10,
+      14,
+      15,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 39.59999999999841,
+    "phase": -28.049999999999912,
+    "mean_progress_m": 1.3007297097322965,
+    "minimum_progress_m": 1.0473213407128237,
+    "signed_geometric_turns": -1.6578948018090924,
+    "axial_coverage_m": 0.5515778794452315,
+    "mean_axis_radius_mm": 115.13868131657853,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6578948018090929
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      9,
+      10,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 39.799999999997944,
+    "phase": -28.19999999999991,
+    "mean_progress_m": 1.3045057065503853,
+    "minimum_progress_m": 1.0523208148412526,
+    "signed_geometric_turns": -1.6588915678051248,
+    "axial_coverage_m": 0.5536808626147594,
+    "mean_axis_radius_mm": 114.79308228372759,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6588915678051248
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      10,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 39.99999999999748,
+    "phase": -28.34999999999991,
+    "mean_progress_m": 1.3103526566763055,
+    "minimum_progress_m": 1.0594594284676466,
+    "signed_geometric_turns": -1.651503216865624,
+    "axial_coverage_m": 0.5567444511064523,
+    "mean_axis_radius_mm": 115.05332524015898,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.651503216865624
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 40.19999999999701,
+    "phase": -28.499999999999908,
+    "mean_progress_m": 1.3167353737263026,
+    "minimum_progress_m": 1.066318641283155,
+    "signed_geometric_turns": -1.645159572501827,
+    "axial_coverage_m": 0.5582031168156636,
+    "mean_axis_radius_mm": 115.37768206553028,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6451595725018267
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      11,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 40.399999999996545,
+    "phase": -28.649999999999906,
+    "mean_progress_m": 1.3219557682808185,
+    "minimum_progress_m": 1.073913247683921,
+    "signed_geometric_turns": -1.648575473146496,
+    "axial_coverage_m": 0.5570662252673881,
+    "mean_axis_radius_mm": 115.0762683978302,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.648575473146496
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      12,
+      14,
+      16,
+      18,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 40.59999999999608,
+    "phase": -28.799999999999905,
+    "mean_progress_m": 1.3260648622044395,
+    "minimum_progress_m": 1.0788382911718002,
+    "signed_geometric_turns": -1.6496079437794255,
+    "axial_coverage_m": 0.5525319924030929,
+    "mean_axis_radius_mm": 115.30324953984693,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6496079437794255
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 40.79999999999561,
+    "phase": -28.949999999999903,
+    "mean_progress_m": 1.330561628844469,
+    "minimum_progress_m": 1.0835267263363353,
+    "signed_geometric_turns": -1.6514017478486274,
+    "axial_coverage_m": 0.5488431787049708,
+    "mean_axis_radius_mm": 115.4715667717278,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6514017478486278
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 40.99999999999515,
+    "phase": -29.099999999999902,
+    "mean_progress_m": 1.3344310086620037,
+    "minimum_progress_m": 1.0843487988052285,
+    "signed_geometric_turns": -1.6520107289000692,
+    "axial_coverage_m": 0.5507529897656267,
+    "mean_axis_radius_mm": 115.53045381651054,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6520107289000703
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      13,
+      14,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 41.19999999999468,
+    "phase": -29.2499999999999,
+    "mean_progress_m": 1.3384352257324663,
+    "minimum_progress_m": 1.087786608199597,
+    "signed_geometric_turns": -1.6556516969702597,
+    "axial_coverage_m": 0.5491555722263475,
+    "mean_axis_radius_mm": 115.52173140374832,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6556516969702597
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 41.399999999994215,
+    "phase": -29.3999999999999,
+    "mean_progress_m": 1.342138253083969,
+    "minimum_progress_m": 1.0906355198665578,
+    "signed_geometric_turns": -1.656534060035367,
+    "axial_coverage_m": 0.5505294465305897,
+    "mean_axis_radius_mm": 115.51929786699034,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6565340600353673
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      3,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 41.59999999999375,
+    "phase": -29.549999999999898,
+    "mean_progress_m": 1.3452324885545528,
+    "minimum_progress_m": 1.0936233482170823,
+    "signed_geometric_turns": -1.655033654852398,
+    "axial_coverage_m": 0.5528709988494538,
+    "mean_axis_radius_mm": 115.44391617778248,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6550336548523985
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      9,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 41.79999999999328,
+    "phase": -29.699999999999896,
+    "mean_progress_m": 1.3486398004957523,
+    "minimum_progress_m": 1.1004712430800414,
+    "signed_geometric_turns": -1.6534121031033282,
+    "axial_coverage_m": 0.5510721934111533,
+    "mean_axis_radius_mm": 115.43483860893537,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6534121031033282
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 41.999999999992816,
+    "phase": -29.849999999999895,
+    "mean_progress_m": 1.3519082429377467,
+    "minimum_progress_m": 1.1042178844988202,
+    "signed_geometric_turns": -1.6480979982179762,
+    "axial_coverage_m": 0.5562990347162244,
+    "mean_axis_radius_mm": 115.44044834573447,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.648097998217976
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      10,
+      11,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 42.19999999999235,
+    "phase": -29.999999999999893,
+    "mean_progress_m": 1.3571455012556857,
+    "minimum_progress_m": 1.1121874106753697,
+    "signed_geometric_turns": -1.6423013102442525,
+    "axial_coverage_m": 0.5599854079841367,
+    "mean_axis_radius_mm": 115.57776347220756,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6423013102442519
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 42.399999999991884,
+    "phase": -30.149999999999892,
+    "mean_progress_m": 1.3620914805666435,
+    "minimum_progress_m": 1.1193448383853175,
+    "signed_geometric_turns": -1.6403877773700772,
+    "axial_coverage_m": 0.5580673670790357,
+    "mean_axis_radius_mm": 115.71360133571916,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6403877773700772
+    ],
+    "pipe_contact_robot_bodies": [
+      6,
+      8,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 42.59999999999142,
+    "phase": -30.29999999999989,
+    "mean_progress_m": 1.3672413156212622,
+    "minimum_progress_m": 1.1243902340374445,
+    "signed_geometric_turns": -1.6434425488868873,
+    "axial_coverage_m": 0.5549957045000853,
+    "mean_axis_radius_mm": 115.63097251147758,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6434425488868873
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      6,
+      8,
+      10,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 42.79999999999095,
+    "phase": -30.44999999999989,
+    "mean_progress_m": 1.3712819934897202,
+    "minimum_progress_m": 1.127141414025305,
+    "signed_geometric_turns": -1.6446269039553065,
+    "axial_coverage_m": 0.552758908109084,
+    "mean_axis_radius_mm": 115.67693397035157,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6446269039553065
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      12,
+      13,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 42.999999999990486,
+    "phase": -30.599999999999888,
+    "mean_progress_m": 1.3750670123975408,
+    "minimum_progress_m": 1.1299234119782782,
+    "signed_geometric_turns": -1.6484587105503987,
+    "axial_coverage_m": 0.5510334952456084,
+    "mean_axis_radius_mm": 115.59539983419828,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6484587105503987
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      17,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 43.19999999999002,
+    "phase": -30.749999999999886,
+    "mean_progress_m": 1.3791572131336276,
+    "minimum_progress_m": 1.1311175705604177,
+    "signed_geometric_turns": -1.650713431982669,
+    "axial_coverage_m": 0.5502246087328002,
+    "mean_axis_radius_mm": 115.68173330073316,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.650713431982669
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 43.399999999989554,
+    "phase": -30.899999999999885,
+    "mean_progress_m": 1.383264031349335,
+    "minimum_progress_m": 1.1305719660011668,
+    "signed_geometric_turns": -1.6511590932688756,
+    "axial_coverage_m": 0.5531717785336505,
+    "mean_axis_radius_mm": 115.61812634162607,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6511590932688756
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      10,
+      12,
+      14,
+      15,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 43.59999999998909,
+    "phase": -31.049999999999883,
+    "mean_progress_m": 1.3877412052547213,
+    "minimum_progress_m": 1.1349950222667753,
+    "signed_geometric_turns": -1.6529305196339514,
+    "axial_coverage_m": 0.5526240294926286,
+    "mean_axis_radius_mm": 115.45451749680812,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6529305196339523
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      8,
+      9,
+      10,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 43.79999999998862,
+    "phase": -31.199999999999882,
+    "mean_progress_m": 1.390292287172723,
+    "minimum_progress_m": 1.1364391878261766,
+    "signed_geometric_turns": -1.6557704148535293,
+    "axial_coverage_m": 0.5531206398910413,
+    "mean_axis_radius_mm": 115.17913098392837,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6557704148535295
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      9,
+      10,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 43.999999999988155,
+    "phase": -31.34999999999988,
+    "mean_progress_m": 1.3937878383472218,
+    "minimum_progress_m": 1.1410962789599788,
+    "signed_geometric_turns": -1.6570574827298359,
+    "axial_coverage_m": 0.5558678528370666,
+    "mean_axis_radius_mm": 114.78019130707007,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6570574827298359
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      10,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 44.19999999998769,
+    "phase": -31.49999999999988,
+    "mean_progress_m": 1.3997349961683503,
+    "minimum_progress_m": 1.1481299931837876,
+    "signed_geometric_turns": -1.6505360063832712,
+    "axial_coverage_m": 0.558963908975997,
+    "mean_axis_radius_mm": 114.99069169945945,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6505360063832715
+    ],
+    "pipe_contact_robot_bodies": [
+      5,
+      7,
+      11,
+      12,
+      14,
+      16,
+      19
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 44.39999999998722,
+    "phase": -31.649999999999878,
+    "mean_progress_m": 1.406069393162737,
+    "minimum_progress_m": 1.1550885384993745,
+    "signed_geometric_turns": -1.6466608738487436,
+    "axial_coverage_m": 0.5601950441799772,
+    "mean_axis_radius_mm": 115.13798684614885,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6466608738487436
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      11,
+      12,
+      14,
+      16,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 451.5
+  },
+  {
+    "sim_time": 44.59999999998676,
+    "phase": -31.799999999999876,
+    "mean_progress_m": 1.4114106969781528,
+    "minimum_progress_m": 1.1628807244028103,
+    "signed_geometric_turns": -1.645383882193859,
+    "axial_coverage_m": 0.5579342274917745,
+    "mean_axis_radius_mm": 115.25501957062579,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6453838821938591
+    ],
+    "pipe_contact_robot_bodies": [
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 44.79999999998629,
+    "phase": -31.949999999999875,
+    "mean_progress_m": 1.4154237498207145,
+    "minimum_progress_m": 1.1675395532977118,
+    "signed_geometric_turns": -1.6475839739896594,
+    "axial_coverage_m": 0.5536434511114678,
+    "mean_axis_radius_mm": 115.40390377351324,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6475839739896596
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 44.999999999985825,
+    "phase": -32.09999999999987,
+    "mean_progress_m": 1.4197609950564742,
+    "minimum_progress_m": 1.1718087591028314,
+    "signed_geometric_turns": -1.649689435998865,
+    "axial_coverage_m": 0.5506164564920997,
+    "mean_axis_radius_mm": 115.52481340125671,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.649689435998865
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      11,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 45.19999999998536,
+    "phase": -32.24999999999987,
+    "mean_progress_m": 1.4236532511795246,
+    "minimum_progress_m": 1.1727450308254201,
+    "signed_geometric_turns": -1.6506364334579935,
+    "axial_coverage_m": 0.5524322427804966,
+    "mean_axis_radius_mm": 115.57246853444943,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.650636433457993
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      7,
+      9,
+      13,
+      14,
+      15,
+      16,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 45.39999999998489,
+    "phase": -32.39999999999987,
+    "mean_progress_m": 1.4276664524595208,
+    "minimum_progress_m": 1.1763791137610422,
+    "signed_geometric_turns": -1.6541628921275198,
+    "axial_coverage_m": 0.550478951191173,
+    "mean_axis_radius_mm": 115.58852803731793,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.65416289212752
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      9,
+      11,
+      13,
+      15,
+      16,
+      20,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 45.599999999984426,
+    "phase": -32.54999999999987,
+    "mean_progress_m": 1.4313383936995583,
+    "minimum_progress_m": 1.178874153524128,
+    "signed_geometric_turns": -1.6544564230272525,
+    "axial_coverage_m": 0.5524079797233601,
+    "mean_axis_radius_mm": 115.5983641437189,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.654456423027253
+    ],
+    "pipe_contact_robot_bodies": [
+      2,
+      3,
+      9,
+      11,
+      13,
+      15,
+      16,
+      21
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 45.79999999998396,
+    "phase": -32.69999999999987,
+    "mean_progress_m": 1.4343526804914344,
+    "minimum_progress_m": 1.182142051752214,
+    "signed_geometric_turns": -1.6534779770125627,
+    "axial_coverage_m": 0.5543520472704386,
+    "mean_axis_radius_mm": 115.4896882868489,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6534779770125632
+    ],
+    "pipe_contact_robot_bodies": [
+      3,
+      9,
+      11,
+      13,
+      15,
+      16,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 45.999999999983494,
+    "phase": -32.849999999999866,
+    "mean_progress_m": 1.4374964426489998,
+    "minimum_progress_m": 1.1888176836806659,
+    "signed_geometric_turns": -1.652354969336473,
+    "axial_coverage_m": 0.552574933368225,
+    "mean_axis_radius_mm": 115.43774035331731,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6523549693364732
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 46.19999999998303,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4409411127884693,
+    "minimum_progress_m": 1.192542348861401,
+    "signed_geometric_turns": -1.6474714114209943,
+    "axial_coverage_m": 0.558377528898079,
+    "mean_axis_radius_mm": 115.38896395693492,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474714114209943
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      10,
+      11,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 516.0
+  },
+  {
+    "sim_time": 46.39999999998256,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.440640812068089,
+    "minimum_progress_m": 1.1932157928527718,
+    "signed_geometric_turns": -1.647735956516945,
+    "axial_coverage_m": 0.5573158211183646,
+    "mean_axis_radius_mm": 115.42590990638871,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647735956516945
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 580.5
+  },
+  {
+    "sim_time": 46.599999999982096,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.44028300537471,
+    "minimum_progress_m": 1.1936130516654533,
+    "signed_geometric_turns": -1.6481745856719103,
+    "axial_coverage_m": 0.5556108642787794,
+    "mean_axis_radius_mm": 115.45660608092673,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6481745856719108
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 46.79999999998163,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4399384441286802,
+    "minimum_progress_m": 1.1935065694910882,
+    "signed_geometric_turns": -1.6483791646191144,
+    "axial_coverage_m": 0.5546611746892938,
+    "mean_axis_radius_mm": 115.47750396050856,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6483791646191148
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 46.99999999998116,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4395713309061247,
+    "minimum_progress_m": 1.1931491175000828,
+    "signed_geometric_turns": -1.6484235694400964,
+    "axial_coverage_m": 0.554137371346515,
+    "mean_axis_radius_mm": 115.48963047197162,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6484235694400966
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 47.1999999999807,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4391884549459466,
+    "minimum_progress_m": 1.1926731132276671,
+    "signed_geometric_turns": -1.6483634086260994,
+    "axial_coverage_m": 0.5538294982315415,
+    "mean_axis_radius_mm": 115.49985946353124,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.648363408626099
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 47.39999999998023,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4387950263770015,
+    "minimum_progress_m": 1.1921531471842257,
+    "signed_geometric_turns": -1.6482494457422388,
+    "axial_coverage_m": 0.5536259545149536,
+    "mean_axis_radius_mm": 115.50924381743422,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6482494457422388
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 47.599999999979765,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4383815194855094,
+    "minimum_progress_m": 1.1916962117951546,
+    "signed_geometric_turns": -1.648067945829374,
+    "axial_coverage_m": 0.5535156547011413,
+    "mean_axis_radius_mm": 115.5210747994762,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6480679458293739
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 47.7999999999793,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.437962096347963,
+    "minimum_progress_m": 1.1912500375451913,
+    "signed_geometric_turns": -1.647919955493769,
+    "axial_coverage_m": 0.553429741592433,
+    "mean_axis_radius_mm": 115.53095317850205,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647919955493769
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 47.99999999997883,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4375383260015053,
+    "minimum_progress_m": 1.19080466951957,
+    "signed_geometric_turns": -1.647805924607849,
+    "axial_coverage_m": 0.5533621863011084,
+    "mean_axis_radius_mm": 115.5384590494403,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6478059246078491
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 48.19999999997837,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4371118740730648,
+    "minimum_progress_m": 1.1903594134281503,
+    "signed_geometric_turns": -1.6477186440871978,
+    "axial_coverage_m": 0.5533067573668944,
+    "mean_axis_radius_mm": 115.54411864821732,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6477186440871978
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 48.3999999999779,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.436683982933814,
+    "minimum_progress_m": 1.1899149908871165,
+    "signed_geometric_turns": -1.6476523755892876,
+    "axial_coverage_m": 0.5532595522915926,
+    "mean_axis_radius_mm": 115.54834843285857,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647652375589288
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 48.599999999977435,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4362562144526385,
+    "minimum_progress_m": 1.1894696410545937,
+    "signed_geometric_turns": -1.64759901324594,
+    "axial_coverage_m": 0.5532252314960475,
+    "mean_axis_radius_mm": 115.55165120651873,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.64759901324594
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 48.79999999997697,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4358289993982025,
+    "minimum_progress_m": 1.189025878353267,
+    "signed_geometric_turns": -1.6475553253863995,
+    "axial_coverage_m": 0.5532033551699338,
+    "mean_axis_radius_mm": 115.55411240226181,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6475553253863993
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 48.9999999999765,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4354022648229894,
+    "minimum_progress_m": 1.1885845879077175,
+    "signed_geometric_turns": -1.6475181472247344,
+    "axial_coverage_m": 0.5531882870207319,
+    "mean_axis_radius_mm": 115.55613108407074,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6475181472247344
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 49.199999999976036,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4349759758930543,
+    "minimum_progress_m": 1.188146007956334,
+    "signed_geometric_turns": -1.647489208893281,
+    "axial_coverage_m": 0.5531775597510731,
+    "mean_axis_radius_mm": 115.5576456297196,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474892088932807
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 49.39999999997557,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4345500646516969,
+    "minimum_progress_m": 1.1877099904341473,
+    "signed_geometric_turns": -1.6474659366149154,
+    "axial_coverage_m": 0.5531695974545126,
+    "mean_axis_radius_mm": 115.55883758568223,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474659366149151
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 49.599999999975104,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4341244258214227,
+    "minimum_progress_m": 1.18727606128043,
+    "signed_geometric_turns": -1.6474469804787228,
+    "axial_coverage_m": 0.5531634619097512,
+    "mean_axis_radius_mm": 115.5598033211252,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474469804787228
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 49.79999999997464,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4336989274052043,
+    "minimum_progress_m": 1.1868438225040017,
+    "signed_geometric_turns": -1.6474316677816483,
+    "axial_coverage_m": 0.55315920401384,
+    "mean_axis_radius_mm": 115.56056446228494,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474316677816483
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 49.99999999997417,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4332735056874317,
+    "minimum_progress_m": 1.186412881646878,
+    "signed_geometric_turns": -1.647419204037353,
+    "axial_coverage_m": 0.5531562684603271,
+    "mean_axis_radius_mm": 115.56117103828994,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647419204037353
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 50.199999999973706,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4328481476400001,
+    "minimum_progress_m": 1.185983029804623,
+    "signed_geometric_turns": -1.647409332982745,
+    "axial_coverage_m": 0.5531541993561251,
+    "mean_axis_radius_mm": 115.56164486055475,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474093329827444
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 50.39999999997324,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.432422855770806,
+    "minimum_progress_m": 1.1855541323429972,
+    "signed_geometric_turns": -1.6474014313581953,
+    "axial_coverage_m": 0.5531526184136968,
+    "mean_axis_radius_mm": 115.56201972594036,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6474014313581955
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 50.59999999997277,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.431997629966574,
+    "minimum_progress_m": 1.1851260479658716,
+    "signed_geometric_turns": -1.647395254979465,
+    "axial_coverage_m": 0.5531514123874213,
+    "mean_axis_radius_mm": 115.5623105818726,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647395254979465
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 50.79999999997231,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.431572287478292,
+    "minimum_progress_m": 1.1846993555395724,
+    "signed_geometric_turns": -1.6473899589078635,
+    "axial_coverage_m": 0.5531504899527346,
+    "mean_axis_radius_mm": 115.56256568392276,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647389958907864
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 50.99999999997184,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4311468934464417,
+    "minimum_progress_m": 1.184272450253049,
+    "signed_geometric_turns": -1.64738644680757,
+    "axial_coverage_m": 0.5531508963626723,
+    "mean_axis_radius_mm": 115.56270134279342,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473864468075698
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 51.199999999971375,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.430721470965552,
+    "minimum_progress_m": 1.183845754503899,
+    "signed_geometric_turns": -1.6473835917977642,
+    "axial_coverage_m": 0.5531510339512182,
+    "mean_axis_radius_mm": 115.56282785236837,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473835917977642
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 51.39999999997091,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.430295955856717,
+    "minimum_progress_m": 1.1834190775999545,
+    "signed_geometric_turns": -1.6473806701206009,
+    "axial_coverage_m": 0.553151550753239,
+    "mean_axis_radius_mm": 115.56296629195302,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647380670120601
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 51.59999999997044,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4298704076109046,
+    "minimum_progress_m": 1.1829926619736564,
+    "signed_geometric_turns": -1.6473788615503375,
+    "axial_coverage_m": 0.5531520241413497,
+    "mean_axis_radius_mm": 115.5630382272958,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473788615503377
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 51.79999999996998,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4294448673353952,
+    "minimum_progress_m": 1.1825665214048116,
+    "signed_geometric_turns": -1.647377770788554,
+    "axial_coverage_m": 0.5531521204107197,
+    "mean_axis_radius_mm": 115.56307985033084,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473777707885542
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 51.99999999996951,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4290193459118408,
+    "minimum_progress_m": 1.1821405723871101,
+    "signed_geometric_turns": -1.6473770548067481,
+    "axial_coverage_m": 0.5531520828281291,
+    "mean_axis_radius_mm": 115.56310639506782,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473770548067481
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 52.199999999969044,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4285938359215913,
+    "minimum_progress_m": 1.181714736592914,
+    "signed_geometric_turns": -1.6473761662930257,
+    "axial_coverage_m": 0.553151880569664,
+    "mean_axis_radius_mm": 115.56315285701241,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473761662930257
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 52.39999999996858,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4281684143879825,
+    "minimum_progress_m": 1.1812891595593098,
+    "signed_geometric_turns": -1.6473798460230404,
+    "axial_coverage_m": 0.5531519206957958,
+    "mean_axis_radius_mm": 115.56288776950525,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473798460230404
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 52.59999999996811,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4277430383877365,
+    "minimum_progress_m": 1.1808636483961816,
+    "signed_geometric_turns": -1.6473797738830336,
+    "axial_coverage_m": 0.5531516883913212,
+    "mean_axis_radius_mm": 115.56288525315446,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473797738830336
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 52.799999999967646,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4273176979484368,
+    "minimum_progress_m": 1.1804381983335528,
+    "signed_geometric_turns": -1.647379589651865,
+    "axial_coverage_m": 0.5531513716282546,
+    "mean_axis_radius_mm": 115.56289675408232,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647379589651865
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 52.99999999996718,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4268923783121086,
+    "minimum_progress_m": 1.1800127680781847,
+    "signed_geometric_turns": -1.6473792437692347,
+    "axial_coverage_m": 0.5531511445241799,
+    "mean_axis_radius_mm": 115.562919169378,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647379243769235
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 53.199999999966714,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.426467074754736,
+    "minimum_progress_m": 1.1795872070174334,
+    "signed_geometric_turns": -1.6473797318914583,
+    "axial_coverage_m": 0.553151126917983,
+    "mean_axis_radius_mm": 115.56287860892685,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473797318914583
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 53.39999999996625,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.426041850961385,
+    "minimum_progress_m": 1.1791618983201164,
+    "signed_geometric_turns": -1.6473799005079568,
+    "axial_coverage_m": 0.5531505671283614,
+    "mean_axis_radius_mm": 115.5628764251607,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473799005079572
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 53.59999999996578,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4256166664763392,
+    "minimum_progress_m": 1.1787366820037009,
+    "signed_geometric_turns": -1.6473796705518817,
+    "axial_coverage_m": 0.553150120245038,
+    "mean_axis_radius_mm": 115.56289921878594,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473796705518815
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 53.799999999965316,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4251915005479054,
+    "minimum_progress_m": 1.1783114094338478,
+    "signed_geometric_turns": -1.6473805021063974,
+    "axial_coverage_m": 0.5531495505670845,
+    "mean_axis_radius_mm": 115.56284258570108,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473805021063974
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 53.99999999996485,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4247663654646647,
+    "minimum_progress_m": 1.1778860511566893,
+    "signed_geometric_turns": -1.6473803090308816,
+    "axial_coverage_m": 0.5531489710547752,
+    "mean_axis_radius_mm": 115.56286413881371,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473803090308816
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 54.19999999996438,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4243412244045908,
+    "minimum_progress_m": 1.177460577015612,
+    "signed_geometric_turns": -1.6473816344309093,
+    "axial_coverage_m": 0.5531458819202273,
+    "mean_axis_radius_mm": 115.5628626537131,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473816344309098
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 54.39999999996392,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4239162252989142,
+    "minimum_progress_m": 1.1770358049474934,
+    "signed_geometric_turns": -1.6473816179542125,
+    "axial_coverage_m": 0.5531447736917683,
+    "mean_axis_radius_mm": 115.56290293291659,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473816179542125
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 54.59999999996345,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4234912181762123,
+    "minimum_progress_m": 1.1766110665002627,
+    "signed_geometric_turns": -1.647384451077793,
+    "axial_coverage_m": 0.5531401514389183,
+    "mean_axis_radius_mm": 115.5627673853779,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473844510777933
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 54.799999999962985,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4230662954634803,
+    "minimum_progress_m": 1.1761864773418198,
+    "signed_geometric_turns": -1.647385299589971,
+    "axial_coverage_m": 0.5531386588094016,
+    "mean_axis_radius_mm": 115.56270306008648,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473852995899707
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 54.99999999996252,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4226414339839988,
+    "minimum_progress_m": 1.1757618514163333,
+    "signed_geometric_turns": -1.6473860685946704,
+    "axial_coverage_m": 0.5531370346580811,
+    "mean_axis_radius_mm": 115.5627320500242,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473860685946706
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 55.19999999996205,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4222166574767525,
+    "minimum_progress_m": 1.175337349009266,
+    "signed_geometric_turns": -1.6473865552428337,
+    "axial_coverage_m": 0.5531369360959701,
+    "mean_axis_radius_mm": 115.56276609326957,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473865552428342
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 55.39999999996159,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4217919011317817,
+    "minimum_progress_m": 1.174912930355795,
+    "signed_geometric_turns": -1.6473831294438184,
+    "axial_coverage_m": 0.5531412647627094,
+    "mean_axis_radius_mm": 115.56289742175736,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473831294438186
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 55.59999999996112,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4213667159923307,
+    "minimum_progress_m": 1.1744872024353947,
+    "signed_geometric_turns": -1.647380360300951,
+    "axial_coverage_m": 0.5531466256063458,
+    "mean_axis_radius_mm": 115.56290445815144,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473803603009511
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 55.799999999960654,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.420941378793528,
+    "minimum_progress_m": 1.1740612173717184,
+    "signed_geometric_turns": -1.6473795130000868,
+    "axial_coverage_m": 0.5531495377706699,
+    "mean_axis_radius_mm": 115.56287471502442,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473795130000866
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 55.99999999996019,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4205160223035223,
+    "minimum_progress_m": 1.173635560810714,
+    "signed_geometric_turns": -1.6473793289183027,
+    "axial_coverage_m": 0.5531509112118849,
+    "mean_axis_radius_mm": 115.56285183324898,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.647379328918303
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  },
+  {
+    "sim_time": 56.19999999995972,
+    "phase": -32.999999999999865,
+    "mean_progress_m": 1.4200906590820574,
+    "minimum_progress_m": 1.173210181869533,
+    "signed_geometric_turns": -1.647378364765468,
+    "axial_coverage_m": 0.5531520258520757,
+    "mean_axis_radius_mm": 115.56289902670042,
+    "region_length_mm": [
+      0.0,
+      0.0,
+      1354.5
+    ],
+    "region_signed_turns": [
+      0.0,
+      0.0,
+      -1.6473783647654674
+    ],
+    "pipe_contact_robot_bodies": [
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      15,
+      17,
+      18,
+      20
+    ],
+    "contacted_module_length_proxy_mm": 645.0
+  }
+]

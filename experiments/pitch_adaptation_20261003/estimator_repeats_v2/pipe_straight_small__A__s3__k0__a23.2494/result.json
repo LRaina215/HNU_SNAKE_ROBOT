@@ -1,0 +1,331 @@
+{
+  "scene": "pipe_straight_small",
+  "method": "A",
+  "seed": 3,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "hold_slip",
+  "movement_steps": 110,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 1.0,
+  "status": [
+    {
+      "sim_time": 2.2,
+      "mean": 0.484,
+      "tail": 0.236,
+      "head": 0.741,
+      "contacts": 12,
+      "height": 0.484,
+      "tracking_deg": 18.66
+    },
+    {
+      "sim_time": 3.2,
+      "mean": 0.509,
+      "tail": 0.262,
+      "head": 0.764,
+      "contacts": 12,
+      "height": 0.509,
+      "tracking_deg": 20.39
+    },
+    {
+      "sim_time": 4.2,
+      "mean": 0.53,
+      "tail": 0.27,
+      "head": 0.769,
+      "contacts": 13,
+      "height": 0.53,
+      "tracking_deg": 21.0
+    },
+    {
+      "sim_time": 5.2,
+      "mean": 0.555,
+      "tail": 0.295,
+      "head": 0.823,
+      "contacts": 10,
+      "height": 0.555,
+      "tracking_deg": 17.12
+    },
+    {
+      "sim_time": 6.2,
+      "mean": 0.575,
+      "tail": 0.348,
+      "head": 0.815,
+      "contacts": 6,
+      "height": 0.575,
+      "tracking_deg": 2.99
+    },
+    {
+      "sim_time": 7.2,
+      "mean": 0.601,
+      "tail": 0.361,
+      "head": 0.84,
+      "contacts": 8,
+      "height": 0.601,
+      "tracking_deg": 3.05
+    },
+    {
+      "sim_time": 8.2,
+      "mean": 0.624,
+      "tail": 0.382,
+      "head": 0.854,
+      "contacts": 9,
+      "height": 0.624,
+      "tracking_deg": 3.37
+    },
+    {
+      "sim_time": 9.2,
+      "mean": 0.648,
+      "tail": 0.404,
+      "head": 0.887,
+      "contacts": 9,
+      "height": 0.648,
+      "tracking_deg": 2.59
+    },
+    {
+      "sim_time": 10.2,
+      "mean": 0.673,
+      "tail": 0.437,
+      "head": 0.91,
+      "contacts": 8,
+      "height": 0.673,
+      "tracking_deg": 2.91
+    },
+    {
+      "sim_time": 11.2,
+      "mean": 0.7,
+      "tail": 0.453,
+      "head": 0.938,
+      "contacts": 9,
+      "height": 0.7,
+      "tracking_deg": 2.9
+    },
+    {
+      "sim_time": 12.2,
+      "mean": 0.721,
+      "tail": 0.478,
+      "head": 0.951,
+      "contacts": 8,
+      "height": 0.721,
+      "tracking_deg": 2.78
+    },
+    {
+      "sim_time": 13.2,
+      "mean": 0.745,
+      "tail": 0.5,
+      "head": 0.981,
+      "contacts": 8,
+      "height": 0.745,
+      "tracking_deg": 2.98
+    },
+    {
+      "sim_time": 14.2,
+      "mean": 0.767,
+      "tail": 0.53,
+      "head": 1.007,
+      "contacts": 8,
+      "height": 0.767,
+      "tracking_deg": 2.81
+    },
+    {
+      "sim_time": 15.2,
+      "mean": 0.794,
+      "tail": 0.546,
+      "head": 1.034,
+      "contacts": 8,
+      "height": 0.794,
+      "tracking_deg": 3.33
+    },
+    {
+      "sim_time": 16.2,
+      "mean": 0.817,
+      "tail": 0.573,
+      "head": 1.049,
+      "contacts": 9,
+      "height": 0.817,
+      "tracking_deg": 2.78
+    },
+    {
+      "sim_time": 17.2,
+      "mean": 0.839,
+      "tail": 0.594,
+      "head": 1.073,
+      "contacts": 9,
+      "height": 0.839,
+      "tracking_deg": 3.33
+    },
+    {
+      "sim_time": 18.2,
+      "mean": 0.861,
+      "tail": 0.622,
+      "head": 1.104,
+      "contacts": 8,
+      "height": 0.861,
+      "tracking_deg": 2.43
+    },
+    {
+      "sim_time": 19.2,
+      "mean": 0.889,
+      "tail": 0.644,
+      "head": 1.127,
+      "contacts": 9,
+      "height": 0.889,
+      "tracking_deg": 4.0
+    },
+    {
+      "sim_time": 20.2,
+      "mean": 0.911,
+      "tail": 0.667,
+      "head": 1.146,
+      "contacts": 9,
+      "height": 0.911,
+      "tracking_deg": 2.61
+    },
+    {
+      "sim_time": 21.2,
+      "mean": 0.933,
+      "tail": 0.686,
+      "head": 1.162,
+      "contacts": 7,
+      "height": 0.933,
+      "tracking_deg": 3.0
+    },
+    {
+      "sim_time": 22.2,
+      "mean": 0.956,
+      "tail": 0.714,
+      "head": 1.199,
+      "contacts": 6,
+      "height": 0.956,
+      "tracking_deg": 2.94
+    },
+    {
+      "sim_time": 23.2,
+      "mean": 0.983,
+      "tail": 0.74,
+      "head": 1.22,
+      "contacts": 8,
+      "height": 0.983,
+      "tracking_deg": 2.51
+    },
+    {
+      "sim_time": 24.2,
+      "mean": 1.006,
+      "tail": 0.763,
+      "head": 1.244,
+      "contacts": 7,
+      "height": 1.006,
+      "tracking_deg": 3.13
+    },
+    {
+      "sim_time": 25.2,
+      "mean": 1.003,
+      "tail": 0.76,
+      "head": 1.242,
+      "contacts": 7,
+      "height": 1.003,
+      "tracking_deg": 4.89
+    },
+    {
+      "sim_time": 26.2,
+      "mean": 1.001,
+      "tail": 0.757,
+      "head": 1.24,
+      "contacts": 8,
+      "height": 1.001,
+      "tracking_deg": 5.46
+    },
+    {
+      "sim_time": 27.2,
+      "mean": 0.998,
+      "tail": 0.755,
+      "head": 1.237,
+      "contacts": 8,
+      "height": 0.998,
+      "tracking_deg": 5.56
+    },
+    {
+      "sim_time": 28.2,
+      "mean": 0.996,
+      "tail": 0.752,
+      "head": 1.235,
+      "contacts": 8,
+      "height": 0.996,
+      "tracking_deg": 5.57
+    },
+    {
+      "sim_time": 29.2,
+      "mean": 0.993,
+      "tail": 0.75,
+      "head": 1.232,
+      "contacts": 8,
+      "height": 0.993,
+      "tracking_deg": 5.58
+    },
+    {
+      "sim_time": 30.2,
+      "mean": 0.991,
+      "tail": 0.747,
+      "head": 1.23,
+      "contacts": 8,
+      "height": 0.991,
+      "tracking_deg": 5.58
+    },
+    {
+      "sim_time": 31.2,
+      "mean": 0.989,
+      "tail": 0.745,
+      "head": 1.227,
+      "contacts": 8,
+      "height": 0.989,
+      "tracking_deg": 5.58
+    },
+    {
+      "sim_time": 32.2,
+      "mean": 0.986,
+      "tail": 0.743,
+      "head": 1.225,
+      "contacts": 8,
+      "height": 0.986,
+      "tracking_deg": 5.58
+    }
+  ],
+  "rejections": 0,
+  "canceled_feedback_retries": 0,
+  "git_commit": "5558a48951731c4e95fe2b876d64e57c01d2d823",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Pipe_straight_small.xml": "8745dc15812ded3fcab38788c4b46b7251ab54c44862b2a0abe33d0b6020ac9e",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller.py": "df9849d8ae6e2156d28c0dfd781340f76b54f353aa06a454f38b482fa6a691c9",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "validation\\pitch_adaptation_experiment.py": "eb7801f225e7389f51b9474f52630a3991d68beb621d6b81bd8f1adeb1ef25ba"
+  },
+  "initial": {
+    "sim_time": 2.2,
+    "mean": 0.484,
+    "tail": 0.236,
+    "head": 0.741,
+    "contacts": 12,
+    "height": 0.484,
+    "tracking_deg": 18.66
+  },
+  "wall_s": 76.67200000000048,
+  "physical_s": 32.200000000015656,
+  "completed_steps": 161,
+  "control_updates": 94,
+  "degraded_update_fraction": 1.0,
+  "compute_ms_max": 30.00048828125,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.6949221813454003,
+  "torque_squared_integral": 1850.0582133268224,
+  "saturation_fraction": 0.41905279503096693,
+  "radius_valid_fraction": 0.0,
+  "alpha_range_deg": [
+    23.249361508757264,
+    23.249361508757264
+  ],
+  "success": false
+}

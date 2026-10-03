@@ -1,0 +1,67 @@
+{
+  "stage0_continuous_passed": true,
+  "stage1_estimator_passed": false,
+  "stage2_released": false,
+  "formal_trials_executed": 0,
+  "reason": "Necessary small-pipe feedback degenerates to fixed alpha; do not freeze B/C/D or run formal comparisons.",
+  "rejected_cases": [
+    {
+      "scene": "pipe_straight_small",
+      "seed": 1,
+      "valid_fraction": 0.0,
+      "zero_window_update_fraction": 1.0
+    },
+    {
+      "scene": "pipe_straight_small",
+      "seed": 2,
+      "valid_fraction": 0.0,
+      "zero_window_update_fraction": 1.0
+    },
+    {
+      "scene": "pipe_straight_small",
+      "seed": 3,
+      "valid_fraction": 0.0,
+      "zero_window_update_fraction": 1.0
+    }
+  ],
+  "controller_checks": {
+    "all_k_fallback_targets_max_difference_rad": 0.0,
+    "all_k_fallback": true,
+    "stale_and_out_of_order_state_preserved": true,
+    "baseline_math": {
+      "nominal_piecewise_max_error_rad": 4.440892098500626e-16,
+      "first_adaptive_phase_increment_rad": 0.15
+    },
+    "source_feedback": "experiments\\pitch_adaptation_20261003\\matched_pilots_v2\\pipe_straight_small__D__s1__k0__a23.2494\\feedback_0161.json.gz"
+  },
+  "initial_pairs": [
+    {
+      "scene": "pipe_straight_small",
+      "max_initial_qpos_difference": 0.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "max_initial_qpos_difference": 0.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "max_initial_qpos_difference": 0.0
+    },
+    {
+      "scene": "real_s2l",
+      "max_initial_qpos_difference": 0.0
+    }
+  ],
+  "pilots": 12,
+  "hypotheses": {
+    "H1": "unresolved: hold slip is not proof of insufficient winding",
+    "H2": "unresolved: tuned B has not been selected",
+    "H3": "unresolved: no frozen C versus D comparison",
+    "H4": "implementation gate failed for this estimator; not a refutation of all feedback methods"
+  },
+  "source_sha256": {
+    "codes\\local_pitch_controller.py": "df9849d8ae6e2156d28c0dfd781340f76b54f353aa06a454f38b482fa6a691c9",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "validation\\pitch_adaptation_experiment.py": "eb7801f225e7389f51b9474f52630a3991d68beb621d6b81bd8f1adeb1ef25ba"
+  }
+}

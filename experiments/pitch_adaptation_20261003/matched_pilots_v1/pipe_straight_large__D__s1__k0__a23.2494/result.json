@@ -1,0 +1,61 @@
+{
+  "scene": "pipe_straight_large",
+  "method": "D",
+  "seed": 1,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "communication_failure",
+  "movement_steps": 4,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 1.0,
+  "status": [
+    {
+      "sim_time": 2.2,
+      "mean": 0.484,
+      "tail": 0.278,
+      "head": 0.678,
+      "contacts": 9,
+      "height": 0.484,
+      "tracking_deg": 10.23
+    }
+  ],
+  "rejections": 0,
+  "git_commit": "5558a48951731c4e95fe2b876d64e57c01d2d823",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Pipe_straight_large.xml": "a5cef668f09607e068b7afc96c85ff0d9dec93ad9f13e34af1e8466ac938d05e",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller.py": "2229d559dd347ba103b2efa8fa08edea14463c421de95a65d6c9a983648b9c51",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "validation\\pitch_adaptation_experiment.py": "4257191f4dd76fcda18ba5fb60107b84d6e5b1069e3b0807d43137138027c2d9"
+  },
+  "initial": {
+    "sim_time": 2.2,
+    "mean": 0.484,
+    "tail": 0.278,
+    "head": 0.678,
+    "contacts": 9,
+    "height": 0.484,
+    "tracking_deg": 10.23
+  },
+  "error": "communication or step timeout: m 同位置管半径=81.5mm 沿管进度 平均/最后/最前=0.484/0.278/0.678m\nSTATUS 单步/暂停 R=106.5 P=220 phase=0.0000 delta=0.15 sim=2.200s 顺应性=开 反馈=有效 关节平均高度=0.484m 管道接触=9 最大跟踪误差=10.23deg 重力=开\n完成第 12 步 phase=-0.150000rad sim=2.400s 顺应性；等待下一步\n完成第 13 步 phase=-0.300000rad sim=2.600s 顺应性；等待下一步\n完成第 14 步 phase=-0.450000rad sim=2.800s 顺应性；等待下一步\n完成第 15 步 phase=-0.600000rad sim=3.000s 顺应性；等待下一步\n本步取消：反馈过期或未收到 EXE 转发；相位与物理时间未推进，请重新按键。\n",
+  "wall_s": 19.45300000000043,
+  "physical_s": 2.9999999999997806,
+  "completed_steps": 15,
+  "control_updates": 5,
+  "degraded_update_fraction": 1.0,
+  "compute_ms_max": 179.594970703125,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.8423323430851755,
+  "torque_squared_integral": 203.6513077426479,
+  "saturation_fraction": 0.5233333333333363,
+  "radius_valid_fraction": 0.22727272727272727,
+  "alpha_range_deg": [
+    17.8415573967819,
+    21.590478369162767
+  ],
+  "success": false
+}
