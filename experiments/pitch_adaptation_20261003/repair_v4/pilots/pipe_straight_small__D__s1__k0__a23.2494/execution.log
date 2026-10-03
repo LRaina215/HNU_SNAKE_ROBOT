@@ -1,0 +1,45 @@
+TRIAL seed=1 管道摩擦×1.005 初始绕管轴转动=342.2°
+YAMADA execution=mujoco_relay joints=20 mode=单步 R=81.5mm P=220mm 管外 K=(0.01, 0.02)
+机器人调试（先点击 MuJoCo 窗口；Ctrl+字母，不用 F 键）：
+  Ctrl+U 应用 R/P    Ctrl+J 相位+一步       Ctrl+H 相位-一步
+  （变径场景 P=180 时 Ctrl+H 上行、Ctrl+J 下行；改变螺距符号方向随之反转）
+  Ctrl+N 保持目标再走一段物理时间（相位不变）
+  空格 立即暂停     Ctrl+G 连续运行/暂停     Ctrl+R 重置实验并暂停
+  Ctrl+E 顺应性开/关 Ctrl+K 查看状态         Ctrl+-/= 减半/加倍相位步长
+  Ctrl+上下 修改半径；Ctrl+左右 修改螺距；修改后 Ctrl+U 应用
+控制台：apply / step / back / hold / pause / run / reset / compliance / status / help / quit
+参数：r=130 p=180 / delta=0.05 / gravity=0（几何调试）或 gravity=1（重力实验）
+
+场景：Snake_Robot_o20_Pipe_straight_small.xml；重力=[0.0, 0.0, -9.81]；启动暂停，先 Ctrl+U
+MUJOCO_RELAY 等待可视化执行端
+MUJOCO_RELAY 已连接
+完成第 1 步 phase=0.000000rad sim=0.200s 标准螺旋；等待下一步
+完成第 2 步 phase=0.000000rad sim=0.400s 保持目标；等待下一步
+完成第 3 步 phase=0.000000rad sim=0.600s 保持目标；等待下一步
+完成第 4 步 phase=0.000000rad sim=0.800s 保持目标；等待下一步
+完成第 5 步 phase=0.000000rad sim=1.000s 保持目标；等待下一步
+完成第 6 步 phase=0.000000rad sim=1.200s 保持目标；等待下一步
+完成第 7 步 phase=0.000000rad sim=1.400s 保持目标；等待下一步
+完成第 8 步 phase=0.000000rad sim=1.600s 保持目标；等待下一步
+完成第 9 步 phase=0.000000rad sim=1.800s 保持目标；等待下一步
+完成第 10 步 phase=0.000000rad sim=2.000s 保持目标；等待下一步
+完成第 11 步 phase=0.000000rad sim=2.200s 保持目标；等待下一步
+PITCH_PROGRESS {"sim_time": 2.1999999999998687, "progress": [0.48416270024882707, 0.23603698388837444, 0.7410753711851115]}
+RADIUS 实测截面=89.5mm 当前目标截面=81.5mm 关节到管轴(仿真)=91.6mm 同位置管半径=56.5mm 沿管进度 平均/最后/最前=0.484/0.236/0.741m
+STATUS 单步/暂停 R=81.5 P=220 phase=0.0000 delta=0.15 sim=2.200s 顺应性=开 反馈=有效 关节平均高度=0.484m 管道接触=12 最大跟踪误差=18.66deg 重力=开
+完成第 12 步 phase=-0.150000rad sim=2.400s 顺应性；等待下一步
+完成第 13 步 phase=-0.300000rad sim=2.600s 顺应性；等待下一步
+完成第 14 步 phase=-0.450000rad sim=2.800s 顺应性；等待下一步
+完成第 15 步 phase=-0.600000rad sim=3.000s 顺应性；等待下一步
+完成第 16 步 phase=-0.750000rad sim=3.200s 顺应性；等待下一步
+PITCH_PROGRESS {"sim_time": 3.1999999999997586, "progress": [0.49582443955903327, 0.2400800417688041, 0.7439587361987063]}
+RADIUS 实测截面=91.5mm 当前目标截面=91.9mm 关节到管轴(仿真)=95.3mm 同位置管半径=56.5mm 沿管进度 平均/最后/最前=0.496/0.240/0.744m
+STATUS 单步/暂停 R=81.5 P=220 phase=-0.7500 delta=0.15 sim=3.200s 顺应性=开 反馈=有效 关节平均高度=0.496m 管道接触=5 最大跟踪误差=5.09deg 重力=开
+完成第 17 步 phase=-0.900000rad sim=3.400s 顺应性；等待下一步
+完成第 18 步 phase=-1.050000rad sim=3.600s 顺应性；等待下一步
+完成第 19 步 phase=-1.200000rad sim=3.800s 顺应性；等待下一步
+完成第 20 步 phase=-1.350000rad sim=4.000s 顺应性；等待下一步
+未执行：物理限速与P可行区无交集，保持上一组目标；本步未执行
+GEOMETRY_EXCHANGE received=87 sent=31 failures=3 last_error=''
+MUJOCO_RELAY applied=20 expired=10
+VISUALIZER_BRIDGE sent=112 rejected=0 last_error=''

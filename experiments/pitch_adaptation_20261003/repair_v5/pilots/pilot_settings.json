@@ -1,0 +1,47 @@
+{
+  "stage": "training",
+  "joints": 20,
+  "scenes": [
+    "pipe_straight_small",
+    "pipe_straight_large",
+    "pipe_taper_horizontal",
+    "real_s2l"
+  ],
+  "methods": [
+    "A",
+    "D"
+  ],
+  "seeds": [
+    1
+  ],
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "movement_s": 120.0,
+  "hold_s": 10.0,
+  "step_rad": 0.15,
+  "step_s": 0.2,
+  "gain": [
+    0.01,
+    0.02
+  ],
+  "initialization": "scene native apply then 10 native holds (2.2 physical s); common moving-helix 2s takeover; no nominal fallback",
+  "limits": {
+    "alpha_deg": [
+      8,
+      30
+    ],
+    "alpha_step_deg": 1,
+    "group_target_step_deg": 30
+  },
+  "fallback": "hold previous radius; fixed alpha after 0.5 physical s; C retains last global median",
+  "timing": "physical clock for filtering and fallback; wall clock for transport freshness",
+  "estimator": {
+    "sampler": "measured link centres",
+    "window": 7,
+    "minimum_coverage_deg": 60,
+    "maximum_condition": 100,
+    "residual_limit": "max(2mm,5% radius)",
+    "spatial_sigma_links": 1,
+    "time_gain": 0.2
+  }
+}

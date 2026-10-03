@@ -1,0 +1,76 @@
+{
+  "scene": "real_s2l",
+  "method": "D",
+  "seed": 1,
+  "k": 0.0,
+  "alpha_deg": 23.249361508757264,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "ground_collision",
+  "movement_steps": 8,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 0.966583123952,
+  "status": [
+    {
+      "sim_time": 2.1999999999998687,
+      "mean": 0.48416616034265614,
+      "tail": 0.23602186504640313,
+      "head": 0.7410820824611141,
+      "contacts": 12,
+      "height": 0.484,
+      "tracking_deg": 18.64
+    },
+    {
+      "sim_time": 3.1999999999997586,
+      "mean": 0.4958443484225647,
+      "tail": 0.24009075448082742,
+      "head": 0.7439692929984874,
+      "contacts": 5,
+      "height": 0.496,
+      "tracking_deg": 5.1
+    }
+  ],
+  "rejections": 1,
+  "canceled_feedback_retries": 0,
+  "git_commit": "1d5d0e1ea6d2f8400050ffbc3134ff4eb0a633e3",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Real_Pipe_S2L.xml": "4cb8760f5c36b4eac2a99d522a00cc8ad1b997922ed37170b5d61813be0fde18",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller_v4.py": "9d5ef5a801a64f9ff2d5f528bfdda3f11133c9cf29d021d3d652c63c97be7b2e",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "codes\\pole_compliance.py": "273c408f235bc285afc95d4d11e6aaa553d8df8f54aa3648aebec7c8859b8e17",
+    "codes\\Adaptive_Pole_Climbing_Mujoco.py": "5b9406aa5d0a86f5cefd36156c9e05ee51a1bcd9a00596b73a48deb662d5cb46",
+    "validation\\pitch_adaptation_experiment_v4.py": "6af78ff5240915f6b2ef3acf67ab4a92c54fe517c1db792a0656a320ddae4356"
+  },
+  "initial": {
+    "sim_time": 2.1999999999998687,
+    "mean": 0.48416616034265614,
+    "tail": 0.23602186504640313,
+    "head": 0.7410820824611141,
+    "contacts": 12,
+    "height": 0.484,
+    "tracking_deg": 18.64
+  },
+  "takeover_ready_sim_time": 2.1999999999998687,
+  "error": "物理限速与P可行区无交集，保持上一组目标；本步未执行",
+  "wall_s": 12.343999999999141,
+  "physical_s": 3.7999999999996925,
+  "completed_steps": 19,
+  "control_updates": 8,
+  "degraded_update_fraction": 0.0,
+  "compute_ms_max": 161.63110000000015,
+  "any_ground_contact": true,
+  "torque_rms_nm": 1.947042054003118,
+  "torque_squared_integral": 288.1139297642844,
+  "saturation_fraction": 0.6236842105263201,
+  "radius_valid_fraction": 1.0,
+  "alpha_range_deg": [
+    20.420969121975528,
+    23.174059635193306
+  ],
+  "success": false,
+  "controller_version": 4
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "common_takeover_passed": true,
+  "original_fixed_alpha_target_max_error_rad": 1.6653345369377348e-16,
+  "empty_current_frame_C_cache_passed": true,
+  "physical_timeout_passed": true,
+  "repeated_physical_time_no_filter_advance": true,
+  "stale_out_of_order_state_preserved": true,
+  "new_run_cache_reset": true,
+  "post_filter_pitch_bounds_all_k": true,
+  "sources": {
+    "validation\\pitch_adaptation_v5_checks.py": "48f6f095a85ef3ac23731de5a871b057216a340fa81eaca9e4c60d5549e95a32",
+    "codes\\local_pitch_controller_v5.py": "fd46c67983318e697431c7c42ba2a296f37e2bda1efedef7f3cfa8ee034c27ad",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae"
+  }
+}
