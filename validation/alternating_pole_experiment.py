@@ -2,7 +2,9 @@
 
 Eight cycles: 16 x 0.2 s, both end phases advance -1.2 rad, then 3 s
 fixed-target hold. Only if an alternating group passes, compare all three at
-16 cycles from the same capture. No parameter search or boundary migration.
+16 cycles from the same capture. --continuous separately evaluates uninterrupted
+motion up to 32 cycles, without redefining the stopping-hold gate. No parameter
+search or boundary migration.
 """
 import argparse
 import json
@@ -85,8 +87,8 @@ def prepare():
     print(json.dumps(report),flush=True)
 
 
-def run(mode,cycles):
-    if cycles==16:
+def run(mode,cycles,continuous=False):
+    if cycles==16 and not continuous:
         outcomes=[json.loads((OUT/f'{name}_c8'/'analysis.json').read_text()) for name in MODES[1:]]
         if not any(x['short_gate'] for x in outcomes):raise RuntimeError('no alternating short gate passed')
     folder=OUT/f'{mode}_c{cycles}';sim=None
@@ -99,6 +101,7 @@ def run(mode,cycles):
         p=sim.records[0]['points_mm'];axis=AxisField(sim.target,sim.source,p[1]-p[0],6*links.mean(),6*links.mean())
         axes=axis.frames(np.cumsum(links)-links/2)[0][:,:,2]
         gains=sim.original.parameters.gains(20)*(-1 if sim.original.parameters.inside else 1)
+        outcome='completed';lost_support_samples=0
         for half in range(2*cycles):
             g=sim.fresh();points=np.asarray(g['points_mm']);angles=np.radians(g['angles_deg'])*sim.bridge.signs
             bone=SpatialBishopBackbone(points,links);field,rotation=bone.material_field(angles)
@@ -114,18 +117,34 @@ def run(mode,cycles):
                 observed_with_compliance=field+correction,preload=controller.preload,
                 raw=raw,target=targets,clipped_count=int(np.count_nonzero(abs(raw-targets)>1e-10))))
             sim.command(targets,g);sim.advance(.2)
-        sim.stage='hold';sim.advance(3.)
-        sources={str(p.relative_to(folder/'sources')).replace('\\','/'):sha(p) for p in (folder/'sources').rglob('*') if p.is_file()}
-        result=dict(condition=mode,cycles=cycles,steps=2*cycles,method='alternating_spatial_bishop',
+            if continuous:
+                # Sampling checkpoints do not interrupt physical advancement.
+                if (half+1) in (16,32,64):
+                    write_json(folder/f'cycle_{(half+1)//2}.json',dict(cycle=(half+1)//2,
+                        sim_time=float(sim.d.time),qpos=sim.d.qpos.copy(),total_phase=total))
+                for row in sim.records[-20:]:
+                    lost_support_samples=lost_support_samples+1 if not np.any(row['normal_force']>.1) else 0
+                    if row['ground']:outcome='floor_contact';break
+                    if lost_support_samples>=20:outcome='whole_body_support_lost_0.2s';break
+                if outcome!='completed':break
+        if not continuous:
+            sim.stage='hold';sim.advance(3.)
+        result=dict(condition=mode,cycles=cycles,steps=len(sim.commands),method='alternating_spatial_bishop',
             options=dict(transition_links=6),checkpoint=str(HORIZONTAL),settings=sim.meta['settings'],
-            source_hashes=sources,mujoco=mujoco.__version__,boundary_links=6.,
+            mujoco=mujoco.__version__,boundary_links=6.,continuous=continuous,outcome=outcome,
             final_total_phases=sim.local_total,phase_trace_mean_only=True,
             clipped_joint_steps=sum(x['clipped_count'] for x in sim.controls))
+        if not continuous:
+            result['source_hashes']={str(p.relative_to(folder/'sources')).replace('\\','/'):sha(p)
+                for p in (folder/'sources').rglob('*') if p.is_file()}
         write_json(folder/'result.json',result)
         write_json(folder/'last_command_curve.json',command.sample(bone,rotation))
     finally:
         if sim:sim.close()
-    print(json.dumps(assess(folder)),flush=True)
+    if continuous:
+        from continuous_pole_review import assess_continuous
+        print(json.dumps(assess_continuous(folder)),flush=True)
+    else:print(json.dumps(assess(folder)),flush=True)
 
 
 def assess(folder):
@@ -179,9 +198,18 @@ def assess(folder):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--prepare',action='store_true')
-    parser.add_argument('--mode',choices=MODES);parser.add_argument('--cycles',type=int,choices=[8,16],default=8)
-    parser.add_argument('--output-root',type=Path,default=OUT)
-    args=parser.parse_args();OUT=args.output_root.resolve()
-    if args.prepare:prepare()
-    elif args.mode:run(args.mode,args.cycles)
+    parser.add_argument('--mode',choices=MODES);parser.add_argument('--cycles',type=int,choices=[8,16,32],default=8)
+    parser.add_argument('--continuous',action='store_true',help='no intermediate or final hold; a separate continuous-motion experiment')
+    parser.add_argument('--output-root',type=Path)
+    args=parser.parse_args();OUT=(args.output_root or (BASE/'continuous_v1' if args.continuous else OUT)).resolve()
+    if args.cycles==32 and not args.continuous:parser.error('32 cycles require --continuous')
+    if args.prepare and args.continuous:
+        OUT.mkdir(parents=True,exist_ok=True)
+        write_json(OUT/'plan.json',dict(modes=MODES,cycles=args.cycles,record_cycles=[8,16,32],
+            half_step_seconds=.2,cycle_phase_rad=-.15,hold_seconds=0,boundary_links=6.,transition_links=6.,
+            stop_conditions=['floor contact','whole body has no pipe force >0.1 N for 0.2 s'],
+            support_measure='target-region membership at three consecutive command endpoints, plus any same-module target contact during that 0.6 s window',
+            note='new continuous-motion question; previous stopping-hold failures remain unchanged; no SHA checks'))
+    elif args.prepare:prepare()
+    elif args.mode:run(args.mode,args.cycles,args.continuous)
     else:parser.error('choose --prepare or --mode')
