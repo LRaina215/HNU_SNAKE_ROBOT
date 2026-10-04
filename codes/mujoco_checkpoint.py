@@ -96,12 +96,12 @@ def save_checkpoint(model, data, settings, controller, geometry, source_model, d
     return folder
 
 
-def load_checkpoint(directory):
+def load_checkpoint(directory, verify_hashes=True):
     folder = Path(directory).resolve()
     metadata = json.loads((folder / 'checkpoint.json').read_text(encoding='utf-8'))
     if metadata['format_version'] != 1 or metadata['mujoco_version'] != mujoco.__version__:
         raise ValueError(f'请使用保存时的 MuJoCo {metadata["mujoco_version"]} 恢复此状态')
-    for name, expected in metadata['hashes'].items():
+    for name, expected in (metadata['hashes'].items() if verify_hashes else ()):
         if sha(folder / name) != expected:
             raise ValueError(f'保存文件校验失败：{name}')
     model = mujoco.MjModel.from_binary_path(str(folder / 'model.mjb'))

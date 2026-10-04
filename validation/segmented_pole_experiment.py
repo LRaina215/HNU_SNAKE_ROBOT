@@ -117,12 +117,12 @@ def true_axis_geometry(g, direction, corner):
 
 
 class Trial:
-    def __init__(self, checkpoint, folder):
+    def __init__(self, checkpoint, folder, verify_hashes=True):
         self.folder = Path(folder); self.folder.mkdir(parents=True,exist_ok=False)
         for name in SOURCES:
             dest=self.folder/'sources'/name;dest.parent.mkdir(parents=True,exist_ok=True)
             shutil.copy2(ROOT/name,dest)
-        self.m,self.d,self.meta,self.original = load_checkpoint(checkpoint)
+        self.m,self.d,self.meta,self.original = load_checkpoint(checkpoint, verify_hashes=verify_hashes)
         self.scratch=mujoco.MjData(self.m)
         self.state=np.empty(mujoco.mj_stateSize(self.m,mujoco.mjtState.mjSTATE_INTEGRATION))
         self.initial_state=self.get_state().copy()

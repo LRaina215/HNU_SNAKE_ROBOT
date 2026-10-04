@@ -1,0 +1,434 @@
+[
+  {
+    "condition": "synchronous",
+    "boundary": "fixed",
+    "samples": [
+      {
+        "time_s": 0.0,
+        "front_net_wrap_turns": 0.5716485389949711,
+        "front_target_normal_force_N": 78.81428334487457,
+        "front_target_normal_force_previous_0_4s_mean_N": 78.81428334487457,
+        "front_contact_modules": [
+          0,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.85446003952598
+      },
+      {
+        "time_s": 12.800000000015643,
+        "front_net_wrap_turns": 0.5290962343688852,
+        "front_target_normal_force_N": 58.768932639525374,
+        "front_target_normal_force_previous_0_4s_mean_N": 57.83817075716033,
+        "front_contact_modules": [
+          1,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 20.549053355110832
+      },
+      {
+        "time_s": 16.000000000011024,
+        "front_net_wrap_turns": 0.4132434686713158,
+        "front_target_normal_force_N": 42.563866062708,
+        "front_target_normal_force_previous_0_4s_mean_N": 44.878141074941226,
+        "front_contact_modules": [
+          0,
+          1,
+          5
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 32.78136819699713
+      },
+      {
+        "time_s": 18.910000000004242,
+        "front_net_wrap_turns": 0.2606468949801294,
+        "front_target_normal_force_N": 14.376064144599134,
+        "front_target_normal_force_previous_0_4s_mean_N": 18.76652833101215,
+        "front_contact_modules": [
+          0
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 24.928103892494857
+      },
+      {
+        "time_s": 19.31000000000331,
+        "front_net_wrap_turns": 0.23334400563447388,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 12.385155699589129,
+        "front_contact_modules": [],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 19.944989910618308
+      },
+      {
+        "time_s": 19.710000000002378,
+        "front_net_wrap_turns": 0.01996186812579955,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 0.0,
+        "front_contact_modules": [],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 7.004064016496256
+      }
+    ]
+  },
+  {
+    "condition": "synchronous",
+    "boundary": "migrating",
+    "samples": [
+      {
+        "time_s": 0.0,
+        "front_net_wrap_turns": 0.5716485389949711,
+        "front_target_normal_force_N": 78.81428334487457,
+        "front_target_normal_force_previous_0_4s_mean_N": 78.81428334487457,
+        "front_contact_modules": [
+          0,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.85446003952598
+      },
+      {
+        "time_s": 12.800000000015643,
+        "front_net_wrap_turns": 0.5289010474317357,
+        "front_target_normal_force_N": 58.444861647216186,
+        "front_target_normal_force_previous_0_4s_mean_N": 57.5557955824948,
+        "front_contact_modules": [
+          1,
+          4
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 20.675183983329816
+      },
+      {
+        "time_s": 16.000000000011024,
+        "front_net_wrap_turns": 0.4100008362311196,
+        "front_target_normal_force_N": 41.640461173700565,
+        "front_target_normal_force_previous_0_4s_mean_N": 40.80913484348812,
+        "front_contact_modules": [
+          0,
+          1,
+          5
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 32.756922800470036
+      },
+      {
+        "time_s": 18.170000000005967,
+        "front_net_wrap_turns": 0.2946245789562222,
+        "front_target_normal_force_N": 10.407426124800699,
+        "front_target_normal_force_previous_0_4s_mean_N": 19.220682626964525,
+        "front_contact_modules": [
+          0
+        ],
+        "boundary_links": 9.0,
+        "bridge_max_tracking_error_deg": 30.653323394588792
+      },
+      {
+        "time_s": 18.570000000005034,
+        "front_net_wrap_turns": 0.23351066013788577,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 12.33987644907741,
+        "front_contact_modules": [],
+        "boundary_links": 9.0,
+        "bridge_max_tracking_error_deg": 27.78832965116427
+      },
+      {
+        "time_s": 18.970000000004102,
+        "front_net_wrap_turns": 0.025249587903172763,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 0.0,
+        "front_contact_modules": [],
+        "boundary_links": 9.0,
+        "bridge_max_tracking_error_deg": 9.13268149169349
+      }
+    ]
+  },
+  {
+    "condition": "front_first",
+    "boundary": "fixed",
+    "samples": [
+      {
+        "time_s": 0.0,
+        "front_net_wrap_turns": 0.5716485389949711,
+        "front_target_normal_force_N": 78.81428334487457,
+        "front_target_normal_force_previous_0_4s_mean_N": 78.81428334487457,
+        "front_contact_modules": [
+          0,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.85446003952598
+      },
+      {
+        "time_s": 12.800000000015643,
+        "front_net_wrap_turns": 0.5235911721435561,
+        "front_target_normal_force_N": 56.58704626880276,
+        "front_target_normal_force_previous_0_4s_mean_N": 58.98426486773462,
+        "front_contact_modules": [
+          1,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 19.37153566562272
+      },
+      {
+        "time_s": 16.000000000011024,
+        "front_net_wrap_turns": 0.4101360392996158,
+        "front_target_normal_force_N": 32.677422558891145,
+        "front_target_normal_force_previous_0_4s_mean_N": 40.813329109746896,
+        "front_contact_modules": [
+          1,
+          5
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 33.78398903350809
+      },
+      {
+        "time_s": 17.210000000008204,
+        "front_net_wrap_turns": 0.34976545968687484,
+        "front_target_normal_force_N": 12.860377767430295,
+        "front_target_normal_force_previous_0_4s_mean_N": 40.07132399725993,
+        "front_contact_modules": [
+          0
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 36.00722233036025
+      },
+      {
+        "time_s": 17.610000000007272,
+        "front_net_wrap_turns": 0.1733265091712295,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 12.968419400641492,
+        "front_contact_modules": [],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 34.939892824270665
+      },
+      {
+        "time_s": 18.01000000000634,
+        "front_net_wrap_turns": 0.012759736118550651,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 0.0,
+        "front_contact_modules": [],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 10.280053460004606
+      }
+    ]
+  },
+  {
+    "condition": "front_first",
+    "boundary": "migrating",
+    "samples": [
+      {
+        "time_s": 0.0,
+        "front_net_wrap_turns": 0.5716485389949711,
+        "front_target_normal_force_N": 78.81428334487457,
+        "front_target_normal_force_previous_0_4s_mean_N": 78.81428334487457,
+        "front_contact_modules": [
+          0,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.85446003952598
+      },
+      {
+        "time_s": 12.800000000015643,
+        "front_net_wrap_turns": 0.5237517806434685,
+        "front_target_normal_force_N": 53.88893859736571,
+        "front_target_normal_force_previous_0_4s_mean_N": 58.56785261768776,
+        "front_contact_modules": [
+          1,
+          4
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 18.168801498158956
+      },
+      {
+        "time_s": 16.000000000011024,
+        "front_net_wrap_turns": 0.4098543135383741,
+        "front_target_normal_force_N": 36.86066513626732,
+        "front_target_normal_force_previous_0_4s_mean_N": 43.188856635408676,
+        "front_contact_modules": [
+          1,
+          4,
+          5
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 34.89194332299677
+      },
+      {
+        "time_s": 17.050000000008577,
+        "front_net_wrap_turns": 0.35624209229770026,
+        "front_target_normal_force_N": 12.2264586246473,
+        "front_target_normal_force_previous_0_4s_mean_N": 38.15679328430068,
+        "front_contact_modules": [
+          0
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 33.45536403734068
+      },
+      {
+        "time_s": 17.450000000007645,
+        "front_net_wrap_turns": 0.3025978998007927,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 13.928689641299826,
+        "front_contact_modules": [],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 31.421266461796296
+      },
+      {
+        "time_s": 17.850000000006712,
+        "front_net_wrap_turns": 0.020680206444241397,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 0.0,
+        "front_contact_modules": [],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 8.334391000732753
+      }
+    ]
+  },
+  {
+    "condition": "rear_first",
+    "boundary": "fixed",
+    "samples": [
+      {
+        "time_s": 0.0,
+        "front_net_wrap_turns": 0.5716485389949711,
+        "front_target_normal_force_N": 78.81428334487457,
+        "front_target_normal_force_previous_0_4s_mean_N": 78.81428334487457,
+        "front_contact_modules": [
+          0,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.85446003952598
+      },
+      {
+        "time_s": 12.800000000015643,
+        "front_net_wrap_turns": 0.5381021180215101,
+        "front_target_normal_force_N": 73.05271317608538,
+        "front_target_normal_force_previous_0_4s_mean_N": 70.3739560650676,
+        "front_contact_modules": [
+          1,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 21.823492535942883
+      },
+      {
+        "time_s": 16.000000000011024,
+        "front_net_wrap_turns": 0.4511554322457812,
+        "front_target_normal_force_N": 59.69128793095968,
+        "front_target_normal_force_previous_0_4s_mean_N": 50.03246153326592,
+        "front_contact_modules": [
+          0,
+          1,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.27090196817211
+      },
+      {
+        "time_s": 17.510000000007505,
+        "front_net_wrap_turns": 0.3636582165229479,
+        "front_target_normal_force_N": 27.40853634154416,
+        "front_target_normal_force_previous_0_4s_mean_N": 41.16542823013741,
+        "front_contact_modules": [
+          0,
+          5
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 32.74454114473028
+      },
+      {
+        "time_s": 17.910000000006573,
+        "front_net_wrap_turns": 0.31510098153587796,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 14.324795572337269,
+        "front_contact_modules": [],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 30.551827791173217
+      },
+      {
+        "time_s": 18.31000000000564,
+        "front_net_wrap_turns": 0.010020931199468008,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 0.0,
+        "front_contact_modules": [],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 7.6234933331104
+      }
+    ]
+  },
+  {
+    "condition": "rear_first",
+    "boundary": "migrating",
+    "samples": [
+      {
+        "time_s": 0.0,
+        "front_net_wrap_turns": 0.5716485389949711,
+        "front_target_normal_force_N": 78.81428334487457,
+        "front_target_normal_force_previous_0_4s_mean_N": 78.81428334487457,
+        "front_contact_modules": [
+          0,
+          4
+        ],
+        "boundary_links": 6.0,
+        "bridge_max_tracking_error_deg": 35.85446003952598
+      },
+      {
+        "time_s": 12.800000000015643,
+        "front_net_wrap_turns": 0.5387520295225849,
+        "front_target_normal_force_N": 73.54145422063706,
+        "front_target_normal_force_previous_0_4s_mean_N": 73.28728091261091,
+        "front_contact_modules": [
+          1,
+          4
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 22.95261880911318
+      },
+      {
+        "time_s": 16.000000000011024,
+        "front_net_wrap_turns": 0.45822427047779907,
+        "front_target_normal_force_N": 54.57000457183473,
+        "front_target_normal_force_previous_0_4s_mean_N": 48.21650333491877,
+        "front_contact_modules": [
+          0,
+          1,
+          4
+        ],
+        "boundary_links": 8.0,
+        "bridge_max_tracking_error_deg": 35.26203517454875
+      },
+      {
+        "time_s": 18.590000000004988,
+        "front_net_wrap_turns": 0.2839225557247159,
+        "front_target_normal_force_N": 11.892609052398198,
+        "front_target_normal_force_previous_0_4s_mean_N": 14.660221854112608,
+        "front_contact_modules": [
+          0
+        ],
+        "boundary_links": 9.0,
+        "bridge_max_tracking_error_deg": 26.052937549278816
+      },
+      {
+        "time_s": 18.990000000004056,
+        "front_net_wrap_turns": 0.22670209638031807,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 11.842994027289645,
+        "front_contact_modules": [],
+        "boundary_links": 9.0,
+        "bridge_max_tracking_error_deg": 22.02695583880278
+      },
+      {
+        "time_s": 19.390000000003123,
+        "front_net_wrap_turns": 0.019386412594031524,
+        "front_target_normal_force_N": 0.0,
+        "front_target_normal_force_previous_0_4s_mean_N": 0.0,
+        "front_contact_modules": [],
+        "boundary_links": 9.0,
+        "bridge_max_tracking_error_deg": 5.448506207543495
+      }
+    ]
+  }
+]

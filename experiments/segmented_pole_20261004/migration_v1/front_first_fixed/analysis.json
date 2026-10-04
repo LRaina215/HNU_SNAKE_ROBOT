@@ -1,0 +1,141 @@
+{
+  "condition": "front_first",
+  "migrating": false,
+  "outcome": "whole_body_support_lost",
+  "cycles": 152.5,
+  "rolling_seconds": 61.00000000001556,
+  "commands_applied": 305,
+  "fixed_32cycle_prefix_qpos_error": 0.0,
+  "reintegration_error_rad": 1.1102230246251565e-15,
+  "closed_phase_remap_error_rad": 0.0,
+  "final_boundary": 6.0,
+  "boundary_range": [
+    6.0,
+    6.0
+  ],
+  "first_migration_cycle": null,
+  "first_migration_at_s": null,
+  "final_front_progress_mm": -152.96614238557336,
+  "final_rear_progress_mm": 390.5800745241909,
+  "final_head_progress_mm": -218.66470032573068,
+  "final_target_region_modules": [],
+  "max_target_region_count": 8,
+  "final_target_contact_modules": [],
+  "final_source_contact_modules": [],
+  "rolling_front_contact_fraction": 0.3324045238485494,
+  "first_front_contact_loss_0_2s_at": 17.610000000007272,
+  "peak_front_progress_mm": 208.99672203141068,
+  "peak_front_progress_at_s": 17.65000000000718,
+  "final_unused_branch_contact_modules": [],
+  "rolling_floor": false,
+  "hold_floor": null,
+  "hold_head_retreat_mm": null,
+  "hold_root_displacement_mm": null,
+  "hold_gate": false,
+  "complete_crossing": false,
+  "max_tracking_error_deg": 47.98133108561389,
+  "actuator_saturation_fraction": 0.5208162596295689,
+  "clipped_joint_steps": 745,
+  "milestones": [
+    {
+      "cycle": 8,
+      "boundary": 6.0,
+      "front_mm": 69.86436098135097,
+      "rear_mm": 35.80117538986951,
+      "region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "target_contact_modules": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "cycle": 16,
+      "boundary": 6.0,
+      "front_mm": 104.38768811431471,
+      "rear_mm": 76.93061435634513,
+      "region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "target_contact_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "cycle": 32,
+      "boundary": 6.0,
+      "front_mm": 159.95687011437644,
+      "rear_mm": 148.5003460365001,
+      "region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "target_contact_modules": [
+        1,
+        4,
+        7
+      ]
+    },
+    {
+      "cycle": 64,
+      "boundary": 6.0,
+      "front_mm": -191.01388417102055,
+      "rear_mm": 224.8983581875591,
+      "region_modules": [],
+      "target_contact_modules": [
+        17
+      ]
+    },
+    {
+      "cycle": 96,
+      "boundary": 6.0,
+      "front_mm": -173.2722989704745,
+      "rear_mm": 240.75368034224607,
+      "region_modules": [
+        17,
+        18
+      ],
+      "target_contact_modules": [
+        18
+      ]
+    },
+    {
+      "cycle": 128,
+      "boundary": 6.0,
+      "front_mm": -88.67822113001938,
+      "rear_mm": 296.9901463784606,
+      "region_modules": [
+        20
+      ],
+      "target_contact_modules": []
+    }
+  ]
+}
