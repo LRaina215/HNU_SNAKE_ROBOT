@@ -1,0 +1,14 @@
+{
+  "folder": "original",
+  "initial_state_exact": true,
+  "command_delivery_checked": true,
+  "fk_max_error_mm": 0.0,
+  "contact_pipe_assignment_checked": true,
+  "geometric_regions_checked": true,
+  "feedback_pose_max_error_mm": 1.5916157281026244e-12,
+  "maximum_sustained_new_modules": 2,
+  "peak_head_progress_mm": 455.7743566338437,
+  "final_rolling_progress_mm": 267.6668442108262,
+  "passed": false,
+  "outcome": "movement_gate"
+}

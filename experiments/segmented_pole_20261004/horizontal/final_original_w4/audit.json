@@ -1,0 +1,14 @@
+{
+  "folder": "final_original_w4",
+  "initial_state_exact": true,
+  "command_delivery_checked": true,
+  "fk_max_error_mm": 0.0,
+  "contact_pipe_assignment_checked": true,
+  "geometric_regions_checked": true,
+  "feedback_pose_max_error_mm": 1.1368683772161603e-12,
+  "maximum_sustained_new_modules": 2,
+  "peak_head_progress_mm": 278.63429018256863,
+  "final_rolling_progress_mm": 166.7314872026982,
+  "passed": false,
+  "outcome": "movement_gate"
+}

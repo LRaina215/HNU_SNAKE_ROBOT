@@ -1,0 +1,40 @@
+{
+  "policy": {
+    "max_steps": 80,
+    "advance_mm": 64.5,
+    "new_modules": 2,
+    "step_seconds": 0.2,
+    "hold_seconds": 3.0,
+    "transfer_persistence_steps": 3,
+    "region_margin_mm": 10.0,
+    "region_clearance_mm": 15.0,
+    "hold_retreat_mm": 10.0,
+    "hold_root_motion_mm": 20.0,
+    "minimum_contact_force_N": 0.1,
+    "lost_support_seconds": 0.2
+  },
+  "candidates": [
+    4.0,
+    6.0,
+    8.0
+  ],
+  "switch_steps": 6,
+  "initial_boundary_links": 6.0,
+  "training": "horizontal",
+  "verification": "vertical_down",
+  "selection": "first passing candidate; otherwise highest progress with support, report failure",
+  "common_phase": true,
+  "truth_assisted": true,
+  "methods": [
+    "original",
+    "source_axis",
+    "segmented"
+  ],
+  "no_gain_or_physics_tuning": true,
+  "transfer_eligibility": "initial manual source/transition prefix boundary: module index >=6, excluding initially target-region modules",
+  "excluded_exploratory": [
+    "horizontal/segmented_w4: geometric hole inside initial target prefix incorrectly counted as newly transferred module; initial diagnostic only",
+    "v1_*, v2_*: early-stop criterion incorrectly treated temporary loss of one pipe as whole-body detachment; retained as censored pilot data, not final comparisons"
+  ],
+  "support_audit": "100 Hz; movement stops on floor contact or loss of ALL pipe contacts for 0.2 s, not loss of one pipe. Dual-pipe contact remains required for the final 3 s hold."
+}

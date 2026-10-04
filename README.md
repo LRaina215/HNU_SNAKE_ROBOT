@@ -241,6 +241,12 @@ Ctrl+R 仅用于重新开始缠绕：清零进度、相位及计步，清除旧�
 
 恢复：`python codes/Adaptive_Pole_Climbing_Mujoco.py --restore "保存目录"`，使用保存时相同的MuJoCo版本；恢复后等待新鲜反馈，直接单步，不必Ctrl+U/R。详见[搭管状态保存与分段对照](docs/搭管状态保存与分段对照.md)。
 
+## 搭管后动态分段实验
+
+独立批处理入口：`validation/segmented_pole_experiment.py`。使用归档的20关节搭管状态，比较原自动单轴、真实单轴及动态双轴顺应控制；原交互入口不变。
+
+首轮水平开发与竖直冻结复核均未通过完整运动门槛。实现、使用方法、局限及回放见 [阶段报告](docs/搭管后动态分段顺应性_首轮验证.md) 和 [数据索引](experiments/segmented_pole_20261004/README.md)。
+
 ## 常用开关
 
 仿真版在 `codes/Adaptive_Pole_Climbing_Mujoco.py` 顶部修改（实机版见上一节）：

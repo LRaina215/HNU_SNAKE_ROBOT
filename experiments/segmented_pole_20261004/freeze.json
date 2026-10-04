@@ -1,0 +1,38 @@
+{
+  "plan_sha256": "598a9d4f1227387f0ce5d5fa5120bae3324b7e9bb14db32d3be9ab3e87f5ca55",
+  "candidates": [
+    {
+      "width": 4,
+      "passed": false,
+      "peak_progress_with_dual_contact_mm": 231.79332942180775,
+      "result_hash": "dad53c97c3c5d022ea99b3a3642888e10c79007cb5394bcddc4a1bcfc2e07fa6"
+    },
+    {
+      "width": 6,
+      "passed": false,
+      "peak_progress_with_dual_contact_mm": 222.33119775556668,
+      "result_hash": "640132d7aaa15d517491aaa4eee5f4af8b2379d36a47d64b00af8ed528caa666"
+    },
+    {
+      "width": 8,
+      "passed": false,
+      "peak_progress_with_dual_contact_mm": 215.9595067042859,
+      "result_hash": "aa5aa5397a6b51448ba5925169e80693d1107ad74c92e3a888e8212ae83f7d78"
+    }
+  ],
+  "selected_width": 4,
+  "horizontal_passed": false,
+  "selection": "first pass; otherwise largest observed head progress while both pipes have contact (not a success claim)",
+  "source_hashes": {
+    "codes/segmented_pole_backbone.py": "d84f7f84d7bd88927b67769c7bcd6725c3bf6a2d5149071ea5a265ec1f6d8241",
+    "codes/pole_compliance.py": "4503a150dfbc66d2aa1fd18712740e14ff6eb1f3631db07b26fafd6aba15e55c",
+    "codes/curved_axis_compliance.py": "abf352bbdd232c75c7e7cf8b724a502005d892f33d2d4ab88e238ac9d0ecc746",
+    "codes/mujoco_checkpoint.py": "4281c9e7ed095e717a6b6e487b63b709d3645259c69d30990addfb432816dd9b",
+    "codes/mujoco_execution_bridge.py": "5654db722c07b4eabd6ce859f007befe45ab59aee5b433b9056c973fad7d98c3",
+    "codes/mujoco_visualizer_bridge.py": "b41da6289a6176441ca679d35dcde9d141eba2981ba9b1866f57fae28a9c02c0",
+    "visualizer/python_client.py": "fc3970b1c9790e6aae2240744d5b79646bab736fc149e31cd02b6b26284f5e69",
+    "validation/segmented_pole_experiment.py": "ee3f466334205f98edfb4cbce9d585c37de86992a2e9254ea61f0ec6016bf35b",
+    "validation/SegmentedAxisReplay.cs": "ba55167a7a43c62a2751724876b1e2eb978f252af3334721f1cdae08ddc746fd"
+  },
+  "vertical_used_for_tuning": false
+}
