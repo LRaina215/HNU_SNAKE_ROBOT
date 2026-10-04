@@ -1,0 +1,42 @@
+{
+  "modes": [
+    "original",
+    "helix",
+    "connector",
+    "combined"
+  ],
+  "cycles": 64,
+  "half_step_seconds": 0.2,
+  "cycle_phase_rad": -0.15,
+  "rolling": "synchronous",
+  "boundary_links": 6.0,
+  "transition_links": 6.0,
+  "helix": {
+    "full_weight_through_link": 6.0,
+    "taper_ends_link": 9.0,
+    "shape_gain": 0.1,
+    "ramp_seconds": 1.6,
+    "tangent_relaxation_links": 2.0,
+    "pitch_mm": 220.0,
+    "radius": "median front joint distance to known target axis / (1 + mean front K)"
+  },
+  "connector": "subtract world-axis-turn derivative before rolling; add it back afterward",
+  "stop_conditions": [
+    "floor",
+    "no whole-body pipe contact >0.1 N for 0.2 s"
+  ],
+  "hold_seconds": 3.0,
+  "gate": {
+    "front_progress_mm": 64.5,
+    "minimum_front_coverage_fraction_of_initial": 0.8,
+    "front_contact_throughout": true,
+    "final_new_region_modules": 2,
+    "hold_head_retreat_mm": 10.0,
+    "hold_root_motion_mm": 20.0,
+    "no_floor": true
+  },
+  "scope": "known-axis local shape feedback; no exact connector endpoint/arc-length constraint",
+  "follow_up": "no migration until combined fixed-boundary gate passes",
+  "no_parameter_search": true,
+  "no_SHA_checks": true
+}

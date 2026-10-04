@@ -1,0 +1,116 @@
+{
+  "condition": "helix",
+  "outcome": "time_limit",
+  "cycles": 64.0,
+  "gate": false,
+  "commands": 128,
+  "integration_error_rad": 6.661338147750939e-16,
+  "original_prefix_qpos_error": null,
+  "final_front_progress_mm": 185.07082284051967,
+  "peak_front_progress_mm": 201.93879402516603,
+  "initial_coverage_turns": 0.5716485389949711,
+  "minimum_rolling_coverage_turns": 0.5048689628275043,
+  "final_coverage_turns": 0.530238845225755,
+  "first_front_loss_0_2s_at": null,
+  "front_contact_fraction": 0.9976571651698555,
+  "persistent_new_region_modules": [],
+  "final_target_contact_modules": [
+    0,
+    17
+  ],
+  "rolling_floor": false,
+  "hold_gate": false,
+  "hold_retreat_mm": 28.600927676924243,
+  "hold_root_mm": 47.350991734861246,
+  "first_command_change_deg": 5.787425170378731,
+  "max_tracking_error_deg": 41.725413882629674,
+  "force_saturation_fraction": 0.6027723545490042,
+  "clipped_joint_steps": 131,
+  "milestones": [
+    {
+      "cycle": 8,
+      "front_progress_mm": 66.12088296618232,
+      "front_coverage_turns": 0.606783912047432,
+      "target_region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "front_contact_force_N": 101.67846764927005
+    },
+    {
+      "cycle": 16,
+      "front_progress_mm": 102.73691815824724,
+      "front_coverage_turns": 0.5906049211199326,
+      "target_region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "front_contact_force_N": 74.77226659383459
+    },
+    {
+      "cycle": 32,
+      "front_progress_mm": 151.74534917544628,
+      "front_coverage_turns": 0.5623816802916275,
+      "target_region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "front_contact_force_N": 51.29949796729424
+    },
+    {
+      "cycle": 48,
+      "front_progress_mm": 200.1245415244535,
+      "front_coverage_turns": 0.5145165079378282,
+      "target_region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "front_contact_force_N": 24.815201306457368
+    },
+    {
+      "cycle": 64,
+      "front_progress_mm": 185.07082284051967,
+      "front_coverage_turns": 0.530238845225755,
+      "target_region_modules": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "front_contact_force_N": 14.52601507221633
+    }
+  ],
+  "bridge_chord_initial_mm": 228.00983409959616,
+  "bridge_chord_max_mm": 330.1429386775517,
+  "bridge_chord_final_mm": 291.61681056272676,
+  "last_reference_front_tangent_errors_deg": [
+    9.974790039392389,
+    0.8857229884783656,
+    7.3114819722026025,
+    15.064803626343021,
+    27.831542553084475,
+    33.540749612385675
+  ]
+}
