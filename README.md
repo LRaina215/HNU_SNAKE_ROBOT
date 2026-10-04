@@ -2,9 +2,13 @@
 
 本仓库包含原蛇形机器人步态，以及新增的 **Yamada 关节角计算、截面顺应性目标生成、可视化反馈与 MuJoCo 转发执行闭环**。原项目介绍与作者信息保留在文末；其他步态的说明见 [README_zh.md](README_zh.md)。
 
-2026-10-04 最新：[同步成形与完整跨越验证](docs/三段顺应性_同步成形与完整跨越验证.md)。**从用户保存的搭管状态出发，水平T型与转竖直向下T型均完成整身跨越，并继续rolling一个完整相位周期。** 验收区间内分别继续推进223.8 / 320.9 mm，维持约两圈包绕；竖直转移后反转相位还能向上回移42.6 mm。
+2026-10-05 最新：[平顺转移首轮验证](docs/三段顺应性_平顺转移首轮验证.md)。**新增8°目标领先限制与20 ms执行插值，同参数在水平T、转竖直向下T两个存档上保留完整跨越与继续rolling一周期。** 恢复后1秒至验收结束的最大跟踪误差由83.5°/59.1°降至12.1°/13.3°，实际关节峰值速度由166/163降至110/104°/s。尾部退出原管仍有急促摆动，竖直还存在较大外张，不能当作实机可用或未知环境自主跨越。
 
-当前候选 `codes/traveling_compliant_winding.py` 将实测形变反馈、同步渐进成形、中段让位、尾部释放和整身接管结合。使用已知管轴和仿真接触；尚未完成自动轴估计或实机跨越，转移瞬态仍需改善。日常和实机入口未替换。
+当前独立实验入口：`python validation/coordinated_winding_experiment.py horizontal_recheck --scene horizontal --hypothesis "复核平顺转移候选" --video`；竖直使用新的结果名和 `--scene vertical_down`。默认8°、20 ms、反馈减速关闭。参考[水平正常速度回放](experiments/segmented_pole_20261005/coordinated_winding/reviews/ramp20_horizontal_1x.mp4)、[竖直正常速度回放](experiments/segmented_pole_20261005/coordinated_winding/reviews/ramp20_vertical_1x.mp4)与[全部对照数据](experiments/segmented_pole_20261005/coordinated_winding/README.md)。日常与实机入口未替换。
+
+2026-10-04 基线：[同步成形与完整跨越验证](docs/三段顺应性_同步成形与完整跨越验证.md)。从用户保存的搭管状态出发，水平T型与转竖直向下T型均完成整身跨越，并继续rolling一个完整相位周期。验收区间内分别继续推进223.8 / 320.9 mm，维持约两圈包绕；竖直转移后反转相位还能向上回移42.6 mm。
+
+基线 `codes/traveling_compliant_winding.py` 将实测形变反馈、同步渐进成形、中段让位、尾部释放和整身接管结合；新候选 `codes/coordinated_compliant_winding.py` 在其上调节位置参考。使用已知管轴和仿真接触；尚未完成自动轴估计或实机跨越，转移瞬态仍需改善。
 
 在仓库根目录运行 `python validation/traveling_winding_experiment.py horizontal_verify --scene horizontal --video`；竖直复核改用新的结果名及 `--scene vertical_down`。脚本自动启动隔离EXE，达到完整验收后停止。报告含[水平回放](experiments/segmented_pole_20261004/traveling_winding/reviews/v9_compliant_ends.mp4)、[竖直回放](experiments/segmented_pole_20261004/traveling_winding/reviews/v9_vertical_frozen.mp4)、详细参数和[无损数据归档](experiments/segmented_pole_20261004/traveling_winding/README.md)。
 
