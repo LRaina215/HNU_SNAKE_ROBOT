@@ -1,0 +1,6 @@
+{
+  "stage": "partial_real_record_format_check_not_method_comparison",
+  "checked_cases": 42,
+  "maximum_marker_gap_s": 0.0,
+  "full_comparison_refused": true
+}

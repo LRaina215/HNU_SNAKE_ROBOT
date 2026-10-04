@@ -1,0 +1,1152 @@
+{
+  "stage": "formal",
+  "freeze_sha256": "430a98aadff3497a376dd3bdfb4705e3ec6abc6ec7beae9e83d7f95c44171aa0",
+  "runner_sha256": "6b0dee35f05f8baa3d33350f1e2999efb80a9401afee5b1d890ce66961d0df8e",
+  "required": 160,
+  "statistics_policy": {
+    "unit": "paired scene/seed trial; never a physical frame",
+    "confidence": 0.95,
+    "success_interval": "Clopper-Pearson exact binomial",
+    "success_comparison": "two-sided exact McNemar on discordant pairs",
+    "primary_family": "D versus B in four scenes; D versus C in two taper scenes",
+    "primary_multiplicity": "Holm over all six predeclared success comparisons",
+    "secondary_interval": "20000 paired bootstrap resamples of median difference; seed 20261006",
+    "secondary_interpretation": "descriptive, available-pair denominators explicit; no confirmatory significance claim",
+    "stage3": "positive primary success evidence still requires reviewed matching mechanism evidence; ceiling/secondary benefits require explicit evidence review"
+  },
+  "statistics_source_sha256": "6dfd424692bc5381ad3afbac3dd5d120c605d3702077fdaf7f99ad38ff29d930",
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110
+  ],
+  "order": [
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "A",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 102,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 106,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 106,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 108,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 109,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 107,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "real_s2l",
+      "method": "C",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "B",
+      "seed": 101,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 108,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "A",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "C",
+      "seed": 103,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "real_s2l",
+      "method": "D",
+      "seed": 104,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 110,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "D",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "C",
+      "seed": 110,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "B",
+      "seed": 103,
+      "k": 0.0,
+      "alpha_deg": 18.0
+    },
+    {
+      "scene": "pipe_taper_horizontal",
+      "method": "D",
+      "seed": 109,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 105,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "B",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 28.0
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "A",
+      "seed": 104,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "D",
+      "seed": 107,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "B",
+      "seed": 105,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_small",
+      "method": "A",
+      "seed": 102,
+      "k": 0.0,
+      "alpha_deg": 23.249361508757264
+    },
+    {
+      "scene": "pipe_straight_large",
+      "method": "C",
+      "seed": 101,
+      "k": 1.0,
+      "alpha_deg": 23.249361508757264
+    }
+  ]
+}

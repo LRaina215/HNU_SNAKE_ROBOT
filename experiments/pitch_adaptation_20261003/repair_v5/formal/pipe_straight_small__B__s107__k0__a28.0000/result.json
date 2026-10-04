@@ -1,0 +1,359 @@
+{
+  "scene": "pipe_straight_small",
+  "method": "B",
+  "seed": 107,
+  "k": 0.0,
+  "alpha_deg": 28.0,
+  "joints": 20,
+  "movement_budget_s": 120.0,
+  "hold_budget_s": 10.0,
+  "outcome": "success",
+  "movement_steps": 105,
+  "initialization_s": 2.2,
+  "hold_max_retreat_m": 0.02,
+  "goal_feature_m": 1.0,
+  "status": [
+    {
+      "sim_time": 2.1999999999998687,
+      "mean": 0.48424325267294216,
+      "tail": 0.23614674456684834,
+      "head": 0.7411578876122501,
+      "contacts": 12,
+      "height": 0.484,
+      "tracking_deg": 18.67
+    },
+    {
+      "sim_time": 3.1999999999997586,
+      "mean": 0.5065231630156866,
+      "tail": 0.252735777723279,
+      "head": 0.765028548875409,
+      "contacts": 11,
+      "height": 0.507,
+      "tracking_deg": 10.54
+    },
+    {
+      "sim_time": 4.199999999999737,
+      "mean": 0.5228545318579018,
+      "tail": 0.24717868412661714,
+      "head": 0.7926398872290914,
+      "contacts": 11,
+      "height": 0.523,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 5.200000000000071,
+      "mean": 0.5450857575209704,
+      "tail": 0.2594412679290704,
+      "head": 0.8290838061183361,
+      "contacts": 9,
+      "height": 0.545,
+      "tracking_deg": 4.72
+    },
+    {
+      "sim_time": 6.200000000000405,
+      "mean": 0.5705209698071874,
+      "tail": 0.2847932794689486,
+      "head": 0.8547519518825442,
+      "contacts": 10,
+      "height": 0.571,
+      "tracking_deg": 2.59
+    },
+    {
+      "sim_time": 7.200000000000739,
+      "mean": 0.5972209567766542,
+      "tail": 0.3154448700981709,
+      "head": 0.8784806243625717,
+      "contacts": 9,
+      "height": 0.597,
+      "tracking_deg": 4.35
+    },
+    {
+      "sim_time": 8.200000000000895,
+      "mean": 0.6193690890598111,
+      "tail": 0.3281357009943562,
+      "head": 0.89494246279029,
+      "contacts": 8,
+      "height": 0.619,
+      "tracking_deg": 2.82
+    },
+    {
+      "sim_time": 9.20000000000034,
+      "mean": 0.6444155996345287,
+      "tail": 0.35276804359154823,
+      "head": 0.9224665414122772,
+      "contacts": 9,
+      "height": 0.644,
+      "tracking_deg": 2.37
+    },
+    {
+      "sim_time": 10.199999999999786,
+      "mean": 0.6669042968210058,
+      "tail": 0.3785224110889452,
+      "head": 0.9539104170517686,
+      "contacts": 9,
+      "height": 0.667,
+      "tracking_deg": 2.25
+    },
+    {
+      "sim_time": 11.199999999999232,
+      "mean": 0.6957425876086758,
+      "tail": 0.41214142491738937,
+      "head": 0.9799895729072903,
+      "contacts": 9,
+      "height": 0.696,
+      "tracking_deg": 5.81
+    },
+    {
+      "sim_time": 12.199999999998678,
+      "mean": 0.7172469364293886,
+      "tail": 0.4250118571486703,
+      "head": 0.993892533477416,
+      "contacts": 9,
+      "height": 0.717,
+      "tracking_deg": 2.34
+    },
+    {
+      "sim_time": 13.199999999998123,
+      "mean": 0.7411005559696588,
+      "tail": 0.44885413343498637,
+      "head": 1.016311657091961,
+      "contacts": 8,
+      "height": 0.741,
+      "tracking_deg": 3.24
+    },
+    {
+      "sim_time": 14.19999999999757,
+      "mean": 0.7623825096613313,
+      "tail": 0.4728280051189131,
+      "head": 1.0525852819004067,
+      "contacts": 8,
+      "height": 0.762,
+      "tracking_deg": 2.0
+    },
+    {
+      "sim_time": 15.199999999997015,
+      "mean": 0.7940878486757182,
+      "tail": 0.5087665180894091,
+      "head": 1.0770773313033353,
+      "contacts": 10,
+      "height": 0.794,
+      "tracking_deg": 3.68
+    },
+    {
+      "sim_time": 16.199999999996816,
+      "mean": 0.8157645667403628,
+      "tail": 0.5223369534351215,
+      "head": 1.0928625817384914,
+      "contacts": 8,
+      "height": 0.816,
+      "tracking_deg": 2.76
+    },
+    {
+      "sim_time": 17.199999999998038,
+      "mean": 0.838741629502658,
+      "tail": 0.5459332127192783,
+      "head": 1.1148334249226015,
+      "contacts": 8,
+      "height": 0.839,
+      "tracking_deg": 4.16
+    },
+    {
+      "sim_time": 18.19999999999926,
+      "mean": 0.8605376985736475,
+      "tail": 0.5703447340903367,
+      "head": 1.151562544534228,
+      "contacts": 9,
+      "height": 0.861,
+      "tracking_deg": 3.61
+    },
+    {
+      "sim_time": 19.200000000000482,
+      "mean": 0.8909122844844184,
+      "tail": 0.6054042232166423,
+      "head": 1.1718396269407476,
+      "contacts": 9,
+      "height": 0.891,
+      "tracking_deg": 2.58
+    },
+    {
+      "sim_time": 20.200000000001705,
+      "mean": 0.9143017524878478,
+      "tail": 0.6250282464260146,
+      "head": 1.1914249258247787,
+      "contacts": 10,
+      "height": 0.914,
+      "tracking_deg": 2.92
+    },
+    {
+      "sim_time": 21.200000000002927,
+      "mean": 0.9365082246937957,
+      "tail": 0.6428732112953504,
+      "head": 1.2131467782222982,
+      "contacts": 9,
+      "height": 0.937,
+      "tracking_deg": 3.36
+    },
+    {
+      "sim_time": 22.20000000000415,
+      "mean": 0.9588522838520591,
+      "tail": 0.6677671393543954,
+      "head": 1.248221788626451,
+      "contacts": 9,
+      "height": 0.959,
+      "tracking_deg": 3.79
+    },
+    {
+      "sim_time": 23.20000000000537,
+      "mean": 0.986123637700721,
+      "tail": 0.6981101024476789,
+      "head": 1.265605920980999,
+      "contacts": 9,
+      "height": 0.986,
+      "tracking_deg": 3.88
+    },
+    {
+      "sim_time": 24.200000000006593,
+      "mean": 0.9847074505950795,
+      "tail": 0.6945630242195941,
+      "head": 1.2656006452405228,
+      "contacts": 10,
+      "height": 0.985,
+      "tracking_deg": 3.04
+    },
+    {
+      "sim_time": 25.200000000007815,
+      "mean": 0.9830538925399364,
+      "tail": 0.6927408213621142,
+      "head": 1.2641413169867737,
+      "contacts": 10,
+      "height": 0.983,
+      "tracking_deg": 3.03
+    },
+    {
+      "sim_time": 26.200000000009037,
+      "mean": 0.981389957218896,
+      "tail": 0.6910487122408486,
+      "head": 1.2625633624803723,
+      "contacts": 10,
+      "height": 0.981,
+      "tracking_deg": 2.96
+    },
+    {
+      "sim_time": 27.20000000001026,
+      "mean": 0.9797138643643869,
+      "tail": 0.6893592187115123,
+      "head": 1.2609210004130251,
+      "contacts": 10,
+      "height": 0.98,
+      "tracking_deg": 2.92
+    },
+    {
+      "sim_time": 28.20000000001148,
+      "mean": 0.9780294078008234,
+      "tail": 0.6876658024396691,
+      "head": 1.259260253040487,
+      "contacts": 10,
+      "height": 0.978,
+      "tracking_deg": 2.89
+    },
+    {
+      "sim_time": 29.200000000012704,
+      "mean": 0.9763435785409621,
+      "tail": 0.6859749890859886,
+      "head": 1.2575913696572565,
+      "contacts": 10,
+      "height": 0.976,
+      "tracking_deg": 2.87
+    },
+    {
+      "sim_time": 30.200000000013926,
+      "mean": 0.9746511244198393,
+      "tail": 0.6842790075343663,
+      "head": 1.255909030113184,
+      "contacts": 10,
+      "height": 0.975,
+      "tracking_deg": 2.86
+    },
+    {
+      "sim_time": 31.200000000015148,
+      "mean": 0.9729586615004031,
+      "tail": 0.6825844399504019,
+      "head": 1.254220935678622,
+      "contacts": 10,
+      "height": 0.973,
+      "tracking_deg": 2.86
+    },
+    {
+      "sim_time": 32.200000000015656,
+      "mean": 0.971267127937249,
+      "tail": 0.6808903684617676,
+      "head": 1.2525320534168953,
+      "contacts": 10,
+      "height": 0.971,
+      "tracking_deg": 2.85
+    },
+    {
+      "sim_time": 33.200000000013326,
+      "mean": 0.9695715116373748,
+      "tail": 0.6791937641083567,
+      "head": 1.2508389807283422,
+      "contacts": 10,
+      "height": 0.97,
+      "tracking_deg": 2.85
+    }
+  ],
+  "rejections": 0,
+  "canceled_feedback_retries": 0,
+  "git_commit": "3f4464caa49484e4298e43c3e2d3fc614f91e469",
+  "sha256": {
+    "mujoco_model\\Snake_Robot_o20_Pipe_straight_small.xml": "8745dc15812ded3fcab38788c4b46b7251ab54c44862b2a0abe33d0b6020ac9e",
+    "visualizer\\windows_app\\bin\\SnakeRobotVisualizer.exe": "97a346b6992cbfe41c43b8c6e819c91ab8f035f1374bc8a4fc8ab57139a5f24c",
+    "codes\\local_pitch_controller_v5.py": "fd46c67983318e697431c7c42ba2a296f37e2bda1efedef7f3cfa8ee034c27ad",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d",
+    "codes\\pole_compliance.py": "273c408f235bc285afc95d4d11e6aaa553d8df8f54aa3648aebec7c8859b8e17",
+    "codes\\Adaptive_Pole_Climbing_Mujoco.py": "5b9406aa5d0a86f5cefd36156c9e05ee51a1bcd9a00596b73a48deb662d5cb46",
+    "validation\\pitch_adaptation_experiment_v5.py": "3fcfed7190db39f91104709d6566c56efee8d72752f3d86b7976f6e1c6b5c6fb",
+    "validation\\pitch_adaptation_capture.py": "0bc68679a44376583832b7bc5835834f1f1056cccecf26f120416fdc2705d580",
+    "validation\\pitch_adaptation_experiment_v5_logged.py": "083df953b819dbeb4c79ebd2ce247f971ba7411d60f712d30043029b86d3433c"
+  },
+  "initial": {
+    "sim_time": 2.1999999999998687,
+    "mean": 0.48424325267294216,
+    "tail": 0.23614674456684834,
+    "head": 0.7411578876122501,
+    "contacts": 12,
+    "height": 0.484,
+    "tracking_deg": 18.67
+  },
+  "takeover_ready_sim_time": 2.1999999999998687,
+  "hold_start_s": 23.20000000000537,
+  "hold_start_mean_m": 0.986123637700721,
+  "wall_s": 76.32800000000134,
+  "physical_s": 33.200000000013326,
+  "completed_steps": 166,
+  "control_updates": 105,
+  "degraded_update_fraction": 0.5714285714285714,
+  "compute_ms_max": 23.828900000001596,
+  "any_ground_contact": false,
+  "torque_rms_nm": 1.74983649561701,
+  "torque_squared_integral": 2033.120033565913,
+  "saturation_fraction": 0.44124999999995385,
+  "radius_valid_fraction": 0.8701298701298701,
+  "alpha_range_deg": [
+    24.19948920700581,
+    27.999999999682895
+  ],
+  "success": true,
+  "controller_version": 5,
+  "stage": "formal",
+  "formal_freeze_sha256": "430a98aadff3497a376dd3bdfb4705e3ec6abc6ec7beae9e83d7f95c44171aa0",
+  "formal_orchestrator_sha256": "6b0dee35f05f8baa3d33350f1e2999efb80a9401afee5b1d890ce66961d0df8e",
+  "dependencies": {
+    "python": "3.9.21",
+    "numpy": "1.23.5",
+    "scipy": "1.13.1",
+    "mujoco": "3.3.0"
+  },
+  "capture_sha256": "d08c860e9e63a2368c89d83a6d82e040d3d256b5c94b8056a0559f9517445a06"
+}

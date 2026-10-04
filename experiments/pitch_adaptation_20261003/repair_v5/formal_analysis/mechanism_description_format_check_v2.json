@@ -1,0 +1,7 @@
+{
+  "stage": "partial_real_record_format_check_not_method_comparison",
+  "checked_cases": 81,
+  "maximum_marker_gap_s": 0.0,
+  "full_comparison_refused": true,
+  "source_sha256": "761811b69ef7e2ecdd499ebbed61b187376c0b0c362e6e16b69e3edd96a28de8"
+}

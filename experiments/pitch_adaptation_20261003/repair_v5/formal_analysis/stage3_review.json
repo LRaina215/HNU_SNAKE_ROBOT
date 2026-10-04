@@ -1,0 +1,37 @@
+{
+  "evidence_review_complete": true,
+  "scope": "plan stages 0-2; 160 audited trials, seeds 101-110",
+  "stage3_required": false,
+  "stage3_executed": false,
+  "decision": "Negative benefit gate after reviewing primary success, ceiling-case continuous metrics and mechanisms; no benefit-dependent stage3 batch required.",
+  "primary": {
+    "positive_comparisons": 0,
+    "small_pipe_D_vs_B_wins": 0,
+    "small_pipe_D_vs_B_losses": 10,
+    "small_pipe_holm_p": 0.01171875
+  },
+  "ceiling_review": "Horizontal taper all methods 10/10; D not consistently faster or better at holding than tuned B and global C. D/C burden proxy is higher. Shorter D/B task time also has a shorter endpoint displacement.",
+  "mechanism_review": "Local alpha variation and altered signed wrap distribution are present, but do not establish improved support or an advantage over both B and C.",
+  "hold_protocol": "Last joint target held without further compliance or pitch updates; identical protocol across methods.",
+  "pressure_case_required": false,
+  "pressure_case_reason": "Not all scene/method groups are at 10/10. Prior R125/140 scans were offline only. No consistent ceiling-case D benefit warrants searching larger-radius contact cases in this frozen batch.",
+  "not_executed": [
+    "D0 and D-truth 40 trials",
+    "real_l2s B/C/D 30 trials",
+    "26-joint generalization",
+    "rubber thickness 1/2 mm generalization",
+    "untrained transition length generalization"
+  ],
+  "hypotheses": {
+    "H1": "unconfirmed causal wrap-insufficiency support loss",
+    "H2": "unsupported for this candidate; small-pipe D worse than B",
+    "H3": "unsupported for this candidate",
+    "H4": "feedback candidate shows no benefit; estimation and policy contributions remain unseparated"
+  },
+  "inputs_sha256": {
+    "experiments/pitch_adaptation_20261003/repair_v5/formal_analysis/formal_audit.json": "501b1a69631565423494f3c42e71b6d2267a49546220e701f12a016aedaa08d8",
+    "experiments/pitch_adaptation_20261003/repair_v5/formal_analysis/formal_statistics.json": "669eb1cfa62834ad3038d7e232d6248b1f8f9e927b250d0323588219ecbb5892",
+    "experiments/pitch_adaptation_20261003/repair_v5/formal_analysis/mechanism_comparison.json": "8ef249445685261fea9e849cfda4b2005724298178801209e65b2c4df575b6ac",
+    "docs/局部螺距自适应_实验执行方案.md": "34e189e8f124b1d82c447a7b2031e3bcf25d766e05de282cdf27f17f8fa4568b"
+  }
+}

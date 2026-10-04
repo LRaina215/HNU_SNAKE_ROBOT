@@ -1,0 +1,110 @@
+{
+  "scene": "pipe_taper_horizontal",
+  "method": "B",
+  "seed": 106,
+  "k": 0.0,
+  "outcome": "success",
+  "success": true,
+  "sources_sha256": {
+    "experiments\\pitch_adaptation_20261003\\repair_v5\\formal\\pipe_taper_horizontal__B__s106__k0__a18.0000\\result.json": "2e6121c3003854169e0c039a3f4287765bb1412f9333961ef6b3729ab05259e2",
+    "experiments\\pitch_adaptation_20261003\\repair_v5\\formal\\pipe_taper_horizontal__B__s106__k0__a18.0000\\trace.npz": "3b26bb182311596e74a0b8d13ce946e56a0fb0e94ce07e9cbbbcd6293e7260f9",
+    "experiments\\pitch_adaptation_20261003\\repair_v5\\formal\\pipe_taper_horizontal__B__s106__k0__a18.0000\\control.json.gz": "b9fe5a3505e7c4ade1efdaae4e94641f4eae8b74825faffc48b4ee4df9151366",
+    "mujoco_model\\Snake_Robot_o20_Pipe_taper_horizontal.xml": "af6f9cb2684e3724efdf13b5f3b3afba6e8b6318c9634ab13708cd6b9030de74",
+    "validation\\pitch_adaptation_mechanism.py": "f706742d9fbf912963a23da0cea03dffdced7025b02b03315af555a3e826148c",
+    "codes\\local_pitch_feedback.py": "80c4e98622f103e961babb7f67ac651959b032e20bdd70ff0ff42721ab9b4aae",
+    "codes\\local_pitch_geometry.py": "dd6aa7a0a166785837d5729dad24b0b8b905641763f9fe2d99164b9ce18ea26d"
+  },
+  "scoring_only": true,
+  "definitions": {
+    "length": "each actual link partitioned once at truth region boundaries",
+    "winding": "signed polar increments; net wrap is absolute after summing within region",
+    "contacts": "geometric locations reconstructed from qpos; no force or stable-support inference",
+    "radius_error": "accepted module fit minus mean ACTUAL link-centre radius in the same window, not pipe radius",
+    "sampling_s": 0.2
+  },
+  "regions": [
+    "upstream",
+    "transition",
+    "downstream"
+  ],
+  "frames": 216,
+  "straddling_frames": 83,
+  "straddling": {
+    "upstream": {
+      "n": 83,
+      "median_body_length_m": 0.6685258270775827,
+      "median_signed_turns": -1.0296128023635616,
+      "median_net_wrap_turns": 1.0296128023635616,
+      "median_geometric_contacts": 3.0,
+      "median_contact_modules": 3.0
+    },
+    "transition": {
+      "n": 83,
+      "median_body_length_m": 0.054044087335283736,
+      "median_signed_turns": -0.0713640953691683,
+      "median_net_wrap_turns": 0.0713640953691683,
+      "median_geometric_contacts": 0.0,
+      "median_contact_modules": 0.0
+    },
+    "downstream": {
+      "n": 83,
+      "median_body_length_m": 0.6541623818648331,
+      "median_signed_turns": -0.8095485509630105,
+      "median_net_wrap_turns": 0.8095485509630105,
+      "median_geometric_contacts": 5.0,
+      "median_contact_modules": 4.0
+    }
+  },
+  "all_frames": {
+    "upstream": {
+      "n": 216,
+      "median_body_length_m": 0.2502835710008713,
+      "median_signed_turns": -0.32687330722683894,
+      "median_net_wrap_turns": 0.32687330722683894,
+      "median_geometric_contacts": 0.0,
+      "median_contact_modules": 0.0
+    },
+    "transition": {
+      "n": 216,
+      "median_body_length_m": 0.0,
+      "median_signed_turns": 0.0,
+      "median_net_wrap_turns": 0.0,
+      "median_geometric_contacts": 0.0,
+      "median_contact_modules": 0.0
+    },
+    "downstream": {
+      "n": 216,
+      "median_body_length_m": 1.0637983175594443,
+      "median_signed_turns": -1.3278860544801832,
+      "median_net_wrap_turns": 1.3278860544801832,
+      "median_geometric_contacts": 6.0,
+      "median_contact_modules": 6.0
+    }
+  },
+  "representative_sim_time": 19.200000000000482,
+  "maximum_saved_contact_count_discrepancy": 1,
+  "maximum_length_partition_error_m": 2.6645352591003757e-15,
+  "accepted_radius_samples": 3099,
+  "accepted_radius_window_rmse_mm": 6.250064181187946,
+  "accepted_radius_abs_error_p95_mm": 13.094762031547404,
+  "accepted_radius_pointwise_rmse_mm": 8.667211249353539,
+  "accepted_radius_pointwise_abs_error_p95_mm": 19.04133677116833,
+  "accepted_radius_pointwise_abs_error_max_mm": 42.05438705387557,
+  "worst_accepted_pointwise_example": {
+    "feedback_sim_time": 13.359999999998037,
+    "trace_index": 1824,
+    "module_index": 0,
+    "feedback_fit_radius_mm": 126.68421180606906,
+    "actual_module_radius_mm": 168.73859885994463,
+    "actual_window_mean_radius_mm": 116.54312968114091,
+    "lo": 0,
+    "hi": 7,
+    "pointwise_error_mm": -42.05438705387557,
+    "true_axis_fit_valid": true,
+    "true_axis_fit_radius_mm": 131.13447938942954,
+    "true_axis_pointwise_error_mm": -37.60411947051509,
+    "feedback_vs_true_axis_fit_difference_mm": -4.4502675833604854,
+    "interpretation": "true-axis fit isolates a projection/reconstruction difference; residual local error includes window mixing and circle-model mismatch; diagnostic only"
+  },
+  "unmatched_feedback_times": []
+}
