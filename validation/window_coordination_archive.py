@@ -4,6 +4,8 @@ Checks actual relay delivery against planned interpolation; no new physics or
 hash checks. Extract each ZIP into OUT to replay its saved trajectory.
 """
 import json
+import argparse
+from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 import numpy as np
 from segmented_pole_experiment import write_json
@@ -56,7 +58,7 @@ def coordination_plot(folder):
     axes[-1].set_xlabel('Physical seconds after checkpoint')
     fig.suptitle(folder.name+'\nTransfer prefix starts at the captured front count; not a support certificate.')
     fig.tight_layout()
-    out=OUT/'reviews';out.mkdir(exist_ok=True)
+    out=folder.parent/'reviews';out.mkdir(exist_ok=True)
     fig.savefig(out/(folder.name+'_coordination.png'),dpi=130);plt.close(fig)
 
 
@@ -88,10 +90,11 @@ def diagnose(folder):
     return out
 
 
-def package():
-    destination=OUT/'archives';destination.mkdir(exist_ok=True)
-    index=[]
-    for folder in sorted(OUT.iterdir()):
+def package(root=OUT,names=None):
+    destination=root/'archives';destination.mkdir(exist_ok=True)
+    index={row['run']:row for row in read(root/'runs.json')} if names and (root/'runs.json').exists() else {}
+    for folder in sorted(root.iterdir()):
+        if names and folder.name not in names:continue
         if not (folder/'stage1_gate.json').is_file():continue
         check=delivery(folder);write_json(folder/'delivery_check.json',check)
         result=read(folder/'result.json');plan=read(folder/'plan.json')
@@ -101,17 +104,21 @@ def package():
         output=destination/(folder.name+'.zip')
         files=sorted(p for p in folder.rglob('*') if p.is_file() and p.suffix not in ('.png','.mp4','.pyc'))
         with ZipFile(output,'w',compression=ZIP_DEFLATED,compresslevel=6) as archive:
-            for path in files:archive.write(path,path.relative_to(OUT).as_posix())
-        index.append(dict(run=folder.name,archive=output.relative_to(OUT).as_posix(),
+            for path in files:archive.write(path,path.relative_to(root).as_posix())
+        index[folder.name]=dict(run=folder.name,archive=output.relative_to(root).as_posix(),
             hypothesis=result['hypothesis'],settings=plan['arguments'],outcome=result['outcome'],
             metrics=read(folder/'process_metrics.json'),acceptance=read(folder/'whole_crossing_audit.json'),
             stage1=read(folder/'stage1_gate.json'),delivery=check,diagnosis=diagnosis,
             coordination=dict(maximum_phase_difference=float(max(abs(c['phase_difference']) for c in controls)),
                 initial_front_wrap=controls[0]['front_wrap'],final_front_wrap=controls[-1]['front_wrap'],
                 maximum_formation=max(c['formation_progress'] for c in controls)),
-            files=len(files),bytes=output.stat().st_size))
+            files=len(files),bytes=output.stat().st_size)
         print(folder.name,round(output.stat().st_size/1024**2,2),'MiB',flush=True)
-    write_json(OUT/'runs.json',index)
+    write_json(root/'runs.json',[index[key] for key in sorted(index)])
 
 
-if __name__=='__main__':package()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root',type=Path,default=OUT)
+    parser.add_argument('--names',nargs='+')
+    args=parser.parse_args();package(args.root,args.names)

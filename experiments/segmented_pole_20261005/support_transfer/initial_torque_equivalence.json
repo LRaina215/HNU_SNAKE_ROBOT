@@ -1,0 +1,6 @@
+{
+  "initial_torque_difference_max_Nm": 7.549516567451064e-15,
+  "original_maximum_error_deg": 35.85446003952598,
+  "effective_maximum_error_deg": 1.0624532342780255,
+  "scope": "Position actuator algebra on saved state, without applying any command or changing physics. Subsequent targets still include rolling, formation and A-D."
+}

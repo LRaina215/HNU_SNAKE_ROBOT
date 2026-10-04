@@ -5,6 +5,7 @@ Joint targets retain measured Bishop/Yamada bending and the original A-D
 compliance difference. No physical servo or contact parameters are modified.
 """
 from dataclasses import dataclass, asdict
+from typing import Optional
 import math
 import numpy as np
 from traveling_compliant_winding import TravelingCompliantWinding
@@ -26,6 +27,9 @@ class WindowOptions:
     tail_mode: str = 'support'
     finish_mode: str = 'original'
     supported_recovery: float = .1
+    rear_phase_lead: float = 0.
+    support_centers: bool = False
+    rolling_lookahead_seconds: Optional[float] = None
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -39,6 +43,10 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         self.command_before_last=self.last_target.copy()
         self.follow=1.
         self.feed=0.
+        self.rear_motion_scale=1.
+
+    def rear_release_permitted(self):
+        return True
 
     def rolling_observation(self,geometry,measured,observed):
         rolling,info=super().rolling_observation(geometry,measured,observed)
@@ -52,11 +60,15 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         return observed+change,info
 
     def support(self,points,history):
-        ds,dr,ps,pt=self.distances(points[1:-1])
+        centers=(points[:-1]+points[1:])/2
+        # Shell contact and the independent transfer audit use module centres.
+        # A polygonal helix's joint vertices can lie outside the same radius
+        # band even while its links are already supported by the target pipe.
+        positions=centers[:self.n] if self.window.support_centers else points[1:-1]
+        ds,dr,ps,pt=self.distances(positions)
         region=(dr+10<ds)&(dr<self.radius+29+15)&(pt>self.radius/2)
         prefix=self.initial_front
         while prefix<self.n and region[prefix]:prefix+=1
-        centers=(points[:-1]+points[1:])/2
         h=np.eye(3)[np.argmin(abs(self.target))]
         h-=h@self.target*self.target;h/=np.linalg.norm(h)
         v=np.cross(self.target,h)
@@ -93,7 +105,8 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         reserve=max(0,6-max(0,prefix-8))
         if self.handed_off:near=self.rear<self.n;reserve=0
         release=(self.progress>self.initial_front+.5 and status['target_contact'] and room and near
-                 and (remaining or prefix>=12 or self.handed_off) and self.n-self.rear>reserve)
+                 and (remaining or prefix>=12 or self.handed_off) and self.n-self.rear>reserve
+                 and self.rear_release_permitted())
         # The same supply factor gates phase advance and boundary release.
         self.rear_ready=self.rear_ready+dt*self.feed if release else 0.
         if self.rear_ready>=.6-1e-9:
@@ -105,8 +118,13 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         return dict(formation_progress=self.progress,release_allowed=bool(release),rear_reserve=reserve,
             handed_off=self.handed_off,original_pipe_clear=bool(source_clear),junction_cleared=bool(cleared))
 
+    def update_middle_reference(self,points,measured,dt):
+        middle=self.weights[:,1]>0
+        self.middle_reference[middle]+=-math.expm1(-dt/self.options.follow_seconds)*(measured[middle]-self.middle_reference[middle])
+        return {}
+
     def compute(self,geometry,measured,phase,dt,contact_window,migrate=True):
-        previous=self.last_target.copy();self.elapsed+=dt
+        previous=self.last_target.copy();self.elapsed+=dt;self.current_dt=dt
         points=np.asarray(geometry['points_mm'])
         status=self.support(points,contact_window)
         change=previous-self.command_before_last
@@ -124,7 +142,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         if self.window.tail_mode=='coupled':supply=.25+.75*supply
         self.feed+=(1-math.exp(-dt/.6))*(supply-self.feed)
         front_delta=demand
-        rear_delta=demand*self.feed
+        rear_delta=demand*self.feed*self.rear_motion_scale
         if self.window.tail_mode=='coupled':
             # Preserve the captured two-axis phase relation within a bounded
             # lead. A stopped rear must not let the front accumulate cycles
@@ -132,13 +150,18 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             lag=self.rear_phase-self.phase
             lead_room=float(np.clip(1-lag/(np.pi/4),0,1))
             front_delta=demand*min(1.,self.feed+lead_room)
+        if self.window.rear_phase_lead and acquired:
+            # A bounded extra rear rotation tests the OTHER exit orientation,
+            # rather than accumulating an unbounded front lead. This is an
+            # experimental material-phase offset, not a claimed CMU mapping.
+            error=self.window.rear_phase_lead-(self.phase-self.rear_phase)
+            rear_delta-=float(np.clip(error,-abs(demand),abs(demand)))
         previous_phase=self.phase
         self.phase+=front_delta;self.rear_phase+=rear_delta
         recruitment=self.recruit(points,contact_window,status,front_delta,dt)
         desired=self.desired_weights();difference=desired-self.weights
         self.weights+=difference*np.minimum(1.,dt/self.options.switch_seconds/np.maximum(abs(difference).max(axis=1),1e-12))[:,None]
-        middle=self.weights[:,1]>0
-        self.middle_reference[middle]+=-math.expm1(-dt/self.options.follow_seconds)*(measured[middle]-self.middle_reference[middle])
+        middle_info=self.update_middle_reference(points,measured,dt)
         observed=self.material_integrals(points,measured)
         active=desired[:,1]==0;entering=active&~self.active
         if np.any(entering):
@@ -148,7 +171,11 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         rolling,shape=self.rolling_observation(geometry,measured,observed)
         delta=self.weights[:,0]*front_delta+self.weights[:,2]*rear_delta
         self.joint_phase+=delta
-        rolled=angles_from_integrals(rotate_rows(rolling,delta)+rotate_rows(self.preload,self.joint_phase))
+        # Changing feedback frequency must not silently shrink the position
+        # lead that produces rolling torque. Phase/state and recruitment still
+        # integrate dt; the measured-field target may use a fixed lookahead.
+        lookahead=1. if self.window.rolling_lookahead_seconds is None else self.window.rolling_lookahead_seconds/dt
+        rolled=angles_from_integrals(rotate_rows(rolling,delta*lookahead)+rotate_rows(self.preload,self.joint_phase))
         compliance=np.zeros(self.n)
         for column,axis,step in ((0,self.target,front_delta),(2,self.source,rear_delta)):
             ids=np.flatnonzero(self.weights[:,column]>1e-12)
@@ -157,7 +184,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             zero=LocalSection(geometry,self.zero_parameters,lo,hi,axis,self.corner)
             shaped=LocalSection(geometry,self.parameters,lo,hi,axis,self.corner)
             gauge=zero.align(measured[lo:hi],0.)
-            compliance[lo:hi]=shaped.angles(gauge+step)-zero.angles(gauge+step)
+            compliance[lo:hi]=shaped.angles(gauge+step*lookahead)-zero.angles(gauge+step*lookahead)
         raw=(self.weights[:,0]+self.weights[:,2])*(rolled+compliance)+self.weights[:,1]*self.middle_reference
         finish={}
         if self.handed_off and self.progress>=self.n and self.window.finish_mode=='original':
@@ -185,7 +212,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         return target,dict(front=self.front,rear=self.rear,weights=self.weights.copy(),raw=raw,
             measured=measured,front_phase=self.phase,rear_phase=self.rear_phase,phase_difference=self.rear_phase-self.phase,
             follow=self.follow,feed=self.feed,front_delta=front_delta,rear_delta=rear_delta,
-            compliance_delta=compliance,**shape,**status,**recruitment,**finish)
+            compliance_delta=compliance,**shape,**status,**recruitment,**middle_info,**finish)
 
     def configuration(self):
         return dict(**super().configuration(),window=asdict(self.window))

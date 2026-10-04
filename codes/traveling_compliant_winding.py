@@ -21,6 +21,7 @@ class FormationOptions:
     recovery: float = .35
     release_distance_links: float = 3.
     end_recovery: float = .25
+    complete_end_spans: bool = False
 
 
 class TravelingCompliantWinding(IncrementalThreeSegmentController):
@@ -152,7 +153,9 @@ class TravelingCompliantWinding(IncrementalThreeSegmentController):
         # Wrapped-front feedback updates the nominal radius. Incoming connector
         # distances must not enlarge the whole front's cross section.
         radius = float(np.median(distance[:self.initial_front]))
-        self.radius_reference += .15*(radius-self.radius_reference)
+        radius_dt=getattr(self,'current_dt',.2)
+        radius_gain=.15 if radius_dt==.2 else 1-math.exp(math.log(.85)*radius_dt/.2)
+        self.radius_reference += radius_gain*(radius-self.radius_reference)
         h = abs(self.pitch_mm)/(2*np.pi)
         alpha = math.atan2(h,self.radius_reference)
         kappa = self.radius_reference/(self.radius_reference**2+h*h)
@@ -163,6 +166,11 @@ class TravelingCompliantWinding(IncrementalThreeSegmentController):
             desired_tangent = self.winding*np.cos(alpha)*np.cross(self.body_axis,normal)+np.sin(alpha)*self.body_axis
             derivative = -kappa*normal+(desired_tangent-tangent*(desired_tangent@tangent))/(2*self.link)
             field[j+1] = derivative @ (frame[:,1:]@rotation)
+        if self.formation.complete_end_spans:
+            # The measured discrete backbone has straight terminal half-links,
+            # but the forming helix is a continuous target curve. Do not drop
+            # its terminal half-span contribution from the Yamada integral.
+            field[0]=field[1];field[-1]=field[-2]
         supported = integrated_field(bone,field)
         ramp = float(smoothstep(self.elapsed/1.6))
         # Existing support keeps the successful measured-axis recovery law.

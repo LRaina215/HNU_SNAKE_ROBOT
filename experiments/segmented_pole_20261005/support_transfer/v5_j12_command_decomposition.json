@@ -1,0 +1,54 @@
+{
+  "method": "Offline replay of recorded feedback and contact windows through the saved V5 parameters. At the reported sampled steps, issued targets agree within 3e-15 rad. Values below are rounded to 0.01 degrees.",
+  "joint_id": 12,
+  "rows": [
+    {
+      "time_seconds": 30,
+      "observed_deg": 47.46,
+      "rolling_increment_deg": 0.91,
+      "formation_deg": 8.34,
+      "captured_preload_deg": -2.97,
+      "A_D_deg": 0.09
+    },
+    {
+      "time_seconds": 31,
+      "observed_deg": 63.27,
+      "rolling_increment_deg": 0.72,
+      "formation_deg": -2.01,
+      "captured_preload_deg": -3.61,
+      "A_D_deg": 0.09
+    },
+    {
+      "time_seconds": 32,
+      "observed_deg": 69.93,
+      "rolling_increment_deg": 0.52,
+      "formation_deg": -9.61,
+      "captured_preload_deg": -4.12,
+      "A_D_deg": 0.09
+    },
+    {
+      "time_seconds": 33,
+      "observed_deg": 76.33,
+      "rolling_increment_deg": 0.59,
+      "formation_deg": -11.86,
+      "captured_preload_deg": -4.49,
+      "A_D_deg": 0.12
+    },
+    {
+      "time_seconds": 34,
+      "observed_deg": 81.67,
+      "rolling_increment_deg": 0.78,
+      "formation_deg": -11.67,
+      "captured_preload_deg": -4.7,
+      "A_D_deg": 0.1
+    },
+    {
+      "time_seconds": 35,
+      "observed_deg": 71.9,
+      "rolling_increment_deg": 0.23,
+      "formation_deg": -16.94,
+      "captured_preload_deg": -4.74,
+      "A_D_deg": 0.07
+    }
+  ]
+}

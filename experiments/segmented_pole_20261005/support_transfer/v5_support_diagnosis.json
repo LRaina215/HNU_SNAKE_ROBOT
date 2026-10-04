@@ -1,0 +1,60 @@
+{
+  "first_sustained_source_loss_onset_seconds": 34.61999999996763,
+  "observation_window_seconds": [
+    32.61999999997229,
+    36.61999999996297
+  ],
+  "potential_change_J": -3.091186750724262,
+  "maximum_kinetic_J": 0.5251588879352331,
+  "motor_work_J": 10.639146432170614,
+  "maximum_module_speed": {
+    "time_seconds": 34.68999999996747,
+    "module": 20,
+    "speed_mm_s": 1237.4867430416823
+  },
+  "joint_position_gain": [
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0
+  ],
+  "torque_limit": [
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355,
+    2.355
+  ],
+  "note": "Potential/kinetic energy and actuator work are diagnostics; this does not isolate friction, contact dissipation or a unique causal mechanism."
+}
