@@ -166,33 +166,36 @@ class ContactReferenceWinding(AcquiredShapeWinding):
     correction is applied. Contact truth is a stage-1 input, and this local
     reference constraint is not a guarantee of actual dynamic contact.
     """
-    def __init__(self,*args,local_contact_projection=False,**kwargs):
+    def __init__(self,*args,local_contact_projection=False,dual_contact_projection=False,**kwargs):
         super().__init__(*args,**kwargs)
         self.local_contact_projection=local_contact_projection
+        self.dual_contact_projection=dual_contact_projection
 
     def compute(self,geometry,measured,phase,dt,contact_window,migrate=True):
         from scipy.optimize import minimize
         previous=self.last_target.copy()
         q,info=super().compute(geometry,measured,phase,dt,contact_window,migrate)
         ids=np.flatnonzero(np.asarray(contact_window)[-1,0]>.1)
-        if self.local_contact_projection:
+        if self.local_contact_projection and not self.dual_contact_projection:
             # Only downstream contacts can be changed while front targets are
             # held. An already acquired front link may still touch the source
             # junction; treating that contact as a rear anchor makes the local
             # constraint infeasible regardless of any downstream joint motion.
             ids=ids[ids>self.front]
         protect=len(ids)>0 and info['actual_prefix']<12 and not self.handed_off
-        if self.local_contact_projection:
+        if self.local_contact_projection or self.dual_contact_projection:
             protect=protect and len(ids)<=2
         if not protect:
             info.update(source_reference_projected=False)
             return q,info
+        target_ids=np.flatnonzero(np.asarray(contact_window)[-1,1]>.1) if self.dual_contact_projection else np.array([],int)
         def radii(angles):
             points=self.forward_points(angles)
             centers=(points[:-1]+points[1:])/2
-            return np.linalg.norm(np.cross(centers[ids]-self.corner,self.source),axis=1)
+            return np.r_[np.linalg.norm(np.cross(centers[ids]-self.corner,self.source),axis=1),
+                np.linalg.norm(np.cross(centers[target_ids]-self.corner,self.target),axis=1)]
         base=radii(measured)
-        jac=np.zeros((len(ids),self.n));eps=1e-5
+        jac=np.zeros((len(base),self.n));eps=1e-5
         for j in range(self.n):
             perturbed=measured.copy();perturbed[j]+=eps
             jac[:,j]=(radii(perturbed)-base)/eps
@@ -204,7 +207,7 @@ class ContactReferenceWinding(AcquiredShapeWinding):
         signs=np.where(np.arange(self.n)%2,-1.,1.)
         physical=np.sort(np.radians([[j['minimum_deg'],j['maximum_deg']] for j in geometry['config']['joints']])*signs[:,None],axis=1)
         low=np.maximum(low,physical[:,0]+.01);high=np.minimum(high,physical[:,1]-.01)
-        if self.local_contact_projection:
+        if self.local_contact_projection and not self.dual_contact_projection:
             # Leave the established front's A-D/rolling targets unchanged.
             # Otherwise a head-anchored FK constraint can alter that front to
             # satisfy a distant source contact, while the physical head floats.
@@ -221,7 +224,9 @@ class ContactReferenceWinding(AcquiredShapeWinding):
         if result.success:
             self.last_target=result.x.copy()
             info.update(source_reference_projected=True,source_reference_module_ids=ids,
-                projection_delta=result.x-q,projected_source_opening_mm=jac@(result.x-measured))
+                target_reference_module_ids=target_ids,projection_delta=result.x-q,
+                projected_source_opening_mm=(jac@(result.x-measured))[:len(ids)],
+                projected_target_opening_mm=(jac@(result.x-measured))[len(ids):])
             return result.x,info
         info.update(source_reference_projected=False,projection_reason=result.message)
         return q,info
@@ -230,7 +235,7 @@ class ContactReferenceWinding(AcquiredShapeWinding):
         config=super().configuration()
         config['support_transfer'].update(source_reference='linearised module radial constraint until measured prefix 12',
             source_opening_allowance_mm=.5,extra_input='known source contact identities; FK at measured base pose',
-            local_contact_projection=self.local_contact_projection)
+            local_contact_projection=self.local_contact_projection,dual_contact_projection=self.dual_contact_projection)
         return config
 
 
@@ -254,6 +259,76 @@ class CapacityPreloadWinding(ContactReferenceWinding):
         config=super().configuration()
         config['support_transfer'].update(preload='initial torque-equivalent angle residual in material coordinates',
             preload_error_limit_rad=self.error_limit.tolist())
+        return config
+
+
+class RadialAcquisitionWinding(CapacityPreloadWinding):
+    """Close incoming radial gaps using the already contacting front as guide.
+
+    A correct circumferential tangent alone does not ensure a new link reaches
+    the same cylinder as the supported front. Add a measured radial-error
+    curvature term over one link length. Its reference radius is measured at
+    current target contacts; the original A-D correction remains active.
+    """
+    def __init__(self,*args,coordinate_acquisition=False,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.coordinate_acquisition=coordinate_acquisition
+        self.acquisition_phase=self.phase
+        self.rolling_scale=1.
+
+    def compute(self,geometry,measured,phase,dt,contact_window,migrate=True):
+        points=np.asarray(geometry['points_mm'])
+        centers=(points[:-1]+points[1:])/2
+        radial=np.linalg.norm(np.cross(centers-self.corner,self.target),axis=1)
+        contacts=np.asarray(contact_window)[-1,1]>.1
+        axial=(centers-self.corner)@self.target
+        usable=contacts&(axial>self.radius+self.options.shell_radius_mm)
+        if np.any(usable):
+            value=float(np.median(radial[usable]))
+            if not hasattr(self,'contact_radius'):self.contact_radius=value
+            self.contact_radius+=(1-math.exp(-dt/.4))*(value-self.contact_radius)
+        self.module_radii=radial
+        coordination={}
+        if self.coordinate_acquisition:
+            # Slow BOTH phase clocks when measured recruitment falls behind
+            # the forming window. Shape/A-D feedback keeps updating, while
+            # the rear no longer rolls out at full rate during that delay.
+            status=self.support(points,contact_window)
+            lead=max(0.,self.progress-status['actual_prefix'])
+            desired=float(np.clip(1-(lead/self.window.maximum_lead)**2,.1,1.))
+            self.rolling_scale+=(1-math.exp(-dt/.4))*(desired-self.rolling_scale)
+            demand=phase-self.acquisition_phase;self.acquisition_phase=phase
+            phase=self.requested_phase+demand*self.rolling_scale
+            coordination=dict(acquisition_lead=lead,shared_rolling_scale=self.rolling_scale)
+        q,info=super().compute(geometry,measured,phase,dt,contact_window,migrate)
+        return q,dict(**info,**coordination)
+
+    def rolling_observation(self,geometry,measured,observed):
+        rolling,info=super().rolling_observation(geometry,measured,observed)
+        if not hasattr(self,'contact_radius'):return rolling,info
+        points=np.asarray(geometry['points_mm'])
+        bone=SpatialBishopBackbone(points,self.links)
+        _,rotation=bone.material_field(measured)
+        rel=points[1:-1]-self.corner
+        radial=rel-(rel@self.target)[:,None]*self.target
+        normal=radial/np.maximum(np.linalg.norm(radial,axis=1)[:,None],1e-9)
+        gap=np.maximum(0.,(self.module_radii[:-1]+self.module_radii[1:])/2-self.contact_radius)
+        field=np.zeros_like(bone.field)
+        for j,frame in enumerate(bone.mid_frames):
+            derivative=-gap[j]/self.link**2*normal[j]
+            field[j+1]=derivative@(frame[:,1:]@rotation)
+        gain=self.formation.recovery*self.formation_weights
+        gain[:self.initial_front]=0.
+        change=gain[:,None]*integrated_field(bone,field)
+        info.update(contact_radius_mm=self.contact_radius,incoming_radial_gap_mm=gap,
+                    radial_acquisition_change=change)
+        return rolling+change,info
+
+    def configuration(self):
+        config=super().configuration()
+        config['support_transfer'].update(acquisition_curvature='positive radial gap / link_length^2',
+            radial_reference='median radius of actual target-contact modules beyond the junction',
+            coordinate_acquisition=self.coordinate_acquisition)
         return config
 
 

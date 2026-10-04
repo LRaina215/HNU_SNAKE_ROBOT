@@ -1,0 +1,254 @@
+{
+  "run": "vertical_frozen_front_relative",
+  "rows": [
+    {
+      "time": 0.0,
+      "source_modules": [
+        7,
+        10,
+        11,
+        14,
+        19
+      ],
+      "target_modules": [
+        4,
+        5
+      ],
+      "base_xyz": [
+        1.154196277556701,
+        0.07953365171893204,
+        1.4554132990677229
+      ],
+      "front_wrap": 0.6125872265117848,
+      "actual_prefix": 7,
+      "formation": 7.079999999999999,
+      "handed_off": false
+    },
+    {
+      "time": 10.000000000012221,
+      "source_modules": [
+        9,
+        13,
+        15,
+        18,
+        20
+      ],
+      "target_modules": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "base_xyz": [
+        1.1840804045510194,
+        -0.026721317330147727,
+        1.308091186195885
+      ],
+      "front_wrap": 0.7584342686375978,
+      "actual_prefix": 7,
+      "formation": 9.0,
+      "handed_off": false
+    },
+    {
+      "time": 19.99999999999957,
+      "source_modules": [
+        11,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "target_modules": [
+        1,
+        4,
+        5,
+        8
+      ],
+      "base_xyz": [
+        1.142895959769399,
+        -0.07885863967931549,
+        1.261923641863311
+      ],
+      "front_wrap": 0.6978795731431392,
+      "actual_prefix": 7,
+      "formation": 10.0,
+      "handed_off": false
+    },
+    {
+      "time": 29.999999999976264,
+      "source_modules": [
+        11,
+        16,
+        18
+      ],
+      "target_modules": [
+        0,
+        3,
+        4,
+        7,
+        8
+      ],
+      "base_xyz": [
+        1.144676316392698,
+        -0.07526029953963242,
+        1.2007165265633848
+      ],
+      "front_wrap": 0.8406258923704434,
+      "actual_prefix": 9,
+      "formation": 11.0,
+      "handed_off": false
+    },
+    {
+      "time": 34.999999999964615,
+      "source_modules": [
+        18
+      ],
+      "target_modules": [
+        3,
+        4,
+        5,
+        12
+      ],
+      "base_xyz": [
+        1.0331884997210143,
+        -0.07188637056503402,
+        1.2227907266585547
+      ],
+      "front_wrap": 0.6694645696017745,
+      "actual_prefix": 7,
+      "formation": 11.0,
+      "handed_off": false
+    },
+    {
+      "time": 39.99999999995296,
+      "source_modules": [
+        19
+      ],
+      "target_modules": [
+        1,
+        4,
+        6,
+        12
+      ],
+      "base_xyz": [
+        1.0440762867579285,
+        -0.08022567457116155,
+        1.1560565980686734
+      ],
+      "front_wrap": 0.8670589871180704,
+      "actual_prefix": 8,
+      "formation": 11.0,
+      "handed_off": false
+    },
+    {
+      "time": 41.79999999994877,
+      "source_modules": [],
+      "target_modules": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        12
+      ],
+      "base_xyz": [
+        1.0562963686771398,
+        -0.08540017704248531,
+        1.1400191793854995
+      ],
+      "front_wrap": 0.8645928269281871,
+      "actual_prefix": 8,
+      "formation": 11.0,
+      "handed_off": false
+    },
+    {
+      "time": 43.39999999994504,
+      "source_modules": [],
+      "target_modules": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7
+      ],
+      "base_xyz": [
+        1.0566263322814553,
+        -0.08606196093313644,
+        1.129860396821133
+      ],
+      "front_wrap": 0.9652610750325927,
+      "actual_prefix": 9,
+      "formation": 11.079713196409937,
+      "handed_off": true
+    },
+    {
+      "time": 43.99999999994364,
+      "source_modules": [],
+      "target_modules": [
+        0,
+        1,
+        3,
+        6,
+        7
+      ],
+      "base_xyz": [
+        1.0577073153909027,
+        -0.08613004644384015,
+        1.126970438421844
+      ],
+      "front_wrap": 0.9531408846615145,
+      "actual_prefix": 9,
+      "formation": 11.31936973756382,
+      "handed_off": true
+    },
+    {
+      "time": 47.99999999995562,
+      "source_modules": [],
+      "target_modules": [
+        0,
+        3,
+        6
+      ],
+      "base_xyz": [
+        1.0619030471119921,
+        -0.08264901037543654,
+        1.1099023650205135
+      ],
+      "front_wrap": 0.7869115996668632,
+      "actual_prefix": 8,
+      "formation": 12.89745092976994,
+      "handed_off": true
+    },
+    {
+      "time": 48.599999999958484,
+      "source_modules": [],
+      "target_modules": [],
+      "base_xyz": [
+        1.0588949754441965,
+        -0.09379886335880014,
+        0.627032483692868
+      ],
+      "front_wrap": 0.8002868231573146,
+      "actual_prefix": 8,
+      "formation": 13.1281087931648,
+      "handed_off": true
+    }
+  ],
+  "confirmed": [
+    "Front wrap below one turn while forming window stalls near 11 and rear rolling continues.",
+    "Source contact ends at 41.68 s; handoff at 43.4 s; support lost at 48.6 s.",
+    "Coupled body correction is zero before 30 s.",
+    "Encoder-relative shape speed omits rigid slipping."
+  ],
+  "hypotheses": [
+    "Common phase slowing may preserve support while shape recovers.",
+    "Instantaneous torque equivalence is not interval-integrated equivalence."
+  ],
+  "limitations": [
+    "Static elliptic solutions are not dynamic guarantees.",
+    "At 44 s optimized normalized torque 1.009 exceeds capacity despite numerical solver success.",
+    "A single failed freeze does not prove route impossibility."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "peak_time": 39.84999999995544,
+  "peak_module": 20,
+  "speed_m_s": 0.506016449314029,
+  "feedback": [
+    {
+      "time": 39.68,
+      "module": 20,
+      "relative_speed": 0.18146715448956216,
+      "power": 0.0,
+      "maximum_correction_torque": 0.0,
+      "corrected_joint": 1
+    },
+    {
+      "time": 39.7,
+      "module": 20,
+      "relative_speed": 0.20532928312772908,
+      "power": -0.021885157684026227,
+      "maximum_correction_torque": 0.04827784443941225,
+      "corrected_joint": 3
+    },
+    {
+      "time": 39.72,
+      "module": 15,
+      "relative_speed": 0.23540389231043368,
+      "power": -0.16668428105631036,
+      "maximum_correction_torque": 0.30671139465676983,
+      "corrected_joint": 5
+    },
+    {
+      "time": 39.74,
+      "module": 20,
+      "relative_speed": 0.26246172697790887,
+      "power": -0.32787625465289194,
+      "maximum_correction_torque": 0.6066139113857134,
+      "corrected_joint": 3
+    },
+    {
+      "time": 39.76,
+      "module": 15,
+      "relative_speed": 0.3006689653456866,
+      "power": -0.6053606730581673,
+      "maximum_correction_torque": 0.862205147838429,
+      "corrected_joint": 5
+    },
+    {
+      "time": 39.78,
+      "module": 20,
+      "relative_speed": 0.28702826786894375,
+      "power": -0.4995914596411478,
+      "maximum_correction_torque": 0.8549279832738347,
+      "corrected_joint": 3
+    },
+    {
+      "time": 39.800000000000004,
+      "module": 15,
+      "relative_speed": 0.3265697292350232,
+      "power": -0.8266768441126344,
+      "maximum_correction_torque": 1.065630956940213,
+      "corrected_joint": 5
+    },
+    {
+      "time": 39.82000000000001,
+      "module": 15,
+      "relative_speed": 0.2428028337314242,
+      "power": -0.20785298643449557,
+      "maximum_correction_torque": 0.3553135348639904,
+      "corrected_joint": 5
+    },
+    {
+      "time": 39.84,
+      "module": 15,
+      "relative_speed": 0.35426289359029456,
+      "power": -1.092992381138189,
+      "maximum_correction_torque": 1.2477058440999014,
+      "corrected_joint": 5
+    },
+    {
+      "time": 39.86000000000001,
+      "module": 20,
+      "relative_speed": 0.3103438484447934,
+      "power": -0.6848906915713243,
+      "maximum_correction_torque": 1.1045269856058124,
+      "corrected_joint": 3
+    }
+  ]
+}

@@ -23,9 +23,12 @@ def assess(folder):
     commands = json.loads((folder/'commands.json').read_text(encoding='utf8'))
     assert np.array_equal(z['qpos'][0], d.qpos) and np.array_equal(z['ctrl'][0], d.ctrl)
     assert all(command['applied'] for command in commands)
+    applied_ids, delivered_targets = z['applied_id'], z['ctrl']
     for command in commands:
-        frames = z['applied_id'] == command['id']
-        assert np.any(frames) and np.allclose(z['ctrl'][frames], command['target'], atol=1e-12)
+        # NPZ indexing decompresses the array; cache once for this read-only
+        # audit instead of decompressing it for every delivered command.
+        frames = applied_ids == command['id']
+        assert np.any(frames) and np.allclose(delivered_targets[frames], command['target'], atol=1e-12)
     points = z['points_mm']
     centers = (points[:, :-1]+points[:, 1:])/2
     relative = centers-corner

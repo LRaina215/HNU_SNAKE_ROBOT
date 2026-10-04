@@ -26,16 +26,90 @@ def delivery(folder):
     count=round(plan['dt']/plan['delivery_period'])
     assert len(commands)==len(controls)*count
     with np.load(folder/'trace.npz') as z:previous=z['ctrl'][0].copy()
-    largest=0.
+    if plan.get('velocity_feedback',0):
+        _,trace,model,_,_=context(folder)
+        joint_ids=model.actuator_trnid[:,0]
+        qadr=model.jnt_qposadr[joint_ids]
+        bounds=model.jnt_range[joint_ids]
+        trace_time=trace['time'];trace_angles=trace['qpos'][:,qadr]
+        previous_encoder=trace_angles[0].copy()
+        filtered_velocity=np.zeros_like(previous_encoder)
+        if plan.get('body_damping',0):
+            from encoder_shape_kinematics import EncoderShapeKinematics
+            kinematics=EncoderShapeKinematics(model,plan.get('body_reference_module',0))
+    largest=0.;largest_outer=0.
     for i,control in enumerate(controls):
         target=np.asarray(control['target'])
+        outer_increment=float(np.degrees(abs(target-previous)).max())
+        largest_outer=max(largest_outer,outer_increment)
+        assert outer_increment<=plan.get('shape_speed',90.)*plan['dt']+1e-8
         actual=np.asarray([c['target'] for c in commands[i*count:(i+1)*count]])
         fractions=np.arange(1,count+1)/count
-        assert np.allclose(actual,previous+(target-previous)*fractions[:,None],atol=1e-12,rtol=0)
+        nominal=previous+(target-previous)*fractions[:,None]
+        if plan.get('velocity_feedback',0):
+            feedback=control['delivery_feedback'];assert len(feedback)==count
+            old=previous.copy()
+            for j,row in enumerate(feedback):
+                assert np.allclose(row['nominal'],nominal[j],atol=1e-12,rtol=0)
+                assert np.allclose(row['nominal_velocity'],(target-previous)/plan['dt'],atol=1e-12,rtol=0)
+                ci=i*count+j
+                sample=int(np.argmin(abs(trace_time-commands[ci]['time'])))
+                assert abs(trace_time[sample]-commands[ci]['time'])<1e-8
+                assert np.allclose(row['measured'],trace_angles[sample],atol=1e-8,rtol=0)
+                assert np.allclose(row['previous_measured'],previous_encoder,atol=1e-8,rtol=0)
+                velocity=(np.asarray(row['measured'])-row['previous_measured'])/plan['delivery_period']
+                weight=1-np.asarray(control['acquired_weight']) if plan.get('velocity_scope')=='unacquired' else np.ones_like(target)
+                assert np.allclose(row.get('weight',np.ones_like(target)),weight,atol=1e-12,rtol=0)
+                if 'previous_filtered_velocity' in row:
+                    assert np.allclose(row['previous_filtered_velocity'],filtered_velocity,atol=1e-10,rtol=0)
+                alpha=plan['delivery_period']/(plan['delivery_period']+plan.get('velocity_filter',0))
+                filtered_velocity+=alpha*(velocity-filtered_velocity)
+                if 'filtered_velocity' in row:
+                    assert np.allclose(row['filtered_velocity'],filtered_velocity,atol=1e-10,rtol=0)
+                correction=-plan['velocity_feedback']*weight*(filtered_velocity-np.asarray(row['nominal_velocity']))
+                assert np.allclose(row['measured_velocity'],velocity,atol=1e-12,rtol=0)
+                assert np.allclose(row['correction'],correction,atol=1e-12,rtol=0)
+                assert np.allclose(actual[j],row['target'],atol=1e-12,rtol=0)
+                limit=np.radians(90)*plan['delivery_period']
+                reference=nominal[j].copy()
+                if plan.get('delivery_torque_equivalent'):
+                    error=nominal[j]-np.asarray(row['measured'])
+                    torque_error=model.actuator_forcerange[:,1]/model.actuator_gainprm[:,0]
+                    reference+=weight*(np.clip(error,-torque_error,torque_error)-error)
+                assert np.allclose(row.get('reference',nominal[j]),reference,atol=1e-12,rtol=0)
+                body_correction=np.zeros_like(target)
+                if plan.get('body_damping',0):
+                    jacobians=kinematics.jacobians(np.asarray(row['measured']))
+                    velocities=jacobians@filtered_velocity
+                    speeds=np.linalg.norm(velocities,axis=1);module=int(speeds.argmax())
+                    assert module==row['body_module']
+                    assert np.allclose(row['body_jacobian'],jacobians[module],atol=1e-10,rtol=0)
+                    assert np.allclose(row['body_velocity'],velocities[module],atol=1e-10,rtol=0)
+                    assert abs(row['body_relative_speed']-speeds[module])<1e-10
+                    force=-plan['body_damping']*max(0,1-plan['body_speed_limit']/max(speeds[module],1e-12))*velocities[module]
+                    torque=jacobians[module].T@force
+                    reference_module=plan.get('body_reference_module',0)
+                    if reference_module:
+                        assert np.max(abs(jacobians[module,:,:reference_module]))<1e-10
+                        assert np.max(abs(torque[:reference_module]))<1e-8
+                    body_correction=torque/model.actuator_gainprm[:,0]
+                    assert np.allclose(row['body_damping_torque'],torque,atol=1e-9,rtol=0)
+                    assert np.allclose(row['body_correction'],body_correction,atol=1e-11,rtol=0)
+                    assert abs(row['body_feedback_power']-torque@filtered_velocity)<1e-9
+                    assert torque@filtered_velocity<=1e-10
+                expected=old+np.clip(reference+correction+body_correction-old,-limit,limit)
+                expected=np.clip(expected,bounds[:,0]+.01,bounds[:,1]-.01)
+                assert np.allclose(actual[j],expected,atol=1e-12,rtol=0)
+                old=actual[j]
+                previous_encoder=np.asarray(row['measured'])
+        else:
+            assert np.allclose(actual,nominal,atol=1e-12,rtol=0)
         largest=max(largest,float(np.degrees(abs(np.diff(np.vstack([previous,actual]),axis=0))).max()))
-        previous=target
+        previous=actual[-1]
     assert largest<=90*plan['delivery_period']+1e-8
-    return dict(command_count=len(commands),interpolation_matches=True,
+    return dict(command_count=len(commands),interpolation_matches=not bool(plan.get('velocity_feedback',0)),
+        velocity_feedback_checked=bool(plan.get('velocity_feedback',0)),
+        maximum_outer_reference_increment_deg=largest_outer,
         maximum_command_increment_deg=largest,initial_pose_and_EXE_delivery_checked=True)
 
 

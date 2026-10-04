@@ -1,0 +1,12 @@
+{
+  "radial_front_relative_braking": {
+    "pre_correction_nominal_error_deg": 12.468299740620882,
+    "issued_instant_error_deg": 2.226576931011711,
+    "interpretation": "The declared tracking metric compares issued targets with realized angles. Retargeting can reduce it; pre-correction shape tracking is separately shown here."
+  },
+  "vertical_frozen_front_relative": {
+    "pre_correction_nominal_error_deg": 11.94150068234499,
+    "issued_instant_error_deg": 2.277194513246284,
+    "interpretation": "The declared tracking metric compares issued targets with realized angles. Retargeting can reduce it; pre-correction shape tracking is separately shown here."
+  }
+}
