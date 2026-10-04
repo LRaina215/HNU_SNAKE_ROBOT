@@ -1,0 +1,53 @@
+{
+  "initial_pose_exact": true,
+  "EXE_delivery_checked": true,
+  "physical_seconds": 12.800000000015643,
+  "front_progress_mm": -33.63992351446163,
+  "maximum_front_progress_mm": 182.82792316875842,
+  "maximum_sustained_new_modules": 1,
+  "final_sustained_new_modules": 0,
+  "final_new_module_ids": [],
+  "front_target_contact_fraction": 0.804839968774395,
+  "rear_source_contact_fraction": 1.0,
+  "floor_contact": false,
+  "maximum_tracking_error_deg": 35.85446003952598,
+  "torque_saturated_fraction": 0.49457455113192816,
+  "first_front_contact_loss_seconds": 10.640000000013004,
+  "boundary_events": [
+    {
+      "time": 0.6000000000000001,
+      "old": [
+        5,
+        10
+      ],
+      "new": [
+        6,
+        10
+      ],
+      "acquired": false,
+      "target_contact": false,
+      "source_contact": true
+    },
+    {
+      "time": 3.600000000000001,
+      "old": [
+        6,
+        10
+      ],
+      "new": [
+        7,
+        10
+      ],
+      "acquired": false,
+      "target_contact": true,
+      "source_contact": true
+    }
+  ],
+  "final_partition": [
+    7,
+    10
+  ],
+  "primary_gate_passed": false,
+  "full_crossing": false,
+  "outcome": "time_limit"
+}

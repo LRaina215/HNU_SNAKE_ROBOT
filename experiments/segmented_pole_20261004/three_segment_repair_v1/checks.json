@@ -1,0 +1,7 @@
+{
+  "zero_increment_outer_error_rad": 3.6637359812630166e-15,
+  "zero_gain_correction_exact": true,
+  "nonzero_roll_changes_angles_rad": 0.10792564598612175,
+  "partition_weights_sum_one": true,
+  "no_SHA": true
+}
