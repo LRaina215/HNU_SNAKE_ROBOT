@@ -235,6 +235,12 @@ Ctrl+R 仅用于重新开始缠绕：清零进度、相位及计步，清除旧�
 
 无硬件时可用 `--execution mujoco` 让 MuJoCo 执行端代替舵机检查流程（见 `validation/real_flow_mujoco.py`），`--execution preview` 只在 EXE 中预览，`--no-hotkeys` 只用控制台。该验证只覆盖按键流程与目标生成，**不代表实机已验证**。
 
+## MuJoCo搭管状态保存
+
+原 `Adaptive_Pole_Climbing_Mujoco.py` 入口支持 **Ctrl+B** 或终端 `save`：在一步完成后保存物理状态、控制相位、顺应参数和force设置，并保持暂停。存档路径会打印在终端，默认位于 `validation/results/manual-captures/`。
+
+恢复：`python codes/Adaptive_Pole_Climbing_Mujoco.py --restore "保存目录"`，使用保存时相同的MuJoCo版本；恢复后等待新鲜反馈，直接单步，不必Ctrl+U/R。详见[搭管状态保存与分段对照](docs/搭管状态保存与分段对照.md)。
+
 ## 常用开关
 
 仿真版在 `codes/Adaptive_Pole_Climbing_Mujoco.py` 顶部修改（实机版见上一节）：

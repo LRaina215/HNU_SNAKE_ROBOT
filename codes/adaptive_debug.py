@@ -17,7 +17,7 @@ HELP = """机器人调试（先点击 MuJoCo 窗口；Ctrl+字母，不用 F 键
 """
 
 
-def viewer_key_callback(queue):
+def viewer_key_callback(queue, extra_hotkeys=None):
     """MuJoCo 3.2.7 回调只接收首次按下，忽略 GLFW_REPEAT。
 
     回调在拥有 GLFW 上下文的 viewer 线程执行；输入只入队，不访问 mjData。
@@ -33,7 +33,8 @@ def viewer_key_callback(queue):
                               glfw.get_key(window, glfw.KEY_RIGHT_CONTROL) == glfw.PRESS):
             return
         arrows = {glfw.KEY_UP: 'r+', glfw.KEY_DOWN: 'r-', glfw.KEY_RIGHT: 'p+', glfw.KEY_LEFT: 'p-'}
-        command = arrows.get(key) or HOTKEYS.get(chr(key) if 0 <= key < 128 else '')
+        letter = chr(key) if 0 <= key < 128 else ''
+        command = arrows.get(key) or (extra_hotkeys or {}).get(letter) or HOTKEYS.get(letter)
         if command:
             queue.put(command)
     return on_key

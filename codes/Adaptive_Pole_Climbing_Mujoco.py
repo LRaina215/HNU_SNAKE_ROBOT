@@ -174,11 +174,18 @@ def main():
         raise ValueError("ROLL_STEP_RAD 必须为有限正数")
     model_path = os.environ.get("SNAKE_MUJOCO_MODEL") or str(
         Path(__file__).resolve().parents[1] / "mujoco_model/Snake_Robot_o20_Pole_Climbing.xml")
-    m = mujoco.MjModel.from_xml_path(model_path)
-    d = mujoco.MjData(m)
+    restore_path = os.environ.get("SNAKE_MUJOCO_RESTORE")
+    restored = restored_controller = None
+    if restore_path:
+        from mujoco_checkpoint import load_checkpoint
+        m, d, restored, restored_controller = load_checkpoint(restore_path)
+        model_path = restored['source_model']
+    else:
+        m = mujoco.MjModel.from_xml_path(model_path)
+        d = mujoco.MjData(m)
     start_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_KEY, "experiment_start")
-    trial = trial_perturbation(m, os.environ.get("SNAKE_TRIAL_SEED"))
-    if start_key >= 0:
+    trial = (lambda data: None) if restored is not None else trial_perturbation(m, os.environ.get("SNAKE_TRIAL_SEED"))
+    if start_key >= 0 and restored is None:
         mujoco.mj_resetDataKeyframe(m, d, start_key)
         trial(d)
         preset = m.numeric("experiment_helix_mm").data
@@ -192,7 +199,8 @@ def main():
     gain_key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_NUMERIC, "experiment_compliance_gain")
     if gain_key >= 0 and not os.environ.get("SNAKE_COMPLIANCE_GAIN"):
         gain = tuple(float(x) for x in m.numeric("experiment_compliance_gain").data)
-    mujoco.mj_forward(m, d)
+    if restored is None:
+        mujoco.mj_forward(m, d)
 
     joint_count = m.nu
     points = [d.site("s_head").xpos.copy()]
@@ -232,13 +240,41 @@ def main():
     # 轴无效或关节离线”仍强行用当前几何计算并下发目标，而不是本步拒绝执行。
     # 本次运行一直生效，直到再输入 force 关闭或重新启动；不影响实机入口。
     ignore_feedback_risk = False
+    rebind_restored_controller = False
+    if restored is not None:
+        settings = restored['settings']
+        radius, pitch = settings['radius'], settings['pitch']
+        gain, inside = settings['gain'], settings['inside']
+        if settings['gain_is_tuple']:
+            gain = tuple(gain)
+        phase, phase_step = settings['phase'], settings['phase_step']
+        completed, reset_count = settings['completed'], settings['reset_count']
+        initialized = settings['initialized']
+        active_shape = tuple(settings['active_shape']) if settings['active_shape'] is not None else None
+        compliance_enabled, compliant = settings['compliance_enabled'], settings['compliant']
+        ignore_feedback_risk = settings['ignore_feedback_risk']
+        gravity = np.asarray(settings['gravity_when_enabled'])
+        links = np.asarray(settings['links'])
+        link_mm = float(np.mean(links[1:-1]))
+        curve = HelixBackbone(**settings['curve'])
+        action_label = settings['action_label']
+        targets = d.ctrl.copy()
+        compliance = restored_controller
+        rebind_restored_controller = compliance is not None and compliance.started
+        manual = True
+        feedback_after_ms = time.time() * 1000
     print(f"YAMADA execution={'mujoco_relay' if relay else 'direct_preview'} joints={joint_count} "
           f"mode={'单步' if manual else '连续'} R={radius:g}mm P={pitch:g}mm {'管内' if inside else '管外'} K={gain}", flush=True)
     print(HELP, flush=True)
+    print("Ctrl+B / 控制台 save：保存完整状态并暂停（等当前一步完成）；启动参数 --restore 保存目录：恢复后暂停", flush=True)
+    if restored is not None:
+        print(f"CHECKPOINT 已恢复并暂停：{restore_path}；step={completed} phase={phase:.6f} "
+              f"force={'开' if ignore_feedback_risk else '关'}。不要 Ctrl+U/R，直接单步继续。", flush=True)
     print("控制台追加命令：force（仅本仿真入口）—— 出现“未执行：反馈不可用：轴无效或关节离线”时输入 force，"
           "本次运行持续改为强行计算目标，可继续用 Ctrl+U/J/H 调试；再输入 force 关闭。仅供探测顺应性方法极限，"
           "算出的角度可能基于失效/过期的轴估计，不代表方法在正常条件下的行为。", flush=True)
-    print(f"场景：{Path(model_path).name}；重力={m.opt.gravity.tolist()}；{'启动暂停，先 Ctrl+U' if manual else '连续运行'}", flush=True)
+    start_hint = "存档已恢复，单步继续" if restored is not None else "启动暂停，先 Ctrl+U" if manual else "连续运行"
+    print(f"场景：{Path(model_path).name}；重力={m.opt.gravity.tolist()}；{start_hint}", flush=True)
 
     def show_status():
         height, contact_count, error = measurements(m, d)
@@ -282,9 +318,16 @@ def main():
             from geometry_debug_view import GeometryDebugView
             debug_view = GeometryDebugView(draw_curve=DEBUG_DRAW_CURVE)
 
+        if restored is not None:
+            # Bridge initialization refreshes kinematics using mj_forward, which
+            # also changes warm-start forces. Restore integration buffers once
+            # more before allowing any physical steps.
+            with np.load(Path(restore_path) / 'state.npz', allow_pickle=False) as saved:
+                mujoco.mj_setState(m, d, saved['integration_state'], restored['state_type'])
 
 
-        with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d, key_callback=viewer_key_callback(command_queue))) as viewer:
+
+        with (nullcontext(None) if headless else mujoco.viewer.launch_passive(m, d, key_callback=viewer_key_callback(command_queue, {'B': 'save'}))) as viewer:
             if viewer is not None and start_key >= 0:
                 with viewer.lock():
                     viewer.cam.lookat[:] = [0., 0., .85]
@@ -327,6 +370,7 @@ def main():
                             bridge.reset_execution()
                         phase, completed = 0., 0
                         initialized, active_shape, compliance = False, None, None
+                        rebind_restored_controller = False
                         compliant = False
                         targets = d.ctrl.copy()
                         reset_count += 1
@@ -361,9 +405,25 @@ def main():
                     command = "step" if initialized else "apply"
                 if command:
                     try:
-                        if command == "compliance":
+                        if command == "save":
+                            from dataclasses import asdict
+                            from mujoco_checkpoint import save_checkpoint
+                            manual = True
+                            settings = dict(radius=radius, pitch=pitch, gain=gain, gain_is_tuple=isinstance(gain, tuple), inside=inside,
+                                phase=phase, phase_step=phase_step, completed=completed, reset_count=reset_count,
+                                initialized=initialized, active_shape=active_shape, compliance_enabled=compliance_enabled,
+                                compliant=compliant, ignore_feedback_risk=ignore_feedback_risk,
+                                gravity_when_enabled=gravity, links=links, curve=asdict(curve), action_label=action_label,
+                                execution="mujoco_relay" if relay else "direct_preview")
+                            feedback = exchange.latest_geometry() if exchange is not None else None
+                            with (nullcontext() if viewer is None else viewer.lock()):
+                                folder = save_checkpoint(m, d, settings, compliance, feedback, model_path)
+                            print(f"CHECKPOINT 已保存并暂停：{folder}", flush=True)
+                            show_status()
+                        elif command == "compliance":
                             compliance_enabled = not compliance_enabled
                             compliance = None
+                            rebind_restored_controller = False
                             if initialized and compliance_enabled and exchange is not None:
                                 compliance = ComplianceController(ComplianceParameters(gain,
                                     math.atan2(active_shape[1], 2*math.pi*active_shape[0]), inside), links,
@@ -412,6 +472,11 @@ def main():
                                 feedback = exchange.latest_geometry()
                                 if feedback and feedback["sample_unix_ms"] <= feedback_after_ms:
                                     raise ValueError("等待重置后的新反馈")
+                                if rebind_restored_controller and feedback:
+                                    # New EXE session/frame IDs must not re-align the restored
+                                    # rolling phase. Rebuild on fresh geometry using its saved offset.
+                                    compliance.key = (feedback['run_id'], feedback['config_id'], -1)
+                                    rebind_restored_controller = False
                                 adaptive_target = compliance.compute(feedback, next_phase, d.ctrl.copy(), reference_phase=phase)
                                 if adaptive_target is not None:
                                     candidate = adaptive_target
@@ -430,7 +495,7 @@ def main():
                             last_notice = None
                         elif command:
                             raise ValueError("未知命令；输入 help 查看操作")
-                    except ValueError as error:
+                    except (ValueError, OSError) as error:
                         if str(error) != last_notice:
                             print(f"未执行：{error}", flush=True)
                             last_notice = str(error)
@@ -456,6 +521,7 @@ def main():
                                     d.ctrl[:] = targets
                                 phase = pending["phase"]
                                 if pending["command"] == "apply":
+                                    rebind_restored_controller = False
                                     initialized = True
                                     active_shape = (radius, pitch)
                                     # R/P 只在明确应用时设定设计螺距角，不逐帧覆盖局部顺应性半径。
@@ -543,7 +609,10 @@ if __name__ == "__main__":
                                             "real_s2l", "real_l2s", *(f"pipe_{name}" for name in network)), default=None)
     parser.add_argument("--joints", type=int, choices=(20, 26), default=26,
                         help="Joint count for real_* / pipe_* scenes (default: 26)")
+    parser.add_argument("--restore", help="恢复 Ctrl+B/save 保存的目录；场景和关节数从存档读取，启动暂停")
     args = parser.parse_args()
+    if args.restore:
+        os.environ['SNAKE_MUJOCO_RESTORE'] = str(Path(args.restore).resolve())
     if args.scene is not None and args.scene.startswith("pipe_"):
         os.environ["SNAKE_MUJOCO_MODEL"] = str(Path(__file__).resolve().parents[1] / "mujoco_model" /
                                                f"Snake_Robot_o{args.joints}_Pipe_{args.scene[5:]}.xml")
