@@ -1,0 +1,28 @@
+{
+  "root_max_motion_mm": 76.18966752249396,
+  "front_move_mm": 61.53318367252383,
+  "rear_move_mm": 34.07409905344025,
+  "hold_root_motion_mm": 27.6592826644179,
+  "hold_head_retreat_mm": 17.428178159089896,
+  "front_contact_fraction": 1.0,
+  "hold_front_contact_fraction": 1.0,
+  "static_gate": false,
+  "final_hold_gate": false,
+  "ground": false,
+  "max_tracking_error_deg": 47.923182443016046,
+  "rolling_gate": false,
+  "max_step_target_deg": 13.447249856849409,
+  "front_slip_median_mm_s": 10.092283253923004,
+  "condition": "captured_roll",
+  "source_hashes": {
+    "codes/spatial_bishop_backbone.py": "9eba5f41225e34806c604141f64fc453a99e68f11ec6817b0c99e55a87460231",
+    "validation/spatial_takeover_experiment.py": "15be070b5a8d01c9f4dfb0ca6e1f23be53c00bbd03127bcd152b08ca6e0b82b8"
+  },
+  "fk_error_mm": 0.0,
+  "feedback_error_rad": 2.220446049250313e-16,
+  "command_error_rad": 2.220446049250313e-16,
+  "field_error_rad": 1.1102230246251565e-15,
+  "initial_state_identical": true,
+  "tail_floor_contact": false,
+  "clipped_joint_steps": 2
+}

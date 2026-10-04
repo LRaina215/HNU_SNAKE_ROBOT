@@ -1,0 +1,97 @@
+{
+  "condition": "feedback_roll",
+  "method": "spatial_bishop",
+  "options": {
+    "transition_links": 6
+  },
+  "checkpoint": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\segmented_pole_20261004\\inputs\\horizontal",
+  "steps": 8,
+  "settings": {
+    "radius": 81.5,
+    "pitch": 220.0,
+    "gain": [
+      0.01,
+      0.02
+    ],
+    "gain_is_tuple": true,
+    "inside": false,
+    "phase": -13.650000000000022,
+    "phase_step": 0.15,
+    "completed": 92,
+    "reset_count": 0,
+    "initialized": true,
+    "active_shape": [
+      81.5,
+      220.0
+    ],
+    "compliance_enabled": true,
+    "compliant": true,
+    "ignore_feedback_risk": true,
+    "gravity_when_enabled": [
+      0.0,
+      0.0,
+      -9.81
+    ],
+    "links": [
+      64.49999999999997,
+      64.50000000000003,
+      64.49999999999999,
+      64.49999999999993,
+      64.49999999999993,
+      64.50000000000001,
+      64.49999999999996,
+      64.50000000000007,
+      64.50000000000007,
+      64.49999999999994,
+      64.50000000000001,
+      64.50000000000001,
+      64.50000000000003,
+      64.50000000000006,
+      64.50000000000011,
+      64.50000000000003,
+      64.50000000000007,
+      64.50000000000001,
+      64.50000000000004,
+      64.50000000000006,
+      64.49999999999999
+    ],
+    "curve": {
+      "kappa": 0.010358102713739416,
+      "tau": 0.004450055393226316,
+      "phase_offset": 0.0
+    },
+    "action_label": "顺应性",
+    "execution": "mujoco_relay"
+  },
+  "boundary_links": 6.0,
+  "mujoco": "3.2.7",
+  "source_hashes": {
+    "codes/spatial_bishop_backbone.py": "9eba5f41225e34806c604141f64fc453a99e68f11ec6817b0c99e55a87460231",
+    "validation/spatial_takeover_experiment.py": "15be070b5a8d01c9f4dfb0ca6e1f23be53c00bbd03127bcd152b08ca6e0b82b8"
+  },
+  "phase0_target_error_rad": 3.6637359812630166e-15,
+  "preload_joint_error_deg": [
+    -0.06744228619813737,
+    -0.7930683148683063,
+    -0.6327695323483933,
+    -19.65123596495983,
+    -0.46149627202836624,
+    -5.235881664981174,
+    -0.6909192255940114,
+    -35.85446003952598,
+    -1.2606374353310916,
+    -0.07258616699298003,
+    0.2343643640120112,
+    -0.29368699796868764,
+    0.9545130133051155,
+    0.7157808460117815,
+    3.200696332811272,
+    1.7032611720561663,
+    3.99972314699411,
+    0.30071473077582006,
+    0.3189370149878558,
+    0.011242281437251369
+  ],
+  "jacobian_error_m_s": 9.045441392435682e-11,
+  "clipped_joint_steps": 2
+}

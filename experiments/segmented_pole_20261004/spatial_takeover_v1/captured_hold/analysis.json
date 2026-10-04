@@ -1,0 +1,16 @@
+{
+  "root_max_motion_mm": 12.843285765559136,
+  "front_move_mm": -8.634169495059837,
+  "rear_move_mm": -5.459779970242721,
+  "hold_root_motion_mm": 1.7497877099388575,
+  "hold_head_retreat_mm": 0.0,
+  "front_contact_fraction": 1.0,
+  "hold_front_contact_fraction": 1.0,
+  "static_gate": true,
+  "final_hold_gate": true,
+  "ground": false,
+  "max_tracking_error_deg": 35.85446003952598,
+  "rolling_gate": false,
+  "max_step_target_deg": 2.0991660897659211e-13,
+  "front_slip_median_mm_s": 1.590897231385244
+}
