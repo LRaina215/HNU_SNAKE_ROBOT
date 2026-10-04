@@ -1,0 +1,183 @@
+{
+  "mode": "held_rear_targets",
+  "exact_initial_state": true,
+  "commands_delivered": true,
+  "samples": [
+    {
+      "seconds": 0.0,
+      "rear_mean_axis_distance_mm": 90.77734004683673,
+      "rear_axis_error_deg": 12.807182811544806,
+      "rear_net_wrap_turns": 1.080094169731262,
+      "source_modules": [
+        7,
+        10,
+        12,
+        14,
+        15,
+        17,
+        19
+      ],
+      "target_modules": [
+        0,
+        4
+      ],
+      "source_force_N": 258.16609623396886,
+      "target_force_N": 78.81428334487457
+    },
+    {
+      "seconds": 0.20000000000024443,
+      "rear_mean_axis_distance_mm": 90.78692586222849,
+      "rear_axis_error_deg": 13.285412681098254,
+      "rear_net_wrap_turns": 1.078692372690523,
+      "source_modules": [
+        6,
+        7,
+        10,
+        12,
+        14,
+        15,
+        17,
+        19
+      ],
+      "target_modules": [
+        0,
+        4,
+        5
+      ],
+      "source_force_N": 216.13073874253706,
+      "target_force_N": 73.6154435752039
+    },
+    {
+      "seconds": 0.6000000000007333,
+      "rear_mean_axis_distance_mm": 90.83493718668124,
+      "rear_axis_error_deg": 13.270929368956685,
+      "rear_net_wrap_turns": 1.0781777922644717,
+      "source_modules": [
+        6,
+        7,
+        10,
+        12,
+        14,
+        15,
+        17,
+        19,
+        20
+      ],
+      "target_modules": [
+        4,
+        5
+      ],
+      "source_force_N": 168.74625250134025,
+      "target_force_N": 29.715118908685355
+    },
+    {
+      "seconds": 1.0000000000012221,
+      "rear_mean_axis_distance_mm": 90.89562426457616,
+      "rear_axis_error_deg": 13.383268471204133,
+      "rear_net_wrap_turns": 1.076467698544509,
+      "source_modules": [
+        6,
+        7,
+        10,
+        12,
+        14,
+        15,
+        17,
+        19,
+        20
+      ],
+      "target_modules": [
+        4,
+        5
+      ],
+      "source_force_N": 124.25725128708808,
+      "target_force_N": 24.542355178911215
+    },
+    {
+      "seconds": 2.0000000000024443,
+      "rear_mean_axis_distance_mm": 90.8013565338493,
+      "rear_axis_error_deg": 13.032262220207787,
+      "rear_net_wrap_turns": 1.0804113136798268,
+      "source_modules": [
+        6,
+        7,
+        10,
+        12,
+        14,
+        15,
+        17,
+        19,
+        20
+      ],
+      "target_modules": [
+        1,
+        2,
+        5
+      ],
+      "source_force_N": 197.70920574755624,
+      "target_force_N": 104.66574601035178
+    },
+    {
+      "seconds": 3.0000000000036664,
+      "rear_mean_axis_distance_mm": 90.87004779583982,
+      "rear_axis_error_deg": 13.146074561369318,
+      "rear_net_wrap_turns": 1.0803665569673546,
+      "source_modules": [
+        6,
+        7,
+        10,
+        12,
+        14,
+        15,
+        17,
+        19
+      ],
+      "target_modules": [
+        0,
+        1,
+        5
+      ],
+      "source_force_N": 181.19470072422874,
+      "target_force_N": 73.02861202095747
+    },
+    {
+      "seconds": 4.0000000000048885,
+      "rear_mean_axis_distance_mm": 91.07142551586385,
+      "rear_axis_error_deg": 12.60337250244782,
+      "rear_net_wrap_turns": 1.0824009099389647,
+      "source_modules": [
+        6,
+        7,
+        12,
+        14,
+        17,
+        19,
+        20
+      ],
+      "target_modules": [
+        0,
+        2,
+        5
+      ],
+      "source_force_N": 160.1500570196039,
+      "target_force_N": 114.34246985733726
+    }
+  ],
+  "events": [
+    {
+      "time": 1.7999999999999998,
+      "old": [
+        5,
+        10
+      ],
+      "new": [
+        6,
+        10
+      ],
+      "acquired": false,
+      "target_contact": true,
+      "source_contact": true
+    }
+  ],
+  "no_floor": true
+}

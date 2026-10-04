@@ -1,0 +1,218 @@
+[
+  {
+    "mode": "horizontal_three",
+    "time": 0.0,
+    "joint": 17,
+    "measured_deg": 57.540922410657245,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 0.010000000000012221,
+    "joint": 17,
+    "measured_deg": 57.005483769600644,
+    "target_deg": 55.26123520600383,
+    "actuator_torque_Nm": -2.355
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 0.20000000000024443,
+    "joint": 17,
+    "measured_deg": 54.2852493981119,
+    "target_deg": 55.26123520600383,
+    "actuator_torque_Nm": 2.1633390566572928
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 0.40000000000048885,
+    "joint": 17,
+    "measured_deg": 48.49874339430792,
+    "target_deg": 48.702789225855305,
+    "actuator_torque_Nm": 0.4522814913548956
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 0.6000000000007333,
+    "joint": 17,
+    "measured_deg": 40.8126697365075,
+    "target_deg": 40.99904483246728,
+    "actuator_torque_Nm": 0.4131131016637397
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 0.8000000000009777,
+    "joint": 17,
+    "measured_deg": 31.74287132211595,
+    "target_deg": 31.911626769891672,
+    "actuator_torque_Nm": 0.3740579506842039
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 1.0000000000012221,
+    "joint": 17,
+    "measured_deg": 24.957877542102846,
+    "target_deg": 25.117354416204115,
+    "actuator_torque_Nm": 0.35349135979966917
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 2.0000000000024443,
+    "joint": 17,
+    "measured_deg": -13.642203653844462,
+    "target_deg": -13.66547247406426,
+    "actuator_torque_Nm": -0.05157692578804429
+  },
+  {
+    "mode": "horizontal_three",
+    "time": 4.0000000000048885,
+    "joint": 17,
+    "measured_deg": -4.286117900605262,
+    "target_deg": -4.2939661356020355,
+    "actuator_torque_Nm": -0.017396147727820832
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 0.0,
+    "joint": 17,
+    "measured_deg": 57.540922410657245,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 0.010000000000012221,
+    "joint": 17,
+    "measured_deg": 57.57947999129961,
+    "target_deg": 58.93041599394855,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 0.20000000000024443,
+    "joint": 17,
+    "measured_deg": 57.72200449983397,
+    "target_deg": 58.93041599394855,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 0.40000000000048885,
+    "joint": 17,
+    "measured_deg": 55.86184053587222,
+    "target_deg": 56.090452279306355,
+    "actuator_torque_Nm": 0.5067335092195719
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 0.6000000000007333,
+    "joint": 17,
+    "measured_deg": 52.07022309733058,
+    "target_deg": 52.312220057437266,
+    "actuator_torque_Nm": 0.5364027541772174
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 0.8000000000009777,
+    "joint": 17,
+    "measured_deg": 46.15116194626359,
+    "target_deg": 46.39238917277265,
+    "actuator_torque_Nm": 0.5346965872007416
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 1.0000000000012221,
+    "joint": 17,
+    "measured_deg": 41.190539416322586,
+    "target_deg": 41.4354938570149,
+    "actuator_torque_Nm": 0.542958211447683
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 2.0000000000024443,
+    "joint": 17,
+    "measured_deg": 28.951409366394287,
+    "target_deg": 29.1859131548956,
+    "actuator_torque_Nm": 0.5197936286540425
+  },
+  {
+    "mode": "fixed_phase",
+    "time": 4.0000000000048885,
+    "joint": 17,
+    "measured_deg": 16.087597035291445,
+    "target_deg": 16.252751605954604,
+    "actuator_torque_Nm": 0.3660763611643034
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 0.0,
+    "joint": 17,
+    "measured_deg": 57.540922410657245,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 0.010000000000012221,
+    "joint": 17,
+    "measured_deg": 57.5184618774723,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 0.20000000000024443,
+    "joint": 17,
+    "measured_deg": 57.6326376540659,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 0.40000000000048885,
+    "joint": 17,
+    "measured_deg": 57.534651468117296,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 0.6000000000007333,
+    "joint": 17,
+    "measured_deg": 57.56382866347951,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 0.8000000000009777,
+    "joint": 17,
+    "measured_deg": 57.539011011448984,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 1.0000000000012221,
+    "joint": 17,
+    "measured_deg": 57.56745114143237,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 2.0000000000024443,
+    "joint": 17,
+    "measured_deg": 57.28871465968545,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  },
+  {
+    "mode": "held_rear_targets",
+    "time": 4.0000000000048885,
+    "joint": 17,
+    "measured_deg": 56.65392822293526,
+    "target_deg": 61.54064555765135,
+    "actuator_torque_Nm": 2.355
+  }
+]

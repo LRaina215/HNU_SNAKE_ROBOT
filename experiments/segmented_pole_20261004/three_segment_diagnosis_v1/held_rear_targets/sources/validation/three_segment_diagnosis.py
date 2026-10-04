@@ -1,0 +1,138 @@
+"""Short single-factor diagnosis of the archived three-segment support failure.
+
+The production controller is unchanged. No parameter search, no SHA checks.
+Compare each intervention with the first 4 s of the archived original run.
+"""
+import argparse
+import json
+from pathlib import Path
+import shutil
+
+import numpy as np
+
+from three_segment_experiment import ThreeTrial, DT
+from three_segment_compliance import ThreeSegmentController
+from segmented_pole_experiment import BASE, ROOT, HORIZONTAL, write_json
+from curved_axis_compliance import window_axis
+from three_segment_review import context
+
+OUT = BASE/'three_segment_diagnosis_v1'
+BASELINE = BASE/'three_segment_v1/horizontal_three'
+
+
+class HeldMiddle(ThreeSegmentController):
+    def compute(self, geometry, measured, phase, dt, contact_window, migrate=True):
+        # Only suppress the middle reference update. The real geometry, phase,
+        # servo dynamics and front/rear feedback remain unchanged.
+        held = measured.copy()
+        held[self.front:self.rear] = self.middle_reference[self.front:self.rear]
+        return super().compute(geometry, held, phase, dt, contact_window, migrate)
+
+
+def run(mode):
+    folder = OUT/mode
+    sim = None
+    try:
+        sim = ThreeTrial(HORIZONTAL, folder)
+        dst = folder/'sources/validation/three_segment_diagnosis.py'
+        shutil.copy2(Path(__file__), dst)
+        g = sim.fresh()
+        cls = HeldMiddle if mode in ('held_middle', 'held_middle_fixed_phase') else ThreeSegmentController
+        controller = cls(g, sim.original.parameters, sim.d.ctrl, sim.phase,
+                         sim.corner, sim.source, sim.target, sim.radius)
+        phase0 = sim.phase
+        initial_target = sim.d.ctrl.copy()
+        sim.partition[:] = [controller.front, controller.rear]
+        sim.records[0]['partition'] = sim.partition.copy()
+        result = dict(method=mode, checkpoint=str(HORIZONTAL), configuration=controller.configuration(),
+                      steps=0, outcome='time_limit', duration_seconds=4., settings=sim.meta['settings'])
+        write_json(folder/'plan.json', dict(**result, baseline=str(BASELINE),
+            intervention=mode, physical_parameters_unchanged=True,
+            stop='ground or whole-body support absent for 0.2 s',
+            no_parameter_search=True, no_SHA_checks=True))
+        lost = 0
+        for k in range(20):
+            g = sim.fresh()
+            measured = np.radians(g['angles_deg'])*sim.bridge.signs
+            phase = phase0 if 'fixed_phase' in mode else phase0-(k+1)*.075
+            target, info = controller.compute(g, measured, phase, DT,
+                [r['normal_force'] for r in sim.records[-60:]], migrate=mode != 'fixed_boundary')
+            if mode == 'held_rear_targets':
+                # Counterfactual actuator command clamp, NOT a physical anchor.
+                target[controller.initial_rear:] = initial_target[controller.initial_rear:]
+                controller.last_target[controller.initial_rear:] = target[controller.initial_rear:]
+            sim.partition[:] = [controller.front, controller.rear]
+            sim.phase, sim.stage = phase, 'rolling' if 'fixed_phase' not in mode else 'fixed_phase_feedback'
+            info.update(target=target.copy(), measured=measured.copy(), phase=phase, step=k+1)
+            sim.controls.append(info)
+            sim.geometry_log.append(g)
+            first = len(sim.records)
+            sim.command(target, g)
+            sim.advance(DT)
+            result['steps'] = k+1
+            for row in sim.records[first:]:
+                lost = 0 if np.any(row['normal_force'] > .1) else lost+1
+                if row['ground'] or lost >= 20:
+                    result['outcome'] = 'support_lost'
+                    break
+            if result['outcome'] != 'time_limit':
+                break
+        result['events'] = controller.events
+        write_json(folder/'result.json', result)
+    finally:
+        if sim is not None:
+            sim.close()
+    print(json.dumps(metrics(folder), indent=2), flush=True)
+
+
+def metrics(folder):
+    result, z, m, d, meta = context(folder)
+    from segmented_pole_experiment import pipe_frame
+    corner, source, target, radius = pipe_frame(m)
+    time = z['time']-z['time'][0]
+    use = time <= 4.+1e-8
+    points = z['points_mm'][use]
+    relative = points[:, 10:]-corner
+    radial = relative-(relative@source)[:, :, None]*source
+    distance = np.linalg.norm(radial, axis=2)
+    unit = radial/distance[:, :, None]
+    wrap = abs(np.arctan2(np.cross(unit[:, :-1], unit[:, 1:])@source,
+                         np.sum(unit[:, :-1]*unit[:, 1:], axis=2)).sum(axis=1)/(2*np.pi))
+    axis_error = []
+    for frame in points:
+        tangents = np.diff(frame[10:], axis=0)
+        tangents /= np.linalg.norm(tangents, axis=1)[:, None]
+        axis, flatness = window_axis(tangents)
+        axis_error.append(np.degrees(np.arccos(np.clip(abs(axis@source), 0, 1))))
+    normal = z['normal_force'][use]
+    initial = np.load(folder/'initial_state.npz')['state']
+    expected = np.load(BASELINE/'initial_state.npz')['state']
+    assert np.array_equal(initial, expected)
+    commands = json.loads((folder/'commands.json').read_text(encoding='utf8'))
+    assert all(c['applied'] for c in commands)
+    for c in commands:
+        assert np.allclose(z['ctrl'][z['applied_id']==c['id']], c['target'], atol=1e-12)
+    rows = []
+    for seconds in (0., .2, .6, 1., 2., 3., 4.):
+        i = np.argmin(abs(time[use]-seconds))
+        rows.append(dict(seconds=float(time[i]), rear_mean_axis_distance_mm=float(distance[i].mean()),
+            rear_axis_error_deg=float(axis_error[i]), rear_net_wrap_turns=float(wrap[i]),
+            source_modules=np.flatnonzero(normal[i, 0] > .1).tolist(),
+            target_modules=np.flatnonzero(normal[i, 1] > .1).tolist(),
+            source_force_N=float(normal[i, 0].sum()), target_force_N=float(normal[i, 1].sum())))
+    data = dict(mode=folder.name, exact_initial_state=True, commands_delivered=True,
+                samples=rows, events=result.get('events', []), no_floor=not bool(np.any(z['ground'][use])))
+    write_json(folder/'diagnosis.json', data)
+    return data
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--mode', choices=['held_middle', 'fixed_phase', 'held_middle_fixed_phase',
+                                         'held_rear_targets', 'fixed_boundary'])
+    parser.add_argument('--baseline-metrics', action='store_true')
+    args = parser.parse_args()
+    if args.baseline_metrics:
+        print(json.dumps(metrics(BASELINE), indent=2))
+    else:
+        run(args.mode)
