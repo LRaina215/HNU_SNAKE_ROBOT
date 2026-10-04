@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\segmented_pole_diagnostics.py", line 209, in <module>
+    elif args.condition:run_diagnostic(args.condition)
+  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\segmented_pole_diagnostics.py", line 94, in run_diagnostic
+    sim=DiagnosticTrial(folder)
+  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\segmented_pole_diagnostics.py", line 30, in __init__
+    super().__init__(HORIZONTAL,folder)
+  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\segmented_pole_experiment.py", line 136, in __init__
+    self.snapshot()
+  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\segmented_pole_diagnostics.py", line 41, in snapshot
+    body=m.body('head' if module==0 else f'link{module}').id
+KeyError: "Invalid name 'link20'. Valid names: ['head', 'link1', 'link10', 'link11', 'link12', 'link13', 'link14', 'link15', 'link16', 'link17', 'link18', 'link19', 'link2', 'link3', 'link4', 'link5', 'link6', 'link7', 'link8', 'link9', 'pipe_network', 'tail', 'world']"

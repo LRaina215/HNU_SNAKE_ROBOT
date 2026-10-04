@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "condition": "target_hold",
+      "samples": 941,
+      "commands_applied": 32,
+      "max_command_roundtrip_error_rad": 2.220446049250313e-16,
+      "source_hash": "395cfeba4dbe98f824495df341a998aea95695f20059a4adf733937fdfafc756",
+      "v2_physics_identical": true,
+      "jacobian_error_m_s": 9.045441392435682e-11
+    },
+    {
+      "condition": "frozen_shape_fixed_phase",
+      "samples": 941,
+      "commands_applied": 32,
+      "max_command_roundtrip_error_rad": 2.220446049250313e-16,
+      "source_hash": "395cfeba4dbe98f824495df341a998aea95695f20059a4adf733937fdfafc756",
+      "v2_physics_identical": true,
+      "jacobian_error_m_s": 9.045441392435682e-11
+    },
+    {
+      "condition": "live_shape_fixed_phase",
+      "samples": 941,
+      "commands_applied": 32,
+      "max_command_roundtrip_error_rad": 2.220446049250313e-16,
+      "source_hash": "395cfeba4dbe98f824495df341a998aea95695f20059a4adf733937fdfafc756",
+      "v2_physics_identical": true,
+      "jacobian_error_m_s": 9.045441392435682e-11
+    },
+    {
+      "condition": "rolling_fixed_boundary",
+      "samples": 941,
+      "commands_applied": 32,
+      "max_command_roundtrip_error_rad": 2.220446049250313e-16,
+      "source_hash": "395cfeba4dbe98f824495df341a998aea95695f20059a4adf733937fdfafc756",
+      "v2_physics_identical": true,
+      "jacobian_error_m_s": 9.045441392435682e-11
+    },
+    {
+      "condition": "replay_rolling_dynamic",
+      "samples": 941,
+      "commands_applied": 32,
+      "max_command_roundtrip_error_rad": 2.220446049250313e-16,
+      "source_hash": "395cfeba4dbe98f824495df341a998aea95695f20059a4adf733937fdfafc756",
+      "v2_physics_identical": true,
+      "jacobian_error_m_s": 9.045441392435682e-11
+    }
+  ],
+  "tail_omission_does_not_change_reference_hold_failure": true
+}
