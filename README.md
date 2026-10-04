@@ -2,9 +2,11 @@
 
 本仓库包含原蛇形机器人步态，以及新增的 **Yamada 关节角计算、截面顺应性目标生成、可视化反馈与 MuJoCo 转发执行闭环**。原项目介绍与作者信息保留在文末；其他步态的说明见 [README_zh.md](README_zh.md)。
 
-2026-10-05 最新：[平顺转移首轮验证](docs/三段顺应性_平顺转移首轮验证.md)。**新增8°目标领先限制与20 ms执行插值，同参数在水平T、转竖直向下T两个存档上保留完整跨越与继续rolling一周期。** 恢复后1秒至验收结束的最大跟踪误差由83.5°/59.1°降至12.1°/13.3°，实际关节峰值速度由166/163降至110/104°/s。尾部退出原管仍有急促摆动，竖直还存在较大外张，不能当作实机可用或未知环境自主跨越。
+2026-10-05 最新：[窗口协调有界验证结论](docs/三段顺应性_窗口协调有界验证结论.md)。**新增六个水平窗口协调候选，两组完整跨越，零组同时通过预声明平顺性要求；第1步仍未完成。** 成形已与实际跟随和rolling增量联动，并对照前后相位、提前成形、前部恢复和中段让位。共同速率候选将关节峰值降到82.13°/s，但第一次脱离原管时尾端仍有1.237m/s摆落；延长中段跟随时间仅降到1.161m/s且饱和增多。本轮停止同结构调参，未进入竖直冻结复核或自主识别。详见[数据与复现命令](experiments/segmented_pole_20261005/window_coordination/README.md)、[V5正常速度回放](experiments/segmented_pole_20261005/window_coordination/reviews/v5_shared_phase_1x.mp4)（32–36秒）和[V6回放](experiments/segmented_pole_20261005/window_coordination/reviews/v6_continuous_middle_1x.mp4)。未替换日常控制器或实机入口。
 
-当前独立实验入口：`python validation/coordinated_winding_experiment.py horizontal_recheck --scene horizontal --hypothesis "复核平顺转移候选" --video`；竖直使用新的结果名和 `--scene vertical_down`。默认8°、20 ms、反馈减速关闭。参考[水平正常速度回放](experiments/segmented_pole_20261005/coordinated_winding/reviews/ramp20_horizontal_1x.mp4)、[竖直正常速度回放](experiments/segmented_pole_20261005/coordinated_winding/reviews/ramp20_vertical_1x.mp4)与[全部对照数据](experiments/segmented_pole_20261005/coordinated_winding/README.md)。日常与实机入口未替换。
+2026-10-05 前一轮：[平顺转移首轮验证](docs/三段顺应性_平顺转移首轮验证.md)。新增8°目标领先限制与20 ms执行插值，同参数在水平T、转竖直向下T两个存档上保留完整跨越与继续rolling一周期。恢复后1秒至验收结束的最大跟踪误差由83.5°/59.1°降至12.1°/13.3°，实际关节峰值速度由166/163降至110/104°/s。尾部退出原管仍有急促摆动，竖直还存在较大外张，不能当作实机可用或未知环境自主跨越。
+
+前一轮独立实验入口：`python validation/coordinated_winding_experiment.py horizontal_recheck --scene horizontal --hypothesis "复核平顺转移候选" --video`；竖直使用新的结果名和 `--scene vertical_down`。默认8°、20 ms、反馈减速关闭。参考[水平正常速度回放](experiments/segmented_pole_20261005/coordinated_winding/reviews/ramp20_horizontal_1x.mp4)、[竖直正常速度回放](experiments/segmented_pole_20261005/coordinated_winding/reviews/ramp20_vertical_1x.mp4)与[全部对照数据](experiments/segmented_pole_20261005/coordinated_winding/README.md)。
 
 2026-10-04 基线：[同步成形与完整跨越验证](docs/三段顺应性_同步成形与完整跨越验证.md)。从用户保存的搭管状态出发，水平T型与转竖直向下T型均完成整身跨越，并继续rolling一个完整相位周期。验收区间内分别继续推进223.8 / 320.9 mm，维持约两圈包绕；竖直转移后反转相位还能向上回移42.6 mm。
 
