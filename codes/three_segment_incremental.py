@@ -49,6 +49,10 @@ class IncrementalThreeSegmentController(ThreeSegmentController):
         field, _ = bone.material_field(angles)
         return integrated_field(bone, field)
 
+    def rolling_observation(self, geometry, measured, observed):
+        """Optional front-shape experiment hook; default preserves the baseline."""
+        return observed, {}
+
     def compute(self, geometry, measured, phase, dt, contact_window, migrate=True):
         self.elapsed += dt
         status = self.update_boundaries(np.asarray(geometry['points_mm']), contact_window, dt) if migrate else {}
@@ -70,7 +74,8 @@ class IncrementalThreeSegmentController(ThreeSegmentController):
             nominal = self.material_integrals(self.forward_points(self.last_target), self.last_target)
             self.preload[entering] = rotate(nominal-observed, -(self.phase-self.initial_phase))[entering]
         self.active = active
-        rolled = angles_from_integrals(rotate(observed, delta)+rotate(self.preload, total))
+        rolling_field, shape_info = self.rolling_observation(geometry, measured, observed)
+        rolled = angles_from_integrals(rotate(rolling_field, delta)+rotate(self.preload, total))
         compliance = np.zeros(self.n)
         local_info = []
         for column, axis in ((0, self.target), (2, self.source)):
@@ -99,7 +104,8 @@ class IncrementalThreeSegmentController(ThreeSegmentController):
             weights=self.weights.copy(), middle_reference=self.middle_reference.copy(),
             rolled=rolled, compliance_delta=compliance, preload=self.preload.copy(),
             raw=raw, rate_limited=int(np.count_nonzero(abs(raw-limited)>1e-9)),
-            angle_limited=int(np.count_nonzero(abs(target-limited)>1e-9)), local_sections=local_info, **status)
+            angle_limited=int(np.count_nonzero(abs(target-limited)>1e-9)), local_sections=local_info,
+            **shape_info, **status)
 
     def configuration(self):
         return dict(**super().configuration(), method='measured Bishop/Yamada rolling + A-D shaped-minus-zero correction',

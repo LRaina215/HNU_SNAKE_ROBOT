@@ -1,0 +1,55 @@
+{
+  "baseline": {
+    "seconds": 12.800000000015643,
+    "front_wrap_initial": 0.5716485389949711,
+    "front_wrap_final": 0.007861388802456851,
+    "front_wrap_min_fraction": 0.00017236937905789503,
+    "front_advance_final_mm": -33.63992351446163,
+    "front_advance_peak_mm": 182.82792316875842,
+    "first_continuous_front_contact_loss_s": 10.640000000013004,
+    "front_contact_fraction": 0.804839968774395,
+    "rear_contact_fraction": 1.0,
+    "front_support_gate_passed": false,
+    "transfer_gate_passed": false,
+    "max_sustained_new_modules": 1,
+    "final_sustained_new_modules": 0,
+    "final_front_contact_modules": [],
+    "final_partition": [
+      7,
+      10
+    ],
+    "floor_contact": false,
+    "torque_saturation_fraction": 0.49457455113192816,
+    "front_torque_saturation_fraction": 0.5475409836065573,
+    "max_tracking_error_deg": 35.85446003952598
+  },
+  "front_support": {
+    "seconds": 12.800000000015643,
+    "front_wrap_initial": 0.5716485389949711,
+    "front_wrap_final": 0.521734067055967,
+    "front_wrap_min_fraction": 0.8590818166412659,
+    "front_advance_final_mm": 200.66800267833125,
+    "front_advance_peak_mm": 200.66800267833125,
+    "first_continuous_front_contact_loss_s": null,
+    "front_contact_fraction": 1.0,
+    "rear_contact_fraction": 1.0,
+    "front_support_gate_passed": true,
+    "transfer_gate_passed": false,
+    "max_sustained_new_modules": 1,
+    "final_sustained_new_modules": 0,
+    "final_front_contact_modules": [
+      0,
+      5
+    ],
+    "final_partition": [
+      8,
+      10
+    ],
+    "floor_contact": false,
+    "torque_saturation_fraction": 0.6060889929742389,
+    "front_torque_saturation_fraction": 0.6505854800936768,
+    "max_tracking_error_deg": 35.85446003952598
+  },
+  "initial_integration_state_exact": true,
+  "maximum_command_step_deg": 10.219707892922765
+}
