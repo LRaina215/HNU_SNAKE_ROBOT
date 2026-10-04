@@ -1,0 +1,12 @@
+{
+  "v2_axis": {
+    "seconds": 12.8,
+    "middle_saturation_fraction": 0.5784716516023007,
+    "middle_mean_error_deg": 2.914774339882464
+  },
+  "v3_fast_yield": {
+    "seconds": 12.8,
+    "middle_saturation_fraction": 0.3401086113266098,
+    "middle_mean_error_deg": 0.9784908691568516
+  }
+}
