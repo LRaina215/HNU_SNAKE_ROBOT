@@ -1,0 +1,251 @@
+{
+  "condition": "synchronous",
+  "cycles": 8,
+  "front_progress_mm": 66.98208809775066,
+  "rear_progress_mm": 30.891634683565258,
+  "head_progress_mm": 42.44203000884782,
+  "hold_head_retreat_mm": 19.891616913066912,
+  "hold_root_motion_mm": 21.202098313964733,
+  "hold_front_centroid_retreat_at_worst_head_mm": 7.1369715795793525,
+  "hold_head_relative_to_centroid_retreat_mm": 12.75464533348756,
+  "front_nonrigid_rms_at_worst_head_mm": 1.8520751423805495,
+  "front_contact_fraction": 1.0,
+  "hold_front_contact_fraction": 1.0,
+  "source_contact_fraction": 1.0,
+  "hold_gate": false,
+  "short_gate": false,
+  "ground": false,
+  "front_slip_median_mm_s": 5.266820340031799,
+  "max_tracking_error_deg": 40.181714814532874,
+  "max_step_target_deg": 10.716276158757768,
+  "bridge_chord_range_mm": [
+    228.00983409959616,
+    279.37260958732736
+  ],
+  "paused_segment_motion": [],
+  "half_steps": [
+    {
+      "half_step": 1,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 2.7810145840409177,
+      "rear_mean_mm": 2.3488261094692007,
+      "front_pure_axial_mm": 4.466168361490418,
+      "front_pure_motion_mm": 4.991903959095348,
+      "rear_pure_axial_mm": 2.3488261094692935,
+      "rear_pure_motion_mm": 2.466599095000886
+    },
+    {
+      "half_step": 2,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 4.614030910303853,
+      "rear_mean_mm": 2.2588364035581208,
+      "front_pure_axial_mm": 6.477892003138725,
+      "front_pure_motion_mm": 6.7625357010612825,
+      "rear_pure_axial_mm": 2.2588364035579347,
+      "rear_pure_motion_mm": 2.349527285587214
+    },
+    {
+      "half_step": 3,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 6.279013078376494,
+      "rear_mean_mm": 1.9738694664669083,
+      "front_pure_axial_mm": 8.798569697559216,
+      "front_pure_motion_mm": 8.960295801567158,
+      "rear_pure_axial_mm": 1.9738694664668877,
+      "rear_pure_motion_mm": 2.1932182350978646
+    },
+    {
+      "half_step": 4,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 7.124263697222531,
+      "rear_mean_mm": 1.8206552596673191,
+      "front_pure_axial_mm": 10.364942354789,
+      "front_pure_motion_mm": 10.453614911739187,
+      "rear_pure_axial_mm": 1.8206552596674535,
+      "rear_pure_motion_mm": 2.1377948229089045
+    },
+    {
+      "half_step": 5,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 8.00549792735977,
+      "rear_mean_mm": 1.585195319773561,
+      "front_pure_axial_mm": 11.583334886850864,
+      "front_pure_motion_mm": 11.638371544724015,
+      "rear_pure_axial_mm": 1.5851953197736437,
+      "rear_pure_motion_mm": 1.8992269034149367
+    },
+    {
+      "half_step": 6,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 8.394171695527476,
+      "rear_mean_mm": 1.5045174302638316,
+      "front_pure_axial_mm": 11.887313129222713,
+      "front_pure_motion_mm": 11.982024722826104,
+      "rear_pure_axial_mm": 1.504517430263656,
+      "rear_pure_motion_mm": 1.781472822256385
+    },
+    {
+      "half_step": 7,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 8.30579777200822,
+      "rear_mean_mm": 1.5340495155273857,
+      "front_pure_axial_mm": 11.303276713497818,
+      "front_pure_motion_mm": 11.553195481843195,
+      "rear_pure_axial_mm": 1.5340495155273752,
+      "rear_pure_motion_mm": 1.787127774281429
+    },
+    {
+      "half_step": 8,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 7.898936024963632,
+      "rear_mean_mm": 1.6169625445342035,
+      "front_pure_axial_mm": 10.323222600378188,
+      "front_pure_motion_mm": 10.946805122981695,
+      "rear_pure_axial_mm": 1.6169625445342448,
+      "rear_pure_motion_mm": 1.8489622536023314
+    },
+    {
+      "half_step": 9,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 6.2381122014374455,
+      "rear_mean_mm": 1.6855641434132167,
+      "front_pure_axial_mm": 7.879345456659668,
+      "front_pure_motion_mm": 9.037651592183868,
+      "rear_pure_axial_mm": 1.6855641434132373,
+      "rear_pure_motion_mm": 1.8655336604945745
+    },
+    {
+      "half_step": 10,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 2.05015647239469,
+      "rear_mean_mm": 1.7435999281996146,
+      "front_pure_axial_mm": 2.4260931191943675,
+      "front_pure_motion_mm": 2.783767221981859,
+      "rear_pure_axial_mm": 1.743599928199532,
+      "rear_pure_motion_mm": 1.894276319697834
+    },
+    {
+      "half_step": 11,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 1.721893576519534,
+      "rear_mean_mm": 1.8193270421976422,
+      "front_pure_axial_mm": 1.958501165584816,
+      "front_pure_motion_mm": 2.167930812886709,
+      "rear_pure_axial_mm": 1.8193270421976526,
+      "rear_pure_motion_mm": 1.991212675718613
+    },
+    {
+      "half_step": 12,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 1.2766731924794215,
+      "rear_mean_mm": 1.8841710043702733,
+      "front_pure_axial_mm": 1.146515656101144,
+      "front_pure_motion_mm": 1.3983765181627668,
+      "rear_pure_axial_mm": 1.8841710043703765,
+      "rear_pure_motion_mm": 2.098417098206994
+    },
+    {
+      "half_step": 13,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 0.9175868064841666,
+      "rear_mean_mm": 2.0278823435648974,
+      "front_pure_axial_mm": 0.4006283444161814,
+      "front_pure_motion_mm": 0.8122391565127286,
+      "rear_pure_axial_mm": 2.0278823435647837,
+      "rear_pure_motion_mm": 2.255738611153662
+    },
+    {
+      "half_step": 14,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 0.6111917416511403,
+      "rear_mean_mm": 2.179600209244768,
+      "front_pure_axial_mm": -0.26040111281837613,
+      "front_pure_motion_mm": 0.7825067422483961,
+      "rear_pure_axial_mm": 2.179600209244923,
+      "rear_pure_motion_mm": 2.3545969835428795
+    },
+    {
+      "half_step": 15,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 0.4283323278706064,
+      "rear_mean_mm": 2.3613814996164137,
+      "front_pure_axial_mm": -0.5466255849363032,
+      "front_pure_motion_mm": 0.9190334712161218,
+      "rear_pure_axial_mm": 2.3613814996162588,
+      "rear_pure_motion_mm": 2.44459976555082
+    },
+    {
+      "half_step": 16,
+      "delta": [
+        -0.075,
+        -0.075
+      ],
+      "front_mean_mm": 0.33541608911076537,
+      "rear_mean_mm": 2.547196463697901,
+      "front_pure_axial_mm": -0.6989566039605487,
+      "front_pure_motion_mm": 1.0020788640769913,
+      "rear_pure_axial_mm": 2.5471964636978908,
+      "rear_pure_motion_mm": 2.6403884614532775
+    }
+  ],
+  "fk_error_mm": 0.0,
+  "feedback_error_rad": 2.220446049250313e-16,
+  "field_quadrature_error_rad": 8.881784197001252e-16,
+  "delivered_target_error_rad": 2.220446049250313e-16,
+  "initial_state_identical": true,
+  "matched_phase_budget": true,
+  "clipped_joint_steps": 4,
+  "hold_rigid_fit": {
+    "rotation_deg": 9.962475874777626,
+    "head_prediction_error_mm": 3.6020476796840173,
+    "head_nonrigid_axial_retreat_mm": 3.0381297819018016,
+    "head_rigid_rotation_axial_retreat_mm": 9.716515551585763,
+    "centroid_axial_retreat_mm": 7.1369715795793525
+  },
+  "audit_source_sha256": "5a72f81c70322101e6597bbb759e45b990eec1ec0664fdccc32411e794769c15"
+}

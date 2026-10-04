@@ -1,0 +1,91 @@
+{
+  "condition": "front_first",
+  "cycles": 8,
+  "steps": 16,
+  "method": "alternating_spatial_bishop",
+  "options": {
+    "transition_links": 6
+  },
+  "checkpoint": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\segmented_pole_20261004\\inputs\\horizontal",
+  "settings": {
+    "radius": 81.5,
+    "pitch": 220.0,
+    "gain": [
+      0.01,
+      0.02
+    ],
+    "gain_is_tuple": true,
+    "inside": false,
+    "phase": -13.650000000000022,
+    "phase_step": 0.15,
+    "completed": 92,
+    "reset_count": 0,
+    "initialized": true,
+    "active_shape": [
+      81.5,
+      220.0
+    ],
+    "compliance_enabled": true,
+    "compliant": true,
+    "ignore_feedback_risk": true,
+    "gravity_when_enabled": [
+      0.0,
+      0.0,
+      -9.81
+    ],
+    "links": [
+      64.49999999999997,
+      64.50000000000003,
+      64.49999999999999,
+      64.49999999999993,
+      64.49999999999993,
+      64.50000000000001,
+      64.49999999999996,
+      64.50000000000007,
+      64.50000000000007,
+      64.49999999999994,
+      64.50000000000001,
+      64.50000000000001,
+      64.50000000000003,
+      64.50000000000006,
+      64.50000000000011,
+      64.50000000000003,
+      64.50000000000007,
+      64.50000000000001,
+      64.50000000000004,
+      64.50000000000006,
+      64.49999999999999
+    ],
+    "curve": {
+      "kappa": 0.010358102713739416,
+      "tau": 0.004450055393226316,
+      "phase_offset": 0.0
+    },
+    "action_label": "顺应性",
+    "execution": "mujoco_relay"
+  },
+  "source_hashes": {
+    "codes/alternating_pole_phase.py": "4c0e29f1eb58d357744b87f8d9ad14520bd83a56dafe22a8c880c293ce53f0fc",
+    "codes/curved_axis_compliance.py": "abf352bbdd232c75c7e7cf8b724a502005d892f33d2d4ab88e238ac9d0ecc746",
+    "codes/mujoco_checkpoint.py": "4281c9e7ed095e717a6b6e487b63b709d3645259c69d30990addfb432816dd9b",
+    "codes/mujoco_execution_bridge.py": "5654db722c07b4eabd6ce859f007befe45ab59aee5b433b9056c973fad7d98c3",
+    "codes/mujoco_visualizer_bridge.py": "b41da6289a6176441ca679d35dcde9d141eba2981ba9b1866f57fae28a9c02c0",
+    "codes/pole_compliance.py": "4503a150dfbc66d2aa1fd18712740e14ff6eb1f3631db07b26fafd6aba15e55c",
+    "codes/segmented_pole_backbone.py": "d84f7f84d7bd88927b67769c7bcd6725c3bf6a2d5149071ea5a265ec1f6d8241",
+    "codes/spatial_bishop_backbone.py": "9eba5f41225e34806c604141f64fc453a99e68f11ec6817b0c99e55a87460231",
+    "validation/alternating_pole_experiment.py": "e72829ca93f01d2003cb09f6094339f7d3150cda27b03e0d201a50b3f2baa9ac",
+    "validation/SegmentedAxisReplay.cs": "ba55167a7a43c62a2751724876b1e2eb978f252af3334721f1cdae08ddc746fd",
+    "validation/segmented_pole_diagnostics.py": "395cfeba4dbe98f824495df341a998aea95695f20059a4adf733937fdfafc756",
+    "validation/segmented_pole_experiment.py": "ee3f466334205f98edfb4cbce9d585c37de86992a2e9254ea61f0ec6016bf35b",
+    "validation/spatial_takeover_experiment.py": "f8da13c58477696c1acf6d440bcdcd9b0b61f7199dfef438bc2ce8d57faa23ad",
+    "visualizer/python_client.py": "fc3970b1c9790e6aae2240744d5b79646bab736fc149e31cd02b6b26284f5e69"
+  },
+  "mujoco": "3.2.7",
+  "boundary_links": 6.0,
+  "final_total_phases": [
+    -1.2,
+    -1.2
+  ],
+  "phase_trace_mean_only": true,
+  "clipped_joint_steps": 3
+}
