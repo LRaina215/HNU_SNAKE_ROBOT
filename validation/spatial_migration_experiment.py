@@ -1,16 +1,20 @@
 """Matched fixed/migrating boundary trials, continuous rolling then fixed hold."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 
 from segmented_pole_experiment import BASE, ROOT, HORIZONTAL, Trial, write_json, local_sections
 from alternating_pole_experiment import AlternatingTrial, EXTRA, MODES
 from spatial_takeover_experiment import points_for_angles
-from spatial_bishop_backbone import SpatialBishopBackbone, SpatialShapeController
-from alternating_pole_phase import LocalPhaseCommand, schedule
-from segmented_pole_backbone import AxisField
-from spatial_boundary_migration import SpatialBoundaryMigration
+from snake_control.spatial_bishop_backbone import SpatialBishopBackbone, SpatialShapeController
+from snake_control.alternating_pole_phase import LocalPhaseCommand, schedule
+from snake_control.segmented_pole_backbone import AxisField
+from snake_control.spatial_boundary_migration import SpatialBoundaryMigration
 import mujoco
 import numpy as np
 
@@ -25,7 +29,7 @@ class MigrationTrial(AlternatingTrial):
         self.jacobian_error=0.
         Trial.__init__(self,HORIZONTAL,folder,verify_hashes=False)
         for path in EXTRA+['validation/segmented_pole_diagnostics.py',
-                'codes/spatial_boundary_migration.py','validation/spatial_migration_experiment.py',
+                'snake_control/spatial_boundary_migration.py','validation/spatial_migration_experiment.py',
                 'validation/spatial_migration_review.py']:
             dest=self.folder/'sources'/path;dest.parent.mkdir(parents=True,exist_ok=True)
             shutil.copy2(ROOT/path,dest)

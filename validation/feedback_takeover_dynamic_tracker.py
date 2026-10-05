@@ -4,11 +4,16 @@ The only update inputs are measured joint angles, the preceding applied joint
 command, and elapsed time. It exposes inferred pipe geometry and model support,
 not physical contacts. True simulator pose/geometry are never read here.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import time
 import numpy as np
 import mujoco
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 from feedback_takeover_dynamic_observer_probe import virtual_model,predict
 from feedback_takeover_dynamic_filter import TopologyDynamicsFilter
 

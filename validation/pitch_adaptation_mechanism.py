@@ -6,17 +6,21 @@ contact forces are inferred, no pipe truth is supplied to a controller, and no
 new physical step or EXE process is started. Geometry sampling is 5 Hz; the
 source 10ms raw trajectory is retained. Supports the four prescribed scenes.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import gzip
 import hashlib
 import json
-from pathlib import Path
 
 import mujoco
 import numpy as np
 
 from pitch_adaptation_experiment_v5 import ROOT,SCENES,model_path
-from local_pitch_feedback import estimate_module_radius
+from snake_control.local_pitch_feedback import estimate_module_radius
 
 BASE=ROOT/'experiments/pitch_adaptation_20261003/repair_v5'
 
@@ -179,7 +183,7 @@ def replay(case,out):
                             median_contact_modules=float(np.median(modules[mask,i].sum(axis=1))) if mask.any() else None)
                 for i,region in enumerate(frame[-1])}
     sources=[case/'result.json',case/'trace.npz',case/'control.json.gz',model_path(scene),Path(__file__),
-             ROOT/'codes/local_pitch_feedback.py',ROOT/'codes/local_pitch_geometry.py']
+             ROOT/'snake_control/local_pitch_feedback.py',ROOT/'snake_control/local_pitch_geometry.py']
     summary=dict(scene=scene,method=result['method'],seed=result['seed'],k=result['k'],outcome=result['outcome'],success=result['success'],
                  sources_sha256={str(p.relative_to(ROOT)):digest(p) for p in sources},scoring_only=True,
                  definitions=dict(length='each actual link partitioned once at truth region boundaries',

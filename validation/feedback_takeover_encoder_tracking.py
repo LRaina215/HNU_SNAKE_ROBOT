@@ -5,14 +5,19 @@ refinement corrects that prediction. This does not assume that the chosen
 body points are physically stationary or that rolling is no-slip; residual
 axis drift is measured explicitly against held-out simulator state columns.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import time
 import argparse
 import numpy as np
 import mujoco
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,write_json,pipe_frame
-from mujoco_checkpoint import load_checkpoint
-from encoder_pipe_geometry import right_angle_hypothesis
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.encoder_pipe_geometry import right_angle_hypothesis
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 from feedback_takeover_cad_refinement import refine
 
 BASE=ROOT/'experiments/segmented_pole_20261005/support_transfer'

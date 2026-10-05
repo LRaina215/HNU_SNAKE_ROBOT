@@ -14,7 +14,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--run',action='store_true');args=p.parse_args()
     plan_path=BASE/'stage1_training_plan.json'
     jobs=[dict(front=f,width=w,turn=a) for f in (4,6) for w in (64.5,129.) for a in (45.,60.,90.)]
-    sources=[ROOT/'codes/local_bend_backbone.py',ROOT/'codes/contact_turn_controller.py',
+    sources=[ROOT/'snake_control/local_bend_backbone.py',ROOT/'snake_control/contact_turn_controller.py',
              ROOT/'validation/contact_turn_experiment.py',ROOT/'validation/contact_turn_stage1.py']
     plan=dict(version=1,maximum_configurations=12,jobs=jobs,training_phase=0.,
               source_hashes={str(p.relative_to(ROOT)):sha(p) for p in sources},

@@ -3,16 +3,19 @@
 Stage 0 never substitutes wall-clock waiting for physical holding. Raw snapshots
 are taken after mj_forward at the recorded qpos/time, at 100 physical Hz.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import hashlib
 import json
 import math
 import os
-from pathlib import Path
 import shutil
 import socket
 import subprocess
-import sys
 import time
 import xml.etree.ElementTree as ET
 
@@ -24,7 +27,7 @@ from scipy.optimize import least_squares
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'codes'), str(ROOT / 'visualizer')]
 from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-from mujoco_execution_bridge import MujocoExecutionBridge
+from snake_control.mujoco_execution_bridge import MujocoExecutionBridge
 from python_client import SnakeControlClient
 
 BASE = ROOT / 'experiments/contact_turn_20261003'

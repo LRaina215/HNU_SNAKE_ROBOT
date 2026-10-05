@@ -1,17 +1,20 @@
 """Regression checks for physical timing/cache and production-rule preservation."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import hashlib
 import json
-from pathlib import Path
-import sys
 import time
 
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'codes'),str(ROOT/'validation')]
-import local_pitch_controller_v4 as controller
-from pole_compliance import ComplianceParameters,build_backbone
+from snake_control import local_pitch_controller_v4 as controller
+from snake_control.pole_compliance import ComplianceParameters,build_backbone
 from pitch_adaptation_stage0 import ALPHA,LINK,JOINTS,geometry_from_points,helix_points
 
 
@@ -92,7 +95,7 @@ def main():
                 repeated_physical_time_no_filter_advance=True,stale_out_of_order_state_preserved=True,
                 new_run_cache_reset=True,post_filter_pitch_bounds_all_k=True,
                 sources={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
-                         for p in (Path(__file__),ROOT/'codes/local_pitch_controller_v4.py',ROOT/'codes/local_pitch_feedback.py')})
+                         for p in (Path(__file__),ROOT/'snake_control/local_pitch_controller_v4.py',ROOT/'snake_control/local_pitch_feedback.py')})
     (out/'controller_checks.json').write_text(json.dumps(result,indent=2),encoding='utf8')
     print(json.dumps(result,indent=2))
 

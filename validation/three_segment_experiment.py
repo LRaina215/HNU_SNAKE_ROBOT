@@ -3,20 +3,24 @@
 No real servo access, parameter search, or hash checks. Both modes start with
 the exact saved physical state; geometry/contact truth is explicit test input.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import copy
 import json
-from pathlib import Path
 import shutil
 
 import numpy as np
 import mujoco
 
 from segmented_pole_experiment import ROOT, BASE, HORIZONTAL, VERTICAL, Trial, AxisReplay, write_json
-from three_segment_compliance import ThreeSegmentController
+from snake_control.three_segment_compliance import ThreeSegmentController
 
 OUT = BASE/'three_segment_v1'
-SOURCES = ['codes/three_segment_compliance.py', 'validation/three_segment_experiment.py',
+SOURCES = ['snake_control/three_segment_compliance.py', 'validation/three_segment_experiment.py',
            'validation/three_segment_review.py', 'validation/three_segment_checks.py']
 DT = .2
 

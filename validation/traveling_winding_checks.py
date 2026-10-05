@@ -3,13 +3,18 @@
 Read-only feedback replay, no physics stepping, actuator access or hashes.
 This protects the successful dynamics from accidental changes during cleanup.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import numpy as np
 
 from segmented_pole_experiment import BASE, HORIZONTAL, VERTICAL, pipe_frame, write_json
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 from spatial_takeover_experiment import points_for_angles
-from traveling_compliant_winding import TravelingCompliantWinding
+from snake_control.traveling_compliant_winding import TravelingCompliantWinding
 
 
 def check(name,checkpoint):

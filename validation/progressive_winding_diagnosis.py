@@ -1,14 +1,18 @@
 """Read-only geometry/actuator audit of the progressive trial; no mj_step."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import numpy as np
 import mujoco
 
 from progressive_winding_experiment import OUT, BASELINE, HORIZONTAL, metrics
 from segmented_pole_experiment import write_json, pipe_frame
 from spatial_takeover_experiment import points_for_angles
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 
 
 def diagnose(root=OUT):

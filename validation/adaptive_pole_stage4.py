@@ -1,11 +1,14 @@
 """完整 EXE 转发链验证；Windows 原生 MuJoCo，独立端口，无真实串口。"""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import os
-from pathlib import Path
 import shutil
 import socket
 import subprocess
-import sys
 import time
 
 import numpy as np
@@ -56,7 +59,7 @@ def verify_trace(label, require_relay=True):
 def verify_receiver_guards():
     import threading
     import mujoco
-    from mujoco_execution_bridge import MujocoExecutionBridge
+    from snake_control.mujoco_execution_bridge import MujocoExecutionBridge
     model = mujoco.MjModel.from_xml_path(str(ROOT / "mujoco_model/Snake_Robot_o20_Pole_Climbing.xml"))
     data = mujoco.MjData(model)
     bridge = MujocoExecutionBridge.__new__(MujocoExecutionBridge)

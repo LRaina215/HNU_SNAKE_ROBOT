@@ -1,14 +1,17 @@
 """Independent geometry/integral checks before paired physical trials."""
-import json
-import sys
 from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import json
 
 import numpy as np
 from numpy.polynomial.legendre import leggauss
 
 from segmented_pole_experiment import (HORIZONTAL, BASE, load_checkpoint, pipe_frame,
     true_axis_geometry, build_backbone, MovingAxisBackbone, SwitchContinuity, write_json)
-from segmented_pole_backbone import BoundaryTracker,SegmentedOptions
+from snake_control.segmented_pole_backbone import BoundaryTracker,SegmentedOptions
 
 
 def main():

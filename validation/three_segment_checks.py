@@ -1,4 +1,9 @@
 """Focused parity, reference-yielding and contact-gate checks; no physics sweep."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import math
 
@@ -6,9 +11,9 @@ import numpy as np
 from scipy.integrate import quad
 
 from segmented_pole_experiment import HORIZONTAL, pipe_frame, true_axis_geometry
-from mujoco_checkpoint import load_checkpoint
-from pole_compliance import build_backbone
-from three_segment_compliance import LocalSection, ThreeSegmentController
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.pole_compliance import build_backbone
+from snake_control.three_segment_compliance import LocalSection, ThreeSegmentController
 
 
 def main():

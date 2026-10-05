@@ -25,7 +25,7 @@
 
 ## 2026-09-24 第三阶段：Python 顺应性目标生成（用户已授权）
 
-用户要求阶段二 Git 推送完成后开始阶段三。算法新增于 `Mujoco/Snake_Robot_Gait/codes/pole_compliance.py`，接入 Adaptive Pole；本目录仅为 `python_client.GeometryExchange.publish_targets` 增加可选 `source_geometry`，使目标关联实际计算所用帧。旧调用兼容，不新增消息类型，不改 EXE/串口或 v1.3.0 发布二进制。阶段三允许几何顺应性算法与隔离仿真验证；实机下发留待第四阶段。
+用户要求阶段二 Git 推送完成后开始阶段三。算法新增于 `Mujoco/Snake_Robot_Gait/snake_control/pole_compliance.py`，接入 Adaptive Pole；本目录仅为 `python_client.GeometryExchange.publish_targets` 增加可选 `source_geometry`，使目标关联实际计算所用帧。旧调用兼容，不新增消息类型，不改 EXE/串口或 v1.3.0 发布二进制。阶段三允许几何顺应性算法与隔离仿真验证；实机下发留待第四阶段。
 
 ## 2026-09-24 第二阶段：双向通信（用户已授权）
 

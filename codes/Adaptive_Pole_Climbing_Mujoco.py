@@ -9,15 +9,18 @@
 R/P 定义初始螺旋及设计螺距角；顺应性运行中局部形状来自实测反馈。
 长度 mm，相位 rad。模块导入不会启动仿真、键盘或网络。
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import math
 import os
 import queue
-import sys
 import threading
 import time
 from contextlib import nullcontext
 from dataclasses import dataclass
-from pathlib import Path
 
 import numpy as np
 from scipy import integrate
@@ -154,11 +157,11 @@ def uart_listener():
 def main():
     import mujoco
     import mujoco.viewer
-    from mujoco_visualizer_bridge import VisualizerBridge
-    from pole_compliance import ComplianceController, ComplianceParameters
-    from local_pitch_runtime import (InteractivePitchController, toggle_local_pitch, stop_local_pitch,
+    from snake_control.mujoco_visualizer_bridge import VisualizerBridge
+    from snake_control.pole_compliance import ComplianceController, ComplianceParameters
+    from snake_control.local_pitch_runtime import (InteractivePitchController, toggle_local_pitch, stop_local_pitch,
                                      resume_compliance, local_pitch_status, prepare_pitch_step)
-    from adaptive_debug import HELP, viewer_key_callback, measurements, circle_radius_mm, pipe_geometry, pipe_progress
+    from snake_control.adaptive_debug import HELP, viewer_key_callback, measurements, circle_radius_mm, pipe_geometry, pipe_progress
 
 
 
@@ -179,7 +182,7 @@ def main():
     restore_path = os.environ.get("SNAKE_MUJOCO_RESTORE")
     restored = restored_controller = None
     if restore_path:
-        from mujoco_checkpoint import load_checkpoint
+        from snake_control.mujoco_checkpoint import load_checkpoint
         m, d, restored, restored_controller = load_checkpoint(restore_path)
         model_path = restored['source_model']
     else:
@@ -308,7 +311,7 @@ def main():
             sys.path.insert(0, os.environ.get("SNAKE_CONTROL_CLIENT_DIR", str(
                 Path(__file__).resolve().parents[1] / "visualizer")))
             if relay:
-                from mujoco_execution_bridge import MujocoExecutionBridge
+                from snake_control.mujoco_execution_bridge import MujocoExecutionBridge
                 bridge = MujocoExecutionBridge(m, d)
                 bridge.record_commands = bool(trace_path)
             else:
@@ -318,7 +321,7 @@ def main():
                 exchange = GeometryExchange(port=bridge.port, expected_lengths=bridge.lengths,
                                             execution="mujoco" if relay else "preview")
         if DEBUG:
-            from geometry_debug_view import GeometryDebugView
+            from snake_control.geometry_debug_view import GeometryDebugView
             debug_view = GeometryDebugView(draw_curve=DEBUG_DRAW_CURVE)
 
         if restored is not None:
@@ -410,7 +413,7 @@ def main():
                     try:
                         if command == "save":
                             from dataclasses import asdict
-                            from mujoco_checkpoint import save_checkpoint
+                            from snake_control.mujoco_checkpoint import save_checkpoint
                             manual = True
                             settings = dict(radius=radius, pitch=pitch, gain=gain, gain_is_tuple=isinstance(gain, tuple), inside=inside,
                                 phase=phase, phase_step=phase_step, completed=completed, reset_count=reset_count,

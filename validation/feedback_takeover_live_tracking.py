@@ -4,12 +4,17 @@ The private kinematic model's base stays at identity. Pipe axes are inferred
 from shape and CAD/load envelopes; no floating pose or actual contacts enter.
 Initial right-angle, comparable-radius and already-draped assumptions remain.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import time
 import copy
 import numpy as np
 import mujoco
-from encoder_pipe_geometry import right_angle_hypothesis
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_geometry import right_angle_hypothesis
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 from feedback_takeover_cad_refinement import refine,refine_target
 from feedback_takeover_encoder_tracking import local_transport,transport
 

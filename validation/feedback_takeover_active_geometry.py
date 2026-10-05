@@ -4,6 +4,11 @@ All probe configurations are aligned on the held rear robot points using
 encoder FK. This is an approximate gauge, not measured world odometry. True
 pipe pose is only used after fitting to score errors and expose that limitation.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import argparse
 import numpy as np
@@ -11,7 +16,7 @@ import mujoco
 from scipy.optimize import least_squares
 from segmented_pole_experiment import ROOT,pipe_frame,write_json
 from three_segment_review import context
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 
 def alignment(x,y):

@@ -4,14 +4,18 @@ Estimation sees encoder-derived robot points in an arbitrary head frame only.
 Known pipe axes enter the scoring wrapper, never the estimator. These two
 positive captures cannot establish contact detection or classifier accuracy.
 """
-import json
 from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import json
 import numpy as np
 import mujoco
 from scipy.optimize import least_squares
 from segmented_pole_experiment import ROOT, HORIZONTAL, VERTICAL, pipe_frame, write_json
-from mujoco_checkpoint import load_checkpoint
-from curved_axis_compliance import window_axis
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.curved_axis_compliance import window_axis
 
 OUT = ROOT/'experiments/segmented_pole_20261005/feedback_takeover'
 

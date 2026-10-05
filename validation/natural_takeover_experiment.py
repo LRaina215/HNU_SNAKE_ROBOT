@@ -6,24 +6,27 @@ geometric candidate triggers the existing response probe, never proves support.
 This development entry preserves the original simulation-only force mode;
 it does not enable force mode or change defaults in the hardware entry.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import copy
 import json
 import shutil
 import subprocess
-import sys
 from datetime import datetime
-from pathlib import Path
 import numpy as np
 import mujoco
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,AxisReplay,write_json,pipe_frame
 from three_segment_experiment import ThreeTrial
-from mujoco_checkpoint import load_checkpoint,controller_state
-from pole_compliance import ComplianceController
+from snake_control.mujoco_checkpoint import load_checkpoint,controller_state
+from snake_control.pole_compliance import ComplianceController
 from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-from encoder_pipe_geometry import right_angle_hypothesis
-from velocity_feedback_delivery import VelocityFeedbackDelivery
-from encoder_shape_kinematics import EncoderShapeKinematics
+from snake_control.encoder_pipe_geometry import right_angle_hypothesis
+from snake_control.velocity_feedback_delivery import VelocityFeedbackDelivery
+from snake_control.encoder_shape_kinematics import EncoderShapeKinematics
 
 OUT=ROOT/'experiments/segmented_pole_20261005/natural_takeover'
 

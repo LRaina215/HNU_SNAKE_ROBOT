@@ -61,7 +61,7 @@ def main():
 
 ## 实现与固定条件
 
-新增 `codes/local_bend_backbone.py`、`codes/contact_turn_controller.py`、`validation/contact_turn_experiment.py`，以及独立数值检查、训练、审计、复核、回放和报告入口。新控制器使用复制的 `JointObservation`；真值只经明确命名的 `KnownDirectionOracle`进入K辅助组。本轮未启用P/A控制器。
+新增 `snake_control/local_bend_backbone.py`、`snake_control/contact_turn_controller.py`、`validation/contact_turn_experiment.py`，以及独立数值检查、训练、审计、复核、回放和报告入口。新控制器使用复制的 `JointObservation`；真值只经明确命名的 `KnownDirectionOracle`进入K辅助组。本轮未启用P/A控制器。
 
 两分量Bishop弯曲场同时生成三维目标曲线及Yamada积分。局部高斯窗口减弱基础螺旋，再加入平面弯曲；这是受2016文献启发的新参数化，**不是2016原文EKF复现，也不是原2023控制器**。初始化后的名义参考通过统一弯曲场校正后严格匹配整组已执行目标，不叠加一套独立关节覆盖路径。μ仅在至少3个目标接触模块及净包绕≥π/2时允许后移，本轮没有满足此条件。
 
@@ -131,11 +131,11 @@ $turnPython = "$env:TEMP\\snake-mujoco330\\Scripts\\python.exe"
 
 下一研究动作应先改善已知方向运动参考：检验接近距离、解旋/前送/重包绕动作以及基于真实反馈的转向与支撑保持。扩大动作结构或恢复rolling需要新版本、有界训练和新的冻结；本轮没有继续搜索或借真值将名义失败包装成自主成功。
 '''
-    (ROOT/'docs/局部负载主动探测与急弯跨越_阶段验证报告.md').write_text(report,encoding='utf8')
+    (ROOT/'docs/局部负载主动探测与急弯跨越/局部负载主动探测与急弯跨越_阶段验证报告.md').write_text(report,encoding='utf8')
     write_json(BASE/'completion_audit.json',dict(stage0_proven=True,geometry_proven=True,
                  stage1_training_proven=True,stage1_verification_proven=True,stage1_passed=False,
                  allowed_stop_condition_satisfied=True,stage2_tested=False,stage3_tested=False,
-                 report_sha256=sha(ROOT/'docs/局部负载主动探测与急弯跨越_阶段验证报告.md'),
+                 report_sha256=sha(ROOT/'docs/局部负载主动探测与急弯跨越/局部负载主动探测与急弯跨越_阶段验证报告.md'),
                  verification_audit_sha256=sha(BASE/'stage1_verification_independent_audit.json')))
 
 

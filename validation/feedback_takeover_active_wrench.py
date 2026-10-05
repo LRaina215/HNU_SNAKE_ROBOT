@@ -10,6 +10,11 @@ coefficients because these are perturbations, not absolute support forces.
 This is a model-consistency diagnostic, not a force-closure certificate. Rear
 slip, tangential reactions and finite-difference acceleration can invalidate it.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import json
 import numpy as np
@@ -17,7 +22,7 @@ import mujoco
 from scipy.optimize import minimize
 from segmented_pole_experiment import ROOT,pipe_frame,write_json
 from three_segment_review import context
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 
 def encoded_mechanics(model,records):

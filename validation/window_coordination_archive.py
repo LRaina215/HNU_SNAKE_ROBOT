@@ -3,9 +3,13 @@
 Checks actual relay delivery against planned interpolation; no new physics or
 hash checks. Extract each ZIP into OUT to replay its saved trajectory.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import argparse
-from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 import numpy as np
 from segmented_pole_experiment import write_json
@@ -68,7 +72,7 @@ def delivery(folder):
         previous_encoder=trace_angles[first].copy()
         filtered_velocity=np.zeros_like(previous_encoder)
         if plan.get('body_damping',0):
-            from encoder_shape_kinematics import EncoderShapeKinematics
+            from snake_control.encoder_shape_kinematics import EncoderShapeKinematics
             reference_module=plan.get('body_reference_module',0)
             if reference_module in (-1,-2):
                 reference_module=read(folder/'plan.json')['configuration']['initial_front']

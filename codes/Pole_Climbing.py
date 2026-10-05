@@ -6,6 +6,11 @@ MuJoCo模型参考：https://github.com/VanguardDream/snake_RL
 作者：肖剑0923
 时间：20260122
 '''
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import math
 import time
 import queue
@@ -15,9 +20,8 @@ import numpy as np
 import mujoco.viewer
 from pynput import keyboard
 import os
-from pathlib import Path
 from contextlib import nullcontext
-from mujoco_visualizer_bridge import VisualizerBridge
+from snake_control.mujoco_visualizer_bridge import VisualizerBridge
 
 
 NUM_JOINTS = 20

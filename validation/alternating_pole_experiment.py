@@ -6,9 +6,13 @@ fixed-target hold. Only if an alternating group passes, compare all three at
 motion up to 32 cycles, without redefining the stopping-hold gate. No parameter
 search or boundary migration.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 
 import mujoco
@@ -18,13 +22,13 @@ from scipy.integrate import quad
 from spatial_takeover_experiment import points_for_angles
 from segmented_pole_experiment import BASE, ROOT, HORIZONTAL, load_checkpoint, write_json, sha, local_sections, pipe_frame
 from segmented_pole_diagnostics import DiagnosticTrial
-from segmented_pole_backbone import AxisField
-from spatial_bishop_backbone import SpatialBishopBackbone, SpatialShapeController
-from alternating_pole_phase import LocalPhaseCommand, schedule
+from snake_control.segmented_pole_backbone import AxisField
+from snake_control.spatial_bishop_backbone import SpatialBishopBackbone, SpatialShapeController
+from snake_control.alternating_pole_phase import LocalPhaseCommand, schedule
 
 OUT=BASE/'alternating_v1'
 MODES=['synchronous','front_first','rear_first']
-EXTRA=['codes/spatial_bishop_backbone.py','codes/alternating_pole_phase.py',
+EXTRA=['snake_control/spatial_bishop_backbone.py','snake_control/alternating_pole_phase.py',
        'validation/spatial_takeover_experiment.py','validation/alternating_pole_experiment.py']
 
 

@@ -25,7 +25,8 @@ def main():
     audit=json.loads((out.parent/'audit.json').read_text(encoding='utf8'))
     if audit['completed_pilots']!=8 or len(audit['paired_initial_states'])!=4:
         raise RuntimeError('Complete all eight audited common-takeover pilots before training')
-    source_paths=[ROOT/'codes'/name for name in ('local_pitch_controller_v5.py','local_pitch_feedback.py','local_pitch_geometry.py','pole_compliance.py','Adaptive_Pole_Climbing_Mujoco.py')]
+    source_paths=[ROOT/'snake_control'/name for name in ('local_pitch_controller_v5.py','local_pitch_feedback.py','local_pitch_geometry.py','pole_compliance.py')]
+    source_paths.append(ROOT/'codes/Adaptive_Pole_Climbing_Mujoco.py')
     source_paths.extend([Path(__file__),ROOT/'validation/pitch_adaptation_experiment_v5.py'])
     source_hashes={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}
     policy=dict(stage='training',version=5,seeds=[1,2,3],scenes=list(SCENES),

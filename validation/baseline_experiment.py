@@ -11,16 +11,19 @@ Ctrl+U 应用场景预设 R/P 后连续 Ctrl+H（管外上行），每 STATUS_EV
 重复试验用 SNAKE_TRIAL_SEED 做可复现扰动：管道摩擦 ×U(0.8, 1.2)，初始姿态绕起始管轴随机转动。
 原始轨迹分析后压缩保存到 experiments/baseline_<日期>/trials/，汇总表与图在同一目录。
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import csv
 import json
 import os
-from pathlib import Path
 import queue
 import re
 import shutil
 import subprocess
-import sys
 import threading
 import time
 
@@ -160,7 +163,7 @@ def run_trial(trial, port, appdir, out):
 def analyze_trace(trial, record, trace):
     """把原始轨迹压缩为逐步数据，并计算本次试验的指标。"""
     import mujoco
-    from adaptive_debug import centerline_nearest
+    from snake_control.adaptive_debug import centerline_nearest
     model = mujoco.MjModel.from_xml_path(str(model_path(trial.scene)))
     data = mujoco.MjData(model)
     raw = np.load(trace)

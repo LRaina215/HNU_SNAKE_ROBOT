@@ -3,17 +3,21 @@
 The production controller is unchanged. No parameter search, no SHA checks.
 Compare each intervention with the first 4 s of the archived original run.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 
 import numpy as np
 
 from three_segment_experiment import ThreeTrial, DT
-from three_segment_compliance import ThreeSegmentController, LocalSection
+from snake_control.three_segment_compliance import ThreeSegmentController, LocalSection
 from segmented_pole_experiment import BASE, HORIZONTAL, write_json
-from curved_axis_compliance import window_axis
+from snake_control.curved_axis_compliance import window_axis
 from three_segment_review import context
 
 OUT = BASE/'three_segment_diagnosis_v1'
@@ -133,8 +137,8 @@ def analyze():
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    from mujoco_checkpoint import load_checkpoint
-    from pole_compliance import ComplianceParameters
+    from snake_control.mujoco_checkpoint import load_checkpoint
+    from snake_control.pole_compliance import ComplianceParameters
     from segmented_pole_experiment import pipe_frame
     m, d, meta, original = load_checkpoint(HORIZONTAL, verify_hashes=False)
     corner, source, target, radius = pipe_frame(m)

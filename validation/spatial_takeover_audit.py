@@ -1,13 +1,17 @@
 """Audit saved relay/physics data and plot spatial-takeover controls."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import argparse
-from pathlib import Path
 
 import mujoco
 import numpy as np
 
 from spatial_takeover_experiment import OUT, HORIZONTAL, load_checkpoint, write_json, sha
-from spatial_bishop_backbone import SpatialBishopBackbone
+from snake_control.spatial_bishop_backbone import SpatialBishopBackbone
 
 
 def main():

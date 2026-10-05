@@ -1,12 +1,15 @@
 """单步调度验收：隔离 EXE，真实 MuJoCo；只向测试子进程发送命令，不发送全局按键。"""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import math
 import os
-from pathlib import Path
 import shutil
 import socket
 import subprocess
-import sys
 import threading
 import time
 
@@ -34,7 +37,7 @@ def run_gait():
 def math_checks():
     import copy
     from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-    from pole_compliance import PiecewiseBackbone, TargetSegment, ComplianceController, ComplianceParameters, build_backbone
+    from snake_control.pole_compliance import PiecewiseBackbone, TargetSegment, ComplianceController, ComplianceParameters, build_backbone
     # 同一常曲率/挠率输入，在非等长连杆上，两种 Yamada 实现应一致。
     links = np.array([35., 67.5, 69.5, 68.5, 34.])
     maximum = 0.

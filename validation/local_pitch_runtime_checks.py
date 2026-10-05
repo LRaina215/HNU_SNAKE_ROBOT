@@ -1,12 +1,15 @@
 """Focused switching checks using saved geometry; no network, hardware or climbing trials."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import io
 import json
 import math
 import os
-from pathlib import Path
 import queue
-import sys
 import time
 import unittest
 from contextlib import redirect_stdout
@@ -16,10 +19,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'codes'), str(ROOT / 'visualizer')]
-from pole_compliance import ComplianceController, ComplianceParameters, build_backbone
-from local_pitch_runtime import (InteractivePitchController, prepare_pitch_step, toggle_local_pitch,
+from snake_control.pole_compliance import ComplianceController, ComplianceParameters, build_backbone
+from snake_control.local_pitch_runtime import (InteractivePitchController, prepare_pitch_step, toggle_local_pitch,
                                  stop_local_pitch, resume_compliance, local_pitch_status)
-from mujoco_checkpoint import controller_state, restore_controller, json_value
+from snake_control.mujoco_checkpoint import controller_state, restore_controller, json_value
 
 
 def fixture(alpha=.4):
@@ -118,7 +121,7 @@ class SwitchingChecks(unittest.TestCase):
     def test_real_entry_command_routing_without_hardware(self):
         import Adaptive_Pole_Climbing_Real as real
         import python_client
-        from adaptive_debug import HOTKEYS
+        from snake_control.adaptive_debug import HOTKEYS
         self.assertEqual(HOTKEYS['L'], 'localpitch')
         alpha = math.atan2(real.HELIX_PITCH_MM, 2 * math.pi * real.HELIX_RADIUS_MM)
         g, base, ref = fixture(alpha)
@@ -170,7 +173,7 @@ class SwitchingChecks(unittest.TestCase):
     def test_mujoco_entry_routing_without_physics_or_network(self):
         import mujoco
         import Adaptive_Pole_Climbing_Mujoco as gait
-        import mujoco_execution_bridge
+        from snake_control import mujoco_execution_bridge
         import python_client
         g, _, _ = fixture()
         commands = iter(['localpitch', 'apply', 'step', 'localpitch', 'step', 'status',

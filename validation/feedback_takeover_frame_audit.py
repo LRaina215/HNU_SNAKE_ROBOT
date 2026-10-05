@@ -3,19 +3,24 @@
 This is a coordinate implementation check with known geometry, not evidence
 that the geometry can be observed. No simulation advance or robot command.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import numpy as np
 import mujoco
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,pipe_frame,write_json
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 from feedback_takeover_live_tracking import EncoderPipeTracker
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 from spatial_takeover_experiment import points_for_angles
-from target_frame_acquisition import TargetFrameAcquisition
-from window_coordinated_winding import WindowOptions
-from three_segment_compliance import ThreeSegmentOptions
-from traveling_compliant_winding import FormationOptions
-from pole_compliance import ComplianceParameters
+from snake_control.target_frame_acquisition import TargetFrameAcquisition
+from snake_control.window_coordinated_winding import WindowOptions
+from snake_control.three_segment_compliance import ThreeSegmentOptions
+from snake_control.traveling_compliant_winding import FormationOptions
+from snake_control.pole_compliance import ComplianceParameters
 
 
 def run():

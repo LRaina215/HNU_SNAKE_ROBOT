@@ -4,16 +4,19 @@ Can audit completed cases while the fixed-source training process is alive.
 --freeze refuses incomplete/mismatched training or missing simulation evidence.
 Never reads test seeds to tune parameters and never starts a simulation.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import csv
 import gzip
 import hashlib
 import json
 import math
-from pathlib import Path
 import platform
 import re
-import sys
 import xml.etree.ElementTree as ET
 
 import mujoco
@@ -22,7 +25,7 @@ import scipy
 
 from pitch_adaptation_experiment_v5 import ROOT,SCENES,ALPHA,model_path
 sys.path.insert(0,str(ROOT/'codes'))
-from adaptive_debug import pipe_progress
+from snake_control.adaptive_debug import pipe_progress
 
 BASE=ROOT/'experiments/pitch_adaptation_20261003/repair_v5'
 

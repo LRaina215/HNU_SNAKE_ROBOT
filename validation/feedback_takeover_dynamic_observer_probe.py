@@ -7,13 +7,18 @@ joint prediction, without using the real floating pose or contact labels.
 The six directions assume horizontal/vertical right-angle pipes; this is not
 an arbitrary-orientation estimator or a new physical crossing trial.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import json
 import numpy as np
 import mujoco
 from segmented_pole_experiment import ROOT,write_json
 from three_segment_review import context
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 
 def virtual_model(robot,estimate,gravity,robot_xml,extension=None):

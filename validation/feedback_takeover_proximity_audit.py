@@ -3,11 +3,16 @@
 This audit intentionally uses true axes and pose to isolate the distance query
 from estimator error. No result or true geometry is returned to a controller.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import numpy as np
 from segmented_pole_experiment import ROOT,pipe_frame,write_json
 from three_segment_review import context
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 
 def run():

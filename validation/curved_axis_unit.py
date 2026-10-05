@@ -1,22 +1,25 @@
-"""弯曲轴顺应性（codes/curved_axis_compliance.py）的离线检查，不需要 EXE 或 MuJoCo 窗口。
+"""弯曲轴顺应性（snake_control/curved_axis_compliance.py）的离线检查，不需要 EXE 或 MuJoCo 窗口。
 
 1. 退化检查：把局部轴全部设为 EXE 的直轴、关闭螺距角调制，目标关节角与原方法 build_backbone 逐位一致；
 2. 合成弯管：关节点取自绕“直管 → 90° 弯 → 直管”中心线的螺旋（机器人中点在弯头中点），比较只用局部轴（第 1、2 层）与加螺距角调制（第 3 层）
    重建的目标曲线离真实管轴的距离：调制后目标应沿弯曲管轴缠绕。
 运行：python validation/curved_axis_unit.py
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import json
 import math
-from pathlib import Path
-import sys
 
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'codes'))
-import curved_axis_compliance as cac
-from pole_compliance import ComplianceParameters, build_backbone
+from snake_control import curved_axis_compliance as cac
+from snake_control.pole_compliance import ComplianceParameters, build_backbone
 
 LINK = 64.5
 JOINTS = 26

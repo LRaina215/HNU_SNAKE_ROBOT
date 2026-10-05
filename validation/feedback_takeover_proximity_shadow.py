@@ -1,9 +1,14 @@
 """Read-only CAD-gap/contact comparison; actual contacts are scoring labels."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import time
 import numpy as np
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,write_json,pipe_frame
-from mujoco_checkpoint import load_checkpoint
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 BASE=ROOT/'experiments/segmented_pole_20261005/support_transfer'
 OUT=ROOT/'experiments/segmented_pole_20261005/feedback_takeover'

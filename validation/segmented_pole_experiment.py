@@ -3,6 +3,11 @@
 Restores complete user checkpoints. Never controls a serial port or changes
 friction, gravity, gains, timestep, actuators, or the initial physical state.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import copy
 from dataclasses import asdict
@@ -10,11 +15,9 @@ import hashlib
 import json
 import math
 import os
-from pathlib import Path
 import shutil
 import socket
 import subprocess
-import sys
 import tempfile
 import time
 
@@ -23,12 +26,12 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/'codes'), str(ROOT/'visualizer')]
-from mujoco_checkpoint import load_checkpoint, json_value, sha
-from mujoco_execution_bridge import MujocoExecutionBridge
+from snake_control.mujoco_checkpoint import load_checkpoint, json_value, sha
+from snake_control.mujoco_execution_bridge import MujocoExecutionBridge
 from python_client import SnakeControlClient
-from pole_compliance import build_backbone
-from curved_axis_compliance import local_sections, joint_segments
-from segmented_pole_backbone import (SegmentedOptions, MovingAxisBackbone, BoundaryTracker,
+from snake_control.pole_compliance import build_backbone
+from snake_control.curved_axis_compliance import local_sections, joint_segments
+from snake_control.segmented_pole_backbone import (SegmentedOptions, MovingAxisBackbone, BoundaryTracker,
                                       SwitchContinuity, unit, smoothstep)
 
 BASE = ROOT/'experiments/segmented_pole_20261004'
@@ -39,9 +42,9 @@ POLICY = dict(max_steps=80, advance_mm=64.5, new_modules=2, step_seconds=.2, hol
               transfer_persistence_steps=3, region_margin_mm=10., region_clearance_mm=15.,
               hold_retreat_mm=10., hold_root_motion_mm=20., minimum_contact_force_N=.1,
               lost_support_seconds=.2)
-SOURCES = ['codes/segmented_pole_backbone.py', 'codes/pole_compliance.py',
-           'codes/curved_axis_compliance.py', 'codes/mujoco_checkpoint.py',
-           'codes/mujoco_execution_bridge.py', 'codes/mujoco_visualizer_bridge.py',
+SOURCES = ['snake_control/segmented_pole_backbone.py', 'snake_control/pole_compliance.py',
+           'snake_control/curved_axis_compliance.py', 'snake_control/mujoco_checkpoint.py',
+           'snake_control/mujoco_execution_bridge.py', 'snake_control/mujoco_visualizer_bridge.py',
            'visualizer/python_client.py', 'validation/segmented_pole_experiment.py',
            'validation/SegmentedAxisReplay.cs']
 

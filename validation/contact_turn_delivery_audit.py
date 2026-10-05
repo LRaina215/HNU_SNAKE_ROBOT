@@ -124,7 +124,7 @@ def main():
              and p.name != 'delivery_manifest.json']
     results = list(BASE.rglob('result.json'))
     source_paths = list((ROOT / 'validation').glob('contact_turn_*.py')) + [
-        ROOT / 'codes/contact_turn_controller.py', ROOT / 'codes/local_bend_backbone.py']
+        ROOT / 'snake_control/contact_turn_controller.py', ROOT / 'snake_control/local_bend_backbone.py']
     environment = dict(python=sys.executable, python_version=platform.python_version(),
                        mujoco=mujoco.__version__, numpy=np.__version__, scipy=scipy.__version__)
     assert environment['mujoco'] == '3.3.0'

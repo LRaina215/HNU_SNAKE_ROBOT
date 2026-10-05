@@ -6,20 +6,23 @@
   --variant local          只用局部轴与局部截面（第 1、2 层，目标仍是直轴螺旋），用于消融对比
 Ctrl+K 额外打印一行 CURVED：估计的轴弯曲角、螺距角范围，以及（仿真）局部轴相对真实管轴的角度误差。
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import math
 import os
-from pathlib import Path
 import queue
-import sys
 import threading
 
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import Adaptive_Pole_Climbing_Mujoco as gait
-import pole_compliance
-from curved_axis_compliance import CurvedAxisComplianceController, CurvedAxisOptions
+from snake_control import pole_compliance
+from snake_control.curved_axis_compliance import CurvedAxisComplianceController, CurvedAxisOptions
 
 VARIANTS = {'curved': CurvedAxisOptions(modulation=True),
             'local': CurvedAxisOptions(modulation=False)}

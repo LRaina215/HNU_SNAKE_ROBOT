@@ -1,7 +1,11 @@
 """Adaptive research runner: each revision freezes its source and full trace."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 import numpy as np
 import mujoco
@@ -9,8 +13,8 @@ import mujoco
 from three_segment_experiment import ThreeTrial, DT
 from segmented_pole_experiment import ROOT, BASE, HORIZONTAL, VERTICAL, write_json
 from spatial_takeover_experiment import points_for_angles
-from traveling_compliant_winding import TravelingCompliantWinding, FormationOptions
-from three_segment_compliance import ThreeSegmentOptions
+from snake_control.traveling_compliant_winding import TravelingCompliantWinding, FormationOptions
+from snake_control.three_segment_compliance import ThreeSegmentOptions
 from three_segment_review import assess, render
 from traveling_winding_audit import audit, evaluate
 
@@ -23,8 +27,8 @@ def run(args):
                   outcome='engineering_failure', hypothesis=args.hypothesis, mujoco=mujoco.__version__)
     try:
         sim = ThreeTrial(checkpoint, folder)
-        for name in ('codes/traveling_compliant_winding.py','codes/three_segment_incremental.py',
-                     'codes/spatial_bishop_backbone.py','validation/traveling_winding_experiment.py',
+        for name in ('snake_control/traveling_compliant_winding.py','snake_control/three_segment_incremental.py',
+                     'snake_control/spatial_bishop_backbone.py','validation/traveling_winding_experiment.py',
                      'validation/spatial_takeover_experiment.py','validation/traveling_winding_audit.py'):
             dst = folder/'sources'/name
             dst.parent.mkdir(parents=True, exist_ok=True)

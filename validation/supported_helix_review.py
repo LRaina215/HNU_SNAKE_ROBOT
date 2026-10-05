@@ -1,10 +1,14 @@
 """Paired shape-feedback evaluation from recorded states; no hash checks."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import numpy as np
 from segmented_pole_experiment import BASE,HORIZONTAL,load_checkpoint,pipe_frame,write_json
-from supported_helix_field import SupportedHelixCommand
+from snake_control.supported_helix_field import SupportedHelixCommand
 
 OUT=BASE/'supported_helix_v1'
 MODES=['original','helix','connector','combined']

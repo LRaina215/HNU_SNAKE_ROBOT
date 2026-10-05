@@ -1,12 +1,15 @@
 """顺应性数学核验、录制截面重建、隔离 EXE/MuJoCo 联调。无真实串口。"""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import copy
 import json
 import math
 import os
-from pathlib import Path
 import shutil
 import subprocess
-import sys
 import threading
 import time
 
@@ -17,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VIS = ROOT / "visualizer"
 OUT = ROOT / "validation/results/adaptive-pole-stage3"
 sys.path[:0] = [str(ROOT / "codes"), str(VIS)]
-from pole_compliance import ComplianceParameters, ComplianceController, build_backbone
+from snake_control.pole_compliance import ComplianceParameters, ComplianceController, build_backbone
 
 
 def reject(fn):

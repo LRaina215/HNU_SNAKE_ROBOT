@@ -1,12 +1,15 @@
 """Windows 原生调试窗口 + 隔离 EXE/MuJoCo 验证；不访问真实串口。"""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import math
 import os
-from pathlib import Path
 import queue
 import shutil
 import subprocess
-import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,7 +40,7 @@ def run_gait(mode):
     gait.DEBUG_DRAW_CURVE = mode == "curve"
     timings, frames = [], []
     if gait.DEBUG:
-        import geometry_debug_view as debug
+        from snake_control import geometry_debug_view as debug
         original_update = debug.GeometryDebugView.update
         original_offer = debug.GeometryDebugView._offer
 
@@ -56,7 +59,7 @@ def run_gait(mode):
     gait.main()
     assert all(error.startswith("no_frame:") for error in startup_errors), startup_errors
     if not gait.DEBUG:
-        assert "geometry_debug_view" not in sys.modules
+        assert "snake_control.geometry_debug_view" not in sys.modules
     else:
         assert len(set(frames)) >= 5, frames
     print("DEBUG_VALIDATION " + json.dumps(dict(mode=mode, distinct_frames=len(set(frames)),
@@ -67,7 +70,7 @@ def run_gait(mode):
 
 def test_window():
     import tkinter as tk
-    from geometry_debug_view import GeometryDebugWindow, segment_points
+    from snake_control.geometry_debug_view import GeometryDebugWindow, segment_points
     for turn, endpoint in ((math.pi / 2, (10, 10)), (-math.pi / 2, (10, -10))):
         segment = dict(start_mm=[0, 0], tangent=[1, 0], kind="arc", radius_mm=10,
                        turn_rad=turn, length_mm=10 * abs(turn))

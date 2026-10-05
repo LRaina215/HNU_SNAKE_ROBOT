@@ -4,12 +4,17 @@ Encoder joint angles are reconstructed in an identity head frame. Truth is
 used only after inference for scoring; no control or physical state changes.
 The contact labels describe these observations, not a support certificate.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import time
 import numpy as np
 import mujoco
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,write_json,pipe_frame
-from mujoco_checkpoint import load_checkpoint
-from encoder_pipe_geometry import right_angle_hypothesis
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.encoder_pipe_geometry import right_angle_hypothesis
 
 OUT=ROOT/'experiments/segmented_pole_20261005/feedback_takeover'
 BASE=ROOT/'experiments/segmented_pole_20261005/support_transfer'

@@ -1,7 +1,11 @@
 """Single predeclared progressive-winding trial and archived matched baseline."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 
 import numpy as np
@@ -10,17 +14,17 @@ import mujoco
 from three_segment_experiment import ThreeTrial, DT
 from segmented_pole_experiment import BASE, ROOT, HORIZONTAL, pipe_frame, write_json
 from spatial_takeover_experiment import points_for_angles
-from mujoco_checkpoint import load_checkpoint
-from three_segment_front_support import FrontSupportedThreeSegmentController
-from progressive_front_winding import ProgressiveFrontWindingController
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.three_segment_front_support import FrontSupportedThreeSegmentController
+from snake_control.progressive_front_winding import ProgressiveFrontWindingController
 from front_support_experiment import metrics
 
 OUT = BASE/'progressive_winding_v1'
 BASELINE = BASE/'three_segment_front_support_v1/rolling'
-REPORT = ROOT/'docs/三段顺应性_渐进包绕验证.md'
-SOURCES = ['codes/progressive_front_winding.py', 'codes/three_segment_front_support.py',
-           'codes/three_segment_incremental.py', 'codes/three_segment_compliance.py',
-           'codes/spatial_bishop_backbone.py', 'validation/progressive_winding_experiment.py',
+REPORT = ROOT/'docs/分段顺应性跨管/三段顺应性_渐进包绕验证.md'
+SOURCES = ['snake_control/progressive_front_winding.py', 'snake_control/three_segment_front_support.py',
+           'snake_control/three_segment_incremental.py', 'snake_control/three_segment_compliance.py',
+           'snake_control/spatial_bishop_backbone.py', 'validation/progressive_winding_experiment.py',
            'validation/front_support_experiment.py', 'validation/spatial_takeover_experiment.py',
            'validation/three_segment_review.py']
 

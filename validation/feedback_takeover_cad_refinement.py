@@ -4,13 +4,18 @@ This is a diagnostic, not an assumption of observed contacts. Near-shell
 points with adjacent encoder-error load supply uncertain fitting candidates.
 True axes/contact labels are used only after the estimate for scoring.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 from scipy.optimize import least_squares
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,write_json,pipe_frame
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 from spatial_takeover_experiment import points_for_angles
-from encoder_pipe_geometry import right_angle_hypothesis
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_geometry import right_angle_hypothesis
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 OUT=ROOT/'experiments/segmented_pole_20261005/feedback_takeover'
 

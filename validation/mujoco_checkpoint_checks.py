@@ -2,14 +2,17 @@
 
 No serial access, global keyboard events, or climbing-success claims.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import socket
 import subprocess
-import sys
 import tempfile
 import threading
 import time
@@ -24,7 +27,7 @@ OUT = ROOT / 'validation/results/mujoco-checkpoint'
 
 def run_child():
     import Adaptive_Pole_Climbing_Mujoco as gait
-    import mujoco_checkpoint
+    from snake_control import mujoco_checkpoint
     gait.DEBUG = False
     mujoco_checkpoint.DEFAULT_DIRECTORY = OUT / 'captures'
     threading.Thread(target=gait.uart_listener, daemon=True).start()
@@ -40,7 +43,7 @@ def state(folder):
 
 def main():
     from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-    from mujoco_checkpoint import load_checkpoint
+    from snake_control.mujoco_checkpoint import load_checkpoint
     from python_client import SnakeControlClient
     OUT.mkdir(parents=True, exist_ok=True)
     with socket.socket() as sock:

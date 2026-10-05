@@ -1,23 +1,27 @@
 """Window coordination and staged feedback substitution via the EXE relay."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
 import shutil
-from pathlib import Path
 import numpy as np
 import mujoco
 from three_segment_experiment import ThreeTrial
 from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,write_json
 from spatial_takeover_experiment import points_for_angles
-from window_coordinated_winding import WindowCoordinatedWinding,WindowOptions
-from traveling_compliant_winding import FormationOptions
-from three_segment_compliance import ThreeSegmentOptions
+from snake_control.window_coordinated_winding import WindowCoordinatedWinding,WindowOptions
+from snake_control.traveling_compliant_winding import FormationOptions
+from snake_control.three_segment_compliance import ThreeSegmentOptions
 from three_segment_review import assess
 from traveling_winding_audit import audit,evaluate
 from coordinated_winding_metrics import metrics
-from support_transfer_winding import SupportTransferWinding,RateMatchedMiddleWinding,CoherentHelixWinding,ReferenceMemoryWinding,SupportHoldWinding,AnchoredHelixWinding,TurningFormationWinding,SmoothTurningFormationWinding,AcquisitionRateWinding,AcquiredShapeWinding,BothEndsShapeWinding,ContactReferenceWinding,CapacityPreloadWinding,RadialAcquisitionWinding
+from snake_control.support_transfer_winding import SupportTransferWinding,RateMatchedMiddleWinding,CoherentHelixWinding,ReferenceMemoryWinding,SupportHoldWinding,AnchoredHelixWinding,TurningFormationWinding,SmoothTurningFormationWinding,AcquisitionRateWinding,AcquiredShapeWinding,BothEndsShapeWinding,ContactReferenceWinding,CapacityPreloadWinding,RadialAcquisitionWinding
 from contact_support_margin import StaticSupportBound
-from velocity_feedback_delivery import VelocityFeedbackDelivery
-from encoder_shape_kinematics import EncoderShapeKinematics
+from snake_control.velocity_feedback_delivery import VelocityFeedbackDelivery
+from snake_control.encoder_shape_kinematics import EncoderShapeKinematics
 
 OUT=ROOT/'experiments/segmented_pole_20261005/window_coordination'
 
@@ -29,16 +33,16 @@ def run(args):
         outcome='engineering_failure',hypothesis=args.hypothesis,mujoco=mujoco.__version__,step_seconds=args.dt)
     try:
         sim=ThreeTrial(checkpoint,folder)
-        for name in ('codes/window_coordinated_winding.py','codes/traveling_compliant_winding.py','codes/support_transfer_winding.py',
-                'codes/three_segment_incremental.py','codes/spatial_bishop_backbone.py',
+        for name in ('snake_control/window_coordinated_winding.py','snake_control/traveling_compliant_winding.py','snake_control/support_transfer_winding.py',
+                'snake_control/three_segment_incremental.py','snake_control/spatial_bishop_backbone.py',
                 'validation/window_coordination_experiment.py','validation/traveling_winding_audit.py',
                 'validation/coordinated_winding_metrics.py','validation/spatial_takeover_experiment.py',
-                'validation/contact_support_margin.py','codes/velocity_feedback_delivery.py','codes/encoder_shape_kinematics.py',
-                'codes/encoder_pipe_geometry.py','codes/encoder_pipe_proximity.py','codes/target_frame_acquisition.py'):
+                'validation/contact_support_margin.py','snake_control/velocity_feedback_delivery.py','snake_control/encoder_shape_kinematics.py',
+                'snake_control/encoder_pipe_geometry.py','snake_control/encoder_pipe_proximity.py','snake_control/target_frame_acquisition.py'):
             dest=folder/'sources'/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dest)
         g=sim.fresh()
         if args.section_domain:
-            shutil.copy2(ROOT/'codes/section_compliance_domain.py',folder/'sources/codes/section_compliance_domain.py')
+            shutil.copy2(ROOT/'snake_control/section_compliance_domain.py',folder/'sources/snake_control/section_compliance_domain.py')
         choices=((args.support_memory,SupportTransferWinding),
             (args.middle_rate_match,RateMatchedMiddleWinding),
             (args.smooth_turning,SmoothTurningFormationWinding),
@@ -55,12 +59,12 @@ def run(args):
             (args.radial_acquisition,RadialAcquisitionWinding))
         cls=next((kind for selected,kind in choices if selected),WindowCoordinatedWinding)
         if args.target_frame_acquisition:
-            from target_frame_acquisition import TargetFrameAcquisition
+            from snake_control.target_frame_acquisition import TargetFrameAcquisition
             cls=TargetFrameAcquisition
         if args.observable_support:
-            from observable_support_transfer import ObservableSupportTransfer
+            from snake_control.observable_support_transfer import ObservableSupportTransfer
             cls=ObservableSupportTransfer
-            shutil.copy2(ROOT/'codes/observable_support_transfer.py',folder/'sources/codes/observable_support_transfer.py')
+            shutil.copy2(ROOT/'snake_control/observable_support_transfer.py',folder/'sources/snake_control/observable_support_transfer.py')
         extra=dict(support_error_limit=sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0]) if args.support_memory or args.capacity_preload or args.radial_acquisition else {}
         if args.target_frame_acquisition:
             extra.update(conserve_middle=args.conserve_middle,distinguish_lines=args.distinguish_lines)
@@ -150,10 +154,10 @@ def run(args):
             write_json(folder/'initial_geometry_estimate.json',estimate)
             result['geometry_input']='Encoder-only identity-head FK; causal local registration and fixed-radius CAD/load refinement; true base pose and pipe geometry excluded.'
         elif args.encoder_initial_axes:
-            from encoder_pipe_geometry import right_angle_hypothesis
+            from snake_control.encoder_pipe_geometry import right_angle_hypothesis
             estimate=right_angle_hypothesis(np.asarray(g['points_mm']),sim.meta['settings']['radius'])
             if args.cad_refine_axes:
-                from encoder_pipe_proximity import EncoderPipeProximity
+                from snake_control.encoder_pipe_proximity import EncoderPipeProximity
                 from feedback_takeover_cad_refinement import refine
                 source_path=ROOT/'validation/feedback_takeover_cad_refinement.py'
                 shutil.copy2(source_path,folder/'sources/validation'/source_path.name)
@@ -217,7 +221,7 @@ def run(args):
         support_observer=None;support_history=[];support_info={};support_clock=None
         if args.dynamic_observer:support_observer=tracker
         elif args.cad_support:
-            from encoder_pipe_proximity import EncoderPipeProximity
+            from snake_control.encoder_pipe_proximity import EncoderPipeProximity
             support_observer=EncoderPipeProximity(sim.m)
         def control_feedback(feedback,refine_now):
             nonlocal tracking_clock

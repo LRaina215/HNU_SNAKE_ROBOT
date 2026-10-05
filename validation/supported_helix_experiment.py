@@ -1,16 +1,20 @@
 """Four fixed-boundary ablations: original, helix, connector, combined."""
-import argparse
 from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import argparse
 import shutil
 import numpy as np
 import mujoco
 from spatial_migration_experiment import MigrationTrial
 from segmented_pole_experiment import BASE,ROOT,HORIZONTAL,write_json,local_sections
 from spatial_takeover_experiment import points_for_angles
-from spatial_bishop_backbone import SpatialBishopBackbone,SpatialShapeController
-from segmented_pole_backbone import AxisField,smoothstep
-from alternating_pole_phase import schedule
-from supported_helix_field import SupportedHelixCommand,reference_fields
+from snake_control.spatial_bishop_backbone import SpatialBishopBackbone,SpatialShapeController
+from snake_control.segmented_pole_backbone import AxisField,smoothstep
+from snake_control.alternating_pole_phase import schedule
+from snake_control.supported_helix_field import SupportedHelixCommand,reference_fields
 
 OUT=BASE/'supported_helix_v1'
 MODES=['original','helix','connector','combined']
@@ -38,7 +42,7 @@ def run(root,mode):
     folder=root/mode;sim=None
     try:
         sim=MigrationTrial(folder)
-        for name in ['codes/supported_helix_field.py','validation/supported_helix_experiment.py','validation/supported_helix_review.py']:
+        for name in ['snake_control/supported_helix_field.py','validation/supported_helix_experiment.py','validation/supported_helix_review.py']:
             dst=folder/'sources'/name;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dst)
         links=np.array(sim.meta['settings']['links']);link=links.mean();phase0=sim.phase
         q=sim.d.qpos[sim.qadr].copy();p=sim.records[0]['points_mm']

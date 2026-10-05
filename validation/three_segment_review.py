@@ -1,13 +1,17 @@
 """Assess physical transfer separately from labels; render colored replay."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 
 import numpy as np
 import mujoco
 
 from segmented_pole_experiment import BASE, pipe_frame, write_json
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 
 
 def context(folder):

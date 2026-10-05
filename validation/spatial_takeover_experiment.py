@@ -4,9 +4,13 @@ Fixed boundary, same physics/K/phase step. First run hold controls (6.4+3 s).
 Only after feedback hold passes, run eight rolling steps and a 3 s hold.
 Frozen captured-field rolling is a mechanism control, not adaptive locomotion.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 
 import mujoco
@@ -14,12 +18,12 @@ import numpy as np
 
 from segmented_pole_experiment import (BASE, ROOT, HORIZONTAL, load_checkpoint,
     pipe_frame, local_sections, write_json, sha, MovingAxisBackbone)
-from segmented_pole_backbone import AxisField
+from snake_control.segmented_pole_backbone import AxisField
 from segmented_pole_diagnostics import DiagnosticTrial
-from spatial_bishop_backbone import SpatialBishopBackbone, SpatialShapeController
+from snake_control.spatial_bishop_backbone import SpatialBishopBackbone, SpatialShapeController
 
 OUT = BASE/'spatial_takeover_v1'
-EXTRA = ['codes/spatial_bishop_backbone.py', 'validation/spatial_takeover_experiment.py']
+EXTRA = ['snake_control/spatial_bishop_backbone.py', 'validation/spatial_takeover_experiment.py']
 
 
 def points_for_angles(m, d, angles):

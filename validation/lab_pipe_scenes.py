@@ -3,9 +3,12 @@
 Run with MuJoCo 3.3.0: python validation/lab_pipe_scenes.py [--render]
 """
 from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-import sys
 import xml.etree.ElementTree as ET
 
 import mujoco
@@ -14,7 +17,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'tools'), str(ROOT / 'codes')]
 from build_pipe_network_scenes import LAB_SCENES
-from adaptive_debug import centerline_nearest
+from snake_control.adaptive_debug import centerline_nearest
 
 
 def numeric(model, name):

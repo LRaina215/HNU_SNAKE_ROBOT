@@ -3,6 +3,11 @@
 Use --out experiments/pitch_adaptation_20261003 after the trials finish.
 Plots are static research figures; each run remains a training diagnostic.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import copy
 import csv
@@ -10,8 +15,6 @@ import gzip
 import hashlib
 import json
 import math
-from pathlib import Path
-import sys
 import time
 
 import numpy as np
@@ -21,9 +24,9 @@ import matplotlib.pyplot as plt
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'codes'),str(ROOT/'validation')]
-from local_pitch_geometry import estimate_local_radius
-from local_pitch_controller import LocalPitchController
-from pole_compliance import ComplianceParameters,build_backbone
+from snake_control.local_pitch_geometry import estimate_local_radius
+from snake_control.local_pitch_controller import LocalPitchController
+from snake_control.pole_compliance import ComplianceParameters,build_backbone
 from adaptive_pole_single_step import math_checks
 from pitch_adaptation_experiment import model_path
 
@@ -251,7 +254,7 @@ def analyze(out):
                   H2='unresolved: tuned B has not been selected',H3='unresolved: no frozen C versus D comparison',
                   H4='implementation gate failed for this estimator; not a refutation of all feedback methods'),
                   source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in
-                                 (ROOT/'codes/local_pitch_controller.py',ROOT/'codes/local_pitch_geometry.py',
+                                 (ROOT/'snake_control/local_pitch_controller.py',ROOT/'snake_control/local_pitch_geometry.py',
                                   ROOT/'validation/pitch_adaptation_experiment.py')})
     (out/'release_gate.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(manifest,ensure_ascii=False,indent=2))

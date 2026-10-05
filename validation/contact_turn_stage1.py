@@ -1,8 +1,11 @@
 """Privileged known-direction transfer, gated by independent stage-0 audit."""
-import json
-import math
 from pathlib import Path
 import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import json
+import math
 import time
 
 import mujoco
@@ -12,8 +15,8 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'codes'),str(ROOT/'validation')]
 from contact_turn_experiment import Simulation,BASE,write_json,sha
 from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-from local_bend_backbone import LocalBendBackbone
-from contact_turn_controller import JointObservation,KnownDirectionOracle,KnownDirectionTransfer
+from snake_control.local_bend_backbone import LocalBendBackbone
+from snake_control.contact_turn_controller import JointObservation,KnownDirectionOracle,KnownDirectionTransfer
 
 
 def points(d):
@@ -104,8 +107,8 @@ def trial(args):
                   physical_budget_s=args.budget,hold_gate_s=10,hold_slip_limit_mm=20,
                   torque_limit_nm=2.355,kp=127,gravity=True,dt=.001,
                   rolling_phase_rate_rad_s=-.75,initialization='round2: one 50% measured-error relaxation',
-                  code_hash={str(p.relative_to(ROOT)):sha(p) for p in [Path(__file__),ROOT/'codes/local_bend_backbone.py',
-                      ROOT/'codes/contact_turn_controller.py',ROOT/'validation/contact_turn_experiment.py']},
+                  code_hash={str(p.relative_to(ROOT)):sha(p) for p in [Path(__file__),ROOT/'snake_control/local_bend_backbone.py',
+                      ROOT/'snake_control/contact_turn_controller.py',ROOT/'validation/contact_turn_experiment.py']},
                   model_hash=sha(model),exe_hash=sha(ROOT/'visualizer/windows_app/bin/SnakeRobotVisualizer.exe'))
     sim=None;policy=None
     result=dict(outcome='engineering_failure',success=False,milestones={},label=label)

@@ -4,18 +4,21 @@ Default is the eight mandatory A/D training pilots, seeds=1, k=0.
 Full comparisons require a saved training freeze; --main refuses an absent freeze.
 The simulation budget is physical seconds, independent of EXE waiting time.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import gzip
 import hashlib
 import json
 import math
 import os
-from pathlib import Path
 import re
 import shutil
 import socket
 import subprocess
-import sys
 import time
 from concurrent.futures import ThreadPoolExecutor,as_completed
 
@@ -35,10 +38,10 @@ def model_path(scene):
 def run_gait():
     import mujoco
     import threading
-    import adaptive_debug
-    import pole_compliance
+    from snake_control import adaptive_debug
+    from snake_control import pole_compliance
     import Adaptive_Pole_Climbing_Mujoco as gait
-    from local_pitch_controller_v4 import LocalPitchController
+    from snake_control.local_pitch_controller_v4 import LocalPitchController
     LocalPitchController.method=os.environ['PITCH_METHOD']
     LocalPitchController.exponent=float(os.environ.get('PITCH_K','0'))
     LocalPitchController.fixed_alpha=float(os.environ.get('PITCH_FIXED_ALPHA',str(ALPHA)))
@@ -124,8 +127,8 @@ def trial(scene,method,seed,k,alpha,out,budget=120.):
     record['git_commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     record['sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in
                       (model_path(scene),ROOT/'visualizer/windows_app/bin/SnakeRobotVisualizer.exe',
-                       ROOT/'codes/local_pitch_controller_v4.py',ROOT/'codes/local_pitch_feedback.py',ROOT/'codes/local_pitch_geometry.py',
-                       ROOT/'codes/pole_compliance.py',ROOT/'codes/Adaptive_Pole_Climbing_Mujoco.py',
+                       ROOT/'snake_control/local_pitch_controller_v4.py',ROOT/'snake_control/local_pitch_feedback.py',ROOT/'snake_control/local_pitch_geometry.py',
+                       ROOT/'snake_control/pole_compliance.py',ROOT/'codes/Adaptive_Pole_Climbing_Mujoco.py',
                        Path(__file__).resolve())}
     start=time.monotonic()
     with log.open('w',encoding='utf-8') as handle:

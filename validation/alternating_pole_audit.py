@@ -1,15 +1,19 @@
 """Audit matched phase budgets, physical feedback, target field and holding motion."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 
 import mujoco
 import numpy as np
 from scipy.spatial.transform import Rotation
 
 from alternating_pole_experiment import OUT, MODES, HORIZONTAL, load_checkpoint, write_json, sha
-from alternating_pole_phase import LocalPhaseCommand, schedule
-from spatial_bishop_backbone import SpatialBishopBackbone
+from snake_control.alternating_pole_phase import LocalPhaseCommand, schedule
+from snake_control.spatial_bishop_backbone import SpatialBishopBackbone
 from segmented_pole_experiment import pipe_frame
 
 

@@ -1,8 +1,11 @@
 """Independent recorded-state audit and local-bending geometry checks."""
-import json
-import math
 from pathlib import Path
 import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import json
+import math
 
 import mujoco
 import numpy as np
@@ -11,7 +14,7 @@ from scipy.integrate import quad
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'codes'),str(ROOT/'validation')]
 from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-from local_bend_backbone import LocalBendBackbone
+from snake_control.local_bend_backbone import LocalBendBackbone
 from contact_turn_experiment import BASE,write_json,sha
 
 
@@ -120,7 +123,7 @@ def geometry_checks():
     report=dict(zero_turn_error_rad=max(zeros),reference_shape_error_rad=reference_error,
                 independent_integral_error_rad=quadrature_error,bishop_frame_error=frame_error,
                 polyline_arc_length_relative_error=arc_error,small_parameter_change_max_deg=max(changes),
-                scan=rows,source_sha256=sha(ROOT/'codes/local_bend_backbone.py'),
+                scan=rows,source_sha256=sha(ROOT/'snake_control/local_bend_backbone.py'),
                 geometry_scope='Model joint range and active nonadjacent collisions; no certification of real adjacent shell clearance')
     write_json(BASE/'local_bend_geometry_checks.json',report)
     print(json.dumps({k:v for k,v in report.items() if k!='scan'}))

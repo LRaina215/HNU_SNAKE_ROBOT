@@ -1,17 +1,21 @@
 """Staged verification of the shape-preserving three-region repair."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import shutil
 
 import numpy as np
 
 from three_segment_experiment import ThreeTrial, DT
-from three_segment_incremental import IncrementalThreeSegmentController
+from snake_control.three_segment_incremental import IncrementalThreeSegmentController
 from spatial_takeover_experiment import points_for_angles
 from segmented_pole_experiment import BASE, ROOT, HORIZONTAL, write_json, pipe_frame
-from mujoco_checkpoint import load_checkpoint
-from pole_compliance import ComplianceParameters
+from snake_control.mujoco_checkpoint import load_checkpoint
+from snake_control.pole_compliance import ComplianceParameters
 from three_segment_review import assess
 
 OUT = BASE/'three_segment_repair_v1'
@@ -59,7 +63,7 @@ def run(mode):
     sim = None
     try:
         sim = ThreeTrial(HORIZONTAL, folder)
-        for name in ('codes/three_segment_incremental.py', 'codes/spatial_bishop_backbone.py',
+        for name in ('snake_control/three_segment_incremental.py', 'snake_control/spatial_bishop_backbone.py',
                      'validation/three_segment_repair.py', 'validation/spatial_takeover_experiment.py'):
             dst = folder/'sources'/name
             dst.parent.mkdir(parents=True, exist_ok=True)

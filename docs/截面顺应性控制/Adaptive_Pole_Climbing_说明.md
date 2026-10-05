@@ -1,0 +1,164 @@
+# 当前操作：几何参数与单步调试
+
+> 2026-09-28：仿真入口改名为 `codes/Adaptive_Pole_Climbing_Mujoco.py`，新增实机入口 `codes/Adaptive_Pole_Climbing_Real.py`（手动逐节缠绕后 Ctrl+U 启动单步顺应性，见[主 README](../../README.md)“实机版”）。本文件已从 `codes/` 移到 `docs/`；下文历史记录里的 `Adaptive_Pole_Climbing.py` 即现在的 Mujoco 版。
+
+以 Pole 为模板保留程序组织方式；运行参数已改为半径 R、每圈螺距 P 和滚动相位。旧 a/v 仅保留在 validation/ 的历史数学回归辅助函数中，不参与主循环。
+
+## 场景
+
+```bat
+python codes/Adaptive_Pole_Climbing_Mujoco.py                    :: 原 Pole 场景（kp=4）
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene variable   :: 连续变径管，外径 180 → 230 mm
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene twin       :: 论文实验 2 ×0.9，单管 → 双管
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene twin_full  :: 论文实验 2 原尺寸
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene inner      :: 论文实验 3 ×0.8，管内圆管 → 矩形管道
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene inner_full :: 论文实验 3 原尺寸
+python codes/Adaptive_Pole_Climbing_Mujoco.py --scene tree       :: 不规则树干近似（仅搭建，未做攀爬测试）
+python codes/Adaptive_Pole_Climbing_Real.py                      :: 实机：手动逐节缠绕 → Ctrl+U → 单步顺应性
+```
+
+管道场景由 `tools/build_variable_pipe_scene.py`、`tools/build_twin_pipe_scene.py` 生成，共用初始缠绕姿态（R=130、P=180；原尺寸 R=140）、Ctrl+U 默认 R=110（原尺寸 120）、位置伺服 kp=20 和扭转/滚动摩擦 0.005/0.002 m。原 Pole 场景 kp=4 过软，顺应性模式会下滑。
+
+管内场景由 `tools/build_inner_pipe_scene.py` 生成：MuJoCo 按凸包碰撞，空心管仿 `Pipe_Crawling` 用 18 根光滑圆棒围成（棒半径约 0.43 × 圆管内半径，过渡段逐层用胶囊连接）；平板或更密的细棒管壁会让管内顺应性很快因轴估计失效而停止。初始螺旋贴近管壁（约 2 mm 间隙；留得太大时 Ctrl+U 会让尾部下坠、轴估计偏斜），Ctrl+U 预设比管壁大（×0.8：R=125、P=243；原尺寸：R=160、P=311，按论文 α=0.30 rad），靠向外撑开夹紧。仿真场景 XML 都带 `experiment_inside` 标记（管内 1、管外 0），程序据此选择管内/管外顺应性（管内 K̂=1−K），启动行显示“管内/管外”；实机没有该标记，由 `COMPLIANCE_INSIDE` 手动选择。
+
+## 操作
+
+- 先点击 MuJoCo 窗口。启动后暂停；Ctrl+U 应用初始螺旋，Ctrl+J 相位 + 一步，Ctrl+H 相位 − 一步。**管外场景（variable / twin）中 Ctrl+H 上爬、Ctrl+J 下行；管内场景（inner）相反，Ctrl+J 上爬。**
+- Ctrl+上/下修改 R，Ctrl+右/左修改 P；或控制台输入 `r=130 p=180`。修改后 Ctrl+U 重新应用，**应用时沿用当前滚动相位**（清零会让已滚动的关节目标跳变上百度而脱管）。
+- Ctrl+E 切换顺应性，Ctrl+K 查看状态。状态中的 `RADIUS` 行：实测截面半径、当前目标截面半径（顺应性运行时取目标曲线截面），以及仿真专用的关节到管轴距离和同高度管半径。R 只是 Ctrl+U 应用的初始值，不代表顺应性运行中的当前形状。
+- 控制台 `apply`、`step`、`back`、`status`、`compliance` 与对应按键等价；`gravity=0/1` 切换重力。完整按键表见[主 README](../../README.md)。
+- `ROLL_STEP_RAD=0.15`；每个操作完成 N×10 个物理步后暂停。反向操作只改变相位方向，不倒放物理时间。空闲时通信和窗口继续刷新，物理仿真暂停。
+
+## 顺应性
+
+- `COMPLIANCE_ENABLED=True` 时，滚动步骤使用反馈生成的局部形状。首次得到有效截面前先形成标准螺旋；接管后反馈无效则本步不执行。Ctrl+U 重置为标准形状，并以 R/P 计算设计螺距角。
+- `COMPLIANCE_GAIN=(0.04, 0.12)`：首尾各 4 个关节 0.04，中部 0.12。论文式 (34) 为 0.04/0.08，但本模型在双管段夹紧不足而停滞，中部取 0.12；0.16 反而变差。
+- 变形方向按论文正文“管外收紧、管内撑开”实现为 `(r/K̂, K̂φ)`，而非式 (23) 字面的 `(K̂r, φ/K̂)`；字面写法在管外会使螺旋逐步张开。
+- 个别无管壁支撑的关节目标超出关节范围时，只把该关节裁剪到极限，整步照常执行。
+- 夹紧力来自位置伺服：力矩约为 kp·(目标角 − 实际角)，顺应性目标只比实际紧 K，因此 kp 与 K 需要一起调。
+
+## 当前结果（重力开，R=110，P=180，连续 Ctrl+H 300 步）
+
+| 场景 | 顺应性 | 标准螺旋 |
+| --- | --- | --- |
+| `--scene variable` | 0.466 → 1.799 m，到达管顶 | 1.519 m，上段头部约 1/4 身体离管 |
+| `--scene twin` | 0.466 → 1.653 m，进入双管段约 0.65 m | 1.701 m |
+| `--scene twin_full` | 0.470 → 1.547 m，仍在上升 | 约 1.34 m 停滞 |
+| `--scene inner`（连续 Ctrl+J 420 步） | 0.45 → 1.40 m（最高 1.42），进入矩形段；11% 时间顶到力矩上限 | 0.45 → 1.36 m（最高 1.42）；7% |
+| `--scene inner_full`（420 步） | 0.43 → 1.01 m，仍在上升 | 0.41 → 0.98 m（旧初始姿态） |
+
+舵机负载（由轨迹重算 `clip(kp·(目标−实际), ±3 N·m)`，只统计运动中）：
+
+| 场景 | 顺应性：平均力矩 / 顶到上限时间 | 标准螺旋：平均力矩 / 顶到上限时间 |
+| --- | --- | --- |
+| variable | 1.22 N·m / 3.6% | 1.70 N·m / 28.0% |
+| twin | 1.22 N·m / 4.9% | 1.70 N·m / 27.9% |
+| twin_full | 1.17 N·m / 3.7% | 1.57 N·m / 23.4% |
+
+管内场景的两个前提：管壁用 18 根光滑圆棒（平板或更密的细棒会让轴估计失效）；初始缠绕半径贴近管壁。满足后管内顺应性与标准螺旋爬得一样高，负载略高。
+
+仿真不模拟电机发热和过载保护，所以高度差别不大时标准螺旋看起来也能爬；但它靠比管子紧得多的固定目标长期顶住力矩上限（单个关节最多约 46–49% 的时间）。实机上这对应持续堵转电流，飞特舵机可能触发过载保护而卸力。顺应性目标只比实际形状紧 K，负载明显更低。摩擦、kp 均为仿真估计值，不代表实机。调参过程、数据位置与待办见[交接记录](../../交接记录.md)。
+
+标准与顺应性骨架都使用 `psi=∫tau ds+phase`，按实际 N+1 个连杆长度积分。首次顺应性相位拟合对齐上一已执行相位，然后再施加本步增量。完整配置和失效行为见[主 README](../../README.md)。
+
+下文是阶段一到四的历史记录；其中旧参数和操作方式不再适用于当前入口。
+
+---
+
+> 2026-09-25 目录整理：可视化源码和客户端已纳入本仓库 `visualizer/`；完整启动、开关和验证入口以[主 README](../../README.md)为准。下文旧外部目录为历史路径。
+
+# 阶段 4 更新：默认经 EXE 转发执行
+
+当前默认 `CONTROL_VIA_VISUALIZER=True`，需启动 **v1.4.0** EXE。计算出的目标经 EXE 回传后才写入 MuJoCo，见 [阶段四说明](Adaptive_Pole_Climbing_阶段四.md)。阶段三已提交并推送为 `6cb07e2`；下面保留各阶段历史。
+
+# 阶段 3 更新：顺应性目标生成已接入
+
+当前默认启用 `COMPLIANCE_ENABLED=True`，使用实测截面生成顺应性目标。参数、公式约定、非等长归一化和失效行为见 [阶段三说明](Adaptive_Pole_Climbing_阶段三.md)。`False` 可恢复阶段一标准运动；DEBUG 开关保持不变。下文阶段二/阶段一内容为对应阶段的实现历史。
+
+# 阶段 2 更新：双向通信已接入
+
+当前脚本保留下面阶段 1 的 Yamada 计算，新增后台几何读取和整组目标角预览。请启动 `Paper Code\蛇形机器人可视化程序_v1.3.0` 的 EXE。默认向可视化程序发送实测角，同时读取完整截面并回传目标预览；截面尚未进入顺应性算法，不改变 MuJoCo 的运动目标。
+
+共用客户端位于 `Paper Code\two_joint_visualizer\python_client.py`；设置 `SNAKE_GEOMETRY_EXCHANGE=0` 可关闭新交换，`SNAKE_VISUALIZER_ENABLED=0` 可关闭全部可视化通信。协议详见 `Paper Code\two_joint_visualizer\COMMUNICATION_V2.md`。
+
+## 接收曲线调试窗口
+
+在 `Adaptive_Pole_Climbing.py` 顶部设置 `DEBUG = True`（默认）即可打开窗口；改为 `False` 后重启脚本，不创建调试窗口。此开关独立于 MuJoCo 的 `SNAKE_MUJOCO_HEADLESS`，只影响调试显示，不关闭双向通信。
+
+`DEBUG_DRAW_CURVE = True` 同时显示曲线和参数表；设为 `False` 只显示参数表，跳过曲线采样和绘制。窗口在独立进程中运行，主控制循环不等待绘图。
+
+左侧显示可视化程序实际回传的二维连续曲线，右侧按段列出关节编号、圆弧半径（mm）、有符号圆心角（°）和段长（mm），直线段不显示半径/圆心角。点击表格高亮对应曲线段。这里的半径是该圆弧段的半径，不是到螺旋轴的距离。协议中的角度仍为 rad，仅显示时转换为度。
+
+窗口读取现有 `GeometryExchange` 缓存，每秒最多刷新 5 次；不新增网络连接、不重新估计曲线、不参与关节角计算。标题栏下方显示帧号与曲线有效性；反馈过期或断开会提示，收到反馈不等于曲线必然有效。可单独关闭窗口，步态继续运行；重启脚本可再次打开。依赖 Python 自带的 tkinter，无需额外绘图库。
+
+验证：Windows 原生 Tk 窗口的绘图、表格、高亮、过期/无效/断开提示均通过；在隔离端口 18783 上，关闭调试、仅表格、曲线加表格分别运行 4 秒 MuJoCo。两种显示模式均投递了 20 个不同反馈帧，与关闭调试时重叠仿真步的目标角和 qpos 差异均为零。主循环调试更新调用 P99 分别为 1.29/1.03 ms；这是本机短程测量，不是实时性保证。首次启动尚无几何帧时出现两次 `no_frame`，随后自动恢复。未访问实机串口。
+
+复验：`python validation/geometry_debug_smoke.py`，结果位于 `validation/results/geometry-debug/`。
+
+---
+
+以下是阶段 1 的实现和验收历史：
+
+# Adaptive_Pole_Climbing：阶段 1
+
+本文件对应 `Adaptive_Pole_Climbing.py`。以现有 `Pole_Climbing.py` 为运行模板，将目标角生成替换为 Yamada 积分；没有加入顺应性控制或新的双向通信。原 Pole、其他步态、模型、可视化程序均未修改。
+
+## 实现来源
+
+- `H-Crawler.py`：复用其 `K/Psi/Kp/Ky` 曲率分解与 `scipy.integrate.quad` 计算关节角的组织方式。
+- `Parallel_Crossing.py`：沿用 `HelixSegment.get_kappa/get_tau` 的标准螺旋公式。
+- `Pole_Climbing.py`：保留模型加载、a/v 参数、键盘/控制台操作、可视化桥及无界面运行入口。
+
+这些旧步态中部分 `T` 是占位函数，部分 `Psi` 专门针对分段履带形状，不能直接照搬。新脚本使用标准螺旋的常挠率积分 `Psi(s)=-tau*s+roll_phase+phase_offset`，按论文头到尾弧长方向积分。奇数关节使用 `-kappa*sin(Psi)`，偶数使用 `kappa*cos(Psi)`；再按当前 MuJoCo/可视化桥的 `[+1,-1,...]` 方向映射到执行器。
+
+## 运行
+
+在 Windows 的 Anaconda Prompt 中：
+
+```bat
+conda activate mujoco
+cd /d "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\codes"
+python Adaptive_Pole_Climbing.py
+```
+
+默认仍为 `a=30, v=0`，即原 Pole 的平面圆弧横滚起点，不会默认直接抱住竖杆。上/下键改变 a，左/右键改变 v；9/0 设置反向/正向相位推进。沿用原程序行为，9/0 并不执行严格的单帧后暂停。
+
+控制台支持原有命令，例如 `a=-76 v=0.05`、`time_step=0`、`time_sleep=0.01`、`step=0`。`time_step=0` 固定后续滚动相位，用于姿态观察；`step=0` 结束循环。`a=-76 v=0.05` 只是原脚本的参考参数，不代表新脚本已经通过稳定爬杆验收。
+
+默认沿用现有单向可视化桥。如果 EXE 未启动，发送失败不会阻塞主控制循环。可用 `set SNAKE_VISUALIZER_ENABLED=0` 完全禁用桥接；不会访问实机串口。
+
+## a/v 如何转换为 Yamada 输入
+
+为避免更换算法时同时更换调参语义，保留原 Pole 的 a/v：
+
+- `A=a/57.2958`：保持原脚本的角度换算常数。
+- `tau=-v/l`。
+- `kappa=abs(A)/(2*l*sinc(v))`，这里 `sinc(v)=sin(v)/v`，零点取 1。
+- 相位偏置是 `-v + (pi if a>=0 else 0)`。
+
+常曲率、常挠率的 Yamada 区间积分幅值为 `2*l*kappa*sinc(v)`，因此转换后可以和原 Pole 的整组目标角直接比较。实际运行仍通过曲率分量积分生成角度，没有直接调用旧 Pole 的逐关节目标公式。负 a 通过相位偏置表示，不使用负曲率。
+
+当 kappa>0 时，参数对应 `r=kappa/(kappa²+tau²)`、`b=tau/(kappa²+tau²)`，每圈螺距为 `2*pi*b`。也可在代码中直接用 `HelixBackbone.from_radius_pitch(radius_mm, pitch_mm)` 构造目标；该入口的滚动相位需按其默认偏置约定使用。a=0 输出直线目标；v=0 为平面圆弧。a/v 转换要求 `|v|<pi`，避免 sinc 零点。
+
+每个关节积分区间为 `[(j-1)l,(j+1)l]`，j 从 1 开始。l 取模型内部关节间距的平均值，是标准螺旋的名义等间距近似。当前 20 关节模型实际间距为 67.5–69.5 mm，名义值约 68.4474 mm；不声称生成的离散骨架精确通过连续螺旋，也不把短头尾段当成完整 l。
+
+## 执行节奏
+
+一轮先算齐所有目标并一次性赋给 `d.ctrl`，随后持有该目标完成 N×10 个物理步。每 10 步仍处理显示/桥接并等待 `time_sleep`。这保留原 Pole 每轮的总物理步数和等待量，但消除了逐关节更新造成的混合帧；瞬态轨迹可能与原脚本不同。
+
+保留原程序 `t += time_step` 的相位时钟语义，滚动相位为 `omega*t`。omega 不是直接按 MuJoCo 秒计的滚动速度；每轮物理相位速度为 `omega*time_step/(N*10*模型 timestep)`。控制器换成按物理时间计速属于后续明确的行为调整。
+
+## 验证结果（2026-09-24）
+
+使用现有 Windows 原生 `D:\Anaconda\envs\mujoco\python.exe`，从 WSL 兼容入口运行。没有启动实机串口，没有对运行中的可视化程序发送测试帧。
+
+- 120 组正/负幅值、正/负空间相位、20/28 关节及不同滚动相位：积分目标与原 Pole 公式最大误差 `3.50e-15 rad`。
+- 直接指定半径/螺距，使用独立密集梯形积分核验曲率分解与奇偶方向：最大误差 `2.26e-11 rad`。
+- 已检查整周周期性、半周符号反转、零曲率及非法参数。
+- Windows 无界面 MuJoCo：20 关节平面、20 关节螺旋、28 关节螺旋各运行约 3 秒墙钟，分别产生 196、196、185 个记录样本，数值有限且仿真时间递增。
+- 另用旧目标公式、相同的整帧提交节奏重放物理仿真，最大 qpos 分量差小于 `4.59e-8`。这不是与原脚本逐关节调度的轨迹等价声明。
+- 原 Pole SHA-256 保持 `7c991ad721855d406aec8e38282fa25fd5b5ec8b5020bab06d14aa9259ff0caa`。
+
+复验：在仓库目录运行 `python validation/adaptive_pole_stage1.py`。证据保存于 `validation/results/adaptive-pole-stage1/summary.json` 及同目录日志/轨迹。
+
+未验收：Windows 交互 viewer 操作、稳定动态 rolling 爬管、真实舵机、双向接口、顺应性闭环。本阶段已验证算法替换和短程无界面执行，不能据此宣称上述项目完成。

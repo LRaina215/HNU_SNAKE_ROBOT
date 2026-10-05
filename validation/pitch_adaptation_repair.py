@@ -3,20 +3,23 @@
 True axes/radii below are scoring-only. No simulator, EXE or servo is started.
 Reports alternative estimators including failures; does not release formal runs.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import gzip
 import hashlib
 import json
-from pathlib import Path
-import sys
 
 import mujoco
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/'codes'), str(ROOT/'validation')]
-from local_pitch_geometry import estimate_local_radius
-from local_pitch_feedback import estimate_module_radius
+from snake_control.local_pitch_geometry import estimate_local_radius
+from snake_control.local_pitch_feedback import estimate_module_radius
 from pitch_adaptation_stage0 import (ALPHA, JOINTS, LINK, HelixBackbone,
                                      fit_rotation, helix_points, path_for, robot_points)
 
@@ -127,7 +130,7 @@ def main():
     replay_rows=replay(args.out);synthetic_rows=synthetic(args.out)
     result=dict(mujoco=mujoco.__version__,formal_released=False,
                 sources={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
-                         for p in (Path(__file__),ROOT/'codes/local_pitch_feedback.py',ROOT/'codes/local_pitch_geometry.py')},
+                         for p in (Path(__file__),ROOT/'snake_control/local_pitch_feedback.py',ROOT/'snake_control/local_pitch_geometry.py')},
                 small_pipe_module_centres=[r for r in replay_rows if r['scene']=='pipe_straight_small' and r['sampler']=='module_centres'],
                 transition=[{k:v for k,v in r.items() if k!='estimates'} for r in synthetic_rows if r['case']=='two_radius_transition'])
     (args.out/'summary.json').write_text(json.dumps(result,indent=2),encoding='utf8')

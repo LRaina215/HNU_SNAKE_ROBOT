@@ -1,4 +1,9 @@
 """Bounded crossing experiment; original physics, checkpoint and EXE relay."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
 import shutil
@@ -8,9 +13,9 @@ import mujoco
 from three_segment_experiment import ThreeTrial
 from segmented_pole_experiment import ROOT, HORIZONTAL, VERTICAL, write_json
 from spatial_takeover_experiment import points_for_angles
-from coordinated_compliant_winding import CoordinatedCompliantWinding, CoordinationOptions
-from traveling_compliant_winding import FormationOptions
-from three_segment_compliance import ThreeSegmentOptions
+from snake_control.coordinated_compliant_winding import CoordinatedCompliantWinding, CoordinationOptions
+from snake_control.traveling_compliant_winding import FormationOptions
+from snake_control.three_segment_compliance import ThreeSegmentOptions
 from three_segment_review import assess
 from traveling_winding_audit import audit, evaluate
 
@@ -26,8 +31,8 @@ def run(args):
         mujoco=mujoco.__version__,step_seconds=args.dt)
     try:
         sim=ThreeTrial(checkpoint,folder)
-        for name in ('codes/coordinated_compliant_winding.py','codes/traveling_compliant_winding.py',
-                     'codes/three_segment_incremental.py','codes/spatial_bishop_backbone.py',
+        for name in ('snake_control/coordinated_compliant_winding.py','snake_control/traveling_compliant_winding.py',
+                     'snake_control/three_segment_incremental.py','snake_control/spatial_bishop_backbone.py',
                      'validation/coordinated_winding_experiment.py','validation/traveling_winding_audit.py',
                      'validation/coordinated_winding_metrics.py','validation/spatial_takeover_experiment.py'):
             dst=folder/'sources'/name;dst.parent.mkdir(parents=True,exist_ok=True)

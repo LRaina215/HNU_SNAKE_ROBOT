@@ -1,24 +1,28 @@
 """Bounded front-support experiment; archived baseline, unchanged physics/gates."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import importlib.util
 import json
-from pathlib import Path
 import shutil
 
 import mujoco
 import numpy as np
 
 from three_segment_experiment import ThreeTrial, DT
-from three_segment_incremental import IncrementalThreeSegmentController
-from three_segment_front_support import FrontSupportedThreeSegmentController
+from snake_control.three_segment_incremental import IncrementalThreeSegmentController
+from snake_control.three_segment_front_support import FrontSupportedThreeSegmentController
 from segmented_pole_experiment import BASE, ROOT, HORIZONTAL, pipe_frame, write_json
 from spatial_takeover_experiment import points_for_angles
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 
 OUT = BASE/'three_segment_front_support_v1'
 BASELINE = BASE/'three_segment_repair_v1/rolling'
-SOURCES = ['codes/three_segment_incremental.py', 'codes/three_segment_front_support.py',
-           'codes/spatial_bishop_backbone.py', 'codes/three_segment_compliance.py',
+SOURCES = ['snake_control/three_segment_incremental.py', 'snake_control/three_segment_front_support.py',
+           'snake_control/spatial_bishop_backbone.py', 'snake_control/three_segment_compliance.py',
            'validation/front_support_experiment.py', 'validation/three_segment_review.py',
            'validation/spatial_takeover_experiment.py']
 
@@ -81,7 +85,12 @@ def checks(root):
     spec = importlib.util.spec_from_file_location('archived_incremental',
         BASELINE/'sources/codes/three_segment_incremental.py')
     old = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(old)
+    # 历史快照仍保留原始平铺导入；只在读取快照时使用它自己的源码目录。
+    sys.path.insert(0, str(BASELINE/'sources/codes'))
+    try:
+        spec.loader.exec_module(old)
+    finally:
+        sys.path.pop(0)
     make = lambda cls, **kw: cls(geometry[0], original.parameters, d.ctrl.copy(),
         meta['settings']['phase'], corner, source, target, radius,
         measured=np.array(controls[0]['measured']), forward_points=lambda q: points_for_angles(m, d, q), **kw)
@@ -132,7 +141,7 @@ def run(root):
             dst = folder/'sources'/name
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT/name, dst)
-        shutil.copy2(ROOT/'docs/三段顺应性_前部包绕维持验证.md', folder/'plan_before_run.md')
+        shutil.copy2(ROOT/'docs/分段顺应性跨管/三段顺应性_前部包绕维持验证.md', folder/'plan_before_run.md')
         g = sim.fresh()
         controller = FrontSupportedThreeSegmentController(g, sim.original.parameters, sim.d.ctrl,
             sim.phase, sim.corner, sim.source, sim.target, sim.radius,

@@ -108,7 +108,7 @@
 
 正常速度回放：[滤波与力矩等效修正对照](reviews/radial_filtered_velocity_1x.mp4)、[100 ms外层反馈对照](reviews/radial_feedback_100ms_1x.mp4)；[速度修正过程对照曲线](reviews/velocity_refinement_comparison.png)。两组回放都仍未通过全部门槛，视频不是通过证明。旧[已接入形状恢复对照](reviews/acquired_shape_recovery_1x.mp4)和[脱管前后六帧](reviews/acquired_shape_contact_sequence.png)保留。
 
-复现入口仍是 `validation/window_coordination_experiment.py`。每次使用新的试验名，参数在对应归档内`plan.json`；核心增量集中于 `codes/support_transfer_winding.py`，日常实机/仿真入口不变。仅新结束的试验可用 `window_coordination_archive.py --root ... --names 试验名`核对并归档，避免重复检查已归档批次。
+复现入口仍是 `validation/window_coordination_experiment.py`。每次使用新的试验名，参数在对应归档内`plan.json`；核心增量集中于 `snake_control/support_transfer_winding.py`，日常实机/仿真入口不变。仅新结束的试验可用 `window_coordination_archive.py --root ... --names 试验名`核对并归档，避免重复检查已归档批次。
 
 ## 首次水平通过与竖直冻结失败
 

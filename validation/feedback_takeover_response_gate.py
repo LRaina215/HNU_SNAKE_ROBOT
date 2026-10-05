@@ -4,9 +4,14 @@ This is a development gate, not a force-closure certificate. The known nominal
 robot/contact model and right-angle gravity prior remain explicit assumptions.
 It must be validated before automatic approach-to-transfer switching.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import mujoco
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 from feedback_takeover_dynamic_observer_probe import virtual_model, predict
 
 

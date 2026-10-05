@@ -4,6 +4,11 @@ The private model reconstructs contacts using inferred geometry, angles,
 velocities, gravity and issued commands. Physical contacts are read only after
 the inferred force labels have been produced, for precision/recall scoring.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
 import numpy as np
@@ -11,7 +16,7 @@ import mujoco
 from three_segment_review import context
 from segmented_pole_experiment import ROOT,write_json
 from feedback_takeover_dynamic_observer_probe import virtual_model
-from encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
 
 
 def run(file):

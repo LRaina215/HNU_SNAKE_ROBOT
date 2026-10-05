@@ -3,15 +3,18 @@
 Run with MuJoCo 3.3.0. Outputs are separate from the old 26-joint baseline.
 This is an offline gate, not a climbing success experiment.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import copy
 import csv
 import hashlib
 import json
 import math
-from pathlib import Path
 import subprocess
-import sys
 
 import mujoco
 import numpy as np
@@ -20,9 +23,9 @@ from scipy.integrate import solve_ivp
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/'codes')]
 from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
-from curved_axis_compliance import joint_segments
-from local_pitch_geometry import VariablePitchBackbone, estimate_local_radius, pitch_rule
-from pole_compliance import ComplianceParameters, build_backbone
+from snake_control.curved_axis_compliance import joint_segments
+from snake_control.local_pitch_geometry import VariablePitchBackbone, estimate_local_radius, pitch_rule
+from snake_control.pole_compliance import ComplianceParameters, build_backbone
 
 LINK, JOINTS = 64.5, 20
 ALPHA = math.atan2(220., 2*np.pi*81.5)
@@ -292,7 +295,7 @@ def main():
                     git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                     models={s:dict(path=str(path_for(s)),sha256=sha(path_for(s))) for s in SCENES},
                     exe_sha256=sha(ROOT/'visualizer/windows_app/bin/SnakeRobotVisualizer.exe'),
-                    sources={p:sha(ROOT/p) for p in ('codes/local_pitch_geometry.py','validation/pitch_adaptation_stage0.py','codes/pole_compliance.py')},
+                    sources={p:sha(ROOT/p) for p in ('snake_control/local_pitch_geometry.py','validation/pitch_adaptation_stage0.py','snake_control/pole_compliance.py')},
                     frozen_scan=dict(radii_mm=[85.5,95.,110.5,125.,140.],phase_samples=73,gain=[.01,.02],
                                      encoder_noise='FK joint-angle perturbation +/- half of 4096-count revolution; protocol diagnostic, not calibrated encoder accuracy'))
     (out/'provenance.json').write_text(json.dumps(provenance,ensure_ascii=False,indent=2),encoding='utf-8')

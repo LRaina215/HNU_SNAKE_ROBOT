@@ -1,7 +1,12 @@
 """Collect a small joint probe through the same EXE relay as rolling commands."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 from segmented_pole_experiment import write_json
-from three_segment_compliance import ThreeSegmentOptions
+from snake_control.three_segment_compliance import ThreeSegmentOptions
 
 
 def collect_response(sim,initial_tracker,folder):

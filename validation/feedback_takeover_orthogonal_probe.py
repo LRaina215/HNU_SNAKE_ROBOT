@@ -4,12 +4,17 @@ Right-angle, intersecting axes and comparable radii are explicit scene-family
 priors. They are not known axis directions, contact labels or split indices.
 This diagnostic reports candidates, not a validated takeover detector.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import mujoco
 from scipy.optimize import least_squares
 from feedback_takeover_initial_geometry import fit_cylinder, OUT
 from segmented_pole_experiment import HORIZONTAL, VERTICAL, pipe_frame, write_json
-from mujoco_checkpoint import load_checkpoint
+from snake_control.mujoco_checkpoint import load_checkpoint
 
 
 def fit_branch(centers, source, radius_prior=True):

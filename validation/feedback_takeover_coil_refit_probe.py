@@ -3,14 +3,18 @@
 Fit encoder-frame points using the previous estimated prefix, never the true
 partition. Simulator pose/axes score the completed fit only.
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import json
-from pathlib import Path
 import numpy as np
 import mujoco
 from three_segment_review import context
 from segmented_pole_experiment import pipe_frame,write_json
-from encoder_pipe_geometry import cylinder
+from snake_control.encoder_pipe_geometry import cylinder
 
 
 def run(folder):

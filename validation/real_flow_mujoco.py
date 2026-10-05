@@ -5,13 +5,16 @@
 空中没有管壁，滚动时 K=0，只验证流程与相位对齐，不验证抱管效果。
 运行：mujoco 环境 python validation/real_flow_mujoco.py
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import subprocess
-import sys
 import time
 
 import numpy as np
@@ -25,7 +28,7 @@ sys.path[:0] = [str(ROOT / 'codes'), str(ROOT / 'visualizer')]
 def run_executor():
     """MuJoCo 执行端：持续物理步进，领取 EXE 转发的目标写入 ctrl，并上传实测帧。"""
     import mujoco
-    from mujoco_execution_bridge import MujocoExecutionBridge
+    from snake_control.mujoco_execution_bridge import MujocoExecutionBridge
     m = mujoco.MjModel.from_xml_path(str(ROOT / 'mujoco_model/Snake_Robot_o20_Pole_Climbing.xml'))
     # 只验证流程：关闭重力，让地面上的直线机器人能按目标弯成螺旋（原模型 kp=4 在重力下达不到）。
     m.opt.gravity[:] = 0

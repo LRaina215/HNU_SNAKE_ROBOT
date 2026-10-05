@@ -9,14 +9,17 @@
 没有场景标记，管内/管外只由 COMPLIANCE_INSIDE 决定，启动时打印确认。
 长度 mm，相位 rad。模块导入不会启动网络或键盘监听。
 """
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import argparse
 import csv
 import math
 import queue
-import sys
 import threading
 import time
-from pathlib import Path
 
 import numpy as np
 
@@ -156,10 +159,10 @@ def executed(state, command_id, execution):
 
 
 def main(execution="live", hotkeys=True, port=PORT):
-    from pole_compliance import ComplianceController, ComplianceParameters
-    from local_pitch_runtime import (InteractivePitchController, toggle_local_pitch, stop_local_pitch,
+    from snake_control.pole_compliance import ComplianceController, ComplianceParameters
+    from snake_control.local_pitch_runtime import (InteractivePitchController, toggle_local_pitch, stop_local_pitch,
                                      resume_compliance, local_pitch_status, prepare_pitch_step)
-    from adaptive_debug import global_key_listener, circle_radius_mm
+    from snake_control.adaptive_debug import global_key_listener, circle_radius_mm
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "visualizer"))
     from python_client import GeometryExchange
 
@@ -283,7 +286,7 @@ def main(execution="live", hotkeys=True, port=PORT):
         if hotkeys:
             listener = global_key_listener(command_queue)
         if DEBUG:
-            from geometry_debug_view import GeometryDebugView
+            from snake_control.geometry_debug_view import GeometryDebugView
             debug_view = GeometryDebugView(draw_curve=DEBUG_DRAW_CURVE)
         while True:
             try:

@@ -1,4 +1,9 @@
 """Replay the final-transfer segment to separate line fitting and frame drift."""
+from pathlib import Path
+import sys
+
+# 支持从 codes/ 或工具目录直接运行，公共模块位于仓库根目录。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import json
 import argparse
 import copy
@@ -8,8 +13,8 @@ from segmented_pole_experiment import ROOT,pipe_frame,write_json
 from three_segment_review import context
 from feedback_takeover_encoder_tracking import transport
 from feedback_takeover_cad_refinement import refine_target
-from encoder_pipe_proximity import EncoderPipeProximity
-from encoder_pipe_geometry import cylinder
+from snake_control.encoder_pipe_proximity import EncoderPipeProximity
+from snake_control.encoder_pipe_geometry import cylinder
 
 
 def run(modes,start_at=None,stop=115.,output='single_target_registration_probe.json',half_line=False):
