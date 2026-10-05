@@ -1,20 +1,20 @@
 [
   {
     "archive": "horizontal_natural_v1_prefix.zip",
-    "files": 44,
-    "MiB": 7.3738861083984375,
+    "files": 45,
+    "MiB": 7.374561309814453,
     "complete_trace": true
   },
   {
     "archive": "horizontal_natural_v1_transfer_ensemble.zip",
-    "files": 55,
-    "MiB": 38.81899070739746,
+    "files": 56,
+    "MiB": 38.81938457489014,
     "complete_trace": true
   },
   {
     "archive": "horizontal_natural_v1_transfer_progress_guard.zip",
-    "files": 54,
-    "MiB": 55.64895439147949,
+    "files": 55,
+    "MiB": 55.649353981018066,
     "complete_trace": true
   },
   {
@@ -32,8 +32,29 @@
   },
   {
     "archive": "horizontal_natural_rate_transfer_topology.zip",
-    "files": 55,
-    "MiB": 44.67854881286621,
+    "files": 56,
+    "MiB": 44.678955078125,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_original_cadence.zip",
+    "files": 28,
+    "MiB": 12.96171760559082,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_distributed_release.zip",
+    "MiB": 41.72821044921875,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_support_matched_phase.zip",
+    "MiB": 57.56576728820801,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_initial_front_acquisition.zip",
+    "MiB": 40.02776336669922,
     "complete_trace": true
   }
 ]

@@ -64,7 +64,7 @@ def run(args):
         extra=dict(support_error_limit=sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0]) if args.support_memory or args.capacity_preload or args.radial_acquisition else {}
         if args.target_frame_acquisition:
             extra.update(conserve_middle=args.conserve_middle,distinguish_lines=args.distinguish_lines)
-        if args.radial_acquisition:extra['coordinate_acquisition']=args.coordinate_acquisition
+        if args.radial_acquisition:extra.update(coordinate_acquisition=args.coordinate_acquisition,acquire_initial_front=args.acquire_initial_front,bootstrap_front=args.bootstrap_front)
         if args.contact_reference or args.capacity_preload or args.radial_acquisition:
             extra['local_contact_projection']=args.local_contact_projection
             extra['dual_contact_projection']=args.dual_contact_projection
@@ -121,7 +121,9 @@ def run(args):
                 from feedback_takeover_response_gate import judge
                 gate=judge(sim.m,sim.meta['source_model'],fit,records)
                 write_json(folder/'response_gate.json',gate)
-                if not gate['passed']:raise RuntimeError('Automatic takeover response gate rejected this state')
+                acquire=args.release_requires_grip and gate['geometry_response_accepted']
+                if not gate['passed'] and not acquire:raise RuntimeError('Automatic takeover response gate rejected this state')
+                result['initial_takeover_mode']='transfer' if gate['passed'] else 'acquisition_rear_release_gated'
             if fit['held_out_rms_deg']>.1:
                 raise RuntimeError('Response calibration rejected: held-out joint RMS exceeds 0.1 deg')
             tracker=DynamicPipeTracker(sim.m,sim.meta['source_model'],fit,records)
@@ -172,7 +174,7 @@ def run(args):
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
-                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard),**extra)
+                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip),**extra)
         if args.preserve_probe_intent:
             # Probe targets hold/perturb the current posture; they are not the
             # stored motion intent. Retain the old torque-equivalent preload,
@@ -333,6 +335,9 @@ if __name__=='__main__':
     p.add_argument('--junction-search',action='store_true',help='Response-only coarse corner search for partially formed natural drapes.')
     p.add_argument('--network-calibration',action='store_true',help='Compare L and both T constraint hypotheses from probe prediction.')
     p.add_argument('--feedback-progress-guard',action='store_true',help='Slow both phase clocks and retain rear support when measured admission regresses beyond formation lead.')
+    p.add_argument('--release-requires-grip',action='store_true',help='Allow verified contact acquisition, but require distributed angular support and wrap before releasing rear joints.')
+    p.add_argument('--acquire-initial-front',action='store_true',help='Apply radial compliant acquisition to initial drape members too; a geometric front label does not prove existing wrap.')
+    p.add_argument('--bootstrap-front',action='store_true',help='Use contacting-link radius and measured initial-front admission instead of assuming the captured front is already wrapped.')
     p.add_argument('--response-state',type=Path,help='Probe evidence from automatic approach; checkpoint must be its exact post-probe state.')
     p.add_argument('--encoder-initial-axes',action='store_true',
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
@@ -371,7 +376,7 @@ if __name__=='__main__':
     p.add_argument('--body-speed-limit',type=float,default=.2,help='Relative module speed above which coupled damping acts, m/s')
     p.add_argument('--body-reference-module',type=int,default=0,help='Encoder-relative velocity frame; -1 initial front, -2 follows acquired and formed prefix')
     p.add_argument('--coordinate-acquisition',action='store_true',help='Radial acquisition: slow both phase clocks when measured recruitment lags')
-    p.add_argument('--tail-mode',choices=['support','same','hold','coupled'],default='support')
+    p.add_argument('--tail-mode',choices=['support','same','hold','coupled','matched'],default='support')
     p.add_argument('--finish-mode',choices=['original','continuous'],default='original')
     p.add_argument('--maximum-lead',type=float,default=2.)
     p.add_argument('--target-lead-deg',type=float,default=8.)

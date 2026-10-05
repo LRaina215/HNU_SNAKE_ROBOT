@@ -36,6 +36,22 @@
 
 当前 `horizontal_natural_distributed` 从原管预缠绕初态重新运行，使用力矩等效的初始化渐变、保持0.15rad/0.8s的顺应推进和分散支撑判据。尚在运行，不能计为通过。
 
+## 自然搭管后的承接诊断
+
+以下三组从同一自动候选重新执行相同探测，全部新角度/命令/时间匹配后复用响应拟合；保留A–D和原物理参数。25,490条实际EXE命令核验通过。完整轨迹及当次源码见独立ZIP，汇总为 `natural_acquisition_variants.json`。
+
+| 候选 | 单一主要改动 | 完整跨越 | 模块峰值 | 结论 |
+|---|---|---|---:|---|
+| transfer_distributed_release | 分散接触与包绕出现后才允许尾边界释放 | 是 | 1.104m/s | 过程质量失败 |
+| transfer_support_matched_phase | 上一组基础上，两端共同按前部支撑代理量减慢相位 | 否，208.8s失去支撑 | 1.663m/s | 未采用 |
+| transfer_initial_front_acquisition | 分散释放基础上，初始前段也加入径向成形修正 | 否，149.4s失去支撑 | 2.501m/s | 未采用 |
+
+三项均非默认。尾部边界保持不等于尾部实际留管，继续rolling仍可能提前使其脱开。`source_departure_diagnosis.json`显示，首个持续0.6s离开原管窗口起点，指定存档通过例目标管接触模块为0/3/4/6/7/8/11；自然候选分散释放组只有6/9。后者39.7s接触构型的静态力矩乐观下界达上限的10.368倍，40.5s放宽问题也无可行解；这是具体姿态缺少承载条件的证据，不证明整条方向不可行。通过例在短时动态过渡中也有下界大于1的帧，不能将静态裕量硬当作rolling的必要条件。计算为只读副本，不对机器人施力，见 `contact_capacity_diagnosis.json`。
+
+`initial_front_assumption_diagnosis.json`发现初始前段被默认视为已包绕，而自然候选头部到接触半径的间隙可达75mm；初始前段中位半径又被用作整个前部的成形参考，可能放大松散形状。仅加入径向修正没有解决问题。后续 `--bootstrap-front`实验将初始前段也按实际靠近情况渐变成形恢复，并从接触连杆端点取得多边形螺旋的半径参考；仍保持截面顺应性、rolling和力矩上限。结果待完整运行后评价，未作为通过方案。
+
+另有 `horizontal_natural_original_cadence`保留0.15rad/0.2s、加入平滑下发，从初态运行41s，未形成持续几何候选；模块峰值2.247m/s。两种自然节奏的只读接触诊断均未见“分散目标接触超过90°且原管仍有支撑”的样本，不能以仅有头部接触推定承接成功。该结果也保留归档。
+
 入口：`validation/natural_takeover_experiment.py`；只读命令/运动评分：`validation/natural_takeover_review.py`。原始数据及当次源码压缩入 `archives/`，解压到同名任务目录可复核。失败结果保留；离线拟合不计为新的物理闭环试验。
 
 [第三组自然搭管，正常速度视频](reviews/horizontal_natural_rate_matched_1x.mp4)；[自动候选姿态](reviews/horizontal_natural_rate_matched_candidate.png)。

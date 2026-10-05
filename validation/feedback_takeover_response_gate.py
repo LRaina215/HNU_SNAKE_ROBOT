@@ -64,6 +64,7 @@ def judge(robot, robot_xml, fit, records):
         both_constraints_persist=bool(np.all(fraction>=.9)),
         target_support_distributed=distributed_fraction>=.9)
     return dict(passed=all(criteria.values()),criteria=criteria,
+        geometry_response_accepted=all(value for key,value in criteria.items() if key!='target_support_distributed'),
         heldout_rms_deg=full_rms,source_only_heldout_rms_deg=absent_rms,
         predicted_support_fraction_last_point6_seconds=fraction,
         predicted_target_coverage=coverage,distributed_support_fraction_last_point6_seconds=distributed_fraction,

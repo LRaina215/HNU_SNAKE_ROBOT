@@ -32,6 +32,7 @@ class WindowOptions:
     rolling_lookahead_seconds: Optional[float] = None
     section_domain: bool = False
     feedback_progress_guard: bool = False
+    release_requires_grip: bool = False
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -116,8 +117,13 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         near=self.release_geometry_ready(points,prefix)
         reserve=max(0,6-max(0,prefix-8))
         if self.handed_off:near=self.rear<self.n;reserve=0
+        # A verified target constraint can admit local shaping before it can
+        # support body transfer. Keep rolling and preserve the rear boundary
+        # until the existing angular-coverage/wrap proxy is positive; rear_ready
+        # below requires that permission continuously for 0.6 s.
         release=(self.progress>self.initial_front+.5 and status['target_contact'] and room and near
                  and (remaining or prefix>=12 or self.handed_off) and self.n-self.rear>reserve
+                 and (not self.window.release_requires_grip or status['grip']>0. or self.handed_off)
                  and (not self.window.feedback_progress_guard or self.progress<=prefix+self.window.maximum_lead+1e-9)
                  and self.rear_release_permitted())
         # The same supply factor gates phase advance and boundary release.
@@ -152,9 +158,12 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         if self.handed_off:supply=1.
         if self.window.tail_mode=='same':supply=1.
         if self.window.tail_mode=='hold':supply=0. if not self.handed_off else 1.
-        if self.window.tail_mode=='coupled':supply=.25+.75*supply
+        if self.window.tail_mode in ('coupled','matched'):supply=.25+.75*supply
         self.feed+=(1-math.exp(-dt/.6))*(supply-self.feed)
-        front_delta=demand
+        # Preserve the front/rear phase relation while slowing the material
+        # supply itself. Holding only the rear membership does not prevent its
+        # still-rolling coil from physically leaving the source pipe.
+        front_delta=demand*self.feed if self.window.tail_mode=='matched' else demand
         rear_delta=demand*self.feed*self.rear_motion_scale
         if self.window.tail_mode=='coupled':
             # Preserve the captured two-axis phase relation within a bounded

@@ -129,7 +129,11 @@ def run(args):
                     sources=probe/'sources';sources.mkdir()
                     for filename in ('feedback_takeover_response_calibration.py','feedback_takeover_response_gate.py',
                             'feedback_takeover_dynamic_observer_probe.py','feedback_takeover_collect_response.py'):
-                        shutil.copy2(ROOT/'validation'/filename,sources/filename)
+                        # Python retains the first imported implementation in
+                        # this process. Later probes must archive that same
+                        # source even if another development run edits disk.
+                        source=(root/'probe_01/sources' if attempts else ROOT/'validation')/filename
+                        shutil.copy2(source,sources/filename)
                     last_probe_phase=sim.phase
                     write_json(probe/'motion_reference.json',sim.d.ctrl.copy())
                     load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-q),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])

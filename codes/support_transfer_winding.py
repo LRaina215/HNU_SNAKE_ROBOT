@@ -270,9 +270,12 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
     curvature term over one link length. Its reference radius is measured at
     current target contacts; the original A-D correction remains active.
     """
-    def __init__(self,*args,coordinate_acquisition=False,**kwargs):
+    def __init__(self,*args,coordinate_acquisition=False,acquire_initial_front=False,bootstrap_front=False,**kwargs):
         super().__init__(*args,**kwargs)
         self.coordinate_acquisition=coordinate_acquisition
+        self.acquire_initial_front=acquire_initial_front
+        self.bootstrap_front=bootstrap_front
+        self.initial_front_acquired=np.zeros(self.initial_front)
         self.acquisition_phase=self.phase
         self.rolling_scale=1.
 
@@ -287,7 +290,18 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
             value=float(np.median(radial[usable]))
             if not hasattr(self,'contact_radius'):self.contact_radius=value
             self.contact_radius+=(1-math.exp(-dt/.4))*(value-self.contact_radius)
+            vertices=np.linalg.norm(np.cross(points-self.corner,self.target),axis=1)
+            ids=np.flatnonzero(usable)
+            # Joint vertices sit outside their contacting link-centre radius.
+            # Use the same contacting links to obtain a polygon-compatible
+            # forming radius; a loose free head must not inflate this guide.
+            joint_value=float(np.median(np.r_[vertices[ids],vertices[ids+1]]))
+            if not hasattr(self,'contact_joint_radius'):self.contact_joint_radius=joint_value
+            self.contact_joint_radius+=(1-math.exp(-dt/.4))*(joint_value-self.contact_joint_radius)
         self.module_radii=radial
+        if self.bootstrap_front and hasattr(self,'contact_radius'):
+            acquired=(radial[:self.initial_front]<self.contact_radius+15.)&(axial[:self.initial_front]>self.radius/2)
+            self.initial_front_acquired+=(1-math.exp(-dt/.6))*(acquired-self.initial_front_acquired)
         coordination={}
         if self.coordinate_acquisition:
             # Slow BOTH phase clocks when measured recruitment falls behind
@@ -303,8 +317,21 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
         q,info=super().compute(geometry,measured,phase,dt,contact_window,migrate)
         return q,dict(**info,**coordination)
 
+    def formation_radius(self,distance):
+        if self.bootstrap_front and hasattr(self,'contact_joint_radius'):
+            return self.contact_joint_radius
+        return super().formation_radius(distance)
+
     def rolling_observation(self,geometry,measured,observed):
         rolling,info=super().rolling_observation(geometry,measured,observed)
+        if self.bootstrap_front:
+            gain=info['formation_gain'].copy()
+            gain[:self.initial_front]=float(smoothstep(self.elapsed/1.6))*(
+                self.formation.recovery*(1-self.initial_front_acquired)+.1*self.initial_front_acquired)
+            change=gain[:,None]*(info['formation_nominal']-observed)
+            rolling=observed+change
+            info.update(formation_gain=gain,formation_change=change,
+                initial_front_acquired=self.initial_front_acquired.copy())
         if not hasattr(self,'contact_radius'):return rolling,info
         points=np.asarray(geometry['points_mm'])
         bone=SpatialBishopBackbone(points,self.links)
@@ -318,7 +345,10 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
             derivative=-gap[j]/self.link**2*normal[j]
             field[j+1]=derivative@(frame[:,1:]@rotation)
         gain=self.formation.recovery*self.formation_weights
-        gain[:self.initial_front]=0.
+        # A natural drape may have only a single target contact. Membership in
+        # the initial front is not evidence that those links are already close
+        # to the pipe; apply the same radial feedback during their acquisition.
+        gain[:self.initial_front]=self.formation.recovery*float(smoothstep(self.elapsed/1.6)) if self.acquire_initial_front or self.bootstrap_front else 0.
         change=gain[:,None]*integrated_field(bone,field)
         info.update(contact_radius_mm=self.contact_radius,incoming_radial_gap_mm=gap,
                     radial_acquisition_change=change)
@@ -328,7 +358,8 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
         config=super().configuration()
         config['support_transfer'].update(acquisition_curvature='positive radial gap / link_length^2',
             radial_reference='median radius of actual target-contact modules beyond the junction',
-            coordinate_acquisition=self.coordinate_acquisition)
+            coordinate_acquisition=self.coordinate_acquisition,acquire_initial_front=self.acquire_initial_front,
+            bootstrap_front=self.bootstrap_front)
         return config
 
 

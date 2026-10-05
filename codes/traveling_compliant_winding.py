@@ -143,6 +143,9 @@ class TravelingCompliantWinding(IncrementalThreeSegmentController):
                         angle_limited=int(np.count_nonzero(abs(q-limited)>1e-9)))
         return q,info
 
+    def formation_radius(self, distance):
+        return float(np.median(distance[:self.initial_front]))
+
     def rolling_observation(self, geometry, measured, observed):
         points = np.asarray(geometry['points_mm'])
         bone = SpatialBishopBackbone(points, self.links)
@@ -152,7 +155,7 @@ class TravelingCompliantWinding(IncrementalThreeSegmentController):
         distance = np.linalg.norm(radial, axis=1)
         # Wrapped-front feedback updates the nominal radius. Incoming connector
         # distances must not enlarge the whole front's cross section.
-        radius = float(np.median(distance[:self.initial_front]))
+        radius = self.formation_radius(distance)
         radius_dt=getattr(self,'current_dt',.2)
         radius_gain=.15 if radius_dt==.2 else 1-math.exp(math.log(.85)*radius_dt/.2)
         self.radius_reference += radius_gain*(radius-self.radius_reference)

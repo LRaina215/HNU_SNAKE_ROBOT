@@ -1,0 +1,65 @@
+{
+  "rows": [
+    {
+      "run": "feedback_takeover/horizontal_response_resume_intent",
+      "first_sustained_source_loss_seconds": 38.2799999999591,
+      "front": 12,
+      "rear": 15,
+      "prefix": 9,
+      "wrap": 0.9366369296739457,
+      "grip": 0.8732738593478915,
+      "actual_target_band": 10,
+      "target_contact_modules": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        8,
+        11
+      ]
+    },
+    {
+      "run": "natural_takeover/horizontal_natural_v1/transfer_ensemble",
+      "first_sustained_source_loss_seconds": 41.25999999995429,
+      "front": 12,
+      "rear": 16,
+      "prefix": 5,
+      "wrap": 0.2785801990382508,
+      "grip": 0.0,
+      "actual_target_band": 3,
+      "target_contact_modules": [
+        8
+      ]
+    },
+    {
+      "run": "natural_takeover/horizontal_natural_v1/transfer_distributed_release",
+      "first_sustained_source_loss_seconds": 39.65999999995802,
+      "front": 12,
+      "rear": 16,
+      "prefix": 10,
+      "wrap": 0.8145694430289236,
+      "grip": 0.40719274303761954,
+      "actual_target_band": 6,
+      "target_contact_modules": [
+        6,
+        9
+      ]
+    },
+    {
+      "run": "natural_takeover/horizontal_natural_rate_matched/transfer_topology",
+      "first_sustained_source_loss_seconds": 42.350000000202215,
+      "front": 14,
+      "rear": 18,
+      "prefix": 12,
+      "wrap": 0.7259822828733331,
+      "grip": 0.0864110963319866,
+      "actual_target_band": 7,
+      "target_contact_modules": [
+        6,
+        10
+      ]
+    }
+  ],
+  "truth_is_diagnostic_only": true
+}
