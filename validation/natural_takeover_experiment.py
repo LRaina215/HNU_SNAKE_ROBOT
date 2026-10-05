@@ -16,7 +16,7 @@ from datetime import datetime
 from pathlib import Path
 import numpy as np
 import mujoco
-from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,AxisReplay,write_json
+from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,AxisReplay,write_json,pipe_frame
 from three_segment_experiment import ThreeTrial
 from mujoco_checkpoint import load_checkpoint,controller_state
 from pole_compliance import ComplianceController
@@ -67,10 +67,16 @@ def run(args):
     else:
         key=mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_KEY,'experiment_start')
         if key<0:raise ValueError('Initial experiment keyframe missing')
-        mujoco.mj_resetDataKeyframe(m,d,key);mujoco.mj_forward(m,d)
+        mujoco.mj_resetDataKeyframe(m,d,key)
+        # Test-fixture variation only, before mission time starts. The source
+        # direction is used to place the robot, never sent to the controller.
+        if args.approach_offset_mm:
+            _,source,_,_=pipe_frame(m)
+            d.qpos[:3]+=args.approach_offset_mm/1000*source
+        mujoco.mj_forward(m,d)
     params=prior.parameters;links=prior.expected_lengths
     controller=prior if args.resume_auto else ComplianceController(params,links,ignore_feedback_risk=True)
-    if not args.resume_auto:meta['settings'].update(phase=0.,completed=0,initialized=False)
+    if not args.resume_auto:meta['settings'].update(phase=args.initial_phase,completed=0,initialized=False)
     save_state(root/'initial',m,d,meta,controller,None)
     sim=replay=None;hypotheses=[];attempts=[];response_state=None
     result=dict(method='natural_single_axis_compliance',scene=args.scene,checkpoint=str(root/'initial'),outcome='time_limit',
@@ -84,7 +90,7 @@ def run(args):
         kinematics=LocalEncoders(sim.m)
         curve=HelixBackbone.from_radius_pitch(meta['settings']['radius'],meta['settings']['pitch'])
         sim.stage='initial_application'
-        initial_target=curve.joint_angles(20,links,0.)
+        initial_target=curve.joint_angles(20,links,sim.phase)
         if args.resume_auto:
             fresh=sim.fresh();controller.key=(fresh['run_id'],fresh['config_id'],-1)
         elif args.smooth_start:
@@ -205,7 +211,8 @@ def run(args):
             '--radial-acquisition','--local-contact-projection','--velocity-feedback','.02',
             '--velocity-scope','all','--delivery-torque-equivalent','--velocity-filter','.02',
             '--body-damping','20','--body-speed-limit','.2','--body-reference-module','-1',
-            '--seconds','200','--dynamic-observer','--cad-support','--preserve-probe-intent',
+            '--seconds',str(args.transfer_seconds),'--finish-mode',args.finish_mode,
+            '--dynamic-observer','--cad-support','--preserve-probe-intent',
             '--require-response-gate','--hypothesis','Frozen response takeover after automatic natural-drape candidate; no human split or pose intervention.']
         command+=['--response-state',str(response_state)]
         if args.junction_search:command.append('--junction-search')
@@ -224,12 +231,16 @@ if __name__=='__main__':
     p.add_argument('--scene',choices=['horizontal','vertical_down'],default='horizontal')
     p.add_argument('--seconds',type=float,default=40.)
     p.add_argument('--phase-step',type=float,default=.15)
+    p.add_argument('--initial-phase',type=float,default=0.,help='Initial nominal rolling phase, applied through the ordinary one-second EXE ramp.')
+    p.add_argument('--approach-offset-mm',type=float,default=0.,help='Fixture-only initial displacement along the source pipe; negative starts farther from the junction.')
     p.add_argument('--transfer',action='store_true')
     p.add_argument('--smooth',action='store_true')
     p.add_argument('--smooth-start',action='store_true')
     p.add_argument('--body-damping',type=float,default=20.,help='Encoder-relative speed feedback during natural approach; diagnostic zero leaves joint-velocity feedback active.')
     p.add_argument('--response-cache',type=Path,help='Reuse costly fits only after the corresponding newly executed probe measurements and commands match exactly.')
     p.add_argument('--acquire-verified-drape',action='store_true',help='Geometry/constraint evidence admits local compliant forming; distributed support still gates rear release.')
+    p.add_argument('--transfer-seconds',type=float,default=200.)
+    p.add_argument('--finish-mode',choices=['original','continuous','supported'],default='original')
     p.add_argument('--dt',type=float,default=.2)
     p.add_argument('--junction-search',action='store_true')
     p.add_argument('--network-calibration',action='store_true')

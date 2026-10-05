@@ -106,5 +106,15 @@
     "archive": "horizontal_natural_local_acquisition_transfer.zip",
     "MiB": 57.89552021026611,
     "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_local_acquisition_transfer_supported_finish.zip",
+    "MiB": 38.03232669830322,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_local_acquisition_transfer_extended.zip",
+    "MiB": 67.60002517700195,
+    "complete_trace": true
   }
 ]

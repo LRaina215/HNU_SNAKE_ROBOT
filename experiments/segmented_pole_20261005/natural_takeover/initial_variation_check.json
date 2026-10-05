@@ -1,0 +1,100 @@
+{
+  "rows": [
+    {
+      "run": "vertical_down_nominal",
+      "phase": 0.0,
+      "source_offset_mm": 0.0,
+      "only_fixture_translation_applied": true,
+      "unchanged_physical_fields": {
+        "actuator_gainprm": true,
+        "actuator_forcerange": true,
+        "dof_damping": true,
+        "dof_armature": true,
+        "body_mass": true,
+        "geom_friction": true
+      },
+      "gravity": [
+        0.0,
+        0.0,
+        -9.81
+      ]
+    },
+    {
+      "run": "horizontal_phase_plus",
+      "phase": 0.3,
+      "source_offset_mm": 0.0,
+      "only_fixture_translation_applied": true,
+      "unchanged_physical_fields": {
+        "actuator_gainprm": true,
+        "actuator_forcerange": true,
+        "dof_damping": true,
+        "dof_armature": true,
+        "body_mass": true,
+        "geom_friction": true
+      },
+      "gravity": [
+        0.0,
+        0.0,
+        -9.81
+      ]
+    },
+    {
+      "run": "horizontal_farther",
+      "phase": 0.0,
+      "source_offset_mm": -32.25,
+      "only_fixture_translation_applied": true,
+      "unchanged_physical_fields": {
+        "actuator_gainprm": true,
+        "actuator_forcerange": true,
+        "dof_damping": true,
+        "dof_armature": true,
+        "body_mass": true,
+        "geom_friction": true
+      },
+      "gravity": [
+        0.0,
+        0.0,
+        -9.81
+      ]
+    },
+    {
+      "run": "vertical_down_phase_plus",
+      "phase": 0.3,
+      "source_offset_mm": 0.0,
+      "only_fixture_translation_applied": true,
+      "unchanged_physical_fields": {
+        "actuator_gainprm": true,
+        "actuator_forcerange": true,
+        "dof_damping": true,
+        "dof_armature": true,
+        "body_mass": true,
+        "geom_friction": true
+      },
+      "gravity": [
+        0.0,
+        0.0,
+        -9.81
+      ]
+    },
+    {
+      "run": "vertical_down_farther",
+      "phase": 0.0,
+      "source_offset_mm": -32.25,
+      "only_fixture_translation_applied": true,
+      "unchanged_physical_fields": {
+        "actuator_gainprm": true,
+        "actuator_forcerange": true,
+        "dof_damping": true,
+        "dof_armature": true,
+        "body_mass": true,
+        "geom_friction": true
+      },
+      "gravity": [
+        0.0,
+        0.0,
+        -9.81
+      ]
+    }
+  ],
+  "no_hash_checks": true
+}

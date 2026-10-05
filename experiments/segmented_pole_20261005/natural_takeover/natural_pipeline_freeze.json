@@ -1,0 +1,71 @@
+{
+  "status": "Horizontal complete mission passed all declared gates; these rules were frozen before vertical and varied-initial-condition runs.",
+  "control": {
+    "approach_phase_step_rad": 0.15,
+    "approach_step_seconds": 0.8,
+    "smooth_start_seconds": 1.0,
+    "delivery_period_seconds": 0.02,
+    "acquisition": "shape persistence plus held-out dynamics prediction and target constraint evidence; rear release still requires distributed support",
+    "formation": "bootstrap current contacting-link radius; same phase/recruitment/compliance as horizontal development",
+    "finish_mode": "supported",
+    "finish_rule": "All joints formed and rear window exhausted; internal modules 2..18 on inferred target, internal source contacts absent over 0.4s, >=1.5 wraps and >=180deg distributed target contact span, persistent for 0.6s. Smooth 2s transition to whole-body A-D; current torsion sign at ends.",
+    "controller_inputs": "encoder angles, own commands, history; exact nominal dynamics, right-angle/comparable-radius and gravity-orientation priors; no true axes/contact labels/floating pose"
+  },
+  "trials": [
+    {
+      "name": "horizontal_nominal",
+      "scene": "horizontal",
+      "initial_phase": 0.0,
+      "approach_offset_mm": 0.0
+    },
+    {
+      "name": "horizontal_phase_plus",
+      "scene": "horizontal",
+      "initial_phase": 0.3,
+      "approach_offset_mm": 0.0
+    },
+    {
+      "name": "horizontal_farther",
+      "scene": "horizontal",
+      "initial_phase": 0.0,
+      "approach_offset_mm": -32.25
+    },
+    {
+      "name": "vertical_down_nominal",
+      "scene": "vertical_down",
+      "initial_phase": 0.0,
+      "approach_offset_mm": 0.0
+    },
+    {
+      "name": "vertical_down_phase_plus",
+      "scene": "vertical_down",
+      "initial_phase": 0.3,
+      "approach_offset_mm": 0.0
+    },
+    {
+      "name": "vertical_down_farther",
+      "scene": "vertical_down",
+      "initial_phase": 0.0,
+      "approach_offset_mm": -32.25
+    }
+  ],
+  "horizons": {
+    "approach_seconds": 200.0,
+    "transfer_seconds": 260.0
+  },
+  "unchanged_acceptance": {
+    "module_speed_m_s": 0.5,
+    "joint_speed_deg_s": 90.0,
+    "error_deg": 15.0,
+    "saturation": 0.297,
+    "whole_mission_initial_exclusion_seconds": 1.0,
+    "complete": "existing traveling_winding_audit physical all-body crossing plus one rolling cycle and one-link advance"
+  },
+  "limitations": [
+    "Nominal-model simulation, not hardware or arbitrary pipe network qualification.",
+    "Calibration pauses simulation clock; real-time compute not established.",
+    "A successful known initial state is insufficient; all listed cases must be reported, including failures.",
+    "No tuning per validation case; if revised, freeze the revision and retain original failures."
+  ],
+  "development_evidence": "supported_finish_comparison.json"
+}
