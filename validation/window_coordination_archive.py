@@ -21,18 +21,36 @@ def delivery(folder):
     plan=read(folder/'plan.json')['arguments']
     controls=read(folder/'controls.json')
     commands=read(folder/'commands.json')
+    total_commands=len(commands);probe_commands=0
     assessment=read(folder/'assessment.json')
     assert assessment['initial_pose_exact'] and assessment['EXE_delivery_checked']
     count=round(plan['dt']/plan['delivery_period'])
-    assert len(commands)==len(controls)*count
     with np.load(folder/'trace.npz') as z:previous=z['ctrl'][0].copy()
+    if plan.get('dynamic_observer',False):
+        probe=read(folder/'response_probe.json');probe_plan=read(folder/'response_probe_plan.json')
+        probe_commands=probe_plan['commands'];assert len(probe)==probe_commands+1
+        _,probe_trace,probe_model,_,_=context(folder)
+        probe_times=probe_trace['time'];probe_angles=probe_trace['qpos'][:,probe_model.jnt_qposadr[probe_model.actuator_trnid[:,0]]]
+        probe_bounds=probe_model.jnt_range[probe_model.actuator_trnid[:,0]]
+        for i,record in enumerate(probe[:-1]):
+            t=record['time'];pulse=np.sin(2*np.pi*np.arange(1,4)*(t-.2)/.8) if .2<=t<=1. else np.zeros(3)
+            expected=np.clip(np.asarray(probe_plan['reference'])+pulse@np.asarray(probe_plan['patterns']),probe_bounds[:,0]+.01,probe_bounds[:,1]-.01)
+            assert np.allclose(record['command'],expected,atol=1e-12,rtol=0)
+            assert np.allclose(commands[i]['target'],expected,atol=1e-12,rtol=0)
+            assert abs(commands[i]['time']-record['execution_time'])<1e-8
+            sample=int(np.argmin(abs(probe_times-record['execution_time'])))
+            assert np.allclose(record['q'],probe_angles[sample],atol=1e-8,rtol=0)
+            assert abs(commands[i]['phase']-probe_plan['phase'])<1e-12
+        previous=np.asarray(commands[probe_commands-1]['target']);commands=commands[probe_commands:]
+    assert len(commands)==len(controls)*count
     if plan.get('velocity_feedback',0):
         _,trace,model,_,_=context(folder)
         joint_ids=model.actuator_trnid[:,0]
         qadr=model.jnt_qposadr[joint_ids]
         bounds=model.jnt_range[joint_ids]
         trace_time=trace['time'];trace_angles=trace['qpos'][:,qadr]
-        previous_encoder=trace_angles[0].copy()
+        first=int(np.argmin(abs(trace_time-commands[0]['time']))) if probe_commands else 0
+        previous_encoder=trace_angles[first].copy()
         filtered_velocity=np.zeros_like(previous_encoder)
         if plan.get('body_damping',0):
             from encoder_shape_kinematics import EncoderShapeKinematics
@@ -117,7 +135,7 @@ def delivery(folder):
         largest=max(largest,float(np.degrees(abs(np.diff(np.vstack([previous,actual]),axis=0))).max()))
         previous=actual[-1]
     assert largest<=90*plan['delivery_period']+1e-8
-    return dict(command_count=len(commands),interpolation_matches=not bool(plan.get('velocity_feedback',0)),
+    return dict(command_count=total_commands,response_probe_commands=probe_commands,response_probe_checked=bool(probe_commands),interpolation_matches=not bool(plan.get('velocity_feedback',0)),
         velocity_feedback_checked=bool(plan.get('velocity_feedback',0)),
         maximum_outer_reference_increment_deg=largest_outer,
         maximum_command_increment_deg=largest,initial_pose_and_EXE_delivery_checked=True)

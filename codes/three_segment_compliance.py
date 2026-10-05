@@ -1,9 +1,10 @@
-"""Known-axis three-region prototype, mm/rad/seconds; no MuJoCo dependency.
+"""Three-region motion core, mm/rad/seconds; no MuJoCo dependency.
 
 Front/rear use the existing A-D reconstruction and analytic Yamada integral.
 Middle joints follow measured angles through a slow reference update. This is
 position-feedback yielding, not zero torque or a change of actuator stiffness.
-Pipe positions/contact flags are supplied by the simulation experiment only.
+Pipe geometry/support flags are caller inputs. Validation callers may supply
+known geometry or inferred geometry; this module does not obtain simulator truth.
 """
 from dataclasses import dataclass, asdict
 import copy
@@ -99,7 +100,7 @@ class ThreeSegmentController:
         points = np.asarray(geometry['points_mm'])
         self.initial_joints = points[1:-1].copy()
         ds, dt, ps, pt = self.distances(self.initial_joints)
-        # One ordered split minimizing true-axis distances, rather than trying
+        # One ordered split minimizing supplied-axis distances, rather than trying
         # to infer obscured joint IDs from a screenshot. The middle extends to
         # two link lengths before the intersection along the original pipe.
         cuts = range(2, self.n-options.minimum_rear_joints-1)

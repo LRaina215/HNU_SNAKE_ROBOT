@@ -73,7 +73,34 @@ def run(args):
             extra['bound_held_phase']=args.bound_held_phase
         corner,source,target,radius=sim.corner,sim.source,sim.target,sim.radius
         tracker=None;tracking_clock=None
-        if args.encoder_tracking:
+        if args.dynamic_observer:
+            from feedback_takeover_live_tracking import EncoderPipeTracker
+            from feedback_takeover_collect_response import collect_response
+            from feedback_takeover_response_calibration import calibrate
+            from feedback_takeover_dynamic_tracker import DynamicPipeTracker
+            for name in ('feedback_takeover_live_tracking.py','feedback_takeover_encoder_tracking.py','feedback_takeover_cad_refinement.py',
+                    'feedback_takeover_collect_response.py','feedback_takeover_response_calibration.py',
+                    'feedback_takeover_dynamic_tracker.py','feedback_takeover_dynamic_filter.py','feedback_takeover_dynamic_observer_probe.py'):
+                shutil.copy2(ROOT/'validation'/name,folder/'sources/validation'/name)
+            measured=np.radians(g['angles_deg'])*sim.bridge.signs
+            load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
+            initial_tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'])
+            records=collect_response(sim,initial_tracker,folder)
+            print(args.name,'calibrating collected relay responses; simulation waits during computation',flush=True)
+            fit=calibrate(sim.m,sim.meta['source_model'],initial_tracker.estimate,records)
+            write_json(folder/'response_calibration.json',fit)
+            if fit['held_out_rms_deg']>.1:
+                raise RuntimeError('Response calibration rejected: held-out joint RMS exceeds 0.1 deg')
+            tracker=DynamicPipeTracker(sim.m,sim.meta['source_model'],fit,records)
+            g=dict(sim.fresh(),points_mm=tracker.previous.copy());tracking_clock=sim.d.time
+            estimate=tracker.estimate
+            corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
+            write_json(folder/'initial_unrefined_geometry.json',initial_tracker.estimate)
+            write_json(folder/'initial_geometry_estimate.json',estimate)
+            result['geometry_input']='On-run relay probe, joint-response calibration and private dynamics/encoder filter. True axes, contacts, root pose and root velocity excluded.'
+            result['response_probe_seconds']=1.2
+            result['calibration_computation_pauses_simulated_time']=True
+        elif args.encoder_tracking:
             from feedback_takeover_live_tracking import EncoderPipeTracker
             for name in ('feedback_takeover_live_tracking.py','feedback_takeover_encoder_tracking.py','feedback_takeover_cad_refinement.py'):
                 shutil.copy2(ROOT/'validation'/name,folder/'sources/validation'/name)
@@ -118,8 +145,9 @@ def run(args):
             stop='floor or 0.2 s no pipe support; full crossing and continued rolling',
             process_gate='after 1 s: joint peak <=90 deg/s, module peak <=500 mm/s, error<=15 deg, saturation<=0.297',
             limitations=dict(manual_drape_checkpoint=True,physical_pose_input=tracker is None,
-                known_axes=not (args.encoder_initial_axes or args.encoder_tracking),
-                contact_labels=not args.cad_support,right_angle_comparable_radius_prior=bool(args.encoder_initial_axes or args.encoder_tracking),
+                known_axes=not (args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
+                contact_labels=not args.cad_support,right_angle_comparable_radius_prior=bool(args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
+                horizontal_vertical_gravity_prior=args.dynamic_observer,
                 natural_trigger_validated=False,hardware_validated=False)))
         sim.partition[:]=[controller.front,controller.rear];sim.records[0]['partition']=sim.partition.copy()
         phase0=sim.phase;lost=0;result['outcome']='time_limit'
@@ -136,7 +164,8 @@ def run(args):
                 shape_kinematics.jacobians if shape_kinematics is not None else None,
                 args.body_damping,args.body_speed_limit,sim.m.actuator_gainprm[:,0])
         support_observer=None;support_history=[];support_info={};support_clock=None
-        if args.cad_support:
+        if args.dynamic_observer:support_observer=tracker
+        elif args.cad_support:
             from encoder_pipe_proximity import EncoderPipeProximity
             support_observer=EncoderPipeProximity(sim.m)
         def control_feedback(feedback,refine_now):
@@ -146,7 +175,8 @@ def run(args):
             if tracking_clock!=sim.d.time:
                 load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-angles),
                     sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
-                points=tracker.update(angles,load,refine_now,bool(np.any(controller.weights[:,2]>1e-12)))
+                if args.dynamic_observer:points=tracker.update(angles,sim.d.ctrl.copy(),sim.d.time-tracking_clock)
+                else:points=tracker.update(angles,load,refine_now,bool(np.any(controller.weights[:,2]>1e-12)))
                 tracking_clock=sim.d.time
             else:points=tracker.previous.copy()
             estimate=tracker.estimate
@@ -161,9 +191,12 @@ def run(args):
             # error. No qfrc/contact query, and not an independent force sensor.
             load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-angles),
                 sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
-            proxy,support_info=support_observer.observe(angles,np.asarray(feedback['points_mm']),
-                controller.corner,controller.source,controller.target,controller.radius,load,
-                tracker.target_only if tracker is not None else False)
+            if args.dynamic_observer:
+                proxy=tracker.support.copy();support_info=dict(model_support_N=proxy,not_measured_contact=True)
+            else:
+                proxy,support_info=support_observer.observe(angles,np.asarray(feedback['points_mm']),
+                    controller.corner,controller.source,controller.target,controller.radius,load,
+                    tracker.target_only if tracker is not None else False)
             # 50Hz observations held over the existing 100Hz Boolean-history
             # interface. These are hypotheses, not measured normal-force samples.
             support_history.extend([proxy.copy() for _ in range(round(args.delivery_period/.01))])
@@ -188,7 +221,7 @@ def run(args):
             if support_observer is not None:info['support_observer']=support_info
             if tracker is not None:info['geometry_observer']=tracker.info
             sim.phase=controller.phase;sim.stage='window_coordination';sim.partition[:]=[controller.front,controller.rear]
-            info.update(target=q,measured=measured,phase=sim.phase,step=k+1,time=(k+1)*args.dt)
+            info.update(target=q,measured=measured,phase=sim.phase,step=k+1,time=(k+1)*args.dt+result.get('response_probe_seconds',0.))
             sim.controls.append(info);sim.geometry_log.append(g)
             first=len(sim.records);origin=sim.d.ctrl.copy();count=round(args.dt/args.delivery_period)
             info['delivery_feedback']=[]
@@ -250,6 +283,8 @@ if __name__=='__main__':
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
     p.add_argument('--encoder-tracking',action='store_true',
         help='Use only encoder-frame geometry and causal CAD/load tracking, excluding floating pose and true pipe geometry.')
+    p.add_argument('--dynamic-observer',action='store_true',
+        help='Collect a relay probe, calibrate virtual pipes from joint responses, then infer local geometry/support through private dynamics.')
     p.add_argument('--single-target-after-release',action='store_true',
         help='Live estimator: stop constraining the unobserved old junction once the rear controller is gone.')
     p.add_argument('--whole-coil-registration',action='store_true',
@@ -314,6 +349,8 @@ if __name__=='__main__':
         p.error('observable-support requires target-frame-acquisition and radial-acquisition')
     if args.encoder_tracking and not (args.cad_support and args.target_frame_acquisition and args.radial_acquisition):
         p.error('encoder-tracking requires cad-support, target-frame-acquisition and radial-acquisition')
+    if args.dynamic_observer and (args.encoder_tracking or not (args.cad_support and args.radial_acquisition)):
+        p.error('dynamic-observer requires cad-support and radial-acquisition; excludes encoder-tracking')
     if args.delivery_period<=0 or not np.isclose(args.dt/args.delivery_period,round(args.dt/args.delivery_period)):
         p.error('delivery-period must divide dt')
     run(args)

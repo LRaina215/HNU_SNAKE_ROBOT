@@ -16,7 +16,7 @@ from three_segment_review import context
 from encoder_pipe_proximity import EncoderPipeProximity
 
 
-def virtual_model(robot,estimate,gravity,robot_xml):
+def virtual_model(robot,estimate,gravity,robot_xml,extension=None):
     # Recompile the virtual environment so its static broad-phase tree is
     # rebuilt. Editing only compiled geom poses/sizes leaves stale BVH bounds
     # and may silently remove contacts from this prediction model.
@@ -26,7 +26,14 @@ def virtual_model(robot,estimate,gravity,robot_xml):
         if body.name not in names:
             for geom in body.geoms:geom.contype=0;geom.conaffinity=0
     c=np.asarray(estimate['corner_mm'])/1000
-    for slot,axis,sign in zip(query.pipe_slots,[estimate['source'],estimate['target']],[-1,1]):
+    branches=list(zip(query.pipe_slots,[estimate['source'],estimate['target']],[-1,1]))
+    if extension is not None:
+        # Additional T arm is a hypothesis, never read from the scene geometry.
+        extra=next(i for i in range(robot.ngeom) if i not in query.pipe_slots
+            and robot.geom_type[i]==mujoco.mjtGeom.mjGEOM_CYLINDER and robot.body_jntnum[robot.geom_bodyid[i]]==0
+            and robot.body_parentid[robot.geom_bodyid[i]]==0)
+        branches.append((extra,estimate[extension],1 if extension=='source' else -1))
+    for slot,axis,sign in branches:
         body=int(robot.geom_bodyid[slot])
         if robot.body_jntnum[body] or robot.body_parentid[body]!=0:raise ValueError('Expected a static world-child storage body')
         parent=spec.find_body(robot.body(body).name);parent.pos[:]=0.;parent.quat[:]=[1.,0.,0.,0.]
@@ -59,7 +66,7 @@ def predict(model,records,initial_velocity=None,initial_joint_velocity=None):
         if i+1<len(records):
             for _ in range(round(.02/model.opt.timestep)):mujoco.mj_step(model,d)
     error=np.asarray(predicted)-np.array([r['q'] for r in records])
-    return dict(predicted=predicted,predicted_contact_counts=contacts,rms_deg=float(np.degrees(np.sqrt(np.mean(error**2)))),
+    return dict(predicted=predicted,predicted_contact_counts=contacts,final_qpos=d.qpos.copy(),final_qvel=d.qvel.copy(),rms_deg=float(np.degrees(np.sqrt(np.mean(error**2)))),
         maximum_error_deg=float(np.degrees(abs(error).max())))
 
 
