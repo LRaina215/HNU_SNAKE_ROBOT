@@ -3,7 +3,7 @@ import numpy as np
 
 # 使用 Ctrl 修饰，避开 MuJoCo 的 U/H/J 等内置显示快捷键。
 HOTKEYS = {'U': 'apply', 'J': 'step', 'H': 'back', 'N': 'hold',
-           'R': 'reset', 'G': 'run', 'E': 'compliance', 'K': 'status',
+           'R': 'reset', 'G': 'run', 'E': 'compliance', 'L': 'localpitch', 'K': 'status',
            '-': 'delta-', '=': 'delta+'}
 HELP = """机器人调试（先点击 MuJoCo 窗口；Ctrl+字母，不用 F 键）：
   Ctrl+U 应用 R/P    Ctrl+J 相位+一步       Ctrl+H 相位-一步
@@ -11,8 +11,9 @@ HELP = """机器人调试（先点击 MuJoCo 窗口；Ctrl+字母，不用 F 键
   Ctrl+N 保持目标再走一段物理时间（相位不变）
   空格 立即暂停     Ctrl+G 连续运行/暂停     Ctrl+R 重置实验并暂停
   Ctrl+E 顺应性开/关 Ctrl+K 查看状态         Ctrl+-/= 减半/加倍相位步长
+  Ctrl+L 局部螺距开/关（默认关，先完成一次顺应性滚动；随后续滚动逐步切换）
   Ctrl+上下 修改半径；Ctrl+左右 修改螺距；修改后 Ctrl+U 应用
-控制台：apply / step / back / hold / pause / run / reset / compliance / status / help / quit
+控制台：apply / step / back / hold / pause / run / reset / compliance / localpitch / status / help / quit
 参数：r=130 p=180 / delta=0.05 / gravity=0（几何调试）或 gravity=1（重力实验）
 """
 

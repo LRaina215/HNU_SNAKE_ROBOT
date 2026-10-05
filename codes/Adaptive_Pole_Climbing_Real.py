@@ -50,9 +50,10 @@ HELP = f"""实机调试（全局热键，任何窗口都会响应；Ctrl+字母�
   Ctrl+U 确认当前姿态，进入单步滚动（默认开顺应性）
   滚动阶段：Ctrl+J 相位+一步   Ctrl+H 相位-一步   Ctrl+-/= 相位步长减半/加倍
   Ctrl+N 重发当前目标   Ctrl+E 顺应性开/关   Ctrl+K 状态   Ctrl+R 回到缠绕阶段（不动机器人）
+  Ctrl+L 局部螺距开/关（默认关，先完成一次顺应性滚动；随后续滚动逐步切换）
   Ctrl+上下 半径±{RADIUS_STEP_MM:g}mm；Ctrl+左右 螺距±10mm：已有缠绕时直接应用，保持进度/相位
   顺应性滚动时改 R/P 请先 Ctrl+E 关闭顺应性；空格 暂停/中断等待
-控制台：step / back / apply / hold / compliance / status / reset / pause / help / quit
+控制台：step / back / apply / hold / compliance / localpitch / status / reset / pause / help / quit
 参数：r=105 p=220 / delta=0.05 / wind=0.25
 扭矩使能与紧急释放只在 EXE 界面操作。
 """
@@ -156,6 +157,8 @@ def executed(state, command_id, execution):
 
 def main(execution="live", hotkeys=True, port=PORT):
     from pole_compliance import ComplianceController, ComplianceParameters
+    from local_pitch_runtime import (InteractivePitchController, toggle_local_pitch, stop_local_pitch,
+                                     resume_compliance, local_pitch_status, prepare_pitch_step)
     from adaptive_debug import global_key_listener, circle_radius_mm
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "visualizer"))
     from python_client import GeometryExchange
@@ -263,6 +266,7 @@ def main(execution="live", hotkeys=True, port=PORT):
         print(f"STATUS 阶段={'缠绕' if stage == 'wind' else '滚动'} 已缠绕={progress:g}/{count}节 "
               f"R={radius:g} P={pitch:g} phase={phase:.4f} delta={phase_step:g} wind={wind_step:g} "
               f"顺应性={'开' if compliance_enabled else '关'}（{'管内' if COMPLIANCE_INSIDE else '管外'}） "
+              f"局部螺距={local_pitch_status(compliance)} "
               f"反馈={'有效' if usable else '未就绪/无效'} "
               f"在线={online} "
               f"最大跟踪误差={text(error)}deg", flush=True)
@@ -307,11 +311,17 @@ def main(execution="live", hotkeys=True, port=PORT):
                     print("回到缠绕阶段：缠绕进度清零，下次 Ctrl+J 以当前实测姿态为起点；机器人不动", flush=True)
                 elif command == "compliance":
                     controller = None
-                    if stage == "roll" and not compliance_enabled:
+                    if isinstance(compliance, InteractivePitchController):
+                        controller = stop_local_pitch(compliance) if compliance_enabled else resume_compliance(compliance)
+                    elif stage == "roll" and not compliance_enabled:
                         controller = ComplianceController(ComplianceParameters(
                             COMPLIANCE_GAIN, math.atan2(pitch, 2 * math.pi * radius), COMPLIANCE_INSIDE),
                             feedback_links(fresh_feedback(False)))
                     compliance_enabled, compliance = not compliance_enabled, controller
+                    show_status()
+                elif command == "localpitch":
+                    compliance = toggle_local_pitch(compliance, compliance_enabled, targets, phase)
+                    print("局部螺距开关已更新；后续 Ctrl+J/H 逐步执行，开关本身不下发目标", flush=True)
                     show_status()
                 elif command in ("delta-", "delta+"):
                     if stage == "wind":
@@ -341,8 +351,8 @@ def main(execution="live", hotkeys=True, port=PORT):
                                 raise ValueError("参数：r=半径mm p=螺距mm delta=相位步长rad wind=缠绕步长(节)")
                     HelixBackbone.from_radius_pitch(new_r, new_p)
                     geometry_changed = new_r != radius or new_p != pitch
-                    if geometry_changed and stage == "roll" and compliance_enabled:
-                        raise ValueError("顺应性滚动中不能直接应用标准螺旋 R/P；先 Ctrl+E 关闭顺应性，再调整。原参数未改变")
+                    if geometry_changed and stage == "roll" and (compliance_enabled or isinstance(compliance, InteractivePitchController)):
+                        raise ValueError("顺应性滚动中不能直接应用标准螺旋 R/P（局部螺距恢复中也不允许）；先 Ctrl+E 关闭顺应性并单步完成过渡，再调整。原参数未改变")
                     if geometry_changed and (progress > 0 or stage == "roll"):
                         feedback = fresh_feedback(False)
                         helix = HelixBackbone.from_radius_pitch(new_r, new_p).joint_angles(
@@ -368,6 +378,8 @@ def main(execution="live", hotkeys=True, port=PORT):
                     if execute(winding_targets(start, helix, new_progress), feedback, f"缠绕 {new_progress:g}/{count} 节"):
                         progress = new_progress
                 elif command == "apply":
+                    if isinstance(compliance, InteractivePitchController):
+                        raise ValueError("局部螺距仍在运行或恢复中；请先关闭并单步完成过渡，再 Ctrl+U")
                     feedback = fresh_feedback(False)
                     count = feedback["config"]["joint_count"]
                     if targets is None:
@@ -382,10 +394,15 @@ def main(execution="live", hotkeys=True, port=PORT):
                           f"顺应性={'开' if compliance_enabled else '关'}。本操作不下发目标", flush=True)
                 elif command in ("step", "back"):
                     next_phase = phase + (phase_step if command == "step" else -phase_step)
+                    proposed = compliance
                     if compliance is not None:
                         feedback = fresh_feedback(True)
                         # 首次计算时把相位对齐到最近下发的目标，避免接管瞬间跳变。
-                        candidate = compliance.compute(feedback, next_phase, targets, reference_phase=phase)
+                        standard = (HelixBackbone.from_radius_pitch(radius, pitch).joint_angles(
+                            feedback["config"]["joint_count"], feedback_links(feedback), next_phase)
+                            if isinstance(compliance, InteractivePitchController) else None)
+                        candidate, proposed = prepare_pitch_step(compliance, feedback, next_phase, targets,
+                                                                  phase, STEP_SETTLE_S, standard)
                         if candidate is None:
                             raise ValueError(compliance.status + "；本步未执行")
                         label = "顺应性"
@@ -396,6 +413,8 @@ def main(execution="live", hotkeys=True, port=PORT):
                         label = "标准螺旋"
                     if execute(candidate, feedback, f"{label} phase={next_phase:.4f}"):
                         phase = next_phase
+                        if isinstance(proposed, InteractivePitchController):
+                            compliance = proposed.settled()
                 elif command == "hold":
                     if targets is None:
                         raise ValueError("还没有下发过目标")

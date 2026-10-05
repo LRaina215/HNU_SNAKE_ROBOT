@@ -156,6 +156,8 @@ def main():
     import mujoco.viewer
     from mujoco_visualizer_bridge import VisualizerBridge
     from pole_compliance import ComplianceController, ComplianceParameters
+    from local_pitch_runtime import (InteractivePitchController, toggle_local_pitch, stop_local_pitch,
+                                     resume_compliance, local_pitch_status, prepare_pitch_step)
     from adaptive_debug import HELP, viewer_key_callback, measurements, circle_radius_mm, pipe_geometry, pipe_progress
 
 
@@ -295,6 +297,7 @@ def main():
         print(f"STATUS {'单步/暂停' if manual else '连续'} R={radius:g} P={pitch:g} "
               f"phase={phase:.4f} delta={phase_step:g} sim={d.time:.3f}s "
               f"顺应性={'开' if compliance_enabled else '关'} 反馈={feedback_state} "
+              f"局部螺距={local_pitch_status(compliance)} "
               f"关节平均高度={height:.3f}m 管道接触={contact_count} "
               f"最大跟踪误差={np.degrees(error):.2f}deg 重力={'开' if np.any(m.opt.gravity) else '关'}", flush=True)
 
@@ -422,12 +425,19 @@ def main():
                             show_status()
                         elif command == "compliance":
                             compliance_enabled = not compliance_enabled
-                            compliance = None
                             rebind_restored_controller = False
-                            if initialized and compliance_enabled and exchange is not None:
+                            if isinstance(compliance, InteractivePitchController):
+                                compliance = resume_compliance(compliance) if compliance_enabled else stop_local_pitch(compliance)
+                            elif initialized and compliance_enabled and exchange is not None:
                                 compliance = ComplianceController(ComplianceParameters(gain,
                                     math.atan2(active_shape[1], 2*math.pi*active_shape[0]), inside), links,
                                     ignore_feedback_risk=ignore_feedback_risk)
+                            else:
+                                compliance = None
+                            show_status()
+                        elif command == "localpitch":
+                            compliance = toggle_local_pitch(compliance, compliance_enabled, d.ctrl.copy(), phase)
+                            print("局部螺距开关已更新；随后续滚动逐步执行，开关本身不推进物理时间", flush=True)
                             show_status()
                         elif command in ("delta-", "delta+"):
                             phase_step = max(.01, phase_step/2) if command == "delta-" else min(.6, phase_step*2)
@@ -456,10 +466,14 @@ def main():
                                     else:
                                         raise ValueError("参数：r=半径mm p=螺距mm delta=步长rad gravity=0或1")
                             HelixBackbone.from_radius_pitch(new_r, new_p)
+                            if (new_r, new_p) != (radius, pitch) and isinstance(compliance, InteractivePitchController):
+                                raise ValueError("局部螺距仍在运行或恢复中；请先关闭并单步完成过渡，再修改 R/P")
                             radius, pitch = new_r, new_p
                             print(f"参数 R={radius:g}mm P={pitch:g}mm delta={phase_step:g}rad；"
                                   f"重力={'开' if np.any(m.opt.gravity) else '关'}。R/P 修改后 Ctrl+U 应用", flush=True)
                         elif command in ("apply", "step", "back", "hold"):
+                            if command == "apply" and isinstance(compliance, InteractivePitchController):
+                                raise ValueError("局部螺距仍在运行或恢复中；请先关闭并单步完成过渡，再 Ctrl+U")
                             if command != "apply" and (not initialized or (command != "hold" and active_shape != (radius, pitch))):
                                 raise ValueError("请先 Ctrl+U 应用当前 R/P，再单步滚动")
                             # 应用新 R/P 时沿用当前相位：清零会让已滚动的关节目标跳变上百度而脱管。
@@ -468,6 +482,7 @@ def main():
                             feedback = None
                             compliant = False
                             candidate = d.ctrl.copy() if command == "hold" else curve.joint_angles(joint_count, links, next_phase)
+                            proposed = compliance
                             if command in ("step", "back") and compliance is not None:
                                 feedback = exchange.latest_geometry()
                                 if feedback and feedback["sample_unix_ms"] <= feedback_after_ms:
@@ -477,7 +492,8 @@ def main():
                                     # rolling phase. Rebuild on fresh geometry using its saved offset.
                                     compliance.key = (feedback['run_id'], feedback['config_id'], -1)
                                     rebind_restored_controller = False
-                                adaptive_target = compliance.compute(feedback, next_phase, d.ctrl.copy(), reference_phase=phase)
+                                adaptive_target, proposed = prepare_pitch_step(compliance, feedback, next_phase,
+                                    d.ctrl.copy(), phase, joint_count * 10 * m.opt.timestep, candidate)
                                 if adaptive_target is not None:
                                     candidate = adaptive_target
                                     compliant = True
@@ -491,7 +507,8 @@ def main():
                             if np.any(candidate[limited] < limits[limited, 0]) or np.any(candidate[limited] > limits[limited, 1]):
                                 raise ValueError("目标角超出模型范围，请增大半径或调整螺距")
                             targets = candidate
-                            pending = dict(command=command, phase=next_phase, feedback=feedback, since=now)
+                            pending = dict(command=command, phase=next_phase, feedback=feedback, since=now,
+                                           proposed=proposed)
                             last_notice = None
                         elif command:
                             raise ValueError("未知命令；输入 help 查看操作")
@@ -520,6 +537,8 @@ def main():
                                 if not relay:
                                     d.ctrl[:] = targets
                                 phase = pending["phase"]
+                                if pending['command'] in ('step', 'back') and isinstance(pending.get('proposed'), InteractivePitchController):
+                                    compliance = pending['proposed'].settled()
                                 if pending["command"] == "apply":
                                     rebind_restored_controller = False
                                     initialized = True

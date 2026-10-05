@@ -34,6 +34,16 @@ def json_value(value):
 def controller_state(controller):
     if controller is None:
         return None
+    from local_pitch_runtime import InteractivePitchController
+    if isinstance(controller, InteractivePitchController):
+        fields = ('requested', 'standard_return', 'phase_offset', 'started', 'status', 'key',
+                  'ignore_feedback_risk', 'alpha_state', 'transition_basis', 'transition_elapsed',
+                  'standard_elapsed', 'ready', 'geometry', 'last_sample_ms')
+        values = {name: getattr(controller, name) for name in fields}
+        for name in ('radius_state', 'radius_age'):
+            values[name] = [float(x) if np.isfinite(x) else None for x in getattr(controller, name)]
+        return dict(kind='interactive_local_pitch',
+                    original=controller_state(controller._initial_controller), runtime=values)
     if type(controller).__name__ != 'ComplianceController':
         raise ValueError('当前保存功能仅支持原 Adaptive_Pole_Climbing_Mujoco 入口')
     bone = controller.backbone
@@ -55,6 +65,26 @@ def controller_state(controller):
 def restore_controller(state):
     if state is None:
         return None
+    if state.get('kind') == 'interactive_local_pitch':
+        from local_pitch_runtime import InteractivePitchController
+        from local_pitch_geometry import VariablePitchBackbone
+        from pole_compliance import build_backbone
+        controller = InteractivePitchController(restore_controller(state['original']))
+        for name, value in state['runtime'].items():
+            if name in ('alpha_state', 'transition_basis', 'radius_state', 'radius_age') and value is not None:
+                if name == 'radius_age':
+                    value = [np.inf if x is None else x for x in value]
+                value = np.asarray(value, dtype=float)
+            if name == 'key' and value is not None:
+                value = tuple(value)
+            setattr(controller, name, value)
+        if controller.geometry is not None:
+            alpha = controller.alpha_state
+            p = controller.parameters
+            controller.backbone = (build_backbone(controller.geometry, ComplianceParameters(p.gain, float(alpha[0]), p.inside))
+                if np.ptp(alpha) < 1e-14 else VariablePitchBackbone(controller.geometry, p, alpha,
+                                                                 np.r_[0., np.cumsum(controller.expected_lengths)]))
+        return controller
     parameters = dict(state['parameters'])
     if state['gain_is_tuple']:
         parameters['gain'] = tuple(parameters['gain'])
