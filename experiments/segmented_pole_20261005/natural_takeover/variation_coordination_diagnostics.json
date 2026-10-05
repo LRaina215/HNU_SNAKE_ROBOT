@@ -360,6 +360,186 @@
         "saturation": 0.23332608523760576
       },
       "mission_seconds": 253.93000000084842
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_contact_flow",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.5864580247134558,
+        "joint_peak_deg_s": 74.05245536772638,
+        "error_peak_deg": 3.2863508694677566,
+        "saturation": 0.2842723472028668
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "vertical_down_farther_material",
+      "transfer": "transfer_contact_flow",
+      "outcome": "full_crossing_validated",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.42376501890449664,
+        "joint_peak_deg_s": 64.82599741939009,
+        "error_peak_deg": 2.922828143427662,
+        "saturation": 0.2598370503867237
+      },
+      "mission_seconds": 267.33000000059036
+    },
+    {
+      "case": "horizontal_nominal_material",
+      "transfer": "transfer_predictive",
+      "outcome": "support_lost",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 4.027109185643331,
+        "joint_peak_deg_s": 77.97613262241654,
+        "error_peak_deg": 3.23535317804376,
+        "saturation": 0.2208639584525329
+      },
+      "mission_seconds": 228.20000000072557
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_predictive",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.3811907793120208,
+        "joint_peak_deg_s": 56.822867299406546,
+        "error_peak_deg": 2.5159230345799295,
+        "saturation": 0.22143568157902221
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_predictive_progress",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.4675788124731165,
+        "joint_peak_deg_s": 77.75057833564668,
+        "error_peak_deg": 2.850403909396097,
+        "saturation": 0.27524530019055204
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_coherent_flow",
+      "outcome": "support_lost",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 3.1073128127076672,
+        "joint_peak_deg_s": 302.98746955607675,
+        "error_peak_deg": 13.414471418295273,
+        "saturation": 0.1883556232718244
+      },
+      "mission_seconds": 178.20000000048682
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_rear_lead_flow",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": false
+      },
+      "metrics": {
+        "module_peak_m_s": 0.29522753900396675,
+        "joint_peak_deg_s": 62.81136377719513,
+        "error_peak_deg": 2.8215831936633857,
+        "saturation": 0.31886891726628935
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_support_supply_flow",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.4541330402273703,
+        "joint_peak_deg_s": 69.96076320228784,
+        "error_peak_deg": 2.6476616070408623,
+        "saturation": 0.2414265805864452
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_measured_origin",
+      "outcome": "support_lost",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 2.062045945238133,
+        "joint_peak_deg_s": 137.29765766655947,
+        "error_peak_deg": 4.642769631510583,
+        "saturation": 0.20881462196482653
+      },
+      "mission_seconds": 189.20000000053935
     }
   ]
 }

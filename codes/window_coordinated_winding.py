@@ -34,6 +34,8 @@ class WindowOptions:
     feedback_progress_guard: bool = False
     release_requires_grip: bool = False
     conserve_middle: bool = False
+    predictive_progress: bool = False
+    measured_material_origin: bool = False
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -142,7 +144,10 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         # initially draped links can still be outside the target tube, or slip
         # out later; those links cannot supply release credit merely by label.
         acquired_count=int(np.count_nonzero(status['actual_transfer'][:prefix]))
-        release_budget=self.initial_rear+max(0,acquired_count-self.initial_front)
+        if not hasattr(self,'initial_acquired_count'):
+            self.initial_acquired_count=acquired_count
+        origin=self.initial_acquired_count if self.window.measured_material_origin else self.initial_front
+        release_budget=self.initial_rear+max(0,acquired_count-origin)
         material_ready=not self.window.conserve_middle or self.handed_off or self.rear<release_budget
         # A verified target constraint can admit local shaping before it can
         # support body transfer. Keep rolling and preserve the rear boundary
@@ -151,7 +156,8 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         release=(self.progress>self.initial_front+.5 and status['target_contact'] and room and near
                  and (remaining or prefix>=12 or self.handed_off) and self.n-self.rear>reserve
                  and (not self.window.release_requires_grip or status['grip']>0. or self.handed_off)
-                 and (not self.window.feedback_progress_guard or self.progress<=prefix+self.window.maximum_lead+1e-9)
+                 and (not self.window.feedback_progress_guard or self.window.predictive_progress
+                      or self.progress<=prefix+self.window.maximum_lead+1e-9)
                  and material_ready
                  and self.rear_release_permitted())
         # The same supply factor gates phase advance and boundary release.
@@ -164,6 +170,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
                                     formation_progress=self.progress,release=bool(release),feed=self.feed))
         return dict(formation_progress=self.progress,release_allowed=bool(release),rear_reserve=reserve,
             measured_release_budget=release_budget,material_acquired_count=acquired_count,
+            material_acquisition_origin=origin,
             material_release_ready=bool(material_ready),
             handed_off=self.handed_off,original_pipe_clear=bool(source_clear),junction_cleared=bool(cleared))
 
@@ -209,7 +216,10 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             error=self.window.rear_phase_lead-(self.phase-self.rear_phase)
             rear_delta-=float(np.clip(error,-abs(demand),abs(demand)))
         progress_scale=1.
-        if self.window.feedback_progress_guard and not self.handed_off:
+        # A predictive coordinator may replace this static progress veto.
+        # Formation lead and physical-support/handoff conditions remain; do
+        # not silently cancel every candidate action after it was evaluated.
+        if self.window.feedback_progress_guard and not self.window.predictive_progress and not self.handed_off:
             # Previously acquired links can slip back after admission. The
             # formation clock is monotone, but measured support is not. Pause
             # both phase clocks when that lag exceeds the same allowed lead;

@@ -1,0 +1,15 @@
+{
+  "status": "development comparison declared before other initial states finish; not an acceptance result",
+  "baseline": "material revision 2 with adaptive full-interval observer",
+  "single_change": "initial front curvature scale 0.4 + 0.6 * causal measured acquisition weight; scale the radial closing term consistently",
+  "physical_changes": false,
+  "declared_cases": [
+    "horizontal_phase_plus_material",
+    "horizontal_nominal_material",
+    "vertical_down_phase_plus_material"
+  ],
+  "all_other_parameters_identical": true,
+  "whole_mission_gate_unchanged": true,
+  "prefix_reuse": "same automatically captured post-probe state; parent approach and probe included in complete review",
+  "next": "only if common rule passes these cases, test the remaining fixed initial states; keep every failure"
+}

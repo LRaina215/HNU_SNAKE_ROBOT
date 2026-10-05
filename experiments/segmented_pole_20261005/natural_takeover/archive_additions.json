@@ -298,5 +298,59 @@
     "files": 45,
     "MiB": 26.32758903503418,
     "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_contact_flow.zip",
+    "files": 59,
+    "MiB": 71.82344818115234,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_farther_material_transfer_contact_flow.zip",
+    "files": 59,
+    "MiB": 51.503103256225586,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_nominal_material_transfer_predictive.zip",
+    "files": 60,
+    "MiB": 38.67905902862549,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_predictive.zip",
+    "files": 60,
+    "MiB": 73.68754196166992,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_predictive_progress.zip",
+    "files": 60,
+    "MiB": 72.94944858551025,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_coherent_flow.zip",
+    "files": 59,
+    "MiB": 24.74343967437744,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_rear_lead_flow.zip",
+    "files": 59,
+    "MiB": 72.4880142211914,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_support_supply_flow.zip",
+    "files": 59,
+    "MiB": 73.05641460418701,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_measured_origin.zip",
+    "files": 59,
+    "MiB": 27.713722229003906,
+    "complete_trace": true
   }
 ]

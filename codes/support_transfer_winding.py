@@ -270,12 +270,13 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
     curvature term over one link length. Its reference radius is measured at
     current target contacts; the original A-D correction remains active.
     """
-    def __init__(self,*args,coordinate_acquisition=False,acquire_initial_front=False,bootstrap_front=False,coherent_acquisition=False,**kwargs):
+    def __init__(self,*args,coordinate_acquisition=False,acquire_initial_front=False,bootstrap_front=False,coherent_acquisition=False,loosen_unacquired_front=False,**kwargs):
         super().__init__(*args,**kwargs)
         self.coordinate_acquisition=coordinate_acquisition
         self.acquire_initial_front=acquire_initial_front
         self.bootstrap_front=bootstrap_front
         self.coherent_acquisition=coherent_acquisition
+        self.loosen_unacquired_front=loosen_unacquired_front
         self.initial_front_acquired=np.zeros(self.initial_front)
         self.acquisition_phase=self.phase
         self.rolling_scale=1.
@@ -350,6 +351,20 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
             rolling=observed+change
             info.update(formation_nominal=nominal,formation_change=change,
                 formation_helix_phase=theta,formation_helix_angles=q)
+        loosen=np.ones(self.n)
+        if self.loosen_unacquired_front:
+            # CMU's initial bend window uses reduced amplitude before it wraps
+            # the target. Test that principle with our measured acquisition,
+            # not its time/window formula: only the initially draped free head
+            # is eased. Supported links recover the original forming field.
+            # This is a curvature-reference change, not a stiffness change;
+            # A-D feedback, measured-field rolling and delivery limits remain.
+            loosen[:self.initial_front]=.4+.6*self.initial_front_acquired
+            nominal=info['formation_nominal']*loosen[:,None]
+            change=info['formation_gain'][:,None]*(nominal-observed)
+            rolling=observed+change
+            info.update(formation_nominal=nominal,formation_change=change,
+                        initial_front_loosen_factor=loosen)
         if not hasattr(self,'contact_radius'):return rolling,info
         points=np.asarray(geometry['points_mm'])
         bone=SpatialBishopBackbone(points,self.links)
@@ -367,7 +382,7 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
         # the initial front is not evidence that those links are already close
         # to the pipe; apply the same radial feedback during their acquisition.
         gain[:self.initial_front]=self.formation.recovery*float(smoothstep(self.elapsed/1.6)) if self.acquire_initial_front or self.bootstrap_front else 0.
-        change=gain[:,None]*integrated_field(bone,field)
+        change=(gain*loosen)[:,None]*integrated_field(bone,field)
         info.update(contact_radius_mm=self.contact_radius,incoming_radial_gap_mm=gap,
                     radial_acquisition_change=change)
         return rolling+change,info
@@ -377,7 +392,8 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
         config['support_transfer'].update(acquisition_curvature='positive radial gap / link_length^2',
             radial_reference='median radius of supplied target-support modules beyond the junction',
             coordinate_acquisition=self.coordinate_acquisition,acquire_initial_front=self.acquire_initial_front,
-            bootstrap_front=self.bootstrap_front,coherent_acquisition=self.coherent_acquisition)
+            bootstrap_front=self.bootstrap_front,coherent_acquisition=self.coherent_acquisition,
+            loosen_unacquired_front=self.loosen_unacquired_front)
         return config
 
 

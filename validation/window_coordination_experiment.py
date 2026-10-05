@@ -64,7 +64,7 @@ def run(args):
         extra=dict(support_error_limit=sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0]) if args.support_memory or args.capacity_preload or args.radial_acquisition else {}
         if args.target_frame_acquisition:
             extra.update(conserve_middle=args.conserve_middle,distinguish_lines=args.distinguish_lines)
-        if args.radial_acquisition:extra.update(coordinate_acquisition=args.coordinate_acquisition,acquire_initial_front=args.acquire_initial_front,bootstrap_front=args.bootstrap_front,coherent_acquisition=args.coherent_acquisition)
+        if args.radial_acquisition:extra.update(coordinate_acquisition=args.coordinate_acquisition,acquire_initial_front=args.acquire_initial_front,bootstrap_front=args.bootstrap_front,coherent_acquisition=args.coherent_acquisition,loosen_unacquired_front=args.loosen_unacquired_front)
         if args.contact_reference or args.capacity_preload or args.radial_acquisition:
             extra['local_contact_projection']=args.local_contact_projection
             extra['dual_contact_projection']=args.dual_contact_projection
@@ -180,7 +180,7 @@ def run(args):
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
-                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip,args.conserve_middle),**extra)
+                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip,args.conserve_middle,args.predictive_progress,args.measured_material_origin),**extra)
         if args.preserve_probe_intent:
             # Probe targets hold/perturb the current posture; they are not the
             # stored motion intent. Retain the old torque-equivalent preload,
@@ -259,11 +259,23 @@ def run(args):
             support_history.extend([proxy.copy() for _ in range(round(args.delivery_period/.01))])
             del support_history[:-60]
             support_clock=sim.d.time
+        coordinator=None
+        if args.predictive_progress and not args.predictive_coordination:
+            raise ValueError('Predictive progress needs the prediction coordinator')
+        if args.predictive_coordination:
+            if not args.dynamic_observer or args.truth_diagnostic or delivery is None:
+                raise ValueError('Predictive coordination requires inferred dynamics and existing velocity delivery')
+            from predictive_window_coordination import PredictiveWindowCoordination
+            coordinator=PredictiveWindowCoordination()
+            shutil.copy2(ROOT/'validation/predictive_window_coordination.py',folder/'sources/validation/predictive_window_coordination.py')
         for k in range(round(args.seconds/args.dt)):
             g=control_feedback(sim.fresh(),True);measured=np.radians(g['angles_deg'])*sim.bridge.signs
             observe_support(g,measured)
             phase=phase0-(k+1)*args.dt*.1875
             contact_input=support_history if support_observer is not None else [r['normal_force'] for r in sim.records[-60:]]
+            prediction_info={}
+            if coordinator is not None:
+                phase,prediction_info=coordinator.choose(tracker,controller,delivery,g,measured,contact_input,args.dt)
             try:q,info=controller.compute(g,measured,phase,args.dt,contact_input)
             except ValueError as error:
                 write_json(folder/'failed_control_feedback.json',dict(error=str(error),geometry=g,
@@ -281,11 +293,18 @@ def run(args):
                 reference_module=min(reference_module,max(controller.initial_front,int(controller.progress)))
                 shape_kinematics.reference_module=reference_module
                 info['body_reference_module']=reference_module
+            info.update(prediction_info)
             if support_observer is not None:info['support_observer']=support_info
             if tracker is not None:info['geometry_observer']=tracker.info
             sim.phase=controller.phase;sim.stage='window_coordination';sim.partition[:]=[controller.front,controller.rear]
             info.update(target=q,measured=measured,phase=sim.phase,step=k+1,time=(k+1)*args.dt+result.get('response_probe_seconds',0.))
             sim.controls.append(info);sim.geometry_log.append(g)
+            if coordinator is not None and info['predictive_coordination']['fresh']:
+                # Keep long predictive trials inspectable before shutdown;
+                # these are decisions/inferred forecasts, never truth inputs.
+                with (folder/'prediction_choices.jsonl').open('a',encoding='utf8') as stream:
+                    stream.write(json.dumps(dict(time=info['time'],front=controller.front,rear=controller.rear,
+                        phase=controller.phase,**info['predictive_coordination']))+'\n')
             first=len(sim.records);origin=sim.d.ctrl.copy();count=round(args.dt/args.delivery_period)
             info['delivery_feedback']=[]
             velocity_weight=1-np.asarray(info['acquired_weight']) if args.velocity_scope=='unacquired' else np.ones(controller.n)
@@ -311,6 +330,7 @@ def run(args):
                 lost=0 if np.any(row['normal_force']>.1) else lost+1
                 if row['ground'] or lost>=20:result['outcome']='support_lost';break
             if result['outcome']=='support_lost':break
+            if (folder/'STOP').exists():result['outcome']='development_stopped';break
             if (k+1)%max(1,round(3.2/args.dt))==0:
                 if controller.progress>=controller.n:
                     keys=('time','points_mm','normal_force','ground','phase','region','error_deg')
@@ -352,6 +372,7 @@ if __name__=='__main__':
     p.add_argument('--bootstrap-front',action='store_true',help='Use contacting-link radius and measured initial-front admission instead of assuming the captured front is already wrapped.')
     p.add_argument('--truth-diagnostic',action='store_true',help='Diagnostic only: after the identical response probe use physical axes/pose/contacts; cannot count as autonomous acceptance.')
     p.add_argument('--coherent-acquisition',action='store_true',help='Radial acquisition with one measured-phase Yamada helix pattern across the forming front.')
+    p.add_argument('--loosen-unacquired-front',action='store_true',help='Experimental reduced initial free-head curvature, restored by measured target acquisition; keeps A-D and rolling.')
     p.add_argument('--response-state',type=Path,help='Probe evidence from automatic approach; checkpoint must be its exact post-probe state.')
     p.add_argument('--encoder-initial-axes',action='store_true',
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
@@ -360,6 +381,8 @@ if __name__=='__main__':
     p.add_argument('--dynamic-observer',action='store_true',
         help='Collect a relay probe, calibrate virtual pipes from joint responses, then infer local geometry/support through private dynamics.')
     p.add_argument('--observer-contact-flow',action='store_true',help='Use full-interval private dynamics linearization after poor encoder predictions; physical parameters are unchanged.')
+    p.add_argument('--predictive-coordination',action='store_true',help='Experimental private-model short-horizon choice of rolling rate and release budget; retains A-D/Yamada and current delivery limits.')
+    p.add_argument('--predictive-progress',action='store_true',help='Let the predictor govern phase/release progress instead of also applying the static lag veto; all formation, support and final handoff gates remain.')
     p.add_argument('--response-calibration-cache',type=Path,help='Reuse a fit only when the freshly executed probe angles and commands match completely.')
     p.add_argument('--preserve-probe-intent',action='store_true',
         help='Resume pre-probe nominal reference/preload; slew and middle references start at the actually applied probe command.')
@@ -376,6 +399,7 @@ if __name__=='__main__':
         help='Recruit using target-coil geometry and support, without absolute junction progress.')
     p.add_argument('--conserve-middle',action='store_true',
         help='Limit rear release to one joint per newly measured acquired front module, also in the standard window controller.')
+    p.add_argument('--measured-material-origin',action='store_true',help='Count new acquisition relative to the measured initial count, not the initial front label count.')
     p.add_argument('--distinguish-lines',action='store_true',
         help='Target-frame acquisition also requires closer proximity to target than source axis.')
     p.add_argument('--observable-support',action='store_true',
@@ -425,6 +449,8 @@ if __name__=='__main__':
     modes.add_argument('--radial-acquisition',action='store_true')
     p.add_argument('--output-root',type=Path)
     args=p.parse_args()
+    if args.loosen_unacquired_front and not (args.radial_acquisition and args.bootstrap_front):
+        p.error('loosen-unacquired-front requires radial-acquisition and bootstrap-front')
     if args.observable_support and not (args.target_frame_acquisition and args.radial_acquisition):
         p.error('observable-support requires target-frame-acquisition and radial-acquisition')
     if args.encoder_tracking and not (args.cad_support and args.target_frame_acquisition and args.radial_acquisition):
