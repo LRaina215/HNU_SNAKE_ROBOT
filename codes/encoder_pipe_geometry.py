@@ -9,14 +9,16 @@ import numpy as np
 from scipy.optimize import least_squares
 
 
-def cylinder(points, nominal_radius):
+def cylinder(points, nominal_radius, axis_hint=None):
     centers=(points[:-1]+points[1:])/2
     centered=centers-centers.mean(axis=0)
     links=np.diff(points,axis=0)
     tangents=links/np.linalg.norm(links,axis=1)[:,None]
     _,vectors=np.linalg.eigh(np.cov(tangents.T,bias=True))
     candidates=[]
-    for seed in vectors.T:
+    seeds=vectors.T if axis_hint is None else [np.asarray(axis_hint)/np.linalg.norm(axis_hint)]
+    angular_bound=5. if axis_hint is None else .2
+    for seed in seeds:
         h=np.eye(3)[np.argmin(abs(seed))];h-=h@seed*seed;h/=np.linalg.norm(h)
         v=np.cross(seed,h)
         def decode(x):
@@ -28,8 +30,8 @@ def cylinder(points, nominal_radius):
             axis,center=decode(x)
             return np.linalg.norm(np.cross(centered-center,axis),axis=1)-x[4]
         result=least_squares(residual,[0.,0.,0.,0.,nominal_radius],
-            bounds=([-5,-5,-3*nominal_radius,-3*nominal_radius,.6*nominal_radius],
-                    [5,5,3*nominal_radius,3*nominal_radius,1.8*nominal_radius]),
+            bounds=([-angular_bound,-angular_bound,-3*nominal_radius,-3*nominal_radius,.6*nominal_radius],
+                    [angular_bound,angular_bound,3*nominal_radius,3*nominal_radius,1.8*nominal_radius]),
             x_scale=[.4,.4,nominal_radius,nominal_radius,nominal_radius],
             loss='soft_l1',f_scale=5.,max_nfev=300)
         axis,center=decode(result.x)
@@ -67,7 +69,7 @@ def branch(centers, source):
     return min(solutions,key=lambda row:row['objective'])
 
 
-def right_angle_hypothesis(points, nominal_radius, shell_radius=29.):
+def right_angle_hypothesis(points, nominal_radius, shell_radius=29., source_fit=None):
     """Fixed observation windows, NOT fixed control segment boundaries.
 
     The last ten-joint span estimates the established original coil; first
@@ -76,7 +78,7 @@ def right_angle_hypothesis(points, nominal_radius, shell_radius=29.):
     Temporal confirmation and support-response evidence are separate steps.
     """
     points=np.asarray(points,float);centers=(points[:-1]+points[1:])/2
-    rear=cylinder(points[-12:],nominal_radius)
+    rear=cylinder(points[-12:],nominal_radius) if source_fit is None else dict(source_fit)
     if rear['axis']@(points[-8]-points[-1])<0:rear['axis']=-rear['axis']
     front=branch(centers[:7],rear)
     source_error=np.linalg.norm(np.cross(centers[:7]-rear['axis_point_mm'],rear['axis']),axis=1)-rear['radius_mm']

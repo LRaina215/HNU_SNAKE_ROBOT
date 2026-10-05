@@ -4,7 +4,6 @@ This is a development gate, not a force-closure certificate. The known nominal
 robot/contact model and right-angle gravity prior remain explicit assumptions.
 It must be validated before automatic approach-to-transfer switching.
 """
-import copy
 import numpy as np
 import mujoco
 from encoder_pipe_proximity import EncoderPipeProximity
@@ -12,9 +11,10 @@ from feedback_takeover_dynamic_observer_probe import virtual_model, predict
 
 
 def judge(robot, robot_xml, fit, records):
-    model=virtual_model(robot,fit['estimate'],fit['gravity'],robot_xml)
+    extension=fit.get('extension')
+    model=virtual_model(robot,fit['estimate'],fit['gravity'],robot_xml,extension)
     slots=EncoderPipeProximity(robot).pipe_slots
-    source_only=copy.copy(model)
+    source_only=virtual_model(robot,fit['estimate'],fit['gravity'],robot_xml,'source' if extension=='source' else None)
     source_only.geom_contype[slots[1]]=0;source_only.geom_conaffinity[slots[1]]=0
     predicted=predict(source_only,records,fit['initial_velocity'])
     measured=np.array([r['q'] for r in records])

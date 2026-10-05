@@ -20,8 +20,9 @@ class DynamicPipeTracker:
         self.qadr=self.m.jnt_qposadr[self.m.actuator_trnid[:,0]]
         self.models={label:virtual_model(robot,fit['estimate'],fit['gravity'],robot_xml,extension)
             for label,extension in [('none',None),('source','source'),('target','target')]}
-        q=np.asarray(records[-1]['q']);prediction=predict(self.models['none'],records,fit['initial_velocity'])
-        self.observer=TopologyDynamicsFilter(self.models,q,velocity_observation=True,bounded_update=True,covariance_bound=True)
+        topology=fit.get('extension') or 'none'
+        q=np.asarray(records[-1]['q']);prediction=predict(self.models[topology],records,fit['initial_velocity'])
+        self.observer=TopologyDynamicsFilter(self.models,q,initial_topology=topology,velocity_observation=True,bounded_update=True,covariance_bound=True)
         private=self.observer.data
         private.qpos[:]=prediction['final_qpos'];private.qvel[:]=prediction['final_qvel'];private.qpos[self.qadr]=q
         private.ctrl[:]=records[-1]['command'];mujoco.mj_forward(self.observer.model,private)

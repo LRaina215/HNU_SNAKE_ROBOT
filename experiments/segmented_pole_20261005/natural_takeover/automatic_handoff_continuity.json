@@ -1,0 +1,11 @@
+{
+  "parent": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_rate_matched\\candidate\\state.npz",
+  "child": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_rate_probe\\initial\\state.npz",
+  "equal": {
+    "integration_state": true,
+    "qpos": true,
+    "qvel": true,
+    "ctrl": true
+  },
+  "meaning": "Exact full integration state continued from a program-selected boundary; no physical pose intervention."
+}

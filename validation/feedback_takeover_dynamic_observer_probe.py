@@ -64,7 +64,7 @@ def predict(model,records,initial_velocity=None,initial_joint_velocity=None):
     for i,record in enumerate(records):
         predicted.append(d.qpos[qadr].copy());contacts.append(d.ncon);d.ctrl[:]=record['command']
         if i+1<len(records):
-            for _ in range(round(.02/model.opt.timestep)):mujoco.mj_step(model,d)
+            mujoco.mj_step(model,d,nstep=round(.02/model.opt.timestep))
     error=np.asarray(predicted)-np.array([r['q'] for r in records])
     return dict(predicted=predicted,predicted_contact_counts=contacts,final_qpos=d.qpos.copy(),final_qvel=d.qvel.copy(),rms_deg=float(np.degrees(np.sqrt(np.mean(error**2)))),
         maximum_error_deg=float(np.degrees(abs(error).max())))

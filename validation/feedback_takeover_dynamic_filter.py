@@ -114,8 +114,8 @@ All candidates start at the same previous inferred state. A new topology must
 reduce joint prediction RMS by 40% for three successive observations. Physical
 contact identities are not accepted by this API.
 """
-    def __init__(self,models,*args,**kwargs):
-        self.models=models;self.topology='none';self.pending=None;self.pending_count=0
+    def __init__(self,models,*args,initial_topology='none',**kwargs):
+        self.models=models;self.topology=initial_topology;self.pending=None;self.pending_count=0
         super().__init__(models[self.topology],*args,**kwargs)
         self.prediction_data={name:mujoco.MjData(model) for name,model in models.items()}
 

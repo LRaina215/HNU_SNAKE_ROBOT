@@ -78,7 +78,7 @@ def run(args):
         if args.dynamic_observer:
             from feedback_takeover_live_tracking import EncoderPipeTracker
             from feedback_takeover_collect_response import collect_response
-            from feedback_takeover_response_calibration import calibrate
+            from feedback_takeover_response_calibration import calibrate,calibrate_network
             from feedback_takeover_dynamic_tracker import DynamicPipeTracker
             for name in ('feedback_takeover_live_tracking.py','feedback_takeover_encoder_tracking.py','feedback_takeover_cad_refinement.py',
                     'feedback_takeover_collect_response.py','feedback_takeover_response_calibration.py',
@@ -86,11 +86,24 @@ def run(args):
                 shutil.copy2(ROOT/'validation'/name,folder/'sources/validation'/name)
             measured=np.radians(g['angles_deg'])*sim.bridge.signs
             load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
-            initial_tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'])
-            probe_motion_reference=sim.d.ctrl.copy()
-            records=collect_response(sim,initial_tracker,folder)
-            print(args.name,'calibrating collected relay responses; simulation waits during computation',flush=True)
-            if args.response_calibration_cache:
+            if args.response_state:
+                records=json.loads((args.response_state/'response_probe.json').read_text(encoding='utf8'))
+                fit=json.loads((args.response_state/'response_calibration.json').read_text(encoding='utf8'))
+                probe_motion_reference=np.array(json.loads((args.response_state/'motion_reference.json').read_text(encoding='utf8')))
+                if not np.allclose(records[-1]['q'],measured,atol=1e-10,rtol=0):
+                    raise RuntimeError('Automatic probe handoff does not match current encoders')
+                result['automatic_response_handoff']=str(args.response_state)
+                initial_estimate=fit['unrefined']
+                for filename in ('response_probe.json','motion_reference.json'):
+                    shutil.copy2(args.response_state/filename,folder/filename)
+            else:
+                initial_tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'])
+                initial_estimate=initial_tracker.estimate
+                probe_motion_reference=sim.d.ctrl.copy()
+                records=collect_response(sim,initial_tracker,folder)
+                print(args.name,'calibrating collected relay responses; simulation waits during computation',flush=True)
+            if args.response_state:pass
+            elif args.response_calibration_cache:
                 # A repeated deterministic probe may reuse its expensive fit.
                 # Match every measured input, not physical truth or a file hash.
                 cached=args.response_calibration_cache
@@ -101,7 +114,7 @@ def run(args):
                 fit=json.loads((cached/'response_calibration.json').read_text(encoding='utf8'))
                 result['identical_probe_calibration_reused']=str(cached)
                 print(args.name,'reused fit after matching all new probe measurements/commands',flush=True)
-            else:fit=calibrate(sim.m,sim.meta['source_model'],initial_tracker.estimate,records)
+            else:fit=(calibrate_network if args.network_calibration else calibrate)(sim.m,sim.meta['source_model'],initial_tracker.estimate,records,args.junction_search)
             write_json(folder/'response_calibration.json',fit)
             if args.require_response_gate:
                 from feedback_takeover_response_gate import judge
@@ -114,10 +127,10 @@ def run(args):
             g=dict(sim.fresh(),points_mm=tracker.previous.copy());tracking_clock=sim.d.time
             estimate=tracker.estimate
             corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
-            write_json(folder/'initial_unrefined_geometry.json',initial_tracker.estimate)
+            write_json(folder/'initial_unrefined_geometry.json',initial_estimate)
             write_json(folder/'initial_geometry_estimate.json',estimate)
             result['geometry_input']='On-run relay probe, joint-response calibration and private dynamics/encoder filter. True axes, contacts, root pose and root velocity excluded.'
-            result['response_probe_seconds']=1.2
+            result['response_probe_seconds']=0. if args.response_state else 1.2
             result['calibration_computation_pauses_simulated_time']=True
         elif args.encoder_tracking:
             from feedback_takeover_live_tracking import EncoderPipeTracker
@@ -158,7 +171,7 @@ def run(args):
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
-                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain),**extra)
+                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard),**extra)
         if args.preserve_probe_intent:
             # Probe targets hold/perturb the current posture; they are not the
             # stored motion intent. Retain the old torque-equivalent preload,
@@ -173,11 +186,11 @@ def run(args):
         write_json(folder/'plan.json',dict(**result,arguments=arguments,physics_changed=False,
             stop='floor or 0.2 s no pipe support; full crossing and continued rolling',
             process_gate='after 1 s: joint peak <=90 deg/s, module peak <=500 mm/s, error<=15 deg, saturation<=0.297',
-            limitations=dict(manual_drape_checkpoint=True,physical_pose_input=tracker is None,
+            limitations=dict(manual_drape_checkpoint=not bool(sim.meta.get('automatic_capture')),physical_pose_input=tracker is None,
                 known_axes=not (args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
                 contact_labels=not args.cad_support,right_angle_comparable_radius_prior=bool(args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
                 horizontal_vertical_gravity_prior=args.dynamic_observer,
-                natural_trigger_validated=False,hardware_validated=False)))
+                natural_trigger_validated=False,natural_trigger_attempt=bool(args.response_state),hardware_validated=False)))
         sim.partition[:]=[controller.front,controller.rear];sim.records[0]['partition']=sim.partition.copy()
         phase0=sim.phase;lost=0;result['outcome']='time_limit'
         delivery=None
@@ -316,6 +329,10 @@ if __name__=='__main__':
     p.add_argument('--scene',choices=['horizontal','vertical_down'],default='horizontal')
     p.add_argument('--checkpoint',type=Path,help='Automatically captured takeover state; defaults to the original manual fixture.')
     p.add_argument('--require-response-gate',action='store_true',help='Require held-out response and target-constraint evidence before takeover.')
+    p.add_argument('--junction-search',action='store_true',help='Response-only coarse corner search for partially formed natural drapes.')
+    p.add_argument('--network-calibration',action='store_true',help='Compare L and both T constraint hypotheses from probe prediction.')
+    p.add_argument('--feedback-progress-guard',action='store_true',help='Slow both phase clocks and retain rear support when measured admission regresses beyond formation lead.')
+    p.add_argument('--response-state',type=Path,help='Probe evidence from automatic approach; checkpoint must be its exact post-probe state.')
     p.add_argument('--encoder-initial-axes',action='store_true',
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
     p.add_argument('--encoder-tracking',action='store_true',

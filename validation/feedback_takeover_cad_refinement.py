@@ -42,7 +42,7 @@ def refine_target(query,measured,points,initial,load,target_full_line=True):
         target_only=True)
 
 
-def refine(query,measured,points,initial,load,fixed_radius=False,candidate_age=None,period=.2):
+def refine(query,measured,points,initial,load,fixed_radius=False,candidate_age=None,period=.2,finite_difference=False):
     s=initial['source'];t=initial['target'];c=initial['corner_mm'];r=initial['pipe_radius_mm']
     v=np.cross(s,t)
     gap=query.gaps(measured,points,c,s,t,r)
@@ -68,7 +68,17 @@ def refine(query,measured,points,initial,load,fixed_radius=False,candidate_age=N
             2*np.minimum(distances.reshape(-1)+2.,0.),x[:3]/20.,x[3:6]/.1,
             0. if fixed_radius else x[6]/5.]
     count=6 if fixed_radius else 7
+    def jacobian(x):
+        # Explicit physical increments avoid sub-nanometre collision-distance
+        # differences at a zero parameter vector. Research opt-in until paired.
+        steps=np.array([.05,.05,.05,.0005,.0005,.0005,.02])[:count]
+        columns=[]
+        for j,h in enumerate(steps):
+            plus=x.copy();minus=x.copy();plus[j]+=h;minus[j]-=h
+            columns.append((residual(plus)-residual(minus))/(2*h))
+        return np.column_stack(columns)
     fitted=least_squares(residual,np.zeros(count),
+        jac=jacobian if finite_difference else '2-point',
         bounds=([-20,-20,-20,-.15,-.15,-.2,-8][:count],[20,20,20,.15,.15,.2,8][:count]),
         x_scale=[5,5,5,.05,.05,.05,3][:count],loss='soft_l1',f_scale=1.,
         diff_step=1e-3,max_nfev=100)

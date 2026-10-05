@@ -12,6 +12,7 @@ import json
 import shutil
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 import numpy as np
 import mujoco
@@ -21,6 +22,8 @@ from mujoco_checkpoint import load_checkpoint,controller_state
 from pole_compliance import ComplianceController
 from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
 from encoder_pipe_geometry import right_angle_hypothesis
+from velocity_feedback_delivery import VelocityFeedbackDelivery
+from encoder_shape_kinematics import EncoderShapeKinematics
 
 OUT=ROOT/'experiments/segmented_pole_20261005/natural_takeover'
 
@@ -35,7 +38,7 @@ def save_state(folder,m,d,meta,controller,geometry):
     saved=copy.deepcopy(meta)
     saved.update(format_version=1,mujoco_version=mujoco.__version__,state_type=int(kind),sim_time=float(d.time),
                  controller=controller_state(controller),geometry_at_capture=geometry,hashes={},source_hashes={},
-                 automatic_capture=True)
+                 automatic_capture=True,captured_at=datetime.now().astimezone().isoformat())
     write_json(folder/'checkpoint.json',saved)
 
 
@@ -53,38 +56,98 @@ class LocalEncoders:
 
 def run(args):
     root=OUT/args.name;root.mkdir(parents=True,exist_ok=False)
-    fixture=HORIZONTAL if args.scene=='horizontal' else VERTICAL
+    fixture=(args.resume_auto/'candidate') if args.resume_auto else (HORIZONTAL if args.scene=='horizontal' else VERTICAL)
     m,d,meta,prior=load_checkpoint(fixture,verify_hashes=False)
     # This is mission initialization, not a mid-motion reset. The same shipped
     # prewrapped keyframe is used by the interactive Ctrl+U workflow.
-    key=mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_KEY,'experiment_start')
-    if key<0:raise ValueError('Initial experiment keyframe missing')
-    mujoco.mj_resetDataKeyframe(m,d,key);mujoco.mj_forward(m,d)
+    if args.resume_auto:
+        parent=json.loads((args.resume_auto/'result.json').read_text(encoding='utf8'))
+        if not meta.get('automatic_capture') or parent['outcome']!='geometric_candidate':
+            raise ValueError('Only an automatically detected natural-approach boundary can be resumed here')
+    else:
+        key=mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_KEY,'experiment_start')
+        if key<0:raise ValueError('Initial experiment keyframe missing')
+        mujoco.mj_resetDataKeyframe(m,d,key);mujoco.mj_forward(m,d)
     params=prior.parameters;links=prior.expected_lengths
-    controller=ComplianceController(params,links,ignore_feedback_risk=True)
-    meta['settings'].update(phase=0.,completed=0,initialized=False)
+    controller=prior if args.resume_auto else ComplianceController(params,links,ignore_feedback_risk=True)
+    if not args.resume_auto:meta['settings'].update(phase=0.,completed=0,initialized=False)
     save_state(root/'initial',m,d,meta,controller,None)
-    sim=replay=None;hypotheses=[];result=dict(scene=args.scene,checkpoint=str(root/'initial'),outcome='time_limit')
+    sim=replay=None;hypotheses=[];attempts=[];response_state=None
+    result=dict(method='natural_single_axis_compliance',scene=args.scene,checkpoint=str(root/'initial'),outcome='time_limit',
+        automatic_prefix=str(args.resume_auto) if args.resume_auto else None)
     try:
         sim=ThreeTrial(root/'initial',root/'approach');replay=AxisReplay(smoothing=1.)
         shutil.copy2(__file__,sim.folder/'sources/validation/natural_takeover_experiment.py')
-        write_json(sim.folder/'plan.json',dict(arguments=vars(args),controller_inputs='encoder angles and own commands; identity-head FK',
+        write_json(sim.folder/'plan.json',dict(arguments={k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()},controller_inputs='encoder angles and own commands; identity-head FK',
             physics_changes=False,candidate='geometry criterion persists 0.6 simulated seconds, then response gate',
             initial_state='shipped prewrapped keyframe plus one nominal application',force_mode='original simulation diagnostic only'))
         kinematics=LocalEncoders(sim.m)
         curve=HelixBackbone.from_radius_pitch(meta['settings']['radius'],meta['settings']['pitch'])
-        sim.stage='initial_application';sim.command(curve.joint_angles(20,links,0.),sim.fresh());sim.advance(.2)
-        persistent=0;lost=0
-        for step in range(round(args.seconds/.2)):
+        sim.stage='initial_application'
+        initial_target=curve.joint_angles(20,links,0.)
+        if args.resume_auto:
+            fresh=sim.fresh();controller.key=(fresh['run_id'],fresh['config_id'],-1)
+        elif args.smooth_start:
+            start=np.radians(sim.fresh()['angles_deg'])*sim.bridge.signs
+            # Send actual angles through the relay before the first integration;
+            # then form the nominal coil over one second, with no pose reset.
+            sim.command(start,sim.fresh())
+            forming=VelocityFeedbackDelivery(start,.02,.02,sim.m.jnt_range[sim.jids],
+                sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0],.02)
+            for sub in range(1,51):
+                fresh=sim.fresh();measured=np.radians(fresh['angles_deg'])*sim.bridge.signs
+                command,_=forming.compute(start+(initial_target-start)*sub/50.,initial_target-start,
+                    measured,sim.d.ctrl.copy(),np.ones(20))
+                sim.command(command,fresh);sim.advance(.02)
+        else:sim.command(initial_target,sim.fresh());sim.advance(.2)
+        delivery=None
+        if args.smooth:
+            q=np.radians(sim.fresh()['angles_deg'])*sim.bridge.signs
+            kinematics_for_speed=EncoderShapeKinematics(sim.m,0)
+            delivery=VelocityFeedbackDelivery(q,.02,.02,sim.m.jnt_range[sim.jids],
+                sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0],.02,
+                kinematics_for_speed.jacobians,20.,.2,sim.m.actuator_gainprm[:,0])
+        persistent=max(2,round(.6/args.dt))-1 if args.resume_auto else 0
+        lost=0;last_probe_phase=None
+        for step in range(round(args.seconds/args.dt)):
             g=sim.fresh();q=np.radians(g['angles_deg'])*sim.bridge.signs
             local=dict(g,points_mm=kinematics.points(q).tolist())
             hypothesis=right_angle_hypothesis(local['points_mm'],meta['settings']['radius'])
             persistent=persistent+1 if hypothesis['geometric_candidate'] else 0
             hypotheses.append(dict(time=float(sim.d.time),phase=sim.phase,persistent=persistent,estimate=hypothesis))
-            if persistent>=3:
+            retry_ready=last_probe_phase is None or abs(sim.phase-last_probe_phase)>=.3-1e-12
+            if persistent>=max(2,round(.6/args.dt)) and retry_ready:
+                accepted=True
+                if args.transfer:
+                    from feedback_takeover_live_tracking import EncoderPipeTracker
+                    from feedback_takeover_collect_response import collect_response
+                    from feedback_takeover_response_calibration import calibrate,calibrate_network
+                    from feedback_takeover_response_gate import judge
+                    probe=root/('probe_%02d'%(len(attempts)+1));probe.mkdir()
+                    sources=probe/'sources';sources.mkdir()
+                    for filename in ('feedback_takeover_response_calibration.py','feedback_takeover_response_gate.py',
+                            'feedback_takeover_dynamic_observer_probe.py','feedback_takeover_collect_response.py'):
+                        shutil.copy2(ROOT/'validation'/filename,sources/filename)
+                    last_probe_phase=sim.phase
+                    write_json(probe/'motion_reference.json',sim.d.ctrl.copy())
+                    load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-q),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
+                    initial_tracker=EncoderPipeTracker(sim.m,q,load,meta['settings']['radius'])
+                    records=collect_response(sim,initial_tracker,probe)
+                    fit=(calibrate_network if args.network_calibration else calibrate)(sim.m,sim.meta['source_model'],initial_tracker.estimate,records,args.junction_search)
+                    write_json(probe/'response_calibration.json',fit)
+                    gate=judge(sim.m,sim.meta['source_model'],fit,records);write_json(probe/'response_gate.json',gate)
+                    accepted=gate['passed'];attempts.append(dict(folder=str(probe),time=float(sim.d.time),phase=sim.phase,passed=accepted))
+                    print(args.name,'probe',len(attempts),'accepted',accepted,'criteria',gate['criteria'],flush=True)
+                    if delivery is not None:
+                        delivery.previous_measured=np.array(records[-1]['q']);delivery.filtered_velocity[:]=0.
+                    if not accepted:
+                        persistent=0
+                        continue
+                    response_state=probe
                 meta['settings'].update(phase=sim.phase,completed=step+1,initialized=True)
-                save_state(root/'candidate',sim.m,sim.d,meta,controller,local)
-                result.update(outcome='geometric_candidate',candidate_time=float(sim.d.time),candidate=str(root/'candidate'))
+                fresh=sim.fresh();fresh=dict(fresh,points_mm=kinematics.points(np.radians(fresh['angles_deg'])*sim.bridge.signs).tolist())
+                save_state(root/'candidate',sim.m,sim.d,meta,controller,fresh)
+                result.update(outcome='response_accepted' if args.transfer else 'geometric_candidate',candidate_time=float(sim.d.time),candidate=str(root/'candidate'))
                 print(args.name,'automatic candidate at',sim.d.time,flush=True);break
             projected=replay.geometry(local)
             next_phase=sim.phase-args.phase_step
@@ -93,18 +156,28 @@ def run(args):
             if target is None:
                 result.update(outcome='invalid_feedback',error=controller.status);break
             sim.phase=next_phase;sim.stage='natural_compliance'
-            sim.command(target,g);sim.advance(.2)
-            for row in sim.records[-20:]:
+            if delivery is None:sim.command(target,g);sim.advance(args.dt)
+            else:
+                origin=sim.d.ctrl.copy();details=[];count=round(args.dt/.02)
+                for sub in range(1,count+1):
+                    fresh=g if sub==1 else sim.fresh()
+                    measured=np.radians(fresh['angles_deg'])*sim.bridge.signs
+                    applied,info=delivery.compute(origin+(target-origin)*sub/count,(target-origin)/args.dt,
+                        measured,sim.d.ctrl.copy(),np.ones(20))
+                    details.append(info);sim.command(applied,fresh);sim.advance(.02)
+                sim.controls.append(dict(time=float(sim.d.time),target=target,delivery=details))
+            for row in sim.records[-round(args.dt/.01):]:
                 lost=0 if np.any(row['normal_force']>.1) else lost+1
                 if row['ground'] or lost>=20:result['outcome']='support_lost';break
             if result['outcome']=='support_lost':break
             if step%10==0:print(args.name,'t=',round(sim.d.time,1),'candidate=',hypothesis['quality'],flush=True)
         result['commands']=len(sim.commands)
     finally:
+        result['probe_attempts']=attempts
         write_json(root/'result.json',result);write_json(root/'hypotheses.json',hypotheses)
         if replay is not None:replay.close()
         if sim is not None:write_json(sim.folder/'result.json',result);sim.close()
-    if result['outcome']=='geometric_candidate' and args.transfer:
+    if result['outcome']=='response_accepted' and args.transfer:
         command=[sys.executable,'-X','utf8',str(ROOT/'validation/window_coordination_experiment.py'),'transfer',
             '--checkpoint',str(root/'candidate'),'--scene',args.scene,'--output-root',str(root),
             '--tail-mode','same','--maximum-lead','2','--supported-recovery','.35','--support-centers',
@@ -113,7 +186,14 @@ def run(args):
             '--body-damping','20','--body-speed-limit','.2','--body-reference-module','-1',
             '--seconds','200','--dynamic-observer','--cad-support','--preserve-probe-intent',
             '--require-response-gate','--hypothesis','Frozen response takeover after automatic natural-drape candidate; no human split or pose intervention.']
-        subprocess.run(command,check=True)
+        command+=['--response-state',str(response_state)]
+        if args.junction_search:command.append('--junction-search')
+        if args.network_calibration:command.append('--network-calibration')
+        if args.feedback_progress_guard:command.append('--feedback-progress-guard')
+        completed=subprocess.run(command,check=False)
+        result['transfer_exit_code']=completed.returncode
+        if (root/'transfer/result.json').exists():result['transfer_result']=json.loads((root/'transfer/result.json').read_text(encoding='utf8'))
+        write_json(root/'result.json',result)
     return result
 
 
@@ -123,4 +203,11 @@ if __name__=='__main__':
     p.add_argument('--seconds',type=float,default=40.)
     p.add_argument('--phase-step',type=float,default=.15)
     p.add_argument('--transfer',action='store_true')
+    p.add_argument('--smooth',action='store_true')
+    p.add_argument('--smooth-start',action='store_true')
+    p.add_argument('--dt',type=float,default=.2)
+    p.add_argument('--junction-search',action='store_true')
+    p.add_argument('--network-calibration',action='store_true')
+    p.add_argument('--feedback-progress-guard',action='store_true')
+    p.add_argument('--resume-auto',type=Path,help='Continue an exact automatically detected boundary; retains its natural prefix for audit.')
     run(p.parse_args())

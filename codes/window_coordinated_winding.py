@@ -31,6 +31,7 @@ class WindowOptions:
     support_centers: bool = False
     rolling_lookahead_seconds: Optional[float] = None
     section_domain: bool = False
+    feedback_progress_guard: bool = False
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -117,6 +118,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         if self.handed_off:near=self.rear<self.n;reserve=0
         release=(self.progress>self.initial_front+.5 and status['target_contact'] and room and near
                  and (remaining or prefix>=12 or self.handed_off) and self.n-self.rear>reserve
+                 and (not self.window.feedback_progress_guard or self.progress<=prefix+self.window.maximum_lead+1e-9)
                  and self.rear_release_permitted())
         # The same supply factor gates phase advance and boundary release.
         self.rear_ready=self.rear_ready+dt*self.feed if release else 0.
@@ -167,6 +169,15 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             # experimental material-phase offset, not a claimed CMU mapping.
             error=self.window.rear_phase_lead-(self.phase-self.rear_phase)
             rear_delta-=float(np.clip(error,-abs(demand),abs(demand)))
+        progress_scale=1.
+        if self.window.feedback_progress_guard and not self.handed_off:
+            # Previously acquired links can slip back after admission. The
+            # formation clock is monotone, but measured support is not. Pause
+            # both phase clocks when that lag exceeds the same allowed lead;
+            # the existing compliant shape recovery continues during the hold.
+            lag=max(0.,self.progress-status['actual_prefix']-self.window.maximum_lead)
+            progress_scale=float(np.clip(1-lag/max(self.window.maximum_lead,1e-9),0,1))
+            front_delta*=progress_scale;rear_delta*=progress_scale
         previous_phase=self.phase
         self.phase+=front_delta;self.rear_phase+=rear_delta
         recruitment=self.recruit(points,contact_window,status,front_delta,dt)
@@ -227,7 +238,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         self.command_before_last=previous;self.previous_measured=measured.copy();self.last_target=target.copy()
         return target,dict(front=self.front,rear=self.rear,weights=self.weights.copy(),raw=raw,
             measured=measured,front_phase=self.phase,rear_phase=self.rear_phase,phase_difference=self.rear_phase-self.phase,
-            follow=self.follow,feed=self.feed,front_delta=front_delta,rear_delta=rear_delta,
+            follow=self.follow,feed=self.feed,front_delta=front_delta,rear_delta=rear_delta,progress_scale=progress_scale,
             compliance_delta=compliance,section_domains=section_domains,**shape,**status,**recruitment,**middle_info,**finish)
 
     def configuration(self):
