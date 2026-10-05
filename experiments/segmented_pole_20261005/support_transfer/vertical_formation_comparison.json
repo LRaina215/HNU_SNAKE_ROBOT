@@ -1,0 +1,195 @@
+{
+  "comparison": [
+    {
+      "run": "earlier_rough_vertical",
+      "rows": [
+        {
+          "seconds": 10,
+          "formation": 10.840000000000003,
+          "prefix": 7,
+          "target_modules": [
+            0,
+            3,
+            5,
+            6
+          ],
+          "source_modules": [
+            8,
+            11,
+            13,
+            15,
+            16,
+            17,
+            20
+          ],
+          "target_normal": 74.9003287481954,
+          "head_z": 1.2960138851709635
+        },
+        {
+          "seconds": 20,
+          "formation": 12.0,
+          "prefix": 8,
+          "target_modules": [
+            1,
+            4,
+            7
+          ],
+          "source_modules": [
+            12,
+            15,
+            16,
+            19
+          ],
+          "target_normal": 35.68186950196777,
+          "head_z": 1.2638414650268621
+        },
+        {
+          "seconds": 30,
+          "formation": 14.16,
+          "prefix": 11,
+          "target_modules": [
+            0,
+            3,
+            4
+          ],
+          "source_modules": [
+            13,
+            20
+          ],
+          "target_normal": 18.74240846570909,
+          "head_z": 1.2411202335654217
+        },
+        {
+          "seconds": 40,
+          "formation": 16.0,
+          "prefix": 7,
+          "target_modules": [
+            1,
+            4,
+            8,
+            9
+          ],
+          "source_modules": [],
+          "target_normal": 61.35703691492304,
+          "head_z": 1.1344948615186792
+        },
+        {
+          "seconds": 48,
+          "formation": 17.91999999999996,
+          "prefix": 8,
+          "target_modules": [
+            3,
+            4,
+            5,
+            7,
+            9,
+            10,
+            12,
+            14
+          ],
+          "source_modules": [
+            20
+          ],
+          "target_normal": 218.6235476762419,
+          "head_z": 1.1356208354729123
+        }
+      ]
+    },
+    {
+      "run": "frozen_smooth_vertical",
+      "rows": [
+        {
+          "seconds": 10,
+          "formation": 9.0,
+          "prefix": 7,
+          "target_modules": [
+            0,
+            3,
+            5,
+            6
+          ],
+          "source_modules": [
+            9,
+            13,
+            15,
+            18,
+            20
+          ],
+          "target_normal": 83.12122933953215,
+          "head_z": 1.308091186195885
+        },
+        {
+          "seconds": 20,
+          "formation": 10.0,
+          "prefix": 7,
+          "target_modules": [
+            1,
+            4,
+            5,
+            8
+          ],
+          "source_modules": [
+            11,
+            14,
+            15,
+            17,
+            18,
+            19
+          ],
+          "target_normal": 63.31809795017944,
+          "head_z": 1.261923641863311
+        },
+        {
+          "seconds": 30,
+          "formation": 11.0,
+          "prefix": 9,
+          "target_modules": [
+            0,
+            3,
+            4,
+            7,
+            8
+          ],
+          "source_modules": [
+            11,
+            16,
+            18
+          ],
+          "target_normal": 127.4313041184468,
+          "head_z": 1.2007165265633848
+        },
+        {
+          "seconds": 40,
+          "formation": 11.0,
+          "prefix": 8,
+          "target_modules": [
+            1,
+            4,
+            6,
+            12
+          ],
+          "source_modules": [
+            19
+          ],
+          "target_normal": 120.85337284702777,
+          "head_z": 1.1560565980686734
+        },
+        {
+          "seconds": 48,
+          "formation": 12.89745092976994,
+          "prefix": 8,
+          "target_modules": [
+            0,
+            3,
+            6
+          ],
+          "source_modules": [],
+          "target_normal": 45.57576880837623,
+          "head_z": 1.1099023650205135
+        }
+      ]
+    }
+  ],
+  "interpretation": "Earlier rough vertical admitted more joints before source loss and regained distributed target support. Multiple controller changes differ, so this is evidence for testing formation-window reach, not an isolated causal proof.",
+  "next_controlled_test": "Use horizontal passing controller, change only maximum forming lead from 2 to the earlier 4 links. No shared phase slowing or physical parameter changes. Horizontal first; freeze before vertical."
+}

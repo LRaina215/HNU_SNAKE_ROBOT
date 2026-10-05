@@ -80,7 +80,10 @@ def solve(model, qpos):
         options=dict(ftol=1e-10, maxiter=1000))
     residual = float(np.max(abs(equality @ result.x-rhs)))
     violation = float(max(0., -np.min(cone(result.x)), np.max(torque_rows @ result.x)))
-    return dict(feasible_solution_found=bool(result.success and residual < 1e-7 and violation < 1e-7),
+    valid = bool(result.success and residual < 1e-7 and violation < 1e-7)
+    return dict(feasible_solution_found=valid,
+        within_actuator_capacity=bool(valid and result.x[-1] <= 1.+1e-7),
+        relaxed_torque_lower_bound=float(relaxed.fun),
         solver_success=bool(result.success), message=result.message,
         maximum_normalized_torque=float(result.x[-1]), static_equality_residual=residual,
         cone_or_torque_constraint_violation=violation,

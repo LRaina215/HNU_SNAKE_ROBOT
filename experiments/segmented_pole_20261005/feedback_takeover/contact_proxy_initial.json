@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "run": "radial_front_relative_braking",
+      "method": "proximity",
+      "precision": 0.449514630152122,
+      "recall": 1.0,
+      "both_pipe_presence_agreement": 0.9936958234830575
+    },
+    {
+      "run": "radial_front_relative_braking",
+      "method": "proximity_load",
+      "precision": 0.44848959452957854,
+      "recall": 0.9615279103707849,
+      "both_pipe_presence_agreement": 0.9902372821994572
+    },
+    {
+      "run": "vertical_initial_front_reference",
+      "method": "proximity",
+      "precision": 0.44027930477905913,
+      "recall": 1.0,
+      "both_pipe_presence_agreement": 0.9841069361119882
+    },
+    {
+      "run": "vertical_initial_front_reference",
+      "method": "proximity_load",
+      "precision": 0.4433884450134804,
+      "recall": 0.956778152644582,
+      "both_pipe_presence_agreement": 0.9930533628039154
+    }
+  ],
+  "limitation": "Known axes and robot radius. Geometric potential contact plus adjacent motor load is not contact force or stability proof."
+}

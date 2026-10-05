@@ -1,0 +1,9 @@
+{
+  "peak_time": 48.599999999958484,
+  "peak_module": 6,
+  "absolute_module_speed": 3.1532104711623994,
+  "shape_relative_speed_same_module": 0.0077142653274157365,
+  "maximum_shape_relative_speed": 0.30242044130082185,
+  "head_translation_speed": 3.039360310633014,
+  "meaning": "Frame-relative shape damping cannot sense or arrest global slip by itself; this diagnosis uses truth only after the run."
+}

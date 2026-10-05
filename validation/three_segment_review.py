@@ -75,6 +75,10 @@ def render(folder):
     import cv2
     from PIL import Image, ImageDraw
     result, z, m, d, meta = context(folder)
+    # NPZ access decompresses a whole array. Load replay fields once instead
+    # of repeatedly decompressing the full trajectory for each video frame.
+    with z:
+        z = {key: z[key] for key in ('time', 'qpos', 'qvel', 'ctrl', 'partition')}
     corner, source, target, _ = pipe_frame(m)
     camera = mujoco.MjvCamera()
     mujoco.mjv_defaultCamera(camera)

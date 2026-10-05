@@ -1,0 +1,570 @@
+{
+  "rows": [
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 5,
+      "axis_error_deg": 27.16001149846519,
+      "axis": [
+        0.4625182452903879,
+        0.3272066322897122,
+        -0.8240222646015857
+      ],
+      "axis_point_mm": [
+        -53.89644440325445,
+        61.248763006984824,
+        -11.178222778988477
+      ],
+      "radius_mm": 86.90992852113665,
+      "radial_rms_mm": 0.8097851968747588,
+      "objective": 1.9464527986254143,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 6,
+      "axis_error_deg": 47.720505135642895,
+      "axis": [
+        -0.1700390809720223,
+        0.9304834771641098,
+        -0.3244799064145232
+      ],
+      "axis_point_mm": [
+        -67.13056753742238,
+        42.883265353220835,
+        -18.927382765646307
+      ],
+      "radius_mm": 65.88575657424948,
+      "radial_rms_mm": 1.1156836135821562,
+      "objective": 4.254354830225937,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 7,
+      "axis_error_deg": 45.29434857356982,
+      "axis": [
+        0.12334018879589145,
+        -0.9385794460803736,
+        0.3222666926991577
+      ],
+      "axis_point_mm": [
+        -68.57920594595763,
+        58.19868523283646,
+        -22.522213281838116
+      ],
+      "radius_mm": 67.79632228329369,
+      "radial_rms_mm": 1.1406698132680706,
+      "objective": 5.013421837292481,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 8,
+      "axis_error_deg": 48.167674168120556,
+      "axis": [
+        0.17185214309024016,
+        -0.9356442668179711,
+        0.30828014351552535
+      ],
+      "axis_point_mm": [
+        -72.63065600381454,
+        73.63445552933868,
+        -28.595220595687007
+      ],
+      "radius_mm": 65.75156297911947,
+      "radial_rms_mm": 1.4766466345629152,
+      "objective": 9.442134405736413,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 9,
+      "axis_error_deg": 50.343020569182755,
+      "axis": [
+        0.20045305327578455,
+        -0.9392210015798427,
+        0.27871577569949707
+      ],
+      "axis_point_mm": [
+        -76.68564277493763,
+        88.3968257715243,
+        -32.50370313222387
+      ],
+      "radius_mm": 64.08284815251812,
+      "radial_rms_mm": 1.9813966344612688,
+      "objective": 18.270409589229804,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 10,
+      "axis_error_deg": 48.28670640216964,
+      "axis": [
+        -0.18040983410554298,
+        0.9287494735034283,
+        -0.3238467341584832
+      ],
+      "axis_point_mm": [
+        -78.40753249571753,
+        100.14698637003724,
+        -38.36731632672095
+      ],
+      "radius_mm": 66.15768502580235,
+      "radial_rms_mm": 3.2657455657487753,
+      "objective": 45.87163940484009,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "front",
+      "window_joints": 11,
+      "axis_error_deg": 75.18965798873857,
+      "axis": [
+        0.23648875724363938,
+        0.14152412628348773,
+        0.9612720683433252
+      ],
+      "axis_point_mm": [
+        -23.31963207208659,
+        104.26873886236416,
+        -62.571914464622026
+      ],
+      "radius_mm": 115.9525491384347,
+      "radial_rms_mm": 7.509670716689289,
+      "objective": 188.79338338566774,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 5,
+      "axis_error_deg": 42.22641521960747,
+      "axis": [
+        -0.9043442028751895,
+        0.2915601560423209,
+        0.31169574609643885
+      ],
+      "axis_point_mm": [
+        -300.1951378873166,
+        240.4821478660423,
+        -177.36078688232925
+      ],
+      "radius_mm": 102.63228323974158,
+      "radial_rms_mm": 0.6786040355553876,
+      "objective": 1.3701054049030492,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 6,
+      "axis_error_deg": 42.18738956309441,
+      "axis": [
+        0.9029519483181678,
+        -0.29562829380150263,
+        -0.31190012974097514
+      ],
+      "axis_point_mm": [
+        -292.19853504860873,
+        237.8477891154223,
+        -180.19254408255497
+      ],
+      "radius_mm": 102.67475220276,
+      "radial_rms_mm": 0.6284700957235514,
+      "objective": 1.371064152789625,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 7,
+      "axis_error_deg": 1.7947483466952312,
+      "axis": [
+        0.8174223445612502,
+        -0.4378082492729033,
+        0.37435898210218516
+      ],
+      "axis_point_mm": [
+        -256.87778461068524,
+        236.32109977222308,
+        -156.3381465515753
+      ],
+      "radius_mm": 85.69296016990252,
+      "radial_rms_mm": 1.0066065861071132,
+      "objective": 3.9211377533232286,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 8,
+      "axis_error_deg": 3.308628884616576,
+      "axis": [
+        -0.8005307446587515,
+        0.46496288809513936,
+        -0.37810056803756775
+      ],
+      "axis_point_mm": [
+        -246.86674878554163,
+        230.44963886527577,
+        -150.1529544801225
+      ],
+      "radius_mm": 84.23323014448096,
+      "radial_rms_mm": 0.9676012810304538,
+      "objective": 4.0787307629961855,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 9,
+      "axis_error_deg": 1.5421312346713876,
+      "axis": [
+        0.8139352328479934,
+        -0.43693734884903906,
+        0.38287751293260325
+      ],
+      "axis_point_mm": [
+        -235.5001251163011,
+        224.81027918125648,
+        -145.97251841762844
+      ],
+      "radius_mm": 85.53198262915511,
+      "radial_rms_mm": 0.9802274325357445,
+      "objective": 4.690981512419184,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 10,
+      "axis_error_deg": 0.9920536349215727,
+      "axis": [
+        -0.8166494999239111,
+        0.4285133457015651,
+        -0.3866004485637294
+      ],
+      "axis_point_mm": [
+        -224.0834156949517,
+        219.03197893463846,
+        -140.80076206411348
+      ],
+      "radius_mm": 85.8902229384188,
+      "radial_rms_mm": 0.9494826673238916,
+      "objective": 4.849856280883297,
+      "solver_success": true
+    },
+    {
+      "scene": "horizontal",
+      "side": "rear",
+      "window_joints": 11,
+      "axis_error_deg": 1.1948951577815414,
+      "axis": [
+        -0.8206631548394003,
+        0.39919593663068814,
+        -0.4088454359126321
+      ],
+      "axis_point_mm": [
+        -212.3293089112298,
+        214.129527584372,
+        -135.27810645984354
+      ],
+      "radius_mm": 87.16169040778345,
+      "radial_rms_mm": 1.420769335995729,
+      "objective": 11.70798597889301,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 5,
+      "axis_error_deg": 54.949590974639115,
+      "axis": [
+        0.35118999154960917,
+        0.5550199469637896,
+        -0.754067933483249
+      ],
+      "axis_point_mm": [
+        -74.81923990940501,
+        17.17826234602634,
+        3.939347652054778
+      ],
+      "radius_mm": 81.66052430225183,
+      "radial_rms_mm": 0.09657142054286356,
+      "objective": 0.027973927176005997,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 6,
+      "axis_error_deg": 29.66645005360339,
+      "axis": [
+        -0.4594437772786655,
+        0.8882067442406438,
+        0.0004415940981638829
+      ],
+      "axis_point_mm": [
+        -79.62308274108494,
+        -1.2442648656589093,
+        11.562965270158523
+      ],
+      "radius_mm": 74.59887297130327,
+      "radial_rms_mm": 1.1269147812335611,
+      "objective": 4.33126826583568,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 7,
+      "axis_error_deg": 29.294391114434372,
+      "axis": [
+        -0.45356722779211456,
+        0.8912051863213639,
+        0.005485047573110283
+      ],
+      "axis_point_mm": [
+        -87.75270283510945,
+        14.79230822045098,
+        11.972886307181685
+      ],
+      "radius_mm": 74.79952178644638,
+      "radial_rms_mm": 1.0571011454126387,
+      "objective": 4.35512346340326,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 8,
+      "axis_error_deg": 28.48205443852619,
+      "axis": [
+        -0.440751957056845,
+        0.8975750664117504,
+        0.00983425170020058
+      ],
+      "axis_point_mm": [
+        -96.29997647449599,
+        32.9325357508937,
+        12.709782935225919
+      ],
+      "radius_mm": 75.25497949129226,
+      "radial_rms_mm": 1.0309339904987769,
+      "objective": 4.678097446194046,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 9,
+      "axis_error_deg": 34.72395756737751,
+      "axis": [
+        -0.535295374955607,
+        0.844374736359687,
+        0.022139696218453134
+      ],
+      "axis_point_mm": [
+        -111.1254520776096,
+        47.95680407675619,
+        10.381691366156744
+      ],
+      "radius_mm": 70.71419758247588,
+      "radial_rms_mm": 3.6260464763876943,
+      "objective": 49.75994487179589,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 10,
+      "axis_error_deg": 36.7244167558923,
+      "axis": [
+        0.5609600161148328,
+        -0.8253226294016677,
+        -0.06454779405962725
+      ],
+      "axis_point_mm": [
+        -122.36624699500666,
+        60.95295328656494,
+        12.293137201473295
+      ],
+      "radius_mm": 67.64075443683981,
+      "radial_rms_mm": 3.7812059909006317,
+      "objective": 63.151431074149514,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "front",
+      "window_joints": 11,
+      "axis_error_deg": 71.22271086143107,
+      "axis": [
+        0.41304349674168506,
+        0.31181779112782165,
+        0.8556662520723648
+      ],
+      "axis_point_mm": [
+        -70.08888939369945,
+        120.02698156865742,
+        -30.3452293960588
+      ],
+      "radius_mm": 146.7,
+      "radial_rms_mm": 4.590452877507404,
+      "objective": 97.53185155364355,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 5,
+      "axis_error_deg": 29.25435385860697,
+      "axis": [
+        0.5254190172466144,
+        -0.1423755111182146,
+        0.8388468693089514
+      ],
+      "axis_point_mm": [
+        -310.7905511656148,
+        165.35840374056667,
+        -96.25369071895864
+      ],
+      "radius_mm": 96.85113932308532,
+      "radial_rms_mm": 0.288761788524231,
+      "objective": 0.24975771219952203,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 6,
+      "axis_error_deg": 22.060208990981696,
+      "axis": [
+        0.6262973186098907,
+        -0.10581146244237229,
+        0.7723701205496413
+      ],
+      "axis_point_mm": [
+        -317.97940517558084,
+        161.64215590470275,
+        -96.48062788448104
+      ],
+      "radius_mm": 93.03209724628138,
+      "radial_rms_mm": 0.5336295488344809,
+      "objective": 0.991747233038548,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 7,
+      "axis_error_deg": 3.586917033473636,
+      "axis": [
+        0.8403729062335669,
+        -0.021307594277047825,
+        0.541589664685981
+      ],
+      "axis_point_mm": [
+        -321.7950426047046,
+        157.39779674309335,
+        -95.22439937278274
+      ],
+      "radius_mm": 89.49381270903022,
+      "radial_rms_mm": 1.5718334242818237,
+      "objective": 9.424574024050514,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 8,
+      "axis_error_deg": 4.1741788347091,
+      "axis": [
+        0.8367399593934186,
+        -0.007456286068634045,
+        0.5475496727716699
+      ],
+      "axis_point_mm": [
+        -311.59218031871416,
+        157.85291205903326,
+        -89.03488846652344
+      ],
+      "radius_mm": 90.08791531998743,
+      "radial_rms_mm": 1.4930867310666784,
+      "objective": 9.543310453323139,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 9,
+      "axis_error_deg": 1.5164657409771187,
+      "axis": [
+        0.8587470670035667,
+        -0.035152406866748455,
+        0.5111925109039119
+      ],
+      "axis_point_mm": [
+        -300.1052122080935,
+        155.57418399584313,
+        -81.32684687098902
+      ],
+      "radius_mm": 88.21763949429753,
+      "radial_rms_mm": 1.462312352470665,
+      "objective": 10.158971774667824,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 10,
+      "axis_error_deg": 0.6761730038247179,
+      "axis": [
+        0.8680279947834196,
+        -0.04076119190964441,
+        0.4948392926055698
+      ],
+      "axis_point_mm": [
+        -288.0018679190396,
+        154.41666162166737,
+        -74.40781472046811
+      ],
+      "radius_mm": 87.52243287133251,
+      "radial_rms_mm": 1.4213039826056295,
+      "objective": 10.548167534785735,
+      "solver_success": true
+    },
+    {
+      "scene": "vertical_down",
+      "side": "rear",
+      "window_joints": 11,
+      "axis_error_deg": 1.9080742376466484,
+      "axis": [
+        0.8555498144651881,
+        -0.04040566366456891,
+        0.5161413540033467
+      ],
+      "axis_point_mm": [
+        -275.8220081756413,
+        154.2987257650574,
+        -66.77766623290206
+      ],
+      "radius_mm": 88.36053519908367,
+      "radial_rms_mm": 1.4944424913319176,
+      "objective": 12.707731223991308,
+      "solver_success": true
+    }
+  ],
+  "estimator_inputs": "Encoder-derived module centres, commanded nominal radius and robot geometry only.",
+  "selection": "Three covariance seeds; lowest robust radial objective. No pipe-axis truth used in selection.",
+  "limitations": [
+    "This does not establish contact, support, uniqueness or online stability.",
+    "Only two positive captures; numerical fit may be confident and wrong."
+  ]
+}

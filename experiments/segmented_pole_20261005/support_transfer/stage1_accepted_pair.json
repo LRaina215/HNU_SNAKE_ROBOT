@@ -1,0 +1,232 @@
+{
+  "stage": 1,
+  "captured_scene_engineering_gate_passed": true,
+  "entire_project_complete": false,
+  "controller_rule": "Radial A-D compliance and Yamada forming; same-rate phase; two-link admission; encoder feedback and body damping relative to captured initial_front.",
+  "same_effective_rule_evidence": "initial_front_reference_freeze.json",
+  "runs": [
+    {
+      "run": "radial_front_relative_braking",
+      "gate": {
+        "complete": true,
+        "quality": {
+          "joint_speed": true,
+          "body_speed": true,
+          "tracking": true,
+          "saturation": true
+        },
+        "passed": true
+      },
+      "metrics": {
+        "name": "radial_front_relative_braking",
+        "outcome": "full_crossing_validated",
+        "physical_seconds": 115.20000000027436,
+        "metrics_end_seconds": 113.27000000026514,
+        "complete": true,
+        "final_region": 20,
+        "max_region": 21,
+        "final_wrap": 2.0716065744048002,
+        "finish_seconds": 66.2,
+        "last_source_contact_seconds": 71.61000000006622,
+        "windows": {
+          "whole": {
+            "seconds": 113.28,
+            "maximum_error_deg": 35.85446003952598,
+            "mean_error_deg": 0.5843669145873204,
+            "maximum_joint_speed_deg_s": 61.005373044269604,
+            "p99_joint_speed_deg_s": 25.97389709762821,
+            "maximum_module_speed_mm_s": 483.14888031529836,
+            "saturated_joint_sample_fraction": 0.22350370762711863,
+            "saturated_joint_seconds": 506.37,
+            "target_contact_fraction": 1.0
+          },
+          "after_capture": {
+            "seconds": 112.28,
+            "maximum_error_deg": 2.9620283924910686,
+            "mean_error_deg": 0.580768343918973,
+            "maximum_joint_speed_deg_s": 61.005373044269604,
+            "p99_joint_speed_deg_s": 26.007838172674138,
+            "maximum_module_speed_mm_s": 483.14888031529836,
+            "saturated_joint_sample_fraction": 0.2234547559672248,
+            "saturated_joint_seconds": 501.79,
+            "target_contact_fraction": 1.0
+          },
+          "transfer": {
+            "seconds": 65.2,
+            "maximum_error_deg": 2.9620283924910686,
+            "mean_error_deg": 0.6838887251196406,
+            "maximum_joint_speed_deg_s": 61.005373044269604,
+            "p99_joint_speed_deg_s": 27.565502553362556,
+            "maximum_module_speed_mm_s": 483.14888031529836,
+            "saturated_joint_sample_fraction": 0.28890337423312884,
+            "saturated_joint_seconds": 376.73,
+            "target_contact_fraction": 1.0
+          },
+          "completion": {
+            "seconds": 4.0,
+            "maximum_error_deg": 2.4742333645969,
+            "mean_error_deg": 0.5350240992084005,
+            "maximum_joint_speed_deg_s": 41.98539711644269,
+            "p99_joint_speed_deg_s": 27.822584143513613,
+            "maximum_module_speed_mm_s": 139.27733270584832,
+            "saturated_joint_sample_fraction": 0.180125,
+            "saturated_joint_seconds": 14.41,
+            "target_contact_fraction": 1.0
+          }
+        },
+        "initial_error_deg": 35.85446003952598
+      },
+      "whole_crossing": {
+        "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+        "full_crossing_and_continued_rolling": true,
+        "accepted_window": {
+          "start_seconds": 76.92000000009158,
+          "end_seconds": 113.27000000026514,
+          "phase_advance_rad": 6.825000000000003,
+          "center_advance_mm": 228.0359991354528,
+          "minimum_wrap_turns": 2.0266393237320313,
+          "minimum_axial_clearance_mm": 0.011587596963181568,
+          "minimum_contact_span_mm": 298.40257506281785,
+          "front_half_contact_fraction": 1.0,
+          "rear_half_contact_fraction": 1.0,
+          "maximum_module_radius_mm": 108.51190018500365,
+          "all_module_radius_band_fraction": 0.6718921892189219,
+          "mean_tracking_error_deg": 0.4266869446288715,
+          "maximum_tracking_error_deg": 1.5780458603204321
+        },
+        "legacy_all_modules_in_radius_band_passed": false,
+        "maximum_target_region_modules": 21,
+        "final_target_region_modules": 20,
+        "minimum_all_point_target_progress_final_mm": 330.0447511908221,
+        "final_wrap_turns": 2.0716065744048002,
+        "floor_contact": false,
+        "final_center_progress_mm": 566.4350299628256,
+        "final_maximum_radius_mm": 103.88875007161133,
+        "limitation": "known axes and simulation contacts; these runs do not establish online axis estimation or real-robot performance"
+      },
+      "delivery": {
+        "command_count": 5760,
+        "interpolation_matches": false,
+        "velocity_feedback_checked": true,
+        "maximum_outer_reference_increment_deg": 18.0,
+        "maximum_command_increment_deg": 1.8000000000000154,
+        "initial_pose_and_EXE_delivery_checked": true
+      }
+    },
+    {
+      "run": "vertical_initial_front_reference",
+      "gate": {
+        "complete": true,
+        "quality": {
+          "joint_speed": true,
+          "body_speed": true,
+          "tracking": true,
+          "saturation": true
+        },
+        "passed": true
+      },
+      "metrics": {
+        "name": "vertical_initial_front_reference",
+        "outcome": "full_crossing_validated",
+        "physical_seconds": 96.00000000018481,
+        "metrics_end_seconds": 93.21000000017149,
+        "complete": true,
+        "final_region": 21,
+        "max_region": 21,
+        "final_wrap": 2.0438002004747444,
+        "finish_seconds": 59.6,
+        "last_source_contact_seconds": 55.67999999999229,
+        "windows": {
+          "whole": {
+            "seconds": 93.22,
+            "maximum_error_deg": 32.581746287024295,
+            "mean_error_deg": 0.5774043448841716,
+            "maximum_joint_speed_deg_s": 67.34532285784158,
+            "p99_joint_speed_deg_s": 27.524264998868748,
+            "maximum_module_speed_mm_s": 497.64949021277204,
+            "saturated_joint_sample_fraction": 0.22093434885217764,
+            "saturated_joint_seconds": 411.91,
+            "target_contact_fraction": 0.9973181720660802
+          },
+          "after_capture": {
+            "seconds": 92.22,
+            "maximum_error_deg": 2.42465902802747,
+            "mean_error_deg": 0.5753890207116872,
+            "maximum_joint_speed_deg_s": 67.34532285784158,
+            "p99_joint_speed_deg_s": 27.58369499883269,
+            "maximum_module_speed_mm_s": 497.64949021277204,
+            "saturated_joint_sample_fraction": 0.221009542398612,
+            "saturated_joint_seconds": 407.63,
+            "target_contact_fraction": 0.9972890913034049
+          },
+          "transfer": {
+            "seconds": 58.6,
+            "maximum_error_deg": 2.42465902802747,
+            "mean_error_deg": 0.6726816038492001,
+            "maximum_joint_speed_deg_s": 67.34532285784158,
+            "p99_joint_speed_deg_s": 30.705866587051144,
+            "maximum_module_speed_mm_s": 497.64949021277204,
+            "saturated_joint_sample_fraction": 0.28331911262798637,
+            "saturated_joint_seconds": 332.05,
+            "target_contact_fraction": 0.9957337883959044
+          },
+          "completion": {
+            "seconds": 4.0,
+            "maximum_error_deg": 1.4584361767473901,
+            "mean_error_deg": 0.3886681793928426,
+            "maximum_joint_speed_deg_s": 42.60806067911621,
+            "p99_joint_speed_deg_s": 26.169483939779933,
+            "maximum_module_speed_mm_s": 67.74739448725506,
+            "saturated_joint_sample_fraction": 0.09775,
+            "saturated_joint_seconds": 7.82,
+            "target_contact_fraction": 1.0
+          }
+        },
+        "initial_error_deg": 32.581746287024295
+      },
+      "whole_crossing": {
+        "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+        "full_crossing_and_continued_rolling": true,
+        "accepted_window": {
+          "start_seconds": 59.80000000001196,
+          "end_seconds": 93.21000000017149,
+          "phase_advance_rad": 6.300000000000004,
+          "center_advance_mm": 304.72577496293593,
+          "minimum_wrap_turns": 2.0287937160983596,
+          "minimum_axial_clearance_mm": 0.07655959512430854,
+          "minimum_contact_span_mm": 192.34679725866704,
+          "front_half_contact_fraction": 1.0,
+          "rear_half_contact_fraction": 1.0,
+          "maximum_module_radius_mm": 106.38360119949917,
+          "all_module_radius_band_fraction": 0.6977857570317175,
+          "mean_tracking_error_deg": 0.4052810229543188,
+          "maximum_tracking_error_deg": 1.58369769730728
+        },
+        "legacy_all_modules_in_radius_band_passed": false,
+        "maximum_target_region_modules": 21,
+        "final_target_region_modules": 21,
+        "minimum_all_point_target_progress_final_mm": 435.65283636329355,
+        "final_wrap_turns": 2.0438002004747444,
+        "floor_contact": false,
+        "final_center_progress_mm": 650.8721813609241,
+        "final_maximum_radius_mm": 98.08955776443045,
+        "limitation": "known axes and simulation contacts; these runs do not establish online axis estimation or real-robot performance"
+      },
+      "delivery": {
+        "command_count": 4800,
+        "interpolation_matches": false,
+        "velocity_feedback_checked": true,
+        "maximum_outer_reference_increment_deg": 18.0,
+        "maximum_command_increment_deg": 1.8000000000000025,
+        "initial_pose_and_EXE_delivery_checked": true
+      }
+    }
+  ],
+  "limitations": [
+    "Two selected checkpoints only; known axes/contact/initial split remain.",
+    "Initial 1 s excluded from process filters; whole histories preserved.",
+    "100 Hz logged module finite-difference speeds; narrow vertical margin about 0.47 percent, not hardware safety certification.",
+    "Real 20 ms feedback rate and robustness to estimated axes are unverified."
+  ],
+  "next": "Stage 2: feedback-based transferable-state judgment, first scored against truth, then angle/load/history only."
+}

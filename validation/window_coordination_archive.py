@@ -36,7 +36,10 @@ def delivery(folder):
         filtered_velocity=np.zeros_like(previous_encoder)
         if plan.get('body_damping',0):
             from encoder_shape_kinematics import EncoderShapeKinematics
-            kinematics=EncoderShapeKinematics(model,plan.get('body_reference_module',0))
+            reference_module=plan.get('body_reference_module',0)
+            if reference_module==-1:
+                reference_module=read(folder/'plan.json')['configuration']['initial_front']
+            kinematics=EncoderShapeKinematics(model,reference_module)
     largest=0.;largest_outer=0.
     for i,control in enumerate(controls):
         target=np.asarray(control['target'])
@@ -88,7 +91,6 @@ def delivery(folder):
                     assert abs(row['body_relative_speed']-speeds[module])<1e-10
                     force=-plan['body_damping']*max(0,1-plan['body_speed_limit']/max(speeds[module],1e-12))*velocities[module]
                     torque=jacobians[module].T@force
-                    reference_module=plan.get('body_reference_module',0)
                     if reference_module:
                         assert np.max(abs(jacobians[module,:,:reference_module]))<1e-10
                         assert np.max(abs(torque[:reference_module]))<1e-8

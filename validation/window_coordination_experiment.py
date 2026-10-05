@@ -33,7 +33,8 @@ def run(args):
                 'codes/three_segment_incremental.py','codes/spatial_bishop_backbone.py',
                 'validation/window_coordination_experiment.py','validation/traveling_winding_audit.py',
                 'validation/coordinated_winding_metrics.py','validation/spatial_takeover_experiment.py',
-                'validation/contact_support_margin.py','codes/velocity_feedback_delivery.py','codes/encoder_shape_kinematics.py'):
+                'validation/contact_support_margin.py','codes/velocity_feedback_delivery.py','codes/encoder_shape_kinematics.py',
+                'codes/encoder_pipe_geometry.py'):
             dest=folder/'sources'/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dest)
         g=sim.fresh()
         choices=((args.support_memory,SupportTransferWinding),
@@ -61,8 +62,17 @@ def run(args):
             extra['support_bound']=lambda:bound.evaluate(sim.d.qpos,sim.m.geom('pipe_straight_03').id)
             extra['hold_bound']=args.hold_bound
             extra['bound_held_phase']=args.bound_held_phase
+        corner,source,target,radius=sim.corner,sim.source,sim.target,sim.radius
+        if args.encoder_initial_axes:
+            from encoder_pipe_geometry import right_angle_hypothesis
+            estimate=right_angle_hypothesis(np.asarray(g['points_mm']),sim.meta['settings']['radius'])
+            write_json(folder/'initial_geometry_estimate.json',estimate)
+            if not estimate['geometric_candidate']:
+                raise RuntimeError('Encoder shape does not support a right-angle branch hypothesis')
+            corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
+            result['geometry_input']='Encoder-reconstructed points, nominal coil radius, intersecting right-angle prior; contacts and global frame remain stage-2 test inputs.'
         controller=cls(g,sim.original.parameters,sim.d.ctrl,sim.phase,
-            sim.corner,sim.source,sim.target,sim.radius,measured=sim.d.qpos[sim.qadr].copy(),
+            corner,source,target,radius,measured=sim.d.qpos[sim.qadr].copy(),
             forward_points=lambda q:points_for_angles(sim.m,sim.d,q),pitch_mm=sim.meta['settings']['pitch'],
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
@@ -78,11 +88,14 @@ def run(args):
         phase0=sim.phase;lost=0;result['outcome']='time_limit'
         delivery=None
         if args.velocity_feedback:
+            # -1 protects the whole captured front, not a horizontal-specific
+            # fixed count. It resolves to 5/7 for the two archived checkpoints.
+            reference_module=controller.initial_front if args.body_reference_module==-1 else args.body_reference_module
             delivery=VelocityFeedbackDelivery(np.radians(g['angles_deg'])*sim.bridge.signs,
                 args.velocity_feedback,args.delivery_period,sim.m.jnt_range[sim.jids],
                 sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0] if args.delivery_torque_equivalent else None,
                 args.velocity_filter,
-                EncoderShapeKinematics(sim.m,args.body_reference_module).jacobians if args.body_damping else None,
+                EncoderShapeKinematics(sim.m,reference_module).jacobians if args.body_damping else None,
                 args.body_damping,args.body_speed_limit,sim.m.actuator_gainprm[:,0])
         for k in range(round(args.seconds/args.dt)):
             g=sim.fresh();measured=np.radians(g['angles_deg'])*sim.bridge.signs
@@ -146,6 +159,8 @@ def run(args):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('name');p.add_argument('--hypothesis',required=True)
     p.add_argument('--scene',choices=['horizontal','vertical_down'],default='horizontal')
+    p.add_argument('--encoder-initial-axes',action='store_true',
+        help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
     p.add_argument('--seconds',type=float,default=120.);p.add_argument('--dt',type=float,default=.2)
     p.add_argument('--delivery-period',type=float,default=.02)
     p.add_argument('--velocity-feedback',type=float,default=0.,
@@ -155,7 +170,7 @@ if __name__=='__main__':
     p.add_argument('--velocity-filter',type=float,default=0.,help='Encoder velocity low-pass time constant in seconds')
     p.add_argument('--body-damping',type=float,default=0.,help='Relative module-speed damping through position targets, Ns/m')
     p.add_argument('--body-speed-limit',type=float,default=.2,help='Relative module speed above which coupled damping acts, m/s')
-    p.add_argument('--body-reference-module',type=int,default=0,help='Robot module defining the encoder-relative velocity frame')
+    p.add_argument('--body-reference-module',type=int,default=0,help='Encoder-relative velocity frame; -1 uses the captured front boundary')
     p.add_argument('--coordinate-acquisition',action='store_true',help='Radial acquisition: slow both phase clocks when measured recruitment lags')
     p.add_argument('--tail-mode',choices=['support','same','hold','coupled'],default='support')
     p.add_argument('--finish-mode',choices=['original','continuous'],default='original')
