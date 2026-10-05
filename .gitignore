@@ -25,5 +25,24 @@ venv/
 /validation/results/
 /logs/
 
-# Pitch pilots: private EXE work copies and local UI state; raw data remain tracked.
+# Pitch pilots: private EXE work copies and local UI state.
+# Previously tracked evidence is retained; new local run outputs below are not added automatically.
 /experiments/pitch_adaptation_20261003/**/app/
+
+# MuJoCo diagnostic output (not source code).
+/MUJOCO_LOG.TXT
+
+# Completed pitch development: local generated traces, sampled feedback and diagnostics.
+# These directories contain generated data, not the maintained validation/ source.
+/experiments/pitch_adaptation_20261003/repair_v5/adjacent_geometry/
+/experiments/pitch_adaptation_20261003/repair_v5/capture_pilots/
+/experiments/pitch_adaptation_20261003/repair_v5/initial_diagnostic/
+/experiments/pitch_adaptation_20261003/repair_v5/training/
+/experiments/pitch_adaptation_20261003/repair_v5/training_audit/
+/experiments/pitch_adaptation_20261003/repair_v5/training_initial_repair/
+
+# Terminated crossing study: bulky locally generated archives and media.
+# Keep root-level protocols, summaries and maintained source visible to Git.
+/experiments/segmented_pole_20261005/natural_takeover/archives/*.zip
+/experiments/segmented_pole_20261005/natural_takeover/reviews/*.mp4
+/experiments/segmented_pole_20261005/natural_takeover/reviews/*.png
