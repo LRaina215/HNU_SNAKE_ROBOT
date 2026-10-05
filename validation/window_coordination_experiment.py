@@ -55,6 +55,10 @@ def run(args):
         if args.target_frame_acquisition:
             from target_frame_acquisition import TargetFrameAcquisition
             cls=TargetFrameAcquisition
+        if args.observable_support:
+            from observable_support_transfer import ObservableSupportTransfer
+            cls=ObservableSupportTransfer
+            shutil.copy2(ROOT/'codes/observable_support_transfer.py',folder/'sources/codes/observable_support_transfer.py')
         extra=dict(support_error_limit=sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0]) if args.support_memory or args.capacity_preload or args.radial_acquisition else {}
         if args.target_frame_acquisition:
             extra.update(conserve_middle=args.conserve_middle,distinguish_lines=args.distinguish_lines)
@@ -260,6 +264,8 @@ if __name__=='__main__':
         help='Target-frame variant: release one rear joint per newly measured acquired module.')
     p.add_argument('--distinguish-lines',action='store_true',
         help='Target-frame acquisition also requires closer proximity to target than source axis.')
+    p.add_argument('--observable-support',action='store_true',
+        help='Retain eight rear joints until a sustained full target coil and angular support coverage are observed.')
     p.add_argument('--seconds',type=float,default=120.);p.add_argument('--dt',type=float,default=.2)
     p.add_argument('--delivery-period',type=float,default=.02)
     p.add_argument('--velocity-feedback',type=float,default=0.,
@@ -304,6 +310,8 @@ if __name__=='__main__':
     modes.add_argument('--radial-acquisition',action='store_true')
     p.add_argument('--output-root',type=Path)
     args=p.parse_args()
+    if args.observable_support and not (args.target_frame_acquisition and args.radial_acquisition):
+        p.error('observable-support requires target-frame-acquisition and radial-acquisition')
     if args.encoder_tracking and not (args.cad_support and args.target_frame_acquisition and args.radial_acquisition):
         p.error('encoder-tracking requires cad-support, target-frame-acquisition and radial-acquisition')
     if args.delivery_period<=0 or not np.isclose(args.dt/args.delivery_period,round(args.dt/args.delivery_period)):

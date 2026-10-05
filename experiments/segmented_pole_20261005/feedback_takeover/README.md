@@ -1,6 +1,6 @@
 # 第2步：搭管状态的反馈判断（2026-10-05）
 
-第1步的两个指定搭管存档已通过工程筛选，证据见 ../support_transfer/stage1_accepted_pair.json。本目录继续原规划第2步，已完成19组闭环对照；当前反馈接管实现未通过统一双场景门槛，完整自主流程没有完成。集中结论见[可行性验证报告](../../../docs/顺应性自主跨管_可行性验证结论.md)。
+第1步的两个指定搭管存档已通过工程筛选，证据见 ../support_transfer/stage1_accepted_pair.json。本目录继续原规划第2步，已完成21组闭环对照；当前反馈接管实现未通过统一双场景门槛，完整自主流程没有完成。集中结论见[可行性验证报告](../../../docs/顺应性自主跨管_可行性验证结论.md)。
 
 ## 闭环结果
 
@@ -18,6 +18,8 @@
 | horizontal_encoder_live_conserved | 否 | 88.70 | 0.72830 | 4.42 | 16.49 | 未通过 |
 | horizontal_encoder_live_single_target | 否 | 237.39 | 3.12565 | 19.86 | 20.03 | 未通过 |
 | horizontal_encoder_live_whole_coil | 是 | 59.02 | 0.55645 | 3.47 | 23.29 | 未通过 |
+| horizontal_observation_reserve_oracle | 是 | 65.20 | 0.62038 | 2.49 | 25.12 | 未通过 |
+| horizontal_observation_reserve_phase | 否 | 67.23 | 0.57138 | 2.99 | 26.60 | 未通过 |
 | horizontal_target_frame | 是 | 90.57 | 2.06296 | 3.89 | 19.58 | 未通过 |
 | horizontal_target_frame_conserved | 是 | 62.88 | 0.47794 | 2.46 | 19.89 | 通过 |
 | horizontal_target_frame_continuous | 是 | 67.45 | 0.50736 | 3.30 | 32.86 | 未通过 |
@@ -89,6 +91,8 @@ encoder_tracking 系列仅使用关节角、历史命令、机器人CAD、名义
 持续跟踪详细只读结果压缩在 archives/encoder_tracking_diagnostics.zip，源JSON本地保留；解压到本目录可重新画图。首版负半径快照另存，不用修订后的源码冒充原版本。
 
 ## 复现
+
+后续两组保留已知信息的支撑交接对照未通过。前部持续形成至少一圈、10节前缀及180°接触覆盖前保留8节尾部，仍出现0.620m/s摆动；再将尾部释放额度绑定前部rolling推进量，200秒未完成、0.571m/s。后者约39.8秒实际原管接触消失，此时控制尾部分界仍为14；仅限制标签迁移不能保证实际支撑。两组归档和额外17,040条EXE命令核对均完成，共21组145,870条命令。详细动态观测尝试见[主动试探说明](../active_takeover_multisine/README.md)，它们不计入闭环次数。
 
 闭环入口 validation/window_coordination_experiment.py，使用新结果名及归档 plan.json 参数。新增选项为 --encoder-initial-axes、--cad-refine-axes、--cad-support；--target-frame-acquisition 与 --conserve-middle 为仍在验证的分界替换，--distinguish-lines 排除仍属于原轴的模块，--encoder-tracking 为持续局部坐标估计闭环。默认历史控制路径保留，日常实机入口未替换。
 
