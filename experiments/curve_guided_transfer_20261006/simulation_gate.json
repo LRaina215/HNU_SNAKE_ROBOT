@@ -1,0 +1,8 @@
+{
+  "B_run": false,
+  "reason": "initial_cannot_hold_on_both_pipes",
+  "simulation_trials": 2,
+  "real_trials": 0,
+  "F_run": false,
+  "pause": "C0 did not establish a usable stable paired initial state"
+}

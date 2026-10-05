@@ -1,0 +1,36 @@
+{
+  "V1": {
+    "maximum_module_speed_mm_s": 923.4273904753303,
+    "maximum_tracking_error_deg": 1.8815661814169133,
+    "maximum_command_step_deg": 0.01046200000000049,
+    "root_displacement_mm": 119.14627072351338,
+    "root_z_change_mm": -49.072883744463724,
+    "maximum_actual_module_displacement_mm": 185.0519410787044,
+    "source_contact_modules_final": 1,
+    "target_contact_modules_final": 2,
+    "torque_rms_nm": 0.595596380204625,
+    "saturation_fraction": 0.013636363636363636,
+    "commands": 24,
+    "all_commands_applied": true,
+    "physical_time_s": 1.1999999999999786,
+    "feed_mm_max": 0.0,
+    "raw_samples": 121
+  },
+  "V2": {
+    "maximum_module_speed_mm_s": 609.2804281837358,
+    "maximum_tracking_error_deg": 0.6045198760984765,
+    "maximum_command_step_deg": 0.015187375399228464,
+    "root_displacement_mm": 90.42443559113083,
+    "root_z_change_mm": -15.752877605164418,
+    "maximum_actual_module_displacement_mm": 169.25399740615583,
+    "source_contact_modules_final": 1,
+    "target_contact_modules_final": 2,
+    "torque_rms_nm": 0.524830815760374,
+    "saturation_fraction": 0.0,
+    "commands": 100,
+    "all_commands_applied": true,
+    "physical_time_s": 5.000000000000004,
+    "feed_mm_max": 0.0,
+    "raw_samples": 501
+  }
+}

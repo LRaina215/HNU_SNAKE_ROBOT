@@ -1,0 +1,19 @@
+{
+  "revision": "V2 manual initial registration only; motion construction unchanged",
+  "source_trial": "V1_C0",
+  "source_time_s": 0.4000000000000003,
+  "artificially_set_before_first_step": true,
+  "qvel_zero_for_manual_static_placement": true,
+  "not_a_continuation_or_checkpoint_replay": true,
+  "limits_changed": false,
+  "physics_changed": false,
+  "source_contact_modules": [
+    9,
+    10
+  ],
+  "target_contact_modules": [
+    6,
+    7
+  ],
+  "max_previous_tracking_error_deg": 0.6045198760984765
+}
