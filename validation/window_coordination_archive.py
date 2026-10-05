@@ -30,18 +30,33 @@ def delivery(folder):
         probe=read(folder/'response_probe.json');probe_plan=read(folder/'response_probe_plan.json')
         probe_commands=probe_plan['commands'];assert len(probe)==probe_commands+1
         _,probe_trace,probe_model,_,_=context(folder)
+        probe_execution=commands
+        if plan.get('response_state'):
+            # Natural approach already executed the probe. Verify those actual
+            # commands in the parent trace; do not count/replay them a second
+            # time in the post-probe transfer stage.
+            parent=folder.parent/'approach'
+            parent_trace=np.load(parent/'trace.npz')
+            for key in ('time','qpos','qvel','ctrl'):
+                assert np.allclose(parent_trace[key][-1],probe_trace[key][0],atol=1e-10,rtol=0)
+            probe_trace=parent_trace
+            probe_execution=[c for c in read(parent/'commands.json')
+                if probe[0]['execution_time']-1e-8<=c['time']<probe[-1]['execution_time']-1e-8]
+            assert len(probe_execution)==probe_commands
         probe_times=probe_trace['time'];probe_angles=probe_trace['qpos'][:,probe_model.jnt_qposadr[probe_model.actuator_trnid[:,0]]]
         probe_bounds=probe_model.jnt_range[probe_model.actuator_trnid[:,0]]
         for i,record in enumerate(probe[:-1]):
             t=record['time'];pulse=np.sin(2*np.pi*np.arange(1,4)*(t-.2)/.8) if .2<=t<=1. else np.zeros(3)
             expected=np.clip(np.asarray(probe_plan['reference'])+pulse@np.asarray(probe_plan['patterns']),probe_bounds[:,0]+.01,probe_bounds[:,1]-.01)
             assert np.allclose(record['command'],expected,atol=1e-12,rtol=0)
-            assert np.allclose(commands[i]['target'],expected,atol=1e-12,rtol=0)
-            assert abs(commands[i]['time']-record['execution_time'])<1e-8
+            assert np.allclose(probe_execution[i]['target'],expected,atol=1e-12,rtol=0)
+            assert abs(probe_execution[i]['time']-record['execution_time'])<1e-8
             sample=int(np.argmin(abs(probe_times-record['execution_time'])))
             assert np.allclose(record['q'],probe_angles[sample],atol=1e-8,rtol=0)
-            assert abs(commands[i]['phase']-probe_plan['phase'])<1e-12
-        previous=np.asarray(commands[probe_commands-1]['target']);commands=commands[probe_commands:]
+            assert abs(probe_execution[i]['phase']-probe_plan['phase'])<1e-12
+        previous=np.asarray(probe_execution[probe_commands-1]['target'])
+        if plan.get('response_state'):probe_commands=0
+        else:commands=commands[probe_commands:]
     assert len(commands)==len(controls)*count
     if plan.get('velocity_feedback',0):
         _,trace,model,_,_=context(folder)
@@ -135,7 +150,8 @@ def delivery(folder):
         largest=max(largest,float(np.degrees(abs(np.diff(np.vstack([previous,actual]),axis=0))).max()))
         previous=actual[-1]
     assert largest<=90*plan['delivery_period']+1e-8
-    return dict(command_count=total_commands,response_probe_commands=probe_commands,response_probe_checked=bool(probe_commands),interpolation_matches=not bool(plan.get('velocity_feedback',0)),
+    return dict(command_count=total_commands,response_probe_commands=probe_commands,response_probe_checked=bool(plan.get('dynamic_observer')),
+        probe_executed_in_natural_approach=bool(plan.get('response_state')),interpolation_matches=not bool(plan.get('velocity_feedback',0)),
         velocity_feedback_checked=bool(plan.get('velocity_feedback',0)),
         maximum_outer_reference_increment_deg=largest_outer,
         maximum_command_increment_deg=largest,initial_pose_and_EXE_delivery_checked=True)

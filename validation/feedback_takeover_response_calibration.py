@@ -6,6 +6,7 @@ with gravity along an axis or their plane normal. The robot/friction model is
 assumed known. This research calibrator has not been qualified for hardware.
 """
 import time
+from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 from scipy.optimize import least_squares
 from feedback_takeover_dynamic_observer_probe import virtual_model,predict
@@ -129,8 +130,15 @@ def calibrate_network(robot,robot_xml,initial,records,junction_search=True):
     All candidates receive the same measurements and train on the first 0.8s.
     The final 0.4s remains a gate. These expensive fits are research-time work.
     """
-    fits=[calibrate(robot,robot_xml,initial,records,junction_search,extension)
-          for extension in (None,'source','target')]
+    begin=time.perf_counter()
+    # Each hypothesis creates its own model/data; inputs are read-only. These
+    # independent fits can share wall time without changing the objective,
+    # start set, training/held-out split or deterministic selection order.
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures=[pool.submit(calibrate,robot,robot_xml,initial,records,junction_search,extension)
+                 for extension in (None,'source','target')]
+        fits=[future.result() for future in futures]
     best=min(fits,key=lambda row:row['training_rms_deg'])
-    return dict(best,network_hypotheses=[dict(extension=row['extension'],training_rms_deg=row['training_rms_deg'],
+    return dict(best,network_wall_seconds=time.perf_counter()-begin,
+        network_hypotheses=[dict(extension=row['extension'],training_rms_deg=row['training_rms_deg'],
         held_out_rms_deg=row['held_out_rms_deg'],estimate=row['estimate'],gravity=row['gravity'],history=row['history']) for row in fits])

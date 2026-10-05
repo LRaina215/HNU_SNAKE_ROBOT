@@ -1,0 +1,39 @@
+[
+  {
+    "archive": "horizontal_natural_v1_prefix.zip",
+    "files": 44,
+    "MiB": 7.3738861083984375,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_ensemble.zip",
+    "files": 55,
+    "MiB": 38.81899070739746,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_progress_guard.zip",
+    "files": 54,
+    "MiB": 55.64895439147949,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_rate_probe_incomplete.zip",
+    "files": 54,
+    "MiB": 2.758175849914551,
+    "complete_trace": false
+  },
+  {
+    "archive": "horizontal_natural_rate_topology.zip",
+    "files": 11,
+    "MiB": 0.09818649291992188,
+    "complete_trace": null,
+    "kind": "offline_model_fit_no_new_physical_rollout"
+  },
+  {
+    "archive": "horizontal_natural_rate_transfer_topology.zip",
+    "files": 55,
+    "MiB": 44.67854881286621,
+    "complete_trace": true
+  }
+]

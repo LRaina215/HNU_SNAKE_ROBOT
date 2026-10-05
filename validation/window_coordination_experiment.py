@@ -82,7 +82,8 @@ def run(args):
             from feedback_takeover_dynamic_tracker import DynamicPipeTracker
             for name in ('feedback_takeover_live_tracking.py','feedback_takeover_encoder_tracking.py','feedback_takeover_cad_refinement.py',
                     'feedback_takeover_collect_response.py','feedback_takeover_response_calibration.py',
-                    'feedback_takeover_dynamic_tracker.py','feedback_takeover_dynamic_filter.py','feedback_takeover_dynamic_observer_probe.py'):
+                    'feedback_takeover_dynamic_tracker.py','feedback_takeover_dynamic_filter.py','feedback_takeover_dynamic_observer_probe.py',
+                    'feedback_takeover_response_gate.py'):
                 shutil.copy2(ROOT/'validation'/name,folder/'sources/validation'/name)
             measured=np.radians(g['angles_deg'])*sim.bridge.signs
             load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
@@ -94,7 +95,7 @@ def run(args):
                     raise RuntimeError('Automatic probe handoff does not match current encoders')
                 result['automatic_response_handoff']=str(args.response_state)
                 initial_estimate=fit['unrefined']
-                for filename in ('response_probe.json','motion_reference.json'):
+                for filename in ('response_probe.json','response_probe_plan.json','motion_reference.json'):
                     shutil.copy2(args.response_state/filename,folder/filename)
             else:
                 initial_tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'])

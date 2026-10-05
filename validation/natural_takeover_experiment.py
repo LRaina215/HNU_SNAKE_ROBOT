@@ -110,6 +110,8 @@ def run(args):
         persistent=max(2,round(.6/args.dt))-1 if args.resume_auto else 0
         lost=0;last_probe_phase=None
         for step in range(round(args.seconds/args.dt)):
+            if (root/'STOP').exists():
+                result['outcome']='development_stopped';break
             g=sim.fresh();q=np.radians(g['angles_deg'])*sim.bridge.signs
             local=dict(g,points_mm=kinematics.points(q).tolist())
             hypothesis=right_angle_hypothesis(local['points_mm'],meta['settings']['radius'])
@@ -138,6 +140,8 @@ def run(args):
                     gate=judge(sim.m,sim.meta['source_model'],fit,records);write_json(probe/'response_gate.json',gate)
                     accepted=gate['passed'];attempts.append(dict(folder=str(probe),time=float(sim.d.time),phase=sim.phase,passed=accepted))
                     print(args.name,'probe',len(attempts),'accepted',accepted,'criteria',gate['criteria'],flush=True)
+                    if (root/'STOP').exists():
+                        result['outcome']='development_stopped';break
                     if delivery is not None:
                         delivery.previous_measured=np.array(records[-1]['q']);delivery.filtered_velocity[:]=0.
                     if not accepted:

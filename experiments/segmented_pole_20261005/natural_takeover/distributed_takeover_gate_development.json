@@ -1,0 +1,3586 @@
+{
+  "rows": [
+    {
+      "name": "manual_horizontal",
+      "gate": {
+        "passed": true,
+        "criteria": {
+          "prediction": true,
+          "target_constraint_evidence": true,
+          "both_constraints_persist": true,
+          "target_support_distributed": true
+        },
+        "heldout_rms_deg": 0.0006600065729273293,
+        "source_only_heldout_rms_deg": 0.5652276479926487,
+        "predicted_support_fraction_last_point6_seconds": [
+          1.0,
+          1.0
+        ],
+        "predicted_target_coverage": [
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 136.2364884997614
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 136.1574071573299
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 136.06316177226574
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.96871271080857
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.87703191780747
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.78857119479576
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.703291374794
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.62103614231842
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.54166390531287
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 135.46507921032085
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 135.39597097620685
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 135.34418998090288
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 135.31290993287303
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.4769804053501
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.43946995512374
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.39007108586557
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.32673934450517
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.2581632852348
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.20087180481283
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.15549156496837
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.12299286349602
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.1068124702309
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.0989359330812
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.08799152856375
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.0847156988118
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.08876315139327
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.0886294016663
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.0855974691029
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.07263082162123
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 173.04713459076177
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.99611993707683
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.93551540985558
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.8699966337
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.80387890066456
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.7485721117048
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.70589361523582
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.6678881308634
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.63882424592617
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.63512831176766
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.65026261157993
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.6730571849424
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.69368692699075
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.7034814408279
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.69871387388756
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.69309706462832
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.68903699419553
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.67737896326528
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.66167270572603
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.64281704603317
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.60955224491133
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.55627463655432
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.5190844427249
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.48086911733847
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.4327573660197
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.3838787941461
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.3386402613628
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.2970478666399
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.25839589918684
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.22223565207113
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4,
+              5
+            ],
+            "angular_span_deg": 172.18822873441974
+          }
+        ],
+        "distributed_support_fraction_last_point6_seconds": 1.0,
+        "predicted_support_N": [
+          [
+            88.53327331834213,
+            26.868792970503524
+          ],
+          [
+            254.9551738021232,
+            77.23086475094598
+          ],
+          [
+            251.46770435477032,
+            75.7513492079154
+          ],
+          [
+            248.35502039941707,
+            74.46374578540042
+          ],
+          [
+            245.43438397092513,
+            73.3292707689937
+          ],
+          [
+            242.64994917719198,
+            72.29857543582341
+          ],
+          [
+            240.00286765362807,
+            71.34284668027176
+          ],
+          [
+            237.5003707504012,
+            70.45052481493568
+          ],
+          [
+            235.14662097965083,
+            69.6147304368422
+          ],
+          [
+            232.93837835843294,
+            68.82696457306905
+          ],
+          [
+            230.87050358922505,
+            68.07441817415842
+          ],
+          [
+            228.60820980904217,
+            68.93554005358106
+          ],
+          [
+            226.72322677531858,
+            71.50006451363673
+          ],
+          [
+            224.59892521047496,
+            73.4345140035191
+          ],
+          [
+            221.13568006182422,
+            74.26072387061771
+          ],
+          [
+            217.51356914064615,
+            73.75653110426525
+          ],
+          [
+            214.29944288489142,
+            71.9608174065955
+          ],
+          [
+            211.70130434221593,
+            69.19317785889568
+          ],
+          [
+            210.1449776563903,
+            63.717369445591416
+          ],
+          [
+            209.95321004696078,
+            55.050585915134675
+          ],
+          [
+            210.57113002299744,
+            50.338039224430716
+          ],
+          [
+            212.0331171966325,
+            49.57209277004052
+          ],
+          [
+            213.06976815407654,
+            52.588365656011675
+          ],
+          [
+            212.12318083452473,
+            58.78763094245803
+          ],
+          [
+            211.08777551983195,
+            66.63587018297399
+          ],
+          [
+            209.8158043983169,
+            69.81567042954629
+          ],
+          [
+            208.4657686648814,
+            70.97064457593918
+          ],
+          [
+            207.3009737138196,
+            71.93534688404372
+          ],
+          [
+            206.53133417759983,
+            71.89334887196385
+          ],
+          [
+            206.3143767574925,
+            70.59927536022641
+          ],
+          [
+            205.9568169809314,
+            68.27199133180014
+          ],
+          [
+            198.26168075592238,
+            65.11535656908411
+          ],
+          [
+            192.4229465588889,
+            54.91747434386323
+          ],
+          [
+            187.14109352214462,
+            48.135204298983325
+          ],
+          [
+            182.6364841835527,
+            44.991850072184356
+          ],
+          [
+            179.7310610447957,
+            45.63260437272709
+          ],
+          [
+            178.6302370208176,
+            49.936379882265626
+          ],
+          [
+            179.44064564283929,
+            56.9926488468431
+          ],
+          [
+            182.39119600593415,
+            62.712020401933465
+          ],
+          [
+            187.257339715921,
+            64.09134493488479
+          ],
+          [
+            192.8111463806604,
+            65.98794247502462
+          ],
+          [
+            198.3652623186284,
+            67.16159608114121
+          ],
+          [
+            201.89563265002442,
+            67.15230886459526
+          ],
+          [
+            204.09583235500082,
+            65.93554483065182
+          ],
+          [
+            206.07138019759955,
+            63.8545397546226
+          ],
+          [
+            206.90493278744432,
+            57.10216208240425
+          ],
+          [
+            204.5719473731862,
+            51.32767386812687
+          ],
+          [
+            202.06475042442173,
+            48.353055817217886
+          ],
+          [
+            198.1020802319493,
+            48.741269685161846
+          ],
+          [
+            193.0697309878161,
+            52.36272570075566
+          ],
+          [
+            187.61734841237822,
+            58.47108258614196
+          ],
+          [
+            182.56945626930295,
+            66.15450742917666
+          ],
+          [
+            182.05812611743383,
+            63.46621079912066
+          ],
+          [
+            180.77828964941654,
+            62.30378992968159
+          ],
+          [
+            179.6516106495097,
+            61.59915804896866
+          ],
+          [
+            178.71737640024452,
+            61.064336984580734
+          ],
+          [
+            177.8713425331577,
+            60.592757309138925
+          ],
+          [
+            177.0918064680117,
+            60.19724107757999
+          ],
+          [
+            176.35402242724203,
+            59.845807054596676
+          ],
+          [
+            175.64959823596624,
+            59.53234898872564
+          ],
+          [
+            174.97100922763138,
+            59.24352753274638
+          ]
+        ],
+        "limitation": "Model-based evidence, not measured contacts or a proof of force closure. Thresholds are engineering development criteria; no hardware/noise qualification."
+      }
+    },
+    {
+      "name": "manual_vertical",
+      "gate": {
+        "passed": true,
+        "criteria": {
+          "prediction": true,
+          "target_constraint_evidence": true,
+          "both_constraints_persist": true,
+          "target_support_distributed": true
+        },
+        "heldout_rms_deg": 0.0003138194195901671,
+        "source_only_heldout_rms_deg": 0.14445649527709364,
+        "predicted_support_fraction_last_point6_seconds": [
+          1.0,
+          0.9032258064516129
+        ],
+        "predicted_target_coverage": [
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.281061832524934
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.23763851235084
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.20362960774754
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.18003642903717
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.16056862350134
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.1425660450292
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.12510385951361
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.108187000236164
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.091693025020085
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.07547139747212
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4,
+              5
+            ],
+            "angular_span_deg": 35.0595981340019
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 35.04662086987445
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 35.03460546702835
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 35.0176081017366
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 34.997936613528225
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 34.977872165891064
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 34.95657239549922
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 156.56912005438795
+          },
+          {
+            "modules": [
+              0,
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 156.37900183034856
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 34.854833391983185
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 34.81571471328704
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 34.79067075515007
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 34.78037782252896
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 34.78262057756095
+          },
+          {
+            "modules": [
+              4,
+              5
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 34.79394560400761
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.52929410282736
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.6310140774257
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.66813048442438
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.69389852617662
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.70383863432944
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.69053294782812
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.59807412842157
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.35322652701879
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.09186609395461
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [],
+            "angular_span_deg": 121.04560064789396
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [],
+            "angular_span_deg": 121.39610201993891
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [],
+            "angular_span_deg": 121.81489729989075
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0
+            ],
+            "angular_span_deg": 122.1222520054342
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 122.11295794531037
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 122.09370844955944
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 122.11043646511514
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 122.11656913507045
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 122.09728940508067
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 122.04763092279273
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.94570238678399
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.65868600368157
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.3078411453787
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.07679814932231
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.01476293089569
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.11311344343987
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.34443783999909
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.6666596253967
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 121.81916863722431
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.8385879536858
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.83977227059769
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.84036572113601
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.84215007297776
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.84436591158594
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.84636513320163
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.84787463644517
+          },
+          {
+            "modules": [
+              0,
+              4
+            ],
+            "instantaneous_modules": [
+              0,
+              4
+            ],
+            "angular_span_deg": 121.84881473638761
+          }
+        ],
+        "distributed_support_fraction_last_point6_seconds": 1.0,
+        "predicted_support_N": [
+          [
+            71.01134879611999,
+            20.788093153656114
+          ],
+          [
+            220.21865890709668,
+            13.528632222810604
+          ],
+          [
+            211.91890447249054,
+            11.870176570402847
+          ],
+          [
+            207.67069566076015,
+            11.05413379170506
+          ],
+          [
+            204.17998775549398,
+            10.430701558370846
+          ],
+          [
+            200.6845445487747,
+            9.941863056026332
+          ],
+          [
+            197.10336706504776,
+            9.562140336184598
+          ],
+          [
+            192.8571124836302,
+            9.241629246616771
+          ],
+          [
+            187.357922029565,
+            8.831179686013176
+          ],
+          [
+            182.40891653622288,
+            8.447153445843773
+          ],
+          [
+            177.6817875378682,
+            8.111450250048668
+          ],
+          [
+            172.43873544964265,
+            7.950834309396251
+          ],
+          [
+            169.56389208161056,
+            7.4554467623140095
+          ],
+          [
+            167.6765872793948,
+            8.925560767117322
+          ],
+          [
+            164.93176677695658,
+            9.938267166300804
+          ],
+          [
+            164.82075485907947,
+            10.414222710405596
+          ],
+          [
+            161.64875959639997,
+            10.277187299975285
+          ],
+          [
+            158.23891902070184,
+            9.850465424496544
+          ],
+          [
+            155.39440992408854,
+            5.490162453413678
+          ],
+          [
+            154.44095044646906,
+            5.586771177032366
+          ],
+          [
+            153.93064809725098,
+            6.427141142758866
+          ],
+          [
+            154.56035759659989,
+            7.384855205004642
+          ],
+          [
+            154.6004371256547,
+            8.350668746687695
+          ],
+          [
+            154.80383045873137,
+            9.21402737608809
+          ],
+          [
+            154.94042684662017,
+            9.860449469708337
+          ],
+          [
+            155.251351257351,
+            10.406818291196828
+          ],
+          [
+            155.89521407113622,
+            11.060225533480873
+          ],
+          [
+            155.49525523746019,
+            11.971458180221907
+          ],
+          [
+            153.74602843756256,
+            11.880342265736253
+          ],
+          [
+            150.29376561435242,
+            10.668163723494061
+          ],
+          [
+            145.5549523407133,
+            8.633725411961489
+          ],
+          [
+            140.1827166264315,
+            6.848598769448327
+          ],
+          [
+            136.23524004489627,
+            2.3083284049609873
+          ],
+          [
+            132.4860456083611,
+            1.2233709218128266
+          ],
+          [
+            123.38134557029437,
+            0.0
+          ],
+          [
+            118.11982295727557,
+            0.0
+          ],
+          [
+            116.50203832292266,
+            0.0
+          ],
+          [
+            117.42597012617313,
+            0.6945772688981455
+          ],
+          [
+            120.14354345294787,
+            3.315142057435665
+          ],
+          [
+            123.85997352617169,
+            4.787379439263108
+          ],
+          [
+            127.18291505209059,
+            7.251137228560129
+          ],
+          [
+            130.27882848143915,
+            8.87940278950844
+          ],
+          [
+            132.77713648146047,
+            9.533838972448628
+          ],
+          [
+            134.20715997822109,
+            9.395714532920262
+          ],
+          [
+            135.15237903737162,
+            8.776701541794163
+          ],
+          [
+            137.32375799590298,
+            6.714376214594448
+          ],
+          [
+            138.79809917890128,
+            6.649390490374622
+          ],
+          [
+            139.94935662520308,
+            6.601299067413299
+          ],
+          [
+            140.68091734717004,
+            6.446843817867436
+          ],
+          [
+            141.03675880387829,
+            6.15616232539438
+          ],
+          [
+            141.03156770248762,
+            5.754972479881267
+          ],
+          [
+            140.65065693016044,
+            5.283369632471077
+          ],
+          [
+            138.57660682581306,
+            5.212795118931932
+          ],
+          [
+            137.49536538508602,
+            5.804509932807777
+          ],
+          [
+            136.38936797925658,
+            6.190578185929828
+          ],
+          [
+            135.43978681329213,
+            6.273680329848208
+          ],
+          [
+            134.66520653617042,
+            6.247624197264326
+          ],
+          [
+            134.02430980498053,
+            6.203002316352018
+          ],
+          [
+            133.48637652082874,
+            6.163264931276689
+          ],
+          [
+            133.02671365443024,
+            6.12969602049604
+          ],
+          [
+            132.62920539709873,
+            6.099768743638137
+          ]
+        ],
+        "limitation": "Model-based evidence, not measured contacts or a proof of force closure. Thresholds are engineering development criteria; no hardware/noise qualification."
+      }
+    },
+    {
+      "name": "natural_early",
+      "gate": {
+        "passed": false,
+        "criteria": {
+          "prediction": true,
+          "target_constraint_evidence": true,
+          "both_constraints_persist": true,
+          "target_support_distributed": false
+        },
+        "heldout_rms_deg": 0.00035321568189731735,
+        "source_only_heldout_rms_deg": 0.436076426105556,
+        "predicted_support_fraction_last_point6_seconds": [
+          1.0,
+          1.0
+        ],
+        "predicted_target_coverage": [
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              4
+            ],
+            "instantaneous_modules": [
+              4
+            ],
+            "angular_span_deg": 0.0
+          }
+        ],
+        "distributed_support_fraction_last_point6_seconds": 0.0,
+        "predicted_support_N": [
+          [
+            71.40620299917302,
+            28.122440029194905
+          ],
+          [
+            232.6979064289432,
+            19.286451438337796
+          ],
+          [
+            210.43393472860532,
+            20.336614251915137
+          ],
+          [
+            196.24185627295645,
+            21.542317471953634
+          ],
+          [
+            182.57724795470537,
+            21.090632243138735
+          ],
+          [
+            170.91875667932197,
+            20.192962997839313
+          ],
+          [
+            161.11550871071145,
+            19.61848169715283
+          ],
+          [
+            152.55676281465836,
+            19.34363068623381
+          ],
+          [
+            145.1988491828786,
+            19.17779124035961
+          ],
+          [
+            138.53148615888273,
+            19.013573666973507
+          ],
+          [
+            131.60421302038642,
+            18.718630631723208
+          ],
+          [
+            126.66110502596587,
+            18.570955781949483
+          ],
+          [
+            122.38064418061435,
+            18.190030953438775
+          ],
+          [
+            118.94471866435842,
+            17.832491529823418
+          ],
+          [
+            115.99125317697138,
+            17.753789421009852
+          ],
+          [
+            113.42171424385344,
+            17.777891048321077
+          ],
+          [
+            111.2752052194081,
+            17.796413954591944
+          ],
+          [
+            109.46506488535768,
+            17.784372835388037
+          ],
+          [
+            107.77459816455249,
+            17.75159125341071
+          ],
+          [
+            106.39836046825792,
+            17.700608952870887
+          ],
+          [
+            104.94025449663485,
+            17.623500016818888
+          ],
+          [
+            103.82678291978743,
+            17.524130371480567
+          ],
+          [
+            102.87232603451606,
+            17.39944336741001
+          ],
+          [
+            102.04926371721889,
+            17.25004140248699
+          ],
+          [
+            101.34722634020176,
+            17.077625933309097
+          ],
+          [
+            100.74179276490939,
+            16.884034591644177
+          ],
+          [
+            100.2175260205487,
+            16.673712652549973
+          ],
+          [
+            99.76171085969146,
+            16.453338632428935
+          ],
+          [
+            99.35514370870501,
+            16.23055253584875
+          ],
+          [
+            98.98328859941353,
+            16.012776171378114
+          ],
+          [
+            98.63274682229454,
+            15.806397733595812
+          ],
+          [
+            98.28954824301246,
+            15.616594332810015
+          ],
+          [
+            97.94021971754881,
+            15.4481080655512
+          ],
+          [
+            97.58018249683654,
+            15.305710692130724
+          ],
+          [
+            97.20581777027402,
+            15.192451649452705
+          ],
+          [
+            96.82384715110638,
+            15.109620177477009
+          ],
+          [
+            96.44706158060059,
+            15.054975224070025
+          ],
+          [
+            96.10736963565486,
+            15.02344166600503
+          ],
+          [
+            96.25454579562609,
+            15.058700377923772
+          ],
+          [
+            96.05848399156027,
+            15.063142359351094
+          ],
+          [
+            95.7862635581891,
+            15.03666551555921
+          ],
+          [
+            95.50472229753971,
+            14.977033751754249
+          ],
+          [
+            95.3083740648458,
+            14.88325496911833
+          ],
+          [
+            95.20814134583364,
+            14.75640994013168
+          ],
+          [
+            95.11874879436819,
+            14.592172341963801
+          ],
+          [
+            95.02772905936456,
+            14.396233655517808
+          ],
+          [
+            94.9299563622668,
+            14.178540325380947
+          ],
+          [
+            94.81979151562926,
+            13.952389757354545
+          ],
+          [
+            94.7079147736098,
+            13.733364863344372
+          ],
+          [
+            94.59872595155358,
+            13.536341955825382
+          ],
+          [
+            94.5012737994184,
+            13.37317195546283
+          ],
+          [
+            94.41728049054309,
+            13.251272126922705
+          ],
+          [
+            94.43628788908863,
+            13.420962977257853
+          ],
+          [
+            94.24078777265103,
+            13.620075365264773
+          ],
+          [
+            94.0947072319732,
+            13.584227017724558
+          ],
+          [
+            94.04367634174187,
+            13.468543182345687
+          ],
+          [
+            94.00296413952951,
+            13.365002390941994
+          ],
+          [
+            93.9350583881523,
+            13.2878757758068
+          ],
+          [
+            93.86206362416385,
+            13.221574838793535
+          ],
+          [
+            93.78795884508445,
+            13.153627709594591
+          ],
+          [
+            93.72218567622292,
+            13.083573924368775
+          ]
+        ],
+        "limitation": "Model-based evidence, not measured contacts or a proof of force closure. Thresholds are engineering development criteria; no hardware/noise qualification."
+      }
+    },
+    {
+      "name": "natural_slow",
+      "gate": {
+        "passed": false,
+        "criteria": {
+          "prediction": true,
+          "target_constraint_evidence": true,
+          "both_constraints_persist": true,
+          "target_support_distributed": false
+        },
+        "heldout_rms_deg": 0.05317961097365493,
+        "source_only_heldout_rms_deg": 0.32619870768886466,
+        "predicted_support_fraction_last_point6_seconds": [
+          1.0,
+          1.0
+        ],
+        "predicted_target_coverage": [
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          },
+          {
+            "modules": [
+              5
+            ],
+            "instantaneous_modules": [
+              5
+            ],
+            "angular_span_deg": 0.0
+          }
+        ],
+        "distributed_support_fraction_last_point6_seconds": 0.0,
+        "predicted_support_N": [
+          [
+            113.5731879577445,
+            15.014469044515476
+          ],
+          [
+            194.50538951916238,
+            46.6128197623246
+          ],
+          [
+            198.05921658603995,
+            46.197418574418286
+          ],
+          [
+            196.37253594985884,
+            45.31601168009305
+          ],
+          [
+            193.36215211345802,
+            43.1716885682286
+          ],
+          [
+            190.6558595667318,
+            41.069958754083714
+          ],
+          [
+            188.0850320197596,
+            39.1277716787419
+          ],
+          [
+            186.03129662703566,
+            37.490884169401355
+          ],
+          [
+            184.14507697222834,
+            36.077946529051914
+          ],
+          [
+            182.32219107120844,
+            34.85311379660849
+          ],
+          [
+            180.55270202071637,
+            33.78627235882682
+          ],
+          [
+            178.7451682748882,
+            32.79042320570174
+          ],
+          [
+            175.75757376245733,
+            31.401591028673508
+          ],
+          [
+            173.68678727141088,
+            29.815887349494094
+          ],
+          [
+            172.13666078103753,
+            28.24695382876284
+          ],
+          [
+            170.67140278642694,
+            26.569744453143496
+          ],
+          [
+            169.06415299627446,
+            24.86359960071905
+          ],
+          [
+            167.11403563385667,
+            23.3772567117094
+          ],
+          [
+            164.6896473854011,
+            22.40343765083789
+          ],
+          [
+            161.81800488761016,
+            22.132626436592375
+          ],
+          [
+            158.7530190741843,
+            22.929410207794852
+          ],
+          [
+            155.6582235355918,
+            23.978734222304283
+          ],
+          [
+            152.93452280005255,
+            24.971208472723575
+          ],
+          [
+            150.9947495118587,
+            25.897659216119678
+          ],
+          [
+            149.43281761564452,
+            26.63748228072242
+          ],
+          [
+            148.89788989430292,
+            26.953739855889104
+          ],
+          [
+            149.49945744671774,
+            26.78248750303624
+          ],
+          [
+            151.1934699150938,
+            26.003121865073194
+          ],
+          [
+            153.64968118104065,
+            24.630894565543052
+          ],
+          [
+            156.46636009179926,
+            22.768864680064638
+          ],
+          [
+            159.2762242296339,
+            20.868151756267846
+          ],
+          [
+            161.6331948624435,
+            19.337461463854776
+          ],
+          [
+            163.36742293170815,
+            18.99121878441648
+          ],
+          [
+            162.70742236906943,
+            21.39604466882241
+          ],
+          [
+            163.04813791411405,
+            21.478360765094774
+          ],
+          [
+            163.14992759068795,
+            21.90121347619247
+          ],
+          [
+            162.60722058566662,
+            23.076833280963434
+          ],
+          [
+            161.68826170164115,
+            24.59101641536033
+          ],
+          [
+            160.63690622235669,
+            26.096081300031326
+          ],
+          [
+            159.5215149328167,
+            27.283828688953896
+          ],
+          [
+            158.33420339474029,
+            27.84076312321211
+          ],
+          [
+            157.01595258131442,
+            27.513398211224533
+          ],
+          [
+            155.50732182782886,
+            26.283300447300395
+          ],
+          [
+            153.71125991254078,
+            24.36493136421184
+          ],
+          [
+            151.54451319807464,
+            22.136642901035838
+          ],
+          [
+            149.01565792604316,
+            20.151457621631103
+          ],
+          [
+            145.14899922809678,
+            20.457834146531127
+          ],
+          [
+            141.82811505442066,
+            20.32695131221683
+          ],
+          [
+            138.14215794490906,
+            17.510499044844646
+          ],
+          [
+            136.5559554902474,
+            15.873874428304147
+          ],
+          [
+            135.23268639614238,
+            15.131643514946932
+          ],
+          [
+            134.1424242593142,
+            14.667331367384861
+          ],
+          [
+            134.58508572158894,
+            14.672174653240237
+          ],
+          [
+            134.56924101050296,
+            14.732032455549245
+          ],
+          [
+            134.52312490644417,
+            14.664339772140035
+          ],
+          [
+            134.56736628048756,
+            14.574392906483226
+          ],
+          [
+            134.625245101347,
+            14.501839072653341
+          ],
+          [
+            134.6556949362295,
+            14.43483060259407
+          ],
+          [
+            134.6549004276657,
+            14.363760239334185
+          ],
+          [
+            134.6317169001442,
+            14.287865769498254
+          ],
+          [
+            134.60476298599667,
+            14.20892268461153
+          ]
+        ],
+        "limitation": "Model-based evidence, not measured contacts or a proof of force closure. Thresholds are engineering development criteria; no hardware/noise qualification."
+      }
+    }
+  ],
+  "development_only": true,
+  "threshold_source": "Existing grip begins above 90 deg. Same 0.4 s, >25% contact occupancy as transfer support; distributed coverage in >=90% of the last 0.6 s."
+}
