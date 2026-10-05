@@ -14,7 +14,8 @@ from feedback_takeover_dynamic_filter import TopologyDynamicsFilter
 
 
 class DynamicPipeTracker:
-    def __init__(self,robot,robot_xml,fit,records):
+    def __init__(self,robot,robot_xml,fit,records,adaptive_flow=False):
+        self.adaptive_flow=adaptive_flow
         self.initial=fit['estimate'];self.fixed=copy.deepcopy(fit['estimate'])
         self.m=copy.copy(robot);self.d=mujoco.MjData(self.m);self.d.qpos[:7]=[0,0,0,1,0,0,0]
         self.qadr=self.m.jnt_qposadr[self.m.actuator_trnid[:,0]]
@@ -53,6 +54,12 @@ class DynamicPipeTracker:
             topology=self.observer.topology)
 
     def update(self,angles,command,dt):
+        # Contact switches can invalidate a one-step Jacobian raised to the
+        # measurement interval. Recompute that interval's derivative after a
+        # poor causal innovation; only the private belief changes here.
+        exact=self.adaptive_flow and self.info.get('innovation_rms_deg',0.)>.05
+        self.observer.flow_linearization=exact
         started=time.perf_counter();self.info=self.observer.step(command,angles,dt);self.refresh(angles)
+        self.info['exact_interval_linearization']=bool(exact)
         self.info['inference_seconds']=time.perf_counter()-started
         return self.previous.copy()

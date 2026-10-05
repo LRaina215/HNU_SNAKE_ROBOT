@@ -234,7 +234,7 @@ class ContactReferenceWinding(AcquiredShapeWinding):
     def configuration(self):
         config=super().configuration()
         config['support_transfer'].update(source_reference='linearised module radial constraint until measured prefix 12',
-            source_opening_allowance_mm=.5,extra_input='known source contact identities; FK at measured base pose',
+            source_opening_allowance_mm=.5,extra_input='supplied source-support observations and FK; runner records whether inferred or simulation truth',
             local_contact_projection=self.local_contact_projection,dual_contact_projection=self.dual_contact_projection)
         return config
 
@@ -375,7 +375,7 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
     def configuration(self):
         config=super().configuration()
         config['support_transfer'].update(acquisition_curvature='positive radial gap / link_length^2',
-            radial_reference='median radius of actual target-contact modules beyond the junction',
+            radial_reference='median radius of supplied target-support modules beyond the junction',
             coordinate_acquisition=self.coordinate_acquisition,acquire_initial_front=self.acquire_initial_front,
             bootstrap_front=self.bootstrap_front,coherent_acquisition=self.coherent_acquisition)
         return config

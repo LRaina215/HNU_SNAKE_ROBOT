@@ -138,7 +138,11 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         # forming command must not lengthen the unsupported connector faster
         # than measured acquisition shortens it. Existing support/phase gates
         # still apply, and a completed whole-coil handoff needs no source reserve.
-        release_budget=self.initial_rear+max(0,prefix-self.initial_front)
+        # The ordered prefix has an initial-front floor for recruitment. Some
+        # initially draped links can still be outside the target tube, or slip
+        # out later; those links cannot supply release credit merely by label.
+        acquired_count=int(np.count_nonzero(status['actual_transfer'][:prefix]))
+        release_budget=self.initial_rear+max(0,acquired_count-self.initial_front)
         material_ready=not self.window.conserve_middle or self.handed_off or self.rear<release_budget
         # A verified target constraint can admit local shaping before it can
         # support body transfer. Keep rolling and preserve the rear boundary
@@ -159,7 +163,8 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             self.events.append(dict(time=self.elapsed,old=old,new=[self.front,self.rear],actual_prefix=prefix,
                                     formation_progress=self.progress,release=bool(release),feed=self.feed))
         return dict(formation_progress=self.progress,release_allowed=bool(release),rear_reserve=reserve,
-            measured_release_budget=release_budget,material_release_ready=bool(material_ready),
+            measured_release_budget=release_budget,material_acquired_count=acquired_count,
+            material_release_ready=bool(material_ready),
             handed_off=self.handed_off,original_pipe_clear=bool(source_clear),junction_cleared=bool(cleared))
 
     def update_middle_reference(self,points,measured,dt):

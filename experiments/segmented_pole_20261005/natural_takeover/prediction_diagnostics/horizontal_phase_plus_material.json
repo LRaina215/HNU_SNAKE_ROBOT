@@ -1,0 +1,643 @@
+{
+  "folder": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_phase_plus_material\\transfer",
+  "horizon_seconds": 1.0,
+  "stride_seconds": 2.0,
+  "records": [
+    {
+      "seconds": 0.0,
+      "predicted_peak_m_s": 0.10818537432898603,
+      "actual_peak_m_s": 0.10733993057462185,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.04261688696332747,
+      "innovation_rms_deg": 0.0
+    },
+    {
+      "seconds": 2.0000000000095497,
+      "predicted_peak_m_s": 0.18021746942091604,
+      "actual_peak_m_s": 0.19601228480794533,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.7032353589655378,
+      "innovation_rms_deg": 0.018724856579498426
+    },
+    {
+      "seconds": 4.000000000019099,
+      "predicted_peak_m_s": 0.03963539049473128,
+      "actual_peak_m_s": 0.03942151241254071,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.015037133755902132,
+      "innovation_rms_deg": 0.005540350571349578
+    },
+    {
+      "seconds": 6.000000000028649,
+      "predicted_peak_m_s": 0.014307251466262327,
+      "actual_peak_m_s": 0.014299683113632264,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.009131746282609663,
+      "innovation_rms_deg": 0.0051709348510312675
+    },
+    {
+      "seconds": 8.000000000038199,
+      "predicted_peak_m_s": 0.02558390058502811,
+      "actual_peak_m_s": 0.025969787063254694,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.008128447830197224,
+      "innovation_rms_deg": 0.003959660337999175
+    },
+    {
+      "seconds": 10.000000000047748,
+      "predicted_peak_m_s": 0.020732884607401865,
+      "actual_peak_m_s": 0.02085600171278484,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.006504541350948059,
+      "innovation_rms_deg": 0.003647433349369717
+    },
+    {
+      "seconds": 12.000000000057298,
+      "predicted_peak_m_s": 0.020335630972847733,
+      "actual_peak_m_s": 0.01200511365154336,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.04927070902095158,
+      "innovation_rms_deg": 0.03945127922599846
+    },
+    {
+      "seconds": 14.000000000066848,
+      "predicted_peak_m_s": 0.05016360200228182,
+      "actual_peak_m_s": 0.0500820659988351,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.00532814512014042,
+      "innovation_rms_deg": 0.0019103743941939488
+    },
+    {
+      "seconds": 16.000000000076398,
+      "predicted_peak_m_s": 0.06725427192724222,
+      "actual_peak_m_s": 0.0671195329242189,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007205527216003258,
+      "innovation_rms_deg": 0.0019575922887746272
+    },
+    {
+      "seconds": 18.000000000085947,
+      "predicted_peak_m_s": 0.05735881346896122,
+      "actual_peak_m_s": 0.058406711640512456,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.02507602523709924,
+      "innovation_rms_deg": 0.0014534897293784197
+    },
+    {
+      "seconds": 20.000000000095497,
+      "predicted_peak_m_s": 0.06000926351429873,
+      "actual_peak_m_s": 0.05995849518274499,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007341336517011114,
+      "innovation_rms_deg": 0.003205698284460846
+    },
+    {
+      "seconds": 22.000000000105047,
+      "predicted_peak_m_s": 0.06863397793145432,
+      "actual_peak_m_s": 0.06859912838809819,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007800385505923031,
+      "innovation_rms_deg": 0.000617974109069847
+    },
+    {
+      "seconds": 24.000000000114596,
+      "predicted_peak_m_s": 0.08696933245984455,
+      "actual_peak_m_s": 0.08702629689390783,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007100261374521633,
+      "innovation_rms_deg": 0.0006383820959042439
+    },
+    {
+      "seconds": 26.000000000124146,
+      "predicted_peak_m_s": 0.04352584855137418,
+      "actual_peak_m_s": 0.043382380202872786,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007108540388260084,
+      "innovation_rms_deg": 0.009728876628342195
+    },
+    {
+      "seconds": 28.000000000133696,
+      "predicted_peak_m_s": 0.06820017982770667,
+      "actual_peak_m_s": 0.0675886151140836,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.03456032148673821,
+      "innovation_rms_deg": 0.005379546723907955
+    },
+    {
+      "seconds": 30.000000000143245,
+      "predicted_peak_m_s": 0.2932861878504709,
+      "actual_peak_m_s": 0.25845621937230434,
+      "predicted_target_contact": 0.99,
+      "actual_target_contact": 0.99,
+      "joint_prediction_rms_deg": 0.21705869009890497,
+      "innovation_rms_deg": 0.04458141192310868
+    },
+    {
+      "seconds": 32.000000000152795,
+      "predicted_peak_m_s": 0.07881205254587231,
+      "actual_peak_m_s": 0.07889605031834122,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007664143481459415,
+      "innovation_rms_deg": 0.006877185884702581
+    },
+    {
+      "seconds": 34.000000000162345,
+      "predicted_peak_m_s": 0.11590776714636356,
+      "actual_peak_m_s": 0.03952963457140122,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.565141563649159,
+      "innovation_rms_deg": 0.37069717212939696
+    },
+    {
+      "seconds": 36.000000000171894,
+      "predicted_peak_m_s": 0.19576987068438903,
+      "actual_peak_m_s": 0.07936919850375548,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.8263885430894483,
+      "innovation_rms_deg": 0.29416044543391817
+    },
+    {
+      "seconds": 38.000000000181444,
+      "predicted_peak_m_s": 0.06751850592868555,
+      "actual_peak_m_s": 0.08503243643221356,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.5183245102594406,
+      "innovation_rms_deg": 0.07575136279071126
+    },
+    {
+      "seconds": 40.000000000190994,
+      "predicted_peak_m_s": 0.8606686237640339,
+      "actual_peak_m_s": 0.884938896534659,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.30662665742707645,
+      "innovation_rms_deg": 0.20942762886393554
+    },
+    {
+      "seconds": 42.000000000200544,
+      "predicted_peak_m_s": 0.23213301503039188,
+      "actual_peak_m_s": 0.1170429746171614,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.7877728987407805,
+      "innovation_rms_deg": 0.4631053292786316
+    },
+    {
+      "seconds": 44.00000000021009,
+      "predicted_peak_m_s": 0.21750069800985813,
+      "actual_peak_m_s": 0.048512163399599864,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.896905298224728,
+      "innovation_rms_deg": 0.3068034978234366
+    },
+    {
+      "seconds": 46.00000000021964,
+      "predicted_peak_m_s": 0.031607897459199306,
+      "actual_peak_m_s": 0.01692778858654372,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.3897175119082878,
+      "innovation_rms_deg": 0.12090079640122693
+    },
+    {
+      "seconds": 48.00000000022919,
+      "predicted_peak_m_s": 0.09175901195403881,
+      "actual_peak_m_s": 0.030172282260585367,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.5614103419516308,
+      "innovation_rms_deg": 0.05620270157317311
+    },
+    {
+      "seconds": 50.00000000023874,
+      "predicted_peak_m_s": 0.5095829122868747,
+      "actual_peak_m_s": 0.023599730364128935,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.5666206234048051,
+      "innovation_rms_deg": 0.2461738752611316
+    },
+    {
+      "seconds": 52.00000000024829,
+      "predicted_peak_m_s": 0.48644043305336193,
+      "actual_peak_m_s": 0.02775486784141817,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.7823574758861226,
+      "innovation_rms_deg": 0.23782657923043024
+    },
+    {
+      "seconds": 54.00000000025784,
+      "predicted_peak_m_s": 0.4676442453145314,
+      "actual_peak_m_s": 0.028017360951989752,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.7619601363704072,
+      "innovation_rms_deg": 0.20831656224327166
+    },
+    {
+      "seconds": 56.00000000026739,
+      "predicted_peak_m_s": 0.5490944276687134,
+      "actual_peak_m_s": 0.032213265196008194,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.8195418954399093,
+      "innovation_rms_deg": 0.2626667416826584
+    },
+    {
+      "seconds": 58.00000000027694,
+      "predicted_peak_m_s": 0.18286685691051477,
+      "actual_peak_m_s": 0.06407059518394842,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.1454433557369086,
+      "innovation_rms_deg": 0.8505734610503933
+    },
+    {
+      "seconds": 60.00000000028649,
+      "predicted_peak_m_s": 0.37172404759179484,
+      "actual_peak_m_s": 0.27628089435139863,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.248444812807185,
+      "innovation_rms_deg": 0.5766144457353329
+    },
+    {
+      "seconds": 62.00000000029604,
+      "predicted_peak_m_s": 0.3357080989983301,
+      "actual_peak_m_s": 0.06565364099959231,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.7858225078965839,
+      "innovation_rms_deg": 0.6124169257039216
+    },
+    {
+      "seconds": 64.00000000030559,
+      "predicted_peak_m_s": 0.2026836665431614,
+      "actual_peak_m_s": 0.22104269219158912,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.29315810077444326,
+      "innovation_rms_deg": 0.03140062868132319
+    },
+    {
+      "seconds": 66.00000000031514,
+      "predicted_peak_m_s": 0.07925256059054792,
+      "actual_peak_m_s": 0.0608519068799635,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.7298891673084692,
+      "innovation_rms_deg": 0.3611311136627863
+    },
+    {
+      "seconds": 68.00000000032469,
+      "predicted_peak_m_s": 0.1878408242438895,
+      "actual_peak_m_s": 0.14187421649536092,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.7024645753696102,
+      "innovation_rms_deg": 1.4022596860101217
+    },
+    {
+      "seconds": 70.00000000033424,
+      "predicted_peak_m_s": 0.2250970053803236,
+      "actual_peak_m_s": 0.054608621464418236,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.7488185690395415,
+      "innovation_rms_deg": 0.8082088981287454
+    },
+    {
+      "seconds": 72.00000000034379,
+      "predicted_peak_m_s": 0.14045755113225722,
+      "actual_peak_m_s": 0.1186126240072082,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 2.1783113379987884,
+      "innovation_rms_deg": 1.3644498294240868
+    },
+    {
+      "seconds": 74.00000000035334,
+      "predicted_peak_m_s": 0.07251021191595466,
+      "actual_peak_m_s": 0.032675804790303214,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.1085854997956297,
+      "innovation_rms_deg": 0.9204012545209658
+    },
+    {
+      "seconds": 76.00000000036289,
+      "predicted_peak_m_s": 0.3512109098502188,
+      "actual_peak_m_s": 0.04813981003082094,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.8576228545337291,
+      "innovation_rms_deg": 0.5427002455783411
+    },
+    {
+      "seconds": 78.00000000037244,
+      "predicted_peak_m_s": 0.09042540232238863,
+      "actual_peak_m_s": 0.046015692236126116,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.4082240462059437,
+      "innovation_rms_deg": 1.2811489719885616
+    },
+    {
+      "seconds": 80.00000000038199,
+      "predicted_peak_m_s": 0.17080065213983728,
+      "actual_peak_m_s": 0.40494743859179433,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.5666330733751368,
+      "innovation_rms_deg": 0.7455573830556741
+    },
+    {
+      "seconds": 82.00000000039154,
+      "predicted_peak_m_s": 0.18971794694019534,
+      "actual_peak_m_s": 0.06551459437014473,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.1574103146017698,
+      "innovation_rms_deg": 0.4525090644499711
+    },
+    {
+      "seconds": 84.00000000040109,
+      "predicted_peak_m_s": 0.3202311371435481,
+      "actual_peak_m_s": 0.18904478079606588,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 1.6611233797670044,
+      "innovation_rms_deg": 0.5385536199022508
+    },
+    {
+      "seconds": 86.00000000041064,
+      "predicted_peak_m_s": 0.07965572677522054,
+      "actual_peak_m_s": 0.03391932648104889,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.47297587182194717,
+      "innovation_rms_deg": 0.44803560322654734
+    },
+    {
+      "seconds": 88.00000000042019,
+      "predicted_peak_m_s": 0.05472016004737954,
+      "actual_peak_m_s": 0.06175589014840714,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.3979788914727351,
+      "innovation_rms_deg": 0.020095849247991796
+    },
+    {
+      "seconds": 90.00000000042974,
+      "predicted_peak_m_s": 0.189586697624795,
+      "actual_peak_m_s": 0.15932794963189764,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.13313955121981644,
+      "innovation_rms_deg": 0.019085240241745006
+    },
+    {
+      "seconds": 92.00000000043929,
+      "predicted_peak_m_s": 0.22237819446138593,
+      "actual_peak_m_s": 0.23535837309779656,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.06306518089671002,
+      "innovation_rms_deg": 0.019775167222672814
+    },
+    {
+      "seconds": 94.00000000044884,
+      "predicted_peak_m_s": 0.2107931115928621,
+      "actual_peak_m_s": 0.21999396968650828,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.017549481751255862,
+      "innovation_rms_deg": 0.008943297801864014
+    },
+    {
+      "seconds": 96.00000000045839,
+      "predicted_peak_m_s": 0.27908747972604747,
+      "actual_peak_m_s": 0.27864966580305967,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.1407519113890305,
+      "innovation_rms_deg": 0.0134373102524516
+    },
+    {
+      "seconds": 98.00000000046794,
+      "predicted_peak_m_s": 0.11226698779527056,
+      "actual_peak_m_s": 0.11027145664715526,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.11973940290324993,
+      "innovation_rms_deg": 0.029797914944090613
+    },
+    {
+      "seconds": 100.00000000047748,
+      "predicted_peak_m_s": 0.03402622019250199,
+      "actual_peak_m_s": 0.03252962970430783,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.19336822426389935,
+      "innovation_rms_deg": 0.022284669709819738
+    },
+    {
+      "seconds": 102.00000000048703,
+      "predicted_peak_m_s": 0.01902108590605116,
+      "actual_peak_m_s": 0.01896026926414322,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.012600360732708428,
+      "innovation_rms_deg": 0.0011029333385144092
+    },
+    {
+      "seconds": 104.00000000049658,
+      "predicted_peak_m_s": 0.014565581718643706,
+      "actual_peak_m_s": 0.014499650824775789,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.027327512801543923,
+      "innovation_rms_deg": 0.013819146070182628
+    },
+    {
+      "seconds": 106.00000000050613,
+      "predicted_peak_m_s": 0.019857531517579036,
+      "actual_peak_m_s": 0.01951467892642602,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.09912327352366387,
+      "innovation_rms_deg": 0.010989764861114743
+    },
+    {
+      "seconds": 108.00000000051568,
+      "predicted_peak_m_s": 0.01065936643580515,
+      "actual_peak_m_s": 0.008653187257314753,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.254616849397325,
+      "innovation_rms_deg": 0.03741608805165819
+    },
+    {
+      "seconds": 110.00000000052523,
+      "predicted_peak_m_s": 0.010539508490041349,
+      "actual_peak_m_s": 0.010854598513798806,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.009970679725476262,
+      "innovation_rms_deg": 0.002110171334956966
+    },
+    {
+      "seconds": 112.00000000053478,
+      "predicted_peak_m_s": 0.008178548680669055,
+      "actual_peak_m_s": 0.007565437002080754,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.015292957414365382,
+      "innovation_rms_deg": 0.007769419758949559
+    },
+    {
+      "seconds": 114.00000000054433,
+      "predicted_peak_m_s": 0.009561557775293335,
+      "actual_peak_m_s": 0.009572060996743266,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.007701848983024101,
+      "innovation_rms_deg": 0.0016490557347806699
+    },
+    {
+      "seconds": 116.00000000055388,
+      "predicted_peak_m_s": 0.020792317697091642,
+      "actual_peak_m_s": 0.02084116727242037,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.00840284209030658,
+      "innovation_rms_deg": 0.0019326702934796402
+    },
+    {
+      "seconds": 118.00000000056343,
+      "predicted_peak_m_s": 0.03203329436202434,
+      "actual_peak_m_s": 0.03179248240133579,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.021299906198894637,
+      "innovation_rms_deg": 0.002447363634142568
+    },
+    {
+      "seconds": 120.00000000057298,
+      "predicted_peak_m_s": 0.02061387949371442,
+      "actual_peak_m_s": 0.020775796172575144,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.03365771820090189,
+      "innovation_rms_deg": 0.0022793191322162654
+    },
+    {
+      "seconds": 122.00000000058253,
+      "predicted_peak_m_s": 0.02249268719761636,
+      "actual_peak_m_s": 0.021603466315014683,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.037717180440992676,
+      "innovation_rms_deg": 0.004574593989652413
+    },
+    {
+      "seconds": 124.00000000059208,
+      "predicted_peak_m_s": 0.015175428756057749,
+      "actual_peak_m_s": 0.01711913057046287,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.09268571861351343,
+      "innovation_rms_deg": 0.005358142798078608
+    },
+    {
+      "seconds": 126.00000000060163,
+      "predicted_peak_m_s": 0.01746441279259729,
+      "actual_peak_m_s": 0.017561565863077902,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.009868385959500623,
+      "innovation_rms_deg": 0.0036958558760040667
+    },
+    {
+      "seconds": 128.00000000061118,
+      "predicted_peak_m_s": 0.01401798599276388,
+      "actual_peak_m_s": 0.01407975609365715,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.0065389634558156665,
+      "innovation_rms_deg": 0.001695808621530045
+    },
+    {
+      "seconds": 130.00000000062073,
+      "predicted_peak_m_s": 0.017008020225026746,
+      "actual_peak_m_s": 0.01709064314686515,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.008838955180183718,
+      "innovation_rms_deg": 0.003584247789857102
+    },
+    {
+      "seconds": 132.00000000063028,
+      "predicted_peak_m_s": 0.021054312020197252,
+      "actual_peak_m_s": 0.021218803138473217,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.006560208405907547,
+      "innovation_rms_deg": 0.0005738979908999336
+    },
+    {
+      "seconds": 134.00000000063983,
+      "predicted_peak_m_s": 0.048443362948572204,
+      "actual_peak_m_s": 0.04866694793766778,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.008866636205668047,
+      "innovation_rms_deg": 0.0010170507750842327
+    },
+    {
+      "seconds": 136.00000000064938,
+      "predicted_peak_m_s": 0.12244607171884764,
+      "actual_peak_m_s": 0.1221670002963508,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.008038201596482015,
+      "innovation_rms_deg": 0.0024405934176580076
+    },
+    {
+      "seconds": 138.00000000065893,
+      "predicted_peak_m_s": 0.07594974007125589,
+      "actual_peak_m_s": 0.04090033577580419,
+      "predicted_target_contact": 1.0,
+      "actual_target_contact": 1.0,
+      "joint_prediction_rms_deg": 0.4839586190983295,
+      "innovation_rms_deg": 0.1439943961364569
+    }
+  ],
+  "speed_error_mean_m_s": 0.06209809020174637,
+  "speed_error_max_m_s": 0.5168811624727052,
+  "actual_overspeed_windows": 1,
+  "predicted_overspeed_windows": 3,
+  "missed_overspeed_windows": 0,
+  "limitation": "Offline known-future-command audit, causal encoder filter; no controller modification. Nominal exact dynamics assumed."
+}

@@ -218,6 +218,7 @@ def run(args):
         if args.junction_search:command.append('--junction-search')
         if args.network_calibration:command.append('--network-calibration')
         if args.feedback_progress_guard:command.append('--feedback-progress-guard')
+        if args.conserve_middle:command.append('--conserve-middle')
         if args.acquire_verified_drape:command+=['--release-requires-grip','--bootstrap-front']
         completed=subprocess.run(command,check=False)
         result['transfer_exit_code']=completed.returncode
@@ -245,5 +246,6 @@ if __name__=='__main__':
     p.add_argument('--junction-search',action='store_true')
     p.add_argument('--network-calibration',action='store_true')
     p.add_argument('--feedback-progress-guard',action='store_true')
+    p.add_argument('--conserve-middle',action='store_true',help='Limit rear release by actual inferred target-region membership, excluding unacquired links in the initial-front prefix.')
     p.add_argument('--resume-auto',type=Path,help='Continue an exact automatically detected boundary; retains its natural prefix for audit.')
     run(p.parse_args())

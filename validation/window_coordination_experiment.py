@@ -126,7 +126,7 @@ def run(args):
                 result['initial_takeover_mode']='transfer' if gate['passed'] else 'acquisition_rear_release_gated'
             if fit['held_out_rms_deg']>.1:
                 raise RuntimeError('Response calibration rejected: held-out joint RMS exceeds 0.1 deg')
-            tracker=DynamicPipeTracker(sim.m,sim.meta['source_model'],fit,records)
+            tracker=DynamicPipeTracker(sim.m,sim.meta['source_model'],fit,records,adaptive_flow=args.observer_contact_flow)
             g=dict(sim.fresh(),points_mm=tracker.previous.copy());tracking_clock=sim.d.time
             estimate=tracker.estimate
             corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
@@ -359,6 +359,7 @@ if __name__=='__main__':
         help='Use only encoder-frame geometry and causal CAD/load tracking, excluding floating pose and true pipe geometry.')
     p.add_argument('--dynamic-observer',action='store_true',
         help='Collect a relay probe, calibrate virtual pipes from joint responses, then infer local geometry/support through private dynamics.')
+    p.add_argument('--observer-contact-flow',action='store_true',help='Use full-interval private dynamics linearization after poor encoder predictions; physical parameters are unchanged.')
     p.add_argument('--response-calibration-cache',type=Path,help='Reuse a fit only when the freshly executed probe angles and commands match completely.')
     p.add_argument('--preserve-probe-intent',action='store_true',
         help='Resume pre-probe nominal reference/preload; slew and middle references start at the actually applied probe command.')

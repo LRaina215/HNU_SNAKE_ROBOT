@@ -206,5 +206,97 @@
     "archive": "vertical_down_nominal_transfer_guarded_braking.zip",
     "MiB": 38.660929679870605,
     "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer_guarded_braking.zip",
+    "MiB": 73.521653175354,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_transfer_measured_release.zip",
+    "MiB": 41.67417907714844,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer_measured_release.zip",
+    "MiB": 44.70391845703125,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer_geometric_release.zip",
+    "MiB": 44.277113914489746,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer_measured_release_braking.zip",
+    "files": 59,
+    "MiB": 69.14834785461426,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer_support_coupled.zip",
+    "files": 59,
+    "MiB": 72.12635040283203,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_nominal_material_transfer.zip",
+    "files": 59,
+    "MiB": 72.86336898803711,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_nominal_material_prefix.zip",
+    "files": 45,
+    "MiB": 26.76088047027588,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer.zip",
+    "files": 59,
+    "MiB": 72.45205783843994,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_prefix.zip",
+    "files": 45,
+    "MiB": 26.763859748840332,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_material_transfer.zip",
+    "files": 59,
+    "MiB": 45.38274955749512,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_material_prefix.zip",
+    "files": 45,
+    "MiB": 25.962031364440918,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_phase_plus_material_transfer.zip",
+    "files": 59,
+    "MiB": 37.27349376678467,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_phase_plus_material_prefix.zip",
+    "files": 45,
+    "MiB": 26.350635528564453,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_farther_material_transfer.zip",
+    "files": 59,
+    "MiB": 47.00925159454346,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_farther_material_prefix.zip",
+    "files": 45,
+    "MiB": 26.32758903503418,
+    "complete_trace": true
   }
 ]
