@@ -1,0 +1,40 @@
+{
+  "status": "Prospective diagnostic, not the six-case qualification revision",
+  "cases": [
+    "vertical_down_nominal_material",
+    "horizontal_phase_plus_material"
+  ],
+  "baseline": "initial-head easing + adaptive observer + material budget + target_supported finish",
+  "hypothesis": "Source-detachment swing needs relative front/rear motion options, not only a common rolling rate",
+  "forecast_seconds": 2.0,
+  "decision_seconds": 0.4,
+  "nominal": "1x common phase, unchanged unless predicted risk >0",
+  "alternatives": [
+    {
+      "front": 1,
+      "rear": 0
+    },
+    {
+      "front": 1,
+      "rear": -1
+    },
+    {
+      "front": 0.25,
+      "rear": 0.25
+    },
+    {
+      "front": 0,
+      "rear": 0
+    }
+  ],
+  "prediction_speed_margin_m_s": 0.4,
+  "transfer_budget_seconds": 350,
+  "unchanged_gates": {
+    "module_m_s": 0.5,
+    "joint_deg_s": 90,
+    "error_deg": 15,
+    "saturation": 0.297
+  },
+  "inputs": "Causal angle/command dynamics belief only; physical truth only scores. No torque/friction/gravity changes.",
+  "interpretation": "Nominal first; if it is safe, do not optimise trajectory for extra progress. This short-horizon guard is not a stability proof."
+}

@@ -28,6 +28,29 @@ sys.path.insert(0,str(ROOT/'codes'))
 from snake_control.adaptive_debug import pipe_progress
 
 BASE=ROOT/'experiments/pitch_adaptation_20261003/repair_v5'
+COMMON_INITIAL_LIMITS=dict(joint_angle_rad=1e-4,root_position_m=1e-5,root_rotation_rad=1e-4,
+                           control_history_rad=1e-12,physical_time_s=1e-10)
+
+
+def initial_control_history(case):
+    with np.load(case/'trace.npz') as raw:
+        time,index=np.unique(raw['sim_time'],return_index=True);mask=time<=2.2+1e-9
+        return time[mask],raw['ctrl'][index[mask]]
+
+
+def compare_common_initial(current,reference,current_history,reference_history):
+    joint=float(abs(current[7:]-reference[7:]).max());position=float(np.linalg.norm(current[:3]-reference[:3]))
+    q=current[3:7]/np.linalg.norm(current[3:7]);r=reference[3:7]/np.linalg.norm(reference[3:7])
+    rotation=4*math.asin(min(1.,min(np.linalg.norm(q-r),np.linalg.norm(q+r))/2))
+    t,ctrl=current_history;rt,rctrl=reference_history
+    if t.shape!=rt.shape or not np.allclose(t,rt,atol=COMMON_INITIAL_LIMITS['physical_time_s'],rtol=0):
+        raise ValueError('Common initialization physical-time history differs')
+    control=float(abs(ctrl-rctrl).max())
+    if joint>COMMON_INITIAL_LIMITS['joint_angle_rad'] or position>COMMON_INITIAL_LIMITS['root_position_m'] or rotation>COMMON_INITIAL_LIMITS['root_rotation_rad'] or control>COMMON_INITIAL_LIMITS['control_history_rad']:
+        raise ValueError('Common initialization exceeds the frozen numerical tolerances')
+    return dict(exact_qpos_match=bool(np.array_equal(current,reference)),maximum_joint_difference_rad=joint,
+                root_position_difference_m=position,root_rotation_difference_rad=rotation,
+                maximum_initial_control_history_difference_rad=control)
 
 
 def runtime_versions():
@@ -240,16 +263,16 @@ def audit(out,freeze=False):
     if not stage0['geometry']['continuous_gate_passed'] or stage0['feasible_cases']!=35:raise ValueError('Offline geometry gate missing')
     for name,expected in stage0['provenance']['sources'].items():
         if sha(ROOT/name)!=expected:raise ValueError('Stage0 source changed')
-    jobs=expected_jobs(plan);rows=[];missing=[];initials={};initial_counts={}
+    jobs=expected_jobs(plan);rows=[];missing=[];initials={};initial_counts={};initial_histories={}
     for job in jobs:
         folder=training/label(job)
         if not (folder/'result.json').exists() and job[1]=='D' and job[2]==1 and job[3]==0:
             folder=BASE/'pilots'/label(job)
         if not (folder/'result.json').exists():missing.append(label(job));continue
-        row,initial=audit_case(folder,job);rows.append(row)
+        row,initial=audit_case(folder,job);history=initial_control_history(folder)
         key=(job[0],job[2]);reference=initials.get(key)
-        if reference is not None and not np.array_equal(initial,reference):raise ValueError('Paired common initial qpos differs: '+str(key))
-        initials[key]=initial
+        if reference is None:reference=initial;initials[key]=initial;initial_histories[key]=history
+        row['common_initial_comparison']=compare_common_initial(initial,reference,history,initial_histories[key]);rows.append(row)
         initial_counts[key]=initial_counts.get(key,0)+1
     out.mkdir(parents=True,exist_ok=True)
     if rows:
@@ -258,6 +281,8 @@ def audit(out,freeze=False):
     report=dict(complete=not missing,audited=len(rows),required=len(jobs),missing=missing,
                 audit_environment=runtime_versions(),
                 audit_source_sha256=sha(Path(__file__)),
+                common_initialization_tolerances=COMMON_INITIAL_LIMITS,
+                exact_initial_matches=sum(r['common_initial_comparison']['exact_qpos_match'] for r in rows),
                 common_initial_groups_observed=len(initials),
                 common_initial_groups_verified=sum(count>=2 for count in initial_counts.values()),
                 common_initial_group_case_counts={f'{scene}__s{seed}':count for (scene,seed),count in initial_counts.items()},
@@ -291,6 +316,22 @@ def audit(out,freeze=False):
         if freeze:
             if engineering or not usable_D:
                 freeze_error='Training freeze gate failed; see audit report'
+            capture_gate_path=BASE/'capture_pilots/capture_gate.json'
+            capture_gate=load(capture_gate_path) if capture_gate_path.exists() else None
+            capture_ready=capture_gate is not None and capture_gate.get('passed') and capture_gate.get('engineering_pilots')==2
+            if capture_ready:
+                for name,expected in capture_gate['sources'].items():
+                    if sha(ROOT/name)!=expected:capture_ready=False
+            adjacent_path=BASE/'adjacent_geometry/adjacent_geometry.json'
+            adjacent=load(adjacent_path) if adjacent_path.exists() else None
+            adjacent_ready=adjacent is not None and adjacent['cases']==35 and adjacent['phase_samples']==73 and adjacent['adjacent_pairs']==20 and adjacent['maximum_active_adjacent_contacts']==0 and all(adjacent['parent_child_collision_filter_enabled'].values())
+            if adjacent_ready:
+                for name,expected in adjacent['inputs_sha256'].items():
+                    if sha(ROOT/name)!=expected:adjacent_ready=False
+            report['freeze_conditions']['adjacent_model_scope_checked']=bool(adjacent_ready)
+            if not adjacent_ready:freeze_error='Adjacent model-scope check missing or changed'
+            report['freeze_conditions']['complete_call_capture_gate_passed']=bool(capture_ready)
+            if not capture_ready:freeze_error='Formal call-capture logging gate missing or changed'
             frozen=dict(schema=1,version=5,stage='formal_parameter_freeze',training_seeds=[1,2,3],test_seeds=list(range(101,111)),
                         scenes=list(SCENES),methods=['A','B','C','D'],formal_trials=160,
                         A_alpha_deg=math.degrees(ALPHA),B_alpha_deg=choices,CD_k=selected_k,
@@ -304,6 +345,14 @@ def audit(out,freeze=False):
                         exe_sha256=sha(ROOT/'visualizer/windows_app/bin/SnakeRobotVisualizer.exe'),formal_released=True)
             frozen['dependencies']=runtime_versions()
             frozen['model_assets']=model_asset_hashes()
+            frozen['common_initialization_tolerances']=COMMON_INITIAL_LIMITS
+            if capture_ready:
+                frozen['formal_execution_sources']=capture_gate['sources']
+                frozen['capture_gate_sha256']=sha(capture_gate_path)
+            if adjacent_ready:
+                frozen['adjacent_geometry_sha256']=sha(adjacent_path)
+                frozen['model_collision_scope']=adjacent['simulation_scope']
+                frozen['hardware_shell_clearance_proven']=False
             file=out/'parameter_freeze.json'
             if file.exists() and load(file)!=frozen:
                 freeze_error='Existing freeze differs; no silent refreeze'

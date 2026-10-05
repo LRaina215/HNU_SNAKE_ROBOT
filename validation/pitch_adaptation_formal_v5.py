@@ -12,9 +12,10 @@ from pathlib import Path
 
 import numpy as np
 
-from pitch_adaptation_experiment_v5 import ROOT,SCENES,ALPHA,model_path,trial
+from pitch_adaptation_experiment_v5 import ROOT,SCENES,ALPHA,model_path
+from pitch_adaptation_experiment_v5_logged import trial
 from pitch_adaptation_statistics import POLICY
-from pitch_adaptation_training_audit import runtime_versions,model_asset_hashes
+from pitch_adaptation_training_audit import runtime_versions,model_asset_hashes,COMMON_INITIAL_LIMITS
 
 BASE=ROOT/'experiments/pitch_adaptation_20261003/repair_v5'
 
@@ -67,6 +68,21 @@ def verify_freeze(path):
     if freeze['conditions']!=conditions:raise ValueError('Fixed trial conditions changed')
     if freeze.get('dependencies')!=runtime_versions():raise ValueError('Frozen dependency versions changed')
     if freeze.get('model_assets')!=model_asset_hashes():raise ValueError('Frozen model mesh/texture assets changed')
+    if freeze.get('common_initialization_tolerances')!=COMMON_INITIAL_LIMITS:raise ValueError('Common initialization numerical tolerances changed')
+    for name,expected in freeze.get('formal_execution_sources',{}).items():
+        if digest(ROOT/name)!=expected:raise ValueError('Formal call-capture source changed: '+name)
+    if not freeze.get('formal_execution_sources') or digest(BASE/'capture_pilots/capture_gate.json')!=freeze['capture_gate_sha256']:
+        raise ValueError('Formal call-capture gate differs from freeze')
+    gate=read(BASE/'capture_pilots/capture_gate.json')
+    for pilot in gate['pilots']:
+        folder=ROOT/pilot['raw']['source_directory']
+        if digest(folder/'result.json')!=pilot['result_sha256']:raise ValueError('Capture pilot result changed')
+        for name,expected in pilot['raw']['raw_sha256'].items():
+            if digest(folder/name)!=expected:raise ValueError('Capture pilot raw evidence changed')
+        if digest(folder/'capture.json.gz')!=pilot['capture']['capture_sha256'] or digest(folder/'capture_limits.json.gz')!=pilot['capture']['limits_sha256']:
+            raise ValueError('Capture pilot complete-call/limit evidence changed')
+    adjacent_path=BASE/'adjacent_geometry/adjacent_geometry.json'
+    if digest(adjacent_path)!=freeze.get('adjacent_geometry_sha256'):raise ValueError('Adjacent model-scope evidence changed')
     return freeze
 
 
@@ -114,6 +130,8 @@ def main():
         if result.get('formal_freeze_sha256',freeze_hash)!=freeze_hash:raise ValueError('Saved result belongs to another freeze')
         result.update(stage='formal',formal_freeze_sha256=freeze_hash,formal_orchestrator_sha256=plan['runner_sha256'],dependencies=runtime_versions())
         folder=args.out/f'{job[0]}__{job[1]}__s{job[2]}__k{job[3]:g}__a{math.degrees(job[4]):.4f}'
+        if not (folder/'capture.json.gz').exists():raise ValueError('Formal trial did not produce complete input/output capture')
+        result['capture_sha256']=digest(folder/'capture.json.gz')
         (folder/'result.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf8')
         return result
     with ThreadPoolExecutor(max_workers=args.workers) as pool:

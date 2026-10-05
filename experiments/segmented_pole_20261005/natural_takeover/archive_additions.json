@@ -352,5 +352,65 @@
     "files": 59,
     "MiB": 27.713722229003906,
     "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_front_loosen.zip",
+    "files": 59,
+    "MiB": 44.45316219329834,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_nominal_material_transfer_front_loosen.zip",
+    "files": 59,
+    "MiB": 73.46965599060059,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_phase_plus_material_transfer_front_loosen.zip",
+    "files": 59,
+    "MiB": 49.51702308654785,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_nominal_material_transfer_target_supported.zip",
+    "files": 59,
+    "MiB": 79.8298978805542,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_material_transfer_target_supported.zip",
+    "files": 59,
+    "MiB": 38.046380043029785,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_farther_material_transfer_target_supported.zip",
+    "files": 59,
+    "MiB": 52.62224769592285,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_nominal_material_transfer_front_loosen_extended.zip",
+    "files": 59,
+    "MiB": 95.47190952301025,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_material_transfer_support_guard.zip",
+    "files": 62,
+    "MiB": 13.120400428771973,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_material_transfer_support_guard.zip",
+    "files": 62,
+    "MiB": 15.503456115722656,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer_target_supported.zip",
+    "files": 59,
+    "MiB": 99.24485206604004,
+    "complete_trace": true
   }
 ]

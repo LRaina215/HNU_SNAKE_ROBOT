@@ -540,6 +540,206 @@
         "saturation": 0.20881462196482653
       },
       "mission_seconds": 189.20000000053935
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_front_loosen",
+      "outcome": "full_crossing_validated",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.3281346539033847,
+        "joint_peak_deg_s": 59.63057600413543,
+        "error_peak_deg": 2.3970357141953937,
+        "saturation": 0.21349435330970243
+      },
+      "mission_seconds": 243.61000000079915
+    },
+    {
+      "case": "horizontal_nominal_material",
+      "transfer": "transfer_front_loosen",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.41027678146445307,
+        "joint_peak_deg_s": 68.6495762597412,
+        "error_peak_deg": 3.1056178873222002,
+        "saturation": 0.2374818691163505
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "vertical_down_phase_plus_material",
+      "transfer": "transfer_front_loosen",
+      "outcome": "full_crossing_validated",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.24601893301389952,
+        "joint_peak_deg_s": 69.0233993646701,
+        "error_peak_deg": 2.617012154939672,
+        "saturation": 0.2433845620522302
+      },
+      "mission_seconds": 260.61000000074927
+    },
+    {
+      "case": "horizontal_nominal_material",
+      "transfer": "transfer_target_supported",
+      "outcome": "full_crossing_validated",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.41027678146445307,
+        "joint_peak_deg_s": 68.6495762597412,
+        "error_peak_deg": 3.1056178873222002,
+        "saturation": 0.20328400621950565
+      },
+      "mission_seconds": 374.00999999806777
+    },
+    {
+      "case": "vertical_down_nominal_material",
+      "transfer": "transfer_target_supported",
+      "outcome": "full_crossing_validated",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 1.1644885458037937,
+        "joint_peak_deg_s": 62.69729036266682,
+        "error_peak_deg": 3.1467736304652263,
+        "saturation": 0.2128967161988626
+      },
+      "mission_seconds": 219.03000000068178
+    },
+    {
+      "case": "vertical_down_farther_material",
+      "transfer": "transfer_target_supported",
+      "outcome": "full_crossing_validated",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.9685706659526578,
+        "joint_peak_deg_s": 53.20568978400743,
+        "error_peak_deg": 3.48562067388825,
+        "saturation": 0.2228430794189219
+      },
+      "mission_seconds": 272.21000000047496
+    },
+    {
+      "case": "horizontal_nominal_material",
+      "transfer": "transfer_front_loosen_extended",
+      "outcome": "full_crossing_validated",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.41027678146445307,
+        "joint_peak_deg_s": 68.6495762597412,
+        "error_peak_deg": 3.1056178873222002,
+        "saturation": 0.25084975166537204
+      },
+      "mission_seconds": 425.8199999968426
+    },
+    {
+      "case": "vertical_down_nominal_material",
+      "transfer": "transfer_support_guard",
+      "outcome": "development_stopped",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.678777454556836,
+        "joint_peak_deg_s": 62.44578673456623,
+        "error_peak_deg": 2.610244391131722,
+        "saturation": 0.18460385278464883
+      },
+      "mission_seconds": 134.40000000027769
+    },
+    {
+      "case": "horizontal_phase_plus_material",
+      "transfer": "transfer_support_guard",
+      "outcome": "development_stopped",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 1.0645558752751538,
+        "joint_peak_deg_s": 72.01708819889804,
+        "error_peak_deg": 3.2189954094690325,
+        "saturation": 0.16387989807864473
+      },
+      "mission_seconds": 146.20000000033403
+    },
+    {
+      "case": "horizontal_farther",
+      "transfer": "transfer_target_supported",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.38251062507761224,
+        "joint_peak_deg_s": 61.69118473837361,
+        "error_peak_deg": 2.857807743707313,
+        "saturation": 0.2659880890378388
+      },
+      "mission_seconds": 442.5999999964458
     }
   ]
 }

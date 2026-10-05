@@ -222,6 +222,8 @@ def run(args):
         if args.network_calibration:command.append('--network-calibration')
         if args.feedback_progress_guard:command.append('--feedback-progress-guard')
         if args.conserve_middle:command.append('--conserve-middle')
+        if args.observer_contact_flow:command.append('--observer-contact-flow')
+        if args.loosen_unacquired_front:command.append('--loosen-unacquired-front')
         if args.acquire_verified_drape:command+=['--release-requires-grip','--bootstrap-front']
         completed=subprocess.run(command,check=False)
         result['transfer_exit_code']=completed.returncode
@@ -244,11 +246,16 @@ if __name__=='__main__':
     p.add_argument('--response-cache',type=Path,help='Reuse costly fits only after the corresponding newly executed probe measurements and commands match exactly.')
     p.add_argument('--acquire-verified-drape',action='store_true',help='Geometry/constraint evidence admits local compliant forming; distributed support still gates rear release.')
     p.add_argument('--transfer-seconds',type=float,default=200.)
-    p.add_argument('--finish-mode',choices=['original','continuous','supported'],default='original')
+    p.add_argument('--finish-mode',choices=['original','continuous','supported','target_supported'],default='original')
     p.add_argument('--dt',type=float,default=.2)
     p.add_argument('--junction-search',action='store_true')
     p.add_argument('--network-calibration',action='store_true')
     p.add_argument('--feedback-progress-guard',action='store_true')
     p.add_argument('--conserve-middle',action='store_true',help='Limit rear release by actual inferred target-region membership, excluding unacquired links in the initial-front prefix.')
+    p.add_argument('--observer-contact-flow',action='store_true',help='Use full-interval private observer derivatives after contact-switch prediction errors during transfer.')
+    p.add_argument('--loosen-unacquired-front',action='store_true',help='Ease the initially unacquired front curvature during transfer; requires acquire-verified-drape.')
     p.add_argument('--resume-auto',type=Path,help='Continue an exact automatically detected boundary; retains its natural prefix for audit.')
-    run(p.parse_args())
+    args=p.parse_args()
+    if args.loosen_unacquired_front and not args.acquire_verified_drape:
+        p.error('loosen-unacquired-front requires acquire-verified-drape')
+    run(args)

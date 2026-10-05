@@ -36,6 +36,7 @@ class WindowOptions:
     conserve_middle: bool = False
     predictive_progress: bool = False
     measured_material_origin: bool = False
+    near_target_formation: bool = False
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -103,6 +104,15 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         region=self.transfer_region(positions)
         prefix=self.initial_front
         while prefix<self.n and region[prefix]:prefix+=1
+        forming_prefix=prefix
+        if self.window.near_target_formation:
+            # Being nearer the old axis does not forbid beginning to wrap the
+            # target. This weaker tube test grants FORMING permission only;
+            # source release credit still uses the original region and support.
+            _,radial,_,axial=self.distances(positions)
+            near=(radial<self.radius+self.options.shell_radius_mm+self.options.clearance_mm)&(axial>self.radius/2)
+            forming_prefix=self.initial_front
+            while forming_prefix<self.n and near[forming_prefix]:forming_prefix+=1
         h=np.eye(3)[np.argmin(abs(self.target))]
         h-=h@self.target*self.target;h/=np.linalg.norm(h)
         v=np.cross(self.target,h)
@@ -118,7 +128,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         contact=bool(len(ids)>0)
         # Angular contact coverage and measured wrap, not just any contact.
         grip=float(np.clip((span-np.pi/2)/(np.pi/2),0,1)*np.clip((wrap-.5)/.5,0,1))
-        return dict(actual_transfer=region,actual_prefix=prefix,target_contact=contact,
+        return dict(actual_transfer=region,actual_prefix=prefix,forming_prefix=forming_prefix,target_contact=contact,
             contact_span_deg=float(np.degrees(span)),front_wrap=float(wrap),grip=grip,
             source_contact=bool(np.any(forces[-1,0]>.1)))
 
@@ -126,7 +136,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         prefix=status['actual_prefix'];old=[self.front,self.rear]
         ready,source_clear,cleared=self.handoff_geometry_ready(points,history,status)
         if ready:self.handed_off=True
-        limit=min(self.n,self.rear,self.n if self.handed_off else prefix+self.window.maximum_lead)
+        limit=min(self.n,self.rear,self.n if self.handed_off else status['forming_prefix']+self.window.maximum_lead)
         if status['target_contact']:
             self.progress=max(self.progress,min(limit,self.progress+abs(front_delta)*self.window.joints_per_rad*self.follow))
         self.formation_weights=smoothstep(np.clip(self.progress-np.arange(self.n),0,1))
@@ -215,7 +225,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             # experimental material-phase offset, not a claimed CMU mapping.
             error=self.window.rear_phase_lead-(self.phase-self.rear_phase)
             rear_delta-=float(np.clip(error,-abs(demand),abs(demand)))
-        progress_scale=1.
+        progress_scale=1.;rear_progress_scale=1.;phase_coordination_scale=1.
         # A predictive coordinator may replace this static progress veto.
         # Formation lead and physical-support/handoff conditions remain; do
         # not silently cancel every candidate action after it was evaluated.
@@ -226,7 +236,21 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             # the existing compliant shape recovery continues during the hold.
             lag=max(0.,self.progress-status['actual_prefix']-self.window.maximum_lead)
             progress_scale=float(np.clip(1-lag/max(self.window.maximum_lead,1e-9),0,1))
-            front_delta*=progress_scale;rear_delta*=progress_scale
+            rear_progress_scale=progress_scale
+            if self.window.near_target_formation:
+                forming_lag=max(0.,self.progress-status['forming_prefix']-self.window.maximum_lead)
+                progress_scale=float(np.clip(1-forming_lag/max(self.window.maximum_lead,1e-9),0,1))
+            front_delta*=progress_scale;rear_delta*=rear_progress_scale
+        if self.window.near_target_formation and not self.handed_off:
+            # Do not accumulate unlimited relative rotation while the front
+            # forms and the rear waits. This quarter-turn bound is an explicit
+            # engineering constraint, not a direct CMU/Yamada phase mapping.
+            difference=rear_delta-front_delta
+            if abs(difference)>1e-12:
+                lag=self.rear_phase-self.phase
+                room=np.pi/2-math.copysign(1.,difference)*lag
+                phase_coordination_scale=float(np.clip(room/abs(difference),0,1))
+                front_delta*=phase_coordination_scale;rear_delta*=phase_coordination_scale
         previous_phase=self.phase
         self.phase+=front_delta;self.rear_phase+=rear_delta
         recruitment=self.recruit(points,contact_window,status,front_delta,dt)
@@ -264,7 +288,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         raw=(self.weights[:,0]+self.weights[:,2])*(rolled+compliance)+self.weights[:,1]*self.middle_reference
         finish={}
         finish_supported=False
-        if self.window.finish_mode=='supported':
+        if self.window.finish_mode in ('supported','target_supported'):
             # A free end can remain caught at the old junction after the coil
             # itself is supported on the target. Waiting for that end to clear
             # before applying whole-coil A-D makes the transition circular.
@@ -272,6 +296,17 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             # declares crossing. Geometry/support are the caller's estimates.
             centers=(points[:-1]+points[1:])/2
             internal_on_target=bool(np.all(self.transfer_region(centers[2:-2])))
+            if self.window.finish_mode=='target_supported':
+                # Once almost all support lies on one cylinder, rotation of
+                # the old pipe about that cylinder can be weakly observable.
+                # Do not make whole-coil reconstruction depend on distance to
+                # that old line. Keep target radial/forward geometry and the
+                # independent no-source-contact, wrap and coverage conditions.
+                rel=centers[2:-2]-self.corner
+                radial=np.linalg.norm(np.cross(rel,self.target),axis=1)
+                internal_on_target=bool(np.all(
+                    (radial<self.radius+self.options.shell_radius_mm+self.options.clearance_mm)
+                    &((rel@self.target)>self.radius/2)))
             internal_source_free=not np.any(np.asarray(contact_window)[-40:,0,2:-2]>.1)
             ready=(self.progress>=self.n and self.rear>=self.n and internal_on_target
                    and internal_source_free and status['front_wrap']>=1.5
@@ -312,6 +347,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         return target,dict(front=self.front,rear=self.rear,weights=self.weights.copy(),raw=raw,
             measured=measured,front_phase=self.phase,rear_phase=self.rear_phase,phase_difference=self.rear_phase-self.phase,
             follow=self.follow,feed=self.feed,front_delta=front_delta,rear_delta=rear_delta,progress_scale=progress_scale,
+            rear_progress_scale=rear_progress_scale,phase_coordination_scale=phase_coordination_scale,
             compliance_delta=compliance,section_domains=section_domains,**shape,**status,**recruitment,**middle_info,**finish)
 
     def configuration(self):

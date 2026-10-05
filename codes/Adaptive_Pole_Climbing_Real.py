@@ -35,7 +35,7 @@ COMPLIANCE_GAIN = (0.01, 0.02)
 COMPLIANCE_INSIDE = False  # 手动选择：False 管外收紧；True 管内撑开。
 # 缠绕目标：机器人中心线螺旋半径（≈ 管半径 + 外壳半径 29 mm，再略小以夹紧），不是管道表面半径。
 # 默认按大管（外径 160 mm，贴管中心线约 109 mm）；小管（外径 110 mm）约 r=80。
-HELIX_RADIUS_MM = 105.0
+HELIX_RADIUS_MM = 90.0
 HELIX_PITCH_MM = 220.0  # 缠绕目标：每圈轴向位移。
 ROLL_STEP_RAD = 0.15  # 滚动阶段每次 Ctrl+J/H 的相位增量。
 RADIUS_STEP_MM = 1.0  # 实机半径微调：R=80/P=220/20关节时，±5 mm 可引起约 43–51° 目标变化。

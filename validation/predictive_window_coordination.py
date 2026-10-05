@@ -58,11 +58,12 @@ class PredictiveWindowCoordination:
         forward=1/(1+np.exp(-np.clip(axial/(.5*controller.link),-40,40)))
         return float(np.sum(nearby*forward))
 
-    def rollout(self,tracker,controller,delivery,geometry,measured,history,rate,conserve,dt):
+    def rollout(self,tracker,controller,delivery,geometry,measured,history,rate,conserve,dt,rear_rate=1.):
         m=tracker.observer.model;d=copy.copy(tracker.observer.data)
         d.qpos[tracker.qadr]=measured;mujoco.mj_forward(m,d)
         c=clone_state(controller,{'forward_points'});v=clone_state(delivery,{'point_jacobians'})
         c.window=replace(c.window,conserve_middle=conserve)
+        c.rear_motion_scale=rear_rate
         h=[np.array(x).copy() for x in history]
         g,support,centers=self.observe(m,d,tracker,geometry,c)
         initial_value=self.acquisition_value(c,g['points_mm'])
@@ -97,7 +98,7 @@ class PredictiveWindowCoordination:
         # violations rank first; the 0.4 m/s prediction margin precedes the
         # independent, unchanged 0.5 m/s physical acceptance threshold.
         score=-(final_value-initial_value)+3*max(0.,initial_wrap-final_wrap)+.01*maximum_speed/.2
-        return dict(rate=rate,conserve=conserve,risk=risk,score=score,
+        return dict(rate=rate,rear_rate=rear_rate,conserve=conserve,risk=risk,score=score,
             module_peak_m_s=maximum_speed,joint_peak_deg_s=maximum_joint,
             acquisition_change=final_value-initial_value,wrap_before=initial_wrap,
             wrap_after=final_wrap,minimum_wrap=minimum_wrap,no_support_samples=no_support)
@@ -117,3 +118,42 @@ class PredictiveWindowCoordination:
         controller.window=replace(controller.window,conserve_middle=self.conserve)
         return controller.requested_phase-.1875*dt*self.rate,dict(predictive_coordination=dict(
             fresh=fresh,rate=self.rate,conserve=self.conserve,**(self.last_report if fresh else {})))
+
+
+class PredictiveSupportGuard(PredictiveWindowCoordination):
+    """Leave nominal motion intact unless inferred dynamics predicts a swing.
+
+    The earlier common-rate search could not alter the relative pipe-phase
+    motion at source detachment. This diagnostic also admits held/reversed rear
+    rolling. It never disables the material budget or changes A-D, formation,
+    actuator limits or physical support. Prediction is not a safety guarantee.
+    """
+    def __init__(self):
+        super().__init__(horizon=2.,period=.4)
+        self.rear_rate=1.
+        self.phase_delay=0.
+
+    def choose(self,tracker,controller,delivery,geometry,measured,history,dt,nominal_phase):
+        fresh=self.remaining<=1e-9
+        if fresh:
+            started=time.perf_counter()
+            nominal=self.rollout(tracker,controller,delivery,geometry,measured,history,1.,True,dt,1.)
+            trials=[nominal]
+            if nominal['risk']>0:
+                for rate,rear in ((1.,0.),(1.,-1.),(.25,1.),(0.,0.)):
+                    trials.append(self.rollout(tracker,controller,delivery,geometry,measured,history,rate,True,dt,rear))
+            selected=min(trials,key=lambda x:(x['risk'],x['score'],-x['rate']))
+            self.rate=selected['rate'];self.rear_rate=selected['rear_rate'];self.remaining=self.period
+            self.last_report=dict(candidates=trials,selected=selected,computation_seconds=time.perf_counter()-started,
+                inputs='causal private dynamics belief; no physical pose, axes or contact labels',
+                guard_active=nominal['risk']>0)
+        self.remaining-=dt
+        controller.rear_motion_scale=self.rear_rate
+        # Retain the caller's original k*dt arithmetic when no intervention
+        # occurred. Repeated subtraction changed phase by ~4e-15 on step 2;
+        # contact/optimisation sensitivity amplified that into a new trajectory
+        # before the guard ever acted. Only interventions accumulate delay.
+        self.phase_delay+=(1-self.rate)*.1875*dt
+        return nominal_phase+self.phase_delay,dict(predictive_coordination=dict(
+            fresh=fresh,rate=self.rate,rear_rate=self.rear_rate,conserve=True,
+            **(self.last_report if fresh else {})))

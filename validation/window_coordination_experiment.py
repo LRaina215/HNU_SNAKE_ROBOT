@@ -184,7 +184,7 @@ def run(args):
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
-                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip,args.conserve_middle,args.predictive_progress,args.measured_material_origin),**extra)
+                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip,args.conserve_middle,args.predictive_progress,args.measured_material_origin,args.near_target_formation),**extra)
         if args.preserve_probe_intent:
             # Probe targets hold/perturb the current posture; they are not the
             # stored motion intent. Retain the old torque-equivalent preload,
@@ -266,11 +266,15 @@ def run(args):
         coordinator=None
         if args.predictive_progress and not args.predictive_coordination:
             raise ValueError('Predictive progress needs the prediction coordinator')
-        if args.predictive_coordination:
+        if args.predictive_coordination or args.predictive_support_guard:
             if not args.dynamic_observer or args.truth_diagnostic or delivery is None:
                 raise ValueError('Predictive coordination requires inferred dynamics and existing velocity delivery')
-            from predictive_window_coordination import PredictiveWindowCoordination
-            coordinator=PredictiveWindowCoordination()
+            from predictive_window_coordination import PredictiveWindowCoordination,PredictiveSupportGuard
+            if args.predictive_coordination and args.predictive_support_guard:
+                raise ValueError('Choose one prediction coordinator')
+            if args.predictive_support_guard and not args.conserve_middle:
+                raise ValueError('Support guard retains the existing material budget')
+            coordinator=PredictiveSupportGuard() if args.predictive_support_guard else PredictiveWindowCoordination()
             shutil.copy2(ROOT/'validation/predictive_window_coordination.py',folder/'sources/validation/predictive_window_coordination.py')
         for k in range(round(args.seconds/args.dt)):
             g=control_feedback(sim.fresh(),True);measured=np.radians(g['angles_deg'])*sim.bridge.signs
@@ -279,7 +283,8 @@ def run(args):
             contact_input=support_history if support_observer is not None else [r['normal_force'] for r in sim.records[-60:]]
             prediction_info={}
             if coordinator is not None:
-                phase,prediction_info=coordinator.choose(tracker,controller,delivery,g,measured,contact_input,args.dt)
+                phase,prediction_info=coordinator.choose(tracker,controller,delivery,g,measured,contact_input,args.dt,
+                    **({'nominal_phase':phase} if args.predictive_support_guard else {}))
             try:q,info=controller.compute(g,measured,phase,args.dt,contact_input)
             except ValueError as error:
                 write_json(folder/'failed_control_feedback.json',dict(error=str(error),geometry=g,
@@ -386,6 +391,7 @@ if __name__=='__main__':
         help='Collect a relay probe, calibrate virtual pipes from joint responses, then infer local geometry/support through private dynamics.')
     p.add_argument('--observer-contact-flow',action='store_true',help='Use full-interval private dynamics linearization after poor encoder predictions; physical parameters are unchanged.')
     p.add_argument('--predictive-coordination',action='store_true',help='Experimental private-model short-horizon choice of rolling rate and release budget; retains A-D/Yamada and current delivery limits.')
+    p.add_argument('--predictive-support-guard',action='store_true',help='Experimental 2 s prediction guard: keep nominal commands unless risk is predicted, then compare common rate and held/reversed rear rolling; preserve material budget.')
     p.add_argument('--predictive-progress',action='store_true',help='Let the predictor govern phase/release progress instead of also applying the static lag veto; all formation, support and final handoff gates remain.')
     p.add_argument('--response-calibration-cache',type=Path,help='Reuse a fit only when the freshly executed probe angles and commands match completely.')
     p.add_argument('--preserve-probe-intent',action='store_true',
@@ -404,6 +410,7 @@ if __name__=='__main__':
     p.add_argument('--conserve-middle',action='store_true',
         help='Limit rear release to one joint per newly measured acquired front module, also in the standard window controller.')
     p.add_argument('--measured-material-origin',action='store_true',help='Count new acquisition relative to the measured initial count, not the initial front label count.')
+    p.add_argument('--near-target-formation',action='store_true',help='Experimental target-tube forming admission, separate from source release credit; keep relative phase within a quarter turn.')
     p.add_argument('--distinguish-lines',action='store_true',
         help='Target-frame acquisition also requires closer proximity to target than source axis.')
     p.add_argument('--observable-support',action='store_true',
@@ -420,7 +427,7 @@ if __name__=='__main__':
     p.add_argument('--body-reference-module',type=int,default=0,help='Encoder-relative velocity frame; -1 initial front, -2 follows acquired and formed prefix')
     p.add_argument('--coordinate-acquisition',action='store_true',help='Radial acquisition: slow both phase clocks when measured recruitment lags')
     p.add_argument('--tail-mode',choices=['support','same','hold','coupled','matched'],default='support')
-    p.add_argument('--finish-mode',choices=['original','continuous','supported'],default='original',
+    p.add_argument('--finish-mode',choices=['original','continuous','supported','target_supported'],default='original',
         help='supported permits whole-coil A-D after sustained internal target support even if a terminal link still touches the junction')
     p.add_argument('--maximum-lead',type=float,default=2.)
     p.add_argument('--target-lead-deg',type=float,default=8.)

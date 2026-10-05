@@ -1,0 +1,132 @@
+{
+  "qpos": {
+    "first_difference_seconds": 235.2099999990821,
+    "maximum_before_235_2": 0.0
+  },
+  "qvel": {
+    "first_difference_seconds": 235.2099999990821,
+    "maximum_before_235_2": 0.0
+  },
+  "ctrl": {
+    "first_difference_seconds": 235.2099999990821,
+    "maximum_before_235_2": 0.0
+  },
+  "transfer_target_supported": {
+    "name": "transfer_target_supported",
+    "outcome": "full_crossing_validated",
+    "physical_seconds": 281.59999999798515,
+    "metrics_end_seconds": 281.40999999798964,
+    "complete": true,
+    "final_region": 21,
+    "max_region": 21,
+    "final_wrap": 2.074768157769273,
+    "finish_seconds": 235.4,
+    "last_source_contact_seconds": 243.57999999888418,
+    "windows": {
+      "whole": {
+        "seconds": 281.42,
+        "maximum_error_deg": 3.1056178873222002,
+        "mean_error_deg": 0.5945426543587675,
+        "maximum_joint_speed_deg_s": 68.6495762597412,
+        "p99_joint_speed_deg_s": 24.789673210659714,
+        "maximum_module_speed_mm_s": 410.27678146445623,
+        "saturated_joint_sample_fraction": 0.227318598535996,
+        "saturated_joint_seconds": 1279.44,
+        "target_contact_fraction": 0.9992182503020397
+      },
+      "after_capture": {
+        "seconds": 280.42,
+        "maximum_error_deg": 3.1056178873222002,
+        "mean_error_deg": 0.5944964709079874,
+        "maximum_joint_speed_deg_s": 68.6495762597412,
+        "p99_joint_speed_deg_s": 24.770968118539347,
+        "maximum_module_speed_mm_s": 410.27678146445623,
+        "saturated_joint_sample_fraction": 0.22735361243848512,
+        "saturated_joint_seconds": 1275.09,
+        "target_contact_fraction": 0.999215462520505
+      },
+      "transfer": {
+        "seconds": 234.41,
+        "maximum_error_deg": 3.1056178873222002,
+        "mean_error_deg": 0.6228574726455556,
+        "maximum_joint_speed_deg_s": 68.6495762597412,
+        "p99_joint_speed_deg_s": 25.959534368284203,
+        "maximum_module_speed_mm_s": 410.27678146445623,
+        "saturated_joint_sample_fraction": 0.24609444989548226,
+        "saturated_joint_seconds": 1153.74,
+        "target_contact_fraction": 0.999061473486626
+      },
+      "completion": {
+        "seconds": 4.0,
+        "maximum_error_deg": 2.363223311517471,
+        "mean_error_deg": 0.7527466831376544,
+        "maximum_joint_speed_deg_s": 38.282388293988255,
+        "p99_joint_speed_deg_s": 21.965926713192886,
+        "maximum_module_speed_mm_s": 57.60822026844333,
+        "saturated_joint_sample_fraction": 0.29125,
+        "saturated_joint_seconds": 23.3,
+        "target_contact_fraction": 1.0
+      }
+    },
+    "initial_error_deg": 1.0717282006713196
+  },
+  "transfer_front_loosen_extended": {
+    "name": "transfer_front_loosen_extended",
+    "outcome": "full_crossing_validated",
+    "physical_seconds": 335.99999999669876,
+    "metrics_end_seconds": 333.2199999967645,
+    "complete": true,
+    "final_region": 21,
+    "max_region": 21,
+    "final_wrap": 2.057892621508348,
+    "finish_seconds": 292.2,
+    "last_source_contact_seconds": 283.9199999979303,
+    "windows": {
+      "whole": {
+        "seconds": 333.23,
+        "maximum_error_deg": 3.1056178873222002,
+        "mean_error_deg": 0.6395054065785913,
+        "maximum_joint_speed_deg_s": 68.6495762597412,
+        "p99_joint_speed_deg_s": 23.863300104753804,
+        "maximum_module_speed_mm_s": 410.27678146445623,
+        "saturated_joint_sample_fraction": 0.2842226090087927,
+        "saturated_joint_seconds": 1894.23,
+        "target_contact_fraction": 0.9993397953365544
+      },
+      "after_capture": {
+        "seconds": 332.23,
+        "maximum_error_deg": 3.1056178873222002,
+        "mean_error_deg": 0.6396017614801716,
+        "maximum_joint_speed_deg_s": 68.6495762597412,
+        "p99_joint_speed_deg_s": 23.846328873360566,
+        "maximum_module_speed_mm_s": 410.27678146445623,
+        "saturated_joint_sample_fraction": 0.28442344159166844,
+        "saturated_joint_seconds": 1889.88,
+        "target_contact_fraction": 0.9993378081449599
+      },
+      "transfer": {
+        "seconds": 291.21,
+        "maximum_error_deg": 3.1056178873222002,
+        "mean_error_deg": 0.670657286211017,
+        "maximum_joint_speed_deg_s": 68.6495762597412,
+        "p99_joint_speed_deg_s": 24.354984872431377,
+        "maximum_module_speed_mm_s": 410.27678146445623,
+        "saturated_joint_sample_fraction": 0.3079427217471927,
+        "saturated_joint_seconds": 1793.52,
+        "target_contact_fraction": 0.999244531437794
+      },
+      "completion": {
+        "seconds": 4.0,
+        "maximum_error_deg": 1.631272243456994,
+        "mean_error_deg": 0.37095069337479003,
+        "maximum_joint_speed_deg_s": 58.05498784233486,
+        "p99_joint_speed_deg_s": 37.37019834327921,
+        "maximum_module_speed_mm_s": 93.88321104522747,
+        "saturated_joint_sample_fraction": 0.105875,
+        "saturated_joint_seconds": 8.47,
+        "target_contact_fraction": 1.0
+      }
+    },
+    "initial_error_deg": 1.0717282006713196
+  }
+}
