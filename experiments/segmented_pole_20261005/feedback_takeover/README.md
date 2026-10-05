@@ -1,6 +1,6 @@
 # 第2步：搭管状态的反馈判断（2026-10-05）
 
-第1步的两个指定搭管存档已通过工程筛选，证据见 ../support_transfer/stage1_accepted_pair.json。本目录继续原规划第2步，已完成21组闭环对照；当前反馈接管实现未通过统一双场景门槛，完整自主流程没有完成。集中结论见[可行性验证报告](../../../docs/顺应性自主跨管_可行性验证结论.md)。
+第1步的两个指定搭管存档已通过工程筛选，证据见 ../support_transfer/stage1_accepted_pair.json。本目录继续原规划第2步，已完成26组闭环对照；响应标定＋探测衔接＋局部截面无需角平分线的统一规则，通过水平/竖直两个指定存档的全部门槛。自动接管判据仍是开发样本，下一步接入自然接近；完整自主流程没有完成。集中结论见[可行性验证报告](../../../docs/顺应性自主跨管_可行性验证结论.md)。
 
 ## 闭环结果
 
@@ -20,12 +20,15 @@
 | horizontal_encoder_live_whole_coil | 是 | 59.02 | 0.55645 | 3.47 | 23.29 | 未通过 |
 | horizontal_observation_reserve_oracle | 是 | 65.20 | 0.62038 | 2.49 | 25.12 | 未通过 |
 | horizontal_observation_reserve_phase | 否 | 67.23 | 0.57138 | 2.99 | 26.60 | 未通过 |
+| horizontal_response_dynamics | 是 | 57.01 | 0.55699 | 2.51 | 21.37 | 未通过 |
+| horizontal_response_resume_intent | 是 | 59.95 | 0.45042 | 2.77 | 18.94 | 通过 |
 | horizontal_target_frame | 是 | 90.57 | 2.06296 | 3.89 | 19.58 | 未通过 |
 | horizontal_target_frame_conserved | 是 | 62.88 | 0.47794 | 2.46 | 19.89 | 通过 |
 | horizontal_target_frame_continuous | 是 | 67.45 | 0.50736 | 3.30 | 32.86 | 未通过 |
 | horizontal_target_frame_distinct | 是 | 67.45 | 0.50736 | 3.30 | 22.88 | 未通过 |
 | vertical_cad_support | 是 | 70.19 | 0.65895 | 2.88 | 22.21 | 未通过 |
 | vertical_encoder_live_whole_coil | 否 | 159.26 | 2.04696 | 4.74 | 20.53 | 未通过 |
+| vertical_response_resume_intent | 计算异常 | 35.38 | 0.06375 | 1.88 | 26.85 | 未通过 |
 | vertical_target_frame_conserved | 否 | 105.47 | 3.14456 | 5.45 | 25.47 | 未通过 |
 | vertical_target_frame_continuous | 是 | 61.66 | 0.94656 | 3.40 | 34.74 | 未通过 |
 | vertical_target_frame_distinct | 否 | 194.29 | 2.31878 | 6.49 | 29.79 | 未通过 |
@@ -92,8 +95,36 @@ encoder_tracking 系列仅使用关节角、历史命令、机器人CAD、名义
 
 ## 复现
 
-后续两组保留已知信息的支撑交接对照未通过。前部持续形成至少一圈、10节前缀及180°接触覆盖前保留8节尾部，仍出现0.620m/s摆动；再将尾部释放额度绑定前部rolling推进量，200秒未完成、0.571m/s。后者约39.8秒实际原管接触消失，此时控制尾部分界仍为14；仅限制标签迁移不能保证实际支撑。两组归档和额外17,040条EXE命令核对均完成，共21组145,870条命令。详细动态观测尝试见[主动试探说明](../active_takeover_multisine/README.md)，它们不计入闭环次数。
+后续两组保留已知信息的支撑交接对照未通过。前部持续形成至少一圈、10节前缀及180°接触覆盖前保留8节尾部，仍出现0.620m/s摆动；再将尾部释放额度绑定前部rolling推进量，200秒未完成、0.571m/s。后者约39.8秒实际原管接触消失，此时控制尾部分界仍为14；仅限制标签迁移不能保证实际支撑。两组归档和额外17,040条EXE命令核对均完成，该阶段合计21组145,870条命令。详细动态观测尝试见[主动试探说明](../active_takeover_multisine/README.md)，它们不计入闭环次数。
 
 闭环入口 validation/window_coordination_experiment.py，使用新结果名及归档 plan.json 参数。新增选项为 --encoder-initial-axes、--cad-refine-axes、--cad-support；--target-frame-acquisition 与 --conserve-middle 为仍在验证的分界替换，--distinguish-lines 排除仍属于原轴的模块，--encoder-tracking 为持续局部坐标估计闭环。默认历史控制路径保留，日常实机入口未替换。
 
 几何诊断入口为 validation/feedback_takeover_initial_geometry.py、feedback_takeover_orthogonal_probe.py、feedback_takeover_shadow.py、feedback_takeover_proximity_shadow.py、feedback_takeover_encoder_tracking.py。请区分只读离线拟合、闭环功能通过与全过程质量通过。
+
+## 同轮响应标定与探测衔接
+
+`horizontal_response_dynamics` 在同一轮执行1.2秒、60条小幅探测命令，由关节角与指令拟合几何/重力，随后私有动力学模型持续跟踪；控制不读真实管轴、自由位姿或接触标签。物理151.6秒完成跨越及后续rolling，但0.557m/s速度峰值未通过。峰值时管轴误差很小，尾部相对前部0.487m/s，滤波制动量0.364m/s，不能直接归为轴估计失准。
+
+`horizontal_response_resume_intent` 唯一控制变化是保留探测前名义运动参考，预载仍按原力矩上限截断；指令变化限制和中段参考从实际探测末条指令接续，没有物理复位。物理135.6秒全部门槛通过，6780条命令核验通过。规则已在竖直运行前冻结于 response_resume_freeze.json。两组共14,360条命令，当前合计23组160,230条；其中15组功能通过、3组全部门槛通过，后者仅新水平响应标定候选没有真实轴/接触/自由位姿输入。
+
+仍从人工搭管存档开始，数分钟标定期间仿真暂停；直角、水平/竖直重力先验、模型误差与实时性限制未消除。正常速度视频见 reviews/horizontal_response_resume_intent_1x.mp4。
+
+冻结竖直 `vertical_response_resume_intent` 在18.6秒发生局部截面接近折返异常，共930条已执行命令；此时两管均保持接触，模块峰值仅0.064m/s。重建计算帧发现源管端J20投影转角−179.9976°，真实轴同样退化，源轴误差仅0.0004°。这是圆弧截面模型的适用域问题，不能记为运动掉落。可选 `--section-domain` 在接近折返/平行投影处逐渐退出截面A–D修正，其他有效区间保留原式，三维实测弯曲rolling继续；使用已有1.8°角分辨阈值，未夹紧物理关节或改变管轴。出错帧与有效前段一致性检查通过，完整水平回归正在运行，尚未采用为通过候选。
+
+包含此异常记录共24组161,160条命令。已保存失败帧重建、投影角、过程指标和冻结源码；没有把异常当作方向不可行证据。自然触发仍未接入。
+
+截面退化处理的水平回归 `horizontal_response_section_domain` 虽完成跨越，但尾端模块峰值1.065m/s，未采用。进一步定位为共用函数对**角平分线**的退化检查阻止了并不使用该向量的局部A–D重建。最小修复为 LocalSection 只请求长度和有向转角，曲轴螺距调制路径仍保留原检查。原失败帧归一化后的A–D/Yamada角度有限；水平通过记录的1239个区间（含终段切换）前三项输入完全相同，因此复用原水平通过轨迹，不重复相同物理试验。证据为 bisector_independence_check.json；response_finite_section_freeze.json 在竖直重跑前冻结。竖直最小修复候选已通过，见下方当前验收。
+
+
+## 当前响应控制验收
+
+26组、17组功能通过、4组全部门槛通过，174,400条实际EXE命令核对完成。新配对见[指标](response_control_accepted_pair.json)。
+
+| 场景 | 模块峰值 m/s | 关节峰值 °/s | 跟踪误差 ° | 饱和比例 | 实际命令 |
+|---|---:|---:|---:|---:|---:|
+| 水平 | 0.45042 | 59.95 | 2.772 | 18.94% | 6780 |
+| 竖直 | 0.43412 | 52.54 | 2.636 | 20.21% | 5820 |
+
+均从指定搭管存档完成整身跨越并继续rolling；控制不读真实轴、接触标签或自由位姿。名义动力学、直角同径及重力先验保留。1.2秒主动探测后标定需数分钟，期间仿真时间暂停，不是实机实时验收。竖直复用标定前逐项核对新执行探测的61帧角度/指令/时间一致，未用真值替代估计。
+
+正常速度视频：[水平](reviews/horizontal_response_resume_intent_1x.mp4)、[竖直](reviews/vertical_response_finite_section_1x.mp4)。标定墙钟暂停未占用视频仿真时间。接管判据2正1负仅为开发样本，正在连接自然接近。

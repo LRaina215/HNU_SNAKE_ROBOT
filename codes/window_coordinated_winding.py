@@ -30,6 +30,7 @@ class WindowOptions:
     rear_phase_lead: float = 0.
     support_centers: bool = False
     rolling_lookahead_seconds: Optional[float] = None
+    section_domain: bool = False
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -186,11 +187,16 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         # integrate dt; the measured-field target may use a fixed lookahead.
         lookahead=1. if self.window.rolling_lookahead_seconds is None else self.window.rolling_lookahead_seconds/dt
         rolled=angles_from_integrals(rotate_rows(rolling,delta*lookahead)+rotate_rows(self.preload,self.joint_phase))
-        compliance=np.zeros(self.n)
+        compliance=np.zeros(self.n);section_domains=[]
         for column,axis,step in ((0,self.target,front_delta),(2,self.source,rear_delta)):
             ids=np.flatnonzero(self.weights[:,column]>1e-12)
             if not len(ids):continue
             lo,hi=int(ids[0]),int(ids[-1])+1
+            if self.window.section_domain:
+                from section_compliance_domain import correction
+                value,domain=correction(geometry,self.zero_parameters,self.parameters,lo,hi,axis,self.corner,measured,step*lookahead)
+                compliance[lo:hi]=value;section_domains.append(dict(column=column,**domain))
+                continue
             zero=LocalSection(geometry,self.zero_parameters,lo,hi,axis,self.corner)
             shaped=LocalSection(geometry,self.parameters,lo,hi,axis,self.corner)
             gauge=zero.align(measured[lo:hi],0.)
@@ -222,7 +228,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         return target,dict(front=self.front,rear=self.rear,weights=self.weights.copy(),raw=raw,
             measured=measured,front_phase=self.phase,rear_phase=self.rear_phase,phase_difference=self.rear_phase-self.phase,
             follow=self.follow,feed=self.feed,front_delta=front_delta,rear_delta=rear_delta,
-            compliance_delta=compliance,**shape,**status,**recruitment,**middle_info,**finish)
+            compliance_delta=compliance,section_domains=section_domains,**shape,**status,**recruitment,**middle_info,**finish)
 
     def configuration(self):
         return dict(**super().configuration(),window=asdict(self.window))

@@ -29,6 +29,8 @@ class SegmentedAxisReplay
         string line;
         while ((line=Console.ReadLine()) != null) {
             var input = serializer.Deserialize<Dictionary<string,object>>(line);
+            if (input.ContainsKey("smoothing"))
+                Estimator.GetProperty("Smoothing").SetValue(estimator,Convert.ToDouble(input["smoothing"]),null);
             if (input.ContainsKey("seed")) {
                 var seed = (Dictionary<string,object>)input["seed"];
                 previous = Activator.CreateInstance(Axis,true);

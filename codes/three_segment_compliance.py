@@ -56,7 +56,10 @@ class LocalSection:
         v = np.cross(d, h)
         xy = (points-corner) @ np.column_stack((h, v))
         gamma_min = geometry['curve']['gamma_min_rad']
-        rows = local_sections(points, np.tile(d, (count+1, 1)), gamma_min)
+        # This reconstruction consumes (a,b,gamma), never the projected
+        # bisector used by curved-axis pitch modulation. Do not reject its
+        # finite A-D/Yamada result solely because that unused vector vanishes.
+        rows = local_sections(points, np.tile(d, (count+1, 1)), gamma_min, require_bisector=False)
         winding = math.copysign(1., sum(row[2] for row in rows))
         groups = [[(rows[0][0], 0., 0.)]]
         groups += [joint_segments(a, b, gamma, winding, gamma_min)

@@ -13,7 +13,9 @@ from mujoco_checkpoint import load_checkpoint
 def context(folder):
     result = json.loads((folder/'result.json').read_text(encoding='utf8'))
     z = np.load(folder/'trace.npz')
-    m, d, meta, _ = load_checkpoint(BASE/'inputs'/Path(result['checkpoint']).name, verify_hashes=False)
+    checkpoint=Path(result['checkpoint'])
+    if not checkpoint.exists():checkpoint=BASE/'inputs'/checkpoint.name
+    m, d, meta, _ = load_checkpoint(checkpoint, verify_hashes=False)
     return result, z, m, d, meta
 
 

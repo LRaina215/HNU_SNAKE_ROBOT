@@ -82,7 +82,7 @@ def local_axes(points, windows, smooth, max_flatness=.3, used=None):
     return axes, flatness
 
 
-def local_sections(points, axes, gamma_min):
+def local_sections(points, axes, gamma_min, require_bisector=True):
     """逐关节的局部截面：在关节 i 的局部法平面内取前后连杆投影，返回 (a, b, γ, u, d)。
 
     a、b 为前后投影连杆的一半长度，γ 为绕局部轴 d 的有向转角，u 为截面切向（单位）。
@@ -98,10 +98,13 @@ def local_sections(points, axes, gamma_min):
         if lu < 1e-8 or lv < 1e-8:
             raise ValueError("连杆与局部轴平行，局部截面无效")
         gamma = math.atan2(float(np.cross(u0, v0) @ d), float(u0 @ v0))
-        if abs(gamma) > math.pi - 1e-4:
+        if require_bisector and abs(gamma) > math.pi - 1e-4:
             raise ValueError("局部截面接近折返")
-        u = u0 / lu + v0 / lv
-        rows.append((lu / 2, lv / 2, gamma, u / np.linalg.norm(u), d))
+        # Curved-axis pitch modulation needs the bisector; local A-D spans
+        # only use lengths and the signed turn. Their normalized circular
+        # segments can remain finite as the bisector becomes undefined.
+        u = u0 / lu + v0 / lv if require_bisector else None
+        rows.append((lu / 2, lv / 2, gamma, u / np.linalg.norm(u) if require_bisector else None, d))
     return rows
 
 

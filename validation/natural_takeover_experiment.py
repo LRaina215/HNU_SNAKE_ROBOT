@@ -1,0 +1,126 @@
+"""Natural compliant approach and automatic candidate capture through the EXE.
+
+The scene is used only to construct the initial physical state and score it.
+Control geometry comes from identity-head FK of returned encoder angles. A
+geometric candidate triggers the existing response probe, never proves support.
+This development entry preserves the original simulation-only force mode;
+it does not enable force mode or change defaults in the hardware entry.
+"""
+import argparse
+import copy
+import json
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+import numpy as np
+import mujoco
+from segmented_pole_experiment import ROOT,HORIZONTAL,VERTICAL,AxisReplay,write_json
+from three_segment_experiment import ThreeTrial
+from mujoco_checkpoint import load_checkpoint,controller_state
+from pole_compliance import ComplianceController
+from Adaptive_Pole_Climbing_Mujoco import HelixBackbone
+from encoder_pipe_geometry import right_angle_hypothesis
+
+OUT=ROOT/'experiments/segmented_pole_20261005/natural_takeover'
+
+
+def save_state(folder,m,d,meta,controller,geometry):
+    """Exact automatic state boundary; no hashes or controller-selected pose."""
+    folder.mkdir(parents=True,exist_ok=False)
+    kind=mujoco.mjtState.mjSTATE_INTEGRATION
+    state=np.empty(mujoco.mj_stateSize(m,kind));mujoco.mj_getState(m,d,state,kind)
+    mujoco.mj_saveModel(m,str(folder/'model.mjb'))
+    np.savez_compressed(folder/'state.npz',integration_state=state,qpos=d.qpos.copy(),qvel=d.qvel.copy(),ctrl=d.ctrl.copy())
+    saved=copy.deepcopy(meta)
+    saved.update(format_version=1,mujoco_version=mujoco.__version__,state_type=int(kind),sim_time=float(d.time),
+                 controller=controller_state(controller),geometry_at_capture=geometry,hashes={},source_hashes={},
+                 automatic_capture=True)
+    write_json(folder/'checkpoint.json',saved)
+
+
+class LocalEncoders:
+    def __init__(self,model):
+        self.m=copy.copy(model);self.d=mujoco.MjData(self.m)
+        self.d.qpos[:7]=[0,0,0,1,0,0,0]
+        self.qadr=self.m.jnt_qposadr[self.m.actuator_trnid[:,0]]
+
+    def points(self,q):
+        self.d.qpos[self.qadr]=q;mujoco.mj_kinematics(self.m,self.d)
+        return 1000*np.vstack([self.d.site('s_head').xpos,
+            *[self.d.joint('joint'+str(i)).xanchor for i in range(1,21)],self.d.site('s_tail').xpos])
+
+
+def run(args):
+    root=OUT/args.name;root.mkdir(parents=True,exist_ok=False)
+    fixture=HORIZONTAL if args.scene=='horizontal' else VERTICAL
+    m,d,meta,prior=load_checkpoint(fixture,verify_hashes=False)
+    # This is mission initialization, not a mid-motion reset. The same shipped
+    # prewrapped keyframe is used by the interactive Ctrl+U workflow.
+    key=mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_KEY,'experiment_start')
+    if key<0:raise ValueError('Initial experiment keyframe missing')
+    mujoco.mj_resetDataKeyframe(m,d,key);mujoco.mj_forward(m,d)
+    params=prior.parameters;links=prior.expected_lengths
+    controller=ComplianceController(params,links,ignore_feedback_risk=True)
+    meta['settings'].update(phase=0.,completed=0,initialized=False)
+    save_state(root/'initial',m,d,meta,controller,None)
+    sim=replay=None;hypotheses=[];result=dict(scene=args.scene,checkpoint=str(root/'initial'),outcome='time_limit')
+    try:
+        sim=ThreeTrial(root/'initial',root/'approach');replay=AxisReplay(smoothing=1.)
+        shutil.copy2(__file__,sim.folder/'sources/validation/natural_takeover_experiment.py')
+        write_json(sim.folder/'plan.json',dict(arguments=vars(args),controller_inputs='encoder angles and own commands; identity-head FK',
+            physics_changes=False,candidate='geometry criterion persists 0.6 simulated seconds, then response gate',
+            initial_state='shipped prewrapped keyframe plus one nominal application',force_mode='original simulation diagnostic only'))
+        kinematics=LocalEncoders(sim.m)
+        curve=HelixBackbone.from_radius_pitch(meta['settings']['radius'],meta['settings']['pitch'])
+        sim.stage='initial_application';sim.command(curve.joint_angles(20,links,0.),sim.fresh());sim.advance(.2)
+        persistent=0;lost=0
+        for step in range(round(args.seconds/.2)):
+            g=sim.fresh();q=np.radians(g['angles_deg'])*sim.bridge.signs
+            local=dict(g,points_mm=kinematics.points(q).tolist())
+            hypothesis=right_angle_hypothesis(local['points_mm'],meta['settings']['radius'])
+            persistent=persistent+1 if hypothesis['geometric_candidate'] else 0
+            hypotheses.append(dict(time=float(sim.d.time),phase=sim.phase,persistent=persistent,estimate=hypothesis))
+            if persistent>=3:
+                meta['settings'].update(phase=sim.phase,completed=step+1,initialized=True)
+                save_state(root/'candidate',sim.m,sim.d,meta,controller,local)
+                result.update(outcome='geometric_candidate',candidate_time=float(sim.d.time),candidate=str(root/'candidate'))
+                print(args.name,'automatic candidate at',sim.d.time,flush=True);break
+            projected=replay.geometry(local)
+            next_phase=sim.phase-args.phase_step
+            target=controller.compute(projected,next_phase,sim.d.ctrl.copy(),
+                now_ms=projected['sample_unix_ms'],reference_phase=sim.phase)
+            if target is None:
+                result.update(outcome='invalid_feedback',error=controller.status);break
+            sim.phase=next_phase;sim.stage='natural_compliance'
+            sim.command(target,g);sim.advance(.2)
+            for row in sim.records[-20:]:
+                lost=0 if np.any(row['normal_force']>.1) else lost+1
+                if row['ground'] or lost>=20:result['outcome']='support_lost';break
+            if result['outcome']=='support_lost':break
+            if step%10==0:print(args.name,'t=',round(sim.d.time,1),'candidate=',hypothesis['quality'],flush=True)
+        result['commands']=len(sim.commands)
+    finally:
+        write_json(root/'result.json',result);write_json(root/'hypotheses.json',hypotheses)
+        if replay is not None:replay.close()
+        if sim is not None:write_json(sim.folder/'result.json',result);sim.close()
+    if result['outcome']=='geometric_candidate' and args.transfer:
+        command=[sys.executable,'-X','utf8',str(ROOT/'validation/window_coordination_experiment.py'),'transfer',
+            '--checkpoint',str(root/'candidate'),'--scene',args.scene,'--output-root',str(root),
+            '--tail-mode','same','--maximum-lead','2','--supported-recovery','.35','--support-centers',
+            '--radial-acquisition','--local-contact-projection','--velocity-feedback','.02',
+            '--velocity-scope','all','--delivery-torque-equivalent','--velocity-filter','.02',
+            '--body-damping','20','--body-speed-limit','.2','--body-reference-module','-1',
+            '--seconds','200','--dynamic-observer','--cad-support','--preserve-probe-intent',
+            '--require-response-gate','--hypothesis','Frozen response takeover after automatic natural-drape candidate; no human split or pose intervention.']
+        subprocess.run(command,check=True)
+    return result
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('name')
+    p.add_argument('--scene',choices=['horizontal','vertical_down'],default='horizontal')
+    p.add_argument('--seconds',type=float,default=40.)
+    p.add_argument('--phase-step',type=float,default=.15)
+    p.add_argument('--transfer',action='store_true')
+    run(p.parse_args())

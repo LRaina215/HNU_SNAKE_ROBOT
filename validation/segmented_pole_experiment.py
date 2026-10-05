@@ -47,7 +47,7 @@ SOURCES = ['codes/segmented_pole_backbone.py', 'codes/pole_compliance.py',
 
 
 class AxisReplay:
-    def __init__(self):
+    def __init__(self, smoothing=None):
         folder=Path(tempfile.mkdtemp(prefix='segmented-axis-'))
         exe=folder/'axis.exe'
         compiler=Path(os.environ['WINDIR'])/'Microsoft.NET/Framework64/v4.0.30319/csc.exe'
@@ -55,11 +55,14 @@ class AxisReplay:
                         str(ROOT/'validation/SegmentedAxisReplay.cs')],check=True,capture_output=True)
         self.process=subprocess.Popen([str(exe),str(ROOT/'visualizer/windows_app/bin/SnakeRobotVisualizer.exe')],
             stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,encoding='utf-8')
-        self.seeded=False
+        self.seeded=False;self.smoothing=smoothing
 
-    def geometry(self,g,seed):
+    def geometry(self,g,seed=None):
         packet=dict(points_mm=g['points_mm'])
-        if not self.seeded:packet['seed']=seed;self.seeded=True
+        if not self.seeded:
+            if seed is not None:packet['seed']=seed
+            self.seeded=True
+        if self.smoothing is not None:packet['smoothing']=self.smoothing
         self.process.stdin.write(json.dumps(packet)+'\n');self.process.stdin.flush()
         line=self.process.stdout.readline()
         if not line:raise RuntimeError(self.process.stderr.read())

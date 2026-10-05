@@ -24,7 +24,7 @@ OUT=ROOT/'experiments/segmented_pole_20261005/window_coordination'
 
 def run(args):
     folder=(args.output_root or OUT)/args.name;sim=None
-    checkpoint=HORIZONTAL if args.scene=='horizontal' else VERTICAL
+    checkpoint=args.checkpoint or (HORIZONTAL if args.scene=='horizontal' else VERTICAL)
     result=dict(method='window_coordinated_winding',checkpoint=str(checkpoint),steps=0,
         outcome='engineering_failure',hypothesis=args.hypothesis,mujoco=mujoco.__version__,step_seconds=args.dt)
     try:
@@ -37,6 +37,8 @@ def run(args):
                 'codes/encoder_pipe_geometry.py','codes/encoder_pipe_proximity.py','codes/target_frame_acquisition.py'):
             dest=folder/'sources'/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dest)
         g=sim.fresh()
+        if args.section_domain:
+            shutil.copy2(ROOT/'codes/section_compliance_domain.py',folder/'sources/codes/section_compliance_domain.py')
         choices=((args.support_memory,SupportTransferWinding),
             (args.middle_rate_match,RateMatchedMiddleWinding),
             (args.smooth_turning,SmoothTurningFormationWinding),
@@ -72,7 +74,7 @@ def run(args):
             extra['hold_bound']=args.hold_bound
             extra['bound_held_phase']=args.bound_held_phase
         corner,source,target,radius=sim.corner,sim.source,sim.target,sim.radius
-        tracker=None;tracking_clock=None
+        tracker=None;tracking_clock=None;probe_motion_reference=None
         if args.dynamic_observer:
             from feedback_takeover_live_tracking import EncoderPipeTracker
             from feedback_takeover_collect_response import collect_response
@@ -85,10 +87,27 @@ def run(args):
             measured=np.radians(g['angles_deg'])*sim.bridge.signs
             load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
             initial_tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'])
+            probe_motion_reference=sim.d.ctrl.copy()
             records=collect_response(sim,initial_tracker,folder)
             print(args.name,'calibrating collected relay responses; simulation waits during computation',flush=True)
-            fit=calibrate(sim.m,sim.meta['source_model'],initial_tracker.estimate,records)
+            if args.response_calibration_cache:
+                # A repeated deterministic probe may reuse its expensive fit.
+                # Match every measured input, not physical truth or a file hash.
+                cached=args.response_calibration_cache
+                prior=json.loads((cached/'response_probe.json').read_text(encoding='utf8'))
+                same=len(prior)==len(records) and all(np.allclose(a[key],b[key],atol=1e-10,rtol=0)
+                    for a,b in zip(prior,records) for key in ('time','q','command'))
+                if not same:raise RuntimeError('Calibration cache does not match the newly executed probe')
+                fit=json.loads((cached/'response_calibration.json').read_text(encoding='utf8'))
+                result['identical_probe_calibration_reused']=str(cached)
+                print(args.name,'reused fit after matching all new probe measurements/commands',flush=True)
+            else:fit=calibrate(sim.m,sim.meta['source_model'],initial_tracker.estimate,records)
             write_json(folder/'response_calibration.json',fit)
+            if args.require_response_gate:
+                from feedback_takeover_response_gate import judge
+                gate=judge(sim.m,sim.meta['source_model'],fit,records)
+                write_json(folder/'response_gate.json',gate)
+                if not gate['passed']:raise RuntimeError('Automatic takeover response gate rejected this state')
             if fit['held_out_rms_deg']>.1:
                 raise RuntimeError('Response calibration rejected: held-out joint RMS exceeds 0.1 deg')
             tracker=DynamicPipeTracker(sim.m,sim.meta['source_model'],fit,records)
@@ -132,13 +151,23 @@ def run(args):
                 raise RuntimeError('Encoder shape does not support a right-angle branch hypothesis')
             corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
             result['geometry_input']='Encoder-reconstructed points, nominal coil radius, intersecting right-angle prior; contacts and global frame remain stage-2 test inputs.'
-        controller=cls(g,sim.original.parameters,sim.d.ctrl,sim.phase,
+        motion_reference=probe_motion_reference if args.preserve_probe_intent else sim.d.ctrl
+        controller=cls(g,sim.original.parameters,motion_reference,sim.phase,
             corner,source,target,radius,measured=np.radians(g['angles_deg'])*sim.bridge.signs,
             forward_points=tracker.points if tracker is not None else lambda q:points_for_angles(sim.m,sim.d,q),pitch_mm=sim.meta['settings']['pitch'],
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
-                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead),**extra)
+                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain),**extra)
+        if args.preserve_probe_intent:
+            # Probe targets hold/perturb the current posture; they are not the
+            # stored motion intent. Retain the old torque-equivalent preload,
+            # while slew limiting and middle yielding start at the command
+            # that was actually executed at the end of the probe.
+            controller.last_target=sim.d.ctrl.copy();controller.command_before_last=sim.d.ctrl.copy()
+            controller.middle_reference=sim.d.ctrl.copy()
+            write_json(folder/'probe_resume_reference.json',dict(motion_reference=motion_reference,applied_probe_reference=sim.d.ctrl.copy(),
+                meaning='Internal nominal intent retained; no physical pose reset, torque increase or direct command jump.'))
         result.update(configuration=controller.configuration(),settings=sim.meta['settings'])
         arguments={k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
         write_json(folder/'plan.json',dict(**result,arguments=arguments,physics_changed=False,
@@ -207,7 +236,13 @@ def run(args):
             observe_support(g,measured)
             phase=phase0-(k+1)*args.dt*.1875
             contact_input=support_history if support_observer is not None else [r['normal_force'] for r in sim.records[-60:]]
-            q,info=controller.compute(g,measured,phase,args.dt,contact_input)
+            try:q,info=controller.compute(g,measured,phase,args.dt,contact_input)
+            except ValueError as error:
+                write_json(folder/'failed_control_feedback.json',dict(error=str(error),geometry=g,
+                    measured=measured,requested_phase=phase,source=controller.source,target=controller.target,
+                    corner=controller.corner,weights=controller.weights,previous_target=controller.last_target,
+                    observer=tracker.info if tracker is not None else None))
+                raise
             if args.body_reference_module==-2 and delivery is not None and shape_kinematics is not None:
                 # Protect the acquired, formed coil from a damper intended for
                 # the still-transferring body. Admission already has the .6s
@@ -279,12 +314,18 @@ def run(args):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('name');p.add_argument('--hypothesis',required=True)
     p.add_argument('--scene',choices=['horizontal','vertical_down'],default='horizontal')
+    p.add_argument('--checkpoint',type=Path,help='Automatically captured takeover state; defaults to the original manual fixture.')
+    p.add_argument('--require-response-gate',action='store_true',help='Require held-out response and target-constraint evidence before takeover.')
     p.add_argument('--encoder-initial-axes',action='store_true',
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
     p.add_argument('--encoder-tracking',action='store_true',
         help='Use only encoder-frame geometry and causal CAD/load tracking, excluding floating pose and true pipe geometry.')
     p.add_argument('--dynamic-observer',action='store_true',
         help='Collect a relay probe, calibrate virtual pipes from joint responses, then infer local geometry/support through private dynamics.')
+    p.add_argument('--response-calibration-cache',type=Path,help='Reuse a fit only when the freshly executed probe angles and commands match completely.')
+    p.add_argument('--preserve-probe-intent',action='store_true',
+        help='Resume pre-probe nominal reference/preload; slew and middle references start at the actually applied probe command.')
+    p.add_argument('--section-domain',action='store_true',help='Fade sectional A-D correction near degenerate projections; retain measured 3-D rolling and valid spans.')
     p.add_argument('--single-target-after-release',action='store_true',
         help='Live estimator: stop constraining the unobserved old junction once the rear controller is gone.')
     p.add_argument('--whole-coil-registration',action='store_true',
@@ -351,6 +392,7 @@ if __name__=='__main__':
         p.error('encoder-tracking requires cad-support, target-frame-acquisition and radial-acquisition')
     if args.dynamic_observer and (args.encoder_tracking or not (args.cad_support and args.radial_acquisition)):
         p.error('dynamic-observer requires cad-support and radial-acquisition; excludes encoder-tracking')
+    if args.preserve_probe_intent and not args.dynamic_observer:p.error('preserve-probe-intent requires dynamic-observer')
     if args.delivery_period<=0 or not np.isclose(args.dt/args.delivery_period,round(args.dt/args.delivery_period)):
         p.error('delivery-period must divide dt')
     run(args)
