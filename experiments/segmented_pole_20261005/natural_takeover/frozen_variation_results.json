@@ -1,0 +1,119 @@
+{
+  "status": "completed: two quality passes, two horizontal support failures, two vertical speed failures",
+  "trials": [
+    {
+      "case": "horizontal_natural_local_acquisition",
+      "transfer": "transfer_supported_finish",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.3118380059478818,
+        "joint_peak_deg_s": 54.13385525184362,
+        "error_peak_deg": 2.5841174130163087,
+        "saturation": 0.2050882868311093
+      },
+      "mission_seconds": 223.5600000007034
+    },
+    {
+      "case": "horizontal_phase_plus",
+      "transfer": "transfer",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 1.1401752100568352,
+        "joint_peak_deg_s": 115.67630858626941,
+        "error_peak_deg": 4.171506336888673,
+        "saturation": 0.20833834216709468
+      },
+      "mission_seconds": 184.00000000051452
+    },
+    {
+      "case": "horizontal_farther",
+      "transfer": "transfer",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 3.225416066417021,
+        "joint_peak_deg_s": 252.78848267757607,
+        "error_peak_deg": 6.5063953667475,
+        "saturation": 0.20320444428093154
+      },
+      "mission_seconds": 272.800000000461
+    },
+    {
+      "case": "vertical_down_nominal",
+      "transfer": "transfer",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.7065380696454332,
+        "joint_peak_deg_s": 64.97395035958613,
+        "error_peak_deg": 2.4279371387856337,
+        "saturation": 0.2629389945544945
+      },
+      "mission_seconds": 254.41000000085072
+    },
+    {
+      "case": "vertical_down_phase_plus",
+      "transfer": "transfer",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.38954524836657556,
+        "joint_peak_deg_s": 65.60161486501855,
+        "error_peak_deg": 2.516728894919894,
+        "saturation": 0.1904151317653726
+      },
+      "mission_seconds": 212.7300000006517
+    },
+    {
+      "case": "vertical_down_farther",
+      "transfer": "transfer",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.5514100546663512,
+        "joint_peak_deg_s": 56.52737305701862,
+        "error_peak_deg": 2.744958971327285,
+        "saturation": 0.1890780238811412
+      },
+      "mission_seconds": 220.41000000068837
+    }
+  ]
+}

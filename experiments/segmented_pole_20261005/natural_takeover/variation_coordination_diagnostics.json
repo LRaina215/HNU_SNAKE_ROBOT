@@ -1,0 +1,145 @@
+{
+  "status": "diagnostic comparisons, not replacement of the frozen validation failures",
+  "trials": [
+    {
+      "case": "horizontal_phase_plus",
+      "transfer": "transfer_progress_guard",
+      "outcome": "full_crossing_validated",
+      "complete": true,
+      "functional": true,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.3352723370819248,
+        "joint_peak_deg_s": 59.424949118884385,
+        "error_peak_deg": 2.8298658911354466,
+        "saturation": 0.18756826010249517
+      },
+      "mission_seconds": 239.05000000077737
+    },
+    {
+      "case": "horizontal_phase_plus",
+      "transfer": "transfer_truth_diagnostic",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.3253511097041172,
+        "joint_peak_deg_s": 60.99150996488297,
+        "error_peak_deg": 3.11069927328454,
+        "saturation": 0.2621796877221922
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "horizontal_phase_plus",
+      "transfer": "transfer_acquisition_rate",
+      "outcome": "support_lost",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 3.442580400620868,
+        "joint_peak_deg_s": 258.94868503219476,
+        "error_peak_deg": 3.507791743485677,
+        "saturation": 0.25191407833167534
+      },
+      "mission_seconds": 272.40000000047047
+    },
+    {
+      "case": "vertical_down_nominal",
+      "transfer": "transfer_progress_guard",
+      "outcome": "full_crossing_validated",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.6751940600491123,
+        "joint_peak_deg_s": 56.6822222575418,
+        "error_peak_deg": 2.578788975614599,
+        "saturation": 0.2077087603600392
+      },
+      "mission_seconds": 225.41000000071224
+    },
+    {
+      "case": "vertical_down_nominal",
+      "transfer": "transfer_guarded_handoff",
+      "outcome": "full_crossing_validated",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.6751940600491123,
+        "joint_peak_deg_s": 56.6822222575418,
+        "error_peak_deg": 2.578788975614599,
+        "saturation": 0.2077087603600392
+      },
+      "mission_seconds": 225.41000000071224
+    },
+    {
+      "case": "horizontal_farther",
+      "transfer": "transfer_guarded_handoff",
+      "outcome": "time_limit",
+      "complete": false,
+      "functional": false,
+      "quality": {
+        "module_speed": true,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": false
+      },
+      "metrics": {
+        "module_peak_m_s": 0.45941759008007954,
+        "joint_peak_deg_s": 61.87967102118824,
+        "error_peak_deg": 3.4398558825702894,
+        "saturation": 0.29740337305537384
+      },
+      "mission_seconds": 352.599999998574
+    },
+    {
+      "case": "vertical_down_nominal",
+      "transfer": "transfer_guarded_braking",
+      "outcome": "full_crossing_validated",
+      "complete": false,
+      "functional": true,
+      "quality": {
+        "module_speed": false,
+        "joint_speed": true,
+        "tracking": true,
+        "saturation": true
+      },
+      "metrics": {
+        "module_peak_m_s": 0.7095024851884623,
+        "joint_peak_deg_s": 61.646340436595416,
+        "error_peak_deg": 2.4579078168320696,
+        "saturation": 0.20016076442351236
+      },
+      "mission_seconds": 221.81000000069506
+    }
+  ]
+}

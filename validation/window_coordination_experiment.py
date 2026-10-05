@@ -180,7 +180,7 @@ def run(args):
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
-                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip),**extra)
+                                 args.supported_recovery,args.rear_phase_lead,args.support_centers,args.rolling_lookahead,args.section_domain,args.feedback_progress_guard,args.release_requires_grip,args.conserve_middle),**extra)
         if args.preserve_probe_intent:
             # Probe targets hold/perturb the current posture; they are not the
             # stored motion intent. Retain the old torque-equivalent preload,
@@ -374,7 +374,7 @@ if __name__=='__main__':
     p.add_argument('--target-frame-acquisition',action='store_true',
         help='Recruit using target-coil geometry and support, without absolute junction progress.')
     p.add_argument('--conserve-middle',action='store_true',
-        help='Target-frame variant: release one rear joint per newly measured acquired module.')
+        help='Limit rear release to one joint per newly measured acquired front module, also in the standard window controller.')
     p.add_argument('--distinguish-lines',action='store_true',
         help='Target-frame acquisition also requires closer proximity to target than source axis.')
     p.add_argument('--observable-support',action='store_true',

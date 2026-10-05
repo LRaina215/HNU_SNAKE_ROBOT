@@ -1,6 +1,16 @@
 # 自然顺应搭管与自动接管开发
 
-第3步水平自然搭管流程已有一个初态通过完整跨越与过程门槛，当前冻结规则验证竖直场景及不同初态，第4步尚未完成。第2步两个指定存档的通过结论见相邻 `feedback_takeover/`，不混计为本阶段成功。
+第3步已有水平和竖直自然搭管完整通过例；第4步首轮六初态全部跑完，2/6通过全部门槛，正在修复统一的转移协调规则。第2步两个指定存档的通过结论见相邻 `feedback_takeover/`，不混计为本阶段成功。
+
+## 冻结六初态与协调修正
+
+首轮规则见 `natural_pipeline_freeze.json`，全部原始结果见 `frozen_variation_results.json`。水平原初态、竖直相位+0.3通过；两个水平变体失去支撑；竖直原初态和远离32.25mm完整跨越，但模块峰值0.70654/0.55141m/s超过0.5m/s。没有按结果改动过程门槛。
+
+以自然接近实际保存的连续边界做单因素诊断，接近段不重置、不重新挑选搭管姿态。水平相位变体仅启用进度协调的 `transfer_progress_guard` 全程通过：239.05s，模块0.33527m/s、关节59.42°/s、误差2.830°、饱和18.76%。对应[正常速度回放](reviews/horizontal_phase_plus_transfer_progress_guard_1x.mp4)和[全程物理曲线](reviews/horizontal_phase_plus_transfer_progress_guard_physical.png)。头部与尾部的轴向顺序仍可能改变，不能称为始终头部领进。
+
+同一变体的真实几何诊断 `transfer_truth_diagnostic` 在260s内未完成，说明只修正观测信息不足以解决该例；不计自主控制通过。提前随成形领先量减慢滚动的 `transfer_acquisition_rate` 仍失去支撑，模块峰值3.44258m/s，未采用。
+
+进度协调冻结到竖直原初态仍有0.67519m/s尾端摆动。`transfer_guarded_handoff` 进一步要求全身进入目标管半径带、≥1.5圈包绕与两半身体持续0.6s支撑，但竖直轨迹完全相同，超速时尚未触发交接；水平位置变体速度0.45942m/s、260s未完成。竖直 `transfer_guarded_braking` 仅将速度反馈系数20改40，峰值0.70950m/s，不直接采用。当前 `transfer_measured_release` 在原反馈系数20基础上增加一节承接对应一节释放的预算，结果待完成。各对照均保留A–D与Yamada位置目标，物理参数未改。
 
 控制从场景自带的原管预缠绕初态开始，原2023截面顺应性与Yamada继续推进；重建只使用EXE返回关节角的头部单位坐标正运动学。原自动轴估计器设为不跨局部坐标平滑，未读取仿真自由位姿。两轴形状假设持续后触发1.2秒小幅探测；预测误差、去掉目标约束后的响应变化和模型支撑持续性共同决定接管。几何候选本身没有尾部释放权限。
 
@@ -28,7 +38,7 @@
 
 `transfer_ensemble` 从此自动候选完整跨越并继续rolling，实际下发6940条命令。1秒后的关节峰值66.87°/s、误差3.085°、饱和20.18%，但模块峰值0.8346m/s，质量未通过。峰值41.47s、模块16：相对前部速度0.109m/s，主要为整体摆动；该时刻已安排前12关节成形，实际承接前缀回退到5，包绕仅0.306圈。估计轴误差95%分位1.73°，不能将此例简单归因于轴丢失。
 
-可选 `--feedback-progress-guard` 已验证失败：实际承接回退时同步缩小前后滚动相位增量并禁止继续释放尾段，既有顺应性成形继续工作，但201.2s时限仍未完成，模块峰值1.1971m/s。没有把长时间暂停当作改善，候选未采用，默认关闭。
+早期快速接近候选的可选 `--feedback-progress-guard` 对照失败：实际承接回退时同步缩小前后滚动相位增量并禁止继续释放尾段，既有顺应性成形继续工作，但201.2s时限仍未完成，模块峰值1.1971m/s。该历史结果不覆盖后续平滑自然接近的不同初态验证，默认仍关闭。
 
 减速候选的探测还暴露了第三支管接触：离线使用真实几何仅作模型诊断时，两射线模型留出误差0.229°，加入源管延伸假设后为0.00089°。新增L形及两种T形的响应模型比较，按训练误差选解、留出片段验收；不读取真实场景分支标签。实际选中源管延伸，留出误差0.05318°，原响应判据通过。然而 `transfer_topology` 在156.4s失去支撑，模块峰值0.7750m/s，最多14/21模块进入目标区域。模型预测准确不能单独证明可安全接管。
 
@@ -77,6 +87,16 @@
 [完整连续过程，正常速度](reviews/horizontal_natural_local_acquisition_transfer_supported_finish_1x.mp4)；[实际进度、接触、速度与饱和曲线](reviews/horizontal_natural_local_acquisition_transfer_supported_finish_physical.png)。该视频颜色表示实际管道接触，完全用于回放评分；控制器只使用推断信息。
 
 入口：`validation/natural_takeover_experiment.py`；只读命令/运动评分：`validation/natural_takeover_review.py`。原始数据及当次源码压缩入 `archives/`，解压到同名任务目录可复核。失败结果保留；离线拟合不计为新的物理闭环试验。
+
+从仓库根目录复现当前冻结候选（运行名称须未使用）：
+
+```powershell
+python validation/natural_takeover_experiment.py my_horizontal_trial --scene horizontal --seconds 200 --phase-step .15 --dt .8 --smooth --smooth-start --transfer --junction-search --network-calibration --acquire-verified-drape --finish-mode supported --transfer-seconds 260
+python validation/natural_takeover_complete_review.py experiments/segmented_pole_20261005/natural_takeover/my_horizontal_trial
+python validation/natural_takeover_media.py experiments/segmented_pole_20261005/natural_takeover/my_horizontal_trial
+```
+
+使用MuJoCo环境及仓库现有EXE通信桥，不连接实机。竖直改成 `--scene vertical_down`；相位或位置变化使用 `--initial-phase .3`、`--approach-offset-mm -32.25`。初始位置变化仅在仿真开始前设置一次；运动中不复位。标定直接使用本次探测，不需要旧拟合缓存。完整评分与视频要求已产生 `transfer/` 记录；探测尚未通过时，先查看同名目录的 `result.json` 和各次 `response_gate.json`。视频为正常物理时间，不含暂停仿真时的拟合等待。自然推进沿用仿真诊断的反馈风险忽略选项，尚非真实舵机部署入口。
 
 [第三组自然搭管，正常速度视频](reviews/horizontal_natural_rate_matched_1x.mp4)；[自动候选姿态](reviews/horizontal_natural_rate_matched_candidate.png)。
 

@@ -1,0 +1,50 @@
+{
+  "rows": [
+    {
+      "run": "vertical_down_nominal",
+      "probe_start_seconds": 88.20000000005709,
+      "probe_end_seconds": 89.40000000006282,
+      "selected_boundary": 5,
+      "phase": -16.350000000000023,
+      "probe_commands": 60,
+      "stage": "response fitting; no physical crossing result yet"
+    },
+    {
+      "run": "horizontal_phase_plus",
+      "probe_start_seconds": 91.40000000007237,
+      "probe_end_seconds": 92.6000000000781,
+      "selected_boundary": 5,
+      "phase": -16.65000000000002,
+      "probe_commands": 60,
+      "stage": "response fitting; no physical crossing result yet"
+    },
+    {
+      "run": "horizontal_farther",
+      "probe_start_seconds": 91.40000000007237,
+      "probe_end_seconds": 92.6000000000781,
+      "selected_boundary": 4,
+      "phase": -16.950000000000017,
+      "probe_commands": 60,
+      "stage": "response fitting; no physical crossing result yet"
+    },
+    {
+      "run": "vertical_down_phase_plus",
+      "probe_start_seconds": 89.80000000006473,
+      "probe_end_seconds": 91.00000000007046,
+      "selected_boundary": 5,
+      "phase": -16.350000000000023,
+      "probe_commands": 60,
+      "stage": "response fitting; no physical crossing result yet"
+    },
+    {
+      "run": "vertical_down_farther",
+      "probe_start_seconds": 89.80000000006473,
+      "probe_end_seconds": 91.00000000007046,
+      "selected_boundary": 5,
+      "phase": -16.65000000000002,
+      "probe_commands": 60,
+      "stage": "response fitting; no physical crossing result yet"
+    }
+  ],
+  "not_acceptance": true
+}

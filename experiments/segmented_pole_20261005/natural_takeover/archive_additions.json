@@ -116,5 +116,95 @@
     "archive": "horizontal_natural_local_acquisition_transfer_extended.zip",
     "MiB": 67.60002517700195,
     "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_approach.zip",
+    "MiB": 26.75358486175537,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_transfer.zip",
+    "MiB": 26.25217342376709,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_approach.zip",
+    "MiB": 25.95142936706543,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_transfer.zip",
+    "MiB": 47.837327003479004,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_approach.zip",
+    "MiB": 26.747645378112793,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_farther_transfer.zip",
+    "MiB": 51.534162521362305,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_phase_plus_approach.zip",
+    "MiB": 26.340335845947266,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_phase_plus_transfer.zip",
+    "MiB": 35.9988489151001,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_farther_approach.zip",
+    "MiB": 26.316946983337402,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_farther_transfer.zip",
+    "MiB": 37.93724346160889,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_phase_plus_transfer_progress_guard.zip",
+    "MiB": 42.609758377075195,
+    "complete_trace": true,
+    "oracle_diagnostic": false
+  },
+  {
+    "archive": "horizontal_phase_plus_transfer_truth_diagnostic.zip",
+    "MiB": 72.84542083740234,
+    "complete_trace": true,
+    "oracle_diagnostic": true
+  },
+  {
+    "archive": "horizontal_phase_plus_transfer_acquisition_rate.zip",
+    "MiB": 50.79530048370361,
+    "complete_trace": true,
+    "oracle_diagnostic": false
+  },
+  {
+    "archive": "vertical_down_nominal_transfer_progress_guard.zip",
+    "MiB": 39.52937698364258,
+    "complete_trace": true,
+    "oracle_diagnostic": false
+  },
+  {
+    "archive": "vertical_down_nominal_transfer_guarded_handoff.zip",
+    "MiB": 39.49973964691162,
+    "complete_trace": true,
+    "oracle_diagnostic": false
+  },
+  {
+    "archive": "horizontal_farther_transfer_guarded_handoff.zip",
+    "MiB": 74.3885908126831,
+    "complete_trace": true
+  },
+  {
+    "archive": "vertical_down_nominal_transfer_guarded_braking.zip",
+    "MiB": 38.660929679870605,
+    "complete_trace": true
   }
 ]

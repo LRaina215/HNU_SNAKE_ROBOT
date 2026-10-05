@@ -33,6 +33,7 @@ class WindowOptions:
     section_domain: bool = False
     feedback_progress_guard: bool = False
     release_requires_grip: bool = False
+    conserve_middle: bool = False
 
 
 class WindowCoordinatedWinding(TravelingCompliantWinding):
@@ -59,7 +60,22 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
     def handoff_geometry_ready(self,points,history,status):
         source_clear=len(history)>=60 and not np.any(np.asarray(history)[-60:,0]>.1)
         cleared=np.min((points-self.corner)@self.target)>self.radius+self.options.shell_radius_mm
-        return bool(source_clear and cleared and status['target_contact']),bool(source_clear),bool(cleared)
+        ready=source_clear and cleared and status['target_contact']
+        if self.window.feedback_progress_guard:
+            # Axial clearance also holds for a dangling tail. It must not
+            # disable the progress guard or remove the recruitment lead limit.
+            # Require a complete target coil and sustained support at both ends
+            # before granting that exemption. The supported-finish transition
+            # can still reconstruct the coil before its terminal links clear.
+            centers=(points[:-1]+points[1:])/2
+            radial=np.linalg.norm(np.cross(centers-self.corner,self.target),axis=1)
+            tube=np.all(radial<self.radius+self.options.shell_radius_mm+self.options.clearance_mm)
+            target_contacts=np.asarray(history)[-60:,1]>.1
+            halves=len(target_contacts)>=60 and np.all(
+                np.any(target_contacts[:,:self.n//2],axis=1)
+                &np.any(target_contacts[:,self.n//2:],axis=1))
+            ready=ready and tube and status['front_wrap']>=1.5 and halves
+        return bool(ready),bool(source_clear),bool(cleared)
 
     def release_geometry_ready(self,points,prefix):
         _,_,ps,_=self.distances(points[1:-1])
@@ -118,6 +134,12 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         near=self.release_geometry_ready(points,prefix)
         reserve=max(0,6-max(0,prefix-8))
         if self.handed_off:near=self.rear<self.n;reserve=0
+        # Supply one rear joint per newly acquired front module. A transient
+        # forming command must not lengthen the unsupported connector faster
+        # than measured acquisition shortens it. Existing support/phase gates
+        # still apply, and a completed whole-coil handoff needs no source reserve.
+        release_budget=self.initial_rear+max(0,prefix-self.initial_front)
+        material_ready=not self.window.conserve_middle or self.handed_off or self.rear<release_budget
         # A verified target constraint can admit local shaping before it can
         # support body transfer. Keep rolling and preserve the rear boundary
         # until the existing angular-coverage/wrap proxy is positive; rear_ready
@@ -126,6 +148,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
                  and (remaining or prefix>=12 or self.handed_off) and self.n-self.rear>reserve
                  and (not self.window.release_requires_grip or status['grip']>0. or self.handed_off)
                  and (not self.window.feedback_progress_guard or self.progress<=prefix+self.window.maximum_lead+1e-9)
+                 and material_ready
                  and self.rear_release_permitted())
         # The same supply factor gates phase advance and boundary release.
         self.rear_ready=self.rear_ready+dt*self.feed if release else 0.
@@ -136,6 +159,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             self.events.append(dict(time=self.elapsed,old=old,new=[self.front,self.rear],actual_prefix=prefix,
                                     formation_progress=self.progress,release=bool(release),feed=self.feed))
         return dict(formation_progress=self.progress,release_allowed=bool(release),rear_reserve=reserve,
+            measured_release_budget=release_budget,material_release_ready=bool(material_ready),
             handed_off=self.handed_off,original_pipe_clear=bool(source_clear),junction_cleared=bool(cleared))
 
     def update_middle_reference(self,points,measured,dt):

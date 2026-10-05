@@ -1172,8 +1172,70 @@
     ],
     "truth_used_only_after_run": true
   },
-  "ongoing": [
-    "transfer_extended",
-    "transfer_supported_finish"
-  ]
+  "ongoing": [],
+  "followup_supported_finish": {
+    "complete": true,
+    "functional": true,
+    "quality": {
+      "module_speed": true,
+      "joint_speed": true,
+      "tracking": true,
+      "saturation": true
+    },
+    "metrics": {
+      "module_peak_m_s": 0.3118380059478818,
+      "joint_peak_deg_s": 54.13385525184362,
+      "error_peak_deg": 2.5841174130163087,
+      "saturation": 0.2050882868311093
+    },
+    "controller_uses_inferred_feedback_only": true,
+    "continuous_physical_boundary_checked": true,
+    "initial_second_excluded_once": true,
+    "mission_seconds": 223.5600000007034,
+    "transfer_delivery": {
+      "command_count": 6560,
+      "response_probe_commands": 0,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": true,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 8.481250992013441,
+      "maximum_command_increment_deg": 1.6499395391325924,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "limitations": "Nominal dynamics and right-angle comparable-radius/gravity prior; calibration pauses simulated time. Single mission is not varied-initial-condition qualification."
+  },
+  "followup_original_extended": {
+    "complete": false,
+    "functional": true,
+    "quality": {
+      "module_speed": true,
+      "joint_speed": true,
+      "tracking": true,
+      "saturation": false
+    },
+    "metrics": {
+      "module_peak_m_s": 0.3118380059478818,
+      "joint_peak_deg_s": 54.13385525184362,
+      "error_peak_deg": 2.5841174130163087,
+      "saturation": 0.31687093779015785
+    },
+    "controller_uses_inferred_feedback_only": true,
+    "continuous_physical_boundary_checked": true,
+    "initial_second_excluded_once": true,
+    "mission_seconds": 324.08999999924816,
+    "transfer_delivery": {
+      "command_count": 11680,
+      "response_probe_commands": 0,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": true,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 8.481250992013441,
+      "maximum_command_increment_deg": 1.6499395391325924,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "limitations": "Nominal dynamics and right-angle comparable-radius/gravity prior; calibration pauses simulated time. Single mission is not varied-initial-condition qualification."
+  },
+  "current_validation_protocol": "natural_pipeline_freeze.json"
 }
