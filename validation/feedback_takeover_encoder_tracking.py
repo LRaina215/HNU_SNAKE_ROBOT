@@ -29,8 +29,8 @@ def transport(previous,current,estimate):
         pipe_radius_mm=estimate['pipe_radius_mm'],geometric_candidate=True)
 
 
-def local_transport(previous,current,estimate):
-    front=transport(previous[:8],current[:8],estimate)
+def local_transport(previous,current,estimate,front_point_count=8):
+    front=transport(previous[:front_point_count],current[:front_point_count],estimate)
     rear=transport(previous[-8:],current[-8:],estimate)
     target=front['target'];source=rear['source']
     source=source-(source@target)*target;source/=np.linalg.norm(source)

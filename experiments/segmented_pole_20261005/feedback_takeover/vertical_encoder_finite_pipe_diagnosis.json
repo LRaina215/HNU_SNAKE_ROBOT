@@ -1,0 +1,317 @@
+{
+  "rows": [
+    {
+      "time": 80.00000000010841,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": false,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 475.9658805188369,
+      "point_max": 827.542519115542,
+      "end": 1200.0,
+      "wrap": 1.287099408079009,
+      "phase": -29.100000000000023
+    },
+    {
+      "time": 100.00000000020391,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 527.5674399244028,
+      "point_max": 938.7263815107514,
+      "end": 1200.0,
+      "wrap": 1.7337812284153815,
+      "phase": -32.85000000000002
+    },
+    {
+      "time": 120.00000000029941,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 448.1169572103797,
+      "point_max": 1008.2344493079457,
+      "end": 1200.0,
+      "wrap": 1.8850347651255208,
+      "phase": -36.60000000000002
+    },
+    {
+      "time": 127.00000000033283,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 436.21648645140885,
+      "point_max": 1048.2200597160338,
+      "end": 1200.0,
+      "wrap": 1.9613013006070952,
+      "phase": -37.91250000000002
+    },
+    {
+      "time": 130.00000000034717,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 497.88533354500214,
+      "point_max": 1021.5621254403909,
+      "end": 1200.0,
+      "wrap": 2.0667499478682334,
+      "phase": -38.47500000000002
+    },
+    {
+      "time": 135.00000000037105,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 529.8079171382008,
+      "point_max": 1057.364069600881,
+      "end": 1200.0,
+      "wrap": 2.0631619004775406,
+      "phase": -39.41250000000002
+    },
+    {
+      "time": 140.00000000039492,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 579.652113173398,
+      "point_max": 1103.7251572990863,
+      "end": 1200.0,
+      "wrap": 2.071400139976138,
+      "phase": -40.35000000000002
+    },
+    {
+      "time": 145.0000000004188,
+      "checks": {
+        "clear": true,
+        "inside": true,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 626.9244830617872,
+      "point_max": 1149.0979209725979,
+      "end": 1200.0,
+      "wrap": 2.0571081396861337,
+      "phase": -41.28750000000002
+    },
+    {
+      "time": 150.00000000044267,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 671.5242144447232,
+      "point_max": 1200.3778213893804,
+      "end": 1200.0,
+      "wrap": 2.0422527959005543,
+      "phase": -42.22500000000002
+    },
+    {
+      "time": 155.00000000046654,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 729.8996657799785,
+      "point_max": 1249.0048617491925,
+      "end": 1200.0,
+      "wrap": 2.067975833927107,
+      "phase": -43.16250000000002
+    },
+    {
+      "time": 160.00000000049042,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 765.7882765768372,
+      "point_max": 1283.2317209709158,
+      "end": 1200.0,
+      "wrap": 2.0844363622275695,
+      "phase": -44.10000000000002
+    },
+    {
+      "time": 162.00000000049997,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 784.7250460252635,
+      "point_max": 1311.2779864310262,
+      "end": 1200.0,
+      "wrap": 2.1416936971819447,
+      "phase": -44.47500000000002
+    },
+    {
+      "time": 165.0000000005143,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 823.2695835217107,
+      "point_max": 1325.2986519423125,
+      "end": 1200.0,
+      "wrap": 2.227519543320386,
+      "phase": -45.03750000000002
+    },
+    {
+      "time": 170.00000000053817,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": true,
+      "point_min": 866.1978630510209,
+      "point_max": 1394.6630792762091,
+      "end": 1200.0,
+      "wrap": 2.1854392288664393,
+      "phase": -45.97500000000002
+    },
+    {
+      "time": 175.00000000056204,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": true,
+        "span": true
+      },
+      "strict": false,
+      "point_min": 918.6519828530505,
+      "point_max": 1432.3235396861587,
+      "end": 1200.0,
+      "wrap": 2.2107833025725006,
+      "phase": -46.91250000000002
+    },
+    {
+      "time": 178.00000000057636,
+      "checks": {
+        "clear": true,
+        "inside": false,
+        "assigned": true,
+        "source_free": true,
+        "other_free": true,
+        "ground_free": true,
+        "wrap": false,
+        "span": false
+      },
+      "strict": false,
+      "point_min": 1013.7100917395094,
+      "point_max": 1498.7799529215274,
+      "end": 1200.0,
+      "wrap": 1.471334658789054,
+      "phase": -47.47500000000002
+    }
+  ],
+  "physical_windows": [
+    {
+      "start": 94.86000000017937,
+      "end": 149.95000000044243,
+      "strict_start": 127.87000000033699,
+      "strict_end": 148.9800000004378,
+      "phase_span": 3.9375
+    }
+  ]
+}

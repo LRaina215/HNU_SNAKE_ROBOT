@@ -1,0 +1,1614 @@
+{
+  "trials": [
+    {
+      "features": {
+        "pulse_gain": 0.5579114850149013,
+        "quadrature": -0.306776907908634,
+        "pulse_magnitude": 0.6366924660599613,
+        "response_residual": 0.05824959437319823,
+        "residual_deg": 0.6571524326482743,
+        "projected_motion_deg": 0.9059760424137897,
+        "mean_absolute_load": 1.1103816514466238
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 64.80220898196822,
+        "head_displacement_m": 0.0052553370841361855
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "middle_yaw",
+      "front": 5,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.8118163781101883,
+        "quadrature": -0.18879151736468894,
+        "pulse_magnitude": 0.8334794951267882,
+        "response_residual": 0.15075658391157545,
+        "residual_deg": 0.5874388560900573,
+        "projected_motion_deg": 1.0516995781064469,
+        "mean_absolute_load": 0.753040567308449
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.013958563190793711
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "middle_yaw",
+      "front": 5,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.629673790049755,
+        "quadrature": -0.1359984041439679,
+        "pulse_magnitude": 0.6441930206120903,
+        "response_residual": 0.10747394383224426,
+        "residual_deg": 0.6578924391527463,
+        "projected_motion_deg": 1.0637792119767424,
+        "mean_absolute_load": 1.1105374399916879
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 64.99127105889704,
+        "head_displacement_m": 0.005216260844918688
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "middle_pitch",
+      "front": 5,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        5
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.7546288630431294,
+        "quadrature": -0.22626063383357986,
+        "pulse_magnitude": 0.7878188848717321,
+        "response_residual": 0.3153728521402563,
+        "residual_deg": 0.5875736741495737,
+        "projected_motion_deg": 1.6975505914261722,
+        "mean_absolute_load": 0.7521682030245719
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.013951160416034943
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "middle_pitch",
+      "front": 5,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        5
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.3635142721107924,
+        "quadrature": -0.1025889385854481,
+        "pulse_magnitude": 0.3777130079151737,
+        "response_residual": 0.05196294127174532,
+        "residual_deg": 0.6647987436187027,
+        "projected_motion_deg": 0.5257021292936461,
+        "mean_absolute_load": 1.109016842672537
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 63.392776105818605,
+        "head_displacement_m": 0.00518704535113304
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "front_contraction",
+      "front": 5,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.6759523108466633,
+        "quadrature": -0.19199052164546307,
+        "pulse_magnitude": 0.7026890400032159,
+        "response_residual": 0.2718202471198516,
+        "residual_deg": 0.5759109384735648,
+        "projected_motion_deg": 1.9321841066317331,
+        "mean_absolute_load": 0.7660444762748734
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.01372580722497269
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "front_contraction",
+      "front": 5,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.6582488938107152,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 1.1085000627268404
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 64.85169240230059,
+        "head_displacement_m": 0.005201832779105574
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "hold",
+      "front": 5,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.5861453698031825,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.7537570396326355
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.013982191390072379
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 0.0,
+      "pattern": "hold",
+      "front": 5,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.309490815411407,
+        "quadrature": -0.2291403280562152,
+        "pulse_magnitude": 0.38508421775726864,
+        "response_residual": 0.1131608629049363,
+        "residual_deg": 0.6359915442836745,
+        "projected_motion_deg": 0.8147505520063751,
+        "mean_absolute_load": 1.0674351646862787
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 84.08782227311674,
+        "head_displacement_m": 0.004405146477767945
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "middle_yaw",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.7573038244677055,
+        "quadrature": -0.08216806917567736,
+        "pulse_magnitude": 1.7592237842528402,
+        "response_residual": 0.606224809762163,
+        "residual_deg": 0.6156382201284217,
+        "projected_motion_deg": 3.110954171200573,
+        "mean_absolute_load": 0.8347720395024636
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.28948427706378765
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "middle_yaw",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.549060420664564,
+        "quadrature": -0.364796878999866,
+        "pulse_magnitude": 0.6591995968357314,
+        "response_residual": 0.08248459211185664,
+        "residual_deg": 0.629181696937026,
+        "projected_motion_deg": 0.9302339131883207,
+        "mean_absolute_load": 1.0596255259093017
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 84.48549565134559,
+        "head_displacement_m": 0.004844348475749832
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "middle_pitch",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0314685514377107,
+        "quadrature": -0.16569631913533042,
+        "pulse_magnitude": 1.0446926068370572,
+        "response_residual": 0.1963080021667378,
+        "residual_deg": 0.612443072398421,
+        "projected_motion_deg": 1.354359951293246,
+        "mean_absolute_load": 0.8338828004162705
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.28987060387692376
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "middle_pitch",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.40412989757144213,
+        "quadrature": -0.1569338330363591,
+        "pulse_magnitude": 0.43353108546283986,
+        "response_residual": 0.04408602694404579,
+        "residual_deg": 0.6474981340334691,
+        "projected_motion_deg": 0.704132471895655,
+        "mean_absolute_load": 1.0578373675498287
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 83.23717179462861,
+        "head_displacement_m": 0.00413629352658853
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "front_contraction",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0756335282654044,
+        "quadrature": -0.13840780719101198,
+        "pulse_magnitude": 1.0845018249040002,
+        "response_residual": 0.19184021907500756,
+        "residual_deg": 0.6251592487121808,
+        "projected_motion_deg": 2.2211698584352706,
+        "mean_absolute_load": 0.8393885467372313
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.28960084125588925
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "front_contraction",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.6378014843282612,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 1.067668777695497
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 84.32644314052243,
+        "head_displacement_m": 0.004434997935651048
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "hold",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.6238585508126477,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.8343730963322631
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.2895696942169055
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 16.0,
+      "pattern": "hold",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.35914092214271676,
+        "quadrature": -0.1181162246127983,
+        "pulse_magnitude": 0.37806566159108124,
+        "response_residual": 0.04323434169596258,
+        "residual_deg": 0.3205088634835288,
+        "projected_motion_deg": 0.8441060279984612,
+        "mean_absolute_load": 0.786295973851899
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 54.61770398933075,
+        "head_displacement_m": 0.005132827188487275
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "middle_yaw",
+      "front": 9,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        10
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.9657137194278438,
+        "quadrature": 6.862040336395622,
+        "pulse_magnitude": 7.138040908055052,
+        "response_residual": 6.166692505560064,
+        "residual_deg": 7.459736865099464,
+        "projected_motion_deg": 32.88003555249679,
+        "mean_absolute_load": 0.804366701038874
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.44352492818124234
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "middle_yaw",
+      "front": 9,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        10
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.7096039829812453,
+        "quadrature": -0.222696876756769,
+        "pulse_magnitude": 0.7437282511644069,
+        "response_residual": 0.07339850941861703,
+        "residual_deg": 0.32918186489182355,
+        "projected_motion_deg": 0.8050653898842645,
+        "mean_absolute_load": 0.7837518931548406
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 54.50279301476534,
+        "head_displacement_m": 0.005230890393788137
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "middle_pitch",
+      "front": 9,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.1562139626828394,
+        "quadrature": 0.015472212569187984,
+        "pulse_magnitude": 1.1563174809992887,
+        "response_residual": 0.31324640839901746,
+        "residual_deg": 7.45553371196439,
+        "projected_motion_deg": 1.9204884096909813,
+        "mean_absolute_load": 0.8021877302783507
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.4444446074902323
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "middle_pitch",
+      "front": 9,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.5627524131110517,
+        "quadrature": -0.30332513305446446,
+        "pulse_magnitude": 0.6392936843148229,
+        "response_residual": 0.11558847953704043,
+        "residual_deg": 0.322278362149408,
+        "projected_motion_deg": 1.269147611641729,
+        "mean_absolute_load": 0.7970772922418332
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 54.78924685727289,
+        "head_displacement_m": 0.004910118303585197
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "front_contraction",
+      "front": 9,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9426465380442386,
+        "quadrature": -0.1727523814546878,
+        "pulse_magnitude": 0.9583453871048027,
+        "response_residual": 0.1885894849663385,
+        "residual_deg": 7.434832245859309,
+        "projected_motion_deg": 2.154853822003193,
+        "mean_absolute_load": 0.8062327938097275
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.44393242454065457
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "front_contraction",
+      "front": 9,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.3261044459206836,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.784534857337736
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 54.510772667062845,
+        "head_displacement_m": 0.005240647865767872
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "hold",
+      "front": 9,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 7.459736865099464,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.804366701038874
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.44352492818124234
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 32.0,
+      "pattern": "hold",
+      "front": 9,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9910291055982544,
+        "quadrature": -0.13622083547054753,
+        "pulse_magnitude": 1.0003473417564372,
+        "response_residual": 0.04639814225643065,
+        "residual_deg": 3.57307777688646,
+        "projected_motion_deg": 1.2773352492294476,
+        "mean_absolute_load": 1.146002169538454
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 115.26010934952943,
+        "head_displacement_m": 0.008145229451310009
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "middle_yaw",
+      "front": 10,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        10
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": -1.0491246045927178,
+        "quadrature": -0.09382729176194093,
+        "pulse_magnitude": 1.0533119180191624,
+        "response_residual": 2.0922190399537732,
+        "residual_deg": 0.34238058072950106,
+        "projected_motion_deg": 7.112508072346,
+        "mean_absolute_load": 0.5409120931393645
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.9202842689170658
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "middle_yaw",
+      "front": 10,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        10
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0910667066635875,
+        "quadrature": -0.16008385948328724,
+        "pulse_magnitude": 1.1027481128783634,
+        "response_residual": 0.1085490616125286,
+        "residual_deg": 3.590107464884823,
+        "projected_motion_deg": 1.3293471400046464,
+        "mean_absolute_load": 1.1456968502842906
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 115.22394435539813,
+        "head_displacement_m": 0.008130938638745706
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "middle_pitch",
+      "front": 10,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        11
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.7024049414008576,
+        "quadrature": -0.3189808991482212,
+        "pulse_magnitude": 0.7714411939517813,
+        "response_residual": 0.2767568132580209,
+        "residual_deg": 0.3383333975048107,
+        "projected_motion_deg": 1.5698613486774113,
+        "mean_absolute_load": 0.5411940171441453
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.9202827820068199
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "middle_pitch",
+      "front": 10,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        11
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": -0.021306504440290024,
+        "quadrature": 0.32006347525864387,
+        "pulse_magnitude": 0.32077187427532455,
+        "response_residual": 0.5938052221932849,
+        "residual_deg": 3.543358484175941,
+        "projected_motion_deg": 4.707152111666376,
+        "mean_absolute_load": 1.1526883819045834
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 113.78772464918056,
+        "head_displacement_m": 0.008229645805212304
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "front_contraction",
+      "front": 10,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": -0.43994743402672715,
+        "quadrature": -2.3264437484544302,
+        "pulse_magnitude": 2.3676769753134406,
+        "response_residual": 1.4854282239954197,
+        "residual_deg": 0.47176415096121543,
+        "projected_motion_deg": 10.515092237412485,
+        "mean_absolute_load": 0.5538535189177636
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.914325321876525
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "front_contraction",
+      "front": 10,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 3.5856830698324016,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 1.1459311971223818
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 115.24803401701298,
+        "head_displacement_m": 0.008140980538071411
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "hold",
+      "front": 10,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.34888424304815296,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.5406530059666386
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.9200851377138914
+      },
+      "scene": "horizontal",
+      "snapshot_seconds": 40.0,
+      "pattern": "hold",
+      "front": 10,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.31446228279140803,
+        "quadrature": -0.18824470486201644,
+        "pulse_magnitude": 0.36650047231479954,
+        "response_residual": 0.046911714984277486,
+        "residual_deg": 0.43710432065968186,
+        "projected_motion_deg": 0.3805733680152932,
+        "mean_absolute_load": 0.7826420623108897
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 7.123955030011863,
+        "head_displacement_m": 0.00596750636900465
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "middle_yaw",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.5586753892161548,
+        "quadrature": -0.28427182106943927,
+        "pulse_magnitude": 0.6268402178944467,
+        "response_residual": 0.16532314025862616,
+        "residual_deg": 0.3777525235813876,
+        "projected_motion_deg": 0.9085796686679707,
+        "mean_absolute_load": 0.6362882128681263
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.01599506898969695
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "middle_yaw",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.4077674982069385,
+        "quadrature": -0.24342908048925532,
+        "pulse_magnitude": 0.4749021476281087,
+        "response_residual": 0.11966355455634979,
+        "residual_deg": 0.4395399981438645,
+        "projected_motion_deg": 0.6970135662301605,
+        "mean_absolute_load": 0.775098912205265
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 7.131395847483228,
+        "head_displacement_m": 0.0058745623981474255
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "middle_pitch",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9396868707928938,
+        "quadrature": -0.17909174923487012,
+        "pulse_magnitude": 0.9566008936774762,
+        "response_residual": 0.18694749844536893,
+        "residual_deg": 0.37771956325160616,
+        "projected_motion_deg": 1.1937741583744783,
+        "mean_absolute_load": 0.6350689437705349
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.016081162348660097
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "middle_pitch",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.8492522551950636,
+        "quadrature": -0.24957643575791827,
+        "pulse_magnitude": 0.8851654027578845,
+        "response_residual": 0.054149206364017925,
+        "residual_deg": 0.4443147280421414,
+        "projected_motion_deg": 1.942723486163642,
+        "mean_absolute_load": 0.7937913092108527
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 7.450650575727495,
+        "head_displacement_m": 0.005889946633879653
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "front_contraction",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0041267401023914,
+        "quadrature": -0.16704916593929914,
+        "pulse_magnitude": 1.0179272734481923,
+        "response_residual": 0.07622799527644995,
+        "residual_deg": 0.37752024588491984,
+        "projected_motion_deg": 2.3492096311663246,
+        "mean_absolute_load": 0.643287692252947
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.01607279579385907
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "front_contraction",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.44058861412571315,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.7796525623652426
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 7.151308176582777,
+        "head_displacement_m": 0.005840401456139018
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "hold",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.377601088314264,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.6347546716897727
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.016055912127927972
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 4.0,
+      "pattern": "hold",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.3595992018397122,
+        "quadrature": -0.26179481772489105,
+        "pulse_magnitude": 0.4448012056541293,
+        "response_residual": 0.15409829852745335,
+        "residual_deg": 0.422094467630689,
+        "projected_motion_deg": 0.8886464608894695,
+        "mean_absolute_load": 0.9423052358809475
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 61.56140641327671,
+        "head_displacement_m": 0.004986540141131506
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "middle_yaw",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9768793577683429,
+        "quadrature": -0.26077444455328647,
+        "pulse_magnitude": 1.011086836313264,
+        "response_residual": 0.32704432519977616,
+        "residual_deg": 0.2614936502815343,
+        "projected_motion_deg": 1.6727960621202635,
+        "mean_absolute_load": 0.45320813507227486
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.016008719464370217
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "middle_yaw",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.2648606313764521,
+        "quadrature": -0.22947185717645374,
+        "pulse_magnitude": 0.35044041902888945,
+        "response_residual": 0.17672573241978118,
+        "residual_deg": 0.42627183569058213,
+        "projected_motion_deg": 0.5531561948668118,
+        "mean_absolute_load": 0.9271408372672761
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 61.247052776733874,
+        "head_displacement_m": 0.004915987013190862
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "middle_pitch",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9581307116376964,
+        "quadrature": -0.17224244065905298,
+        "pulse_magnitude": 0.9734895576982558,
+        "response_residual": 0.14638413740466688,
+        "residual_deg": 0.2644353896853638,
+        "projected_motion_deg": 1.266880806442096,
+        "mean_absolute_load": 0.44802820869687854
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.016302957729700442
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "middle_pitch",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.5412782643709321,
+        "quadrature": -0.3599537437427164,
+        "pulse_magnitude": 0.6500375813095776,
+        "response_residual": 0.12051754056107546,
+        "residual_deg": 0.43303800556875166,
+        "projected_motion_deg": 1.2680291672743687,
+        "mean_absolute_load": 0.9425254381343099
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 61.63119391353052,
+        "head_displacement_m": 0.004689411882392302
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "front_contraction",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0272786945314063,
+        "quadrature": -0.17439694691095725,
+        "pulse_magnitude": 1.041976876581248,
+        "response_residual": 0.19838242403542236,
+        "residual_deg": 0.2634230457662915,
+        "projected_motion_deg": 2.450970044642918,
+        "mean_absolute_load": 0.4524828500460173
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.016276989852794865
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "front_contraction",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.4217196189343777,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.9388377141798341
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 62.05334697693836,
+        "head_displacement_m": 0.004973986046342683
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "hold",
+      "front": 7,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.263372786256595,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.44796160861717954
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.01631242319417811
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 12.0,
+      "pattern": "hold",
+      "front": 7,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.49920407206959083,
+        "quadrature": -0.22593726615298948,
+        "pulse_magnitude": 0.5479528755354315,
+        "response_residual": 0.06857081858413605,
+        "residual_deg": 0.49194482659974204,
+        "projected_motion_deg": 0.6741855446007345,
+        "mean_absolute_load": 0.9803574267379138
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 50.094157233850844,
+        "head_displacement_m": 0.00620371815861153
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "middle_yaw",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0222973594970106,
+        "quadrature": -0.20356937031907446,
+        "pulse_magnitude": 1.0423686390939937,
+        "response_residual": 0.14153653971661345,
+        "residual_deg": 0.4030905158451709,
+        "projected_motion_deg": 1.3881516872138695,
+        "mean_absolute_load": 0.607654888265032
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.02315500039047885
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "middle_yaw",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.3480482845101789,
+        "quadrature": -0.21500283185937025,
+        "pulse_magnitude": 0.409101241819219,
+        "response_residual": 0.11746292676167289,
+        "residual_deg": 0.4870572652823457,
+        "projected_motion_deg": 0.7626201866197719,
+        "mean_absolute_load": 0.9839179609887116
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 50.05054324429866,
+        "head_displacement_m": 0.006242643390886478
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "middle_pitch",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.8947251127505825,
+        "quadrature": -0.1946864608965448,
+        "pulse_magnitude": 0.9156614251146351,
+        "response_residual": 0.29867645018804545,
+        "residual_deg": 0.40224346135937333,
+        "projected_motion_deg": 1.5423791586897537,
+        "mean_absolute_load": 0.606900891383445
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.02281849163855427
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "middle_pitch",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.6257268518913315,
+        "quadrature": -0.3066724214296263,
+        "pulse_magnitude": 0.6968371884761508,
+        "response_residual": 0.10682968858469417,
+        "residual_deg": 0.499642194226557,
+        "projected_motion_deg": 1.4243004439175542,
+        "mean_absolute_load": 0.9929074682189288
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 50.37194129723352,
+        "head_displacement_m": 0.005822058766612951
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "front_contraction",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0150585435476098,
+        "quadrature": -0.1555064644087115,
+        "pulse_magnitude": 1.026901215941384,
+        "response_residual": 0.15834170483564006,
+        "residual_deg": 0.4031020017336289,
+        "projected_motion_deg": 2.374596656147516,
+        "mean_absolute_load": 0.6132913896019226
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.02288970478294653
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "front_contraction",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.48781971641487043,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.9843789459521874
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 50.259001372536325,
+        "head_displacement_m": 0.006234554618521153
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "hold",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.4034191111087565,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.6068729256282832
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.023005701699463643
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 24.0,
+      "pattern": "hold",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.5273499882068833,
+        "quadrature": -0.21485905530751645,
+        "pulse_magnitude": 0.5694404479042899,
+        "response_residual": 0.18636462814950114,
+        "residual_deg": 0.2767391091001833,
+        "projected_motion_deg": 1.457454581694013,
+        "mean_absolute_load": 0.528209969460995
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 40.51599085794352,
+        "head_displacement_m": 0.004250986539283732
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "middle_yaw",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 1.0397689164514625,
+        "quadrature": -0.09592519742121078,
+        "pulse_magnitude": 1.044184391340412,
+        "response_residual": 0.28327353174376213,
+        "residual_deg": 0.19925597027783162,
+        "projected_motion_deg": 1.3867452422069177,
+        "mean_absolute_load": 0.42260461627233314
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.23196678302898827
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "middle_yaw",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        8
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.7283125904852678,
+        "quadrature": -0.21848659026097153,
+        "pulse_magnitude": 0.7603786027915481,
+        "response_residual": 0.08497520240368145,
+        "residual_deg": 0.27984696767507095,
+        "projected_motion_deg": 0.805598306393728,
+        "mean_absolute_load": 0.5180753057252697
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 40.3220295242646,
+        "head_displacement_m": 0.004183001088276199
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "middle_pitch",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9988228648651454,
+        "quadrature": -0.13597942174131938,
+        "pulse_magnitude": 1.0080364668574844,
+        "response_residual": 0.31195207148003296,
+        "residual_deg": 0.19789172950994027,
+        "projected_motion_deg": 1.5798115678888276,
+        "mean_absolute_load": 0.42035002489829704
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.23716562552097153
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "middle_pitch",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        9
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.6759733456747029,
+        "quadrature": -0.29998446373250953,
+        "pulse_magnitude": 0.7395475931564734,
+        "response_residual": 0.15095080354301463,
+        "residual_deg": 0.28761078838638565,
+        "projected_motion_deg": 1.4261609006764242,
+        "mean_absolute_load": 0.5341932594585113
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 40.209813676878404,
+        "head_displacement_m": 0.00461498444892357
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "front_contraction",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.9923426313437056,
+        "quadrature": -0.2128848770178768,
+        "pulse_magnitude": 1.0149206219429507,
+        "response_residual": 0.14287934862792245,
+        "residual_deg": 0.19588868350770725,
+        "projected_motion_deg": 2.0379239767657005,
+        "mean_absolute_load": 0.42047034933900723
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.24172895171510708
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "front_contraction",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.2780869356694707,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.5167818979157469
+      },
+      "scoring": {
+        "target_contact_fraction": 1.0,
+        "mean_target_normal_N": 40.4131952046224,
+        "head_displacement_m": 0.0042413767558284856
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "hold",
+      "front": 8,
+      "target_removed": false,
+      "pulse_joint_indices": []
+    },
+    {
+      "features": {
+        "pulse_gain": 0.0,
+        "quadrature": 0.0,
+        "pulse_magnitude": 0.0,
+        "response_residual": 0.0,
+        "residual_deg": 0.19853157065590088,
+        "projected_motion_deg": 0.0,
+        "mean_absolute_load": 0.42172073072019456
+      },
+      "scoring": {
+        "target_contact_fraction": 0.0,
+        "mean_target_normal_N": 0.0,
+        "head_displacement_m": 0.2350745810403397
+      },
+      "scene": "vertical",
+      "snapshot_seconds": 36.0,
+      "pattern": "hold",
+      "front": 8,
+      "target_removed": true,
+      "pulse_joint_indices": []
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 第2步：搭管状态的反馈判断（2026-10-05）
 
-第1步的两个指定搭管存档已通过工程筛选，证据见 ../support_transfer/stage1_accepted_pair.json。本目录继续原规划第2步。已有去除真实接触标签、初始管轴估计及组合闭环对照；完整自主接管和未知环境跨越尚未完成。
+第1步的两个指定搭管存档已通过工程筛选，证据见 ../support_transfer/stage1_accepted_pair.json。本目录继续原规划第2步，已完成19组闭环对照；当前反馈接管实现未通过统一双场景门槛，完整自主流程没有完成。集中结论见[可行性验证报告](../../../docs/顺应性自主跨管_可行性验证结论.md)。
 
 ## 闭环结果
 
@@ -9,16 +9,23 @@
 | 对照 | 完整跨越 | 关节峰值 °/s | 模块峰值 m/s | 目标误差 ° | 饱和 % | 全门槛 |
 | --- | --- | --- | --- | --- | --- | --- |
 | horizontal_cad_support | 是 | 74.95 | 0.36574 | 2.24 | 21.88 | 通过 |
+| horizontal_encoder_acquired_reference | 否 | 73.76 | 0.64110 | 3.40 | 19.88 | 未通过 |
 | horizontal_encoder_cad_refined | 是 | 56.85 | 0.58146 | 3.00 | 23.29 | 未通过 |
 | horizontal_encoder_cad_support | 是 | 56.96 | 0.60271 | 3.03 | 22.72 | 未通过 |
+| horizontal_encoder_distinct | 否 | 222.68 | 2.93621 | 7.47 | 21.49 | 未通过 |
 | horizontal_encoder_early_braking | 是 | 66.66 | 0.76046 | 3.08 | 20.51 | 未通过 |
 | horizontal_encoder_initial | 是 | 65.57 | 0.71977 | 3.09 | 17.36 | 未通过 |
 | horizontal_encoder_live_conserved | 否 | 88.70 | 0.72830 | 4.42 | 16.49 | 未通过 |
+| horizontal_encoder_live_single_target | 否 | 237.39 | 3.12565 | 19.86 | 20.03 | 未通过 |
+| horizontal_encoder_live_whole_coil | 是 | 59.02 | 0.55645 | 3.47 | 23.29 | 未通过 |
 | horizontal_target_frame | 是 | 90.57 | 2.06296 | 3.89 | 19.58 | 未通过 |
 | horizontal_target_frame_conserved | 是 | 62.88 | 0.47794 | 2.46 | 19.89 | 通过 |
+| horizontal_target_frame_continuous | 是 | 67.45 | 0.50736 | 3.30 | 32.86 | 未通过 |
 | horizontal_target_frame_distinct | 是 | 67.45 | 0.50736 | 3.30 | 22.88 | 未通过 |
 | vertical_cad_support | 是 | 70.19 | 0.65895 | 2.88 | 22.21 | 未通过 |
+| vertical_encoder_live_whole_coil | 否 | 159.26 | 2.04696 | 4.74 | 20.53 | 未通过 |
 | vertical_target_frame_conserved | 否 | 105.47 | 3.14456 | 5.45 | 25.47 | 未通过 |
+| vertical_target_frame_continuous | 是 | 61.66 | 0.94656 | 3.40 | 34.74 | 未通过 |
 | vertical_target_frame_distinct | 否 | 194.29 | 2.31878 | 6.49 | 29.79 | 未通过 |
 
 horizontal_cad_support 只替换接触输入，保留已知管轴/管径及世界坐标表达，水平全部门槛通过；同参数竖直虽然跨越，模块0.659m/s超限。其水平转移阶段饱和比例31.53%，整段验收窗口21.88%，不能称全过程低负载。冻结依据为 cad_support_freeze.json。
@@ -65,7 +72,19 @@ encoder_tracking 系列仅使用关节角、历史命令、机器人CAD、名义
 
 ## 当前验证
 
-两项改动分开验证：水平局部坐标闭环移除尾部退出后的旧轴/接头约束；已知几何闭环在全身成形后保留原增量A-D/Yamada控制，不切换绝对角公式。后者仍先水平再冻结查竖直，尚未宣称通过。所有物理参数和验收门槛不变。
+水平 horizontal_encoder_live_whole_coil 已完成一次全部控制几何使用编码角局部坐标的完整跨越，140.8秒停止、独立验收结束于138.21秒；模块峰值0.55645m/s仍未通过0.5m/s门槛。关节59.02度/秒、已下发目标误差3.47度、饱和23.29%。控制输入不含真实管轴、接触标签或自由基座位姿，初始分界也由估计几何计算。仍使用相交直角、相近管径先验，且从人工保存的搭管状态开始，不能写成未知环境完整自主流程已完成。
+
+关键修订在于尾段控制权重全部退出后只跟踪目标直线，并用整条身体点集预测坐标变化，不再仅用前八个点。这一切换不读取物理完全转移真值；切换时仍可能有身体尚未离开接头。单独去掉旧轴约束仍于147.6秒失去支撑；同一条记录的只读对照显示，头部自由端变形后仍以前八点注册会产生最高55.03度目标轴偏差；整段注册降为7.23度，另一个重新拟合圆柱的对照为16.47度。随后闭环的整段注册版本完成跨越，100/110秒目标轴误差0.771/0.795度，末帧0.312度。原接头沿目标轴位置仍可漂移，这是退出旧管后不再充分可观测的坐标，不再用于后续单管推进判据。
+
+[编码角闭环正常速度回放](reviews/horizontal_encoder_live_whole_coil_1x.mp4)；[闭环估计误差及实际转移](reviews/live_estimator_comparison.png)；[同记录注册方式对照](reviews/registration_probe.png)。
+
+独立的已知几何对照中，保持增量A-D/Yamada滚动、不切回绝对单轴关节角，两场景均完成跨越，竖直不再在终段切换时掉落。但水平/竖直饱和32.86/34.74%、模块0.507/0.947m/s，未通过过程门槛，不能直接采用。
+
+冻结到竖直后未通过：65秒尾端2.047m/s，远早于管道末端。后期约127.87秒形成严格全身半径带，但149.96秒最前点驶出1200mm管端；管内严格首尾可用相位跨度仅3.94rad，不能满足2π。178.2秒的最终掉落含管端因素，不能单独归因为中途顺应性失效。诊断见 vertical_encoder_finite_pipe_diagnosis.json、finite_pipe_failure_screen.json；[正常速度回放](reviews/vertical_encoder_live_whole_coil_1x.mp4)。
+
+针对40秒速度峰值，固定初始前部参考对已接入前部关节请求最高2.42Nm修正，改为当前承接参考可令该部分数值为零。但闭环 horizontal_encoder_acquired_reference 在200秒内未完成、峰值0.641m/s，未采用。两轴距离归属修正的编码角闭环 horizontal_encoder_distinct 于124.8秒失去支撑、模块2.936m/s；40秒目标轴误差0.128度，60秒26.32度、80秒46.05度。该失败发生在管道内部，不能归因于管端。
+
+只读排查还包含：扩大前部坐标配准窗口未改善两场景方向误差；直接重拟合已承接段可出现约1mm残差却35度以上方向错误；依据仍受尾段控制的候选接触数量退出旧轴约束，虽减小一个水平记录的直线偏移，但仍有52.7/76.9度方向错误。对应 *_window_probe.json、*_coil_refit_probe.json、*_confidence_probe.json 保留反例。它们没有作为新成功候选接入默认控制。当前候选的条件可行与自动接管失败见[对照图](reviews/feasibility_comparison.png)和集中报告。
 
 持续跟踪详细只读结果压缩在 archives/encoder_tracking_diagnostics.zip，源JSON本地保留；解压到本目录可重新画图。首版负半径快照另存，不用修订后的源码冒充原版本。
 

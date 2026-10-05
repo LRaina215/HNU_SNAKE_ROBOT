@@ -76,7 +76,7 @@ def run(args):
             measured=np.radians(g['angles_deg'])*sim.bridge.signs
             load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),
                 sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
-            tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'],args.single_target_after_release)
+            tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'],args.single_target_after_release,args.whole_coil_registration)
             g=dict(g,points_mm=tracker.previous.copy());tracking_clock=sim.d.time
             estimate=tracker.estimate
             corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
@@ -123,12 +123,13 @@ def run(args):
         if args.velocity_feedback:
             # -1 protects the whole captured front, not a horizontal-specific
             # fixed count. It resolves to 5/7 for the two archived checkpoints.
-            reference_module=controller.initial_front if args.body_reference_module==-1 else args.body_reference_module
+            reference_module=controller.initial_front if args.body_reference_module in (-1,-2) else args.body_reference_module
+            shape_kinematics=EncoderShapeKinematics(sim.m,reference_module) if args.body_damping else None
             delivery=VelocityFeedbackDelivery(np.radians(g['angles_deg'])*sim.bridge.signs,
                 args.velocity_feedback,args.delivery_period,sim.m.jnt_range[sim.jids],
                 sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0] if args.delivery_torque_equivalent else None,
                 args.velocity_filter,
-                EncoderShapeKinematics(sim.m,reference_module).jacobians if args.body_damping else None,
+                shape_kinematics.jacobians if shape_kinematics is not None else None,
                 args.body_damping,args.body_speed_limit,sim.m.actuator_gainprm[:,0])
         support_observer=None;support_history=[];support_info={};support_clock=None
         if args.cad_support:
@@ -170,6 +171,16 @@ def run(args):
             phase=phase0-(k+1)*args.dt*.1875
             contact_input=support_history if support_observer is not None else [r['normal_force'] for r in sim.records[-60:]]
             q,info=controller.compute(g,measured,phase,args.dt,contact_input)
+            if args.body_reference_module==-2 and delivery is not None and shape_kinematics is not None:
+                # Protect the acquired, formed coil from a damper intended for
+                # the still-transferring body. Admission already has the .6s
+                # acquisition filter; no contact truth or manual cut is used.
+                reference_module=controller.initial_front
+                while reference_module<controller.n and info['acquired_weight'][reference_module]>.9:
+                    reference_module+=1
+                reference_module=min(reference_module,max(controller.initial_front,int(controller.progress)))
+                shape_kinematics.reference_module=reference_module
+                info['body_reference_module']=reference_module
             if support_observer is not None:info['support_observer']=support_info
             if tracker is not None:info['geometry_observer']=tracker.info
             sim.phase=controller.phase;sim.stage='window_coordination';sim.partition[:]=[controller.front,controller.rear]
@@ -237,6 +248,8 @@ if __name__=='__main__':
         help='Use only encoder-frame geometry and causal CAD/load tracking, excluding floating pose and true pipe geometry.')
     p.add_argument('--single-target-after-release',action='store_true',
         help='Live estimator: stop constraining the unobserved old junction once the rear controller is gone.')
+    p.add_argument('--whole-coil-registration',action='store_true',
+        help='Single-target tracking: predict its frame from the whole coil instead of the deforming free front.')
     p.add_argument('--cad-support',action='store_true',
         help='Replace contact labels by private CAD-distance and encoder-error/load hypotheses; no physical contact input.')
     p.add_argument('--cad-refine-axes',action='store_true',
@@ -256,7 +269,7 @@ if __name__=='__main__':
     p.add_argument('--velocity-filter',type=float,default=0.,help='Encoder velocity low-pass time constant in seconds')
     p.add_argument('--body-damping',type=float,default=0.,help='Relative module-speed damping through position targets, Ns/m')
     p.add_argument('--body-speed-limit',type=float,default=.2,help='Relative module speed above which coupled damping acts, m/s')
-    p.add_argument('--body-reference-module',type=int,default=0,help='Encoder-relative velocity frame; -1 uses the captured front boundary')
+    p.add_argument('--body-reference-module',type=int,default=0,help='Encoder-relative velocity frame; -1 initial front, -2 follows acquired and formed prefix')
     p.add_argument('--coordinate-acquisition',action='store_true',help='Radial acquisition: slow both phase clocks when measured recruitment lags')
     p.add_argument('--tail-mode',choices=['support','same','hold','coupled'],default='support')
     p.add_argument('--finish-mode',choices=['original','continuous'],default='original')

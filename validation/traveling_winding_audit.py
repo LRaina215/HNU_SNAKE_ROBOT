@@ -76,7 +76,7 @@ def evaluate(z,m):
         final_wrap_turns=float(winding[-1]),floor_contact=bool(z['ground'].any()),
         final_center_progress_mm=float((centers[-1].mean(axis=0)-centers[0].mean(axis=0))@target),
         final_maximum_radius_mm=float(dist[-1].max()),
-        limitation='known axes and simulation contacts; these runs do not establish online axis estimation or real-robot performance')
+        limitation='This independent auditor uses true axes and contacts for scoring only. Controller privileges are recorded separately in plan.json; a pass does not establish hardware performance.')
     return report
 
 

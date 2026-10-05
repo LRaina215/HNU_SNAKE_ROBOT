@@ -1,0 +1,12 @@
+{
+  "duration": 1.2,
+  "pulse_duration": 0.8,
+  "settling": 0.2,
+  "amplitude_deg": 0.6,
+  "cohort": "distinct",
+  "input": "joint angle, issued target and calibrated position gain; physical contact/pose scoring only",
+  "negative_control": "Target collision disabled in a separate model copy. No geometry is added, no torque/friction is raised.",
+  "limitation": "Restored-state diagnostic pairs, not a crossing rollout or proof of force closure.",
+  "training": "horizontal checkpoints at 0,16,32,40s",
+  "validation": "vertical checkpoints at 4,12,24,36s for distinct cohort, otherwise 0,16,32,40s; same pulses and feature formula"
+}

@@ -15,7 +15,7 @@ from encoder_pipe_proximity import EncoderPipeProximity
 OUT=ROOT/'experiments/segmented_pole_20261005/feedback_takeover'
 
 
-def refine_target(query,measured,points,initial,load):
+def refine_target(query,measured,points,initial,load,target_full_line=True):
     """Fit only the remaining target line once rear control has been released.
 
     No source constraint, intersection or pipe endpoint is observable from
@@ -24,7 +24,7 @@ def refine_target(query,measured,points,initial,load):
     t=initial['target'];c=initial['corner_mm'];r=initial['pipe_radius_mm']
     h=np.eye(3)[np.argmin(abs(t))];h-=h@t*t;h/=np.linalg.norm(h)
     v=np.cross(t,h)
-    gap=query.gaps(measured,points,c,initial['source'],t,r,True)[1]
+    gap=query.gaps(measured,points,c,initial['source'],t,r,target_full_line)[1]
     adjacent=np.maximum(np.r_[0,abs(load)],np.r_[abs(load),0])
     selected=(gap<5.)&(adjacent>.1)
     def decode(x):
@@ -32,7 +32,7 @@ def refine_target(query,measured,points,initial,load):
         return c+x[0]*h+x[1]*v,target
     def residual(x):
         corner,target=decode(x)
-        distances=query.gaps(measured,points,corner,initial['source'],target,r,True)[1]
+        distances=query.gaps(measured,points,corner,initial['source'],target,r,target_full_line)[1]
         return np.r_[distances[selected]+.5,2*np.minimum(distances+2.,0.),x[:2]/20.,x[2:]/.1]
     fit=least_squares(residual,np.zeros(4),bounds=([-20,-20,-.15,-.15],[20,20,.15,.15]),
         x_scale=[5,5,.05,.05],loss='soft_l1',f_scale=1.,diff_step=1e-3,max_nfev=100)

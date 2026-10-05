@@ -49,7 +49,7 @@ class TargetFrameAcquisition(RadialAcquisitionWinding):
 
     def configuration(self):
         config=super().configuration()
-        config['target_frame_acquisition']=dict(region='ordered target-radius band; no source-distance or absolute axial test',
+        config['target_frame_acquisition']=dict(region='ordered target-radius band; optional source-distance disambiguation; no absolute axial test',
             release='body-index gap with unchanged admission/reserve/support conditions',
             one_for_one_measured_release=self.conserve_middle,
             distinguish_source_and_target_lines=self.distinguish_lines,

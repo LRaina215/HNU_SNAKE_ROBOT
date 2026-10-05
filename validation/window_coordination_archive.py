@@ -37,11 +37,19 @@ def delivery(folder):
         if plan.get('body_damping',0):
             from encoder_shape_kinematics import EncoderShapeKinematics
             reference_module=plan.get('body_reference_module',0)
-            if reference_module==-1:
+            if reference_module in (-1,-2):
                 reference_module=read(folder/'plan.json')['configuration']['initial_front']
             kinematics=EncoderShapeKinematics(model,reference_module)
     largest=0.;largest_outer=0.
     for i,control in enumerate(controls):
+        if plan.get('body_reference_module')==-2 and plan.get('body_damping',0):
+            initial=read(folder/'plan.json')['configuration']['initial_front']
+            reference_module=initial
+            while reference_module<len(control['target']) and control['acquired_weight'][reference_module]>.9:
+                reference_module+=1
+            reference_module=min(reference_module,max(initial,int(control['formation_progress'])))
+            assert reference_module==control['body_reference_module']
+            kinematics.reference_module=reference_module
         target=np.asarray(control['target'])
         outer_increment=float(np.degrees(abs(target-previous)).max())
         largest_outer=max(largest_outer,outer_increment)
