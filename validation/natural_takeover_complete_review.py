@@ -39,11 +39,15 @@ def review(root,transfer_name='transfer'):
     quality=dict(module_speed=metrics['module_peak_m_s']<=.5,joint_speed=metrics['joint_peak_deg_s']<=90,
         tracking=metrics['error_peak_deg']<=15,saturation=metrics['saturation']<=.297)
     functional=audit['full_crossing_and_continued_rolling']
-    result=dict(complete=bool(functional and all(quality.values())),functional=bool(functional),quality=quality,metrics=metrics,
+    arguments=json.loads((folder/'plan.json').read_text(encoding='utf8'))['arguments']
+    feedback_eligible=bool(arguments.get('dynamic_observer') and arguments.get('cad_support') and not arguments.get('truth_diagnostic'))
+    result=dict(complete=bool(functional and all(quality.values()) and feedback_eligible),functional=bool(functional),quality=quality,metrics=metrics,
+        controller_uses_inferred_feedback_only=feedback_eligible,
         continuous_physical_boundary_checked=True,initial_second_excluded_once=True,
         mission_seconds=float(end-trace['time'][0]),transfer_delivery=delivery_check,
         limitations='Nominal dynamics and right-angle comparable-radius/gravity prior; calibration pauses simulated time. Single mission is not varied-initial-condition qualification.')
-    write_json(root/'complete_review.json',result)
+    filename='complete_review.json' if transfer_name=='transfer' else transfer_name+'_complete_review.json'
+    write_json(root/filename,result)
     print(json.dumps(result,indent=2),flush=True)
     return result
 

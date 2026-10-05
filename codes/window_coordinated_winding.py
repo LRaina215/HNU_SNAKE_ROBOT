@@ -47,6 +47,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         self.follow=1.
         self.feed=0.
         self.rear_motion_scale=1.
+        self.finish_ready_seconds=0.
 
     def rear_release_permitted(self):
         return True
@@ -223,7 +224,26 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             compliance[lo:hi]=shaped.angles(gauge+step*lookahead)-zero.angles(gauge+step*lookahead)
         raw=(self.weights[:,0]+self.weights[:,2])*(rolled+compliance)+self.weights[:,1]*self.middle_reference
         finish={}
-        if self.handed_off and self.progress>=self.n and self.window.finish_mode=='original':
+        finish_supported=False
+        if self.window.finish_mode=='supported':
+            # A free end can remain caught at the old junction after the coil
+            # itself is supported on the target. Waiting for that end to clear
+            # before applying whole-coil A-D makes the transition circular.
+            # This admits reconstruction only, never releases another joint or
+            # declares crossing. Geometry/support are the caller's estimates.
+            centers=(points[:-1]+points[1:])/2
+            internal_on_target=bool(np.all(self.transfer_region(centers[2:-2])))
+            internal_source_free=not np.any(np.asarray(contact_window)[-40:,0,2:-2]>.1)
+            ready=(self.progress>=self.n and self.rear>=self.n and internal_on_target
+                   and internal_source_free and status['front_wrap']>=1.5
+                   and status['contact_span_deg']>=180.)
+            self.finish_ready_seconds=self.finish_ready_seconds+dt if ready else 0.
+            finish_supported=self.finish_ready_seconds>=.6-1e-9
+            finish.update(finish_internal_on_target=internal_on_target,
+                finish_internal_source_free=bool(internal_source_free),
+                finish_ready_seconds=self.finish_ready_seconds)
+        finish_allowed=self.handed_off or finish_supported or self.finish_elapsed is not None
+        if finish_allowed and self.progress>=self.n and self.window.finish_mode!='continuous':
             local=LocalSection(geometry,self.parameters,0,self.n,self.target,self.corner)
             if self.finish_elapsed is None:
                 self.finish_elapsed=0.;self.finish_offset=local.align(previous,previous_phase)
@@ -232,12 +252,17 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             raw=local.angles(self.phase+self.finish_offset)+(1-fraction)*self.finish_residual
             rel=points[1:-1]-self.corner
             radius=float(np.median(np.linalg.norm(np.cross(rel[4:-4],self.target),axis=1)))
-            a,b=self.helix_basis(radius,self.pitch_sign)
+            # Match the CURRENT A-D backbone's torsion. Natural transfer can
+            # reverse head/tail axial order; retaining the initial front's
+            # sign gives the end joints a mirrored helix while the body uses
+            # the correctly signed reconstruction.
+            finish_pitch_sign=math.copysign(1.,local.bone.twists[-1])
+            a,b=self.helix_basis(radius,finish_pitch_sign)
             fit=np.linalg.lstsq(np.column_stack([a,b])[4:-4],raw[4:-4],rcond=None)[0]
             angle=math.atan2(fit[1],fit[0]);nominal=a*np.cos(angle)+b*np.sin(angle)
             ends=np.r_[np.arange(4),np.arange(self.n-4,self.n)]
             raw[ends]+=fraction*self.formation.end_recovery*(nominal[ends]-measured[ends])
-            finish=dict(finish_local=True,finish_elapsed=self.finish_elapsed)
+            finish.update(finish_local=True,finish_elapsed=self.finish_elapsed,finish_pitch_sign=finish_pitch_sign)
         budget=math.radians(self.window.target_lead_deg)
         conditioned=measured+np.clip(raw-measured,-budget,budget)
         target=previous+np.clip(conditioned-previous,-self.options.maximum_speed_rad_s*dt,self.options.maximum_speed_rad_s*dt)

@@ -64,7 +64,7 @@ def run(args):
         extra=dict(support_error_limit=sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0]) if args.support_memory or args.capacity_preload or args.radial_acquisition else {}
         if args.target_frame_acquisition:
             extra.update(conserve_middle=args.conserve_middle,distinguish_lines=args.distinguish_lines)
-        if args.radial_acquisition:extra.update(coordinate_acquisition=args.coordinate_acquisition,acquire_initial_front=args.acquire_initial_front,bootstrap_front=args.bootstrap_front)
+        if args.radial_acquisition:extra.update(coordinate_acquisition=args.coordinate_acquisition,acquire_initial_front=args.acquire_initial_front,bootstrap_front=args.bootstrap_front,coherent_acquisition=args.coherent_acquisition)
         if args.contact_reference or args.capacity_preload or args.radial_acquisition:
             extra['local_contact_projection']=args.local_contact_projection
             extra['dual_contact_projection']=args.dual_contact_projection
@@ -167,10 +167,16 @@ def run(args):
                 raise RuntimeError('Encoder shape does not support a right-angle branch hypothesis')
             corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
             result['geometry_input']='Encoder-reconstructed points, nominal coil radius, intersecting right-angle prior; contacts and global frame remain stage-2 test inputs.'
+        if args.truth_diagnostic:
+            # Explicit diagnostic only: replay the SAME response probe, then
+            # replace inferred geometry/support to separate controller failure
+            # from observer drift. This can never qualify as stage 2/3 success.
+            g=sim.fresh();corner,source,target,radius=sim.corner,sim.source,sim.target,sim.radius
+            result['geometry_input']='ORACLE DIAGNOSTIC: physical pose, axes and contact labels after the identical executed probe.'
         motion_reference=probe_motion_reference if args.preserve_probe_intent else sim.d.ctrl
         controller=cls(g,sim.original.parameters,motion_reference,sim.phase,
             corner,source,target,radius,measured=np.radians(g['angles_deg'])*sim.bridge.signs,
-            forward_points=tracker.points if tracker is not None else lambda q:points_for_angles(sim.m,sim.d,q),pitch_mm=sim.meta['settings']['pitch'],
+            forward_points=tracker.points if tracker is not None and not args.truth_diagnostic else lambda q:points_for_angles(sim.m,sim.d,q),pitch_mm=sim.meta['settings']['pitch'],
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
@@ -189,9 +195,9 @@ def run(args):
         write_json(folder/'plan.json',dict(**result,arguments=arguments,physics_changed=False,
             stop='floor or 0.2 s no pipe support; full crossing and continued rolling',
             process_gate='after 1 s: joint peak <=90 deg/s, module peak <=500 mm/s, error<=15 deg, saturation<=0.297',
-            limitations=dict(manual_drape_checkpoint=not bool(sim.meta.get('automatic_capture')),physical_pose_input=tracker is None,
-                known_axes=not (args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
-                contact_labels=not args.cad_support,right_angle_comparable_radius_prior=bool(args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
+            limitations=dict(manual_drape_checkpoint=not bool(sim.meta.get('automatic_capture')),physical_pose_input=tracker is None or args.truth_diagnostic,
+                known_axes=args.truth_diagnostic or not (args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
+                contact_labels=args.truth_diagnostic or not args.cad_support,right_angle_comparable_radius_prior=bool(args.encoder_initial_axes or args.encoder_tracking or args.dynamic_observer),
                 horizontal_vertical_gravity_prior=args.dynamic_observer,
                 natural_trigger_validated=False,natural_trigger_attempt=bool(args.response_state),hardware_validated=False)))
         sim.partition[:]=[controller.front,controller.rear];sim.records[0]['partition']=sim.partition.copy()
@@ -215,6 +221,10 @@ def run(args):
             support_observer=EncoderPipeProximity(sim.m)
         def control_feedback(feedback,refine_now):
             nonlocal tracking_clock
+            if args.truth_diagnostic:
+                controller.corner,controller.source,controller.target,controller.radius=sim.corner,sim.source,sim.target,sim.radius
+                controller.body_axis=-controller.target
+                return feedback
             if tracker is None:return feedback
             angles=np.radians(feedback['angles_deg'])*sim.bridge.signs
             if tracking_clock!=sim.d.time:
@@ -236,7 +246,9 @@ def run(args):
             # error. No qfrc/contact query, and not an independent force sensor.
             load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-angles),
                 sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
-            if args.dynamic_observer:
+            if args.truth_diagnostic:
+                proxy=sim.records[-1]['normal_force'].copy();support_info=dict(oracle_diagnostic=True)
+            elif args.dynamic_observer:
                 proxy=tracker.support.copy();support_info=dict(model_support_N=proxy,not_measured_contact=True)
             else:
                 proxy,support_info=support_observer.observe(angles,np.asarray(feedback['points_mm']),
@@ -338,6 +350,8 @@ if __name__=='__main__':
     p.add_argument('--release-requires-grip',action='store_true',help='Allow verified contact acquisition, but require distributed angular support and wrap before releasing rear joints.')
     p.add_argument('--acquire-initial-front',action='store_true',help='Apply radial compliant acquisition to initial drape members too; a geometric front label does not prove existing wrap.')
     p.add_argument('--bootstrap-front',action='store_true',help='Use contacting-link radius and measured initial-front admission instead of assuming the captured front is already wrapped.')
+    p.add_argument('--truth-diagnostic',action='store_true',help='Diagnostic only: after the identical response probe use physical axes/pose/contacts; cannot count as autonomous acceptance.')
+    p.add_argument('--coherent-acquisition',action='store_true',help='Radial acquisition with one measured-phase Yamada helix pattern across the forming front.')
     p.add_argument('--response-state',type=Path,help='Probe evidence from automatic approach; checkpoint must be its exact post-probe state.')
     p.add_argument('--encoder-initial-axes',action='store_true',
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
@@ -377,7 +391,8 @@ if __name__=='__main__':
     p.add_argument('--body-reference-module',type=int,default=0,help='Encoder-relative velocity frame; -1 initial front, -2 follows acquired and formed prefix')
     p.add_argument('--coordinate-acquisition',action='store_true',help='Radial acquisition: slow both phase clocks when measured recruitment lags')
     p.add_argument('--tail-mode',choices=['support','same','hold','coupled','matched'],default='support')
-    p.add_argument('--finish-mode',choices=['original','continuous'],default='original')
+    p.add_argument('--finish-mode',choices=['original','continuous','supported'],default='original',
+        help='supported permits whole-coil A-D after sustained internal target support even if a terminal link still touches the junction')
     p.add_argument('--maximum-lead',type=float,default=2.)
     p.add_argument('--target-lead-deg',type=float,default=8.)
     p.add_argument('--hold-bound',type=float,default=1.)

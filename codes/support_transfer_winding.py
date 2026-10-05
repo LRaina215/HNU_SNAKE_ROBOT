@@ -270,11 +270,12 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
     curvature term over one link length. Its reference radius is measured at
     current target contacts; the original A-D correction remains active.
     """
-    def __init__(self,*args,coordinate_acquisition=False,acquire_initial_front=False,bootstrap_front=False,**kwargs):
+    def __init__(self,*args,coordinate_acquisition=False,acquire_initial_front=False,bootstrap_front=False,coherent_acquisition=False,**kwargs):
         super().__init__(*args,**kwargs)
         self.coordinate_acquisition=coordinate_acquisition
         self.acquire_initial_front=acquire_initial_front
         self.bootstrap_front=bootstrap_front
+        self.coherent_acquisition=coherent_acquisition
         self.initial_front_acquired=np.zeros(self.initial_front)
         self.acquisition_phase=self.phase
         self.rolling_scale=1.
@@ -332,6 +333,23 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
             rolling=observed+change
             info.update(formation_gain=gain,formation_change=change,
                 initial_front_acquired=self.initial_front_acquired.copy())
+        if self.coherent_acquisition:
+            # The local radial/tangent field can fold the free head back
+            # toward the junction while its cross-section still looks wrapped.
+            # Test one Yamada curvature/torsion pattern across the currently
+            # forming front, using its measured phase and contact-based radius.
+            a,b=self.helix_basis(self.radius_reference,self.pitch_sign)
+            weight=np.sqrt(self.formation_weights)
+            fit=np.linalg.lstsq(np.column_stack((a,b))*weight[:,None],measured*weight,rcond=None)[0]
+            theta=math.atan2(fit[1],fit[0])
+            q=a*math.cos(theta)+b*math.sin(theta)
+            quadrature=-a*math.sin(theta)+b*math.cos(theta)
+            odd=np.arange(self.n)%2
+            nominal=np.column_stack((np.where(odd,-q,-quadrature),np.where(odd,quadrature,-q)))
+            change=info['formation_gain'][:,None]*(nominal-observed)
+            rolling=observed+change
+            info.update(formation_nominal=nominal,formation_change=change,
+                formation_helix_phase=theta,formation_helix_angles=q)
         if not hasattr(self,'contact_radius'):return rolling,info
         points=np.asarray(geometry['points_mm'])
         bone=SpatialBishopBackbone(points,self.links)
@@ -359,7 +377,7 @@ class RadialAcquisitionWinding(CapacityPreloadWinding):
         config['support_transfer'].update(acquisition_curvature='positive radial gap / link_length^2',
             radial_reference='median radius of actual target-contact modules beyond the junction',
             coordinate_acquisition=self.coordinate_acquisition,acquire_initial_front=self.acquire_initial_front,
-            bootstrap_front=self.bootstrap_front)
+            bootstrap_front=self.bootstrap_front,coherent_acquisition=self.coherent_acquisition)
         return config
 
 

@@ -56,5 +56,55 @@
     "archive": "horizontal_natural_v1_transfer_initial_front_acquisition.zip",
     "MiB": 40.02776336669922,
     "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_bootstrap_front.zip",
+    "MiB": 35.031853675842285,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_bootstrap_truth_diagnostic.zip",
+    "MiB": 48.4552698135376,
+    "complete_trace": true,
+    "oracle_diagnostic": true
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_coherent_acquisition.zip",
+    "MiB": 41.67844009399414,
+    "complete_trace": true,
+    "oracle_diagnostic": false
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_bootstrap_continuous_truth.zip",
+    "MiB": 67.16426372528076,
+    "complete_trace": true,
+    "oracle_diagnostic": true
+  },
+  {
+    "archive": "horizontal_natural_joint_velocity_only.zip",
+    "MiB": 26.54988193511963,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_distributed.zip",
+    "MiB": 26.485687255859375,
+    "complete_trace": true,
+    "outcome": "development_stopped_after_four_rejected_probes"
+  },
+  {
+    "archive": "horizontal_natural_v1_transfer_bootstrap_finish_sign_truth.zip",
+    "MiB": 63.523478507995605,
+    "complete_trace": true,
+    "oracle_diagnostic": true
+  },
+  {
+    "archive": "horizontal_natural_local_acquisition_approach.zip",
+    "MiB": 26.76857280731201,
+    "complete_trace": true
+  },
+  {
+    "archive": "horizontal_natural_local_acquisition_transfer.zip",
+    "MiB": 57.89552021026611,
+    "complete_trace": true
   }
 ]

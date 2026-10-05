@@ -1,5 +1,2809 @@
 [
   {
+    "run": "transfer_bootstrap_continuous_truth",
+    "archive": "archives/transfer_bootstrap_continuous_truth.zip",
+    "hypothesis": "Oracle diagnosis: keep existing incremental A-D control after all joints are recruited, rather than switching to absolute whole-body reconstruction before a stable coil exists.",
+    "settings": {
+      "name": "transfer_bootstrap_continuous_truth",
+      "hypothesis": "Oracle diagnosis: keep existing incremental A-D control after all joints are recruited, rather than switching to absolute whole-body reconstruction before a stable coil exists.",
+      "scene": "horizontal",
+      "checkpoint": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\candidate",
+      "require_response_gate": true,
+      "junction_search": true,
+      "network_calibration": false,
+      "feedback_progress_guard": false,
+      "release_requires_grip": true,
+      "acquire_initial_front": false,
+      "bootstrap_front": true,
+      "truth_diagnostic": true,
+      "coherent_acquisition": false,
+      "response_state": null,
+      "encoder_initial_axes": false,
+      "encoder_tracking": false,
+      "dynamic_observer": true,
+      "response_calibration_cache": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\ensemble_cache",
+      "preserve_probe_intent": true,
+      "section_domain": false,
+      "single_target_after_release": false,
+      "whole_coil_registration": false,
+      "cad_support": true,
+      "cad_refine_axes": false,
+      "target_frame_acquisition": false,
+      "conserve_middle": false,
+      "distinguish_lines": false,
+      "observable_support": false,
+      "seconds": 240.0,
+      "dt": 0.2,
+      "delivery_period": 0.02,
+      "velocity_feedback": 0.02,
+      "velocity_scope": "all",
+      "delivery_torque_equivalent": true,
+      "velocity_filter": 0.02,
+      "body_damping": 20.0,
+      "body_speed_limit": 0.2,
+      "body_reference_module": -1,
+      "coordinate_acquisition": false,
+      "tail_mode": "same",
+      "finish_mode": "continuous",
+      "maximum_lead": 2.0,
+      "target_lead_deg": 8.0,
+      "hold_bound": 1.0,
+      "bound_held_phase": false,
+      "rear_phase_lead": 0.0,
+      "support_centers": true,
+      "complete_end_spans": false,
+      "local_contact_projection": true,
+      "dual_contact_projection": false,
+      "rolling_lookahead": null,
+      "joints_per_rad": 2.1333333333333333,
+      "supported_recovery": 0.35,
+      "middle_follow": 0.06,
+      "shape_speed": 90.0,
+      "support_memory": false,
+      "middle_rate_match": false,
+      "coherent_helix": false,
+      "reference_memory": false,
+      "support_hold": false,
+      "anchored_helix": false,
+      "turning_formation": false,
+      "smooth_turning": false,
+      "couple_acquisition": false,
+      "acquired_shape": false,
+      "both_ends_shape": false,
+      "contact_reference": false,
+      "capacity_preload": false,
+      "radial_acquisition": true,
+      "output_root": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1"
+    },
+    "outcome": "time_limit",
+    "metrics": {
+      "name": "transfer_bootstrap_continuous_truth",
+      "outcome": "time_limit",
+      "physical_seconds": 241.20000000078858,
+      "metrics_end_seconds": 241.20000000078858,
+      "complete": false,
+      "final_region": 18,
+      "max_region": 21,
+      "final_wrap": 1.9663431931425086,
+      "finish_seconds": null,
+      "last_source_contact_seconds": 223.68000000079022,
+      "windows": {
+        "whole": {
+          "seconds": 241.21,
+          "maximum_error_deg": 36.11803760525986,
+          "mean_error_deg": 0.7346938112695293,
+          "maximum_joint_speed_deg_s": 83.28509398586951,
+          "p99_joint_speed_deg_s": 30.383410149830787,
+          "maximum_module_speed_mm_s": 551.1319547555732,
+          "saturated_joint_sample_fraction": 0.34814684299987564,
+          "saturated_joint_seconds": 1679.53,
+          "target_contact_fraction": 1.0
+        },
+        "after_capture": {
+          "seconds": 240.21,
+          "maximum_error_deg": 3.3244984126913297,
+          "mean_error_deg": 0.7362032978949056,
+          "maximum_joint_speed_deg_s": 72.60481053075067,
+          "p99_joint_speed_deg_s": 30.391618300389084,
+          "maximum_module_speed_mm_s": 551.1319547555732,
+          "saturated_joint_sample_fraction": 0.3493588943008201,
+          "saturated_joint_seconds": 1678.39,
+          "target_contact_fraction": 1.0
+        },
+        "transfer": {
+          "seconds": 240.21,
+          "maximum_error_deg": 3.3244984126913297,
+          "mean_error_deg": 0.7362032978949056,
+          "maximum_joint_speed_deg_s": 72.60481053075067,
+          "p99_joint_speed_deg_s": 30.391618300389084,
+          "maximum_module_speed_mm_s": 551.1319547555732,
+          "saturated_joint_sample_fraction": 0.3493588943008201,
+          "saturated_joint_seconds": 1678.39,
+          "target_contact_fraction": 1.0
+        }
+      },
+      "initial_error_deg": 36.11803760525986
+    },
+    "acceptance": {
+      "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+      "full_crossing_and_continued_rolling": false,
+      "accepted_window": null,
+      "legacy_all_modules_in_radius_band_passed": false,
+      "maximum_target_region_modules": 21,
+      "final_target_region_modules": 18,
+      "minimum_all_point_target_progress_final_mm": 29.090968710817393,
+      "final_wrap_turns": 1.9663431931425086,
+      "floor_contact": false,
+      "final_center_progress_mm": 297.0926907358166,
+      "final_maximum_radius_mm": 102.71419154307463,
+      "limitation": "This independent auditor uses true axes and contacts for scoring only. Controller privileges are recorded separately in plan.json; a pass does not establish hardware performance."
+    },
+    "stage1": {
+      "complete": false,
+      "quality": {
+        "joint_speed": true,
+        "body_speed": false,
+        "tracking": true,
+        "saturation": false
+      },
+      "passed": false
+    },
+    "delivery": {
+      "command_count": 12060,
+      "response_probe_commands": 60,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": false,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 8.571065978272173,
+      "maximum_command_increment_deg": 1.8000000000000025,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "diagnosis": {
+      "peak_module_speed": {
+        "time_seconds": 155.92000000046667,
+        "module": 20,
+        "speed_mm_s": 551.1319547555732,
+        "source_contact_modules": [],
+        "target_contact_modules": [
+          0,
+          4,
+          6,
+          7,
+          8
+        ],
+        "target_region_modules": 12,
+        "ground": false,
+        "commanded_partition": [
+          18,
+          20
+        ],
+        "formation_progress": 17.93092196990021,
+        "front_wrap_proxy": 1.0854384856002344
+      },
+      "first_source_absence_0_6s_end": 46.849999999945865,
+      "assessment": {
+        "initial_pose_exact": true,
+        "EXE_delivery_checked": true,
+        "physical_seconds": 241.20000000078858,
+        "front_progress_mm": 5.792854720112857,
+        "maximum_front_progress_mm": 132.30464359463684,
+        "maximum_sustained_new_modules": 15,
+        "final_sustained_new_modules": 14,
+        "final_new_module_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          20
+        ],
+        "front_target_contact_fraction": 0.9910451473819494,
+        "rear_source_contact_fraction": 0.2868869449856971,
+        "floor_contact": false,
+        "maximum_tracking_error_deg": 36.11803760525986,
+        "torque_saturated_fraction": 0.34814684299987564,
+        "first_front_contact_loss_seconds": 42.42999999995156,
+        "boundary_events": [
+          {
+            "time": 0.2,
+            "old": [
+              5,
+              10
+            ],
+            "new": [
+              6,
+              10
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 5.079999999999999,
+            "release": false,
+            "feed": 0.28346868942621073
+          },
+          {
+            "time": 2.6,
+            "old": [
+              6,
+              10
+            ],
+            "new": [
+              7,
+              11
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.011739955950616,
+            "release": true,
+            "feed": 0.986876271263059
+          },
+          {
+            "time": 3.400000000000001,
+            "old": [
+              7,
+              11
+            ],
+            "new": [
+              7,
+              12
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.321460706356821,
+            "release": true,
+            "feed": 0.9965406226635353
+          },
+          {
+            "time": 5.600000000000002,
+            "old": [
+              7,
+              12
+            ],
+            "new": [
+              8,
+              12
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 7.079119741229837,
+            "release": false,
+            "feed": 0.9999115730113401
+          },
+          {
+            "time": 9.799999999999997,
+            "old": [
+              8,
+              12
+            ],
+            "new": [
+              9,
+              12
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 8.079637013553164,
+            "release": false,
+            "feed": 0.9999999193650237
+          },
+          {
+            "time": 16.399999999999974,
+            "old": [
+              9,
+              12
+            ],
+            "new": [
+              9,
+              13
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999986533
+          },
+          {
+            "time": 26.19999999999994,
+            "old": [
+              9,
+              13
+            ],
+            "new": [
+              9,
+              14
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 29.399999999999928,
+            "old": [
+              9,
+              14
+            ],
+            "new": [
+              10,
+              14
+            ],
+            "actual_prefix": 8,
+            "formation_progress": 9.079314445280954,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.199999999999946,
+            "old": [
+              10,
+              14
+            ],
+            "new": [
+              11,
+              14
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.017419415045282,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.39999999999995,
+            "old": [
+              11,
+              14
+            ],
+            "new": [
+              11,
+              15
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.094224799502483,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.99999999999996,
+            "old": [
+              11,
+              15
+            ],
+            "new": [
+              11,
+              16
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.328715128440662,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 35.599999999999966,
+            "old": [
+              11,
+              16
+            ],
+            "new": [
+              11,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.563003227775514,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 37.19999999999999,
+            "old": [
+              11,
+              17
+            ],
+            "new": [
+              12,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 11.037822689247461,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 42.600000000000065,
+            "old": [
+              12,
+              17
+            ],
+            "new": [
+              13,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 12.078873064676982,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.00000000000048,
+            "old": [
+              13,
+              17
+            ],
+            "new": [
+              13,
+              18
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 12.870441554619724,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.40000000000046,
+            "old": [
+              13,
+              18
+            ],
+            "new": [
+              14,
+              18
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.02761839229843,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.60000000000045,
+            "old": [
+              14,
+              18
+            ],
+            "new": [
+              14,
+              19
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.106428485470547,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 143.20000000000041,
+            "old": [
+              14,
+              19
+            ],
+            "new": [
+              14,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.343178286731835,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 145.0000000000003,
+            "old": [
+              14,
+              20
+            ],
+            "new": [
+              15,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 14.05699335214404,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 147.40000000000018,
+            "old": [
+              15,
+              20
+            ],
+            "new": [
+              16,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 15.009099170310792,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 150.00000000000003,
+            "old": [
+              16,
+              20
+            ],
+            "new": [
+              17,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 16.03251406138691,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 152.59999999999988,
+            "old": [
+              17,
+              20
+            ],
+            "new": [
+              18,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 17.062232029192362,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 154.99999999999974,
+            "old": [
+              18,
+              20
+            ],
+            "new": [
+              19,
+              20
+            ],
+            "actual_prefix": 10,
+            "formation_progress": 18.01062460990102,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 157.5999999999996,
+            "old": [
+              19,
+              20
+            ],
+            "new": [
+              20,
+              20
+            ],
+            "actual_prefix": 12,
+            "formation_progress": 19.042382049393577,
+            "release": false,
+            "feed": 0.9999999999999999
+          }
+        ],
+        "final_partition": [
+          20,
+          20
+        ],
+        "primary_gate_passed": false,
+        "full_crossing": false,
+        "outcome": "time_limit"
+      },
+      "limitation": "Angular wrap and contact presence do not establish force closure; prefix has a captured-front floor."
+    },
+    "coordination": {
+      "maximum_phase_difference": 0.09478974274339436,
+      "initial_front_wrap": 0.5475098818955323,
+      "final_front_wrap": 1.8630052064207723,
+      "maximum_formation": 20
+    },
+    "files": 58,
+    "bytes": 70426835
+  },
+  {
+    "run": "transfer_bootstrap_finish_sign_truth",
+    "archive": "archives/transfer_bootstrap_finish_sign_truth.zip",
+    "hypothesis": "Isolate finish bug: end helix now follows the current A-D torsion sign rather than the initial drape sign; same switch condition and identical pre-switch controls.",
+    "settings": {
+      "name": "transfer_bootstrap_finish_sign_truth",
+      "hypothesis": "Isolate finish bug: end helix now follows the current A-D torsion sign rather than the initial drape sign; same switch condition and identical pre-switch controls.",
+      "scene": "horizontal",
+      "checkpoint": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\candidate",
+      "require_response_gate": true,
+      "junction_search": true,
+      "network_calibration": false,
+      "feedback_progress_guard": false,
+      "release_requires_grip": true,
+      "acquire_initial_front": false,
+      "bootstrap_front": true,
+      "truth_diagnostic": true,
+      "coherent_acquisition": false,
+      "require_formed_finish": false,
+      "response_state": null,
+      "encoder_initial_axes": false,
+      "encoder_tracking": false,
+      "dynamic_observer": true,
+      "response_calibration_cache": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\ensemble_cache",
+      "preserve_probe_intent": true,
+      "section_domain": false,
+      "single_target_after_release": false,
+      "whole_coil_registration": false,
+      "cad_support": true,
+      "cad_refine_axes": false,
+      "target_frame_acquisition": false,
+      "conserve_middle": false,
+      "distinguish_lines": false,
+      "observable_support": false,
+      "seconds": 240.0,
+      "dt": 0.2,
+      "delivery_period": 0.02,
+      "velocity_feedback": 0.02,
+      "velocity_scope": "all",
+      "delivery_torque_equivalent": true,
+      "velocity_filter": 0.02,
+      "body_damping": 20.0,
+      "body_speed_limit": 0.2,
+      "body_reference_module": -1,
+      "coordinate_acquisition": false,
+      "tail_mode": "same",
+      "finish_mode": "original",
+      "maximum_lead": 2.0,
+      "target_lead_deg": 8.0,
+      "hold_bound": 1.0,
+      "bound_held_phase": false,
+      "rear_phase_lead": 0.0,
+      "support_centers": true,
+      "complete_end_spans": false,
+      "local_contact_projection": true,
+      "dual_contact_projection": false,
+      "rolling_lookahead": null,
+      "joints_per_rad": 2.1333333333333333,
+      "supported_recovery": 0.35,
+      "middle_follow": 0.06,
+      "shape_speed": 90.0,
+      "support_memory": false,
+      "middle_rate_match": false,
+      "coherent_helix": false,
+      "reference_memory": false,
+      "support_hold": false,
+      "anchored_helix": false,
+      "turning_formation": false,
+      "smooth_turning": false,
+      "couple_acquisition": false,
+      "acquired_shape": false,
+      "both_ends_shape": false,
+      "contact_reference": false,
+      "capacity_preload": false,
+      "radial_acquisition": true,
+      "output_root": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1"
+    },
+    "outcome": "full_crossing_validated",
+    "metrics": {
+      "name": "transfer_bootstrap_finish_sign_truth",
+      "outcome": "full_crossing_validated",
+      "physical_seconds": 228.40000000081275,
+      "metrics_end_seconds": 228.10000000081132,
+      "complete": true,
+      "final_region": 21,
+      "max_region": 21,
+      "final_wrap": 2.076499156240479,
+      "finish_seconds": 161.4,
+      "last_source_contact_seconds": 164.16000000050602,
+      "windows": {
+        "whole": {
+          "seconds": 228.11,
+          "maximum_error_deg": 36.11803760525986,
+          "mean_error_deg": 0.6012111893431155,
+          "maximum_joint_speed_deg_s": 83.28509398586951,
+          "p99_joint_speed_deg_s": 29.072743160047096,
+          "maximum_module_speed_mm_s": 694.6935037391762,
+          "saturated_joint_sample_fraction": 0.2347310508088203,
+          "saturated_joint_seconds": 1070.89,
+          "target_contact_fraction": 1.0
+        },
+        "after_capture": {
+          "seconds": 227.11,
+          "maximum_error_deg": 3.853353385783609,
+          "mean_error_deg": 0.6022200007576513,
+          "maximum_joint_speed_deg_s": 72.60481053075067,
+          "p99_joint_speed_deg_s": 29.075091219639802,
+          "maximum_module_speed_mm_s": 694.6935037391762,
+          "saturated_joint_sample_fraction": 0.23551362775747436,
+          "saturated_joint_seconds": 1069.75,
+          "target_contact_fraction": 1.0
+        },
+        "transfer": {
+          "seconds": 160.4,
+          "maximum_error_deg": 3.3244984126913297,
+          "mean_error_deg": 0.6813246007184107,
+          "maximum_joint_speed_deg_s": 72.60481053075067,
+          "p99_joint_speed_deg_s": 29.405611836843434,
+          "maximum_module_speed_mm_s": 551.1319547555732,
+          "saturated_joint_sample_fraction": 0.2909788029925187,
+          "saturated_joint_seconds": 933.46,
+          "target_contact_fraction": 1.0
+        },
+        "completion": {
+          "seconds": 4.0,
+          "maximum_error_deg": 3.853353385783609,
+          "mean_error_deg": 0.5245487951302735,
+          "maximum_joint_speed_deg_s": 69.41146913206825,
+          "p99_joint_speed_deg_s": 46.38675832544678,
+          "maximum_module_speed_mm_s": 694.6935037391762,
+          "saturated_joint_sample_fraction": 0.126125,
+          "saturated_joint_seconds": 10.09,
+          "target_contact_fraction": 1.0
+        }
+      },
+      "initial_error_deg": 36.11803760525986
+    },
+    "acceptance": {
+      "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+      "full_crossing_and_continued_rolling": true,
+      "accepted_window": {
+        "start_seconds": 189.7500000006282,
+        "end_seconds": 228.10000000081132,
+        "phase_advance_rad": 7.199999999999989,
+        "center_advance_mm": 233.96291351264028,
+        "minimum_wrap_turns": 1.9925184211807387,
+        "minimum_axial_clearance_mm": 108.87944623830191,
+        "minimum_contact_span_mm": 250.63257144929662,
+        "front_half_contact_fraction": 1.0,
+        "rear_half_contact_fraction": 1.0,
+        "maximum_module_radius_mm": 119.94714059185365,
+        "all_module_radius_band_fraction": 0.29014598540145986,
+        "mean_tracking_error_deg": 0.40833281747661065,
+        "maximum_tracking_error_deg": 1.6758093059263368
+      },
+      "legacy_all_modules_in_radius_band_passed": true,
+      "maximum_target_region_modules": 21,
+      "final_target_region_modules": 21,
+      "minimum_all_point_target_progress_final_mm": 443.0572010706256,
+      "final_wrap_turns": 2.076499156240479,
+      "floor_contact": false,
+      "final_center_progress_mm": 677.6132982794419,
+      "final_maximum_radius_mm": 92.14728742765793,
+      "limitation": "This independent auditor uses true axes and contacts for scoring only. Controller privileges are recorded separately in plan.json; a pass does not establish hardware performance."
+    },
+    "stage1": {
+      "complete": true,
+      "quality": {
+        "joint_speed": true,
+        "body_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "passed": false
+    },
+    "delivery": {
+      "command_count": 11420,
+      "response_probe_commands": 60,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": false,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 8.571065978272173,
+      "maximum_command_increment_deg": 1.8000000000000025,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "diagnosis": {
+      "peak_module_speed": {
+        "time_seconds": 162.87000000049986,
+        "module": 20,
+        "speed_mm_s": 694.6935037391762,
+        "source_contact_modules": [],
+        "target_contact_modules": [
+          0,
+          6,
+          7,
+          13
+        ],
+        "target_region_modules": 13,
+        "ground": false,
+        "commanded_partition": [
+          20,
+          20
+        ],
+        "formation_progress": 20,
+        "front_wrap_proxy": 1.3407014602711094
+      },
+      "first_source_absence_0_6s_end": 46.849999999945865,
+      "assessment": {
+        "initial_pose_exact": true,
+        "EXE_delivery_checked": true,
+        "physical_seconds": 228.40000000081275,
+        "front_progress_mm": 410.8361445694577,
+        "maximum_front_progress_mm": 410.8361445694577,
+        "maximum_sustained_new_modules": 15,
+        "final_sustained_new_modules": 15,
+        "final_new_module_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "front_target_contact_fraction": 0.9874786568013659,
+        "rear_source_contact_fraction": 0.30296396830261374,
+        "floor_contact": false,
+        "maximum_tracking_error_deg": 36.11803760525986,
+        "torque_saturated_fraction": 0.23459787224727463,
+        "first_front_contact_loss_seconds": 42.42999999995156,
+        "boundary_events": [
+          {
+            "time": 0.2,
+            "old": [
+              5,
+              10
+            ],
+            "new": [
+              6,
+              10
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 5.079999999999999,
+            "release": false,
+            "feed": 0.28346868942621073
+          },
+          {
+            "time": 2.6,
+            "old": [
+              6,
+              10
+            ],
+            "new": [
+              7,
+              11
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.011739955950616,
+            "release": true,
+            "feed": 0.986876271263059
+          },
+          {
+            "time": 3.400000000000001,
+            "old": [
+              7,
+              11
+            ],
+            "new": [
+              7,
+              12
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.321460706356821,
+            "release": true,
+            "feed": 0.9965406226635353
+          },
+          {
+            "time": 5.600000000000002,
+            "old": [
+              7,
+              12
+            ],
+            "new": [
+              8,
+              12
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 7.079119741229837,
+            "release": false,
+            "feed": 0.9999115730113401
+          },
+          {
+            "time": 9.799999999999997,
+            "old": [
+              8,
+              12
+            ],
+            "new": [
+              9,
+              12
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 8.079637013553164,
+            "release": false,
+            "feed": 0.9999999193650237
+          },
+          {
+            "time": 16.399999999999974,
+            "old": [
+              9,
+              12
+            ],
+            "new": [
+              9,
+              13
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999986533
+          },
+          {
+            "time": 26.19999999999994,
+            "old": [
+              9,
+              13
+            ],
+            "new": [
+              9,
+              14
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 29.399999999999928,
+            "old": [
+              9,
+              14
+            ],
+            "new": [
+              10,
+              14
+            ],
+            "actual_prefix": 8,
+            "formation_progress": 9.079314445280954,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.199999999999946,
+            "old": [
+              10,
+              14
+            ],
+            "new": [
+              11,
+              14
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.017419415045282,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.39999999999995,
+            "old": [
+              11,
+              14
+            ],
+            "new": [
+              11,
+              15
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.094224799502483,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.99999999999996,
+            "old": [
+              11,
+              15
+            ],
+            "new": [
+              11,
+              16
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.328715128440662,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 35.599999999999966,
+            "old": [
+              11,
+              16
+            ],
+            "new": [
+              11,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.563003227775514,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 37.19999999999999,
+            "old": [
+              11,
+              17
+            ],
+            "new": [
+              12,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 11.037822689247461,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 42.600000000000065,
+            "old": [
+              12,
+              17
+            ],
+            "new": [
+              13,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 12.078873064676982,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.00000000000048,
+            "old": [
+              13,
+              17
+            ],
+            "new": [
+              13,
+              18
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 12.870441554619724,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.40000000000046,
+            "old": [
+              13,
+              18
+            ],
+            "new": [
+              14,
+              18
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.02761839229843,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.60000000000045,
+            "old": [
+              14,
+              18
+            ],
+            "new": [
+              14,
+              19
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.106428485470547,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 143.20000000000041,
+            "old": [
+              14,
+              19
+            ],
+            "new": [
+              14,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.343178286731835,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 145.0000000000003,
+            "old": [
+              14,
+              20
+            ],
+            "new": [
+              15,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 14.05699335214404,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 147.40000000000018,
+            "old": [
+              15,
+              20
+            ],
+            "new": [
+              16,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 15.009099170310792,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 150.00000000000003,
+            "old": [
+              16,
+              20
+            ],
+            "new": [
+              17,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 16.03251406138691,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 152.59999999999988,
+            "old": [
+              17,
+              20
+            ],
+            "new": [
+              18,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 17.062232029192362,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 154.99999999999974,
+            "old": [
+              18,
+              20
+            ],
+            "new": [
+              19,
+              20
+            ],
+            "actual_prefix": 10,
+            "formation_progress": 18.01062460990102,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 157.5999999999996,
+            "old": [
+              19,
+              20
+            ],
+            "new": [
+              20,
+              20
+            ],
+            "actual_prefix": 12,
+            "formation_progress": 19.042382049393577,
+            "release": false,
+            "feed": 0.9999999999999999
+          }
+        ],
+        "final_partition": [
+          20,
+          20
+        ],
+        "primary_gate_passed": false,
+        "full_crossing": true,
+        "outcome": "full_crossing_validated"
+      },
+      "limitation": "Angular wrap and contact presence do not establish force closure; prefix has a captured-front floor."
+    },
+    "coordination": {
+      "maximum_phase_difference": 0.09478974274339436,
+      "initial_front_wrap": 0.5475098818955323,
+      "final_front_wrap": 2.076847189262882,
+      "maximum_formation": 20
+    },
+    "files": 57,
+    "bytes": 66609195
+  },
+  {
+    "run": "transfer_bootstrap_front",
+    "archive": "archives/transfer_bootstrap_front.zip",
+    "hypothesis": "Natural initial front is not acquired: use contacting-link radius and retain forming recovery until measured admission; same A-D, phase rate and actuator limits.",
+    "settings": {
+      "name": "transfer_bootstrap_front",
+      "hypothesis": "Natural initial front is not acquired: use contacting-link radius and retain forming recovery until measured admission; same A-D, phase rate and actuator limits.",
+      "scene": "horizontal",
+      "checkpoint": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\candidate",
+      "require_response_gate": true,
+      "junction_search": true,
+      "network_calibration": false,
+      "feedback_progress_guard": false,
+      "release_requires_grip": true,
+      "acquire_initial_front": false,
+      "bootstrap_front": true,
+      "response_state": null,
+      "encoder_initial_axes": false,
+      "encoder_tracking": false,
+      "dynamic_observer": true,
+      "response_calibration_cache": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\ensemble_cache",
+      "preserve_probe_intent": true,
+      "section_domain": false,
+      "single_target_after_release": false,
+      "whole_coil_registration": false,
+      "cad_support": true,
+      "cad_refine_axes": false,
+      "target_frame_acquisition": false,
+      "conserve_middle": false,
+      "distinguish_lines": false,
+      "observable_support": false,
+      "seconds": 200.0,
+      "dt": 0.2,
+      "delivery_period": 0.02,
+      "velocity_feedback": 0.02,
+      "velocity_scope": "all",
+      "delivery_torque_equivalent": true,
+      "velocity_filter": 0.02,
+      "body_damping": 20.0,
+      "body_speed_limit": 0.2,
+      "body_reference_module": -1,
+      "coordinate_acquisition": false,
+      "tail_mode": "same",
+      "finish_mode": "original",
+      "maximum_lead": 2.0,
+      "target_lead_deg": 8.0,
+      "hold_bound": 1.0,
+      "bound_held_phase": false,
+      "rear_phase_lead": 0.0,
+      "support_centers": true,
+      "complete_end_spans": false,
+      "local_contact_projection": true,
+      "dual_contact_projection": false,
+      "rolling_lookahead": null,
+      "joints_per_rad": 2.1333333333333333,
+      "supported_recovery": 0.35,
+      "middle_follow": 0.06,
+      "shape_speed": 90.0,
+      "support_memory": false,
+      "middle_rate_match": false,
+      "coherent_helix": false,
+      "reference_memory": false,
+      "support_hold": false,
+      "anchored_helix": false,
+      "turning_formation": false,
+      "smooth_turning": false,
+      "couple_acquisition": false,
+      "acquired_shape": false,
+      "both_ends_shape": false,
+      "contact_reference": false,
+      "capacity_preload": false,
+      "radial_acquisition": true,
+      "output_root": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1"
+    },
+    "outcome": "support_lost",
+    "metrics": {
+      "name": "transfer_bootstrap_front",
+      "outcome": "support_lost",
+      "physical_seconds": 126.80000000032761,
+      "metrics_end_seconds": 126.80000000032761,
+      "complete": false,
+      "final_region": 0,
+      "max_region": 8,
+      "final_wrap": 0.4617643174818151,
+      "finish_seconds": 107.2,
+      "last_source_contact_seconds": 112.93000000026139,
+      "windows": {
+        "whole": {
+          "seconds": 126.81,
+          "maximum_error_deg": 36.11803760525986,
+          "mean_error_deg": 0.7086307560873074,
+          "maximum_joint_speed_deg_s": 95.88728990254684,
+          "p99_joint_speed_deg_s": 46.24857626268493,
+          "maximum_module_speed_mm_s": 1152.4601366373795,
+          "saturated_joint_sample_fraction": 0.2791459664064348,
+          "saturated_joint_seconds": 707.97,
+          "target_contact_fraction": 0.9958205188865231
+        },
+        "after_capture": {
+          "seconds": 125.81,
+          "maximum_error_deg": 6.583332793687601,
+          "mean_error_deg": 0.7113056684718507,
+          "maximum_joint_speed_deg_s": 95.88728990254684,
+          "p99_joint_speed_deg_s": 46.25746234682647,
+          "maximum_module_speed_mm_s": 1152.4601366373795,
+          "saturated_joint_sample_fraction": 0.2809116922343216,
+          "saturated_joint_seconds": 706.83,
+          "target_contact_fraction": 0.9957872983069709
+        },
+        "transfer": {
+          "seconds": 106.2,
+          "maximum_error_deg": 3.1502748757189774,
+          "mean_error_deg": 0.7837650493863,
+          "maximum_joint_speed_deg_s": 70.80457989184943,
+          "p99_joint_speed_deg_s": 44.25853134613983,
+          "maximum_module_speed_mm_s": 439.67817856566455,
+          "saturated_joint_sample_fraction": 0.32093220338983053,
+          "saturated_joint_seconds": 681.66,
+          "target_contact_fraction": 0.9998116760828625
+        },
+        "completion": {
+          "seconds": 4.0,
+          "maximum_error_deg": 3.230879521321186,
+          "mean_error_deg": 0.5126365414126131,
+          "maximum_joint_speed_deg_s": 77.81072545830418,
+          "p99_joint_speed_deg_s": 50.04675465575454,
+          "maximum_module_speed_mm_s": 456.65234496580615,
+          "saturated_joint_sample_fraction": 0.150875,
+          "saturated_joint_seconds": 12.07,
+          "target_contact_fraction": 0.9975
+        }
+      },
+      "initial_error_deg": 36.11803760525986
+    },
+    "acceptance": {
+      "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+      "full_crossing_and_continued_rolling": false,
+      "accepted_window": null,
+      "legacy_all_modules_in_radius_band_passed": false,
+      "maximum_target_region_modules": 8,
+      "final_target_region_modules": 0,
+      "minimum_all_point_target_progress_final_mm": 89.06053334346714,
+      "final_wrap_turns": 0.4617643174818151,
+      "floor_contact": true,
+      "final_center_progress_mm": 87.5338576324425,
+      "final_maximum_radius_mm": 966.4071430474125,
+      "limitation": "This independent auditor uses true axes and contacts for scoring only. Controller privileges are recorded separately in plan.json; a pass does not establish hardware performance."
+    },
+    "stage1": {
+      "complete": false,
+      "quality": {
+        "joint_speed": false,
+        "body_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "passed": false
+    },
+    "delivery": {
+      "command_count": 6340,
+      "response_probe_commands": 60,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": false,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 9.6543793881805,
+      "maximum_command_increment_deg": 1.800000000000004,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "diagnosis": {
+      "peak_module_speed": {
+        "time_seconds": 126.80000000032761,
+        "module": 20,
+        "speed_mm_s": 1152.4601366373795,
+        "source_contact_modules": [],
+        "target_contact_modules": [],
+        "target_region_modules": 0,
+        "ground": true,
+        "commanded_partition": [
+          20,
+          20
+        ],
+        "formation_progress": 20,
+        "front_wrap_proxy": 0.03552738334016433
+      },
+      "first_source_absence_0_6s_end": 52.16999999997127,
+      "assessment": {
+        "initial_pose_exact": true,
+        "EXE_delivery_checked": true,
+        "physical_seconds": 126.80000000032761,
+        "front_progress_mm": 28.255742549929735,
+        "maximum_front_progress_mm": 93.1230108237285,
+        "maximum_sustained_new_modules": 7,
+        "final_sustained_new_modules": 0,
+        "final_new_module_ids": [],
+        "front_target_contact_fraction": 0.7525431748284835,
+        "rear_source_contact_fraction": 0.6664300922640171,
+        "floor_contact": true,
+        "maximum_tracking_error_deg": 36.11803760525986,
+        "torque_saturated_fraction": 0.2791459664064348,
+        "first_front_contact_loss_seconds": 76.2200000000861,
+        "boundary_events": [
+          {
+            "time": 0.2,
+            "old": [
+              5,
+              10
+            ],
+            "new": [
+              6,
+              10
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 5.079999999999999,
+            "release": false,
+            "feed": 0.28346868942621073
+          },
+          {
+            "time": 2.6,
+            "old": [
+              6,
+              10
+            ],
+            "new": [
+              7,
+              11
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.0120839385454135,
+            "release": true,
+            "feed": 0.986876271263059
+          },
+          {
+            "time": 3.400000000000001,
+            "old": [
+              7,
+              11
+            ],
+            "new": [
+              7,
+              12
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.321820673438596,
+            "release": true,
+            "feed": 0.9965406226635353
+          },
+          {
+            "time": 5.600000000000002,
+            "old": [
+              7,
+              12
+            ],
+            "new": [
+              8,
+              12
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 7.079120645244839,
+            "release": false,
+            "feed": 0.9999115730113401
+          },
+          {
+            "time": 9.799999999999997,
+            "old": [
+              8,
+              12
+            ],
+            "new": [
+              9,
+              12
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 8.079640179873158,
+            "release": false,
+            "feed": 0.9999999193650237
+          },
+          {
+            "time": 16.399999999999974,
+            "old": [
+              9,
+              12
+            ],
+            "new": [
+              9,
+              13
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999986533
+          },
+          {
+            "time": 26.19999999999994,
+            "old": [
+              9,
+              13
+            ],
+            "new": [
+              9,
+              14
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 29.599999999999927,
+            "old": [
+              9,
+              14
+            ],
+            "new": [
+              10,
+              14
+            ],
+            "actual_prefix": 8,
+            "formation_progress": 9.079333493326118,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.199999999999946,
+            "old": [
+              10,
+              14
+            ],
+            "new": [
+              11,
+              14
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.016614794777682,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.39999999999995,
+            "old": [
+              11,
+              14
+            ],
+            "new": [
+              11,
+              15
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.093777919877297,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.99999999999996,
+            "old": [
+              11,
+              15
+            ],
+            "new": [
+              11,
+              16
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.328701449052941,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 35.599999999999966,
+            "old": [
+              11,
+              16
+            ],
+            "new": [
+              11,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.563171905930473,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 36.999999999999986,
+            "old": [
+              11,
+              17
+            ],
+            "new": [
+              12,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 11.039091202351765,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 42.40000000000006,
+            "old": [
+              12,
+              17
+            ],
+            "new": [
+              13,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 12.079839606691266,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 72.40000000000049,
+            "old": [
+              13,
+              17
+            ],
+            "new": [
+              13,
+              18
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 12.319489470751009,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 73.0000000000005,
+            "old": [
+              13,
+              18
+            ],
+            "new": [
+              13,
+              19
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 12.55833043509137,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 73.6000000000005,
+            "old": [
+              13,
+              19
+            ],
+            "new": [
+              13,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 12.797384973521881,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 74.20000000000051,
+            "old": [
+              13,
+              20
+            ],
+            "new": [
+              14,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 13.035257267031643,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 77.60000000000056,
+            "old": [
+              14,
+              20
+            ],
+            "new": [
+              15,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 14.05547175091563,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 80.0000000000006,
+            "old": [
+              15,
+              20
+            ],
+            "new": [
+              16,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 15.008509426329514,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 90.00000000000074,
+            "old": [
+              16,
+              20
+            ],
+            "new": [
+              17,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 16.034872964061798,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 94.4000000000008,
+            "old": [
+              17,
+              20
+            ],
+            "new": [
+              18,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 17.062053584675198,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 96.80000000000084,
+            "old": [
+              18,
+              20
+            ],
+            "new": [
+              19,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 18.0065429578835,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 99.40000000000087,
+            "old": [
+              19,
+              20
+            ],
+            "new": [
+              20,
+              20
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 19.03232752669462,
+            "release": false,
+            "feed": 0.9999999999999999
+          }
+        ],
+        "final_partition": [
+          20,
+          20
+        ],
+        "primary_gate_passed": false,
+        "full_crossing": false,
+        "outcome": "support_lost"
+      },
+      "limitation": "Angular wrap and contact presence do not establish force closure; prefix has a captured-front floor."
+    },
+    "coordination": {
+      "maximum_phase_difference": 0.09478974274339436,
+      "initial_front_wrap": 0.5475041041904222,
+      "final_front_wrap": 0.03552738334016433,
+      "maximum_formation": 20
+    },
+    "files": 58,
+    "bytes": 36733561
+  },
+  {
+    "run": "transfer_bootstrap_truth_diagnostic",
+    "archive": "archives/transfer_bootstrap_truth_diagnostic.zip",
+    "hypothesis": "Diagnostic only: identical probe and bootstrap controller, substitute physical geometry/support to isolate observed axis drift; never autonomous acceptance.",
+    "settings": {
+      "name": "transfer_bootstrap_truth_diagnostic",
+      "hypothesis": "Diagnostic only: identical probe and bootstrap controller, substitute physical geometry/support to isolate observed axis drift; never autonomous acceptance.",
+      "scene": "horizontal",
+      "checkpoint": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\candidate",
+      "require_response_gate": true,
+      "junction_search": true,
+      "network_calibration": false,
+      "feedback_progress_guard": false,
+      "release_requires_grip": true,
+      "acquire_initial_front": false,
+      "bootstrap_front": true,
+      "truth_diagnostic": true,
+      "response_state": null,
+      "encoder_initial_axes": false,
+      "encoder_tracking": false,
+      "dynamic_observer": true,
+      "response_calibration_cache": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\ensemble_cache",
+      "preserve_probe_intent": true,
+      "section_domain": false,
+      "single_target_after_release": false,
+      "whole_coil_registration": false,
+      "cad_support": true,
+      "cad_refine_axes": false,
+      "target_frame_acquisition": false,
+      "conserve_middle": false,
+      "distinguish_lines": false,
+      "observable_support": false,
+      "seconds": 200.0,
+      "dt": 0.2,
+      "delivery_period": 0.02,
+      "velocity_feedback": 0.02,
+      "velocity_scope": "all",
+      "delivery_torque_equivalent": true,
+      "velocity_filter": 0.02,
+      "body_damping": 20.0,
+      "body_speed_limit": 0.2,
+      "body_reference_module": -1,
+      "coordinate_acquisition": false,
+      "tail_mode": "same",
+      "finish_mode": "original",
+      "maximum_lead": 2.0,
+      "target_lead_deg": 8.0,
+      "hold_bound": 1.0,
+      "bound_held_phase": false,
+      "rear_phase_lead": 0.0,
+      "support_centers": true,
+      "complete_end_spans": false,
+      "local_contact_projection": true,
+      "dual_contact_projection": false,
+      "rolling_lookahead": null,
+      "joints_per_rad": 2.1333333333333333,
+      "supported_recovery": 0.35,
+      "middle_follow": 0.06,
+      "shape_speed": 90.0,
+      "support_memory": false,
+      "middle_rate_match": false,
+      "coherent_helix": false,
+      "reference_memory": false,
+      "support_hold": false,
+      "anchored_helix": false,
+      "turning_formation": false,
+      "smooth_turning": false,
+      "couple_acquisition": false,
+      "acquired_shape": false,
+      "both_ends_shape": false,
+      "contact_reference": false,
+      "capacity_preload": false,
+      "radial_acquisition": true,
+      "output_root": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1"
+    },
+    "outcome": "support_lost",
+    "metrics": {
+      "name": "transfer_bootstrap_truth_diagnostic",
+      "outcome": "support_lost",
+      "physical_seconds": 175.4000000005597,
+      "metrics_end_seconds": 175.4000000005597,
+      "complete": false,
+      "final_region": 2,
+      "max_region": 15,
+      "final_wrap": 0.5735998721587442,
+      "finish_seconds": 161.4,
+      "last_source_contact_seconds": 79.83000000010334,
+      "windows": {
+        "whole": {
+          "seconds": 175.41,
+          "maximum_error_deg": 36.11803760525986,
+          "mean_error_deg": 0.649965367681748,
+          "maximum_joint_speed_deg_s": 91.34783239336664,
+          "p99_joint_speed_deg_s": 35.749811366011805,
+          "maximum_module_speed_mm_s": 940.4719178098898,
+          "saturated_joint_sample_fraction": 0.2700644205005416,
+          "saturated_joint_seconds": 947.44,
+          "target_contact_fraction": 0.9980046747619862
+        },
+        "after_capture": {
+          "seconds": 174.41,
+          "maximum_error_deg": 5.20195946311415,
+          "mean_error_deg": 0.6515585408868042,
+          "maximum_joint_speed_deg_s": 91.34783239336664,
+          "p99_joint_speed_deg_s": 35.77463280595382,
+          "maximum_module_speed_mm_s": 940.4719178098898,
+          "saturated_joint_sample_fraction": 0.2712860501118055,
+          "saturated_joint_seconds": 946.3000000000001,
+          "target_contact_fraction": 0.9979932343328938
+        },
+        "transfer": {
+          "seconds": 160.4,
+          "maximum_error_deg": 3.3244984126913297,
+          "mean_error_deg": 0.6813266018965898,
+          "maximum_joint_speed_deg_s": 72.60481053075067,
+          "p99_joint_speed_deg_s": 29.405611836843434,
+          "maximum_module_speed_mm_s": 551.1319547555732,
+          "saturated_joint_sample_fraction": 0.29096321695760596,
+          "saturated_joint_seconds": 933.41,
+          "target_contact_fraction": 1.0
+        },
+        "completion": {
+          "seconds": 4.0,
+          "maximum_error_deg": 1.7508508476603004,
+          "mean_error_deg": 0.3436980194962331,
+          "maximum_joint_speed_deg_s": 68.20499216958558,
+          "p99_joint_speed_deg_s": 49.84854020648932,
+          "maximum_module_speed_mm_s": 805.1244283954723,
+          "saturated_joint_sample_fraction": 0.03325,
+          "saturated_joint_seconds": 2.66,
+          "target_contact_fraction": 1.0
+        }
+      },
+      "initial_error_deg": 36.11803760525986
+    },
+    "acceptance": {
+      "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+      "full_crossing_and_continued_rolling": false,
+      "accepted_window": null,
+      "legacy_all_modules_in_radius_band_passed": false,
+      "maximum_target_region_modules": 15,
+      "final_target_region_modules": 2,
+      "minimum_all_point_target_progress_final_mm": 202.32437900181526,
+      "final_wrap_turns": 0.5735998721587442,
+      "floor_contact": true,
+      "final_center_progress_mm": 207.3449175502139,
+      "final_maximum_radius_mm": 968.694455981952,
+      "limitation": "This independent auditor uses true axes and contacts for scoring only. Controller privileges are recorded separately in plan.json; a pass does not establish hardware performance."
+    },
+    "stage1": {
+      "complete": false,
+      "quality": {
+        "joint_speed": false,
+        "body_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "passed": false
+    },
+    "delivery": {
+      "command_count": 8770,
+      "response_probe_commands": 60,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": false,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 8.740977825798847,
+      "maximum_command_increment_deg": 1.800000000000004,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "diagnosis": {
+      "peak_module_speed": {
+        "time_seconds": 175.2800000005591,
+        "module": 3,
+        "speed_mm_s": 940.4719178098898,
+        "source_contact_modules": [],
+        "target_contact_modules": [
+          3
+        ],
+        "target_region_modules": 2,
+        "ground": false,
+        "commanded_partition": [
+          20,
+          20
+        ],
+        "formation_progress": 20,
+        "front_wrap_proxy": 0.43232100168796894
+      },
+      "first_source_absence_0_6s_end": 46.849999999945865,
+      "assessment": {
+        "initial_pose_exact": true,
+        "EXE_delivery_checked": true,
+        "physical_seconds": 175.4000000005597,
+        "front_progress_mm": 132.43234454420752,
+        "maximum_front_progress_mm": 135.54200319070208,
+        "maximum_sustained_new_modules": 10,
+        "final_sustained_new_modules": 0,
+        "final_new_module_ids": [],
+        "front_target_contact_fraction": 0.9460692092811128,
+        "rear_source_contact_fraction": 0.39450430420158483,
+        "floor_contact": true,
+        "maximum_tracking_error_deg": 36.11803760525986,
+        "torque_saturated_fraction": 0.2700644205005416,
+        "first_front_contact_loss_seconds": 42.42999999995156,
+        "boundary_events": [
+          {
+            "time": 0.2,
+            "old": [
+              5,
+              10
+            ],
+            "new": [
+              6,
+              10
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 5.079999999999999,
+            "release": false,
+            "feed": 0.28346868942621073
+          },
+          {
+            "time": 2.6,
+            "old": [
+              6,
+              10
+            ],
+            "new": [
+              7,
+              11
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.011739955950616,
+            "release": true,
+            "feed": 0.986876271263059
+          },
+          {
+            "time": 3.400000000000001,
+            "old": [
+              7,
+              11
+            ],
+            "new": [
+              7,
+              12
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.321460706356821,
+            "release": true,
+            "feed": 0.9965406226635353
+          },
+          {
+            "time": 5.600000000000002,
+            "old": [
+              7,
+              12
+            ],
+            "new": [
+              8,
+              12
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 7.079119741229837,
+            "release": false,
+            "feed": 0.9999115730113401
+          },
+          {
+            "time": 9.799999999999997,
+            "old": [
+              8,
+              12
+            ],
+            "new": [
+              9,
+              12
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 8.079637013553164,
+            "release": false,
+            "feed": 0.9999999193650237
+          },
+          {
+            "time": 16.399999999999974,
+            "old": [
+              9,
+              12
+            ],
+            "new": [
+              9,
+              13
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999986533
+          },
+          {
+            "time": 26.19999999999994,
+            "old": [
+              9,
+              13
+            ],
+            "new": [
+              9,
+              14
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 29.399999999999928,
+            "old": [
+              9,
+              14
+            ],
+            "new": [
+              10,
+              14
+            ],
+            "actual_prefix": 8,
+            "formation_progress": 9.079314445280954,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.199999999999946,
+            "old": [
+              10,
+              14
+            ],
+            "new": [
+              11,
+              14
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.017419415045282,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.39999999999995,
+            "old": [
+              11,
+              14
+            ],
+            "new": [
+              11,
+              15
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.094224799502483,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 34.99999999999996,
+            "old": [
+              11,
+              15
+            ],
+            "new": [
+              11,
+              16
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.328715128440662,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 35.599999999999966,
+            "old": [
+              11,
+              16
+            ],
+            "new": [
+              11,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.563003227775514,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 37.19999999999999,
+            "old": [
+              11,
+              17
+            ],
+            "new": [
+              12,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 11.037822689247461,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 42.600000000000065,
+            "old": [
+              12,
+              17
+            ],
+            "new": [
+              13,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 12.078873064676982,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.00000000000048,
+            "old": [
+              13,
+              17
+            ],
+            "new": [
+              13,
+              18
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 12.870441554619724,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.40000000000046,
+            "old": [
+              13,
+              18
+            ],
+            "new": [
+              14,
+              18
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.02761839229843,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 142.60000000000045,
+            "old": [
+              14,
+              18
+            ],
+            "new": [
+              14,
+              19
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.106428485470547,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 143.20000000000041,
+            "old": [
+              14,
+              19
+            ],
+            "new": [
+              14,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 13.343178286731835,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 145.0000000000003,
+            "old": [
+              14,
+              20
+            ],
+            "new": [
+              15,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 14.05699335214404,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 147.40000000000018,
+            "old": [
+              15,
+              20
+            ],
+            "new": [
+              16,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 15.009099170310792,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 150.00000000000003,
+            "old": [
+              16,
+              20
+            ],
+            "new": [
+              17,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 16.03251406138691,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 152.59999999999988,
+            "old": [
+              17,
+              20
+            ],
+            "new": [
+              18,
+              20
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 17.062232029192362,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 154.99999999999974,
+            "old": [
+              18,
+              20
+            ],
+            "new": [
+              19,
+              20
+            ],
+            "actual_prefix": 10,
+            "formation_progress": 18.01062460990102,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 157.5999999999996,
+            "old": [
+              19,
+              20
+            ],
+            "new": [
+              20,
+              20
+            ],
+            "actual_prefix": 12,
+            "formation_progress": 19.042382049393577,
+            "release": false,
+            "feed": 0.9999999999999999
+          }
+        ],
+        "final_partition": [
+          20,
+          20
+        ],
+        "primary_gate_passed": false,
+        "full_crossing": false,
+        "outcome": "support_lost"
+      },
+      "limitation": "Angular wrap and contact presence do not establish force closure; prefix has a captured-front floor."
+    },
+    "coordination": {
+      "maximum_phase_difference": 0.09478974274339436,
+      "initial_front_wrap": 0.5475098818955323,
+      "final_front_wrap": 0.43232100168796894,
+      "maximum_formation": 20
+    },
+    "files": 57,
+    "bytes": 50809033
+  },
+  {
+    "run": "transfer_coherent_acquisition",
+    "archive": "archives/transfer_coherent_acquisition.zip",
+    "hypothesis": "Replace independently evaluated local forming field by one measured-phase Yamada helix pattern; preserve bootstrap radial acquisition, A-D, delivery and physical limits.",
+    "settings": {
+      "name": "transfer_coherent_acquisition",
+      "hypothesis": "Replace independently evaluated local forming field by one measured-phase Yamada helix pattern; preserve bootstrap radial acquisition, A-D, delivery and physical limits.",
+      "scene": "horizontal",
+      "checkpoint": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\candidate",
+      "require_response_gate": true,
+      "junction_search": true,
+      "network_calibration": false,
+      "feedback_progress_guard": false,
+      "release_requires_grip": true,
+      "acquire_initial_front": false,
+      "bootstrap_front": true,
+      "truth_diagnostic": false,
+      "coherent_acquisition": true,
+      "response_state": null,
+      "encoder_initial_axes": false,
+      "encoder_tracking": false,
+      "dynamic_observer": true,
+      "response_calibration_cache": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1\\ensemble_cache",
+      "preserve_probe_intent": true,
+      "section_domain": false,
+      "single_target_after_release": false,
+      "whole_coil_registration": false,
+      "cad_support": true,
+      "cad_refine_axes": false,
+      "target_frame_acquisition": false,
+      "conserve_middle": false,
+      "distinguish_lines": false,
+      "observable_support": false,
+      "seconds": 200.0,
+      "dt": 0.2,
+      "delivery_period": 0.02,
+      "velocity_feedback": 0.02,
+      "velocity_scope": "all",
+      "delivery_torque_equivalent": true,
+      "velocity_filter": 0.02,
+      "body_damping": 20.0,
+      "body_speed_limit": 0.2,
+      "body_reference_module": -1,
+      "coordinate_acquisition": false,
+      "tail_mode": "same",
+      "finish_mode": "original",
+      "maximum_lead": 2.0,
+      "target_lead_deg": 8.0,
+      "hold_bound": 1.0,
+      "bound_held_phase": false,
+      "rear_phase_lead": 0.0,
+      "support_centers": true,
+      "complete_end_spans": false,
+      "local_contact_projection": true,
+      "dual_contact_projection": false,
+      "rolling_lookahead": null,
+      "joints_per_rad": 2.1333333333333333,
+      "supported_recovery": 0.35,
+      "middle_follow": 0.06,
+      "shape_speed": 90.0,
+      "support_memory": false,
+      "middle_rate_match": false,
+      "coherent_helix": false,
+      "reference_memory": false,
+      "support_hold": false,
+      "anchored_helix": false,
+      "turning_formation": false,
+      "smooth_turning": false,
+      "couple_acquisition": false,
+      "acquired_shape": false,
+      "both_ends_shape": false,
+      "contact_reference": false,
+      "capacity_preload": false,
+      "radial_acquisition": true,
+      "output_root": "experiments\\segmented_pole_20261005\\natural_takeover\\horizontal_natural_v1"
+    },
+    "outcome": "support_lost",
+    "metrics": {
+      "name": "transfer_coherent_acquisition",
+      "outcome": "support_lost",
+      "physical_seconds": 155.8000000004661,
+      "metrics_end_seconds": 155.8000000004661,
+      "complete": false,
+      "final_region": 0,
+      "max_region": 9,
+      "final_wrap": 0.07728190951217793,
+      "finish_seconds": null,
+      "last_source_contact_seconds": 155.5900000004651,
+      "windows": {
+        "whole": {
+          "seconds": 155.81,
+          "maximum_error_deg": 36.11803760525986,
+          "mean_error_deg": 0.5809659079835703,
+          "maximum_joint_speed_deg_s": 228.21788724541747,
+          "p99_joint_speed_deg_s": 24.384230374562513,
+          "maximum_module_speed_mm_s": 2092.408719894312,
+          "saturated_joint_sample_fraction": 0.22146524613311083,
+          "saturated_joint_seconds": 690.13,
+          "target_contact_fraction": 0.9981387587446249
+        },
+        "after_capture": {
+          "seconds": 154.81,
+          "maximum_error_deg": 3.057401730227883,
+          "mean_error_deg": 0.5823150836117313,
+          "maximum_joint_speed_deg_s": 228.21788724541747,
+          "p99_joint_speed_deg_s": 24.38347718351663,
+          "maximum_module_speed_mm_s": 2092.408719894312,
+          "saturated_joint_sample_fraction": 0.22252761449518765,
+          "saturated_joint_seconds": 688.99,
+          "target_contact_fraction": 0.9981267359989665
+        },
+        "transfer": {
+          "seconds": 154.81,
+          "maximum_error_deg": 3.057401730227883,
+          "mean_error_deg": 0.5823150836117313,
+          "maximum_joint_speed_deg_s": 228.21788724541747,
+          "p99_joint_speed_deg_s": 24.38347718351663,
+          "maximum_module_speed_mm_s": 2092.408719894312,
+          "saturated_joint_sample_fraction": 0.22252761449518765,
+          "saturated_joint_seconds": 688.99,
+          "target_contact_fraction": 0.9981267359989665
+        }
+      },
+      "initial_error_deg": 36.11803760525986
+    },
+    "acceptance": {
+      "acceptance": "strict radius band 0.6s at entry/end; all body on finite target branch; target-only distributed support; >=1.5 turns; >=2pi rolling and >=one link advance",
+      "full_crossing_and_continued_rolling": false,
+      "accepted_window": null,
+      "legacy_all_modules_in_radius_band_passed": false,
+      "maximum_target_region_modules": 9,
+      "final_target_region_modules": 0,
+      "minimum_all_point_target_progress_final_mm": -3.3477271208197448,
+      "final_wrap_turns": 0.07728190951217793,
+      "floor_contact": true,
+      "final_center_progress_mm": 52.200239208818516,
+      "final_maximum_radius_mm": 975.3388403665924,
+      "limitation": "This independent auditor uses true axes and contacts for scoring only. Controller privileges are recorded separately in plan.json; a pass does not establish hardware performance."
+    },
+    "stage1": {
+      "complete": false,
+      "quality": {
+        "joint_speed": false,
+        "body_speed": false,
+        "tracking": true,
+        "saturation": true
+      },
+      "passed": false
+    },
+    "delivery": {
+      "command_count": 7790,
+      "response_probe_commands": 60,
+      "response_probe_checked": true,
+      "probe_executed_in_natural_approach": false,
+      "interpolation_matches": false,
+      "velocity_feedback_checked": true,
+      "maximum_outer_reference_increment_deg": 9.114874270705332,
+      "maximum_command_increment_deg": 1.8000000000000025,
+      "initial_pose_and_EXE_delivery_checked": true
+    },
+    "diagnosis": {
+      "peak_module_speed": {
+        "time_seconds": 155.79000000046605,
+        "module": 0,
+        "speed_mm_s": 2092.408719894312,
+        "source_contact_modules": [],
+        "target_contact_modules": [],
+        "target_region_modules": 0,
+        "ground": true,
+        "commanded_partition": [
+          13,
+          17
+        ],
+        "formation_progress": 13.0,
+        "front_wrap_proxy": 0.0017197239933583154
+      },
+      "first_source_absence_0_6s_end": 102.58000000021197,
+      "assessment": {
+        "initial_pose_exact": true,
+        "EXE_delivery_checked": true,
+        "physical_seconds": 155.8000000004661,
+        "front_progress_mm": -18.088168216048047,
+        "maximum_front_progress_mm": 48.338714611007944,
+        "maximum_sustained_new_modules": 6,
+        "final_sustained_new_modules": 0,
+        "final_new_module_ids": [],
+        "front_target_contact_fraction": 0.9981387587446249,
+        "rear_source_contact_fraction": 0.8524484949618124,
+        "floor_contact": true,
+        "maximum_tracking_error_deg": 36.11803760525986,
+        "torque_saturated_fraction": 0.22146524613311083,
+        "first_front_contact_loss_seconds": 155.7600000004659,
+        "boundary_events": [
+          {
+            "time": 0.2,
+            "old": [
+              5,
+              10
+            ],
+            "new": [
+              6,
+              10
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 5.079999999999999,
+            "release": false,
+            "feed": 0.28346868942621073
+          },
+          {
+            "time": 2.4,
+            "old": [
+              6,
+              10
+            ],
+            "new": [
+              6,
+              11
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 5.943733603902674,
+            "release": true,
+            "feed": 0.9816843611112658
+          },
+          {
+            "time": 2.6,
+            "old": [
+              6,
+              11
+            ],
+            "new": [
+              7,
+              11
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.022512410995864,
+            "release": true,
+            "feed": 0.986876271263059
+          },
+          {
+            "time": 3.2000000000000006,
+            "old": [
+              7,
+              11
+            ],
+            "new": [
+              7,
+              12
+            ],
+            "actual_prefix": 5,
+            "formation_progress": 6.254734327101616,
+            "release": true,
+            "feed": 0.9951720500061686
+          },
+          {
+            "time": 15.799999999999976,
+            "old": [
+              7,
+              12
+            ],
+            "new": [
+              8,
+              12
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 7.079612975971761,
+            "release": false,
+            "feed": 0.9999999999963392
+          },
+          {
+            "time": 17.79999999999997,
+            "old": [
+              8,
+              12
+            ],
+            "new": [
+              8,
+              13
+            ],
+            "actual_prefix": 6,
+            "formation_progress": 7.85652949473373,
+            "release": true,
+            "feed": 0.9999999999998693
+          },
+          {
+            "time": 19.79999999999996,
+            "old": [
+              8,
+              13
+            ],
+            "new": [
+              9,
+              13
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 8.079710434313796,
+            "release": false,
+            "feed": 0.9999999999999953
+          },
+          {
+            "time": 27.399999999999935,
+            "old": [
+              9,
+              13
+            ],
+            "new": [
+              9,
+              14
+            ],
+            "actual_prefix": 7,
+            "formation_progress": 9.0,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 41.00000000000004,
+            "old": [
+              9,
+              14
+            ],
+            "new": [
+              10,
+              14
+            ],
+            "actual_prefix": 8,
+            "formation_progress": 9.079882880350068,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 45.60000000000011,
+            "old": [
+              10,
+              14
+            ],
+            "new": [
+              11,
+              14
+            ],
+            "actual_prefix": 9,
+            "formation_progress": 10.071173160358336,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 46.000000000000114,
+            "old": [
+              11,
+              14
+            ],
+            "new": [
+              11,
+              15
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.21801741351263,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 46.60000000000012,
+            "old": [
+              11,
+              15
+            ],
+            "new": [
+              11,
+              16
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 10.420746517730747,
+            "release": true,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 48.80000000000015,
+            "old": [
+              11,
+              16
+            ],
+            "new": [
+              12,
+              16
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 11.079557773565432,
+            "release": false,
+            "feed": 0.9999999999999999
+          },
+          {
+            "time": 52.2000000000002,
+            "old": [
+              12,
+              16
+            ],
+            "new": [
+              13,
+              17
+            ],
+            "actual_prefix": 11,
+            "formation_progress": 12.019626789530134,
+            "release": true,
+            "feed": 0.9999999999999999
+          }
+        ],
+        "final_partition": [
+          13,
+          17
+        ],
+        "primary_gate_passed": false,
+        "full_crossing": false,
+        "outcome": "support_lost"
+      },
+      "limitation": "Angular wrap and contact presence do not establish force closure; prefix has a captured-front floor."
+    },
+    "coordination": {
+      "maximum_phase_difference": 0.09478974274339436,
+      "initial_front_wrap": 0.5475041041904222,
+      "final_front_wrap": 0.0017197239933583154,
+      "maximum_formation": 13.0
+    },
+    "files": 58,
+    "bytes": 43703012
+  },
+  {
     "run": "transfer_distributed_release",
     "archive": "archives/transfer_distributed_release.zip",
     "hypothesis": "Verified geometry permits local acquisition; keep rolling but require existing positive wrap/contact grip for 0.6s before rear boundary release. Same automatic early state and unchanged physics.",

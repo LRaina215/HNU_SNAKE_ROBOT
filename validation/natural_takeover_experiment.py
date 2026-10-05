@@ -106,7 +106,7 @@ def run(args):
             kinematics_for_speed=EncoderShapeKinematics(sim.m,0)
             delivery=VelocityFeedbackDelivery(q,.02,.02,sim.m.jnt_range[sim.jids],
                 sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0],.02,
-                kinematics_for_speed.jacobians,20.,.2,sim.m.actuator_gainprm[:,0])
+                kinematics_for_speed.jacobians,args.body_damping,.2,sim.m.actuator_gainprm[:,0])
         persistent=max(2,round(.6/args.dt))-1 if args.resume_auto else 0
         lost=0;last_probe_phase=None
         for step in range(round(args.seconds/args.dt)):
@@ -139,10 +139,22 @@ def run(args):
                     load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-q),sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
                     initial_tracker=EncoderPipeTracker(sim.m,q,load,meta['settings']['radius'])
                     records=collect_response(sim,initial_tracker,probe)
-                    fit=(calibrate_network if args.network_calibration else calibrate)(sim.m,sim.meta['source_model'],initial_tracker.estimate,records,args.junction_search)
+                    if args.response_cache:
+                        cached=args.response_cache/('probe_%02d'%(len(attempts)+1))
+                        prior_records=json.loads((cached/'response_probe.json').read_text(encoding='utf8'))
+                        same=len(records)==len(prior_records) and all(np.allclose(a[key],b[key],atol=1e-10,rtol=0)
+                            for a,b in zip(records,prior_records) for key in ('time','q','command'))
+                        if not same:raise RuntimeError('Cached natural-probe measurements do not match this newly executed probe')
+                        fit=json.loads((cached/'response_calibration.json').read_text(encoding='utf8'))
+                        shutil.copytree(cached/'sources',probe/'cached_fit_sources')
+                        write_json(probe/'cache_reuse.json',dict(source=str(cached),all_new_measurements_and_commands_matched=True))
+                    else:
+                        fit=(calibrate_network if args.network_calibration else calibrate)(sim.m,sim.meta['source_model'],initial_tracker.estimate,records,args.junction_search)
                     write_json(probe/'response_calibration.json',fit)
                     gate=judge(sim.m,sim.meta['source_model'],fit,records);write_json(probe/'response_gate.json',gate)
-                    accepted=gate['passed'];attempts.append(dict(folder=str(probe),time=float(sim.d.time),phase=sim.phase,passed=accepted))
+                    accepted=gate['geometry_response_accepted'] if args.acquire_verified_drape else gate['passed']
+                    attempts.append(dict(folder=str(probe),time=float(sim.d.time),phase=sim.phase,passed=accepted,
+                        permission='local_acquisition' if args.acquire_verified_drape else 'transfer'))
                     print(args.name,'probe',len(attempts),'accepted',accepted,'criteria',gate['criteria'],flush=True)
                     if (root/'STOP').exists():
                         result['outcome']='development_stopped';break
@@ -155,7 +167,8 @@ def run(args):
                 meta['settings'].update(phase=sim.phase,completed=step+1,initialized=True)
                 fresh=sim.fresh();fresh=dict(fresh,points_mm=kinematics.points(np.radians(fresh['angles_deg'])*sim.bridge.signs).tolist())
                 save_state(root/'candidate',sim.m,sim.d,meta,controller,fresh)
-                result.update(outcome='response_accepted' if args.transfer else 'geometric_candidate',candidate_time=float(sim.d.time),candidate=str(root/'candidate'))
+                outcome=('geometry_verified_acquisition' if args.acquire_verified_drape else 'response_accepted') if args.transfer else 'geometric_candidate'
+                result.update(outcome=outcome,candidate_time=float(sim.d.time),candidate=str(root/'candidate'))
                 print(args.name,'automatic candidate at',sim.d.time,flush=True);break
             projected=replay.geometry(local)
             next_phase=sim.phase-args.phase_step
@@ -185,7 +198,7 @@ def run(args):
         write_json(root/'result.json',result);write_json(root/'hypotheses.json',hypotheses)
         if replay is not None:replay.close()
         if sim is not None:write_json(sim.folder/'result.json',result);sim.close()
-    if result['outcome']=='response_accepted' and args.transfer:
+    if result['outcome'] in ('response_accepted','geometry_verified_acquisition') and args.transfer:
         command=[sys.executable,'-X','utf8',str(ROOT/'validation/window_coordination_experiment.py'),'transfer',
             '--checkpoint',str(root/'candidate'),'--scene',args.scene,'--output-root',str(root),
             '--tail-mode','same','--maximum-lead','2','--supported-recovery','.35','--support-centers',
@@ -198,6 +211,7 @@ def run(args):
         if args.junction_search:command.append('--junction-search')
         if args.network_calibration:command.append('--network-calibration')
         if args.feedback_progress_guard:command.append('--feedback-progress-guard')
+        if args.acquire_verified_drape:command+=['--release-requires-grip','--bootstrap-front']
         completed=subprocess.run(command,check=False)
         result['transfer_exit_code']=completed.returncode
         if (root/'transfer/result.json').exists():result['transfer_result']=json.loads((root/'transfer/result.json').read_text(encoding='utf8'))
@@ -213,6 +227,9 @@ if __name__=='__main__':
     p.add_argument('--transfer',action='store_true')
     p.add_argument('--smooth',action='store_true')
     p.add_argument('--smooth-start',action='store_true')
+    p.add_argument('--body-damping',type=float,default=20.,help='Encoder-relative speed feedback during natural approach; diagnostic zero leaves joint-velocity feedback active.')
+    p.add_argument('--response-cache',type=Path,help='Reuse costly fits only after the corresponding newly executed probe measurements and commands match exactly.')
+    p.add_argument('--acquire-verified-drape',action='store_true',help='Geometry/constraint evidence admits local compliant forming; distributed support still gates rear release.')
     p.add_argument('--dt',type=float,default=.2)
     p.add_argument('--junction-search',action='store_true')
     p.add_argument('--network-calibration',action='store_true')
