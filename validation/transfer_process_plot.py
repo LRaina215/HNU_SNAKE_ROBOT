@@ -33,7 +33,7 @@ def plot(root, names, output):
         ax.axhline(limit, color='black', ls='--', lw=1, label='Predeclared engineering filter')
         ax.set_ylabel(label); ax.grid(alpha=.25)
     axes[0].legend(fontsize=8)
-    axes[-1].set_xlabel('Physical time since identical checkpoint (s); initial 1 s excluded')
+    axes[-1].set_xlabel('Physical time since each saved checkpoint (s); initial 1 s excluded')
     fig.suptitle('Post-drape transfer: measured motion, not just commanded speed\n'
                  'Each curve ends at its own accepted rolling cycle, or failure. Physics unchanged.')
     fig.tight_layout(); fig.savefig(output, dpi=140); plt.close(fig)

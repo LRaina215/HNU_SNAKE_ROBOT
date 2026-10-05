@@ -1,4 +1,4 @@
-"""Stage-1 window coordination through the unchanged EXE/MuJoCo relay."""
+"""Window coordination and staged feedback substitution via the EXE relay."""
 import argparse
 import json
 import shutil
@@ -34,7 +34,7 @@ def run(args):
                 'validation/window_coordination_experiment.py','validation/traveling_winding_audit.py',
                 'validation/coordinated_winding_metrics.py','validation/spatial_takeover_experiment.py',
                 'validation/contact_support_margin.py','codes/velocity_feedback_delivery.py','codes/encoder_shape_kinematics.py',
-                'codes/encoder_pipe_geometry.py'):
+                'codes/encoder_pipe_geometry.py','codes/encoder_pipe_proximity.py','codes/target_frame_acquisition.py'):
             dest=folder/'sources'/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dest)
         g=sim.fresh()
         choices=((args.support_memory,SupportTransferWinding),
@@ -52,7 +52,12 @@ def run(args):
             (args.capacity_preload,CapacityPreloadWinding),
             (args.radial_acquisition,RadialAcquisitionWinding))
         cls=next((kind for selected,kind in choices if selected),WindowCoordinatedWinding)
+        if args.target_frame_acquisition:
+            from target_frame_acquisition import TargetFrameAcquisition
+            cls=TargetFrameAcquisition
         extra=dict(support_error_limit=sim.m.actuator_forcerange[:,1]/sim.m.actuator_gainprm[:,0]) if args.support_memory or args.capacity_preload or args.radial_acquisition else {}
+        if args.target_frame_acquisition:
+            extra.update(conserve_middle=args.conserve_middle,distinguish_lines=args.distinguish_lines)
         if args.radial_acquisition:extra['coordinate_acquisition']=args.coordinate_acquisition
         if args.contact_reference or args.capacity_preload or args.radial_acquisition:
             extra['local_contact_projection']=args.local_contact_projection
@@ -63,17 +68,42 @@ def run(args):
             extra['hold_bound']=args.hold_bound
             extra['bound_held_phase']=args.bound_held_phase
         corner,source,target,radius=sim.corner,sim.source,sim.target,sim.radius
-        if args.encoder_initial_axes:
+        tracker=None;tracking_clock=None
+        if args.encoder_tracking:
+            from feedback_takeover_live_tracking import EncoderPipeTracker
+            for name in ('feedback_takeover_live_tracking.py','feedback_takeover_encoder_tracking.py','feedback_takeover_cad_refinement.py'):
+                shutil.copy2(ROOT/'validation'/name,folder/'sources/validation'/name)
+            measured=np.radians(g['angles_deg'])*sim.bridge.signs
+            load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),
+                sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
+            tracker=EncoderPipeTracker(sim.m,measured,load,sim.meta['settings']['radius'],args.single_target_after_release)
+            g=dict(g,points_mm=tracker.previous.copy());tracking_clock=sim.d.time
+            estimate=tracker.estimate
+            corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
+            write_json(folder/'initial_unrefined_geometry.json',tracker.initial)
+            write_json(folder/'initial_geometry_estimate.json',estimate)
+            result['geometry_input']='Encoder-only identity-head FK; causal local registration and fixed-radius CAD/load refinement; true base pose and pipe geometry excluded.'
+        elif args.encoder_initial_axes:
             from encoder_pipe_geometry import right_angle_hypothesis
             estimate=right_angle_hypothesis(np.asarray(g['points_mm']),sim.meta['settings']['radius'])
+            if args.cad_refine_axes:
+                from encoder_pipe_proximity import EncoderPipeProximity
+                from feedback_takeover_cad_refinement import refine
+                source_path=ROOT/'validation/feedback_takeover_cad_refinement.py'
+                shutil.copy2(source_path,folder/'sources/validation'/source_path.name)
+                measured=np.radians(g['angles_deg'])*sim.bridge.signs
+                load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-measured),
+                    sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
+                write_json(folder/'initial_unrefined_geometry.json',estimate)
+                estimate=refine(EncoderPipeProximity(sim.m),measured,np.asarray(g['points_mm']),estimate,load)
             write_json(folder/'initial_geometry_estimate.json',estimate)
             if not estimate['geometric_candidate']:
                 raise RuntimeError('Encoder shape does not support a right-angle branch hypothesis')
             corner,source,target,radius=(estimate[k] for k in ('corner_mm','source','target','pipe_radius_mm'))
             result['geometry_input']='Encoder-reconstructed points, nominal coil radius, intersecting right-angle prior; contacts and global frame remain stage-2 test inputs.'
         controller=cls(g,sim.original.parameters,sim.d.ctrl,sim.phase,
-            corner,source,target,radius,measured=sim.d.qpos[sim.qadr].copy(),
-            forward_points=lambda q:points_for_angles(sim.m,sim.d,q),pitch_mm=sim.meta['settings']['pitch'],
+            corner,source,target,radius,measured=np.radians(g['angles_deg'])*sim.bridge.signs,
+            forward_points=tracker.points if tracker is not None else lambda q:points_for_angles(sim.m,sim.d,q),pitch_mm=sim.meta['settings']['pitch'],
             options=ThreeSegmentOptions(follow_seconds=args.middle_follow,maximum_speed_rad_s=np.radians(args.shape_speed)),
             formation=FormationOptions(complete_end_spans=args.complete_end_spans),
             window=WindowOptions(args.joints_per_rad,args.maximum_lead,args.target_lead_deg,args.tail_mode,args.finish_mode,
@@ -83,7 +113,10 @@ def run(args):
         write_json(folder/'plan.json',dict(**result,arguments=arguments,physics_changed=False,
             stop='floor or 0.2 s no pipe support; full crossing and continued rolling',
             process_gate='after 1 s: joint peak <=90 deg/s, module peak <=500 mm/s, error<=15 deg, saturation<=0.297',
-            limitations='known axes/contact; only stage 1; no real robot commands; no SHA checks'))
+            limitations=dict(manual_drape_checkpoint=True,physical_pose_input=tracker is None,
+                known_axes=not (args.encoder_initial_axes or args.encoder_tracking),
+                contact_labels=not args.cad_support,right_angle_comparable_radius_prior=bool(args.encoder_initial_axes or args.encoder_tracking),
+                natural_trigger_validated=False,hardware_validated=False)))
         sim.partition[:]=[controller.front,controller.rear];sim.records[0]['partition']=sim.partition.copy()
         phase0=sim.phase;lost=0;result['outcome']='time_limit'
         delivery=None
@@ -97,10 +130,48 @@ def run(args):
                 args.velocity_filter,
                 EncoderShapeKinematics(sim.m,reference_module).jacobians if args.body_damping else None,
                 args.body_damping,args.body_speed_limit,sim.m.actuator_gainprm[:,0])
+        support_observer=None;support_history=[];support_info={};support_clock=None
+        if args.cad_support:
+            from encoder_pipe_proximity import EncoderPipeProximity
+            support_observer=EncoderPipeProximity(sim.m)
+        def control_feedback(feedback,refine_now):
+            nonlocal tracking_clock
+            if tracker is None:return feedback
+            angles=np.radians(feedback['angles_deg'])*sim.bridge.signs
+            if tracking_clock!=sim.d.time:
+                load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-angles),
+                    sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
+                points=tracker.update(angles,load,refine_now,bool(np.any(controller.weights[:,2]>1e-12)))
+                tracking_clock=sim.d.time
+            else:points=tracker.previous.copy()
+            estimate=tracker.estimate
+            controller.corner=estimate['corner_mm'];controller.source=estimate['source']
+            controller.target=estimate['target'];controller.radius=estimate['pipe_radius_mm']
+            controller.body_axis=-controller.target
+            return dict(feedback,points_mm=points)
+        def observe_support(feedback,angles):
+            nonlocal support_info,support_clock
+            if support_observer is None or support_clock==sim.d.time:return
+            # Current MuJoCo position-servo load is algebraically this clipped
+            # error. No qfrc/contact query, and not an independent force sensor.
+            load=np.clip(sim.m.actuator_gainprm[:,0]*(sim.d.ctrl-angles),
+                sim.m.actuator_forcerange[:,0],sim.m.actuator_forcerange[:,1])
+            proxy,support_info=support_observer.observe(angles,np.asarray(feedback['points_mm']),
+                controller.corner,controller.source,controller.target,controller.radius,load,
+                tracker.target_only if tracker is not None else False)
+            # 50Hz observations held over the existing 100Hz Boolean-history
+            # interface. These are hypotheses, not measured normal-force samples.
+            support_history.extend([proxy.copy() for _ in range(round(args.delivery_period/.01))])
+            del support_history[:-60]
+            support_clock=sim.d.time
         for k in range(round(args.seconds/args.dt)):
-            g=sim.fresh();measured=np.radians(g['angles_deg'])*sim.bridge.signs
+            g=control_feedback(sim.fresh(),True);measured=np.radians(g['angles_deg'])*sim.bridge.signs
+            observe_support(g,measured)
             phase=phase0-(k+1)*args.dt*.1875
-            q,info=controller.compute(g,measured,phase,args.dt,[r['normal_force'] for r in sim.records[-60:]])
+            contact_input=support_history if support_observer is not None else [r['normal_force'] for r in sim.records[-60:]]
+            q,info=controller.compute(g,measured,phase,args.dt,contact_input)
+            if support_observer is not None:info['support_observer']=support_info
+            if tracker is not None:info['geometry_observer']=tracker.info
             sim.phase=controller.phase;sim.stage='window_coordination';sim.partition[:]=[controller.front,controller.rear]
             info.update(target=q,measured=measured,phase=sim.phase,step=k+1,time=(k+1)*args.dt)
             sim.controls.append(info);sim.geometry_log.append(g)
@@ -112,8 +183,9 @@ def run(args):
                 if delivery is not None:
                     # Use actual relay encoder samples, not simulator qvel or
                     # contact forces, for the faster velocity-error feedback.
-                    inner_g=g if sub==1 else sim.fresh()
+                    inner_g=g if sub==1 else control_feedback(sim.fresh(),False)
                     inner_measured=np.radians(inner_g['angles_deg'])*sim.bridge.signs
+                    observe_support(inner_g,inner_measured)
                     target,inner_info=delivery.compute(target,(q-origin)/args.dt,
                         inner_measured,sim.d.ctrl.copy(),velocity_weight)
                     info['delivery_feedback'].append(inner_info)
@@ -161,6 +233,20 @@ if __name__=='__main__':
     p.add_argument('--scene',choices=['horizontal','vertical_down'],default='horizontal')
     p.add_argument('--encoder-initial-axes',action='store_true',
         help='Replace initial pipe geometry and split with encoder-shape hypothesis; contact truth remains.')
+    p.add_argument('--encoder-tracking',action='store_true',
+        help='Use only encoder-frame geometry and causal CAD/load tracking, excluding floating pose and true pipe geometry.')
+    p.add_argument('--single-target-after-release',action='store_true',
+        help='Live estimator: stop constraining the unobserved old junction once the rear controller is gone.')
+    p.add_argument('--cad-support',action='store_true',
+        help='Replace contact labels by private CAD-distance and encoder-error/load hypotheses; no physical contact input.')
+    p.add_argument('--cad-refine-axes',action='store_true',
+        help='Refine encoder-inferred initial geometry against near-shell CAD/load evidence before control.')
+    p.add_argument('--target-frame-acquisition',action='store_true',
+        help='Recruit using target-coil geometry and support, without absolute junction progress.')
+    p.add_argument('--conserve-middle',action='store_true',
+        help='Target-frame variant: release one rear joint per newly measured acquired module.')
+    p.add_argument('--distinguish-lines',action='store_true',
+        help='Target-frame acquisition also requires closer proximity to target than source axis.')
     p.add_argument('--seconds',type=float,default=120.);p.add_argument('--dt',type=float,default=.2)
     p.add_argument('--delivery-period',type=float,default=.02)
     p.add_argument('--velocity-feedback',type=float,default=0.,
@@ -205,6 +291,8 @@ if __name__=='__main__':
     modes.add_argument('--radial-acquisition',action='store_true')
     p.add_argument('--output-root',type=Path)
     args=p.parse_args()
+    if args.encoder_tracking and not (args.cad_support and args.target_frame_acquisition and args.radial_acquisition):
+        p.error('encoder-tracking requires cad-support, target-frame-acquisition and radial-acquisition')
     if args.delivery_period<=0 or not np.isclose(args.dt/args.delivery_period,round(args.dt/args.delivery_period)):
         p.error('delivery-period must divide dt')
     run(args)

@@ -1,0 +1,14 @@
+{
+  "runs": [
+    {
+      "run": "radial_front_relative_braking",
+      "target_error_p95_deg": 6.745698148427026,
+      "maximum_corner_error_mm": 420.22548659174294
+    },
+    {
+      "run": "vertical_initial_front_reference",
+      "target_error_p95_deg": 4.573426231640463,
+      "maximum_corner_error_mm": 556.4266211667131
+    }
+  ]
+}

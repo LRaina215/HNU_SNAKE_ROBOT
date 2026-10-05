@@ -48,6 +48,19 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
     def rear_release_permitted(self):
         return True
 
+    def transfer_region(self,positions):
+        ds,dr,ps,pt=self.distances(positions)
+        return (dr+10<ds)&(dr<self.radius+29+15)&(pt>self.radius/2)
+
+    def handoff_geometry_ready(self,points,history,status):
+        source_clear=len(history)>=60 and not np.any(np.asarray(history)[-60:,0]>.1)
+        cleared=np.min((points-self.corner)@self.target)>self.radius+self.options.shell_radius_mm
+        return bool(source_clear and cleared and status['target_contact']),bool(source_clear),bool(cleared)
+
+    def release_geometry_ready(self,points,prefix):
+        _,_,ps,_=self.distances(points[1:-1])
+        return self.rear<self.n and ps[self.rear]>-self.formation.release_distance_links*self.link
+
     def rolling_observation(self,geometry,measured,observed):
         rolling,info=super().rolling_observation(geometry,measured,observed)
         # The initially draped front also needs shape recovery while rolling.
@@ -65,8 +78,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         # A polygonal helix's joint vertices can lie outside the same radius
         # band even while its links are already supported by the target pipe.
         positions=centers[:self.n] if self.window.support_centers else points[1:-1]
-        ds,dr,ps,pt=self.distances(positions)
-        region=(dr+10<ds)&(dr<self.radius+29+15)&(pt>self.radius/2)
+        region=self.transfer_region(positions)
         prefix=self.initial_front
         while prefix<self.n and region[prefix]:prefix+=1
         h=np.eye(3)[np.argmin(abs(self.target))]
@@ -89,11 +101,9 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
             source_contact=bool(np.any(forces[-1,0]>.1)))
 
     def recruit(self,points,history,status,front_delta,dt):
-        _,_,ps,_=self.distances(points[1:-1])
         prefix=status['actual_prefix'];old=[self.front,self.rear]
-        source_clear=len(history)>=60 and not np.any(np.asarray(history)[-60:,0]>.1)
-        cleared=np.min((points-self.corner)@self.target)>self.radius+self.options.shell_radius_mm
-        if source_clear and cleared and status['target_contact']:self.handed_off=True
+        ready,source_clear,cleared=self.handoff_geometry_ready(points,history,status)
+        if ready:self.handed_off=True
         limit=min(self.n,self.rear,self.n if self.handed_off else prefix+self.window.maximum_lead)
         if status['target_contact']:
             self.progress=max(self.progress,min(limit,self.progress+abs(front_delta)*self.window.joints_per_rad*self.follow))
@@ -101,7 +111,7 @@ class WindowCoordinatedWinding(TravelingCompliantWinding):
         self.front=min(self.n,int(math.ceil(self.progress-1e-9)))
         room=self.rear-self.front<self.middle_max
         remaining=np.any(np.asarray(history)[-1,0,self.rear+2:]>.1)
-        near=self.rear<self.n and ps[self.rear]>-self.formation.release_distance_links*self.link
+        near=self.release_geometry_ready(points,prefix)
         reserve=max(0,6-max(0,prefix-8))
         if self.handed_off:near=self.rear<self.n;reserve=0
         release=(self.progress>self.initial_front+.5 and status['target_contact'] and room and near

@@ -1,0 +1,13 @@
+{
+  "rows": [
+    {
+      "run": "radial_front_relative_braking",
+      "maximum_load_formula_error_Nm": 2.842170943040401e-14
+    },
+    {
+      "run": "vertical_initial_front_reference",
+      "maximum_load_formula_error_Nm": 2.842170943040401e-14
+    }
+  ],
+  "limitation": "This position-actuator simulation only; not independent force sensing or real-servo load calibration."
+}
