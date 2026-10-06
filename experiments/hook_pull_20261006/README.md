@@ -15,6 +15,7 @@
 | `EXTHOLD_1B` / `EXTHOLD_2B` | 收紧修正版终态再保持 30 秒 | 包绕不丢；蠕动 4.8 mm / 17 mm |
 | `FRONT1` | 第 4 步探测：后部保持、前部滚动（接 CLOSE1） | 关节表只允许滚 10°，前进与不滚对照相当 |
 | `HOLD_CONTROL1` | FRONT1 的对照：CLOSE1 终态不滚动保持 35 秒 | 前部自己蠕动 9.3 mm |
+| `step4_feasibility/` | 第 4 步离线可行性（2026-10-07，不推进物理时间） | 通过：u=132 mm（约 2.05 节）全部门限通过；逐 u 行见 `step4_rows.json`，失败状态 `failing_state.npz` |
 
 每个运行目录含 `plan.json`、`result.json`、`trace.npz`（100 Hz 位置、速度、指令、力矩、按管分组的接触力）、`commands.json`、`final_state.npz`（完整积分状态，供下一步接续）、`replay_1x.mp4`（实际物理回放，右侧为目标管截面）和 `sources/` 源码快照。`HOLD_CONTROL1`、`EXTHOLD_*` 当时用内联代码运行，之后整理为 `validation/hook_pull_hold.py`，逻辑相同，没有用脚本重跑。`FRONT1/sources/` 中的 `hook_pull_motion.py` 有一处类定义顺序错误（`RollSolver` 缺少 `table` 方法），只影响整身滚动表，不影响 FRONT1 使用的 `SplitRollSolver`；主目录已修正。
 
