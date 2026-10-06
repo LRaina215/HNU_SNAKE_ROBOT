@@ -1,0 +1,1242 @@
+{
+  "physics_steps": 0,
+  "reference": "remaining_snapshot_reference_1905.npz",
+  "cumulative_solver_used_s": 1905.658565500182,
+  "remaining_same_path_failures": [
+    {
+      "parameter_deg": 6.050000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 4.972229999928988,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.03673888824677363,
+          "required_mm": 0.049,
+          "excess_mm": -0.012261111753226375
+        },
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.04625384632362284,
+          "required_mm": 0.049,
+          "excess_mm": -0.002746153676377164
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.1000000000000005,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.044497508900817,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.03087891971053125,
+          "required_mm": 0.049,
+          "excess_mm": -0.018121080289468752
+        },
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.04542074012566388,
+          "required_mm": 0.049,
+          "excess_mm": -0.0035792598743361187
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.104937632764981,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.031056749569010833,
+          "required_mm": 0.049,
+          "excess_mm": -0.01794325043098917
+        },
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.0464390243603674,
+          "required_mm": 0.049,
+          "excess_mm": -0.002560975639632604
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.2,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.155166744772264,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.035584180833772905,
+          "required_mm": 0.049,
+          "excess_mm": -0.013415819166227097
+        },
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.048248020240571066,
+          "required_mm": 0.049,
+          "excess_mm": -0.0007519797594289362
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.25,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.196823161922339,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.042541035829017915,
+          "required_mm": 0.049,
+          "excess_mm": -0.006458964170982087
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.4,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.292179800803339,
+      "shells": [
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.0488101738003337,
+          "required_mm": 0.049,
+          "excess_mm": -0.00018982619966630143
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.45,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.315767741431595,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04590722439895245,
+          "required_mm": 0.049,
+          "excess_mm": -0.003092775601047551
+        },
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.04859594249128918,
+          "required_mm": 0.049,
+          "excess_mm": -0.0004040575087108228
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.5,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.3309655127495486,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04202889347700278,
+          "required_mm": 0.049,
+          "excess_mm": -0.00697110652299722
+        },
+        {
+          "module": 9,
+          "pipe": "source",
+          "gap_mm": 0.04869373930653609,
+          "required_mm": 0.049,
+          "excess_mm": -0.00030626069346391394
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.550000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.3348521745844275,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.042315274238667655,
+          "required_mm": 0.049,
+          "excess_mm": -0.006684725761332347
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.75,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.285416463897275,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.039101478416313284,
+          "required_mm": 0.049,
+          "excess_mm": -0.009898521583686717
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.800000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.268052142847701,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.026230082580212866,
+          "required_mm": 0.049,
+          "excess_mm": -0.022769917419787136
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.8500000000000005,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.241355002336379,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.01634840882297084,
+          "required_mm": 0.049,
+          "excess_mm": -0.03265159117702916
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.9,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.201044617146803,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.014001545532124737,
+          "required_mm": 0.049,
+          "excess_mm": -0.034998454467875265
+        }
+      ]
+    },
+    {
+      "parameter_deg": 6.95,
+      "collisions": [],
+      "forward_constraint_excess_mm": 5.142855055239856,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.02371706992785505,
+          "required_mm": 0.049,
+          "excess_mm": -0.025282930072144952
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.050000000000002,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.9751423582423239,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04618591985679643,
+          "required_mm": 0.049,
+          "excess_mm": -0.0028140801432035706
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.1,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.9081494457791132,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04358698398583272,
+          "required_mm": 0.049,
+          "excess_mm": -0.005413016014167285
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.8427940039318491,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.042047537704199556,
+          "required_mm": 0.049,
+          "excess_mm": -0.006952462295800446
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.200000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.7790665573662793,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04141079852324481,
+          "required_mm": 0.049,
+          "excess_mm": -0.007589201476755195
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.25,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.7169595468134956,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.041518928290045665,
+          "required_mm": 0.049,
+          "excess_mm": -0.007481071709954337
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.3,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.656467340273259,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.042213122962593275,
+          "required_mm": 0.049,
+          "excess_mm": -0.006786877037406727
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.35,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.5975862192620433,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.043333720094558714,
+          "required_mm": 0.049,
+          "excess_mm": -0.005666279905441288
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.4,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.5403143399277586,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.044720323972548215,
+          "required_mm": 0.049,
+          "excess_mm": -0.004279676027451787
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.450000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.48465166885960553,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04621194836961706,
+          "required_mm": 0.049,
+          "excess_mm": -0.00278805163038294
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.5,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.43059989342912086,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.047647176836214555,
+          "required_mm": 0.049,
+          "excess_mm": -0.0013528231637854465
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.55,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.3781623065122357,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.048864340435777365,
+          "required_mm": 0.049,
+          "excess_mm": -0.00013565956422263714
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.75,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.18355552796961083,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04679989065570567,
+          "required_mm": 0.049,
+          "excess_mm": -0.002200109344294335
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.8,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.13913146503553642,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04426750788590539,
+          "required_mm": 0.049,
+          "excess_mm": -0.004732492114094614
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.850000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.09773334639738973,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04237567383488994,
+          "required_mm": 0.049,
+          "excess_mm": -0.006624326165110064
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.9,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.06019257795549926,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04207039158837489,
+          "required_mm": 0.049,
+          "excess_mm": -0.006929608411625113
+        }
+      ]
+    },
+    {
+      "parameter_deg": 9.950000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.02733894753078392,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04429692636055904,
+          "required_mm": 0.049,
+          "excess_mm": -0.004703073639440961
+        }
+      ]
+    },
+    {
+      "parameter_deg": 10.05,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.017471790615791516,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.100000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.02352352373373856,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.021521703065857434,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.200000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.014823740030028842,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.25,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00677883634582499,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04764476580717769,
+          "required_mm": 0.049,
+          "excess_mm": -0.0013552341928223105
+        }
+      ]
+    },
+    {
+      "parameter_deg": 10.3,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0011150067464587021,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04697758448251932,
+          "required_mm": 0.049,
+          "excess_mm": -0.002022415517480683
+        }
+      ]
+    },
+    {
+      "parameter_deg": 10.4,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0027850958644899393,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.450000000000003,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0050321977321758915,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.5,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.006776581263795878,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.55,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.008042485726428072,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.600000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.008850415595757388,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.65,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00921703309183175,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.700000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.009155088157690505,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.75,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.008673385851079907,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.8,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.007776791097358071,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.850000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.006466270746009473,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.9,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.004738972894383631,
+      "shells": []
+    },
+    {
+      "parameter_deg": 10.950000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0025883433926039423,
+      "shells": []
+    },
+    {
+      "parameter_deg": 11.05,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0018329852400247315,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.048477869728692724,
+          "required_mm": 0.049,
+          "excess_mm": -0.0005221302713072778
+        },
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.046276369206893264,
+          "required_mm": 0.049,
+          "excess_mm": -0.0027236307931067377
+        },
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04851069104481098,
+          "required_mm": 0.049,
+          "excess_mm": -0.000489308955189019
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.100000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0023556611328536814,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.048255143335879325,
+          "required_mm": 0.049,
+          "excess_mm": -0.0007448566641206772
+        },
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.045272759634691795,
+          "required_mm": 0.049,
+          "excess_mm": -0.003727240365308207
+        },
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04878654008290084,
+          "required_mm": 0.049,
+          "excess_mm": -0.00021345991709915968
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.002004723401616948,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04896671119766438,
+          "required_mm": 0.049,
+          "excess_mm": -3.3288802335620926e-05
+        },
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.04622856442905743,
+          "required_mm": 0.049,
+          "excess_mm": -0.0027714355709425736
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.200000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00121041780289044,
+      "shells": [
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.048059330835748426,
+          "required_mm": 0.049,
+          "excess_mm": -0.0009406691642515758
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.4,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.00037509489566001086,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04763600672475121,
+          "required_mm": 0.049,
+          "excess_mm": -0.0013639932752487899
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.450000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0007079139715344684,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.046032593036756,
+          "required_mm": 0.049,
+          "excess_mm": -0.002967406963244004
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.5,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0010898135319392654,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.044324160301009385,
+          "required_mm": 0.049,
+          "excess_mm": -0.0046758396989906165
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.55,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0014854060216589193,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04264188106664335,
+          "required_mm": 0.049,
+          "excess_mm": -0.006358118933356652
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.600000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0018596584444843245,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04111631261945092,
+          "required_mm": 0.049,
+          "excess_mm": -0.007883687380549079
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.65,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0021778948302459966,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.03987738700524801,
+          "required_mm": 0.049,
+          "excess_mm": -0.009122612994751991
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.700000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0024057978174185646,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.039054391006132505,
+          "required_mm": 0.049,
+          "excess_mm": -0.009945608993867497
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.75,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.002509409356673542,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.03877593608972063,
+          "required_mm": 0.049,
+          "excess_mm": -0.010224063910279371
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.8,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0024551305717248617,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.03916991833038708,
+          "required_mm": 0.049,
+          "excess_mm": -0.009830081669612925
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.850000000000003,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.002209720787336389,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04036346831262705,
+          "required_mm": 0.049,
+          "excess_mm": -0.008636531687372953
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.9,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0017402957563463772,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.042482891024107516,
+          "required_mm": 0.049,
+          "excess_mm": -0.0065171089758924855
+        }
+      ]
+    },
+    {
+      "parameter_deg": 11.950000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0010143251078815751,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.045653595733242014,
+          "required_mm": 0.049,
+          "excess_mm": -0.003346404266757988
+        }
+      ]
+    },
+    {
+      "parameter_deg": 12.05,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.010669034813491018,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.100000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.015290170395835911,
+      "shells": [
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.048947795439964636,
+          "required_mm": 0.049,
+          "excess_mm": -5.2204560035365444e-05
+        }
+      ]
+    },
+    {
+      "parameter_deg": 12.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.015357433722979597,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.200000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.012369621872296843,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.25,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.007830213288889443,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.3,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.003246916039852721,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.450000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0016904019739130138,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.5,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00303223569301303,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.55,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.004033713133826611,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.600000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00470490925887157,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.65,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0050576101330217504,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.700000000000003,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.005105280373205012,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.75,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.004927336105390756,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.8,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.007385696056558366,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.850000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.008518838706553788,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.9,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.007930204133751007,
+      "shells": []
+    },
+    {
+      "parameter_deg": 12.950000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0052230965581385735,
+      "shells": []
+    },
+    {
+      "parameter_deg": 13.05,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.001071880575927775,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04791496036196463,
+          "required_mm": 0.049,
+          "excess_mm": -0.0010850396380353705
+        },
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.045677779383460404,
+          "required_mm": 0.049,
+          "excess_mm": -0.003322220616539598
+        },
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.046141142789764444,
+          "required_mm": 0.049,
+          "excess_mm": -0.0028588572102355575
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.100000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0014840430934006665,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.047773413023264766,
+          "required_mm": 0.049,
+          "excess_mm": -0.001226586976735236
+        },
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.04410615881692337,
+          "required_mm": 0.049,
+          "excess_mm": -0.004893841183076633
+        },
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.044096425094963365,
+          "required_mm": 0.049,
+          "excess_mm": -0.004903574905036637
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0013863008849146485,
+      "shells": [
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.04473201456977449,
+          "required_mm": 0.049,
+          "excess_mm": -0.00426798543022551
+        },
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04352832101873361,
+          "required_mm": 0.049,
+          "excess_mm": -0.005471678981266395
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.200000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.0009331747057146345,
+      "shells": [
+        {
+          "module": 3,
+          "pipe": "target",
+          "gap_mm": 0.04699459697027919,
+          "required_mm": 0.049,
+          "excess_mm": -0.002005403029720812
+        },
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04410102507593905,
+          "required_mm": 0.049,
+          "excess_mm": -0.004898974924060953
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.25,
+      "collisions": [],
+      "forward_constraint_excess_mm": 0.00028344883041886426,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04547864718571759,
+          "required_mm": 0.049,
+          "excess_mm": -0.0035213528142824108
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.3,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00039912478168191434,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04732536873081017,
+          "required_mm": 0.049,
+          "excess_mm": -0.001674631269189833
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.4,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0011812738061645067,
+      "shells": []
+    },
+    {
+      "parameter_deg": 13.8,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.000487329561569938,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.04893611047649671,
+          "required_mm": 0.049,
+          "excess_mm": -6.38895235032938e-05
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.850000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0009827733423528606,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.047187846693447,
+          "required_mm": 0.049,
+          "excess_mm": -0.001812153306553002
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.9,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00117554488913596,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.046561242230794164,
+          "required_mm": 0.049,
+          "excess_mm": -0.0024387577692058376
+        }
+      ]
+    },
+    {
+      "parameter_deg": 13.950000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0009029930453336998,
+      "shells": [
+        {
+          "module": 1,
+          "pipe": "target",
+          "gap_mm": 0.047388298386366046,
+          "required_mm": 0.049,
+          "excess_mm": -0.0016117016136339563
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.05,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.005831773851126654,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04755221825632816,
+          "required_mm": 0.049,
+          "excess_mm": -0.0014477817436718415
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.100000000000003,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00893351689657984,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.046284376114066106,
+          "required_mm": 0.049,
+          "excess_mm": -0.002715623885933896
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.15,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.009852401608477779,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04595327328800636,
+          "required_mm": 0.049,
+          "excess_mm": -0.003046726711993644
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.200000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.00913258277800666,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.04631546601835623,
+          "required_mm": 0.049,
+          "excess_mm": -0.002684533981643769
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.250000000000002,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.0073182990123144,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.047127377302068396,
+          "required_mm": 0.049,
+          "excess_mm": -0.0018726226979316057
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.3,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.004953778805820708,
+      "shells": [
+        {
+          "module": 4,
+          "pipe": "target",
+          "gap_mm": 0.048145385978834554,
+          "required_mm": 0.049,
+          "excess_mm": -0.0008546140211654479
+        }
+      ]
+    },
+    {
+      "parameter_deg": 14.350000000000001,
+      "collisions": [],
+      "forward_constraint_excess_mm": -0.002583183731699412,
+      "shells": []
+    }
+  ],
+  "full_command_check_still_required": true,
+  "not_physical_failure": true
+}

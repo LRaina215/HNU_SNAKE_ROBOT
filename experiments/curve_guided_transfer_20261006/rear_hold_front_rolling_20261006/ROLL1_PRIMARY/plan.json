@@ -1,0 +1,46 @@
+{
+  "condition": "PRIMARY",
+  "total_s": 48.95,
+  "front_phase_deg": [
+    0,
+    15
+  ],
+  "rear_phase_deg": 0,
+  "rear_active_feed_mm": 0,
+  "full_body_feed_mm": 0,
+  "entry_s": 5,
+  "rolling_s": 33.95,
+  "end_hold_s": 10,
+  "rear_range": [
+    13,
+    20
+  ],
+  "connector_range": [
+    7,
+    12
+  ],
+  "front_range": [
+    1,
+    6
+  ],
+  "rear_anchor_gate": "M13..20 displacement<=6.45mm and source azimuth<=5deg throughout, >=2source contacts .2s stop",
+  "actual_rolling_gate": ">=4 of six front pipe-relative material twists and median <=-7.5deg relative actual start, end last1s",
+  "end_gate": "Original contact/speed, last2s drift<=6.45mm,last5s speed<5mm/s,target inside>=95%,>=2front target contacts",
+  "front_advance": "median actual M0..6 axial displacement>1mm reported separately, not necessary to claim local rolling/grasp",
+  "gains": [
+    0.01,
+    0.02
+  ],
+  "restoring_tau_s": 0.5,
+  "rate_limit_deg_s": 10,
+  "angle_limit_deg": 90,
+  "torque_limit_Nm": 2.355,
+  "control_inputs": "encoders/ACK/history/initial prior; world, exact contact, material twist diagnostics never enter control",
+  "original_model_unchanged": true,
+  "no_reset_after_first_step": true,
+  "no_virtual_support": true,
+  "old_V3_path": "NOT_READY",
+  "inherited_C0": "complete arbitrary-state phi0 equivalence to R2_SPEED3_PAIR_C0",
+  "prior_trials": 17,
+  "budget": 21
+}

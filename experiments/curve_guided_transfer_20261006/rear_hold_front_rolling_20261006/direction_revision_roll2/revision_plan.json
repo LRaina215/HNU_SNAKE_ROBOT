@@ -1,0 +1,50 @@
+{
+  "prior_dynamics": 18,
+  "maximum_total_dynamics": 21,
+  "reason": "ROLL1 rear axial slip, source contact/normal force retained; front actual -Y and nominal axial negative",
+  "single_revision": "Reverse pipe-relative director target and continuum guide; same finite connector fit",
+  "parameter_deg": [
+    0,
+    15
+  ],
+  "desired_director_change_deg": [
+    0,
+    15
+  ],
+  "prior_desired_director_change_deg": [
+    0,
+    -15
+  ],
+  "radius_mm": 95,
+  "pitch_mm": 220,
+  "orbital_bound_deg": [
+    -5,
+    5
+  ],
+  "axial_bound_mm": [
+    -32.25,
+    32.25
+  ],
+  "initial": "Exact original R2 before physics; no saved failure endpoint",
+  "rear_nominal_joints": [
+    13,
+    20
+  ],
+  "numerical_work_limit_s": 2400,
+  "no_direction_scan": true,
+  "no_new_gripping_rule": true,
+  "nominal_forward_admission": "median M0..6 nominal target-axis displacement >1mm at end; not evidence of real forward motion",
+  "forward_fit_constraint": "median nominal M0..6 +Y displacement >=1.5mm*parameter/15deg; fixes direction throughout with .5mm endpoint margin",
+  "forward_geometry_numerical_tolerance_mm": 0.001,
+  "actual_forward_gate_unchanged": true,
+  "near_invariant_source_baseline_comparison_tolerance_mm": 1e-07,
+  "source_precision_reason": "Successful projection had only2.175e-9mm source baseline residual; not physical penetration or new grip clearance",
+  "same_revision_continuation": true,
+  "no_numerical_time_reset": true,
+  "actual_rolling_gate": ">=4/6 and median pipe-relative director increase>=7.5deg",
+  "actual_forward_gate": "median actual M0..6 +Y displacement>1mm, separately required for forward-roll-and-grasp claim",
+  "rear_anchor_gate": "unchanged6.45mm/5deg/>=2source contacts",
+  "physical_control_and_end_hold_limits_unchanged": true,
+  "geometry_floor": "existing original-start compatibility; actual penetration is hard fail",
+  "old_V3_path": "NOT_READY"
+}

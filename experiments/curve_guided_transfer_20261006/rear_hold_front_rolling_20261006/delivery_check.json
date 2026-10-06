@@ -1,0 +1,21 @@
+{
+  "physics_steps_added": 0,
+  "historical17_rows_unchanged": true,
+  "total_suffix_equals_local_ledger": true,
+  "new_dynamics": 2,
+  "total_dynamics": 19,
+  "remaining_unused_trials": 2,
+  "no_additional_runs_authorized": true,
+  "local_roll_hold_pass": true,
+  "forward_roll_grasp_pass": false,
+  "old_V3_path": "NOT_READY",
+  "robustness_not_tested": true,
+  "normal_speed_replays": [
+    "ROLL1_PRIMARY/replay_1x.mp4",
+    "ROLL2_PRIMARY/replay_1x.mp4"
+  ],
+  "report_links_checked": 34,
+  "missing_links": [],
+  "necessary_source_syntax_checked": true,
+  "no_SHA": true
+}

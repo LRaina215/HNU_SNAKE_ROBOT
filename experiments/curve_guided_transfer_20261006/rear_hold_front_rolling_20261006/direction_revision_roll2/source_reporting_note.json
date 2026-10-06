@@ -1,0 +1,5 @@
+{
+  "physics_steps": 0,
+  "actual_solver_source": "sources/validation/front_local_rolling_direction_revision.py",
+  "note": "Repository reporting extension added during solver work was not loaded by running Python process; independent final review required"
+}

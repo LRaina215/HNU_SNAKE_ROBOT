@@ -1,0 +1,42 @@
+{
+  "physics_steps_added": 0,
+  "actual_frames": 2701,
+  "actual_seconds": 27.000000000010015,
+  "ground_frames": 0,
+  "self_contact_frames": 0,
+  "external_force_maximum": 0.0,
+  "generalized_force_maximum": 0.0,
+  "maximum_torque_Nm": 2.0112547120305635,
+  "rear_source_contacts_min": 4,
+  "front_target_contacts_min": 2,
+  "rear_retained_change_deg": [
+    0.9443900491295802,
+    -0.59051991378465,
+    -0.43525445393641427,
+    -0.4011952067373832,
+    0.16167066528553464,
+    -0.1736290872200335,
+    0.3100679256812624,
+    -0.15739734354797275
+  ],
+  "rear_compliance_delta_change_deg": [
+    0.01230818115924548,
+    -0.02126548325548927,
+    0.001985147757844752,
+    -0.03405998459598436,
+    0.01914359416970668,
+    -0.01931065434534196,
+    0.03376282633930705,
+    -0.0053327103832894185
+  ],
+  "actual_front_median_axial_displacement_mm": -6.626772491090151,
+  "actual_front_median_director_change_deg": 15.359481364558619,
+  "actual_front_median_axial_final_frame_mm": -6.618308564825384,
+  "actual_front_median_axial_peak_mm": 1.489176906140699,
+  "actual_front_median_axial_maximum_return_mm": 8.166274493987714,
+  "source_force_initial_final_N": [
+    59.5420653179269,
+    61.070739061098834
+  ],
+  "limitation": "World/contacts/pipe-frame director are recorded diagnostics only; normal force is not proof of grip"
+}

@@ -1,0 +1,24 @@
+{
+  "physics_steps": 0,
+  "reason": "Axial-only desired nodes imposed fixed circumferential position absent from task; allow coupled pipe-axis orbit without changing radius/pitch",
+  "front_material_phase_deg": [
+    0,
+    15
+  ],
+  "front_orbital_coordinate_bound_deg": [
+    -5,
+    5
+  ],
+  "axial_bound_mm": [
+    -32.25,
+    32.25
+  ],
+  "orbit_bound_basis": "5deg at R95 is 8.29mm, below one-sixth module length and one-third requested material roll; ideal no-slip estimate about1.58deg, not calibrated",
+  "ideal_no_slip": "h=220/(2pi),Lh=sqrt(95^2+h^2),body_radius=29: axial=29*95/Lh*phi; orbital=-29*h/(95*Lh)*phi; geometric clue only, no traction proof",
+  "geometric_fitting_tolerance_mm": 6.45,
+  "tolerance_status": "chosen finite-guide approximation 10% module length; distinct from actual end-hold displacement gate, not a physical impossibility boundary",
+  "target": "p_des=CORNER+Rot_y(orbital)*(p_initial-CORNER)+axial*e_y; same saved finite helix guide and R95/P220 design",
+  "rear": "J13..20 nominal and private link12 pose fixed; no physical root command",
+  "last_construction_repair": true,
+  "if_failed": "stop geometry implementation, do not claim method impossible or run dynamics"
+}

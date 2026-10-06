@@ -1,0 +1,22 @@
+{
+  "status": "STOPPED_TIME_CAP_GEOMETRY_INCOMPLETE",
+  "new_dynamics": 0,
+  "total_dynamics": 17,
+  "remaining_unused_trials": 4,
+  "further_dynamics_authorized": false,
+  "numerical_result": {
+    "status": "TIME_CAP",
+    "error": "TimeoutError('Shared600s closure wall cap')",
+    "physics_steps": 0,
+    "shared_wall_s": 600.0089826583862,
+    "new_dynamics": 0,
+    "total_dynamics": 17,
+    "old_STOPPED_preserved": true,
+    "last_phase_deg": 1.0,
+    "complete15deg_reference": false
+  },
+  "previous_STOPPED_preserved": true,
+  "holding": "NOT_TESTED",
+  "actual_rolling": "NOT_TESTED",
+  "full_V3_path": "NOT_READY"
+}

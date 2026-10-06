@@ -1,0 +1,90 @@
+[
+  {
+    "time_s": 9.55,
+    "phase_rad": 0.012846534939222382,
+    "phase_deg": 0.736052233384794,
+    "module": 5,
+    "side": 1,
+    "gap_mm": 0.04881175638582391,
+    "floor_mm": 0.049,
+    "deficit_mm": 0.0001882436141760896,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 10.25,
+    "phase_rad": 0.016845210769361036,
+    "phase_deg": 0.9651594820927097,
+    "module": 0,
+    "side": 1,
+    "gap_mm": 0.04876418410444927,
+    "floor_mm": 0.049,
+    "deficit_mm": 0.00023581589555073112,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 10.3,
+    "phase_rad": 0.01714880662440747,
+    "phase_deg": 0.9825542432645359,
+    "module": 0,
+    "side": 1,
+    "gap_mm": 0.047145402608357756,
+    "floor_mm": 0.049,
+    "deficit_mm": 0.001854597391642246,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 10.4,
+    "phase_rad": 0.01776301819155496,
+    "phase_deg": 1.0177459737902033,
+    "module": 5,
+    "side": 1,
+    "gap_mm": 0.04773531181269419,
+    "floor_mm": 0.049,
+    "deficit_mm": 0.0012646881873058097,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 24.200000000000003,
+    "phase_rad": 0.15648884120870532,
+    "phase_deg": 8.966150142151731,
+    "module": 5,
+    "side": 1,
+    "gap_mm": 0.04898194667888589,
+    "floor_mm": 0.049,
+    "deficit_mm": 1.805332111411151e-05,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 24.3,
+    "phase_rad": 0.15762476012230364,
+    "phase_deg": 9.03123350177,
+    "module": 9,
+    "side": 0,
+    "gap_mm": 0.04873153666619601,
+    "floor_mm": 0.049,
+    "deficit_mm": 0.0002684633338039949,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 24.35,
+    "phase_rad": 0.15819202461827217,
+    "phase_deg": 9.063735363256614,
+    "module": 0,
+    "side": 1,
+    "gap_mm": 0.048875047479356226,
+    "floor_mm": 0.049,
+    "deficit_mm": 0.0001249525206437757,
+    "actual_collisions": []
+  },
+  {
+    "time_s": 31.1,
+    "phase_rad": 0.2262817653762285,
+    "phase_deg": 12.964990136827414,
+    "module": 3,
+    "side": 1,
+    "gap_mm": 0.048919980645315775,
+    "floor_mm": 0.049,
+    "deficit_mm": 8.001935468422705e-05,
+    "actual_collisions": []
+  }
+]

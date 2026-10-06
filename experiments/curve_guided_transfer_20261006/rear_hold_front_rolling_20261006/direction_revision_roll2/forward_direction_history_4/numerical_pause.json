@@ -1,0 +1,5 @@
+{
+  "reason": "Enforce already registered forward geometry; same direction candidate, no physics",
+  "physics_steps": 0,
+  "conservative_elapsed_numerical_s": 426.1755655
+}

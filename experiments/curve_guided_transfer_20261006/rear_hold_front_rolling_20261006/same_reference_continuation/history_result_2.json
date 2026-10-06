@@ -1,0 +1,12 @@
+{
+  "status": "FINITE_POSE_NOT_READY",
+  "error": null,
+  "physics_steps": 0,
+  "numerical_used_s": 496.5500733999786,
+  "largest_saved_phase_deg": 10.0,
+  "saved_node_count": 35,
+  "new_dynamics": 0,
+  "total_dynamics": 17,
+  "full_review_required": false,
+  "original_STOPPED_and_TIME_CAP_preserved": true
+}

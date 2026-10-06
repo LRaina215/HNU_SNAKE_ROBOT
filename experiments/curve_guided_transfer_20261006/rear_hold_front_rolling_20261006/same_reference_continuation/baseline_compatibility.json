@@ -1,0 +1,11 @@
+{
+  "physics_steps": 0,
+  "initial_source_gap_mm": 0.04850370432684059,
+  "initial_head_proxy_gap_mm": 6.538610480077978e-05,
+  "zero_reference_exact": true,
+  "source": "M11/source must not worsen its accepted original positive gap; nominal .05 target is not a uniform feasible starting bound",
+  "head": "Inherited circumscribed head proxy shortfall ramps continuously to standard clearance by first .25deg node; actual pipe/self collision requirement unchanged",
+  "other_moving_shells": "nominal .05mm with original .001mm numerical tolerance",
+  "thresholds_all_unchanged": false,
+  "holding_and_dynamics_thresholds_unchanged": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "STOPPED_GEOMETRY_INCOMPLETE",
+  "prior_dynamics": 17,
+  "new_dynamics": 0,
+  "total_dynamics": 17,
+  "new_budget": 4,
+  "total_budget": 21,
+  "further_dynamics_authorized": false,
+  "maximum_targeted_revisions": 1,
+  "freeze": "NOT_RUN",
+  "old_V3_path": "NOT_READY",
+  "remaining_unused_trials": 4,
+  "holding": "NOT_TESTED_NEW_CANDIDATE",
+  "actual_rolling": "NOT_TESTED",
+  "reason": "Last permitted finite construction did not satisfy registered conservative clearance at3deg; local optimizer not converged, no physical infeasibility claim"
+}

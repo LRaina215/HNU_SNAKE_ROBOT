@@ -1,0 +1,6 @@
+{
+  "physics_steps": 0,
+  "reason": "Resume saved feasible nodes with normalized SLSQP after near-invariant-row consistency repair; augmented penalty stagnated material twist around3deg at requested4deg",
+  "interrupted_unsaved_solver_seconds": 2.2980734,
+  "numerical_used_s": 457.90807339998605
+}

@@ -1,0 +1,547 @@
+{
+  "physics_steps": 0,
+  "checked_phase_range_deg": [
+    0,
+    3.0000000000000004
+  ],
+  "interpolation_sampling_deg": 0.05,
+  "rows": [
+    {
+      "phase_deg": 0.0,
+      "minimum_modifiable_gap_mm": 6.538610480077978e-05,
+      "collisions": []
+    },
+    {
+      "phase_deg": 0.05,
+      "minimum_modifiable_gap_mm": -0.0045598469339154235,
+      "collisions": []
+    },
+    {
+      "phase_deg": 0.1,
+      "minimum_modifiable_gap_mm": -0.01594298910404035,
+      "collisions": []
+    },
+    {
+      "phase_deg": 0.15000000000000002,
+      "minimum_modifiable_gap_mm": -0.03279271093863656,
+      "collisions": []
+    },
+    {
+      "phase_deg": 0.2,
+      "minimum_modifiable_gap_mm": -0.0538272138419984,
+      "collisions": []
+    },
+    {
+      "phase_deg": 0.25,
+      "minimum_modifiable_gap_mm": -0.07777461213160564,
+      "collisions": []
+    },
+    {
+      "phase_deg": 0.30000000000000004,
+      "minimum_modifiable_gap_mm": -0.10337314493138905,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.0103875847575289
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.35,
+      "minimum_modifiable_gap_mm": -0.12937119649204476,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.03784451948595144
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.4,
+      "minimum_modifiable_gap_mm": -0.1545271067353724,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.06448382549132879
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.45,
+      "minimum_modifiable_gap_mm": -0.1776087574691232,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.0890622032072534
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.5,
+      "minimum_modifiable_gap_mm": -0.19739292387622243,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.11034464211794495
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.5499999999999999,
+      "minimum_modifiable_gap_mm": -0.21266438541588428,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.12710356326200714
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.6000000000000001,
+      "minimum_modifiable_gap_mm": -0.22221479529106603,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.13811773215840578
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.65,
+      "minimum_modifiable_gap_mm": -0.22484131300629429,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.14217094629202257
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.7,
+      "minimum_modifiable_gap_mm": -0.21934501035961773,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.13805050712854305
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.7500000000000001,
+      "minimum_modifiable_gap_mm": -0.20452906735792453,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.12454549281813942
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.8,
+      "minimum_modifiable_gap_mm": -0.17919678107396209,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.10044485433921066
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.85,
+      "minimum_modifiable_gap_mm": -0.14214941734476838,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.06453536478056604
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.9,
+      "minimum_modifiable_gap_mm": -0.0921839423862707,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "head_shell",
+          "distance_mm": -0.015599458729885472
+        }
+      ]
+    },
+    {
+      "phase_deg": 0.95,
+      "minimum_modifiable_gap_mm": -0.02809067891875827,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.0,
+      "minimum_modifiable_gap_mm": 0.04994095946357646,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.05,
+      "minimum_modifiable_gap_mm": 0.008029567718843111,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.0999999999999999,
+      "minimum_modifiable_gap_mm": -0.02550483704106199,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.007875756773868231
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.02542247084880354
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.1500000000000001,
+      "minimum_modifiable_gap_mm": -0.05029813851637499,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.02843975772797968
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.05022325745762226
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.2000000000000002,
+      "minimum_modifiable_gap_mm": -0.0671863643653694,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.04371181675204436
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.06711583773468938
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.25,
+      "minimum_modifiable_gap_mm": -0.07700844785643568,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.054170800216412754
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.07693923581094543
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.3,
+      "minimum_modifiable_gap_mm": -0.08060568325495865,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.06029332655765069
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.08053516003739059
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.35,
+      "minimum_modifiable_gap_mm": -0.07882119646168917,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.06255361482895146
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.07874738353676387
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.4,
+      "minimum_modifiable_gap_mm": -0.07249943159285976,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.06142331783122588
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.0724211482874905
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.45,
+      "minimum_modifiable_gap_mm": -0.06248565387716809,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.057371338121618154
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.0624025936441711
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.5000000000000002,
+      "minimum_modifiable_gap_mm": -0.05110842660992887,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.05086362560275684
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.04953820976207667
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.55,
+      "minimum_modifiable_gap_mm": -0.04254665691257031,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.04236295579720272
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.034674316038738925
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.6,
+      "minimum_modifiable_gap_mm": -0.03243375223832601,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.03232868828117026
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.018656564332631662
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.6500000000000001,
+      "minimum_modifiable_gap_mm": -0.02122656057888861,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.0212165051104296
+        },
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.00232946644611129
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.7,
+      "minimum_modifiable_gap_mm": -0.009379647133847868,
+      "collisions": [
+        {
+          "geom1": "pipe_straight_04",
+          "geom2": "",
+          "distance_mm": -0.009293009945775909
+        }
+      ]
+    },
+    {
+      "phase_deg": 1.75,
+      "minimum_modifiable_gap_mm": 0.0026550284632804733,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.8,
+      "minimum_modifiable_gap_mm": 0.01442856886438193,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.8500000000000003,
+      "minimum_modifiable_gap_mm": 0.025495728059041767,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.9,
+      "minimum_modifiable_gap_mm": 0.0354156306342972,
+      "collisions": []
+    },
+    {
+      "phase_deg": 1.95,
+      "minimum_modifiable_gap_mm": 0.04375261879879133,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.0,
+      "minimum_modifiable_gap_mm": 0.0491427453684139,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.0500000000000003,
+      "minimum_modifiable_gap_mm": 0.04286402890902252,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.1,
+      "minimum_modifiable_gap_mm": 0.03741131120995789,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.1500000000000004,
+      "minimum_modifiable_gap_mm": 0.03349014633973724,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.1999999999999997,
+      "minimum_modifiable_gap_mm": 0.03094717878156672,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.25,
+      "minimum_modifiable_gap_mm": 0.02962297388324231,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.3000000000000003,
+      "minimum_modifiable_gap_mm": 0.029353163244365987,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.35,
+      "minimum_modifiable_gap_mm": 0.02996954185553591,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.4000000000000004,
+      "minimum_modifiable_gap_mm": 0.03130111742574826,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.45,
+      "minimum_modifiable_gap_mm": 0.03317511218298108,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.5,
+      "minimum_modifiable_gap_mm": 0.03541791726306087,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.55,
+      "minimum_modifiable_gap_mm": 0.037855999672117946,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.6,
+      "minimum_modifiable_gap_mm": 0.04031676166895437,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.6500000000000004,
+      "minimum_modifiable_gap_mm": 0.03864530352520745,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.7,
+      "minimum_modifiable_gap_mm": 0.036352742951912376,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.7500000000000004,
+      "minimum_modifiable_gap_mm": 0.0350308130330248,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.8,
+      "minimum_modifiable_gap_mm": 0.03489276082385118,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.85,
+      "minimum_modifiable_gap_mm": 0.03614325339054858,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.9,
+      "minimum_modifiable_gap_mm": 0.03897775181932417,
+      "collisions": []
+    },
+    {
+      "phase_deg": 2.95,
+      "minimum_modifiable_gap_mm": 0.04358194812068916,
+      "collisions": []
+    },
+    {
+      "phase_deg": 3.0000000000000004,
+      "minimum_modifiable_gap_mm": 0.04101395035031885,
+      "collisions": []
+    }
+  ],
+  "first_actual_finite_collision": {
+    "phase_deg": 0.30000000000000004,
+    "minimum_modifiable_gap_mm": -0.10337314493138905,
+    "collisions": [
+      {
+        "geom1": "pipe_straight_04",
+        "geom2": "head_shell",
+        "distance_mm": -0.0103875847575289
+      }
+    ]
+  },
+  "minimum_modifiable_conservative_gap_mm": -0.22484131300629429,
+  "maximum_length_error_mm": 3.410605131648481e-13,
+  "rear_nominal_node_maximum_error_mm": 1.2505552149377763e-12,
+  "maximum_joint_deg": 69.31984864398322,
+  "interpretation": "Saved failed prefix only. No full path, rate schedule, interface admission, actual holding or rolling result."
+}

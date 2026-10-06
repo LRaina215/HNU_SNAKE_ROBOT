@@ -1,0 +1,41 @@
+{
+  "physics_steps": 0,
+  "front_joints": [
+    1,
+    6
+  ],
+  "connector_joints": [
+    7,
+    12
+  ],
+  "rear_joints": [
+    13,
+    20
+  ],
+  "range_basis": "J1..J6 integration windows wholly target helix; six connector DOFs bridge mixed arc/straight and first source wrap; J13..J20 pure source helix",
+  "front_phase_deg": [
+    0,
+    15
+  ],
+  "direction": "positive curvature phase; material-frame twist about forward tangent negative; ideal no-slip tendency +targetY, actual advance separately scored",
+  "material_feed_mm": 0,
+  "rear_active_phase": 0,
+  "radius_mm": 95,
+  "pitch_mm": 220,
+  "front": "saved finite nominal + analytical constant-R/P curvature-phase change on J1..J6",
+  "connector": "finite IK fixes front link6 position and its tangent, supplies local axial-frame roll -phase while fixed rear link12 nominal pose remains; no physical pose fixing",
+  "front_connection_position_tolerance_mm": 1.0,
+  "front_connection_orientation_tolerance_deg": 2.0,
+  "timing": {
+    "entry_s": 5,
+    "rolling_s": 12,
+    "end_hold_s": 10
+  },
+  "phase_peak_rate_deg_s": 1.875,
+  "total_s": 27,
+  "anchor_scoring": "actual modulesM13..M20 maximum displacement<=6.45mm entire action, azimuth change<=5deg, distributed >=2 actual source contacts",
+  "stop_holding": "original last1s two-side contact/speed screen; last2s drift<=6.45mm, last5s speed<5mm/s; target still inside front projection and distributed contacts",
+  "actual_phase": "cross-section Y-axis twist relative to locally reconstructed normal/binormal, using actual module poses; rigid world rotation cancels; not the phase clock",
+  "freeze": "root x +1mm before first physical step, same saved nominal/ACK, matched C0 first",
+  "no_parameter_scan": true
+}

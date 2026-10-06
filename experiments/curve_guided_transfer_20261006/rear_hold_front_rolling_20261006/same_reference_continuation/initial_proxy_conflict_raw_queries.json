@@ -1,0 +1,34 @@
+{
+  "physics_steps": 0,
+  "original_initial_preserved": true,
+  "proxy_near_rows": [
+    {
+      "module": 0,
+      "side": 1,
+      "gap_mm": 6.538610480077978e-05
+    },
+    {
+      "module": 3,
+      "side": 1,
+      "gap_mm": 0.049718476464647665
+    },
+    {
+      "module": 5,
+      "side": 1,
+      "gap_mm": 0.04952851236777178
+    },
+    {
+      "module": 11,
+      "side": 0,
+      "gap_mm": 0.04850370432684059
+    }
+  ],
+  "actual_contact_count": 0,
+  "exact_distances": [
+    {
+      "geom1": "head_shell",
+      "geom2": "pipe_straight_04",
+      "exact_signed_distance_mm": -127.26622805599858
+    }
+  ]
+}
