@@ -1,0 +1,7400 @@
+[
+  {
+    "mode": "screw",
+    "psi_deg": 0.0,
+    "pull_mm": 0.0,
+    "rotation_deg": -0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.50185094445945,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 1.0843899368462502
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 0.0,
+    "pull_mm": 0.0,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.50185094445945,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 1.0843899368462502
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 1.0,
+    "pull_mm": 0.3709874681629789,
+    "rotation_deg": -0.22354049212659688,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.8825325126401159,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.6502861921576226
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 1.0,
+    "pull_mm": 0.3709874681629789,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.5462027999142814,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.9992876190923994
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 2.0,
+    "pull_mm": 0.7419749363259578,
+    "rotation_deg": -0.44708098425319376,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.2689117217252837,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.21588218461957354
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 2.0,
+    "pull_mm": 0.7419749363259578,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.5905546553691661,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.9157208294444956
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 3.0000000000000004,
+    "pull_mm": 1.1129624044889368,
+    "rotation_deg": -0.6706214763797906,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.665793190090666,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.2188052605346371
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 3.0000000000000004,
+    "pull_mm": 1.1129624044889368,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.6349065108239973,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.8336941056924445
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 4.0,
+    "pull_mm": 1.4839498726519156,
+    "rotation_deg": -0.8941619685063875,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.0643397377771637,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.6537589900399894
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 4.0,
+    "pull_mm": 1.4839498726519156,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.6792583662788819,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.7532119194032703
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 5.0,
+    "pull_mm": 1.8549373408148944,
+    "rotation_deg": -1.1177024606329844,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.464541365127631,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0889615147569884
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 5.0,
+    "pull_mm": 1.8549373408148944,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.7236102217337133,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.674278674786791
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 6.000000000000001,
+    "pull_mm": 2.2259248089778736,
+    "rotation_deg": -1.3412429527595813,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.866388039834043,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.52439500159322
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 6.000000000000001,
+    "pull_mm": 2.2259248089778736,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.7679620771885978,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.596898707568954
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 7.0,
+    "pull_mm": 2.5969122771408526,
+    "rotation_deg": -1.5647834448861782,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -3.2698696975996118,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.9600412651930128
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 7.0,
+    "pull_mm": 2.5969122771408526,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.8123139326434293,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.5210762838772496
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 8.0,
+    "pull_mm": 2.967899745303831,
+    "rotation_deg": -1.788323937012775,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -3.6749762427947537,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.3958817593847215
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 8.0,
+    "pull_mm": 2.967899745303831,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.8566657880982873,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.44681559913532
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 9.0,
+    "pull_mm": 3.33888721346681,
+    "rotation_deg": -2.0118644291393717,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -4.081697549114854,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.8318975683751546
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 9.0,
+    "pull_mm": 3.33888721346681,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.9010176435531453,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.3741207769704573
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 10.0,
+    "pull_mm": 3.7098746816297887,
+    "rotation_deg": -2.235404921265969,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -4.506175619448073,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.2680693976913204
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 10.0,
+    "pull_mm": 3.7098746816297887,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.9453694990080033,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.30299586813211477
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 11.0,
+    "pull_mm": 4.080862149792768,
+    "rotation_deg": -2.4589454133925654,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -4.900203155090121,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.704377564853928
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 11.0,
+    "pull_mm": 4.080862149792768,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -0.9897213544628612,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.23344484942354882
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 12.000000000000002,
+    "pull_mm": 4.451849617955747,
+    "rotation_deg": -2.6824859055191626,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -5.311448325400303,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.140801989784634
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 12.000000000000002,
+    "pull_mm": 4.451849617955747,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.0340732099177192,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.1654716226465638
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 13.0,
+    "pull_mm": 4.822837086118726,
+    "rotation_deg": -2.9060263976457597,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -5.724526822573831,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.57732218493139
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 13.0,
+    "pull_mm": 4.822837086118726,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.0784250653725507,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.09908001356042462
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 14.0,
+    "pull_mm": 5.193824554281705,
+    "rotation_deg": -3.1295668897723563,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -6.139169012105091,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.0139172451085585
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 14.0,
+    "pull_mm": 5.193824554281705,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.1227769208274352,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": 0.03427377085498051
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 14.999999999999998,
+    "pull_mm": 5.564812022444683,
+    "rotation_deg": -3.353107381898953,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -6.555364597346478,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.450565837041609
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 14.999999999999998,
+    "pull_mm": 5.564812022444683,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.1671287762822666,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.0289434348604658
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 16.0,
+    "pull_mm": 5.935799490607662,
+    "rotation_deg": -3.57664787402555,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -6.973103255530584,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.887246188614853
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 16.0,
+    "pull_mm": 5.935799490607662,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.2114806317371514,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.09056801205382214
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 17.0,
+    "pull_mm": 6.306786958770642,
+    "rotation_deg": -3.800188366152147,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -7.392374638410613,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.323936077802614
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 17.0,
+    "pull_mm": 6.306786958770642,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.2558324871919826,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.15059644924865268
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 18.0,
+    "pull_mm": 6.67777442693362,
+    "rotation_deg": -4.023728858278743,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -7.813168372904952,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.760612821287907
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 18.0,
+    "pull_mm": 6.67777442693362,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.3001843426468673,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.2090253159876454
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 19.0,
+    "pull_mm": 7.048761895096599,
+    "rotation_deg": -4.2472693504053405,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -8.235474061732376,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.197253262751943
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 19.0,
+    "pull_mm": 7.048761895096599,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.3445361981016983,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.2658512637769519
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 20.0,
+    "pull_mm": 7.4197493632595775,
+    "rotation_deg": -4.470809842531938,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -8.659281284052,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.63383376083172
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 20.0,
+    "pull_mm": 7.4197493632595775,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.3888880535565566,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.3210710270135735
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 21.0,
+    "pull_mm": 7.790736831422557,
+    "rotation_deg": -4.694350334658535,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -9.084579596094468,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.070330176732227
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 21.0,
+    "pull_mm": 7.790736831422557,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.4332399090114143,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.37468142389316483
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 22.0,
+    "pull_mm": 8.161724299585536,
+    "rotation_deg": -4.917890826785131,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -9.551079609614284,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.506717861490387
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 22.0,
+    "pull_mm": 8.161724299585536,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.4775917644662726,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.42667935729920714
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 23.0,
+    "pull_mm": 8.532711767748514,
+    "rotation_deg": -5.141431318911728,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -9.964635836756173,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.942971642878462
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 23.0,
+    "pull_mm": 8.532711767748514,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.5219436199211305,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.4770618156720303
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 24.000000000000004,
+    "pull_mm": 8.903699235911494,
+    "rotation_deg": -5.364971811038325,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -10.389962028625147,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.37906581193711
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 24.000000000000004,
+    "pull_mm": 8.903699235911494,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.5662954753759883,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.52582587385767
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 25.0,
+    "pull_mm": 9.274686704074472,
+    "rotation_deg": -5.588512303164922,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -10.825114305661891,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.814974109136458
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 25.0,
+    "pull_mm": 9.274686704074472,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.61064733083082,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.5729686939355361
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 26.0,
+    "pull_mm": 9.645674172237452,
+    "rotation_deg": -5.812052795291519,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -11.262749562251763,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.250669710148898
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 26.0,
+    "pull_mm": 9.645674172237452,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.654999186285704,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.6184875260250209
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 27.0,
+    "pull_mm": 10.01666164040043,
+    "rotation_deg": -6.0355932874181155,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -11.701052390357216,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.686125211228898
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 27.0,
+    "pull_mm": 10.01666164040043,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.6993510417405358,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.6623797090694836
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 28.0,
+    "pull_mm": 10.38764910856341,
+    "rotation_deg": -6.259133779544713,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -12.140016946814638,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.12131261419276
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 28.0,
+    "pull_mm": 10.38764910856341,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.7437028971954203,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.704642671598819
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 29.000000000000004,
+    "pull_mm": 10.758636576726389,
+    "rotation_deg": -6.48267427167131,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -12.818202202186951,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.556203310987797
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 29.000000000000004,
+    "pull_mm": 10.758636576726389,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.788054752650252,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.7452739324677253
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 29.999999999999996,
+    "pull_mm": 11.129624044889367,
+    "rotation_deg": -6.706214763797906,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -13.156894245689353,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.99076806784089
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 29.999999999999996,
+    "pull_mm": 11.129624044889367,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.8324066081051362,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.7842711015717896
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 31.0,
+    "pull_mm": 11.500611513052347,
+    "rotation_deg": -6.929755255924503,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -13.776901552531713,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.424977008986545
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 31.0,
+    "pull_mm": 11.500611513052347,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.8767584635599677,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.8216318805385612
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 32.0,
+    "pull_mm": 11.871598981215325,
+    "rotation_deg": -7.1532957480511,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -14.279360783857474,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.858799599955944
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 32.0,
+    "pull_mm": 11.871598981215325,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.9211103190148255,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.8573540633951211
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 33.0,
+    "pull_mm": 12.242586449378305,
+    "rotation_deg": -7.376836240177696,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -14.64475913974328,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.292204630428529
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 33.0,
+    "pull_mm": 12.242586449378305,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -1.9654621744696839,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.8914355372100857
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 34.0,
+    "pull_mm": 12.613573917541284,
+    "rotation_deg": -7.600376732304294,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -15.021298008433853,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.725160196632473
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 34.0,
+    "pull_mm": 12.613573917541284,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.0098140299245415,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.9238742827107842
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 35.0,
+    "pull_mm": 12.98456138570426,
+    "rotation_deg": -7.8239172244308905,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -15.408203105886441,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.157633683292985
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 35.0,
+    "pull_mm": 12.98456138570426,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.0541658853794,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.954668374874629
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 36.0,
+    "pull_mm": 13.35554885386724,
+    "rotation_deg": -8.047457716557487,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -15.96191112469196,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.589591745118625
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 36.0,
+    "pull_mm": 13.35554885386724,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.0985177408342577,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.9838159834943809
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 37.0,
+    "pull_mm": 13.72653632203022,
+    "rotation_deg": -8.270998208684086,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -16.324029516694576,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.021000287819831
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 37.0,
+    "pull_mm": 13.72653632203022,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.1428695962891156,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0113153737169824
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 38.0,
+    "pull_mm": 14.097523790193199,
+    "rotation_deg": -8.494538700810681,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -16.62829366977277,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.451824448654605
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 38.0,
+    "pull_mm": 14.097523790193199,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.19937964969418,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0371649065554749
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 39.0,
+    "pull_mm": 14.468511258356177,
+    "rotation_deg": -8.718079192937278,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -17.2779939493579,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.882028576500304
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 39.0,
+    "pull_mm": 14.468511258356177,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.2162783842441445,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0613630393737878
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 40.0,
+    "pull_mm": 14.839498726519155,
+    "rotation_deg": -8.941619685063875,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -17.479564357274857,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -16.31157621144183
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 40.0,
+    "pull_mm": 14.839498726519155,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.234481789016869,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0839083263442006
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 41.0,
+    "pull_mm": 15.210486194682135,
+    "rotation_deg": -9.165160177190472,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -17.904561174483508,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -16.74043006387882
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 41.0,
+    "pull_mm": 15.210486194682135,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.2526851937895707,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1047994188764392
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 42.0,
+    "pull_mm": 15.581473662845115,
+    "rotation_deg": -9.38870066931707,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -18.635369195099226,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -17.168551993143836
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 42.0,
+    "pull_mm": 15.581473662845115,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.2708885985622937,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1240350660193599
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 43.0,
+    "pull_mm": 15.952461131008095,
+    "rotation_deg": -9.612241161443666,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -19.01969528954061,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -17.595902985637878
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 43.0,
+    "pull_mm": 15.952461131008095,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.289092003334996,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1416141148336152
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 44.0,
+    "pull_mm": 16.323448599171073,
+    "rotation_deg": -9.835781653570262,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -19.51169578756207,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.022443132477406
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 44.0,
+    "pull_mm": 16.323448599171073,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.3072954081077084,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.157535510736082
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 45.0,
+    "pull_mm": 16.69443606733405,
+    "rotation_deg": -10.05932214569686,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -19.74904562386242,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.448131606655778
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 45.0,
+    "pull_mm": 16.69443606733405,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.325498812880421,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.171798297815016
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 46.0,
+    "pull_mm": 17.06542353549703,
+    "rotation_deg": -10.282862637823456,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -20.138074271711513,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.87292663972447
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 46.0,
+    "pull_mm": 17.06542353549703,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.3437022176531337,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1844016191165139
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 47.0,
+    "pull_mm": 17.43641100366001,
+    "rotation_deg": -10.506403129950055,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -20.571601893373945,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -19.296785497995913
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 47.0,
+    "pull_mm": 17.43641100366001,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.3698826164590407,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1953447169012605
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 48.00000000000001,
+    "pull_mm": 17.80739847182299,
+    "rotation_deg": -10.72994362207665,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -20.94377324536707,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -19.719664458275645
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 48.00000000000001,
+    "pull_mm": 17.80739847182299,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.3801090291938825,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2046269328720172
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 49.0,
+    "pull_mm": 18.178385939985965,
+    "rotation_deg": -10.953484114203247,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -21.32460359710504,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.14151878312822
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 49.0,
+    "pull_mm": 18.178385939985965,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.3983124381642105,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2122477083713932
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 50.0,
+    "pull_mm": 18.549373408148945,
+    "rotation_deg": -11.177024606329844,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -21.71365858935297,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.562302695696097
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 50.0,
+    "pull_mm": 18.549373408148945,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.4165158471345394,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2182065845497618
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 51.0,
+    "pull_mm": 18.920360876311925,
+    "rotation_deg": -11.400565098456442,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -22.108585668021316,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.98196935407541
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 51.0,
+    "pull_mm": 18.920360876311925,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.4347192561048567,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2225032025033045
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 52.0,
+    "pull_mm": 19.291348344474905,
+    "rotation_deg": -11.624105590583039,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -22.727513326852595,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -21.40047082526131
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 52.0,
+    "pull_mm": 19.291348344474905,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.490816312035289,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2251373033821693
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 53.0,
+    "pull_mm": 19.66233581263788,
+    "rotation_deg": -11.847646082709634,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -23.069420155996877,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -21.81775805869853
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 53.0,
+    "pull_mm": 19.66233581263788,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.4845103243386966,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2261087284682333
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 54.0,
+    "pull_mm": 20.03332328080086,
+    "rotation_deg": -12.071186574836231,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -23.420068371582175,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -22.233780859430958
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 54.0,
+    "pull_mm": 20.03332328080086,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.4564438028028768,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2254174192230636
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 55.0,
+    "pull_mm": 20.40431074896384,
+    "rotation_deg": -12.294727066962828,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -23.77683952772615,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -22.64848786090117
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 55.0,
+    "pull_mm": 20.40431074896384,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.4382403922927924,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.223063417305525
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 56.0,
+    "pull_mm": 20.77529821712682,
+    "rotation_deg": -12.518267559089425,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -24.134319081996654,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -23.061826497405583
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 56.0,
+    "pull_mm": 20.77529821712682,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.420036981782686,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2190468645591324
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 57.00000000000001,
+    "pull_mm": 21.146285685289797,
+    "rotation_deg": -12.741808051216024,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -24.498121018316223,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -23.473742976252225
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 57.00000000000001,
+    "pull_mm": 21.146285685289797,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.4018335712726024,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2133680029694887
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 58.00000000000001,
+    "pull_mm": 21.517273153452777,
+    "rotation_deg": -12.96534854334262,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -24.85093748612967,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -23.884182249648262
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 58.00000000000001,
+    "pull_mm": 21.517273153452777,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.383630160762507,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.2060271745912416
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 59.00000000000001,
+    "pull_mm": 21.888260621615757,
+    "rotation_deg": -13.188889035469218,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -25.27811613084833,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -24.293087986359183
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 59.00000000000001,
+    "pull_mm": 21.888260621615757,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      7
+    ],
+    "deepest_target_mm": -2.3654267502524116,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1970248214452113
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 59.99999999999999,
+    "pull_mm": 22.259248089778733,
+    "rotation_deg": -13.412429527595812,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -25.753424413787023,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -24.700402543182918
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 59.99999999999999,
+    "pull_mm": 22.259248089778733,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.347223339742317,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.186361485385362
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 61.0,
+    "pull_mm": 22.630235557941713,
+    "rotation_deg": -13.635970019722409,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -26.06372413119269,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -25.10606693629431
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 61.0,
+    "pull_mm": 22.630235557941713,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.329019937391974,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1740378079358607
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 62.0,
+    "pull_mm": 23.001223026104693,
+    "rotation_deg": -13.859510511849006,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -26.382686378489783,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -25.510020812505218
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 62.0,
+    "pull_mm": 23.001223026104693,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.3108165268818794,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1600545300983498
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 63.0,
+    "pull_mm": 23.37221049426767,
+    "rotation_deg": -14.083051003975603,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -26.70556393578864,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -25.912202420511882
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 63.0,
+    "pull_mm": 23.37221049426767,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.292613116371795,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1444124921295185
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 64.0,
+    "pull_mm": 23.74319796243065,
+    "rotation_deg": -14.3065914961022,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -27.02809820927819,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -26.312548582189784
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 64.0,
+    "pull_mm": 23.74319796243065,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.274409705861689,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.1271126332890304
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 65.0,
+    "pull_mm": 24.11418543059363,
+    "rotation_deg": -14.5301319882288,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -27.35028746061552,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -26.710994664011473
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 65.0,
+    "pull_mm": 24.11418543059363,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.256206295351605,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.108155991558462
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 66.0,
+    "pull_mm": 24.48517289875661,
+    "rotation_deg": -14.753672480355393,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -33.13924789690364,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -27.107474548669558
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 66.0,
+    "pull_mm": 24.48517289875661,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.238002884841499,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0875437033305673
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 67.0,
+    "pull_mm": 24.85616036691959,
+    "rotation_deg": -14.977212972481992,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -33.551842415461344,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -27.501920606994624
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 67.0,
+    "pull_mm": 24.85616036691959,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.219799474331415,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0652770030700935
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 68.0,
+    "pull_mm": 25.22714783508257,
+    "rotation_deg": -15.200753464608589,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -33.66895025061557,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -27.894263670260386
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 68.0,
+    "pull_mm": 25.22714783508257,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.211352896421033,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.041357222945436
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 69.0,
+    "pull_mm": 25.59813530324554,
+    "rotation_deg": -15.424293956735184,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -35.526079922797,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -28.2844330029858
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 69.0,
+    "pull_mm": 25.59813530324554,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.156917654766849,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.0157857924324247
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 70.0,
+    "pull_mm": 25.96912277140852,
+    "rotation_deg": -15.647834448861781,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -36.36515392448604,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -28.67235627634569
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 70.0,
+    "pull_mm": 25.96912277140852,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.1024824131126327,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.9885642378892072
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 71.0,
+    "pull_mm": 26.3401102395715,
+    "rotation_deg": -15.871374940988376,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -36.78246589645663,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -29.057959542312574
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 71.0,
+    "pull_mm": 26.3401102395715,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.1475362887141185,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.9596941821039735
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 72.0,
+    "pull_mm": 26.71109770773448,
+    "rotation_deg": -16.094915433114974,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -37.20672915765647,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -29.441167208664567
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 72.0,
+    "pull_mm": 26.71109770773448,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.3382619975057217,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.9291773438145441
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 73.0,
+    "pull_mm": 27.08208517589746,
+    "rotation_deg": -16.318455925241572,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -37.63770503868446,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -29.821902015002003
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 73.0,
+    "pull_mm": 27.08208517589746,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.528987706297324,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.8970155372010566
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 74.0,
+    "pull_mm": 27.45307264406044,
+    "rotation_deg": -16.54199641736817,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -39.454483803011705,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -30.200085009925886
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 74.0,
+    "pull_mm": 27.45307264406044,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.719713415088927,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.8632106713516379
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 75.0,
+    "pull_mm": 27.824060112223417,
+    "rotation_deg": -16.765536909494767,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -39.872313933431776,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -30.57563552954369
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 75.0,
+    "pull_mm": 27.824060112223417,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -2.910439123880415,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.8277647497016147
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 76.0,
+    "pull_mm": 28.195047580386397,
+    "rotation_deg": -16.989077401621362,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -40.296399983274455,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -30.948471177481956
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 76.0,
+    "pull_mm": 28.195047580386397,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -3.101164832672132,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.7906798694462935
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 77.0,
+    "pull_mm": 28.566035048549377,
+    "rotation_deg": -17.21261789374796,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -41.970209114328455,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -31.318507806588286
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 77.0,
+    "pull_mm": 28.566035048549377,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -3.2918905414636206,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.7519582209285005
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 78.0,
+    "pull_mm": 28.937022516712354,
+    "rotation_deg": -17.436158385874556,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -42.37972339491945,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -31.685659502530562
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 78.0,
+    "pull_mm": 28.937022516712354,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -3.4826162502553375,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.7116020870003581
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 79.0,
+    "pull_mm": 29.308009984875333,
+    "rotation_deg": -17.65969887800115,
+    "target_penetration": [
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -42.79515231947231,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -32.0498385694962
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 79.0,
+    "pull_mm": 29.308009984875333,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -3.657292452676695,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.6790143634663792
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 80.0,
+    "pull_mm": 29.67899745303831,
+    "rotation_deg": -17.88323937012775,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -43.216321637313534,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -32.41095551823321
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 80.0,
+    "pull_mm": 29.67899745303831,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -3.8159099933450955,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -0.892737581180441
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 81.0,
+    "pull_mm": 30.04998492120129,
+    "rotation_deg": -18.106779862254346,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -43.64306141371152,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -32.76891905664995
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 81.0,
+    "pull_mm": 30.04998492120129,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -3.974527534013307,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.10535150288203
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 82.0,
+    "pull_mm": 30.42097238936427,
+    "rotation_deg": -18.330320354380945,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -45.146482386177986,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -33.12363608324473
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 82.0,
+    "pull_mm": 30.42097238936427,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -4.133145074681614,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.316847571140741
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 83.0,
+    "pull_mm": 30.79195985752725,
+    "rotation_deg": -18.55386084650754,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -45.585526835600035,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -33.475011683618675
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 83.0,
+    "pull_mm": 30.79195985752725,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -4.29176261534992,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.5272171859693202
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 84.0,
+    "pull_mm": 31.16294732569023,
+    "rotation_deg": -18.77740133863414,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -46.967894902988164,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -33.82294913034379
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 84.0,
+    "pull_mm": 31.16294732569023,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -4.450380156018227,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.7364517054507331
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 85.0,
+    "pull_mm": 31.53393479385321,
+    "rotation_deg": -19.000941830760738,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -48.24264162511071,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -34.167349886491564
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 85.0,
+    "pull_mm": 31.53393479385321,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -4.608997696686532,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -1.9445424463910683
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 86.0,
+    "pull_mm": 31.90492226201619,
+    "rotation_deg": -19.224482322887333,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -48.64737550647845,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -34.508113613099226
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 86.0,
+    "pull_mm": 31.90492226201619,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -4.767615237354839,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.1514806850018857
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 87.0,
+    "pull_mm": 32.275909730179166,
+    "rotation_deg": -19.44802281501393,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -49.97612138522583,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -34.845138180904904
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 87.0,
+    "pull_mm": 32.275909730179166,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -4.926232778023146,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.357257657608102
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 88.0,
+    "pull_mm": 32.646897198342145,
+    "rotation_deg": -19.671563307140524,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -50.351477307657085,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -35.17831968665974
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 88.0,
+    "pull_mm": 32.646897198342145,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -5.084850318691452,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.5618645613872673
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 89.0,
+    "pull_mm": 33.01788466650512,
+    "rotation_deg": -19.895103799267122,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -51.04401335199033,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -35.50755247435464
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 89.0,
+    "pull_mm": 33.01788466650512,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -5.243467859359664,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.765292555136398
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 90.0,
+    "pull_mm": 33.3888721346681,
+    "rotation_deg": -20.11864429139372,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -51.424245973789496,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -35.83272916169783
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 90.0,
+    "pull_mm": 33.3888721346681,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -5.402085400028065,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -2.967532760069844
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 91.0,
+    "pull_mm": 33.75985960283108,
+    "rotation_deg": -20.342184783520317,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -51.807517917143144,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -36.153740672184554
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 91.0,
+    "pull_mm": 33.75985960283108,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -5.5607029351759305,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.168576260644798
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 92.0,
+    "pull_mm": 34.13084707099406,
+    "rotation_deg": -20.565725275646912,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -52.625526322689815,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -36.47047627311544
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 92.0,
+    "pull_mm": 34.13084707099406,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -5.719320386849536,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.3684141054195322
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 93.0,
+    "pull_mm": 34.50183453915704,
+    "rotation_deg": -20.78926576777351,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -54.16934767432225,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -36.78282361990877
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 93.0,
+    "pull_mm": 34.50183453915704,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -5.877937927517748,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.5670373079411775
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 94.0,
+    "pull_mm": 34.87282200732002,
+    "rotation_deg": -21.01280625990011,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -55.03751778454357,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -37.09066880706636
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 94.0,
+    "pull_mm": 34.87282200732002,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.036930412194692,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.764436847666019
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 95.0,
+    "pull_mm": 35.243809475483,
+    "rotation_deg": -21.236346752026705,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -54.805866712395165,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -37.39389642613326
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 95.0,
+    "pull_mm": 35.243809475483,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.177129194891805,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -3.9606036709091086
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 96.00000000000001,
+    "pull_mm": 35.61479694364598,
+    "rotation_deg": -21.4598872441533,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.82154820095448,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -37.692389631011025
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 96.00000000000001,
+    "pull_mm": 35.61479694364598,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.3173340557002655,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.155528691828067
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 97.0,
+    "pull_mm": 35.98578441180895,
+    "rotation_deg": -21.683427736279896,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -54.22040252605039,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -37.9860302109434
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 97.0,
+    "pull_mm": 35.98578441180895,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.456785112557473,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.34920279343865
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 98.0,
+    "pull_mm": 36.35677187997193,
+    "rotation_deg": -21.906968228406495,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.95606132667153,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -38.27469867151628
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 98.0,
+    "pull_mm": 36.35677187997193,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.596236169414679,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.541616828662555
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 99.0,
+    "pull_mm": 36.72775934813491,
+    "rotation_deg": -22.130508720533093,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.95453349966242,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -38.767342449847845
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 99.0,
+    "pull_mm": 36.72775934813491,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.735687226271885,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.732761621408372
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 100.0,
+    "pull_mm": 37.09874681629789,
+    "rotation_deg": -22.35404921265969,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.438785777441524,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -39.32491203571062
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 100.0,
+    "pull_mm": 37.09874681629789,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -6.8751382831290915,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -4.922627967686452
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 101.0,
+    "pull_mm": 37.46973428446087,
+    "rotation_deg": -22.577589704786284,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -54.11389491088718,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -39.880512935628694
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 101.0,
+    "pull_mm": 37.46973428446087,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6,
+      7
+    ],
+    "deepest_target_mm": -7.014589339986214,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.111206636756805
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 102.0,
+    "pull_mm": 37.84072175262385,
+    "rotation_deg": -22.801130196912883,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.70027595573434,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -40.43405617086437
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 102.0,
+    "pull_mm": 37.84072175262385,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.154040396843504,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.298488372312207
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 103.0,
+    "pull_mm": 38.21170922078683,
+    "rotation_deg": -23.02467068903948,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.03045690920533,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -40.98544883848976
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 103.0,
+    "pull_mm": 38.21170922078683,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.293491453700628,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.484463893693402
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 104.0,
+    "pull_mm": 38.58269668894981,
+    "rotation_deg": -23.248211181166077,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.19384838476943,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -41.53459390253298
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 104.0,
+    "pull_mm": 38.58269668894981,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.4329425105579165,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.669123897140892
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 105.00000000000001,
+    "pull_mm": 38.95368415711279,
+    "rotation_deg": -23.471751673292673,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.36384826747105,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -42.08138997391987
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 105.00000000000001,
+    "pull_mm": 38.95368415711279,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.572393567415038,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -5.852459057080409
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 106.0,
+    "pull_mm": 39.32467162527576,
+    "rotation_deg": -23.695292165419268,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.54039234222549,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -42.62573107877027
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 106.0,
+    "pull_mm": 39.32467162527576,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.71184462427233,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.034460027444439
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 107.0,
+    "pull_mm": 39.69565909343874,
+    "rotation_deg": -23.918832657545867,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.158842363792175,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -43.16750641460743
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 107.0,
+    "pull_mm": 39.69565909343874,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.851295681129453,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.215117443026955
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 108.0,
+    "pull_mm": 40.06664656160172,
+    "rotation_deg": -24.142373149672462,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.34001717670698,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -43.70660009407586
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 108.0,
+    "pull_mm": 40.06664656160172,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -7.990746737986658,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.394421920875374
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 109.0,
+    "pull_mm": 40.4376340297647,
+    "rotation_deg": -24.36591364179906,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.52764078569729,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -44.24289087580045
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 109.0,
+    "pull_mm": 40.4376340297647,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.130197794843866,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.57236406171765
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 110.0,
+    "pull_mm": 40.80862149792768,
+    "rotation_deg": -24.589454133925656,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -53.456261460492115,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -44.77625188205119
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 110.0,
+    "pull_mm": 40.80862149792768,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.269648851701072,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.748934451424375
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 111.0,
+    "pull_mm": 41.17960896609066,
+    "rotation_deg": -24.812994626052255,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -52.60352622447386,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -45.30655030295887
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 111.0,
+    "pull_mm": 41.17960896609066,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.409099908558279,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -6.924123662506872
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 112.0,
+    "pull_mm": 41.55059643425364,
+    "rotation_deg": -25.03653511817885,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -52.73706439939624,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -45.83364708710472
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 112.0,
+    "pull_mm": 41.55059643425364,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.548550965415483,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.097922255651611
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 113.0,
+    "pull_mm": 41.92158390241662,
+    "rotation_deg": -25.26007561030545,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -52.90130541752997,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -46.357396618387355
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 113.0,
+    "pull_mm": 41.92158390241662,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.688002022272608,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.27032078128974
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 114.00000000000001,
+    "pull_mm": 42.292571370579594,
+    "rotation_deg": -25.483616102432048,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -50.5245464850866,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -46.87764637923032
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 114.00000000000001,
+    "pull_mm": 42.292571370579594,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.827453079129898,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.441309781203898
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 115.0,
+    "pull_mm": 42.663558838742574,
+    "rotation_deg": -25.70715659455864,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -51.44729616216893,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -47.3942366003049
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 115.0,
+    "pull_mm": 42.663558838742574,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -8.966904135987022,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.610879790168568
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 116.00000000000001,
+    "pull_mm": 43.034546306905554,
+    "rotation_deg": -25.93069708668524,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -48.50171393445266,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -47.90699989716226
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 116.00000000000001,
+    "pull_mm": 43.034546306905554,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.106355192844227,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.779021337628862
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 117.0,
+    "pull_mm": 43.405533775068534,
+    "rotation_deg": -26.154237578811834,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -48.551675369632704,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -48.41576089436594
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 117.0,
+    "pull_mm": 43.405533775068534,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.245806249701433,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -7.945724949413602
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 118.00000000000001,
+    "pull_mm": 43.776521243231514,
+    "rotation_deg": -26.377778070938437,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -48.60807950902392,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -48.920335837982336
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 118.00000000000001,
+    "pull_mm": 43.776521243231514,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.385257306558723,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.110981149484289
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 119.0,
+    "pull_mm": 44.14750871139449,
+    "rotation_deg": -26.601318563065032,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -50.465332001993,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -49.42053219760566
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 119.0,
+    "pull_mm": 44.14750871139449,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.524708363415845,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.27478046172017
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 119.99999999999999,
+    "pull_mm": 44.51849617955747,
+    "rotation_deg": -26.824859055191624,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -50.47594958150307,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -49.91614825944409
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 119.99999999999999,
+    "pull_mm": 44.51849617955747,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.66415942027297,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.437113411738139
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 121.0,
+    "pull_mm": 44.889483647720446,
+    "rotation_deg": -27.048399547318223,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -50.49280976117024,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -50.406972712425464
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 121.0,
+    "pull_mm": 44.889483647720446,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.803610477130258,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.597970528748974
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 122.0,
+    "pull_mm": 45.260471115883426,
+    "rotation_deg": -27.271940039444818,
+    "target_penetration": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "deepest_target_mm": -63.25686006701093,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -50.89278422975862
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 122.0,
+    "pull_mm": 45.260471115883426,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -9.943061533987382,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.757342347446539
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 123.00000000000001,
+    "pull_mm": 45.631458584046406,
+    "rotation_deg": -27.49548053157142,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.219297482923295,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -51.37335104897365
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 123.00000000000001,
+    "pull_mm": 45.631458584046406,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.082512590844672,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -8.915219409933812
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 124.0,
+    "pull_mm": 46.002446052209386,
+    "rotation_deg": -27.719021023698012,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.22636568232977,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -51.84843055406288
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 124.0,
+    "pull_mm": 46.002446052209386,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.221963647701793,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.07159226768195
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 125.00000000000001,
+    "pull_mm": 46.373433520372366,
+    "rotation_deg": -27.94256151582461,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.23844841426379,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -52.31776886413115
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 125.00000000000001,
+    "pull_mm": 46.373433520372366,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.361414704559003,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.226451483524912
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 126.0,
+    "pull_mm": 46.74442098853534,
+    "rotation_deg": -28.166102007951206,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.255547191731836,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -52.781100433722415
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 126.0,
+    "pull_mm": 46.74442098853534,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.500865761416208,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.379787633685467
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 127.00000000000001,
+    "pull_mm": 47.115408456698326,
+    "rotation_deg": -28.38964250007781,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.822886933200984,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -53.23814767095142
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 127.00000000000001,
+    "pull_mm": 47.115408456698326,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.640316818273414,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.531591309836728
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 128.0,
+    "pull_mm": 47.4863959248613,
+    "rotation_deg": -28.6131829922044,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.77927886303377,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -53.68862058055479
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 128.0,
+    "pull_mm": 47.4863959248613,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.779767875130622,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.681853121195488
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 129.0,
+    "pull_mm": 47.85738339302428,
+    "rotation_deg": -28.836723484330992,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.70841926593995,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -54.13221644008256
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 129.0,
+    "pull_mm": 47.85738339302428,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -10.919218931987826,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.830563696648
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 130.0,
+    "pull_mm": 48.22837086118726,
+    "rotation_deg": -29.0602639764576,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.64329079410646,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -54.56861951866036
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 130.0,
+    "pull_mm": 48.22837086118726,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -11.094917117778182,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -9.977713686907194
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 131.0,
+    "pull_mm": 48.59935832935023,
+    "rotation_deg": -29.28380446858419,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.58391059496032,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -54.997500849011104
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 131.0,
+    "pull_mm": 48.59935832935023,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -11.211813263138893,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.123293766701735
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 132.0,
+    "pull_mm": 48.97034579751322,
+    "rotation_deg": -29.507344960710785,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.529256323184136,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -55.41851806477125
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 132.0,
+    "pull_mm": 48.97034579751322,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -11.339549545804292,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.267294636994976
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 133.0,
+    "pull_mm": 49.34133326567619,
+    "rotation_deg": -29.730885452837384,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.38734114502877,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -55.8313153165133
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 133.0,
+    "pull_mm": 49.34133326567619,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -11.477023159416651,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.40970702723483
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 134.0,
+    "pull_mm": 49.71232073383918,
+    "rotation_deg": -29.954425944963983,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.43640593287007,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -56.235523281253506
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 134.0,
+    "pull_mm": 49.71232073383918,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -11.616474216273774,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.55052169763097
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 135.0,
+    "pull_mm": 50.08330820200215,
+    "rotation_deg": -30.177966437090582,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.216047376047364,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -56.630759281580396
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 135.0,
+    "pull_mm": 50.08330820200215,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      6
+    ],
+    "deepest_target_mm": -11.755925273131066,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.689729441462191
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 136.0,
+    "pull_mm": 50.45429567016514,
+    "rotation_deg": -30.401506929217177,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.13897681129765,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -57.016627531758175
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 136.0,
+    "pull_mm": 50.45429567016514,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.099209140447828,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.827321087410326
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 137.0,
+    "pull_mm": 50.82528313832811,
+    "rotation_deg": -30.62504742134377,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.06765178537016,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -57.392719529237326
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 137.0,
+    "pull_mm": 50.82528313832811,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.17889871684433,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -10.963287501921897
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 138.0,
+    "pull_mm": 51.19627060649108,
+    "rotation_deg": -30.848587913470368,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.002091357376564,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -57.75861461081185
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 138.0,
+    "pull_mm": 51.19627060649108,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.41857634439852,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.097619591593855
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 139.0,
+    "pull_mm": 51.56725807465407,
+    "rotation_deg": -31.072128405596967,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.94231300597251,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -58.113880693103525
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 139.0,
+    "pull_mm": 51.56725807465407,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.485945487007488,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.230308305585893
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 140.0,
+    "pull_mm": 51.93824554281704,
+    "rotation_deg": -31.295668897723562,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.88833260469854,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -58.45807521704756
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 140.0,
+    "pull_mm": 51.93824554281704,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.563901613579366,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.361344638056053
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 141.0,
+    "pull_mm": 52.30923301098003,
+    "rotation_deg": -31.51920938985016,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.62579265874505,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -58.790746315410814
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 141.0,
+    "pull_mm": 52.30923301098003,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.652249032294343,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.490719630618898
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 142.0,
+    "pull_mm": 52.680220479143,
+    "rotation_deg": -31.742749881976753,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.44571197138271,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.11143422103183
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 142.0,
+    "pull_mm": 52.680220479143,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.727201639250735,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.618424374825693
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 143.0,
+    "pull_mm": 53.05120794730599,
+    "rotation_deg": -31.96629037410336,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.558904018621476,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.419672931246495
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 143.0,
+    "pull_mm": 53.05120794730599,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.852183470412543,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.744450014665247
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 144.0,
+    "pull_mm": 53.42219541546896,
+    "rotation_deg": -32.18983086622995,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.2828803183308,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.71499214074878
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 144.0,
+    "pull_mm": 53.42219541546896,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -12.977392174221004,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.868787749084092
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 145.0,
+    "pull_mm": 53.79318288363194,
+    "rotation_deg": -32.41337135835655,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.1649059181759,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.996919450831456
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 145.0,
+    "pull_mm": 53.79318288363194,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -13.102147257674527,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -11.991428834525564
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 146.0,
+    "pull_mm": 54.16417035179492,
+    "rotation_deg": -32.636911850483145,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.05260056819959,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.264982857465064
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 146.0,
+    "pull_mm": 54.16417035179492,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -13.227129088836262,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.112364587484208
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 147.0,
+    "pull_mm": 54.535157819957895,
+    "rotation_deg": -32.86045234260974,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.9580242176628,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.51871351401729
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 147.0,
+    "pull_mm": 54.535157819957895,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -13.352110919998143,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.231586387078082
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 148.0,
+    "pull_mm": 54.90614528812088,
+    "rotation_deg": -33.08399283473634,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.101709194139545,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.757648756567065
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 148.0,
+    "pull_mm": 54.90614528812088,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -13.477092751159878,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.349085677632985
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 149.0,
+    "pull_mm": 55.277132756283855,
+    "rotation_deg": -33.30753332686293,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.926764923739256,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.98133537093712
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 149.0,
+    "pull_mm": 55.277132756283855,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -13.870757491260822,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.464853971282281
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 150.0,
+    "pull_mm": 55.648120224446835,
+    "rotation_deg": -33.53107381898953,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.75723174409927,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.18933307085863
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 150.0,
+    "pull_mm": 55.648120224446835,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -13.968206521906334,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.57888285057544
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 151.0,
+    "pull_mm": 56.019107692609815,
+    "rotation_deg": -33.75461431111613,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.593155333996606,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.38121814652808
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 151.0,
+    "pull_mm": 56.019107692609815,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.02607506653031,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.69116397109849
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 152.0,
+    "pull_mm": 56.390095160772795,
+    "rotation_deg": -33.978154803242724,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.4345803425237,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.55658723251857
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 152.0,
+    "pull_mm": 56.390095160772795,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.09347485570283,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.801689064102334
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 153.0,
+    "pull_mm": 56.761082628935775,
+    "rotation_deg": -34.201695295369326,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.28155033449332,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.715061134156535
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 153.0,
+    "pull_mm": 56.761082628935775,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.170269886201197,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -12.910449939137848
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 154.0,
+    "pull_mm": 57.132070097098755,
+    "rotation_deg": -34.42523578749592,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.13410773612995,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.85628864261571
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 154.0,
+    "pull_mm": 57.132070097098755,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.256296515547955,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.017438486696221
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 155.0,
+    "pull_mm": 57.50305756526173,
+    "rotation_deg": -34.64877627962252,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.24830415720955,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.97995026172775
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 155.0,
+    "pull_mm": 57.50305756526173,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.346439159253348,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.122646680853322
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 156.0,
+    "pull_mm": 57.87404503342471,
+    "rotation_deg": -34.87231677174911,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -60.0689313156616,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.085761764493306
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 156.0,
+    "pull_mm": 57.87404503342471,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.436581802958692,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.226066581915646
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 157.0,
+    "pull_mm": 58.24503250158769,
+    "rotation_deg": -35.09585726387571,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.89500463075799,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.173477495051
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 157.0,
+    "pull_mm": 58.24503250158769,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.526724446664138,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.327690339067232
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 158.0,
+    "pull_mm": 58.61601996975067,
+    "rotation_deg": -35.3193977560023,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.726572043433166,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.24289333285735
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 158.0,
+    "pull_mm": 58.61601996975067,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.616867090369478,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.427510193013731
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 159.0,
+    "pull_mm": 58.98700743791365,
+    "rotation_deg": -35.542938248128905,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.5636804689665,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.29384924035709
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 159.0,
+    "pull_mm": 58.98700743791365,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.707009734074926,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.525518478624889
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 160.0,
+    "pull_mm": 59.35799490607662,
+    "rotation_deg": -35.7664787402555,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.40637573886954,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.326231323503194
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 160.0,
+    "pull_mm": 59.35799490607662,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -14.960533236236506,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.621707627570302
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 161.0,
+    "pull_mm": 59.72898237423961,
+    "rotation_deg": -35.9900192323821,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.254702542951804,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.33997334598753
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 161.0,
+    "pull_mm": 59.72898237423961,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.001221235718864,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.716070170950147
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 162.0,
+    "pull_mm": 60.09996984240258,
+    "rotation_deg": -36.21355972450869,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.10870437172443,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.33505765250661
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 162.0,
+    "pull_mm": 60.09996984240258,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.209603543506221,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.808598741915134
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 163.0,
+    "pull_mm": 60.470957310565566,
+    "rotation_deg": -36.437100216635294,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.18363588759095,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.3115154731974
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 163.0,
+    "pull_mm": 60.470957310565566,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.240226074828943,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.8992860782771
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 164.0,
+    "pull_mm": 60.84194477872854,
+    "rotation_deg": -36.66064070876189,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -59.0071558520099,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.2694265996556
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 164.0,
+    "pull_mm": 60.84194477872854,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.279797285180944,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -13.988125025107024
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 165.0,
+    "pull_mm": 61.21293224689151,
+    "rotation_deg": -36.884181200888484,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -66.67963391812387,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.20891844175659
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 165.0,
+    "pull_mm": 61.21293224689151,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.328247869329942,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.075108537317533
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 166.0,
+    "pull_mm": 61.5839197150545,
+    "rotation_deg": -37.10772169301508,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -66.47257794847968,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.13016449283484
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 166.0,
+    "pull_mm": 61.5839197150545,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.385493941179817,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.160229682229996
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 167.0,
+    "pull_mm": 61.95490718321747,
+    "rotation_deg": -37.331262185141675,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -66.32429395530129,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -62.033382247647666
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 167.0,
+    "pull_mm": 61.95490718321747,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.45143774176409,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.243481642122617
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 168.0,
+    "pull_mm": 62.32589465138046,
+    "rotation_deg": -37.55480267726828,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -65.06013060799454,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.918830632123345
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 168.0,
+    "pull_mm": 62.32589465138046,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.525611945812873,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.324857716758274
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 169.0,
+    "pull_mm": 62.69688211954343,
+    "rotation_deg": -37.77834316939487,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -64.75313463233813,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.78680701552208
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 169.0,
+    "pull_mm": 62.69688211954343,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.601937563806384,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.404351325890133
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 170.0,
+    "pull_mm": 63.06786958770642,
+    "rotation_deg": -38.001883661521475,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -64.44477262268964,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.63764388383768
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 170.0,
+    "pull_mm": 63.06786958770642,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.678263181799851,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.481956011742142
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 171.0,
+    "pull_mm": 63.43885705586939,
+    "rotation_deg": -38.22542415364806,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -64.13504752724427,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.47170525793571
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 171.0,
+    "pull_mm": 63.43885705586939,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.754588799793408,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.557665441464067
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 172.0,
+    "pull_mm": 63.80984452403238,
+    "rotation_deg": -38.448964645774666,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.823962491545664,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.28938294098528
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 172.0,
+    "pull_mm": 63.80984452403238,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.830914417786875,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.631473409556975
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 173.0,
+    "pull_mm": 64.18083199219535,
+    "rotation_deg": -38.67250513790126,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.51173388566617,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -61.09109267763936
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 173.0,
+    "pull_mm": 64.18083199219535,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.90724003578043,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.703373840269663
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 174.0,
+    "pull_mm": 64.55181946035833,
+    "rotation_deg": -38.89604563002786,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -63.202570071977355,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.87727030241484
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 174.0,
+    "pull_mm": 64.55181946035833,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -15.983565653773901,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.773360789960961
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 175.0,
+    "pull_mm": 64.92280692852131,
+    "rotation_deg": -39.11958612215446,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.898157022854036,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.64836794750889
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 175.0,
+    "pull_mm": 64.92280692852131,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.05989127176741,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.841428449428733
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 176.0,
+    "pull_mm": 65.29379439668429,
+    "rotation_deg": -39.34312661428105,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.598564193257154,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.404850371411385
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 176.0,
+    "pull_mm": 65.29379439668429,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.13621688976092,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.907571146202201
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 177.0,
+    "pull_mm": 65.66478186484727,
+    "rotation_deg": -39.56666710640765,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.30386120323632,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -60.14719145976445
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 177.0,
+    "pull_mm": 65.66478186484727,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.212542507754435,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -14.971783346795021
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 178.0,
+    "pull_mm": 66.03576933301024,
+    "rotation_deg": -39.790207598534245,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -62.014117787410065,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.87587093959873
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 178.0,
+    "pull_mm": 66.03576933301024,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.42879521631056,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.034059658918821
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 179.0,
+    "pull_mm": 66.40675680117323,
+    "rotation_deg": -40.01374809066084,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.72940374206582,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.59137133780109
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 179.0,
+    "pull_mm": 66.40675680117323,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.461896245471323,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.09439483365378
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 180.0,
+    "pull_mm": 66.7777442693362,
+    "rotation_deg": -40.23728858278744,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.44978886988616,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -59.29417520490944
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 180.0,
+    "pull_mm": 66.7777442693362,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.503049526672402,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.152783767574832
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 181.0,
+    "pull_mm": 67.14873173749919,
+    "rotation_deg": -40.46082907491404,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -61.17534292231413,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -58.98476261639762
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 181.0,
+    "pull_mm": 67.14873173749919,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.552194999723962,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.209221504831959
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 182.0,
+    "pull_mm": 67.51971920566216,
+    "rotation_deg": -40.68436956704063,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.05199149974132,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -58.66360895567918
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 182.0,
+    "pull_mm": 67.51971920566216,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.609261720013798,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.263703239181453
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 183.0,
+    "pull_mm": 67.89070667382514,
+    "rotation_deg": -40.90791005916723,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.11942671222758,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -58.3311829763418
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 183.0,
+    "pull_mm": 67.89070667382514,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.67049621571551,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.3162243159681
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 184.0,
+    "pull_mm": 68.26169414198812,
+    "rotation_deg": -41.131450551293824,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.18841103344964,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -57.98794513555329
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 184.0,
+    "pull_mm": 68.26169414198812,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.74682183370897,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.36678023405436
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 185.0,
+    "pull_mm": 68.6326816101511,
+    "rotation_deg": -41.354991043420426,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.25894401137078,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -57.63434618623769
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 185.0,
+    "pull_mm": 68.6326816101511,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.82314745170253,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.415366647697013
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 186.0,
+    "pull_mm": 69.00366907831408,
+    "rotation_deg": -41.57853153554702,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.33102614115952,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -57.270826012344024
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 186.0,
+    "pull_mm": 69.00366907831408,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.899473069695997,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.461979368367096
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 187.0,
+    "pull_mm": 69.37465654647706,
+    "rotation_deg": -41.80207202767361,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.40465585785557,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -56.89781268930717
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 187.0,
+    "pull_mm": 69.37465654647706,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -16.97579868768955,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.506614366513375
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 188.0,
+    "pull_mm": 69.74564401464004,
+    "rotation_deg": -42.02561251980022,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.47983189561149,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -56.51572175039628
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 188.0,
+    "pull_mm": 69.74564401464004,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.052124305683016,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.549267773266564
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 189.0,
+    "pull_mm": 70.11663148280302,
+    "rotation_deg": -42.24915301192681,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.556553801954955,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -56.12495563904011
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 189.0,
+    "pull_mm": 70.11663148280302,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.128449923676527,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.58993588208331
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 190.0,
+    "pull_mm": 70.487618950966,
+    "rotation_deg": -42.47269350405341,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.63481760766291,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -55.72590332717903
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 190.0,
+    "pull_mm": 70.487618950966,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.20477554167004,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.628615150327306
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 191.0,
+    "pull_mm": 70.85860641912898,
+    "rotation_deg": -42.696233996180005,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.739826710525655,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -55.31894008015788
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 191.0,
+    "pull_mm": 70.85860641912898,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.281101159663557,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.66530220078748
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 192.00000000000003,
+    "pull_mm": 71.22959388729195,
+    "rotation_deg": -42.9197744883066,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.77298950340103,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -54.90442734949592
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 192.00000000000003,
+    "pull_mm": 71.22959388729195,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.357426777657064,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.699993823130427
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 193.0,
+    "pull_mm": 71.60058135545493,
+    "rotation_deg": -43.1433149804332,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.80864229882978,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -54.482712775949814
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 193.0,
+    "pull_mm": 71.60058135545493,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.43375239565058,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.732686975286597
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 194.0,
+    "pull_mm": 71.9715688236179,
+    "rotation_deg": -43.36685547255979,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.84678460382348,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -54.05413028654539
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 194.0,
+    "pull_mm": 71.9715688236179,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.510078013644044,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.763378784767923
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 195.0,
+    "pull_mm": 72.3425562917809,
+    "rotation_deg": -43.590395964686394,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.887415588632926,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -53.61900027060963
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 195.0,
+    "pull_mm": 72.3425562917809,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.586403631637605,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.792066549916825
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 196.0,
+    "pull_mm": 72.71354375994386,
+    "rotation_deg": -43.81393645681299,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -49.19612500490842,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -53.17762982123831
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 196.0,
+    "pull_mm": 72.71354375994386,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.662729249631067,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.818747741083797
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 197.0,
+    "pull_mm": 73.08453122810685,
+    "rotation_deg": -44.037476948939585,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -51.352903917360244,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -52.73031303002561
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 197.0,
+    "pull_mm": 73.08453122810685,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.739054867624624,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.843420001734074
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 198.0,
+    "pull_mm": 73.45551869626982,
+    "rotation_deg": -44.26101744106619,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -49.39653625602591,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -52.277331324249076
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 198.0,
+    "pull_mm": 73.45551869626982,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.815380485618093,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.86608114948072
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 199.0,
+    "pull_mm": 73.8265061644328,
+    "rotation_deg": -44.48455793319278,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -49.49903889236685,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -51.81895383698064
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 199.0,
+    "pull_mm": 73.8265061644328,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.891706103611643,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.886729177044089
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 200.0,
+    "pull_mm": 74.19749363259578,
+    "rotation_deg": -44.70809842531938,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -49.60307139395431,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -51.35543780182643
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 200.0,
+    "pull_mm": 74.19749363259578,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -17.96803172160511,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.90536225313626
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 201.00000000000003,
+    "pull_mm": 74.56848110075876,
+    "rotation_deg": -44.93163891744598,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -55.20843712519076,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -50.88702896510882
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 201.00000000000003,
+    "pull_mm": 74.56848110075876,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.044357339598626,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.921978723269817
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 202.0,
+    "pull_mm": 74.93946856892174,
+    "rotation_deg": -45.15517940957257,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -55.15538563821125,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -50.413962009323676
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 202.0,
+    "pull_mm": 74.93946856892174,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.120682957592138,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.936577110489637
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 203.0,
+    "pull_mm": 75.31045603708472,
+    "rotation_deg": -45.378719901699164,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -56.89334660204362,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -49.93646098264907
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 203.0,
+    "pull_mm": 75.31045603708472,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.19700857558565,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.94915611602758
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 204.0,
+    "pull_mm": 75.6814435052477,
+    "rotation_deg": -45.602260393825766,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -56.76946191522556,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -49.45473973009573
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 204.0,
+    "pull_mm": 75.6814435052477,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.27333419357916,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.959714619878909
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 205.0,
+    "pull_mm": 76.05243097341068,
+    "rotation_deg": -45.82580088595236,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -56.77150469943363,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -48.96900232263321
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 205.0,
+    "pull_mm": 76.05243097341068,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.34965981157267,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.968251681300146
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 206.0,
+    "pull_mm": 76.42341844157366,
+    "rotation_deg": -46.04934137807896,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.818607410650934,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -48.47944348127962
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 206.0,
+    "pull_mm": 76.42341844157366,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.425985429566143,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.974766539227602
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 207.0,
+    "pull_mm": 76.79440590973664,
+    "rotation_deg": -46.27288187020555,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.66542915881462,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -47.986248993707825
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 207.0,
+    "pull_mm": 76.79440590973664,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.660942862752083,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.979258612616377
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 208.0,
+    "pull_mm": 77.16539337789962,
+    "rotation_deg": -46.496422362332154,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.53622484098194,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -47.489596121409626
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 208.0,
+    "pull_mm": 77.16539337789962,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -18.921088336758324,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.981727500699279
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 209.0,
+    "pull_mm": 77.53638084606258,
+    "rotation_deg": -46.71996285445875,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.41995732576905,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -46.98965399590679
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 209.0,
+    "pull_mm": 77.53638084606258,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -19.181233810764876,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.982172983165654
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 210.00000000000003,
+    "pull_mm": 77.90736831422558,
+    "rotation_deg": -46.943503346585345,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.40730010139963,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -46.48658400283314
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 210.00000000000003,
+    "pull_mm": 77.90736831422558,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -19.441379284771116,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.980595020259543
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 211.0,
+    "pull_mm": 78.27835578238854,
+    "rotation_deg": -47.16704383871194,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.2270967572182,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -45.9805401530605
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 211.0,
+    "pull_mm": 78.27835578238854,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -19.701524758777666,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.976993752797526
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 212.0,
+    "pull_mm": 78.64934325055152,
+    "rotation_deg": -47.390584330838536,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.68909686506195,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -45.47166944026749
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 212.0,
+    "pull_mm": 78.64934325055152,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -19.961670232783906,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -15.971369502105773
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 213.0,
+    "pull_mm": 79.0203307187145,
+    "rotation_deg": -47.61412482296514,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.500467571202954,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -44.960112184606245
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 213.0,
+    "pull_mm": 79.0203307187145,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -20.221815706790302,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -16.024041234399164
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 214.0,
+    "pull_mm": 79.39131818687748,
+    "rotation_deg": -47.83766531509173,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.33655046392604,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -44.44600236227749
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 214.0,
+    "pull_mm": 79.39131818687748,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -20.4819611807967,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -16.318387116368314
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 215.0,
+    "pull_mm": 79.76230565504046,
+    "rotation_deg": -48.06120580721833,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.620521607851686,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -43.92946792100268
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 215.0,
+    "pull_mm": 79.76230565504046,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -20.74210665480309,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -16.61197629875167
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 216.0,
+    "pull_mm": 80.13329312320344,
+    "rotation_deg": -48.284746299344924,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.53859279894,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -43.41063108148247
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 216.0,
+    "pull_mm": 80.13329312320344,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -21.002252128809488,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -16.904798848254032
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 217.0,
+    "pull_mm": 80.50428059136642,
+    "rotation_deg": -48.50828679147153,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.23111726853136,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -42.889608625049945
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 217.0,
+    "pull_mm": 80.50428059136642,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -21.26239760281588,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -17.196844683581233
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 218.0,
+    "pull_mm": 80.8752680595294,
+    "rotation_deg": -48.73182728359812,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -58.2034535450204,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -42.36651216779919
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 218.0,
+    "pull_mm": 80.8752680595294,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -21.534801268097464,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -17.488103573353484
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 219.00000000000003,
+    "pull_mm": 81.24625552769238,
+    "rotation_deg": -48.95536777572472,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.963459933716585,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -41.84144842152631
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 219.00000000000003,
+    "pull_mm": 81.24625552769238,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -21.80507022808197,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -17.778565134003586
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 220.0,
+    "pull_mm": 81.61724299585536,
+    "rotation_deg": -49.17890826785131,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.7255034977265,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -41.31451944188276
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 220.0,
+    "pull_mm": 81.61724299585536,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -22.078186477960124,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.068218827662704
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 221.0,
+    "pull_mm": 81.98823046401833,
+    "rotation_deg": -49.40244875997791,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.4606000271414,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -40.785822864160146
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 221.0,
+    "pull_mm": 81.98823046401833,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -30.615659289806498,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.35705396003651
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 222.0,
+    "pull_mm": 82.35921793218132,
+    "rotation_deg": -49.62598925210451,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -57.04703554933987,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -40.25545212715921
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 222.0,
+    "pull_mm": 82.35921793218132,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -30.791399006329094,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.64505967826733
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 223.0,
+    "pull_mm": 82.73020540034429,
+    "rotation_deg": -49.849529744231106,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -56.770849911260775,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -39.72349668561374
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 223.0,
+    "pull_mm": 82.73020540034429,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -30.970585644890352,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -18.932224968791303
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 224.0,
+    "pull_mm": 83.10119286850728,
+    "rotation_deg": -50.0730702363577,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -56.49683308485817,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -39.190042211633305
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 224.0,
+    "pull_mm": 83.10119286850728,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -31.15315972756343,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -19.218538655184872
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 225.0,
+    "pull_mm": 83.47218033667025,
+    "rotation_deg": -50.296610728484296,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -55.69989426893078,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -38.65517078565551
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 225.0,
+    "pull_mm": 83.47218033667025,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -31.339062051020925,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -19.503989396004982
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 226.0,
+    "pull_mm": 83.84316780483324,
+    "rotation_deg": -50.5201512206109,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -55.387458901558595,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -38.118961077375005
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 226.0,
+    "pull_mm": 83.84316780483324,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -31.52823374163969,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -19.78856568262499
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 227.0,
+    "pull_mm": 84.21415527299621,
+    "rotation_deg": -50.74369171273749,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -55.08053499249955,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -37.581488517120775
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 227.0,
+    "pull_mm": 84.21415527299621,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -31.720616307068433,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.072255837065505
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 228.00000000000003,
+    "pull_mm": 84.58514274115919,
+    "rotation_deg": -50.967232204864096,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -54.293526704090894,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -37.042825458143795
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 228.00000000000003,
+    "pull_mm": 84.58514274115919,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -31.916151684313803,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.35504800982509
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 229.0,
+    "pull_mm": 84.95613020932217,
+    "rotation_deg": -51.190772696990685,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -53.638448957214266,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -36.50304133026217
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 229.0,
+    "pull_mm": 84.95613020932217,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -32.11478228441007,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.636930177706816
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 230.0,
+    "pull_mm": 85.32711767748515,
+    "rotation_deg": -51.41431318911728,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -53.31217994577448,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -35.96220278529993
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 230.0,
+    "pull_mm": 85.32711767748515,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -32.31645103375459,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -20.9178901416495
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 230.99999999999997,
+    "pull_mm": 85.69810514564811,
+    "rotation_deg": -51.637853681243875,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -52.99153748056601,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -35.42037383474481
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 230.99999999999997,
+    "pull_mm": 85.69810514564811,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -34.58940972134961,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -21.19791552455991
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 232.00000000000003,
+    "pull_mm": 86.06909261381111,
+    "rotation_deg": -51.86139417337048,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -51.86154318485929,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -34.877615980021986
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 232.00000000000003,
+    "pull_mm": 86.06909261381111,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -34.76857787706714,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -21.476993769152067
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 233.0,
+    "pull_mm": 86.44008008197409,
+    "rotation_deg": -52.08493466549708,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -51.218691164075366,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -34.33398833578388
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 233.0,
+    "pull_mm": 86.44008008197409,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -34.94860357363552,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -21.755112135790192
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 234.0,
+    "pull_mm": 86.81106755013707,
+    "rotation_deg": -52.30847515762367,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.87874688999907,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -33.789547746582585
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 234.0,
+    "pull_mm": 86.81106755013707,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -35.24472465392965,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -22.032257700344232
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 235.0,
+    "pull_mm": 87.18205501830003,
+    "rotation_deg": -52.532015649750264,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -50.34350742584231,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -33.24434889728242
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 235.0,
+    "pull_mm": 87.18205501830003,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -35.404796937068284,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -22.308417352055976
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 236.00000000000003,
+    "pull_mm": 87.55304248646303,
+    "rotation_deg": -52.75555614187687,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -49.08169579847488,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -32.69844441755611
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 236.00000000000003,
+    "pull_mm": 87.55304248646303,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -35.56801849670333,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -22.583577791418712
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 237.00000000000003,
+    "pull_mm": 87.92402995462601,
+    "rotation_deg": -52.97909663400346,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.45282318618047,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -32.15188498078526
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 237.00000000000003,
+    "pull_mm": 87.92402995462601,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -35.734346178595416,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -22.857725528073516
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 238.0,
+    "pull_mm": 88.29501742278897,
+    "rotation_deg": -53.202637126130064,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -48.0971721409586,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -31.604719397672582
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 238.0,
+    "pull_mm": 88.29501742278897,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -35.90373681449629,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -23.13084687872569
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 239.0,
+    "pull_mm": 88.66600489095195,
+    "rotation_deg": -53.42617761825665,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -46.35626068924158,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -31.0569947048622
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 239.0,
+    "pull_mm": 88.66600489095195,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -36.076147259381834,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -23.40292796508242
+  },
+  {
+    "mode": "screw",
+    "psi_deg": 239.99999999999997,
+    "pull_mm": 89.03699235911493,
+    "rotation_deg": -53.64971811038325,
+    "target_penetration": [
+      5,
+      6,
+      7
+    ],
+    "deepest_target_mm": -45.71697977431371,
+    "pipe_inside_front": false,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -30.508756248841394
+  },
+  {
+    "mode": "translate",
+    "psi_deg": 239.99999999999997,
+    "pull_mm": 89.03699235911493,
+    "rotation_deg": 0.0,
+    "target_penetration": [
+      4,
+      5,
+      6
+    ],
+    "deepest_target_mm": -37.97317927682851,
+    "pipe_inside_front": true,
+    "ground": false,
+    "nonadjacent_self": false,
+    "front_center_gap_mm": -23.673954711817295
+  }
+]

@@ -1,0 +1,7340 @@
+[
+  {
+    "pull_mm": 0.0,
+    "rotation_deg": -0.0,
+    "hook_touch": [],
+    "min_hook_gap_mm": 35.38601537105019,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144312869682403,
+    "M7_on_target_penetration_mm": -0.508325508350798,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        25.6,
+        -161.7
+      ],
+      [
+        76.2,
+        -156.3
+      ],
+      [
+        125.4,
+        -129.2
+      ],
+      [
+        157.8,
+        -83.5
+      ],
+      [
+        169.9,
+        -22.0
+      ],
+      [
+        150.9,
+        28.8
+      ],
+      [
+        99.4,
+        66.2
+      ],
+      [
+        41.0,
+        84.9
+      ],
+      [
+        -19.7,
+        82.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 1.0,
+    "rotation_deg": -0.7322688512896723,
+    "hook_touch": [],
+    "min_hook_gap_mm": 34.00535662197676,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144284392270119,
+    "M7_on_target_penetration_mm": -0.9256368414016295,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        24.6,
+        -164.0
+      ],
+      [
+        75.2,
+        -158.2
+      ],
+      [
+        124.4,
+        -130.8
+      ],
+      [
+        156.8,
+        -84.8
+      ],
+      [
+        168.9,
+        -23.1
+      ],
+      [
+        149.9,
+        27.8
+      ],
+      [
+        98.4,
+        65.2
+      ],
+      [
+        40.0,
+        84.0
+      ],
+      [
+        -20.7,
+        81.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 2.0,
+    "rotation_deg": -1.4645377025793447,
+    "hook_touch": [],
+    "min_hook_gap_mm": 32.619470189602,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144256225392228,
+    "M7_on_target_penetration_mm": -1.3519059314437316,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        23.6,
+        -166.3
+      ],
+      [
+        74.2,
+        -160.0
+      ],
+      [
+        123.4,
+        -132.3
+      ],
+      [
+        155.8,
+        -86.1
+      ],
+      [
+        167.9,
+        -24.2
+      ],
+      [
+        148.9,
+        26.7
+      ],
+      [
+        97.4,
+        64.2
+      ],
+      [
+        39.0,
+        83.1
+      ],
+      [
+        -21.7,
+        81.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 3.0,
+    "rotation_deg": -2.196806553869017,
+    "hook_touch": [],
+    "min_hook_gap_mm": 31.228534335829494,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144228366367853,
+    "M7_on_target_penetration_mm": -1.7857400327568884,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        22.6,
+        -168.6
+      ],
+      [
+        73.2,
+        -161.9
+      ],
+      [
+        122.4,
+        -133.7
+      ],
+      [
+        154.8,
+        -87.3
+      ],
+      [
+        166.9,
+        -25.3
+      ],
+      [
+        147.9,
+        25.6
+      ],
+      [
+        96.4,
+        63.2
+      ],
+      [
+        38.0,
+        82.2
+      ],
+      [
+        -22.7,
+        80.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 4.0,
+    "rotation_deg": -2.9290754051586894,
+    "hook_touch": [],
+    "min_hook_gap_mm": 29.832733402651613,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144200812532991,
+    "M7_on_target_penetration_mm": -2.1998668550002445,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        21.6,
+        -170.8
+      ],
+      [
+        72.2,
+        -163.7
+      ],
+      [
+        121.4,
+        -135.2
+      ],
+      [
+        153.8,
+        -88.6
+      ],
+      [
+        165.9,
+        -26.4
+      ],
+      [
+        146.9,
+        24.6
+      ],
+      [
+        95.4,
+        62.1
+      ],
+      [
+        37.0,
+        81.2
+      ],
+      [
+        -23.7,
+        79.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 5.0,
+    "rotation_deg": -3.661344256448362,
+    "hook_touch": [],
+    "min_hook_gap_mm": 28.432258025099472,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144173561272547,
+    "M7_on_target_penetration_mm": -2.6174312716548362,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        20.6,
+        -173.1
+      ],
+      [
+        71.2,
+        -165.5
+      ],
+      [
+        120.4,
+        -136.6
+      ],
+      [
+        152.8,
+        -89.8
+      ],
+      [
+        164.9,
+        -27.5
+      ],
+      [
+        145.9,
+        23.5
+      ],
+      [
+        94.4,
+        61.1
+      ],
+      [
+        36.0,
+        80.3
+      ],
+      [
+        -24.7,
+        78.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 6.0,
+    "rotation_deg": -4.393613107738034,
+    "hook_touch": [],
+    "min_hook_gap_mm": 27.027305362657586,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144146609965985,
+    "M7_on_target_penetration_mm": -3.0875514541474525,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        19.6,
+        -175.2
+      ],
+      [
+        70.2,
+        -167.2
+      ],
+      [
+        119.4,
+        -138.0
+      ],
+      [
+        151.8,
+        -91.0
+      ],
+      [
+        163.9,
+        -28.5
+      ],
+      [
+        144.9,
+        22.5
+      ],
+      [
+        93.4,
+        60.1
+      ],
+      [
+        35.0,
+        79.3
+      ],
+      [
+        -25.7,
+        78.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 7.0,
+    "rotation_deg": -5.125881959027707,
+    "hook_touch": [],
+    "min_hook_gap_mm": 25.618079350769108,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.814411995603614,
+    "M7_on_target_penetration_mm": -3.583630727843673,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        18.6,
+        -177.4
+      ],
+      [
+        69.2,
+        -169.0
+      ],
+      [
+        118.4,
+        -139.4
+      ],
+      [
+        150.8,
+        -92.2
+      ],
+      [
+        162.9,
+        -29.6
+      ],
+      [
+        143.9,
+        21.4
+      ],
+      [
+        92.4,
+        59.0
+      ],
+      [
+        34.0,
+        78.4
+      ],
+      [
+        -26.7,
+        77.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 8.0,
+    "rotation_deg": -5.858150810317379,
+    "hook_touch": [],
+    "min_hook_gap_mm": 24.204790974217175,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144093596917961,
+    "M7_on_target_penetration_mm": -4.0997333314403415,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        17.6,
+        -179.5
+      ],
+      [
+        68.2,
+        -170.7
+      ],
+      [
+        117.4,
+        -140.8
+      ],
+      [
+        149.8,
+        -93.4
+      ],
+      [
+        161.9,
+        -30.7
+      ],
+      [
+        142.9,
+        20.3
+      ],
+      [
+        91.4,
+        58.0
+      ],
+      [
+        33.0,
+        77.4
+      ],
+      [
+        -27.7,
+        76.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 9.0,
+    "rotation_deg": -6.590419661607051,
+    "hook_touch": [],
+    "min_hook_gap_mm": 22.787658564333242,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144067530085061,
+    "M7_on_target_penetration_mm": -4.97372500437919,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        16.6,
+        -181.7
+      ],
+      [
+        67.2,
+        -172.4
+      ],
+      [
+        116.4,
+        -142.1
+      ],
+      [
+        148.8,
+        -94.5
+      ],
+      [
+        160.9,
+        -31.7
+      ],
+      [
+        141.9,
+        19.2
+      ],
+      [
+        90.4,
+        56.9
+      ],
+      [
+        32.0,
+        76.4
+      ],
+      [
+        -28.7,
+        75.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 10.0,
+    "rotation_deg": -7.322688512896724,
+    "hook_touch": [],
+    "min_hook_gap_mm": 21.36690812217131,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144041753007822,
+    "M7_on_target_penetration_mm": -6.232648781548118,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        15.6,
+        -183.7
+      ],
+      [
+        66.2,
+        -174.0
+      ],
+      [
+        115.4,
+        -143.4
+      ],
+      [
+        147.8,
+        -95.7
+      ],
+      [
+        159.9,
+        -32.8
+      ],
+      [
+        140.9,
+        18.2
+      ],
+      [
+        89.4,
+        55.8
+      ],
+      [
+        31.0,
+        75.4
+      ],
+      [
+        -29.7,
+        74.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 11.0,
+    "rotation_deg": -8.054957364186395,
+    "hook_touch": [],
+    "min_hook_gap_mm": 19.94277366998459,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8144016263209314,
+    "M7_on_target_penetration_mm": -7.503476173964995,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        14.6,
+        -185.8
+      ],
+      [
+        65.2,
+        -175.6
+      ],
+      [
+        114.4,
+        -144.7
+      ],
+      [
+        146.8,
+        -96.8
+      ],
+      [
+        158.9,
+        -33.8
+      ],
+      [
+        139.9,
+        17.1
+      ],
+      [
+        88.4,
+        54.7
+      ],
+      [
+        30.0,
+        74.4
+      ],
+      [
+        -30.7,
+        74.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 12.0,
+    "rotation_deg": -8.787226215476068,
+    "hook_touch": [],
+    "min_hook_gap_mm": 18.515497633584445,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143991058212307,
+    "M7_on_target_penetration_mm": -8.854276887328956,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        13.6,
+        -187.8
+      ],
+      [
+        64.2,
+        -177.2
+      ],
+      [
+        113.4,
+        -146.0
+      ],
+      [
+        145.8,
+        -97.9
+      ],
+      [
+        157.9,
+        -34.9
+      ],
+      [
+        138.9,
+        16.0
+      ],
+      [
+        87.4,
+        53.6
+      ],
+      [
+        29.0,
+        73.3
+      ],
+      [
+        -31.7,
+        73.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 13.0,
+    "rotation_deg": -9.51949506676574,
+    "hook_touch": [],
+    "min_hook_gap_mm": 17.085331258382197,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143966135578505,
+    "M7_on_target_penetration_mm": -10.094889017889782,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        12.6,
+        -189.8
+      ],
+      [
+        63.2,
+        -178.8
+      ],
+      [
+        112.4,
+        -147.2
+      ],
+      [
+        144.8,
+        -99.0
+      ],
+      [
+        156.9,
+        -35.9
+      ],
+      [
+        137.9,
+        14.9
+      ],
+      [
+        86.4,
+        52.5
+      ],
+      [
+        28.0,
+        72.3
+      ],
+      [
+        -32.7,
+        72.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 14.0,
+    "rotation_deg": -10.251763918055413,
+    "hook_touch": [],
+    "min_hook_gap_mm": 15.652535062217297,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143941492872124,
+    "M7_on_target_penetration_mm": -11.374542815885826,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        11.6,
+        -191.7
+      ],
+      [
+        62.2,
+        -180.3
+      ],
+      [
+        111.4,
+        -148.4
+      ],
+      [
+        143.8,
+        -100.1
+      ],
+      [
+        155.9,
+        -36.9
+      ],
+      [
+        136.9,
+        13.8
+      ],
+      [
+        85.4,
+        51.4
+      ],
+      [
+        27.0,
+        71.2
+      ],
+      [
+        -33.7,
+        71.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 15.0,
+    "rotation_deg": -10.984032769345083,
+    "hook_touch": [],
+    "min_hook_gap_mm": 14.217379328353886,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143917127691547,
+    "M7_on_target_penetration_mm": -12.661063714954174,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        10.6,
+        -193.7
+      ],
+      [
+        61.2,
+        -181.8
+      ],
+      [
+        110.4,
+        -149.6
+      ],
+      [
+        142.8,
+        -101.2
+      ],
+      [
+        154.9,
+        -38.0
+      ],
+      [
+        135.9,
+        12.7
+      ],
+      [
+        84.4,
+        50.3
+      ],
+      [
+        26.0,
+        70.2
+      ],
+      [
+        -34.7,
+        70.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 16.0,
+    "rotation_deg": -11.716301620634757,
+    "hook_touch": [],
+    "min_hook_gap_mm": 12.780144642365428,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143893037666958,
+    "M7_on_target_penetration_mm": -13.971672605077625,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        9.6,
+        -195.6
+      ],
+      [
+        60.2,
+        -183.3
+      ],
+      [
+        109.4,
+        -150.8
+      ],
+      [
+        141.8,
+        -102.2
+      ],
+      [
+        153.9,
+        -39.0
+      ],
+      [
+        134.9,
+        11.6
+      ],
+      [
+        83.4,
+        49.1
+      ],
+      [
+        25.0,
+        69.1
+      ],
+      [
+        -35.7,
+        69.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 17.0,
+    "rotation_deg": -12.44857047192443,
+    "hook_touch": [],
+    "min_hook_gap_mm": 11.341122476998876,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143869220424509,
+    "M7_on_target_penetration_mm": -15.254026730771574,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        8.6,
+        -197.4
+      ],
+      [
+        59.2,
+        -184.7
+      ],
+      [
+        108.4,
+        -151.9
+      ],
+      [
+        140.8,
+        -103.3
+      ],
+      [
+        152.9,
+        -40.0
+      ],
+      [
+        133.9,
+        10.5
+      ],
+      [
+        82.4,
+        48.0
+      ],
+      [
+        24.0,
+        68.0
+      ],
+      [
+        -36.7,
+        69.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 18.0,
+    "rotation_deg": -13.180839323214101,
+    "hook_touch": [],
+    "min_hook_gap_mm": 9.900615829483371,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.814384567363726,
+    "M7_on_target_penetration_mm": -16.634834937336375,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        7.6,
+        -199.2
+      ],
+      [
+        58.2,
+        -186.2
+      ],
+      [
+        107.4,
+        -153.1
+      ],
+      [
+        139.8,
+        -104.3
+      ],
+      [
+        151.9,
+        -41.0
+      ],
+      [
+        132.9,
+        9.4
+      ],
+      [
+        81.4,
+        46.9
+      ],
+      [
+        23.0,
+        66.9
+      ],
+      [
+        -37.7,
+        68.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 19.0,
+    "rotation_deg": -13.913108174503773,
+    "hook_touch": [],
+    "min_hook_gap_mm": 8.45893991621736,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143822394986855,
+    "M7_on_target_penetration_mm": -17.872183303649148,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        6.6,
+        -201.0
+      ],
+      [
+        57.2,
+        -187.5
+      ],
+      [
+        106.4,
+        -154.2
+      ],
+      [
+        138.8,
+        -105.3
+      ],
+      [
+        150.9,
+        -42.0
+      ],
+      [
+        131.9,
+        8.3
+      ],
+      [
+        80.4,
+        45.7
+      ],
+      [
+        22.0,
+        65.8
+      ],
+      [
+        -38.7,
+        67.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 20.0,
+    "rotation_deg": -14.645377025793447,
+    "hook_touch": [],
+    "min_hook_gap_mm": 7.016422930212798,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143799382168387,
+    "M7_on_target_penetration_mm": -19.116446381061326,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        5.6,
+        -202.8
+      ],
+      [
+        56.2,
+        -188.9
+      ],
+      [
+        105.4,
+        -155.2
+      ],
+      [
+        137.8,
+        -106.3
+      ],
+      [
+        149.9,
+        -43.0
+      ],
+      [
+        130.9,
+        7.2
+      ],
+      [
+        79.4,
+        44.5
+      ],
+      [
+        21.0,
+        64.7
+      ],
+      [
+        -39.7,
+        66.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 21.0,
+    "rotation_deg": -15.377645877083118,
+    "hook_touch": [],
+    "min_hook_gap_mm": 5.573406867216207,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143776632905804,
+    "M7_on_target_penetration_mm": -20.395076847128802,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        4.6,
+        -204.5
+      ],
+      [
+        55.2,
+        -190.2
+      ],
+      [
+        104.4,
+        -156.3
+      ],
+      [
+        136.8,
+        -107.3
+      ],
+      [
+        148.9,
+        -44.0
+      ],
+      [
+        129.9,
+        6.1
+      ],
+      [
+        78.4,
+        43.4
+      ],
+      [
+        20.0,
+        63.5
+      ],
+      [
+        -40.7,
+        65.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 22.0,
+    "rotation_deg": -16.10991472837279,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": 4.130248426982078,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143754144961458,
+    "M7_on_target_penetration_mm": -21.627119649688733,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        3.6,
+        -206.2
+      ],
+      [
+        54.2,
+        -191.5
+      ],
+      [
+        103.4,
+        -157.3
+      ],
+      [
+        135.8,
+        -108.2
+      ],
+      [
+        147.9,
+        -44.9
+      ],
+      [
+        128.9,
+        5.0
+      ],
+      [
+        77.4,
+        42.2
+      ],
+      [
+        19.0,
+        62.4
+      ],
+      [
+        -41.7,
+        64.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 23.0,
+    "rotation_deg": -16.842183579662464,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": 2.6873199967975694,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143731916089025,
+    "M7_on_target_penetration_mm": -22.96529222295764,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        2.6,
+        -207.9
+      ],
+      [
+        53.2,
+        -192.8
+      ],
+      [
+        102.4,
+        -158.3
+      ],
+      [
+        134.8,
+        -109.1
+      ],
+      [
+        146.9,
+        -45.9
+      ],
+      [
+        127.9,
+        3.9
+      ],
+      [
+        76.4,
+        41.0
+      ],
+      [
+        18.0,
+        61.2
+      ],
+      [
+        -42.7,
+        63.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 24.0,
+    "rotation_deg": -17.574452430952135,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": 1.2450107250040219,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143709944064789,
+    "M7_on_target_penetration_mm": -24.189678771066337,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        1.6,
+        -209.5
+      ],
+      [
+        52.2,
+        -194.0
+      ],
+      [
+        101.4,
+        -159.3
+      ],
+      [
+        133.8,
+        -110.1
+      ],
+      [
+        145.9,
+        -46.9
+      ],
+      [
+        126.9,
+        2.8
+      ],
+      [
+        75.4,
+        39.8
+      ],
+      [
+        17.0,
+        60.1
+      ],
+      [
+        -43.7,
+        62.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 25.0,
+    "rotation_deg": -18.30672128224181,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -0.19627230700376685,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143688226695273,
+    "M7_on_target_penetration_mm": -25.410786975824973,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        0.6,
+        -211.1
+      ],
+      [
+        51.2,
+        -195.2
+      ],
+      [
+        100.4,
+        -160.2
+      ],
+      [
+        132.8,
+        -111.0
+      ],
+      [
+        144.9,
+        -47.8
+      ],
+      [
+        125.9,
+        1.7
+      ],
+      [
+        74.4,
+        38.6
+      ],
+      [
+        16.0,
+        58.9
+      ],
+      [
+        -44.7,
+        61.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 26.0,
+    "rotation_deg": -19.03899013353148,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -1.636102805071559,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143666761826637,
+    "M7_on_target_penetration_mm": -26.641210882597868,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -0.4,
+        -212.7
+      ],
+      [
+        50.2,
+        -196.4
+      ],
+      [
+        99.4,
+        -161.1
+      ],
+      [
+        131.8,
+        -111.8
+      ],
+      [
+        143.9,
+        -48.8
+      ],
+      [
+        124.9,
+        0.6
+      ],
+      [
+        73.4,
+        37.4
+      ],
+      [
+        15.0,
+        57.7
+      ],
+      [
+        -45.7,
+        60.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 27.0,
+    "rotation_deg": -19.771258984821152,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -3.0740338648280527,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143645547284666,
+    "M7_on_target_penetration_mm": -27.895548732253342,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -1.4,
+        -214.2
+      ],
+      [
+        49.2,
+        -197.5
+      ],
+      [
+        98.4,
+        -162.0
+      ],
+      [
+        130.8,
+        -112.7
+      ],
+      [
+        142.9,
+        -49.7
+      ],
+      [
+        123.9,
+        -0.5
+      ],
+      [
+        72.4,
+        36.2
+      ],
+      [
+        14.0,
+        56.5
+      ],
+      [
+        -46.7,
+        59.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 28.0,
+    "rotation_deg": -20.503527836110827,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -4.509596445579334,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143624580931891,
+    "M7_on_target_penetration_mm": -29.11658780515932,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -2.4,
+        -215.7
+      ],
+      [
+        48.2,
+        -198.6
+      ],
+      [
+        97.4,
+        -162.9
+      ],
+      [
+        129.8,
+        -113.5
+      ],
+      [
+        141.9,
+        -50.7
+      ],
+      [
+        122.9,
+        -1.6
+      ],
+      [
+        71.4,
+        35.0
+      ],
+      [
+        13.0,
+        55.3
+      ],
+      [
+        -47.7,
+        58.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 29.0,
+    "rotation_deg": -21.235796687400498,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -5.9422977037741305,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.814360386065816,
+    "M7_on_target_penetration_mm": -30.360493309019013,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -3.4,
+        -217.1
+      ],
+      [
+        47.2,
+        -199.7
+      ],
+      [
+        96.4,
+        -163.7
+      ],
+      [
+        128.8,
+        -114.4
+      ],
+      [
+        140.9,
+        -51.6
+      ],
+      [
+        121.9,
+        -2.7
+      ],
+      [
+        70.4,
+        33.8
+      ],
+      [
+        12.0,
+        54.1
+      ],
+      [
+        -48.7,
+        57.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 30.0,
+    "rotation_deg": -21.968065538690166,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -7.371619173351917,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143583384362052,
+    "M7_on_target_penetration_mm": -31.612437543386037,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -4.4,
+        -218.6
+      ],
+      [
+        46.2,
+        -200.7
+      ],
+      [
+        95.4,
+        -164.5
+      ],
+      [
+        127.8,
+        -115.2
+      ],
+      [
+        139.9,
+        -52.5
+      ],
+      [
+        120.9,
+        -3.8
+      ],
+      [
+        69.4,
+        32.5
+      ],
+      [
+        11.0,
+        52.9
+      ],
+      [
+        -49.7,
+        56.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 31.0,
+    "rotation_deg": -22.700334389979844,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -8.797014779382835,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143563149964564,
+    "M7_on_target_penetration_mm": -32.875403734845165,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -5.4,
+        -219.9
+      ],
+      [
+        45.2,
+        -201.7
+      ],
+      [
+        94.4,
+        -165.3
+      ],
+      [
+        126.8,
+        -116.0
+      ],
+      [
+        138.9,
+        -53.4
+      ],
+      [
+        119.9,
+        -4.9
+      ],
+      [
+        68.4,
+        31.3
+      ],
+      [
+        10.0,
+        51.7
+      ],
+      [
+        -50.7,
+        55.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 32.0,
+    "rotation_deg": -23.432603241269515,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -10.217908670527208,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143543155407432,
+    "M7_on_target_penetration_mm": -34.215525465299656,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -6.4,
+        -221.3
+      ],
+      [
+        44.2,
+        -202.7
+      ],
+      [
+        93.4,
+        -166.1
+      ],
+      [
+        125.8,
+        -116.7
+      ],
+      [
+        137.9,
+        -54.3
+      ],
+      [
+        118.9,
+        -6.0
+      ],
+      [
+        67.4,
+        30.1
+      ],
+      [
+        9.0,
+        50.4
+      ],
+      [
+        -51.7,
+        54.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 33.0,
+    "rotation_deg": -24.164872092559186,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -11.633692855027647,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143523398642036,
+    "M7_on_target_penetration_mm": -35.471325921648344,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -7.4,
+        -222.6
+      ],
+      [
+        43.2,
+        -203.6
+      ],
+      [
+        92.4,
+        -166.8
+      ],
+      [
+        124.8,
+        -117.5
+      ],
+      [
+        136.9,
+        -55.2
+      ],
+      [
+        117.9,
+        -7.1
+      ],
+      [
+        66.4,
+        28.8
+      ],
+      [
+        8.0,
+        49.2
+      ],
+      [
+        -52.7,
+        53.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 34.0,
+    "rotation_deg": -24.89714094384886,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -13.043724624239857,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143503877650512,
+    "M7_on_target_penetration_mm": -37.39263676895495,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -8.4,
+        -223.9
+      ],
+      [
+        42.2,
+        -204.5
+      ],
+      [
+        91.4,
+        -167.5
+      ],
+      [
+        123.8,
+        -118.2
+      ],
+      [
+        135.9,
+        -56.1
+      ],
+      [
+        116.9,
+        -8.2
+      ],
+      [
+        65.4,
+        27.6
+      ],
+      [
+        7.0,
+        47.9
+      ],
+      [
+        -53.7,
+        52.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 35.0,
+    "rotation_deg": -25.629409795138532,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -14.447323747204763,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143484590416618,
+    "M7_on_target_penetration_mm": -38.533741231066834,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -9.4,
+        -225.1
+      ],
+      [
+        41.2,
+        -205.4
+      ],
+      [
+        90.4,
+        -168.2
+      ],
+      [
+        122.8,
+        -118.9
+      ],
+      [
+        134.9,
+        -56.9
+      ],
+      [
+        115.9,
+        -9.3
+      ],
+      [
+        64.4,
+        26.3
+      ],
+      [
+        6.0,
+        46.7
+      ],
+      [
+        -54.7,
+        51.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 36.0,
+    "rotation_deg": -26.361678646428203,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -15.84376941949732,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.814346553495468,
+    "M7_on_target_penetration_mm": -40.592247779823026,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -10.4,
+        -226.3
+      ],
+      [
+        40.2,
+        -206.2
+      ],
+      [
+        89.4,
+        -168.8
+      ],
+      [
+        121.8,
+        -119.6
+      ],
+      [
+        133.9,
+        -57.8
+      ],
+      [
+        114.9,
+        -10.4
+      ],
+      [
+        63.4,
+        25.1
+      ],
+      [
+        5.0,
+        45.4
+      ],
+      [
+        -55.7,
+        50.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 37.0,
+    "rotation_deg": -27.093947497717878,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -17.232296949738654,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143446709312209,
+    "M7_on_target_penetration_mm": -41.64509961063846,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -11.4,
+        -227.5
+      ],
+      [
+        39.2,
+        -207.0
+      ],
+      [
+        88.4,
+        -169.4
+      ],
+      [
+        120.8,
+        -120.3
+      ],
+      [
+        132.9,
+        -58.6
+      ],
+      [
+        113.9,
+        -11.5
+      ],
+      [
+        62.4,
+        23.8
+      ],
+      [
+        4.0,
+        44.1
+      ],
+      [
+        -56.7,
+        49.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 38.0,
+    "rotation_deg": -27.826216349007545,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -18.612094167834314,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143428111510471,
+    "M7_on_target_penetration_mm": -43.30820173481043,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -12.4,
+        -228.6
+      ],
+      [
+        38.2,
+        -207.8
+      ],
+      [
+        87.4,
+        -170.0
+      ],
+      [
+        119.8,
+        -120.9
+      ],
+      [
+        131.9,
+        -59.5
+      ],
+      [
+        112.9,
+        -12.6
+      ],
+      [
+        61.4,
+        22.6
+      ],
+      [
+        3.0,
+        42.9
+      ],
+      [
+        -57.7,
+        48.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 39.0,
+    "rotation_deg": -28.55848520029722,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -19.982297540400225,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143409739637468,
+    "M7_on_target_penetration_mm": -44.32226535981844,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -13.4,
+        -229.7
+      ],
+      [
+        37.2,
+        -208.5
+      ],
+      [
+        86.4,
+        -170.6
+      ],
+      [
+        118.8,
+        -121.6
+      ],
+      [
+        130.9,
+        -60.3
+      ],
+      [
+        111.9,
+        -13.7
+      ],
+      [
+        60.4,
+        21.3
+      ],
+      [
+        2.0,
+        41.6
+      ],
+      [
+        -58.7,
+        47.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 40.0,
+    "rotation_deg": -29.290754051586894,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -21.341987981218345,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143391591754853,
+    "M7_on_target_penetration_mm": -46.09216161642534,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -14.4,
+        -230.8
+      ],
+      [
+        36.2,
+        -209.3
+      ],
+      [
+        85.4,
+        -171.1
+      ],
+      [
+        117.8,
+        -122.2
+      ],
+      [
+        129.9,
+        -61.1
+      ],
+      [
+        110.9,
+        -14.8
+      ],
+      [
+        59.4,
+        20.0
+      ],
+      [
+        1.0,
+        40.3
+      ],
+      [
+        -59.7,
+        45.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 41.0,
+    "rotation_deg": -30.02302290287657,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -22.690186348198587,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143373665975195,
+    "M7_on_target_penetration_mm": -46.90659184024987,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -15.4,
+        -231.8
+      ],
+      [
+        35.2,
+        -209.9
+      ],
+      [
+        84.4,
+        -171.6
+      ],
+      [
+        116.8,
+        -122.8
+      ],
+      [
+        128.9,
+        -62.0
+      ],
+      [
+        109.9,
+        -15.9
+      ],
+      [
+        58.4,
+        18.7
+      ],
+      [
+        -0.0,
+        39.0
+      ],
+      [
+        -60.7,
+        44.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 42.0,
+    "rotation_deg": -30.755291754166237,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -24.025848623642958,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143355960406145,
+    "M7_on_target_penetration_mm": -48.356359376897515,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -16.4,
+        -232.8
+      ],
+      [
+        34.2,
+        -210.6
+      ],
+      [
+        83.4,
+        -172.1
+      ],
+      [
+        115.8,
+        -123.3
+      ],
+      [
+        127.9,
+        -62.8
+      ],
+      [
+        108.9,
+        -16.9
+      ],
+      [
+        57.4,
+        17.5
+      ],
+      [
+        -1.0,
+        37.7
+      ],
+      [
+        -61.7,
+        43.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 43.0,
+    "rotation_deg": -31.48756060545591,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -25.347860781981268,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.814333847318411,
+    "M7_on_target_penetration_mm": -49.19570232145665,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -17.4,
+        -233.7
+      ],
+      [
+        33.2,
+        -211.2
+      ],
+      [
+        82.4,
+        -172.6
+      ],
+      [
+        114.8,
+        -123.9
+      ],
+      [
+        126.9,
+        -63.6
+      ],
+      [
+        107.9,
+        -18.0
+      ],
+      [
+        56.4,
+        16.2
+      ],
+      [
+        -2.0,
+        36.3
+      ],
+      [
+        -62.7,
+        42.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 44.0,
+    "rotation_deg": -32.21982945674558,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -26.65503335923767,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143321202455904,
+    "M7_on_target_penetration_mm": -50.22393655362071,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -18.4,
+        -234.6
+      ],
+      [
+        32.2,
+        -211.7
+      ],
+      [
+        81.4,
+        -173.0
+      ],
+      [
+        113.8,
+        -124.4
+      ],
+      [
+        125.9,
+        -64.3
+      ],
+      [
+        106.9,
+        -19.1
+      ],
+      [
+        55.4,
+        14.9
+      ],
+      [
+        -3.0,
+        35.0
+      ],
+      [
+        -63.7,
+        41.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 45.0,
+    "rotation_deg": -32.952098308035254,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -27.946095751863076,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143304146388606,
+    "M7_on_target_penetration_mm": -51.04645381584337,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -19.4,
+        -235.5
+      ],
+      [
+        31.2,
+        -212.2
+      ],
+      [
+        80.4,
+        -173.4
+      ],
+      [
+        112.8,
+        -124.9
+      ],
+      [
+        124.9,
+        -65.1
+      ],
+      [
+        105.9,
+        -20.2
+      ],
+      [
+        54.4,
+        13.6
+      ],
+      [
+        -4.0,
+        33.7
+      ],
+      [
+        -64.7,
+        40.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 46.0,
+    "rotation_deg": -33.68436715932493,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -29.2196902900481,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143287303171266,
+    "M7_on_target_penetration_mm": -66.8645058585279,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -20.4,
+        -236.3
+      ],
+      [
+        30.2,
+        -212.7
+      ],
+      [
+        79.4,
+        -173.8
+      ],
+      [
+        111.8,
+        -125.4
+      ],
+      [
+        123.9,
+        -65.9
+      ],
+      [
+        104.9,
+        -21.3
+      ],
+      [
+        53.4,
+        12.3
+      ],
+      [
+        -5.0,
+        32.4
+      ],
+      [
+        -65.7,
+        39.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 47.0,
+    "rotation_deg": -34.4166360106146,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -30.474366153050646,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143270670983258,
+    "M7_on_target_penetration_mm": -67.70882106933053,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -21.4,
+        -237.1
+      ],
+      [
+        29.2,
+        -213.2
+      ],
+      [
+        78.4,
+        -174.1
+      ],
+      [
+        110.8,
+        -125.9
+      ],
+      [
+        122.9,
+        -66.6
+      ],
+      [
+        103.9,
+        -22.3
+      ],
+      [
+        52.4,
+        11.0
+      ],
+      [
+        -6.0,
+        31.0
+      ],
+      [
+        -66.7,
+        38.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 48.0,
+    "rotation_deg": -35.14890486190427,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -31.708573222404212,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143254248056232,
+    "M7_on_target_penetration_mm": -68.37464127020277,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -22.4,
+        -237.8
+      ],
+      [
+        28.2,
+        -213.6
+      ],
+      [
+        77.4,
+        -174.4
+      ],
+      [
+        109.8,
+        -126.3
+      ],
+      [
+        121.9,
+        -67.4
+      ],
+      [
+        102.9,
+        -23.4
+      ],
+      [
+        51.4,
+        9.8
+      ],
+      [
+        -7.0,
+        29.7
+      ],
+      [
+        -67.7,
+        36.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 49.0,
+    "rotation_deg": -35.881173713193945,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -32.92065600404251,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143238032613523,
+    "M7_on_target_penetration_mm": -68.58231211760953,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -23.4,
+        -238.5
+      ],
+      [
+        27.2,
+        -214.0
+      ],
+      [
+        76.4,
+        -174.7
+      ],
+      [
+        108.8,
+        -126.8
+      ],
+      [
+        120.9,
+        -68.1
+      ],
+      [
+        101.9,
+        -24.5
+      ],
+      [
+        50.4,
+        8.5
+      ],
+      [
+        -8.0,
+        28.3
+      ],
+      [
+        -68.7,
+        35.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 50.0,
+    "rotation_deg": -36.61344256448362,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -34.108847793394965,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143222022903771,
+    "M7_on_target_penetration_mm": -68.83736774454108,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -24.4,
+        -239.2
+      ],
+      [
+        26.2,
+        -214.4
+      ],
+      [
+        75.4,
+        -175.0
+      ],
+      [
+        107.8,
+        -127.2
+      ],
+      [
+        119.9,
+        -68.8
+      ],
+      [
+        100.9,
+        -25.5
+      ],
+      [
+        49.4,
+        7.2
+      ],
+      [
+        -9.0,
+        27.0
+      ],
+      [
+        -69.7,
+        34.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 51.0,
+    "rotation_deg": -37.34571141577329,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -35.271265309004605,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143206217184561,
+    "M7_on_target_penetration_mm": -69.13973041745182,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -25.4,
+        -239.8
+      ],
+      [
+        25.2,
+        -214.7
+      ],
+      [
+        74.4,
+        -175.2
+      ],
+      [
+        106.8,
+        -127.6
+      ],
+      [
+        118.9,
+        -69.5
+      ],
+      [
+        99.9,
+        -26.6
+      ],
+      [
+        48.4,
+        5.9
+      ],
+      [
+        -10.0,
+        25.6
+      ],
+      [
+        -70.7,
+        33.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 52.0,
+    "rotation_deg": -38.07798026706296,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -36.40590408069716,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143190613736045,
+    "M7_on_target_penetration_mm": -69.48920711104583,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -26.4,
+        -240.4
+      ],
+      [
+        24.2,
+        -215.0
+      ],
+      [
+        73.4,
+        -175.4
+      ],
+      [
+        105.8,
+        -127.9
+      ],
+      [
+        117.9,
+        -70.2
+      ],
+      [
+        98.9,
+        -27.6
+      ],
+      [
+        47.4,
+        4.6
+      ],
+      [
+        -11.0,
+        24.3
+      ],
+      [
+        -71.7,
+        32.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 53.0,
+    "rotation_deg": -38.81024911835264,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -37.51063494742706,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143175210849115,
+    "M7_on_target_penetration_mm": -69.88549316468102,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -27.4,
+        -241.0
+      ],
+      [
+        23.2,
+        -215.2
+      ],
+      [
+        72.4,
+        -175.6
+      ],
+      [
+        104.8,
+        -128.3
+      ],
+      [
+        116.9,
+        -70.9
+      ],
+      [
+        97.9,
+        -28.7
+      ],
+      [
+        46.4,
+        3.3
+      ],
+      [
+        -12.0,
+        22.9
+      ],
+      [
+        -72.7,
+        30.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 54.0,
+    "rotation_deg": -39.542517969642304,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -38.58320209640489,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143160006829542,
+    "M7_on_target_penetration_mm": -70.32817696067586,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -28.4,
+        -241.5
+      ],
+      [
+        22.2,
+        -215.5
+      ],
+      [
+        71.4,
+        -175.7
+      ],
+      [
+        103.8,
+        -128.6
+      ],
+      [
+        115.9,
+        -71.6
+      ],
+      [
+        96.9,
+        -29.7
+      ],
+      [
+        45.4,
+        2.0
+      ],
+      [
+        -13.0,
+        21.5
+      ],
+      [
+        -73.7,
+        29.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 55.0,
+    "rotation_deg": -40.27478682093198,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -39.62122315621871,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143144999998313,
+    "M7_on_target_penetration_mm": -71.24750096140754,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -29.4,
+        -241.9
+      ],
+      [
+        21.2,
+        -215.6
+      ],
+      [
+        70.4,
+        -175.8
+      ],
+      [
+        102.8,
+        -128.9
+      ],
+      [
+        114.9,
+        -72.2
+      ],
+      [
+        95.9,
+        -30.7
+      ],
+      [
+        44.4,
+        0.7
+      ],
+      [
+        -14.0,
+        20.2
+      ],
+      [
+        -74.7,
+        28.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 56.0,
+    "rotation_deg": -41.007055672221654,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -40.62219193762402,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143130188687892,
+    "M7_on_target_penetration_mm": -72.87353603814213,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -30.4,
+        -242.4
+      ],
+      [
+        20.2,
+        -215.8
+      ],
+      [
+        69.4,
+        -175.9
+      ],
+      [
+        101.8,
+        -129.2
+      ],
+      [
+        113.9,
+        -72.9
+      ],
+      [
+        94.9,
+        -31.8
+      ],
+      [
+        43.4,
+        -0.6
+      ],
+      [
+        -15.0,
+        18.8
+      ],
+      [
+        -75.7,
+        27.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 57.0,
+    "rotation_deg": -41.73932452351132,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -41.58348448916284,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143115571258679,
+    "M7_on_target_penetration_mm": -73.24916540702264,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -31.4,
+        -242.8
+      ],
+      [
+        19.2,
+        -215.9
+      ],
+      [
+        68.4,
+        -175.9
+      ],
+      [
+        100.8,
+        -129.5
+      ],
+      [
+        112.9,
+        -73.5
+      ],
+      [
+        93.9,
+        -32.8
+      ],
+      [
+        42.4,
+        -1.9
+      ],
+      [
+        -16.0,
+        17.4
+      ],
+      [
+        -76.7,
+        26.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 58.0,
+    "rotation_deg": -42.471593374800996,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -42.50236919034394,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143101146088871,
+    "M7_on_target_penetration_mm": -74.48329471308783,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -32.4,
+        -243.1
+      ],
+      [
+        18.2,
+        -216.0
+      ],
+      [
+        67.4,
+        -176.0
+      ],
+      [
+        99.8,
+        -129.7
+      ],
+      [
+        111.9,
+        -74.1
+      ],
+      [
+        92.9,
+        -33.8
+      ],
+      [
+        41.4,
+        -3.2
+      ],
+      [
+        -17.0,
+        16.0
+      ],
+      [
+        -77.7,
+        24.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 59.0,
+    "rotation_deg": -43.20386222609067,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -43.37602162899888,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143086911522224,
+    "M7_on_target_penetration_mm": -75.8659405072486,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -33.4,
+        -243.4
+      ],
+      [
+        17.2,
+        -216.0
+      ],
+      [
+        66.4,
+        -176.0
+      ],
+      [
+        98.8,
+        -129.9
+      ],
+      [
+        110.9,
+        -74.7
+      ],
+      [
+        91.9,
+        -34.8
+      ],
+      [
+        40.4,
+        -4.5
+      ],
+      [
+        -18.0,
+        14.6
+      ],
+      [
+        -78.7,
+        23.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 60.0,
+    "rotation_deg": -43.93613107738033,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -44.20154498468458,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143072865981758,
+    "M7_on_target_penetration_mm": -76.01958224973538,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -34.4,
+        -243.7
+      ],
+      [
+        16.2,
+        -216.0
+      ],
+      [
+        65.4,
+        -175.9
+      ],
+      [
+        97.8,
+        -130.1
+      ],
+      [
+        109.9,
+        -75.3
+      ],
+      [
+        90.9,
+        -35.8
+      ],
+      [
+        39.4,
+        -5.8
+      ],
+      [
+        -19.0,
+        13.3
+      ],
+      [
+        -79.7,
+        22.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 61.0,
+    "rotation_deg": -44.66839992867001,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -44.9759965475131,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143059007872294,
+    "M7_on_target_penetration_mm": -76.3118360565751,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -35.4,
+        -244.0
+      ],
+      [
+        15.2,
+        -216.0
+      ],
+      [
+        64.4,
+        -175.9
+      ],
+      [
+        96.8,
+        -130.3
+      ],
+      [
+        108.9,
+        -75.9
+      ],
+      [
+        89.9,
+        -36.8
+      ],
+      [
+        38.4,
+        -7.1
+      ],
+      [
+        -20.0,
+        11.9
+      ],
+      [
+        -80.7,
+        21.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 62.0,
+    "rotation_deg": -45.40066877995969,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -45.696420822292836,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143045335618107,
+    "M7_on_target_penetration_mm": -76.39207911003527,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -36.4,
+        -244.2
+      ],
+      [
+        14.2,
+        -215.9
+      ],
+      [
+        63.4,
+        -175.8
+      ],
+      [
+        95.8,
+        -130.4
+      ],
+      [
+        107.9,
+        -76.5
+      ],
+      [
+        88.9,
+        -37.8
+      ],
+      [
+        37.4,
+        -8.4
+      ],
+      [
+        -21.0,
+        10.5
+      ],
+      [
+        -81.7,
+        20.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 63.0,
+    "rotation_deg": -46.132937631249355,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -46.35988938533405,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.8143031847644617,
+    "M7_on_target_penetration_mm": -76.27207827484041,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -37.4,
+        -244.3
+      ],
+      [
+        13.2,
+        -215.8
+      ],
+      [
+        62.4,
+        -175.7
+      ],
+      [
+        94.8,
+        -130.6
+      ],
+      [
+        106.9,
+        -77.1
+      ],
+      [
+        87.9,
+        -38.8
+      ],
+      [
+        36.4,
+        -9.7
+      ],
+      [
+        -22.0,
+        9.1
+      ],
+      [
+        -82.7,
+        18.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 64.0,
+    "rotation_deg": -46.86520648253903,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -46.96354726759056,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": true,
+    "source_penetration_mm": -0.81430185424181,
+    "M7_on_target_penetration_mm": -75.18383479636088,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -38.4,
+        -244.4
+      ],
+      [
+        12.2,
+        -215.7
+      ],
+      [
+        61.4,
+        -175.5
+      ],
+      [
+        93.8,
+        -130.7
+      ],
+      [
+        105.9,
+        -77.6
+      ],
+      [
+        86.9,
+        -39.8
+      ],
+      [
+        35.4,
+        -11.0
+      ],
+      [
+        -23.0,
+        7.7
+      ],
+      [
+        -83.7,
+        17.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 65.0,
+    "rotation_deg": -47.597475333828704,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -47.50466513834101,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8143005418394272,
+    "M7_on_target_penetration_mm": -74.20074831869842,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -39.4,
+        -244.5
+      ],
+      [
+        11.2,
+        -215.5
+      ],
+      [
+        60.4,
+        -175.3
+      ],
+      [
+        92.8,
+        -130.8
+      ],
+      [
+        104.9,
+        -78.2
+      ],
+      [
+        85.9,
+        -40.8
+      ],
+      [
+        34.4,
+        -12.3
+      ],
+      [
+        -24.0,
+        6.3
+      ],
+      [
+        -84.7,
+        16.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 66.0,
+    "rotation_deg": -48.32974418511837,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -47.98069598264892,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142992474048588,
+    "M7_on_target_penetration_mm": -74.8682107105023,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -40.4,
+        -244.5
+      ],
+      [
+        10.2,
+        -215.3
+      ],
+      [
+        59.4,
+        -175.1
+      ],
+      [
+        91.8,
+        -130.9
+      ],
+      [
+        103.9,
+        -78.7
+      ],
+      [
+        84.9,
+        -41.8
+      ],
+      [
+        33.4,
+        -13.5
+      ],
+      [
+        -25.0,
+        4.9
+      ],
+      [
+        -85.7,
+        15.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 67.0,
+    "rotation_deg": -49.06201303640805,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -48.389334350308104,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142979707880569,
+    "M7_on_target_penetration_mm": -73.51262034821376,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -41.4,
+        -244.5
+      ],
+      [
+        9.2,
+        -215.1
+      ],
+      [
+        58.4,
+        -174.9
+      ],
+      [
+        90.8,
+        -130.9
+      ],
+      [
+        102.9,
+        -79.2
+      ],
+      [
+        83.9,
+        -42.7
+      ],
+      [
+        32.4,
+        -14.8
+      ],
+      [
+        -26.0,
+        3.5
+      ],
+      [
+        -86.7,
+        13.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 68.0,
+    "rotation_deg": -49.79428188769772,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -48.72857567321423,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142967118386042,
+    "M7_on_target_penetration_mm": -72.08017453412393,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -42.4,
+        -244.5
+      ],
+      [
+        8.2,
+        -214.8
+      ],
+      [
+        57.4,
+        -174.6
+      ],
+      [
+        89.8,
+        -130.9
+      ],
+      [
+        101.9,
+        -79.7
+      ],
+      [
+        82.9,
+        -43.7
+      ],
+      [
+        31.4,
+        -16.1
+      ],
+      [
+        -27.0,
+        2.1
+      ],
+      [
+        -87.7,
+        12.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 69.0,
+    "rotation_deg": -50.52655073898739,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -48.99677268807994,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142954704092142,
+    "M7_on_target_penetration_mm": -71.82182292673647,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -43.4,
+        -244.4
+      ],
+      [
+        7.2,
+        -214.5
+      ],
+      [
+        56.4,
+        -174.3
+      ],
+      [
+        88.8,
+        -130.9
+      ],
+      [
+        100.9,
+        -80.2
+      ],
+      [
+        81.9,
+        -44.6
+      ],
+      [
+        30.4,
+        -17.4
+      ],
+      [
+        -28.0,
+        0.7
+      ],
+      [
+        -88.7,
+        11.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 70.0,
+    "rotation_deg": -51.258819590277064,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -49.19268575245173,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142942463517931,
+    "M7_on_target_penetration_mm": -65.46586014509074,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -44.4,
+        -244.3
+      ],
+      [
+        6.2,
+        -214.1
+      ],
+      [
+        55.4,
+        -174.0
+      ],
+      [
+        87.8,
+        -130.9
+      ],
+      [
+        99.9,
+        -80.6
+      ],
+      [
+        80.9,
+        -45.6
+      ],
+      [
+        29.4,
+        -18.7
+      ],
+      [
+        -29.0,
+        -0.7
+      ],
+      [
+        -89.7,
+        10.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 71.0,
+    "rotation_deg": -51.99108844156674,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -49.31552388062499,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142930395219318,
+    "M7_on_target_penetration_mm": -71.36946134752009,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -45.4,
+        -244.1
+      ],
+      [
+        5.2,
+        -213.7
+      ],
+      [
+        54.4,
+        -173.7
+      ],
+      [
+        86.8,
+        -130.9
+      ],
+      [
+        98.9,
+        -81.1
+      ],
+      [
+        79.9,
+        -46.5
+      ],
+      [
+        28.4,
+        -19.9
+      ],
+      [
+        -30.0,
+        -2.1
+      ],
+      [
+        -90.7,
+        8.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 72.0,
+    "rotation_deg": -52.723357292856406,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -49.36497369600172,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142918497735911,
+    "M7_on_target_penetration_mm": -63.52177906557072,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -46.4,
+        -243.9
+      ],
+      [
+        4.2,
+        -213.3
+      ],
+      [
+        53.4,
+        -173.3
+      ],
+      [
+        85.8,
+        -130.8
+      ],
+      [
+        97.9,
+        -81.6
+      ],
+      [
+        78.9,
+        -47.4
+      ],
+      [
+        27.4,
+        -21.2
+      ],
+      [
+        -31.0,
+        -3.5
+      ],
+      [
+        -91.7,
+        7.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 73.0,
+    "rotation_deg": -53.45562614414608,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -49.34121419164003,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142906769656648,
+    "M7_on_target_penetration_mm": -62.91392489230635,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -47.4,
+        -243.7
+      ],
+      [
+        3.2,
+        -212.9
+      ],
+      [
+        52.4,
+        -172.9
+      ],
+      [
+        84.8,
+        -130.8
+      ],
+      [
+        96.9,
+        -82.0
+      ],
+      [
+        77.9,
+        -48.3
+      ],
+      [
+        26.4,
+        -22.5
+      ],
+      [
+        -32.0,
+        -4.9
+      ],
+      [
+        -92.7,
+        6.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 74.0,
+    "rotation_deg": -54.187894995435755,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -49.24491614941638,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142895209553703,
+    "M7_on_target_penetration_mm": -58.41219025423442,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -48.4,
+        -243.4
+      ],
+      [
+        2.2,
+        -212.4
+      ],
+      [
+        51.4,
+        -172.5
+      ],
+      [
+        83.8,
+        -130.7
+      ],
+      [
+        95.9,
+        -82.4
+      ],
+      [
+        76.9,
+        -49.3
+      ],
+      [
+        25.4,
+        -23.8
+      ],
+      [
+        -33.0,
+        -6.3
+      ],
+      [
+        -93.7,
+        5.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 75.0,
+    "rotation_deg": -54.92016384672543,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -49.07722617848556,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142883816021557,
+    "M7_on_target_penetration_mm": -57.49318000585671,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -49.4,
+        -243.1
+      ],
+      [
+        1.2,
+        -211.9
+      ],
+      [
+        50.4,
+        -172.0
+      ],
+      [
+        82.8,
+        -130.5
+      ],
+      [
+        94.9,
+        -82.8
+      ],
+      [
+        75.9,
+        -50.2
+      ],
+      [
+        24.4,
+        -25.0
+      ],
+      [
+        -34.0,
+        -7.7
+      ],
+      [
+        -94.7,
+        3.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 76.0,
+    "rotation_deg": -55.65243269801509,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -48.83973645359459,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142872587660952,
+    "M7_on_target_penetration_mm": -57.9154739592678,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -50.4,
+        -242.7
+      ],
+      [
+        0.2,
+        -211.3
+      ],
+      [
+        49.4,
+        -171.5
+      ],
+      [
+        81.8,
+        -130.4
+      ],
+      [
+        93.9,
+        -83.2
+      ],
+      [
+        74.9,
+        -51.1
+      ],
+      [
+        23.4,
+        -26.3
+      ],
+      [
+        -35.0,
+        -9.1
+      ],
+      [
+        -95.7,
+        2.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 77.0,
+    "rotation_deg": -56.384701549304765,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -48.534442218689755,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.81428615231007,
+    "M7_on_target_penetration_mm": -56.69829251908834,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -51.4,
+        -242.3
+      ],
+      [
+        -0.8,
+        -210.7
+      ],
+      [
+        48.4,
+        -171.0
+      ],
+      [
+        80.8,
+        -130.2
+      ],
+      [
+        92.9,
+        -83.6
+      ],
+      [
+        73.9,
+        -51.9
+      ],
+      [
+        22.4,
+        -27.5
+      ],
+      [
+        -36.0,
+        -10.5
+      ],
+      [
+        -96.7,
+        1.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 78.0,
+    "rotation_deg": -57.11697040059444,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -48.163689853093125,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142850620955051,
+    "M7_on_target_penetration_mm": -55.87503372186717,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -52.4,
+        -241.8
+      ],
+      [
+        -1.8,
+        -210.1
+      ],
+      [
+        47.4,
+        -170.5
+      ],
+      [
+        79.8,
+        -130.0
+      ],
+      [
+        91.9,
+        -83.9
+      ],
+      [
+        72.9,
+        -52.8
+      ],
+      [
+        21.4,
+        -28.8
+      ],
+      [
+        -37.0,
+        -11.9
+      ],
+      [
+        -97.7,
+        0.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 79.0,
+    "rotation_deg": -57.849239251884114,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -47.730118705639285,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142839879890486,
+    "M7_on_target_penetration_mm": -54.64198412133918,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -53.4,
+        -241.4
+      ],
+      [
+        -2.8,
+        -209.4
+      ],
+      [
+        46.4,
+        -169.9
+      ],
+      [
+        78.8,
+        -129.8
+      ],
+      [
+        90.9,
+        -84.3
+      ],
+      [
+        71.9,
+        -53.7
+      ],
+      [
+        20.4,
+        -30.0
+      ],
+      [
+        -38.0,
+        -13.2
+      ],
+      [
+        -98.7,
+        -1.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 80.0,
+    "rotation_deg": -58.58150810317379,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -47.23659997282351,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142829298550605,
+    "M7_on_target_penetration_mm": -53.42782093874775,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -54.4,
+        -240.8
+      ],
+      [
+        -3.8,
+        -208.7
+      ],
+      [
+        45.4,
+        -169.3
+      ],
+      [
+        77.8,
+        -129.6
+      ],
+      [
+        89.9,
+        -84.6
+      ],
+      [
+        70.9,
+        -54.6
+      ],
+      [
+        19.4,
+        -31.2
+      ],
+      [
+        -39.0,
+        -14.6
+      ],
+      [
+        -99.7,
+        -2.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 81.0,
+    "rotation_deg": -59.313776954463464,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -46.68617566781888,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142818875584342,
+    "M7_on_target_penetration_mm": -52.5882411798828,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -55.4,
+        -240.3
+      ],
+      [
+        -4.8,
+        -208.0
+      ],
+      [
+        44.4,
+        -168.6
+      ],
+      [
+        76.8,
+        -129.4
+      ],
+      [
+        88.9,
+        -85.0
+      ],
+      [
+        69.9,
+        -55.4
+      ],
+      [
+        18.4,
+        -32.5
+      ],
+      [
+        -40.0,
+        -16.0
+      ],
+      [
+        -100.7,
+        -3.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 82.0,
+    "rotation_deg": -60.04604580575314,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -46.082000272749006,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142808609700831,
+    "M7_on_target_penetration_mm": -51.3985711925198,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -56.4,
+        -239.7
+      ],
+      [
+        -5.8,
+        -207.2
+      ],
+      [
+        43.4,
+        -168.0
+      ],
+      [
+        75.8,
+        -129.1
+      ],
+      [
+        87.9,
+        -85.3
+      ],
+      [
+        68.9,
+        -56.3
+      ],
+      [
+        17.4,
+        -33.7
+      ],
+      [
+        -41.0,
+        -17.4
+      ],
+      [
+        -101.7,
+        -4.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 83.0,
+    "rotation_deg": -60.7783146570428,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -45.427287078061546,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142798499561413,
+    "M7_on_target_penetration_mm": -50.07961534873406,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -57.4,
+        -239.0
+      ],
+      [
+        -6.8,
+        -206.4
+      ],
+      [
+        42.4,
+        -167.3
+      ],
+      [
+        74.8,
+        -128.8
+      ],
+      [
+        86.9,
+        -85.6
+      ],
+      [
+        67.9,
+        -57.1
+      ],
+      [
+        16.4,
+        -34.9
+      ],
+      [
+        -42.0,
+        -18.8
+      ],
+      [
+        -102.7,
+        -6.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 84.0,
+    "rotation_deg": -61.51058350833247,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -44.72526057963616,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142788543888537,
+    "M7_on_target_penetration_mm": -48.884973598975684,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -58.4,
+        -238.4
+      ],
+      [
+        -7.8,
+        -205.6
+      ],
+      [
+        41.4,
+        -166.6
+      ],
+      [
+        73.8,
+        -128.5
+      ],
+      [
+        85.9,
+        -85.9
+      ],
+      [
+        66.9,
+        -57.9
+      ],
+      [
+        15.4,
+        -36.1
+      ],
+      [
+        -43.0,
+        -20.2
+      ],
+      [
+        -103.7,
+        -7.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 85.0,
+    "rotation_deg": -62.24285235962215,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -43.979115700211736,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142778741379714,
+    "M7_on_target_penetration_mm": -47.52504113455622,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -59.4,
+        -237.7
+      ],
+      [
+        -8.8,
+        -204.7
+      ],
+      [
+        40.4,
+        -165.9
+      ],
+      [
+        72.8,
+        -128.1
+      ],
+      [
+        84.9,
+        -86.1
+      ],
+      [
+        65.9,
+        -58.7
+      ],
+      [
+        14.4,
+        -37.4
+      ],
+      [
+        -44.0,
+        -21.5
+      ],
+      [
+        -104.7,
+        -8.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 86.0,
+    "rotation_deg": -62.97512121091182,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -43.19198407806541,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142769090757637,
+    "M7_on_target_penetration_mm": -46.166492660112034,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -60.4,
+        -236.9
+      ],
+      [
+        -9.8,
+        -203.9
+      ],
+      [
+        39.4,
+        -165.1
+      ],
+      [
+        71.8,
+        -127.8
+      ],
+      [
+        83.9,
+        -86.4
+      ],
+      [
+        64.9,
+        -59.5
+      ],
+      [
+        13.4,
+        -38.6
+      ],
+      [
+        -45.0,
+        -22.9
+      ],
+      [
+        -105.7,
+        -9.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 87.0,
+    "rotation_deg": -63.707390062201505,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -42.366907250301935,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142759590765786,
+    "M7_on_target_penetration_mm": -44.80561910859631,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -61.4,
+        -236.1
+      ],
+      [
+        -10.8,
+        -202.9
+      ],
+      [
+        38.4,
+        -164.3
+      ],
+      [
+        70.8,
+        -127.4
+      ],
+      [
+        82.9,
+        -86.6
+      ],
+      [
+        63.9,
+        -60.3
+      ],
+      [
+        12.4,
+        -39.8
+      ],
+      [
+        -46.0,
+        -24.3
+      ],
+      [
+        -106.7,
+        -11.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 88.0,
+    "rotation_deg": -64.43965891349116,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -41.506816258163475,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142750240150194,
+    "M7_on_target_penetration_mm": -43.3410838815171,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -62.4,
+        -235.3
+      ],
+      [
+        -11.8,
+        -202.0
+      ],
+      [
+        37.4,
+        -163.5
+      ],
+      [
+        69.8,
+        -127.0
+      ],
+      [
+        81.9,
+        -86.8
+      ],
+      [
+        62.9,
+        -61.1
+      ],
+      [
+        11.4,
+        -40.9
+      ],
+      [
+        -47.0,
+        -25.6
+      ],
+      [
+        -107.7,
+        -12.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 89.0,
+    "rotation_deg": -65.17192776478083,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -40.61451701015119,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142741037658412,
+    "M7_on_target_penetration_mm": -41.90637413786229,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -63.4,
+        -234.4
+      ],
+      [
+        -12.8,
+        -201.0
+      ],
+      [
+        36.4,
+        -162.6
+      ],
+      [
+        68.8,
+        -126.6
+      ],
+      [
+        80.9,
+        -87.1
+      ],
+      [
+        61.9,
+        -61.9
+      ],
+      [
+        10.4,
+        -42.1
+      ],
+      [
+        -48.0,
+        -27.0
+      ],
+      [
+        -108.7,
+        -13.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 90.0,
+    "rotation_deg": -65.90419661607051,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -39.69268063942257,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142731982061787,
+    "M7_on_target_penetration_mm": -40.47305732950798,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -64.4,
+        -233.5
+      ],
+      [
+        -13.8,
+        -199.9
+      ],
+      [
+        35.4,
+        -161.8
+      ],
+      [
+        67.8,
+        -126.2
+      ],
+      [
+        79.9,
+        -87.2
+      ],
+      [
+        60.9,
+        -62.7
+      ],
+      [
+        9.4,
+        -43.3
+      ],
+      [
+        -49.0,
+        -28.3
+      ],
+      [
+        -109.7,
+        -14.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 91.0,
+    "rotation_deg": -66.63646546736018,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -38.7438380648284,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142723072137305,
+    "M7_on_target_penetration_mm": -39.040332092431036,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -65.4,
+        -232.5
+      ],
+      [
+        -14.8,
+        -198.9
+      ],
+      [
+        34.4,
+        -160.9
+      ],
+      [
+        66.8,
+        -125.7
+      ],
+      [
+        78.9,
+        -87.4
+      ],
+      [
+        59.9,
+        -63.4
+      ],
+      [
+        8.4,
+        -44.5
+      ],
+      [
+        -50.0,
+        -29.7
+      ],
+      [
+        -110.7,
+        -16.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 92.0,
+    "rotation_deg": -67.36873431864986,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -37.77037799001378,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142714306677853,
+    "M7_on_target_penetration_mm": -37.59327256657492,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -66.4,
+        -231.6
+      ],
+      [
+        -15.8,
+        -197.8
+      ],
+      [
+        33.4,
+        -160.0
+      ],
+      [
+        65.8,
+        -125.2
+      ],
+      [
+        77.9,
+        -87.6
+      ],
+      [
+        58.9,
+        -64.2
+      ],
+      [
+        7.4,
+        -45.6
+      ],
+      [
+        -51.0,
+        -31.0
+      ],
+      [
+        -111.7,
+        -17.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 93.0,
+    "rotation_deg": -68.10100316993953,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -36.77454763412096,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.81427056844722,
+    "M7_on_target_penetration_mm": -35.93693296893317,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -67.4,
+        -230.5
+      ],
+      [
+        -16.8,
+        -196.7
+      ],
+      [
+        32.4,
+        -159.0
+      ],
+      [
+        64.8,
+        -124.7
+      ],
+      [
+        76.9,
+        -87.8
+      ],
+      [
+        57.9,
+        -64.9
+      ],
+      [
+        6.4,
+        -46.8
+      ],
+      [
+        -52.0,
+        -32.4
+      ],
+      [
+        -112.7,
+        -18.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 94.0,
+    "rotation_deg": -68.8332720212292,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -35.75845556609079,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142697204341653,
+    "M7_on_target_penetration_mm": -34.47535503338468,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -68.4,
+        -229.5
+      ],
+      [
+        -17.8,
+        -195.5
+      ],
+      [
+        31.4,
+        -158.0
+      ],
+      [
+        63.8,
+        -124.2
+      ],
+      [
+        75.9,
+        -87.9
+      ],
+      [
+        56.9,
+        -65.6
+      ],
+      [
+        5.4,
+        -47.9
+      ],
+      [
+        -53.0,
+        -33.7
+      ],
+      [
+        -113.7,
+        -19.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 95.0,
+    "rotation_deg": -69.56554087251887,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -34.72407610113916,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142688865098003,
+    "M7_on_target_penetration_mm": -33.026968333079516,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -69.4,
+        -228.4
+      ],
+      [
+        -18.8,
+        -194.3
+      ],
+      [
+        30.4,
+        -157.0
+      ],
+      [
+        62.8,
+        -123.7
+      ],
+      [
+        74.9,
+        -88.0
+      ],
+      [
+        55.9,
+        -66.3
+      ],
+      [
+        4.4,
+        -49.1
+      ],
+      [
+        -54.0,
+        -35.0
+      ],
+      [
+        -114.7,
+        -20.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 96.0,
+    "rotation_deg": -70.29780972380854,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -33.6732548046968,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.81426806655738,
+    "M7_on_target_penetration_mm": -31.428115498076725,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -70.4,
+        -227.2
+      ],
+      [
+        -19.8,
+        -193.1
+      ],
+      [
+        29.4,
+        -156.0
+      ],
+      [
+        61.8,
+        -123.1
+      ],
+      [
+        73.9,
+        -88.1
+      ],
+      [
+        54.9,
+        -67.0
+      ],
+      [
+        3.4,
+        -50.2
+      ],
+      [
+        -55.0,
+        -36.3
+      ],
+      [
+        -115.7,
+        -22.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 97.0,
+    "rotation_deg": -71.03007857509822,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -32.607714730886165,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142672604608229,
+    "M7_on_target_penetration_mm": -29.964384669944256,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -71.4,
+        -226.1
+      ],
+      [
+        -20.8,
+        -191.8
+      ],
+      [
+        28.4,
+        -154.9
+      ],
+      [
+        60.8,
+        -122.5
+      ],
+      [
+        72.9,
+        -88.2
+      ],
+      [
+        53.9,
+        -67.7
+      ],
+      [
+        2.4,
+        -51.3
+      ],
+      [
+        -56.0,
+        -37.7
+      ],
+      [
+        -116.7,
+        -23.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 98.0,
+    "rotation_deg": -71.76234742638789,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -31.529063096384235,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142664681047904,
+    "M7_on_target_penetration_mm": -28.204146103000774,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -72.4,
+        -224.8
+      ],
+      [
+        -21.8,
+        -190.5
+      ],
+      [
+        27.4,
+        -153.9
+      ],
+      [
+        59.8,
+        -121.9
+      ],
+      [
+        71.9,
+        -88.3
+      ],
+      [
+        52.9,
+        -68.4
+      ],
+      [
+        1.4,
+        -52.5
+      ],
+      [
+        -57.0,
+        -39.0
+      ],
+      [
+        -117.7,
+        -24.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 99.0,
+    "rotation_deg": -72.49461627767757,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -30.43879815501353,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142656893758966,
+    "M7_on_target_penetration_mm": -26.695078622474995,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -73.4,
+        -223.6
+      ],
+      [
+        -22.8,
+        -189.2
+      ],
+      [
+        26.4,
+        -152.8
+      ],
+      [
+        58.8,
+        -121.3
+      ],
+      [
+        70.9,
+        -88.4
+      ],
+      [
+        51.9,
+        -69.1
+      ],
+      [
+        0.4,
+        -53.6
+      ],
+      [
+        -58.0,
+        -40.3
+      ],
+      [
+        -118.7,
+        -25.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 100.0,
+    "rotation_deg": -73.22688512896724,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -29.33831609321836,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142649241607592,
+    "M7_on_target_penetration_mm": -25.195985713427138,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -74.4,
+        -222.3
+      ],
+      [
+        -23.8,
+        -187.9
+      ],
+      [
+        25.4,
+        -151.6
+      ],
+      [
+        57.8,
+        -120.7
+      ],
+      [
+        69.9,
+        -88.4
+      ],
+      [
+        50.9,
+        -69.7
+      ],
+      [
+        -0.6,
+        -54.7
+      ],
+      [
+        -59.0,
+        -41.6
+      ],
+      [
+        -119.7,
+        -27.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 101.0,
+    "rotation_deg": -73.95915398025691,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -28.228917812221198,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142641723482664,
+    "M7_on_target_penetration_mm": -23.73765884664338,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -75.4,
+        -221.0
+      ],
+      [
+        -24.8,
+        -186.5
+      ],
+      [
+        24.4,
+        -150.5
+      ],
+      [
+        56.8,
+        -120.0
+      ],
+      [
+        68.9,
+        -88.5
+      ],
+      [
+        49.9,
+        -70.4
+      ],
+      [
+        -1.6,
+        -55.7
+      ],
+      [
+        -60.0,
+        -42.9
+      ],
+      [
+        -120.7,
+        -28.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 102.0,
+    "rotation_deg": -74.69142283154657,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -27.111815499898213,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142634338257985,
+    "M7_on_target_penetration_mm": -22.05464479522213,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -76.4,
+        -219.6
+      ],
+      [
+        -25.8,
+        -185.1
+      ],
+      [
+        23.4,
+        -149.3
+      ],
+      [
+        55.8,
+        -119.3
+      ],
+      [
+        67.9,
+        -88.5
+      ],
+      [
+        48.9,
+        -71.0
+      ],
+      [
+        -2.6,
+        -56.8
+      ],
+      [
+        -61.0,
+        -44.1
+      ],
+      [
+        -121.7,
+        -29.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 103.0,
+    "rotation_deg": -75.42369168283625,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -25.988138925251725,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142627084836215,
+    "M7_on_target_penetration_mm": -20.536783894381113,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -77.4,
+        -218.3
+      ],
+      [
+        -26.8,
+        -183.7
+      ],
+      [
+        22.4,
+        -148.1
+      ],
+      [
+        54.8,
+        -118.6
+      ],
+      [
+        66.9,
+        -88.5
+      ],
+      [
+        47.9,
+        -71.7
+      ],
+      [
+        -3.6,
+        -57.9
+      ],
+      [
+        -62.0,
+        -45.4
+      ],
+      [
+        -122.7,
+        -30.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 104.0,
+    "rotation_deg": -76.15596053412592,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -24.8589414118984,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142619962138801,
+    "M7_on_target_penetration_mm": -19.02958086699458,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -78.4,
+        -216.8
+      ],
+      [
+        -27.8,
+        -182.2
+      ],
+      [
+        21.4,
+        -146.9
+      ],
+      [
+        53.8,
+        -117.9
+      ],
+      [
+        65.9,
+        -88.5
+      ],
+      [
+        46.9,
+        -72.3
+      ],
+      [
+        -4.6,
+        -59.0
+      ],
+      [
+        -63.0,
+        -46.7
+      ],
+      [
+        -123.7,
+        -31.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 105.0,
+    "rotation_deg": -76.88822938541558,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -23.725205465231213,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142612969067228,
+    "M7_on_target_penetration_mm": -17.535079041765723,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -79.4,
+        -215.4
+      ],
+      [
+        -28.8,
+        -180.7
+      ],
+      [
+        20.4,
+        -145.6
+      ],
+      [
+        52.8,
+        -117.2
+      ],
+      [
+        64.9,
+        -88.5
+      ],
+      [
+        45.9,
+        -72.9
+      ],
+      [
+        -5.6,
+        -60.0
+      ],
+      [
+        -64.0,
+        -47.9
+      ],
+      [
+        -124.7,
+        -33.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 106.0,
+    "rotation_deg": -77.62049823670527,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -22.587848041768588,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142606104554798,
+    "M7_on_target_penetration_mm": -15.737653221896391,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -80.4,
+        -213.9
+      ],
+      [
+        -29.8,
+        -179.2
+      ],
+      [
+        19.4,
+        -144.3
+      ],
+      [
+        51.8,
+        -116.4
+      ],
+      [
+        63.9,
+        -88.5
+      ],
+      [
+        44.9,
+        -73.5
+      ],
+      [
+        -6.6,
+        -61.1
+      ],
+      [
+        -65.0,
+        -49.2
+      ],
+      [
+        -125.7,
+        -34.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 107.0,
+    "rotation_deg": -78.35276708799493,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -21.44772545957462,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142599367537655,
+    "M7_on_target_penetration_mm": -14.201855035555829,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -81.4,
+        -212.3
+      ],
+      [
+        -30.8,
+        -177.6
+      ],
+      [
+        18.4,
+        -143.0
+      ],
+      [
+        50.8,
+        -115.6
+      ],
+      [
+        62.9,
+        -88.4
+      ],
+      [
+        43.9,
+        -74.0
+      ],
+      [
+        -7.6,
+        -62.1
+      ],
+      [
+        -66.0,
+        -50.4
+      ],
+      [
+        -126.7,
+        -35.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 108.0,
+    "rotation_deg": -79.08503593928461,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -20.305637956130205,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142592756961858,
+    "M7_on_target_penetration_mm": -12.673566314949406,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -82.4,
+        -210.8
+      ],
+      [
+        -31.8,
+        -176.0
+      ],
+      [
+        17.4,
+        -141.7
+      ],
+      [
+        49.8,
+        -114.8
+      ],
+      [
+        61.9,
+        -88.3
+      ],
+      [
+        42.9,
+        -74.6
+      ],
+      [
+        -8.6,
+        -63.1
+      ],
+      [
+        -67.0,
+        -51.7
+      ],
+      [
+        -127.7,
+        -36.5
+      ]
+    ]
+  },
+  {
+    "pull_mm": 109.0,
+    "rotation_deg": -79.81730479057428,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -19.16233390535281,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142586271782479,
+    "M7_on_target_penetration_mm": -11.154464884080465,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -83.4,
+        -209.2
+      ],
+      [
+        -32.8,
+        -174.4
+      ],
+      [
+        16.4,
+        -140.4
+      ],
+      [
+        48.8,
+        -114.0
+      ],
+      [
+        60.9,
+        -88.3
+      ],
+      [
+        41.9,
+        -75.1
+      ],
+      [
+        -9.6,
+        -64.1
+      ],
+      [
+        -68.0,
+        -52.9
+      ],
+      [
+        -128.7,
+        -37.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 110.0,
+    "rotation_deg": -80.54957364186396,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -18.01851370901808,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.814257991096313,
+    "M7_on_target_penetration_mm": -9.701068303151546,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -84.4,
+        -207.5
+      ],
+      [
+        -33.8,
+        -172.8
+      ],
+      [
+        15.4,
+        -139.0
+      ],
+      [
+        47.8,
+        -113.2
+      ],
+      [
+        59.9,
+        -88.2
+      ],
+      [
+        40.9,
+        -75.7
+      ],
+      [
+        -10.6,
+        -65.1
+      ],
+      [
+        -69.0,
+        -54.1
+      ],
+      [
+        -129.7,
+        -38.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 111.0,
+    "rotation_deg": -81.28184249315363,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -16.8748333800812,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142573673474807,
+    "M7_on_target_penetration_mm": -8.05421391034213,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -85.4,
+        -205.9
+      ],
+      [
+        -34.8,
+        -171.1
+      ],
+      [
+        14.4,
+        -137.6
+      ],
+      [
+        46.8,
+        -112.3
+      ],
+      [
+        58.9,
+        -88.1
+      ],
+      [
+        39.9,
+        -76.2
+      ],
+      [
+        -11.6,
+        -66.1
+      ],
+      [
+        -70.0,
+        -55.3
+      ],
+      [
+        -130.7,
+        -39.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 112.0,
+    "rotation_deg": -82.01411134444331,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -15.73190783663236,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142567558298409,
+    "M7_on_target_penetration_mm": -6.528868126974669,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -86.4,
+        -204.2
+      ],
+      [
+        -35.8,
+        -169.4
+      ],
+      [
+        13.4,
+        -136.2
+      ],
+      [
+        45.8,
+        -111.5
+      ],
+      [
+        57.9,
+        -88.0
+      ],
+      [
+        38.9,
+        -76.7
+      ],
+      [
+        -12.6,
+        -67.1
+      ],
+      [
+        -71.0,
+        -56.5
+      ],
+      [
+        -131.7,
+        -41.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 113.0,
+    "rotation_deg": -82.74638019573298,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -14.590313925699661,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142561564423401,
+    "M7_on_target_penetration_mm": -5.007332577371665,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -87.4,
+        -202.4
+      ],
+      [
+        -36.8,
+        -167.7
+      ],
+      [
+        12.4,
+        -134.8
+      ],
+      [
+        44.8,
+        -110.6
+      ],
+      [
+        56.9,
+        -87.8
+      ],
+      [
+        37.9,
+        -77.2
+      ],
+      [
+        -13.6,
+        -68.1
+      ],
+      [
+        -72.0,
+        -57.7
+      ],
+      [
+        -132.7,
+        -42.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 114.0,
+    "rotation_deg": -83.47864904702264,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -13.450593196066208,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142555690850745,
+    "M7_on_target_penetration_mm": -3.489734761433924,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -88.4,
+        -200.6
+      ],
+      [
+        -37.8,
+        -165.9
+      ],
+      [
+        11.4,
+        -133.3
+      ],
+      [
+        43.8,
+        -109.7
+      ],
+      [
+        55.9,
+        -87.7
+      ],
+      [
+        36.9,
+        -77.7
+      ],
+      [
+        -14.6,
+        -69.0
+      ],
+      [
+        -73.0,
+        -58.9
+      ],
+      [
+        -133.7,
+        -43.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 115.0,
+    "rotation_deg": -84.21091789831232,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -12.313254438804123,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142549936586942,
+    "M7_on_target_penetration_mm": -1.976201535877208,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -89.4,
+        -198.8
+      ],
+      [
+        -38.8,
+        -164.1
+      ],
+      [
+        10.4,
+        -131.8
+      ],
+      [
+        42.8,
+        -108.8
+      ],
+      [
+        54.9,
+        -87.5
+      ],
+      [
+        35.9,
+        -78.2
+      ],
+      [
+        -15.6,
+        -70.0
+      ],
+      [
+        -74.0,
+        -60.1
+      ],
+      [
+        -134.7,
+        -44.4
+      ]
+    ]
+  },
+  {
+    "pull_mm": 116.0,
+    "rotation_deg": -84.94318674960199,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -11.178776013537771,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142544300642411,
+    "M7_on_target_penetration_mm": -0.4671985082008873,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -90.4,
+        -197.0
+      ],
+      [
+        -39.8,
+        -162.3
+      ],
+      [
+        9.4,
+        -130.3
+      ],
+      [
+        41.8,
+        -107.8
+      ],
+      [
+        53.9,
+        -87.3
+      ],
+      [
+        34.9,
+        -78.7
+      ],
+      [
+        -16.6,
+        -70.9
+      ],
+      [
+        -75.0,
+        -61.2
+      ],
+      [
+        -135.7,
+        -45.6
+      ]
+    ]
+  },
+  {
+    "pull_mm": 117.0,
+    "rotation_deg": -85.67545560089167,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -10.047607977533971,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142538782049199,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -91.4,
+        -195.1
+      ],
+      [
+        -40.8,
+        -160.5
+      ],
+      [
+        8.4,
+        -128.8
+      ],
+      [
+        40.8,
+        -106.9
+      ],
+      [
+        52.9,
+        -87.1
+      ],
+      [
+        33.9,
+        -79.1
+      ],
+      [
+        -17.6,
+        -71.8
+      ],
+      [
+        -76.0,
+        -62.4
+      ],
+      [
+        -136.7,
+        -46.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 118.0,
+    "rotation_deg": -86.40772445218134,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -8.920174033758201,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142533379835065,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -92.4,
+        -193.2
+      ],
+      [
+        -41.8,
+        -158.6
+      ],
+      [
+        7.4,
+        -127.3
+      ],
+      [
+        39.8,
+        -105.9
+      ],
+      [
+        51.9,
+        -86.9
+      ],
+      [
+        32.9,
+        -79.6
+      ],
+      [
+        -18.6,
+        -72.7
+      ],
+      [
+        -77.0,
+        -63.5
+      ],
+      [
+        -137.7,
+        -47.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 119.0,
+    "rotation_deg": -87.13999330347102,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -7.796873312961864,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142528093042761,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -93.4,
+        -191.3
+      ],
+      [
+        -42.8,
+        -156.7
+      ],
+      [
+        6.4,
+        -125.7
+      ],
+      [
+        38.8,
+        -104.9
+      ],
+      [
+        50.9,
+        -86.7
+      ],
+      [
+        31.9,
+        -80.0
+      ],
+      [
+        -19.6,
+        -73.6
+      ],
+      [
+        -78.0,
+        -64.7
+      ],
+      [
+        -138.7,
+        -48.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 120.0,
+    "rotation_deg": -87.87226215476066,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -6.678082003838398,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142522920719502,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -94.4,
+        -189.3
+      ],
+      [
+        -43.8,
+        -154.8
+      ],
+      [
+        5.4,
+        -124.1
+      ],
+      [
+        37.8,
+        -103.9
+      ],
+      [
+        49.9,
+        -86.5
+      ],
+      [
+        30.9,
+        -80.4
+      ],
+      [
+        -20.6,
+        -74.5
+      ],
+      [
+        -79.0,
+        -65.8
+      ],
+      [
+        -139.7,
+        -49.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 121.0,
+    "rotation_deg": -88.60453100605035,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -5.564154844222472,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142517861926386,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -95.4,
+        -187.4
+      ],
+      [
+        -44.8,
+        -152.9
+      ],
+      [
+        4.4,
+        -122.5
+      ],
+      [
+        36.8,
+        -102.9
+      ],
+      [
+        48.9,
+        -86.2
+      ],
+      [
+        29.9,
+        -80.8
+      ],
+      [
+        -21.6,
+        -75.4
+      ],
+      [
+        -80.0,
+        -66.9
+      ],
+      [
+        -140.7,
+        -51.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 122.0,
+    "rotation_deg": -89.33679985734003,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -4.455426485307754,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142512915723527,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -96.4,
+        -185.3
+      ],
+      [
+        -45.8,
+        -150.9
+      ],
+      [
+        3.4,
+        -120.9
+      ],
+      [
+        35.8,
+        -101.8
+      ],
+      [
+        47.9,
+        -86.0
+      ],
+      [
+        28.9,
+        -81.2
+      ],
+      [
+        -22.6,
+        -76.3
+      ],
+      [
+        -81.0,
+        -68.0
+      ],
+      [
+        -141.7,
+        -52.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 123.0,
+    "rotation_deg": -90.0690687086297,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -3.352212739895009,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142508081183656,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -97.4,
+        -183.3
+      ],
+      [
+        -46.8,
+        -148.9
+      ],
+      [
+        2.4,
+        -119.3
+      ],
+      [
+        34.8,
+        -100.8
+      ],
+      [
+        46.9,
+        -85.7
+      ],
+      [
+        27.9,
+        -81.6
+      ],
+      [
+        -23.6,
+        -77.1
+      ],
+      [
+        -82.0,
+        -69.1
+      ],
+      [
+        -142.7,
+        -53.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 124.0,
+    "rotation_deg": -90.80133755991938,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -2.254811724758653,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142503357389757,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -98.4,
+        -181.2
+      ],
+      [
+        -47.8,
+        -146.9
+      ],
+      [
+        1.4,
+        -117.6
+      ],
+      [
+        33.8,
+        -99.7
+      ],
+      [
+        45.9,
+        -85.4
+      ],
+      [
+        26.9,
+        -81.9
+      ],
+      [
+        -24.6,
+        -77.9
+      ],
+      [
+        -83.0,
+        -70.2
+      ],
+      [
+        -143.7,
+        -54.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 125.0,
+    "rotation_deg": -91.53360641120905,
+    "hook_touch": [
+      5,
+      6
+    ],
+    "min_hook_gap_mm": -1.1635049063820162,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142498743431408,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -99.4,
+        -179.1
+      ],
+      [
+        -48.8,
+        -144.9
+      ],
+      [
+        0.4,
+        -115.9
+      ],
+      [
+        32.8,
+        -98.6
+      ],
+      [
+        44.9,
+        -85.1
+      ],
+      [
+        25.9,
+        -82.3
+      ],
+      [
+        -25.6,
+        -78.8
+      ],
+      [
+        -84.0,
+        -71.2
+      ],
+      [
+        -144.7,
+        -55.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 126.0,
+    "rotation_deg": -92.26587526249871,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": -0.07855805849902708,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142494238404117,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -100.4,
+        -176.9
+      ],
+      [
+        -49.8,
+        -142.8
+      ],
+      [
+        -0.6,
+        -114.2
+      ],
+      [
+        31.8,
+        -97.5
+      ],
+      [
+        43.9,
+        -84.8
+      ],
+      [
+        24.9,
+        -82.6
+      ],
+      [
+        -26.6,
+        -79.6
+      ],
+      [
+        -85.0,
+        -72.3
+      ],
+      [
+        -145.7,
+        -56.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 127.0,
+    "rotation_deg": -92.99814411378838,
+    "hook_touch": [
+      6
+    ],
+    "min_hook_gap_mm": 0.9997778608435794,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142489841412405,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -101.4,
+        -174.8
+      ],
+      [
+        -50.8,
+        -140.8
+      ],
+      [
+        -1.6,
+        -112.5
+      ],
+      [
+        30.8,
+        -96.3
+      ],
+      [
+        42.9,
+        -84.5
+      ],
+      [
+        23.9,
+        -82.9
+      ],
+      [
+        -27.6,
+        -80.4
+      ],
+      [
+        -86.0,
+        -73.3
+      ],
+      [
+        -146.7,
+        -57.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 128.0,
+    "rotation_deg": -93.73041296507806,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.0712659056802067,
+    "closest_hook_module": 6,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142485551570197,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -102.4,
+        -172.6
+      ],
+      [
+        -51.8,
+        -138.6
+      ],
+      [
+        -2.6,
+        -110.8
+      ],
+      [
+        29.8,
+        -95.2
+      ],
+      [
+        41.9,
+        -84.1
+      ],
+      [
+        22.9,
+        -83.2
+      ],
+      [
+        -28.6,
+        -81.2
+      ],
+      [
+        -87.0,
+        -74.4
+      ],
+      [
+        -147.7,
+        -58.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 129.0,
+    "rotation_deg": -94.46268181636773,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.3375710454899234,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142481367989572,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -103.4,
+        -170.3
+      ],
+      [
+        -52.8,
+        -136.5
+      ],
+      [
+        -3.6,
+        -109.0
+      ],
+      [
+        28.8,
+        -94.1
+      ],
+      [
+        40.9,
+        -83.8
+      ],
+      [
+        21.9,
+        -83.5
+      ],
+      [
+        -29.6,
+        -81.9
+      ],
+      [
+        -88.0,
+        -75.4
+      ],
+      [
+        -148.7,
+        -59.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 130.0,
+    "rotation_deg": -95.19495066765741,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.3601886313753084,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142477289807759,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -104.4,
+        -168.1
+      ],
+      [
+        -53.8,
+        -134.4
+      ],
+      [
+        -4.6,
+        -107.2
+      ],
+      [
+        27.8,
+        -92.9
+      ],
+      [
+        39.9,
+        -83.4
+      ],
+      [
+        20.9,
+        -83.8
+      ],
+      [
+        -30.6,
+        -82.7
+      ],
+      [
+        -89.0,
+        -76.4
+      ],
+      [
+        -149.7,
+        -60.3
+      ]
+    ]
+  },
+  {
+    "pull_mm": 131.0,
+    "rotation_deg": -95.92721951894708,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.3819573496639777,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142473316147153,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -105.4,
+        -165.8
+      ],
+      [
+        -54.8,
+        -132.2
+      ],
+      [
+        -5.6,
+        -105.4
+      ],
+      [
+        26.8,
+        -91.7
+      ],
+      [
+        38.9,
+        -83.0
+      ],
+      [
+        19.9,
+        -84.1
+      ],
+      [
+        -31.6,
+        -83.5
+      ],
+      [
+        -90.0,
+        -77.4
+      ],
+      [
+        -150.7,
+        -61.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 132.0,
+    "rotation_deg": -96.65948837023674,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.402709466487309,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142469446161575,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -106.4,
+        -163.5
+      ],
+      [
+        -55.8,
+        -130.0
+      ],
+      [
+        -6.6,
+        -103.6
+      ],
+      [
+        25.8,
+        -90.5
+      ],
+      [
+        37.9,
+        -82.6
+      ],
+      [
+        18.9,
+        -84.3
+      ],
+      [
+        -32.6,
+        -84.2
+      ],
+      [
+        -91.0,
+        -78.4
+      ],
+      [
+        -151.7,
+        -62.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 133.0,
+    "rotation_deg": -97.39175722152642,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.4222855970090933,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142465678993671,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -107.4,
+        -161.1
+      ],
+      [
+        -56.8,
+        -127.8
+      ],
+      [
+        -7.6,
+        -101.8
+      ],
+      [
+        24.8,
+        -89.3
+      ],
+      [
+        36.9,
+        -82.2
+      ],
+      [
+        17.9,
+        -84.6
+      ],
+      [
+        -33.6,
+        -84.9
+      ],
+      [
+        -92.0,
+        -79.3
+      ],
+      [
+        -152.7,
+        -63.2
+      ]
+    ]
+  },
+  {
+    "pull_mm": 134.0,
+    "rotation_deg": -98.1240260728161,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.440534779855497,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142462013798228,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -108.4,
+        -158.8
+      ],
+      [
+        -57.8,
+        -125.6
+      ],
+      [
+        -8.6,
+        -100.0
+      ],
+      [
+        23.8,
+        -88.0
+      ],
+      [
+        35.9,
+        -81.8
+      ],
+      [
+        16.9,
+        -84.8
+      ],
+      [
+        -34.6,
+        -85.6
+      ],
+      [
+        -93.0,
+        -80.3
+      ],
+      [
+        -153.7,
+        -64.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 135.0,
+    "rotation_deg": -98.85629492410577,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.45731454492973,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142458449740299,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -109.4,
+        -156.4
+      ],
+      [
+        -58.8,
+        -123.3
+      ],
+      [
+        -9.6,
+        -98.1
+      ],
+      [
+        22.8,
+        -86.8
+      ],
+      [
+        34.9,
+        -81.3
+      ],
+      [
+        15.9,
+        -85.0
+      ],
+      [
+        -35.6,
+        -86.3
+      ],
+      [
+        -94.0,
+        -81.2
+      ],
+      [
+        -154.7,
+        -65.1
+      ]
+    ]
+  },
+  {
+    "pull_mm": 136.0,
+    "rotation_deg": -99.58856377539544,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.4724909750979123,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142454985992018,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -110.4,
+        -154.0
+      ],
+      [
+        -59.8,
+        -121.0
+      ],
+      [
+        -10.6,
+        -96.2
+      ],
+      [
+        21.8,
+        -85.5
+      ],
+      [
+        33.9,
+        -80.9
+      ],
+      [
+        14.9,
+        -85.2
+      ],
+      [
+        -36.6,
+        -87.0
+      ],
+      [
+        -95.0,
+        -82.2
+      ],
+      [
+        -155.7,
+        -66.0
+      ]
+    ]
+  },
+  {
+    "pull_mm": 137.0,
+    "rotation_deg": -100.3208326266851,
+    "hook_touch": [],
+    "min_hook_gap_mm": 2.4859387622077804,
+    "closest_hook_module": 5,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142451621727224,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -111.4,
+        -151.5
+      ],
+      [
+        -60.8,
+        -118.7
+      ],
+      [
+        -11.6,
+        -94.3
+      ],
+      [
+        20.8,
+        -84.3
+      ],
+      [
+        32.9,
+        -80.4
+      ],
+      [
+        13.9,
+        -85.4
+      ],
+      [
+        -37.6,
+        -87.6
+      ],
+      [
+        -96.0,
+        -83.1
+      ],
+      [
+        -156.7,
+        -66.9
+      ]
+    ]
+  },
+  {
+    "pull_mm": 138.0,
+    "rotation_deg": -101.05310147797478,
+    "hook_touch": [],
+    "min_hook_gap_mm": 1.3110574693609607,
+    "closest_hook_module": 3,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142448356132448,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -112.4,
+        -149.1
+      ],
+      [
+        -61.8,
+        -116.4
+      ],
+      [
+        -12.6,
+        -92.4
+      ],
+      [
+        19.8,
+        -83.0
+      ],
+      [
+        31.9,
+        -79.9
+      ],
+      [
+        12.9,
+        -85.5
+      ],
+      [
+        -38.6,
+        -88.3
+      ],
+      [
+        -97.0,
+        -84.0
+      ],
+      [
+        -157.7,
+        -67.8
+      ]
+    ]
+  },
+  {
+    "pull_mm": 139.0,
+    "rotation_deg": -101.78537032926445,
+    "hook_touch": [],
+    "min_hook_gap_mm": -0.18446094001616586,
+    "closest_hook_module": 3,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.814244518839985,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -113.4,
+        -146.6
+      ],
+      [
+        -62.8,
+        -114.1
+      ],
+      [
+        -13.6,
+        -90.5
+      ],
+      [
+        18.8,
+        -81.7
+      ],
+      [
+        30.9,
+        -79.4
+      ],
+      [
+        11.9,
+        -85.7
+      ],
+      [
+        -39.6,
+        -88.9
+      ],
+      [
+        -98.0,
+        -84.9
+      ],
+      [
+        -158.7,
+        -68.7
+      ]
+    ]
+  },
+  {
+    "pull_mm": 140.0,
+    "rotation_deg": -102.51763918055413,
+    "hook_touch": [],
+    "min_hook_gap_mm": -1.6874519761986448,
+    "closest_hook_module": 3,
+    "pipe_axis_enclosed_by_M0_M8": false,
+    "source_penetration_mm": -0.8142442117724908,
+    "M7_on_target_penetration_mm": 0.0,
+    "ground": false,
+    "nonadjacent_self": false,
+    "hook_uv_mm": [
+      [
+        -114.4,
+        -144.1
+      ],
+      [
+        -63.8,
+        -111.7
+      ],
+      [
+        -14.6,
+        -88.6
+      ],
+      [
+        17.8,
+        -80.4
+      ],
+      [
+        29.9,
+        -78.9
+      ],
+      [
+        10.9,
+        -85.8
+      ],
+      [
+        -40.6,
+        -89.5
+      ],
+      [
+        -99.0,
+        -85.7
+      ],
+      [
+        -159.7,
+        -69.6
+      ]
+    ]
+  }
+]

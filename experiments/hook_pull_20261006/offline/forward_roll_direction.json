@@ -1,0 +1,23 @@
+{
+  "note": "整身向前滚动 psi>0（与回拉相反）；理想不打滑；后部在源管(+X轴)，前部在目标管(+Y轴)",
+  "rear_on_source": {
+    "axial_mm_per_rad": 16.289643206439546,
+    "rotation_deg_per_rad": 6.68159395671383,
+    "fit_residual": 0.1931221723653261,
+    "modules": [
+      14,
+      17,
+      20
+    ]
+  },
+  "front_on_target": {
+    "axial_mm_per_rad": -12.532210266684482,
+    "rotation_deg_per_rad": 3.9332605404357386,
+    "fit_residual": 0.3222219921044358,
+    "modules": [
+      0,
+      3,
+      7
+    ]
+  }
+}

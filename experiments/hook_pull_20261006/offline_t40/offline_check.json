@@ -1,0 +1,82 @@
+{
+  "start": {
+    "trial": "experiments/curve_guided_transfer_20261006/target_open_close_20261006/OPEN_CLOSE_A2_ACTION",
+    "time_s": 39.99999999999748,
+    "source_contact_modules": [
+      9,
+      11,
+      14,
+      16,
+      20
+    ],
+    "target_contact_modules": [],
+    "start_tracking_error_deg": 0.668957752427276
+  },
+  "roll_table": {
+    "max_point_error_mm": 23.76261849168776,
+    "max_rms_point_error_mm": 17.073058232105605,
+    "rear_roll_error_deg": 17.113328562712425,
+    "free_roll_error_deg": 16.428523110881518,
+    "max_joint_deg": 76.25997956160501,
+    "max_joint_rate_deg_per_roll_deg": 2.0271510912665573,
+    "min_time_for_200deg_at_10deg_s": 40.543021825331145,
+    "note": "离散交替关节链滚动时形状本身会“呼吸”：标准 R95/P220 螺旋用 Yamada 解析滚动 60–120° 时误差也有 10–15 mm"
+  },
+  "no_slip_screw": {
+    "pull_mm_per_rad": 14.619939646393032,
+    "rotation_deg_per_rad": -10.705726410788564,
+    "rotation_deg_per_10mm_pull": -7.322688512896724,
+    "roll_sign_for_pull": -1.0,
+    "relative_fit_residual": 0.21906052106229515,
+    "source_contact_modules": [
+      9,
+      11,
+      14,
+      16,
+      20
+    ]
+  },
+  "paths": {
+    "screw": {
+      "first_hook_contact": {
+        "pull_mm": 22.0,
+        "rotation_deg": -16.10991472837279,
+        "hook_touch": [
+          6
+        ],
+        "min_hook_gap_mm": 4.130248426982078,
+        "closest_hook_module": 6,
+        "pipe_axis_enclosed_by_M0_M8": true,
+        "source_penetration_mm": -0.8143754144961458,
+        "M7_on_target_penetration_mm": -21.627119649688733,
+        "ground": false,
+        "nonadjacent_self": false
+      },
+      "enclosed_at_first_contact": true,
+      "source_penetration_before_contact_mm": -0.8144312869682403,
+      "non_hook_target_penetration_before_contact_mm": -21.627119649688733,
+      "ground_or_self_before_contact": false
+    },
+    "translate": {
+      "first_hook_contact": {
+        "pull_mm": 46.0,
+        "rotation_deg": 0.0,
+        "hook_touch": [
+          6
+        ],
+        "min_hook_gap_mm": 1.009764722341373,
+        "closest_hook_module": 6,
+        "pipe_axis_enclosed_by_M0_M8": true,
+        "source_penetration_mm": -0.8143287303164641,
+        "M7_on_target_penetration_mm": -0.15052479762007115,
+        "ground": false,
+        "nonadjacent_self": false
+      },
+      "enclosed_at_first_contact": true,
+      "source_penetration_before_contact_mm": -0.8144312869682403,
+      "non_hook_target_penetration_before_contact_mm": -0.508325508350798,
+      "ground_or_self_before_contact": false
+    }
+  },
+  "note": "理想刚体路径只说明几何是否能进钩；真实滚动会打滑，接触后的受力和变形要靠动力学回答。"
+}

@@ -1,0 +1,30 @@
+{
+  "note": "对照：CLOSE1 终态起保持指令不变 35 s，与 FRONT1 同时长",
+  "front_mean_y_advance_mm": 9.284981137529229,
+  "front_y_at_10s": 0.5346246075963563,
+  "front_y_at_20s": 1.0510808384530321,
+  "rear_module_displacement_mm": [
+    6.0,
+    6.8,
+    7.3,
+    6.6,
+    5.0,
+    3.0,
+    1.8,
+    1.2,
+    2.3,
+    4.3,
+    6.7
+  ],
+  "final_target_contacts": [
+    0,
+    3,
+    7
+  ],
+  "final_source_contacts": [
+    12,
+    14,
+    17,
+    20
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "start": "PULL2 final integration state and ctrl, no reset",
+  "close_s": 10.0,
+  "hold_s": 5.0,
+  "release_deg": 15.0,
+  "release_s": 3.0,
+  "final_hold_s": 10.0,
+  "gain": 0.02,
+  "close_rule": "J1-J6 target = measured*(1+K) each 50 ms, each joint <= 2x its start angle and 88 deg, rate <=10 deg/s; other joints keep pull target",
+  "release_rule": "non-hook joints follow roll table toward smaller pull",
+  "hook_after_close": "freeze: hook J1-J6 hold the targets reached at the end of close",
+  "success": "last2s drift<=6.45mm, last5s speed<5mm/s, >=3 target contacts, pipe enclosed>=95% last1s, source>=2, wrap>180deg",
+  "control_inputs": "encoder angles and issued targets only; contact truth for scoring/safety"
+}

@@ -1,0 +1,58 @@
+{
+  "name": "PULL1",
+  "outcome": "hold_completed",
+  "replay_match": {
+    "time_s": 16.999999999997794,
+    "max_qpos_difference": 2.365765609857462e-06,
+    "ctrl_equals_start_table": true
+  },
+  "first_hook_contact_time_s": 43.399999999989554,
+  "pull_frozen": {
+    "time_s": 43.89999999998839,
+    "psi_deg": -79.04825040000104,
+    "hook_modules": [
+      6
+    ]
+  },
+  "physical_seconds_after_branch": 31.89999999997894,
+  "wall_seconds": 11.59399999998277,
+  "rear_mean_x_displacement_mm": -32.518227600788435,
+  "head_rotation_about_source_axis_deg": 0.06902306027204569,
+  "final_psi_deg": -79.04825040000104,
+  "maximum_tracking_error_deg": 1.3602732407776226,
+  "hook_joint_maximum_tracking_error_deg": 0.36000802699391754,
+  "torque_saturation_fraction": 0.008978376684424945,
+  "maximum_module_speed_mm_s": 37.93673065374447,
+  "start_enclosed": true,
+  "start_target_contacts": [
+    7
+  ],
+  "start_source_contacts": [
+    9,
+    11,
+    14,
+    16,
+    18,
+    20
+  ],
+  "hold": {
+    "window_s": 5.0,
+    "last2s_drift_mm": 1.0327603193756512,
+    "window_max_module_speed_mm_s": 9.33619797931578,
+    "last1s_min_source_contacts": 5,
+    "last1s_min_target_contacts": 2,
+    "last1s_min_hook_contacts": 1,
+    "last1s_pipe_enclosed_fraction": 1.0,
+    "final_target_contact_modules": [
+      6,
+      7
+    ],
+    "final_source_contact_modules": [
+      10,
+      14,
+      15,
+      17,
+      20
+    ]
+  }
+}

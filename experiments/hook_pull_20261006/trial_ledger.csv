@@ -1,0 +1,11 @@
+trial_id,step,outcome,physical_seconds_after_branch,final_psi_deg,evidence
+PULL1,2_pull,hold_completed,31.89999999997894,-79.04825040000104,experiments/hook_pull_20261006/PULL1
+CLOSE1,3_close_release,completed,28.000000000026397,-64.04825040000105,experiments/hook_pull_20261006/CLOSE1
+FRONT1,4a_front_roll,completed,35.00000000016712,-10.0,experiments/hook_pull_20261006/FRONT1
+HOLD_CONTROL1,4a_control_no_roll,completed,35.0,0,experiments/hook_pull_20261006/HOLD_CONTROL1
+PULL2,2_pull,hold_completed,38.00000000001091,-105.67680000000132,experiments/hook_pull_20261006/PULL2
+CLOSE2,3_close_release,completed,28.000000000133696,-90.67680000000132,experiments/hook_pull_20261006/CLOSE2
+CLOSE1B,3_close_release,completed,28.000000000026397,-64.04825040000105,experiments/hook_pull_20261006/CLOSE1B
+CLOSE2B,3_close_release,completed,28.000000000133696,-90.67680000000132,experiments/hook_pull_20261006/CLOSE2B
+EXTHOLD_1B,3_extended_hold,completed,30.000000000143245,-64.04825040000105,experiments/hook_pull_20261006/EXTHOLD_1B
+EXTHOLD_2B,3_extended_hold,completed,30.000000000143245,-90.67680000000132,experiments/hook_pull_20261006/EXTHOLD_2B
