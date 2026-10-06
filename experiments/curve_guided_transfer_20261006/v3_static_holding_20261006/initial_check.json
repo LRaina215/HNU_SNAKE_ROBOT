@@ -1,0 +1,60 @@
+{
+  "qpos_saved_maximum_difference": 0.0,
+  "nodes_saved_maximum_difference_mm": 0.0,
+  "reference_joint_maximum_difference_rad": 0.0,
+  "maximum_length_error_mm": 1.4210854715202004e-13,
+  "within_joint_limits": true,
+  "collision_contacts": [],
+  "qvel_zero": true,
+  "physics_steps": 0,
+  "initial_pose_check": "PASS",
+  "full_transfer_path": "NOT_READY",
+  "maximum_joint_angle_deg": 69.31984864398322,
+  "joint_angles_deg": [
+    -29.93603093371307,
+    -48.92157099225526,
+    -62.86008431993473,
+    -22.246475565084747,
+    -61.98373003029896,
+    16.817581615994303,
+    -34.24559577543266,
+    25.29115496411844,
+    7.387882795864134,
+    23.377092076691223,
+    -63.24445608228909,
+    -6.683454930245256,
+    -62.93160323933834,
+    -38.67859637857783,
+    -47.886015548289556,
+    -57.85283518614605,
+    -21.936754174508433,
+    -69.31984864398322,
+    10.421554536146987,
+    -52.01086276490574
+  ],
+  "total_length_mm": 1354.5000000000002,
+  "saved_grip_modules": [
+    {
+      "module": 1,
+      "side": "target",
+      "gap_mm": 0.2042464405702944
+    },
+    {
+      "module": 4,
+      "side": "target",
+      "gap_mm": 0.3290451937474188
+    },
+    {
+      "module": 12,
+      "side": "source",
+      "gap_mm": 0.21446484384060938
+    },
+    {
+      "module": 19,
+      "side": "source",
+      "gap_mm": 0.18844394621176264
+    }
+  ],
+  "source_reference": "experiments/curve_guided_transfer_20261006/structural_revision_v3/fitted_reference.npz",
+  "interpretation": "Geometry only: no initial contact force or established grasp"
+}

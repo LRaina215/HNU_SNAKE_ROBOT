@@ -1,0 +1,11 @@
+{
+  "opened": true,
+  "frames": 152,
+  "fps": 20.0,
+  "duration_s": 7.6,
+  "saved_physics_duration_s": 7.550000000000856,
+  "frame_interval_s": 0.05,
+  "playback_speed": 1.0,
+  "endpoint_sampling_note": "initial t=0 frame included; final frame t=7.55, video 7.60 s",
+  "type": "actual_saved_physics_replay"
+}

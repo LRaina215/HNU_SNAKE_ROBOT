@@ -1,0 +1,51 @@
+{
+  "scope": "Saved V3 d=0 static holding only; no B, rear expansion or release",
+  "total_seconds": 45.25,
+  "entry_seconds": 5.0,
+  "control_period_seconds": 0.05,
+  "sample_period_seconds": 0.01,
+  "physics_period_seconds": 0.001,
+  "feed_mm": 0.0,
+  "roll_rad": 0.0,
+  "full_transfer_path": "NOT_READY",
+  "holding_speed_limit_mm_s": 50.0,
+  "holding_modules_per_pipe": 2,
+  "normal_force_threshold_N": 0.1,
+  "holding_screen": "Every sample in last 1 s at entry t=5 and completion t=45.25",
+  "stop_conditions": {
+    "ground": true,
+    "nonadjacent_self_contact": true,
+    "whole_body_support_loss_after_1s_for_4_control_intervals": true,
+    "maximum_module_speed_above_500_mm_s_after_1s_for_4_control_intervals": true,
+    "invalid_feedback_or_target": true
+  },
+  "physics_parameters_changed": false,
+  "controller_changed": false,
+  "gains": [
+    0.01,
+    0.02
+  ],
+  "target_rate_limit_deg_s": 10.0,
+  "target_joint_limit_deg": 90.0,
+  "feedback": [
+    "fresh_encoder_angles",
+    "last_sent_targets",
+    "retained_shape_state"
+  ],
+  "known_prior": "Saved initial rigid registration and nominal pipe axes; no online world pose",
+  "diagnostic_only": [
+    "exact_contacts",
+    "world_pose",
+    "module_speed",
+    "body_drift"
+  ],
+  "previous_dynamics_trials": 2,
+  "this_round_maximum_dynamics_trials": 1,
+  "initial_placement": "Saved d=0 qpos/ctrl, zero qvel before first physical step only",
+  "after_physics_start": "No reset, no external support or additional initial search",
+  "runtime": {
+    "python": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+    "mujoco": "3.2.7",
+    "numpy": "1.23.5"
+  }
+}

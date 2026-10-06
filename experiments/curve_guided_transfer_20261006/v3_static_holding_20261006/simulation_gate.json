@@ -1,0 +1,10 @@
+{
+  "full_transfer_path": "NOT_READY",
+  "static_holding": false,
+  "new_dynamics_trials": 1,
+  "cumulative_dynamics_trials": 3,
+  "B_run": false,
+  "F_run": false,
+  "real_trials": 0,
+  "next_step": "STOP: this authorization ends after the single static diagnostic"
+}
