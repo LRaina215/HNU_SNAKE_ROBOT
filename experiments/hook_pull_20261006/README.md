@@ -17,6 +17,7 @@
 | `HOLD_CONTROL1` | FRONT1 的对照：CLOSE1 终态不滚动保持 35 秒 | 前部自己蠕动 9.3 mm |
 | `step4_feasibility/` | 第 4 步离线验证（2026-10-07，不推进物理时间） | 几何形状序列到 u=132 mm（约 2 节）不违反门限；但规定的是接触段沿自身轨迹滑移，滚动可行性未建立，`step4_feasibility.json` 的 verdict=EXISTS 为更正前判据（见方法文档）。逐 u 行 `step4_rows.json`，失败状态 `failing_state.npz` |
 | `step4_rolling/` | 第 4 步滚动约束验证（2026-10-07，不推进物理时间）：接触不打滑，判据前部/后部各 ≥25 mm | 未建立。noslip：前 +14.5 / 后 +7.1 mm 后接触增到 10 个卡死；frictionless：前 +13.2 / 后 +11.4 mm 后 M12/M13 压进源管 3 mm。`step4_rolling_landing_*.json` 为结果，`*_log_*` 为每 10 步记录（noslip 结果文件生成于加 `--landing` 参数之前，内容即 noslip 行为） |
+| `phase_a/` | 后续执行方案阶段A（2026-10-07）：原地放松、耦合放松+送身、加抬起引导三轮，判据见脚本 `CRITERION` | 未通过，按停止条件终止。CLOSE1B 最好结果前 +16.0 / 后 +8.0 mm（J5 顶到 88°）；CLOSE2B 停滞。`phase_a_summary.json` 汇总，各起点目录含日志/报告/终态 |
 
 每个运行目录含 `plan.json`、`result.json`、`trace.npz`（100 Hz 位置、速度、指令、力矩、按管分组的接触力）、`commands.json`、`final_state.npz`（完整积分状态，供下一步接续）、`replay_1x.mp4`（实际物理回放，右侧为目标管截面）和 `sources/` 源码快照。`HOLD_CONTROL1`、`EXTHOLD_*` 当时用内联代码运行，之后整理为 `validation/hook_pull_hold.py`，逻辑相同，没有用脚本重跑。`FRONT1/sources/` 中的 `hook_pull_motion.py` 有一处类定义顺序错误（`RollSolver` 缺少 `table` 方法），只影响整身滚动表，不影响 FRONT1 使用的 `SplitRollSolver`；主目录已修正。
 
