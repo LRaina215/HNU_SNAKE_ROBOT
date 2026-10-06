@@ -1,0 +1,104 @@
+{
+  "physics_steps": 0,
+  "rows": [
+    {
+      "case": "R2_SPEED3_B",
+      "new_this_round": false,
+      "truth_axis_diagnostic": false,
+      "full_transfer_pass": false,
+      "duration_s": 66.7999999999549,
+      "actual_frames": 6681,
+      "applied_commands": 1336,
+      "M8_entry_time_s": 56.339999999959396,
+      "M9_peak_target_force_N": 0.0,
+      "pause_last2s_drift_mm": 3.6945363893912635,
+      "end_last2s_drift_mm": 15.321630666281099,
+      "front_net_polar_turn_deg": 112.12853140412747,
+      "front_polar_span_deg": 167.45630380640293,
+      "front_M0_M7_final_target_force_N": 4.917717005023858,
+      "final_target_contact_modules": [
+        0,
+        5,
+        8
+      ],
+      "J9_J10_final_weights": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "case": "ORACLE_AXIS_DIAGNOSTIC_TARGET_B",
+      "new_this_round": true,
+      "truth_axis_diagnostic": true,
+      "full_transfer_pass": false,
+      "duration_s": 66.7999999999549,
+      "actual_frames": 6681,
+      "applied_commands": 1336,
+      "M8_entry_time_s": 56.38999999995928,
+      "M9_peak_target_force_N": 0.0,
+      "pause_last2s_drift_mm": 3.748248670648355,
+      "end_last2s_drift_mm": 11.477250200648642,
+      "front_net_polar_turn_deg": 130.47052799956606,
+      "front_polar_span_deg": 169.76525506771625,
+      "front_M0_M7_final_target_force_N": 2.583013165043179,
+      "final_target_contact_modules": [
+        0,
+        8
+      ],
+      "J9_J10_final_weights": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "case": "CAPTURE1_B",
+      "new_this_round": true,
+      "truth_axis_diagnostic": false,
+      "full_transfer_pass": false,
+      "duration_s": 66.7999999999549,
+      "actual_frames": 6681,
+      "applied_commands": 1336,
+      "M8_entry_time_s": 54.529999999963614,
+      "M9_peak_target_force_N": 0.0,
+      "pause_last2s_drift_mm": 3.6945363893912635,
+      "end_last2s_drift_mm": 26.331219379516252,
+      "front_net_polar_turn_deg": 86.00200851772104,
+      "front_polar_span_deg": 151.95843868100053,
+      "front_M0_M7_final_target_force_N": 4.91178378034333,
+      "final_target_contact_modules": [
+        1,
+        5,
+        8
+      ],
+      "J9_J10_final_weights": [
+        1.0,
+        0.5000000000000013
+      ]
+    },
+    {
+      "case": "CAPTURE2_B",
+      "new_this_round": true,
+      "truth_axis_diagnostic": false,
+      "full_transfer_pass": false,
+      "duration_s": 66.7999999999549,
+      "actual_frames": 6681,
+      "applied_commands": 1336,
+      "M8_entry_time_s": 55.7799999999607,
+      "M9_peak_target_force_N": 0.0,
+      "pause_last2s_drift_mm": 3.6945363893912635,
+      "end_last2s_drift_mm": 13.814583834371277,
+      "front_net_polar_turn_deg": 124.63027016337938,
+      "front_polar_span_deg": 169.95618036455363,
+      "front_M0_M7_final_target_force_N": 5.931782385194872,
+      "final_target_contact_modules": [
+        0,
+        5,
+        8
+      ],
+      "J9_J10_final_weights": [
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

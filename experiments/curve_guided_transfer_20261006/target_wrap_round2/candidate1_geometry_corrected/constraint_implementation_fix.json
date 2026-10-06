@@ -1,0 +1,8 @@
+{
+  "physics_steps": 0,
+  "new_mechanism": false,
+  "issue": "End target pool included M8, which was then added again; it did not provide two original front-region anchors",
+  "correction": "Select two distinct near modules from M0..M7 and add M8/M9 once each; cover distinct failed feed intervals",
+  "preserved_previous": "candidate1_geometry contains both original failed offline passes",
+  "holding_or_dynamics_added": 0
+}

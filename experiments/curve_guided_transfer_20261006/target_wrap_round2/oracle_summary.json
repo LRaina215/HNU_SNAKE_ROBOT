@@ -1,0 +1,48 @@
+{
+  "physics_steps": 0,
+  "classification": "ORACLE_TARGET_AXIS_DIAGNOSTIC_ONLY",
+  "selected": [
+    {
+      "time_s": 5.000000000000004,
+      "front_polar_turn_deg": 239.07872884443677,
+      "front_M0_M7_target_force_N": 34.21885391775281,
+      "M8_force_N": 0.0,
+      "M9_force_N": 0.0,
+      "M9_target_shell_gap_mm": 31.943223789148448
+    },
+    {
+      "time_s": 49.99999999997417,
+      "front_polar_turn_deg": 233.33872298134324,
+      "front_M0_M7_target_force_N": 35.76429497027178,
+      "M8_force_N": 0.0,
+      "M9_force_N": 0.0,
+      "M9_target_shell_gap_mm": 24.229656269436276
+    },
+    {
+      "time_s": 56.38999999995928,
+      "front_polar_turn_deg": 198.26466217693752,
+      "front_M0_M7_target_force_N": 32.47117012167497,
+      "M8_force_N": 1.0130829816953872,
+      "M9_force_N": 0.0,
+      "M9_target_shell_gap_mm": 24.033563181018707
+    },
+    {
+      "time_s": 61.79999999994667,
+      "front_polar_turn_deg": 153.04695449637657,
+      "front_M0_M7_target_force_N": 8.4198971397905,
+      "M8_force_N": 17.644154272537914,
+      "M9_force_N": 0.0,
+      "M9_target_shell_gap_mm": 21.410665693358553
+    },
+    {
+      "time_s": 66.7999999999549,
+      "front_polar_turn_deg": 130.47052799956606,
+      "front_M0_M7_target_force_N": 2.583013165043179,
+      "M8_force_N": 17.553313701329778,
+      "M9_force_N": 0.0,
+      "M9_target_shell_gap_mm": 18.5343461566721
+    }
+  ],
+  "M9_maximum_target_force_N": 0.0,
+  "conclusion": "Target axis replacement alone does not satisfy old end-hold or two-module endpoint; does not exclude coupled axis/shape contributions."
+}

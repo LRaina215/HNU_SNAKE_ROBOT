@@ -1,0 +1,333 @@
+{
+  "physics_steps": 0,
+  "control_dispatches": 0,
+  "source_case": "CAPTURE1_B",
+  "rows": [
+    {
+      "time_s": 5.000000000000004,
+      "feed_mm": 0.0,
+      "poses": {
+        "actual_root_actual_joints": {
+          "M9_target_shell_gap_mm": 31.94071044862403,
+          "M9_endpoint_Y_mm": [
+            51.63599611849895,
+            5.033249590719824
+          ],
+          "M9_endpoint_radial_mm": [
+            108.98976886207961,
+            144.28593234170643
+          ],
+          "front_net_polar_turn_deg": 239.76346771722896
+        },
+        "nominal_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 52.87486151596865,
+          "M9_endpoint_Y_mm": [
+            41.73214153902575,
+            -8.971426335560633
+          ],
+          "M9_endpoint_radial_mm": [
+            131.53934767045556,
+            159.89220623372253
+          ],
+          "front_net_polar_turn_deg": 281.1103041436687
+        },
+        "actual_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 64.24199705228175,
+          "M9_endpoint_Y_mm": [
+            72.72972980159686,
+            28.43050260108812
+          ],
+          "M9_endpoint_radial_mm": [
+            139.48368330133195,
+            176.28766947802768
+          ],
+          "front_net_polar_turn_deg": 231.82059929029603
+        },
+        "nominal_root_actual_joints": {
+          "M9_target_shell_gap_mm": 27.20136001484687,
+          "M9_endpoint_Y_mm": [
+            33.63392817937107,
+            -15.809452464874877
+          ],
+          "M9_endpoint_radial_mm": [
+            105.0371205034812,
+            136.27621251229954
+          ],
+          "front_net_polar_turn_deg": 293.20130275442875
+        }
+      }
+    },
+    {
+      "time_s": 34.90000000000936,
+      "feed_mm": 80.625,
+      "poses": {
+        "actual_root_actual_joints": {
+          "M9_target_shell_gap_mm": 34.075436384167105,
+          "M9_endpoint_Y_mm": [
+            91.97132167758947,
+            62.05571383457967
+          ],
+          "M9_endpoint_radial_mm": [
+            106.1781098055678,
+            149.99319939184232
+          ],
+          "front_net_polar_turn_deg": 257.3525401903335
+        },
+        "nominal_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 23.80636497410866,
+          "M9_endpoint_Y_mm": [
+            96.90776550256258,
+            55.79145731475716
+          ],
+          "M9_endpoint_radial_mm": [
+            100.76254114169794,
+            134.04005080448707
+          ],
+          "front_net_polar_turn_deg": 291.58531915966097
+        },
+        "actual_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 64.5088257398673,
+          "M9_endpoint_Y_mm": [
+            121.2794565551708,
+            91.71455620022881
+          ],
+          "M9_endpoint_radial_mm": [
+            131.7887743658321,
+            176.52221739859615
+          ],
+          "front_net_polar_turn_deg": 243.60336147119165
+        },
+        "nominal_root_actual_joints": {
+          "M9_target_shell_gap_mm": 6.414252901909222,
+          "M9_endpoint_Y_mm": [
+            94.46876661224567,
+            65.68890356536751
+          ],
+          "M9_endpoint_radial_mm": [
+            80.98463365493393,
+            129.34031880268574
+          ],
+          "front_net_polar_turn_deg": 311.20490560340994
+        }
+      }
+    },
+    {
+      "time_s": 49.99999999997417,
+      "feed_mm": 125.88289962824473,
+      "poses": {
+        "actual_root_actual_joints": {
+          "M9_target_shell_gap_mm": 21.239809515127916,
+          "M9_endpoint_Y_mm": [
+            111.15158499243257,
+            87.57483634238902
+          ],
+          "M9_endpoint_radial_mm": [
+            97.08919798924725,
+            132.51344349129747
+          ],
+          "front_net_polar_turn_deg": 228.59354727840545
+        },
+        "nominal_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 8.084664809095727,
+          "M9_endpoint_Y_mm": [
+            117.43421294644521,
+            85.1053598962043
+          ],
+          "M9_endpoint_radial_mm": [
+            88.23058308320354,
+            109.08245528148612
+          ],
+          "front_net_polar_turn_deg": 288.87717958431654
+        },
+        "actual_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 43.002406122696556,
+          "M9_endpoint_Y_mm": [
+            145.4689820037261,
+            119.52566687145816
+          ],
+          "M9_endpoint_radial_mm": [
+            114.84290386065345,
+            151.10686737208835
+          ],
+          "front_net_polar_turn_deg": 224.30025761988642
+        },
+        "nominal_root_actual_joints": {
+          "M9_target_shell_gap_mm": -23.167006521168858,
+          "M9_endpoint_Y_mm": [
+            104.67861009350929,
+            83.64802163589886
+          ],
+          "M9_endpoint_radial_mm": [
+            55.677825493840366,
+            94.19740252912601
+          ],
+          "front_net_polar_turn_deg": 286.0262465320064
+        }
+      }
+    },
+    {
+      "time_s": 56.49999999995902,
+      "feed_mm": 145.36477695166857,
+      "poses": {
+        "actual_root_actual_joints": {
+          "M9_target_shell_gap_mm": 19.438383296436143,
+          "M9_endpoint_Y_mm": [
+            128.110475086256,
+            109.5511315451798
+          ],
+          "M9_endpoint_radial_mm": [
+            95.48020811417743,
+            120.93487691732244
+          ],
+          "front_net_polar_turn_deg": 172.96297696612044
+        },
+        "nominal_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 3.9908793384945866,
+          "M9_endpoint_Y_mm": [
+            121.99869285838172,
+            94.45241060345097
+          ],
+          "M9_endpoint_radial_mm": [
+            87.57712406277714,
+            99.7214861938806
+          ],
+          "front_net_polar_turn_deg": 285.2438759911427
+        },
+        "actual_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 27.02198856151884,
+          "M9_endpoint_Y_mm": [
+            169.1359845198344,
+            162.15138676821442
+          ],
+          "M9_endpoint_radial_mm": [
+            97.29194914765087,
+            129.31035386482216
+          ],
+          "front_net_polar_turn_deg": 163.1575159649695
+        },
+        "nominal_root_actual_joints": {
+          "M9_target_shell_gap_mm": -35.372361154085915,
+          "M9_endpoint_Y_mm": [
+            96.44151994874197,
+            72.9530605557911
+          ],
+          "M9_endpoint_radial_mm": [
+            53.43967406916966,
+            62.54812452040434
+          ],
+          "front_net_polar_turn_deg": 282.65687209868173
+        }
+      }
+    },
+    {
+      "time_s": 61.79999999994667,
+      "feed_mm": 161.25,
+      "poses": {
+        "actual_root_actual_joints": {
+          "M9_target_shell_gap_mm": 16.83466066172832,
+          "M9_endpoint_Y_mm": [
+            139.0051853965658,
+            128.94164010585715
+          ],
+          "M9_endpoint_radial_mm": [
+            96.62857255433306,
+            115.12207304024383
+          ],
+          "front_net_polar_turn_deg": 133.6458231819415
+        },
+        "nominal_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 1.000000000473264,
+          "M9_endpoint_Y_mm": [
+            126.14905923498692,
+            104.03925151940827
+          ],
+          "M9_endpoint_radial_mm": [
+            89.15852526187689,
+            93.51304127097357
+          ],
+          "front_net_polar_turn_deg": 283.4926318963354
+        },
+        "actual_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 16.432662385181075,
+          "M9_endpoint_Y_mm": [
+            168.64610303955524,
+            174.97350933603832
+          ],
+          "M9_endpoint_radial_mm": [
+            99.65455159222637,
+            112.74858529198248
+          ],
+          "front_net_polar_turn_deg": 117.07060232487548
+        },
+        "nominal_root_actual_joints": {
+          "M9_target_shell_gap_mm": -32.26189139602125,
+          "M9_endpoint_Y_mm": [
+            102.40572579467147,
+            83.06649205151999
+          ],
+          "M9_endpoint_radial_mm": [
+            57.12897591500313,
+            65.04841283012425
+          ],
+          "front_net_polar_turn_deg": 292.5420919283226
+        }
+      }
+    },
+    {
+      "time_s": 66.7999999999549,
+      "feed_mm": 161.25,
+      "poses": {
+        "actual_root_actual_joints": {
+          "M9_target_shell_gap_mm": 9.161355546399662,
+          "M9_endpoint_Y_mm": [
+            140.8803104502008,
+            138.00652216200157
+          ],
+          "M9_endpoint_radial_mm": [
+            92.42552294645003,
+            106.14438350807053
+          ],
+          "front_net_polar_turn_deg": 86.00200851772104
+        },
+        "nominal_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 1.000000000473264,
+          "M9_endpoint_Y_mm": [
+            126.14905923498692,
+            104.03925151940827
+          ],
+          "M9_endpoint_radial_mm": [
+            89.15852526187689,
+            93.51304127097357
+          ],
+          "front_net_polar_turn_deg": 283.4926318963354
+        },
+        "actual_root_nominal_joints": {
+          "M9_target_shell_gap_mm": 28.800136268188737,
+          "M9_endpoint_Y_mm": [
+            136.08962090499983,
+            159.5622192320756
+          ],
+          "M9_endpoint_radial_mm": [
+            117.12470725600565,
+            118.46172983348634
+          ],
+          "front_net_polar_turn_deg": 69.90568597076003
+        },
+        "nominal_root_actual_joints": {
+          "M9_target_shell_gap_mm": -20.691387750417142,
+          "M9_endpoint_Y_mm": [
+            117.27083262524863,
+            95.95083774716056
+          ],
+          "M9_endpoint_radial_mm": [
+            63.97194265326792,
+            78.42273813829857
+          ],
+          "front_net_polar_turn_deg": 314.091036909003
+        }
+      }
+    }
+  ],
+  "interpretation": "Component swaps diagnose sensitivity to relative root pose and joint shape. They can violate contact/collision constraints and are not physically reachable counterfactuals or causal proof. Errors may compensate; effects are not additive.",
+  "actual_joint_deviation_includes": "Both original R2 compliance and added receiving correction; cannot attribute all joint deviation to the new window"
+}

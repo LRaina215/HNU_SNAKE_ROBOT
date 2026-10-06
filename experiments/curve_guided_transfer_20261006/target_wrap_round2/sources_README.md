@@ -1,0 +1,11 @@
+# 本轮源快照与记录范围
+
+四个物理目录的sources保存各自首次步进前的编排、控制器、参考实现、通信转发和物理模型。只补充缺失且本轮未修改的公共依赖、配置及原网格，不覆盖已存在源快照。新模型没有改变；运行时使用仓库原场景及网格。参考NPZ及初态文件在本目录inputs、独立initial文件和各物理目录reference.npz保留。
+
+ORACLE两个目录是仅目标方向真值版本；CAPTURE1_B是新增接收窗口版本；CAPTURE2_B是原R2顺应范围版本。不能从当前公共模块新增的类，推断它也在早期运行中使用。每个目录中实际冻结代码为准。
+
+candidate1_geometry/sources保留错误选点的初版约束代码。candidate1_geometry_corrected/sources保留M0/M3旧前部近接点与M8/M9独立新点的修复版本，以及参考投影方向的最终说明。两组全部优化与插值记录保留，初版不用于准入。SO(3)与姿态函数未因控制投影先验说明而改变。
+
+本轮最终分析代码保存到analysis_sources；分析不调用mj_step、不下发控制。旧时间戳关联的派生时间线另存为alignment_attempt0；最终按原始command_id关联已应用控制。候选2继承候选1不适用的采样字段已从最终接口记录删除，原错误派生记录另存candidate2_interface_inherited_fields_attempt0.json。两项都是记录修复，未重跑物理。
+
+Python3.9.21、MuJoCo3.2.7、numpy1.23.5。源码和记录可以用于复核该工况；不提供SHA声明或逐文件全仓审计。新实验入口已受本轮STOPPED状态保护，不能直接追加运行或覆盖旧目录。

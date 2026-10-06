@@ -1,0 +1,20 @@
+{
+  "physics_steps": 0,
+  "holding_branch_equivalence_pass": true,
+  "capture_boundary_pass": true,
+  "reused_C0": "stage_continuation_20261006/R2_SPEED3_PAIR_C0",
+  "proof": "CaptureReferenceOnlyController delegates original EquilibriumGraspController. Reference state/root/tangent at0 are exactly old; identical initial/prior/ACK history and fixed d0 imply every output/commit matches the old66.8s C0. Added classification is logging only.",
+  "capture_direction": "Original material projector tangent is retained. Planned capture correction is not projected/protected as a separate displacement; same feed clock, actual progress scored independently.",
+  "initial_placement_unchanged": true,
+  "formal_true_axis_input": false,
+  "full_V3_path": "NOT_READY",
+  "candidate": "CAPTURE2",
+  "boundary_reason": "Same admitted geometric reference; all R2 support windows/projector retained. Added receiving window absent.",
+  "reuse_geometry": "candidate1_geometry_corrected",
+  "same_reference_and_plan_as_candidate1": true,
+  "new_truth_input": false,
+  "reused_geometric_and_boundary_evidence": "candidate1_geometry_corrected/result.json and candidate1_interface.json; those control samples belong to candidate1, not candidate2",
+  "candidate2_control_samples": "none; complete original R2 branch delegation proved in code",
+  "candidate2_receiver_window": "none; original R2 LocalSection scope only",
+  "record_fix": "Removed inapplicable candidate1 receiving measurements/description; no physical rerun"
+}

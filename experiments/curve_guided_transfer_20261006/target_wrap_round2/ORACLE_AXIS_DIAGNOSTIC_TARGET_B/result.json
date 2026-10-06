@@ -1,0 +1,54 @@
+{
+  "outcome": "local_endpoint_or_pause_or_C0_discrimination_failed",
+  "condition": "B",
+  "full_holding_pass": false,
+  "local_transfer_pass": false,
+  "entry_screen_pass": true,
+  "controller": "target-axis-only diagnostic, other R2 logic frozen",
+  "old_V3_full_path": "NOT_READY",
+  "classification": "ORACLE_AXIS_DIAGNOSTIC_TARGET",
+  "formal_success_eligible": false,
+  "entry_maximum_speed_mm_s": 0.3438370002415341,
+  "pause_screen_pass": true,
+  "pause_maximum_speed_mm_s": 2.1556617133082288,
+  "pause_last2s_module_displacement_mm": 3.748248670648355,
+  "material_score": {
+    "modules": [
+      8,
+      9
+    ],
+    "entries": {
+      "8": {
+        "time_s": 56.38999999995928,
+        "stage": "feed_2",
+        "commanded_feed_mm": 145.0650557620774,
+        "active_time_s": 48.400000000000006,
+        "confirmed_time_s": 56.87999999995814
+      }
+    },
+    "ordered_active_entries": false,
+    "final_modules_in_target": false,
+    "criterion": "both actual module endpoints beyond y75 and radial 56.5..120mm, target force >.1N for .5s, enter in order during commanded feed",
+    "score_only": true,
+    "controller_feedback": false
+  },
+  "final_screen": true,
+  "final_maximum_speed_mm_s": 6.0626108347076295,
+  "end_last2s_module_displacement_mm": 11.477250200648642,
+  "extra_module_y_advance_over_paired_C0_mm": [
+    67.74659171089061,
+    105.14825339313609
+  ],
+  "resume_actual_station_advance_mm": 43.985063263984316,
+  "physical_seconds": 66.7999999999549,
+  "wall_seconds": 73.71900000001187,
+  "new_dynamics_trials": 1,
+  "cumulative_dynamics_trials": 13,
+  "maximum_module_speed_mm_s": 35.3855925229232,
+  "maximum_tracking_error_deg": 2.119727589165377,
+  "root_displacement_mm": 18.409958972094717,
+  "commands": 1336,
+  "all_commands_applied": true,
+  "last_applied_feed_mm": 161.25,
+  "unapplied_next_planned_feed_mm": null
+}

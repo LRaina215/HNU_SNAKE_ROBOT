@@ -1,0 +1,272 @@
+{
+  "physics_steps": 0,
+  "holding_branch_equivalence_pass": true,
+  "capture_boundary_pass": true,
+  "holding_samples": [
+    {
+      "time_s": 0.0,
+      "target_error_rad": 0.0,
+      "state_error_rad": 0.0
+    },
+    {
+      "time_s": 5.0,
+      "target_error_rad": 0.0,
+      "state_error_rad": 0.0
+    },
+    {
+      "time_s": 25.0,
+      "target_error_rad": 0.0,
+      "state_error_rad": 0.0
+    },
+    {
+      "time_s": 66.75,
+      "target_error_rad": 0.0,
+      "state_error_rad": 0.0
+    }
+  ],
+  "boundary_samples": [
+    {
+      "feed_mm": 80.624999,
+      "capture_phase": 0.0,
+      "additional_target_max_deg": 0.0,
+      "additional_raw_target_max_deg": 0.0,
+      "receiving_weight_max": 0.0,
+      "old_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951713737860387,
+            0.44497564198155076,
+            -0.025785453207629334
+          ],
+          "cloud_rms_mm": 6.694784815396438
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.4159225168497526,
+            -0.8400523160303984,
+            0.3483110195060304
+          ],
+          "cloud_rms_mm": 7.2394391129688795
+        }
+      ],
+      "formal_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951713737860387,
+            0.44497564198155076,
+            -0.025785453207629334
+          ],
+          "cloud_rms_mm": 6.694784815396438
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.4159225168497526,
+            -0.8400523160303984,
+            0.3483110195060304
+          ],
+          "cloud_rms_mm": 7.2394391129688795
+        }
+      ]
+    },
+    {
+      "feed_mm": 80.625,
+      "capture_phase": 0.0,
+      "additional_target_max_deg": 0.0,
+      "additional_raw_target_max_deg": 0.0,
+      "receiving_weight_max": 0.0,
+      "old_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951713737860378,
+            0.4449756419815513,
+            -0.025785453207629747
+          ],
+          "cloud_rms_mm": 6.694784815396474
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.41592251684975334,
+            -0.8400523160303993,
+            0.34831101950603083
+          ],
+          "cloud_rms_mm": 7.239439112968872
+        }
+      ],
+      "formal_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951713737860378,
+            0.4449756419815513,
+            -0.025785453207629747
+          ],
+          "cloud_rms_mm": 6.694784815396474
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.41592251684975334,
+            -0.8400523160303993,
+            0.34831101950603083
+          ],
+          "cloud_rms_mm": 7.239439112968872
+        }
+      ]
+    },
+    {
+      "feed_mm": 80.625001,
+      "capture_phase": 4.615107203723245e-16,
+      "additional_target_max_deg": 1.90833280887811e-14,
+      "additional_raw_target_max_deg": 1.90833280887811e-14,
+      "receiving_weight_max": 4.615107203723245e-16,
+      "old_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.895171373786038,
+            0.44497564198155104,
+            -0.02578545320762974
+          ],
+          "cloud_rms_mm": 6.694784815396581
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.41592251684975234,
+            -0.8400523160303993,
+            0.3483110195060309
+          ],
+          "cloud_rms_mm": 7.239439112968844
+        }
+      ],
+      "formal_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951713737860382,
+            0.44497564198155093,
+            -0.02578545320762939
+          ],
+          "cloud_rms_mm": 6.694784815396579
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.41592251684975234,
+            -0.8400523160303993,
+            0.3483110195060309
+          ],
+          "cloud_rms_mm": 7.239439112968844
+        }
+      ]
+    },
+    {
+      "feed_mm": 80.77486059479558,
+      "capture_phase": 1.0351855722982092e-05,
+      "additional_target_max_deg": 3.5667470297439565e-05,
+      "additional_raw_target_max_deg": 3.5667470297439565e-05,
+      "receiving_weight_max": 1.0351855722982092e-05,
+      "old_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951727750521359,
+            0.44497375617622015,
+            -0.025769344576127607
+          ],
+          "cloud_rms_mm": 6.697211214685823
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.41591925764734083,
+            -0.84005334641671,
+            0.34831242626723624
+          ],
+          "cloud_rms_mm": 7.238811094900139
+        }
+      ],
+      "formal_axis_windows": [
+        {
+          "joints": [
+            13,
+            20
+          ],
+          "direction_head": [
+            -0.8951727792301114,
+            0.44497377189306225,
+            -0.025768928047186956
+          ],
+          "cloud_rms_mm": 6.697226711596869
+        },
+        {
+          "joints": [
+            1,
+            7
+          ],
+          "direction_head": [
+            -0.4159194914576382,
+            -0.8400532115224607,
+            0.34831247241007635
+          ],
+          "cloud_rms_mm": 7.238817075004084
+        }
+      ]
+    }
+  ],
+  "reused_C0": "stage_continuation_20261006/R2_SPEED3_PAIR_C0",
+  "proof": "At constant d0, state/root/tangent exactly delegate the original reference. compute(feed==0) delegates complete old R2 for every encoder/ACK input and commits with inherited accept. Same saved initial, axis registration, mature age, config and 66.8s schedule. Induction preserves all future outputs, not just the first command.",
+  "capture_direction": "Original material projector tangent is retained. Planned capture correction is not projected/protected as a separate displacement; same feed clock, actual progress scored independently.",
+  "receiver_window": "Old point cloud/LocalSection ranges unchanged. Separate fixed J5..J10 calculation times smooth capture phase; no tiny-weight expansion of old fit window.",
+  "initial_placement_unchanged": true,
+  "formal_true_axis_input": false,
+  "full_V3_path": "NOT_READY"
+}
