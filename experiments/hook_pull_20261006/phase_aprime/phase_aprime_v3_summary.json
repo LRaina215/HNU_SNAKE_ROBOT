@@ -1,0 +1,110 @@
+{
+  "CLOSE1B_simultaneous": {
+    "start": "CLOSE1B",
+    "mode": "simultaneous",
+    "criterion": {
+      "A2_front_y_min_mm": 25.0,
+      "A2_rear_x_min_mm": 25.0,
+      "A3_module_min": 8,
+      "gates": "关节 ≤88°、无非相邻自碰、不触地、穿管 ≤3 mm、包绕 ≥180°、两管各 ≥1 接触、停滞=300步无进展"
+    },
+    "stop_reason": "joint_limit J2",
+    "u_front_mm": 2.0,
+    "u_rear_mm": 2.0,
+    "steps": 1,
+    "A2": {
+      "front_y_mm": 9.933268466452034,
+      "rear_x_mm": -4.118629874216936,
+      "passed": false
+    },
+    "A3": {
+      "crossed": [],
+      "passed": false
+    },
+    "final_wrap_deg": 266.1374205358971,
+    "final_max_joint_deg": 89.94270422048692,
+    "events": [],
+    "verdict": "FAIL"
+  },
+  "CLOSE1B_alternate": {
+    "start": "CLOSE1B",
+    "mode": "alternate",
+    "criterion": {
+      "A2_front_y_min_mm": 25.0,
+      "A2_rear_x_min_mm": 25.0,
+      "A3_module_min": 8,
+      "gates": "关节 ≤88°、无非相邻自碰、不触地、穿管 ≤3 mm、包绕 ≥180°、两管各 ≥1 接触、停滞=300步无进展"
+    },
+    "stop_reason": "joint_limit J2",
+    "u_front_mm": 8.0,
+    "u_rear_mm": 2.0,
+    "steps": 4,
+    "A2": {
+      "front_y_mm": 9.925797893913597,
+      "rear_x_mm": -3.7022656292322154,
+      "passed": false
+    },
+    "A3": {
+      "crossed": [],
+      "passed": false
+    },
+    "final_wrap_deg": 266.8357389628245,
+    "final_max_joint_deg": 89.94270422048692,
+    "events": [],
+    "verdict": "FAIL"
+  },
+  "CLOSE2B_simultaneous": {
+    "start": "CLOSE2B",
+    "mode": "simultaneous",
+    "criterion": {
+      "A2_front_y_min_mm": 25.0,
+      "A2_rear_x_min_mm": 25.0,
+      "A3_module_min": 8,
+      "gates": "关节 ≤88°、无非相邻自碰、不触地、穿管 ≤3 mm、包绕 ≥180°、两管各 ≥1 接触、停滞=300步无进展"
+    },
+    "stop_reason": "no_source_contact",
+    "u_front_mm": 4.0,
+    "u_rear_mm": 4.0,
+    "steps": 2,
+    "A2": {
+      "front_y_mm": 14.600882949714418,
+      "rear_x_mm": -12.27077612756716,
+      "passed": false
+    },
+    "A3": {
+      "crossed": [],
+      "passed": false
+    },
+    "final_wrap_deg": 286.98003533225176,
+    "final_max_joint_deg": 87.75377939122288,
+    "events": [],
+    "verdict": "FAIL"
+  },
+  "CLOSE2B_alternate": {
+    "start": "CLOSE2B",
+    "mode": "alternate",
+    "criterion": {
+      "A2_front_y_min_mm": 25.0,
+      "A2_rear_x_min_mm": 25.0,
+      "A3_module_min": 8,
+      "gates": "关节 ≤88°、无非相邻自碰、不触地、穿管 ≤3 mm、包绕 ≥180°、两管各 ≥1 接触、停滞=300步无进展"
+    },
+    "stop_reason": "joint_limit J6",
+    "u_front_mm": 12.0,
+    "u_rear_mm": 2.0,
+    "steps": 6,
+    "A2": {
+      "front_y_mm": 4.3761403039978575,
+      "rear_x_mm": -5.178001701016228,
+      "passed": false
+    },
+    "A3": {
+      "crossed": [],
+      "passed": false
+    },
+    "final_wrap_deg": 285.03228335779227,
+    "final_max_joint_deg": 89.94270422048692,
+    "events": [],
+    "verdict": "FAIL"
+  }
+}

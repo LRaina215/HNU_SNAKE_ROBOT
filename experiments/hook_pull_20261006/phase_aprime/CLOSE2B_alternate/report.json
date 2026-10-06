@@ -1,0 +1,27 @@
+{
+  "start": "CLOSE2B",
+  "mode": "alternate",
+  "criterion": {
+    "A2_front_y_min_mm": 25.0,
+    "A2_rear_x_min_mm": 25.0,
+    "A3_module_min": 8,
+    "gates": "关节 ≤88°、无非相邻自碰、不触地、穿管 ≤3 mm、包绕 ≥180°、两管各 ≥1 接触、停滞=300步无进展"
+  },
+  "stop_reason": "joint_limit J6",
+  "u_front_mm": 12.0,
+  "u_rear_mm": 2.0,
+  "steps": 6,
+  "A2": {
+    "front_y_mm": 4.3761403039978575,
+    "rear_x_mm": -5.178001701016228,
+    "passed": false
+  },
+  "A3": {
+    "crossed": [],
+    "passed": false
+  },
+  "final_wrap_deg": 285.03228335779227,
+  "final_max_joint_deg": 89.94270422048692,
+  "events": [],
+  "verdict": "FAIL"
+}

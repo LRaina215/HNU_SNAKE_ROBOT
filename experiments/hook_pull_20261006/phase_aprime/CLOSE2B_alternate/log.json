@@ -1,0 +1,38 @@
+[
+  {
+    "step": 1,
+    "u_front_mm": 2.0,
+    "u_rear_mm": 0.0,
+    "front_y_mm": 0.37607817278296807,
+    "rear_x_mm": 0.014263429904303848,
+    "max_joint_deg": 81.51254724153004,
+    "wrap_deg": 287.3309767607439,
+    "n_target": 8,
+    "n_source": 8,
+    "deepest_mm": -1.0688598077391163
+  },
+  {
+    "step": 6,
+    "u_front_mm": 12.0,
+    "u_rear_mm": 2.0,
+    "front_y_mm": 4.3761403039978575,
+    "rear_x_mm": -5.178001701016228,
+    "max_joint_deg": 89.94270422048692,
+    "wrap_deg": 285.03228335779227,
+    "n_target": 6,
+    "n_source": 3,
+    "deepest_mm": -61.2963311250886
+  },
+  {
+    "step": 6,
+    "u_front_mm": 12.0,
+    "u_rear_mm": 2.0,
+    "front_y_mm": 4.3761403039978575,
+    "rear_x_mm": -5.178001701016228,
+    "max_joint_deg": 89.94270422048692,
+    "wrap_deg": 285.03228335779227,
+    "n_target": 6,
+    "n_source": 3,
+    "deepest_mm": -61.2963311250886
+  }
+]
