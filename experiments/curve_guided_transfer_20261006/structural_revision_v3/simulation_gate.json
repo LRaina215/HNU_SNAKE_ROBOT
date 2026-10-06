@@ -1,0 +1,10 @@
+{
+  "previous_dynamics_trials": 2,
+  "new_dynamics_trials": 0,
+  "total_dynamics_trials": 2,
+  "C0_run": false,
+  "B_run": false,
+  "F_run": false,
+  "real_trials": 0,
+  "reason": "continuous geometry and existing target rate check failed; stop at offline admission"
+}
