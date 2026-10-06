@@ -1,0 +1,64 @@
+{
+  "physics_steps_added": 0,
+  "historical_15_rows_unchanged": true,
+  "new_rows": 2,
+  "total_rows": 17,
+  "local_rows_match_total_append": true,
+  "A1_A2_shared27s_actual_prefix": {
+    "sim_time": true,
+    "qpos": true,
+    "qvel": true,
+    "ctrl": true,
+    "contact_force_N": true
+  },
+  "commands": [
+    {
+      "case": "OPEN_CLOSE_A1_ACTION",
+      "count": 540,
+      "all_applied": true
+    },
+    {
+      "case": "OPEN_CLOSE_A2_ACTION",
+      "count": 1680,
+      "all_applied": true
+    }
+  ],
+  "videos": [
+    {
+      "path": "OPEN_CLOSE_A1_ACTION/replay_1x.mp4",
+      "fps": 20.0,
+      "frames": 541,
+      "duration_s": 27.05,
+      "first_frame_decoded": true,
+      "last_frame_decoded": true
+    },
+    {
+      "path": "OPEN_CLOSE_A1_ACTION/comparison_baseline_1x.mp4",
+      "fps": 20.0,
+      "frames": 541,
+      "duration_s": 27.05,
+      "first_frame_decoded": true,
+      "last_frame_decoded": true
+    },
+    {
+      "path": "OPEN_CLOSE_A2_ACTION/replay_1x.mp4",
+      "fps": 20.0,
+      "frames": 1681,
+      "duration_s": 84.05,
+      "first_frame_decoded": true,
+      "last_frame_decoded": true
+    },
+    {
+      "path": "OPEN_CLOSE_A2_ACTION/comparison_baseline_1x.mp4",
+      "fps": 20.0,
+      "frames": 1681,
+      "duration_s": 84.05,
+      "first_frame_decoded": true,
+      "last_frame_decoded": true
+    }
+  ],
+  "report_link_count": 30,
+  "missing_links": [],
+  "no_SHA": true,
+  "scope": "Only new delivery, history count and saved shared prefix; no full-repository audit"
+}

@@ -1,0 +1,11 @@
+{
+  "fps": 20,
+  "sampled_physics_interval_s": 0.05,
+  "speed": 1.0,
+  "actual_last_time_s": 84.00000000003703,
+  "initial_frame_included": true,
+  "frames": 1681,
+  "historical_last_time_s": 66.7999999999549,
+  "historical_after_end": "explicitly labelled final-frame hold; not new physics",
+  "matching": "time-aligned normal speed, schedules differ; visual comparison only"
+}

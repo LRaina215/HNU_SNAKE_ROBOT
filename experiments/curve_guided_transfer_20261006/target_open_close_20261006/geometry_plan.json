@@ -1,0 +1,37 @@
+{
+  "physics_steps": 0,
+  "radius_mm": [
+    95,
+    130,
+    95
+  ],
+  "opening_mm": 35,
+  "pipe_radius_mm": 56.5,
+  "maximum_radial_shell_extent_mm": 29.14032,
+  "amplitude_basis": "35mm > body radial half-width 29.14mm, visible 36.8% change; R130 shell clearance about44.4mm before finite-chord/fit corrections",
+  "taper_material_length_mm": 129.0,
+  "target_initial_material_length_mm": 451.5,
+  "target_final_material_length_mm": 532.125,
+  "active_geometry": "J1..J10; downstream link10/tail world geometry stays equal old offline shape; actual root never commanded",
+  "source_reference": "unchanged original J11..J20; source R95; no release",
+  "planned_seconds": {
+    "entry": 5,
+    "opening": 12,
+    "inserting": 45,
+    "closing": 12,
+    "post_closing_hold": 10,
+    "resume_closed": 45,
+    "end_holding": 10
+  },
+  "feed_range_mm": [
+    0,
+    161.25
+  ],
+  "opening_insert_endpoint_mm": 80.625,
+  "two_questions": "Open-close at former stable middle point demonstrates action only; resume to original failed endpoint tests later stability separately",
+  "radius_variable": "unit-arclength target helix, fixed pitch per radian; R(sigma)=95+a*smooth(sigma/129)",
+  "offline_desired": "saved original finite reference points plus new-minus-old ideal target curve; initial exact old reference",
+  "limitation": "geometric hypothesis; shape/cloud prior is not a measurement of pipe axis",
+  "self_fit_diagnostics": "free cylinder radius/axis separate from distance to known pipe axis, reject ill-conditioned fits",
+  "no_parameter_scan": true
+}

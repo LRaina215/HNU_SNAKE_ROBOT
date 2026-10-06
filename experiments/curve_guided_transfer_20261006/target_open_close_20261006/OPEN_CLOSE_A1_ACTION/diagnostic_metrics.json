@@ -1,0 +1,80 @@
+{
+  "physics_steps_added": 0,
+  "actual_seconds": 27.000000000010015,
+  "actual_frames": 2701,
+  "actual_commands": 540,
+  "opening_approximate_fit_pass": true,
+  "open_close_approximate_fit_pass": false,
+  "initial_own_radius_fit": {
+    "fitted_own_radius_mm": 94.93771073742899,
+    "axis_world": [
+      0.07264447558045697,
+      0.9613832080066779,
+      -0.26545264649355
+    ],
+    "axis_angle_to_pipe_deg": 15.974722261828123,
+    "axis_offset_at_front_mean_y_mm": 40.94358563869635,
+    "residual_coordinate_rms_mm": 5.6421875612176295,
+    "jacobian_scaled_condition": 54.35038398262279,
+    "linearized_radius_std_mm": 17.82390681019632,
+    "phase_step_rad": -0.6144660466831563,
+    "axial_step_mm": -21.73951813532079,
+    "reliable": true,
+    "conditional_pipe_transverse_circle_radius_mm": 94.53821844903042,
+    "conditional_circle_center_offset_mm": 40.44422984948352,
+    "limitation": "six ordered finite nodes, uniform helix approximation; axis/radius fit does not establish grip or topology"
+  },
+  "open_interval_median_fitted_own_radius_mm": 129.92502606953784,
+  "post_close_median_fitted_own_radius_mm": null,
+  "opening_own_radius_median_increase_mm": 34.98731533210885,
+  "closing_own_radius_median_decrease_mm": null,
+  "radius_fit_limitation": "six-node uniform helix approximation, finite-shell discretization; linearized uncertainty not proof of exact intrinsic radius",
+  "after5_minimum_source_contacts": 5,
+  "after5_minimum_target_contacts": 0,
+  "ground_frames": 0,
+  "self_contact_frames": 0,
+  "external_force_maximum": 0.0,
+  "generalized_force_maximum": 0.0,
+  "maximum_actual_torque_Nm": 2.355,
+  "geometric_centroid_net_displacement_mm": 37.060246395746105,
+  "stage_counts": {
+    "entry": 501,
+    "feed_open": 1000,
+    "opening": 1200
+  },
+  "conclusion": "Shape occurrence and stable grasp are independent; legacy material stall remains a recorded failure",
+  "actual_result": {
+    "outcome": "actual_material_stall_10_active_seconds",
+    "action_completed": false,
+    "post_close_grasp": false,
+    "original_failed_interval_reached": false,
+    "end_grasp": false,
+    "full_local_handoff": false,
+    "initial_holding_reused": "R2_SPEED3_PAIR_C0 complete branch equivalence",
+    "old_V3_full_path": "NOT_READY",
+    "entry_screen_pass": true,
+    "entry_maximum_speed_mm_s": 0.10935281919186092,
+    "physical_seconds": 27.000000000010015,
+    "wall_seconds": 36.40600000001723,
+    "material_score": {
+      "modules": [
+        8,
+        9
+      ],
+      "entries": {},
+      "ordered_active_entries": false,
+      "final_modules_in_target": false,
+      "criterion": "both actual module endpoints beyond y75 and radial 56.5..120mm, target force >.1N for .5s, enter in order during commanded feed",
+      "score_only": true,
+      "controller_feedback": false
+    },
+    "new_dynamics_trials": 1,
+    "cumulative_dynamics_trials": 16,
+    "commands": 540,
+    "all_commands_applied": true,
+    "maximum_module_speed_mm_s": 40.598908595581214,
+    "maximum_tracking_error_deg": 1.3152771178004512,
+    "root_displacement_mm": 145.8246957711652,
+    "last_applied_feed_mm": 10.082162001028813
+  }
+}
