@@ -1,0 +1,66 @@
+{
+  "physics_steps_added": 0,
+  "last_applied_feed_mm": 161.25,
+  "scored_units": [
+    {
+      "module": 8,
+      "final_endpoints_y_mm": [
+        149.5629842698334,
+        138.87605570173542
+      ],
+      "final_endpoints_radial_mm": [
+        84.33090309635077,
+        96.0343126710066
+      ],
+      "final_target_force_N": 18.79523952400963,
+      "maximum_target_force_N": 29.145473776597143
+    },
+    {
+      "module": 9,
+      "final_endpoints_y_mm": [
+        138.87605570173542,
+        129.17673803093112
+      ],
+      "final_endpoints_radial_mm": [
+        96.0343126710066,
+        113.39214156552727
+      ],
+      "final_target_force_N": 0.0,
+      "maximum_target_force_N": 0.0
+    }
+  ],
+  "end_last2s_worst_module": 0,
+  "terminal_J9_J10_grasp_weights": [
+    0.0,
+    0.0
+  ],
+  "terminal_J9_J10_retained_deg": [
+    0.0,
+    0.0
+  ],
+  "terminal_joint_tracking_deg": [
+    0.06777415093946683,
+    0.028863480112559427,
+    0.32320716875668387,
+    0.0830896447989955,
+    0.5830973132221153,
+    0.13842606445048972,
+    0.49399049279349705,
+    0.17433164186808658,
+    0.11936746353145895,
+    0.2778657835833378,
+    0.0722275090077501,
+    0.3465233152962276,
+    0.14836522761266965,
+    0.18841591402524033,
+    0.3775840135937831,
+    0.3177272816831402,
+    0.5283809317424497,
+    0.36936789300793776,
+    0.2707168606536276,
+    0.1199636906447194
+  ],
+  "interpretation": "M9 geometric outlet membership did not establish actual target support; nominal gripping windows and material receiving remain inconsistent. Zero weights alone do not prove the only failure cause.",
+  "end_hold_retained_range_deg": 5.022949242245788,
+  "end_hold_last1s_retained_range_deg": 0.9067750372590426
+}

@@ -1,0 +1,11 @@
+{
+  "fps": 20,
+  "sampled_physics_interval_s": 0.05,
+  "speed": 1.0,
+  "last_physics_time_s": 24.150000000006532,
+  "initial_frame_included": true,
+  "marked_modules": [
+    8,
+    9
+  ]
+}

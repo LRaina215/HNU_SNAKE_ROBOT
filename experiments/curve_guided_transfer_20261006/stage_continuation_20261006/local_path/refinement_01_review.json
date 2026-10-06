@@ -1,0 +1,600 @@
+{
+  "geometry_pass": false,
+  "physics_steps": 0,
+  "interpolation": "coupled smoothstep translation/joints, SLERP at the same smoothstep parameter",
+  "continuity": "C1 zero derivatives at all joins; proper rotations, no rotvec-component interpolation",
+  "failures": [
+    {
+      "feed_mm": 9.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.006733633688099538
+        }
+      ]
+    },
+    {
+      "feed_mm": 9.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.014904530637542412
+        }
+      ]
+    },
+    {
+      "feed_mm": 10.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.018839136152244317
+        }
+      ]
+    },
+    {
+      "feed_mm": 10.078125,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.01911739253566423
+        }
+      ]
+    },
+    {
+      "feed_mm": 10.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.018121016904532872
+        }
+      ]
+    },
+    {
+      "feed_mm": 10.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.012744806952312554
+        }
+      ]
+    },
+    {
+      "feed_mm": 10.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.0033645981671690016
+        }
+      ]
+    },
+    {
+      "feed_mm": 13.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.009736201048708062
+        }
+      ]
+    },
+    {
+      "feed_mm": 13.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.01886729740738856
+        }
+      ]
+    },
+    {
+      "feed_mm": 14.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.02353691218829822
+        }
+      ]
+    },
+    {
+      "feed_mm": 14.109375,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.024005376694762555
+        }
+      ]
+    },
+    {
+      "feed_mm": 14.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.023160234215083383
+        }
+      ]
+    },
+    {
+      "feed_mm": 14.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.017774893528019087
+        }
+      ]
+    },
+    {
+      "feed_mm": 14.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.008038934271776333
+        }
+      ]
+    },
+    {
+      "feed_mm": 17.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.00017773416082710188
+        }
+      ]
+    },
+    {
+      "feed_mm": 17.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.014314141244171222
+        }
+      ]
+    },
+    {
+      "feed_mm": 17.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.0250004292739889
+        }
+      ]
+    },
+    {
+      "feed_mm": 18.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.03114828330655343
+        }
+      ]
+    },
+    {
+      "feed_mm": 18.140625,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.032046540179847656
+        }
+      ]
+    },
+    {
+      "feed_mm": 18.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.03150098220176252
+        }
+      ]
+    },
+    {
+      "feed_mm": 18.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.025912949091664965
+        }
+      ]
+    },
+    {
+      "feed_mm": 18.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.0157465267362107
+        }
+      ]
+    },
+    {
+      "feed_mm": 19.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.0019723511113620266
+        }
+      ]
+    },
+    {
+      "feed_mm": 21.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.014045248938921966
+        }
+      ]
+    },
+    {
+      "feed_mm": 21.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.02548548978249093
+        }
+      ]
+    },
+    {
+      "feed_mm": 22.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.03208647919517444
+        }
+      ]
+    },
+    {
+      "feed_mm": 22.171875,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.033401854248189276
+        }
+      ]
+    },
+    {
+      "feed_mm": 22.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.03309436421232487
+        }
+      ]
+    },
+    {
+      "feed_mm": 22.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.02838463354816738
+        }
+      ]
+    },
+    {
+      "feed_mm": 22.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.018536792186916423
+        }
+      ]
+    },
+    {
+      "feed_mm": 23.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.004787456243115872
+        }
+      ]
+    },
+    {
+      "feed_mm": 25.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.0006580935793427956
+        }
+      ]
+    },
+    {
+      "feed_mm": 25.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.008655618625199885
+        }
+      ]
+    },
+    {
+      "feed_mm": 26.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.011813721749436656
+        }
+      ]
+    },
+    {
+      "feed_mm": 26.203125,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.010262422717018408
+        }
+      ]
+    },
+    {
+      "feed_mm": 26.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.009361915510322496
+        }
+      ]
+    },
+    {
+      "feed_mm": 26.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 19,
+          "distance_mm": -0.0012174709462962345
+        }
+      ]
+    },
+    {
+      "feed_mm": 50.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 18,
+          "distance_mm": -0.005243918644833229
+        }
+      ]
+    },
+    {
+      "feed_mm": 50.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 18,
+          "distance_mm": -0.009086433978055608
+        }
+      ]
+    },
+    {
+      "feed_mm": 50.390625,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 18,
+          "distance_mm": -0.009775007255336015
+        }
+      ]
+    },
+    {
+      "feed_mm": 50.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 18,
+          "distance_mm": -0.0089029178946626
+        }
+      ]
+    },
+    {
+      "feed_mm": 50.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 18,
+          "distance_mm": -0.004611404390534114
+        }
+      ]
+    },
+    {
+      "feed_mm": 131.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 21,
+          "distance_mm": -0.0034106001007172203
+        }
+      ]
+    },
+    {
+      "feed_mm": 134.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 21,
+          "distance_mm": -0.0020235854922222526
+        }
+      ]
+    },
+    {
+      "feed_mm": 134.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 21,
+          "distance_mm": -0.00022553875938385423
+        }
+      ]
+    },
+    {
+      "feed_mm": 138.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.002566292177704115
+        }
+      ]
+    },
+    {
+      "feed_mm": 139.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.010092172847966704
+        }
+      ]
+    },
+    {
+      "feed_mm": 139.078125,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.011330947347266081
+        }
+      ]
+    },
+    {
+      "feed_mm": 139.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.012151884398870768
+        }
+      ]
+    },
+    {
+      "feed_mm": 139.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.008862035143162245
+        }
+      ]
+    },
+    {
+      "feed_mm": 139.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.0009853590187891346
+        }
+      ]
+    },
+    {
+      "feed_mm": 155.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.00018056260281959524
+        }
+      ]
+    },
+    {
+      "feed_mm": 158.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.0034708844545223226
+        }
+      ]
+    },
+    {
+      "feed_mm": 159.0,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.008795539254174041
+        }
+      ]
+    },
+    {
+      "feed_mm": 159.234375,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.01015259878733821
+        }
+      ]
+    },
+    {
+      "feed_mm": 159.25,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.010112861506605616
+        }
+      ]
+    },
+    {
+      "feed_mm": 159.5,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.0073139786310484935
+        }
+      ]
+    },
+    {
+      "feed_mm": 159.75,
+      "contacts": [
+        {
+          "geom1": 1,
+          "geom2": 20,
+          "distance_mm": -0.000795060889438629
+        }
+      ]
+    }
+  ],
+  "failure_count": 58,
+  "checked_count": 709,
+  "spacing_mm": 0.25,
+  "maximum_penetration_mm": 0.033401854248189276,
+  "maximum_joint_deg": 71.30278580206537,
+  "maximum_length_error_mm": 5.258016244624741e-13,
+  "total_length_mm": 1354.5,
+  "maximum_guide_rms_mm": 9.934216335050555,
+  "maximum_rate_at_5mm_s_deg_s": 10.31316915494888,
+  "reparameterized_active_duration_s": 32.354422395946685,
+  "planned_speed_limit_deg_s": 9.0,
+  "finite_sampling_limitation": "0.25mm plus all knots/midpoints does not prove every arbitrary real position"
+}

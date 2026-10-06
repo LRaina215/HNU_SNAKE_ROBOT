@@ -1,0 +1,98 @@
+{
+  "physics_steps_added": 0,
+  "physical_seconds": 45.39999999998489,
+  "commands": 908,
+  "state_ack_identity_error_rad": 1.3877787807814457e-17,
+  "after5_minimum_contacts_per_pipe": [
+    5,
+    3
+  ],
+  "maximum_retained_deg": 6.661831321195439,
+  "maximum_compliance_difference_deg": 2.32303331974076,
+  "maximum_actual_torque_Nm": 1.9666205431294088,
+  "maximum_actual_command_speed_deg_s": 0.03149645759424912,
+  "angle_constrained_commands": 0,
+  "rate_limited_commands": 0,
+  "root_displacement_vector_mm": [
+    0.4966896711786628,
+    0.11977071508645354,
+    -0.5053616138380734
+  ],
+  "geometric_centroid_displacement_mm": 0.20646167355917514,
+  "initial_to_final_head_rotation_deg": 0.14926686609100953,
+  "scored_module_y_advance_mm": [
+    0.6327504979990408,
+    0.6532746179553826
+  ],
+  "extra_scored_y_advance_over_matched_C0_mm": null,
+  "added_external_force_maximum": 0.0,
+  "added_generalized_force_maximum": 0.0,
+  "ground_frames": 0,
+  "nonadjacent_self_contact_frames": 0,
+  "last_actual_feed_mm": 0.0,
+  "last_stage": "hold_pair_C0",
+  "conditional_axis_diagnostics": [
+    {
+      "time_s": 0.0,
+      "side": "source",
+      "cloud_rms_mm": 6.922642997228266,
+      "actual_axis_error_deg": 3.0751531548075195
+    },
+    {
+      "time_s": 0.0,
+      "side": "target",
+      "cloud_rms_mm": 3.2259933137761374,
+      "actual_axis_error_deg": 12.847245164576266
+    },
+    {
+      "time_s": 5.0,
+      "side": "source",
+      "cloud_rms_mm": 6.907446606979876,
+      "actual_axis_error_deg": 3.0600599656764196
+    },
+    {
+      "time_s": 5.0,
+      "side": "target",
+      "cloud_rms_mm": 3.2395695984401134,
+      "actual_axis_error_deg": 13.033177247812896
+    },
+    {
+      "time_s": 10.0,
+      "side": "source",
+      "cloud_rms_mm": 6.876837072196045,
+      "actual_axis_error_deg": 3.045275720776077
+    },
+    {
+      "time_s": 10.0,
+      "side": "target",
+      "cloud_rms_mm": 3.2391405514642417,
+      "actual_axis_error_deg": 13.03517695440301
+    },
+    {
+      "time_s": 20.0,
+      "side": "source",
+      "cloud_rms_mm": 6.856967629439676,
+      "actual_axis_error_deg": 3.036865004198925
+    },
+    {
+      "time_s": 20.0,
+      "side": "target",
+      "cloud_rms_mm": 3.2390543538825,
+      "actual_axis_error_deg": 13.034939598221724
+    },
+    {
+      "time_s": 45.35,
+      "side": "source",
+      "cloud_rms_mm": 6.856262944280211,
+      "actual_axis_error_deg": 3.038542416595293
+    },
+    {
+      "time_s": 45.35,
+      "side": "target",
+      "cloud_rms_mm": 3.236970803956923,
+      "actual_axis_error_deg": 13.042759049783768
+    }
+  ],
+  "coordinate_stop_attempt": [],
+  "world_truth_use": "diagnostic/scoring only; not controller feedback"
+}

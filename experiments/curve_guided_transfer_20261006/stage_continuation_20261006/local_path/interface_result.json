@@ -1,0 +1,8 @@
+{
+  "interface_holding_pass": false,
+  "paired_C0": "R2_PATH_PAIR_C0",
+  "reason": "late_drift_state_and_rotation_failed",
+  "B_admitted": false,
+  "dynamic_trials_total": 6,
+  "old_V3_full_path": "NOT_READY"
+}

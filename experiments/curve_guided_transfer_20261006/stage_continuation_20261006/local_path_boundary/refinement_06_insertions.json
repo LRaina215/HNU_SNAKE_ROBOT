@@ -1,0 +1,23 @@
+{
+  "physics_steps": 0,
+  "rows": [
+    {
+      "feed_mm": 0.1259765625,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.05000000920100689,
+      "grip_gaps_mm": [
+        0.05000022943984561,
+        0.05636847723535254,
+        0.05000000920100689,
+        0.08163615376115274
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 0.22793396889210824,
+      "correction_translation_mm": 0.025083201381806527,
+      "correction_joint_max_deg": 0.0025522950300861493
+    }
+  ]
+}

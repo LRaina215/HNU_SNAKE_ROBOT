@@ -1,0 +1,203 @@
+{
+  "physics_steps": 0,
+  "rows": [
+    {
+      "feed_mm": 10.078125,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999999987627746,
+      "grip_gaps_mm": [
+        0.04999999987627746,
+        0.05000000111474634,
+        0.049999999987711874,
+        0.6373769119976416
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 2.175494256022324,
+      "correction_translation_mm": 0.021146172997998317,
+      "correction_joint_max_deg": 0.0019522949208852765
+    },
+    {
+      "feed_mm": 14.109375,
+      "pose_pass": true,
+      "iterations": 2,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.049999039130668166,
+      "grip_gaps_mm": [
+        0.049999039130668166,
+        0.05000674418660367,
+        0.049999746230973585,
+        0.6501685500737793
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 2.906899070118257,
+      "correction_translation_mm": 0.022492876594130743,
+      "correction_joint_max_deg": 0.0022536920485501807
+    },
+    {
+      "feed_mm": 18.140625,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999999998033644,
+      "grip_gaps_mm": [
+        0.05000000176369923,
+        0.05000000112089964,
+        0.04999999998033644,
+        0.5793436796201448
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 3.6643522790735457,
+      "correction_translation_mm": 0.043310715987770504,
+      "correction_joint_max_deg": 0.0019207164060267754
+    },
+    {
+      "feed_mm": 22.171875,
+      "pose_pass": true,
+      "iterations": 2,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999903122433125,
+      "grip_gaps_mm": [
+        0.04999903122433125,
+        0.05000753448057793,
+        0.04999947860455478,
+        0.5181378761282858
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 4.413891627310198,
+      "correction_translation_mm": 0.044124303580000405,
+      "correction_joint_max_deg": 0.001797757847729016
+    },
+    {
+      "feed_mm": 26.203125,
+      "pose_pass": true,
+      "iterations": 2,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.0499993416686948,
+      "grip_gaps_mm": [
+        0.05000036523340867,
+        0.051060818853528644,
+        0.0499993416686948,
+        0.44181169208675897
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 5.0848937013555515,
+      "correction_translation_mm": 0.060020296251151864,
+      "correction_joint_max_deg": 0.00040877265053055776
+    },
+    {
+      "feed_mm": 50.390625,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999984185334938,
+      "grip_gaps_mm": [
+        0.050008159917950934,
+        0.10243517429373838,
+        0.04999984185334938,
+        0.31786296165007855
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 8.654849223656706,
+      "correction_translation_mm": 0.041289818199453175,
+      "correction_joint_max_deg": 0.003096439776370473
+    },
+    {
+      "feed_mm": 131.015625,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.05255284189200182,
+      "grip_gaps_mm": [
+        0.05255284189200182,
+        0.17242409075963394,
+        0.11360209542328903,
+        0.2339189685754235
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.57931370319567,
+      "correction_translation_mm": 0.0001732050807134097,
+      "correction_joint_max_deg": 5.72957795147299e-05
+    },
+    {
+      "feed_mm": 135.046875,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.051240031155543875,
+      "grip_gaps_mm": [
+        0.051240031155543875,
+        0.07811040028913396,
+        0.2203790466548483,
+        0.2215589232105799
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.546235922403564,
+      "correction_translation_mm": 0.0001732050807134097,
+      "correction_joint_max_deg": 5.72957795147299e-05
+    },
+    {
+      "feed_mm": 139.078125,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.05000000011938255,
+      "grip_gaps_mm": [
+        0.05000000011938255,
+        0.14084531313827142,
+        0.1706722672149681,
+        0.1888392246335613
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.563373071682197,
+      "correction_translation_mm": 0.002835103446067623,
+      "correction_joint_max_deg": 0.003384890104692757
+    },
+    {
+      "feed_mm": 155.203125,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999999998945981,
+      "grip_gaps_mm": [
+        0.04999999998945981,
+        0.2662592544540985,
+        0.056979835322060524,
+        0.0846012757583594
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.74301620693764,
+      "correction_translation_mm": 0.0027350508217075064,
+      "correction_joint_max_deg": 0.0030031974616213167
+    },
+    {
+      "feed_mm": 159.234375,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999999996424975,
+      "grip_gaps_mm": [
+        0.04999999996424975,
+        0.14633213685780078,
+        0.05000000007646577,
+        0.11392700969749114
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.765198900807635,
+      "correction_translation_mm": 0.016148729248351684,
+      "correction_joint_max_deg": 0.004063899324742673
+    }
+  ]
+}

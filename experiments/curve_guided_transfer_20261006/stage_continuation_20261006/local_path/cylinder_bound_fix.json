@@ -1,0 +1,9 @@
+{
+  "physics_steps": 0,
+  "mechanism_changed": false,
+  "physical_geometry_changed": false,
+  "issue": "inscribed 32-point head cylinder understates support function; .05mm hull gap had -0.0632mm actual contact at d=8.0625",
+  "correction": "circumscribed polygon encloses exact head cylinder for conservative projected hull constraints",
+  "radial_bound_delta_mm": 0.14031859891302934,
+  "admission_tolerances_changed": false
+}

@@ -1,0 +1,47 @@
+{
+  "previous_trials": 3,
+  "total_dynamics_limit": 12,
+  "new_mechanism_rounds_limit": 2,
+  "registered_rounds": [
+    {
+      "round": 1,
+      "status": "FAILED_COORDINATE_VALIDITY_AFTER_ENTRY",
+      "changes": [
+        "acknowledged executable deformation state and box projection",
+        "material-node coordinate transport"
+      ],
+      "falsification": "full-duration late state/drift criteria fail, or coordinate hypothesis loses shape validity"
+    },
+    {
+      "round": 2,
+      "status": "ORIGINAL_REFERENCE_HOLD_PASS_NEW_PATH_INTERFACE_HOLD_FAIL",
+      "changes": [
+        "finite reference-restoring grasp-state equilibrium with fixed tau 0.5s"
+      ],
+      "basis": "R1 eliminated state/ack discrepancy but deformation kept growing; there is no equilibrium for freely tracking nonzero A-D corrections",
+      "restoring_seconds": 0.5,
+      "choice": "ten control intervals, longer than initial ~0.1s support establishment, 1/10 of entry time; no sweep",
+      "falsification": "same full holding/support/drift/state criteria fail",
+      "criterion_changes": false
+    }
+  ],
+  "old_V3_path": "NOT_READY",
+  "original_history_unchanged": true,
+  "prephysics_implementation_fix": "PowerShell pipeline encoded the Chinese manifest as legacy bytes; saved manifest directly as UTF-8, no control changes or physical evolution",
+  "cumulative_dynamics_trials": 11,
+  "new_dynamics_trials": 8,
+  "phase_status": "STOPPED_CURRENT_CANDIDATE_TWO_UNIT_RECEIVING_AND_TERMINAL_HOLD_FAILED",
+  "reference_interface_corrections": [
+    "preserve original nominal d0 and geometric tangent",
+    "inherit original R2 axis prior and mature age with same acknowledged state",
+    "geometry collocation under unchanged curve and constraints"
+  ],
+  "active_B_trials": 2,
+  "freeze_trials": 0,
+  "remaining_budget_not_used": 1,
+  "original_R2_holding_pass": true,
+  "boundary_holding_pass": true,
+  "local_sampled_geometry_and_timing_pass": true,
+  "full_local_transfer_pass": false,
+  "further_dynamics_authorized_in_this_branch": false
+}

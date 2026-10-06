@@ -1,0 +1,257 @@
+{
+  "physics_steps": 0,
+  "rows": [
+    {
+      "feed_mm": 4.03125,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.049999804269639014,
+      "grip_gaps_mm": [
+        0.050188393419837496,
+        0.0740362627783071,
+        0.049999804269639014,
+        0.4700806912643998
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 1.1994189647087214,
+      "correction_translation_mm": 0.014693406777028122,
+      "correction_joint_max_deg": 0.008005691544606475
+    },
+    {
+      "feed_mm": 12.09375,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.0499999999235925,
+      "grip_gaps_mm": [
+        0.0929499656310071,
+        0.05000000143625982,
+        0.0499999999235925,
+        0.6529041287016355
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 2.5495893742935536,
+      "correction_translation_mm": 0.08718241663963001,
+      "correction_joint_max_deg": 0.008719199060921952
+    },
+    {
+      "feed_mm": 20.15625,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.049999999521709526,
+      "grip_gaps_mm": [
+        0.15648949077645113,
+        0.050000001177018305,
+        0.049999999521709526,
+        0.5421595973868492
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 4.0468485918307255,
+      "correction_translation_mm": 0.17494800872235705,
+      "correction_joint_max_deg": 0.007326095874295355
+    },
+    {
+      "feed_mm": 28.21875,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.049999999286839625,
+      "grip_gaps_mm": [
+        0.09684413217015475,
+        0.29287390155779036,
+        0.049999999286839625,
+        0.4186027770858942
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 5.406202842836311,
+      "correction_translation_mm": 0.23898528236474953,
+      "correction_joint_max_deg": 5.730196576991866e-05
+    },
+    {
+      "feed_mm": 36.28125,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999999979622061,
+      "grip_gaps_mm": [
+        0.08891787855094435,
+        0.29603684985050194,
+        0.04999999979622061,
+        0.36864083402196
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 6.6842415002220426,
+      "correction_translation_mm": 0.18662153594514416,
+      "correction_joint_max_deg": 5.729767103194618e-05
+    },
+    {
+      "feed_mm": 44.34375,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999999981561842,
+      "grip_gaps_mm": [
+        0.10158503741585179,
+        0.29692330496014563,
+        0.04999999981561842,
+        0.3645686974297391
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 7.892810868107212,
+      "correction_translation_mm": 0.21421449213772972,
+      "correction_joint_max_deg": 5.729643890732646e-05
+    },
+    {
+      "feed_mm": 52.40625,
+      "pose_pass": true,
+      "iterations": 2,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999952070866698,
+      "grip_gaps_mm": [
+        0.05024497075225298,
+        0.05009441289391248,
+        0.04999952070866698,
+        0.3061954608761823
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 8.869109833474862,
+      "correction_translation_mm": 0.1653394113948748,
+      "correction_joint_max_deg": 0.011341365347631584
+    },
+    {
+      "feed_mm": 60.46875,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.049999243169580154,
+      "grip_gaps_mm": [
+        0.08056343018949264,
+        0.11393942321667794,
+        0.0499998166621225,
+        0.049999243169580154
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.428028528894535,
+      "correction_translation_mm": 0.09909640779765069,
+      "correction_joint_max_deg": 0.001522342007685142
+    },
+    {
+      "feed_mm": 68.53125,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999996844396293,
+      "grip_gaps_mm": [
+        0.05001745013005632,
+        0.120614049059661,
+        0.04999996844396293,
+        0.07703739087985184
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.599537305724473,
+      "correction_translation_mm": 0.08516173051781555,
+      "correction_joint_max_deg": 0.008036225750536728
+    },
+    {
+      "feed_mm": 84.65625,
+      "pose_pass": true,
+      "iterations": 1,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.04999997161269221,
+      "grip_gaps_mm": [
+        0.050002080215868716,
+        0.1568134044764946,
+        0.04999997161269221,
+        0.0688141821576238
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.888630782713117,
+      "correction_translation_mm": 0.06067890708369717,
+      "correction_joint_max_deg": 0.003136977976045098
+    },
+    {
+      "feed_mm": 133.03125,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.050000000985001236,
+      "grip_gaps_mm": [
+        0.33168773542057295,
+        0.25936333309388004,
+        0.18501542076165123,
+        0.237725876025344
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.556069501897666,
+      "correction_translation_mm": 0.009670204719066156,
+      "correction_joint_max_deg": 0.015943706846078102
+    },
+    {
+      "feed_mm": 141.09375,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.050000000175870696,
+      "grip_gaps_mm": [
+        0.326596028718356,
+        0.050000000175870696,
+        0.19200699114931297,
+        0.16212829124449257
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.587857604543148,
+      "correction_translation_mm": 0.011698726321601976,
+      "correction_joint_max_deg": 0.014450901830567853
+    },
+    {
+      "feed_mm": 149.15625,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.050000000064443384,
+      "grip_gaps_mm": [
+        0.050000000064443384,
+        0.29781797431922286,
+        0.1101341513505929,
+        0.10218021334569016
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.684795279416116,
+      "correction_translation_mm": 0.007636486882075566,
+      "correction_joint_max_deg": 0.008603907016052363
+    },
+    {
+      "feed_mm": 157.21875,
+      "pose_pass": true,
+      "iterations": 3,
+      "solver_success": false,
+      "solver_message": "Geometry-feasible early stop; objective optimum is not claimed",
+      "minimum_conservative_gap_mm": 0.05000000003064997,
+      "grip_gaps_mm": [
+        0.12770398770098979,
+        0.21047584065345148,
+        0.05000000006523919,
+        0.13650581432698772
+      ],
+      "contacts_mm": [],
+      "guide_rms_mm": 9.761212615682465,
+      "correction_translation_mm": 0.041423227410791706,
+      "correction_joint_max_deg": 0.015526730119502622
+    }
+  ]
+}

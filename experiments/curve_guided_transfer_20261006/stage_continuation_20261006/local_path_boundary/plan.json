@@ -1,0 +1,16 @@
+{
+  "physics_steps": 0,
+  "mechanism_revision": 2,
+  "new_control_mechanism": false,
+  "issue": "interface0 replaced old nominal, tangent and prior while keeping only acknowledged output; restoring equilibrium changed",
+  "correction": "fixed d0 saved V3 nominal and dq/dd; inherit old R2 initial prior, acknowledged residual and controller age",
+  "unchanged": "R2 executable methods, .5s restoring, K .01/.02, physics, constraints, material body family",
+  "curve_parameters": "same five BODY segments, R95/P220/arc100/bridge96.75",
+  "physical_initial": "same actual saved R2 final qpos/ctrl; qvel zero only before first step",
+  "reference_zero": "exact saved V3 nominal world/root/joints, not a new measured nominal zero",
+  "geometric_nominal_limitation": "nominal reference shells only; retained grasp deformation/contact and actual free-body motion require dynamics",
+  "gap_mm": 0.05,
+  "rms_upper_mm": 25.0,
+  "q_geometry_limit_deg": 89.0,
+  "old_V3_full_path": "NOT_READY"
+}

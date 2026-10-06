@@ -1,0 +1,52 @@
+{
+  "outcome": "local_endpoint_or_pause_or_C0_discrimination_failed",
+  "condition": "B",
+  "full_holding_pass": false,
+  "local_transfer_pass": false,
+  "entry_screen_pass": true,
+  "controller": "frozen R2",
+  "old_V3_full_path": "NOT_READY",
+  "entry_maximum_speed_mm_s": 0.10935281919186092,
+  "pause_screen_pass": true,
+  "pause_maximum_speed_mm_s": 2.1455160158814324,
+  "pause_last2s_module_displacement_mm": 3.6945363893912635,
+  "material_score": {
+    "modules": [
+      8,
+      9
+    ],
+    "entries": {
+      "8": {
+        "time_s": 56.339999999959396,
+        "stage": "feed_2",
+        "commanded_feed_mm": 144.9151951672818,
+        "active_time_s": 48.35000000000001,
+        "confirmed_time_s": 56.829999999958254
+      }
+    },
+    "ordered_active_entries": false,
+    "final_modules_in_target": false,
+    "criterion": "both actual module endpoints beyond y75 and radial 56.5..120mm, target force >.1N for .5s, enter in order during commanded feed",
+    "score_only": true,
+    "controller_feedback": false
+  },
+  "final_screen": true,
+  "final_maximum_speed_mm_s": 7.921585860931793,
+  "end_last2s_module_displacement_mm": 15.321630666281099,
+  "extra_module_y_advance_over_paired_C0_mm": [
+    69.93768937834074,
+    105.49153558809384
+  ],
+  "resume_actual_station_advance_mm": 45.00108993986119,
+  "physical_seconds": 66.7999999999549,
+  "wall_seconds": 85.39099999997416,
+  "new_dynamics_trials": 1,
+  "cumulative_dynamics_trials": 11,
+  "maximum_module_speed_mm_s": 35.30414116500905,
+  "maximum_tracking_error_deg": 2.1254959349620686,
+  "root_displacement_mm": 28.775246900660402,
+  "commands": 1336,
+  "all_commands_applied": true,
+  "last_applied_feed_mm": 161.25,
+  "unapplied_next_planned_feed_mm": null
+}

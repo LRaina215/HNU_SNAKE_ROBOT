@@ -1,0 +1,63 @@
+{
+  "physics_steps": 0,
+  "pose_source": "saved actual R2 t45.25s",
+  "qpos_identity_maximum": 0.0,
+  "acknowledged_target_identity_maximum": 0.0,
+  "qvel_zero": true,
+  "maximum_length_error_mm": 2.2737367544323206e-13,
+  "total_length_mm": 1354.5000000000016,
+  "first_command_step_maximum_deg": 0.5000000000000007,
+  "first_raw_target_maximum_deg": 68.69081320521293,
+  "material_axes": [
+    {
+      "joints": [
+        11,
+        20
+      ],
+      "direction_head": [
+        -0.7972557159186148,
+        0.2123508647639506,
+        -0.5650579029348249
+      ],
+      "cloud_rms_mm": 0.7674573766889049
+    },
+    {
+      "joints": [
+        1,
+        5
+      ],
+      "direction_head": [
+        -0.5404167795304309,
+        -0.6750686733280767,
+        0.5022270310258399
+      ],
+      "cloud_rms_mm": 0.24991155105661142
+    }
+  ],
+  "first_residual_deg": [
+    -0.5640746960827494,
+    -0.3964359421280248,
+    -0.28768276219743855,
+    -0.42988714115387267,
+    -1.0245040656085562,
+    0.0,
+    0.23299984264041293,
+    0.0,
+    0.0,
+    0.5133950001252808,
+    0.40884885187705555,
+    0.056482621414049736,
+    -1.6847216770799545,
+    0.7393540386947505,
+    -0.04201150307457184,
+    -1.3003960317109917,
+    -0.30265700157360254,
+    -0.9323330992728536,
+    1.0491937071248099,
+    -0.9065797849503655
+  ],
+  "state_ack_identity_error_rad": 0.0,
+  "R2_executable_method_AST_same": true,
+  "interface_check_pass": true,
+  "limitation": "Forward/first-command check only; matching C0 still required"
+}
