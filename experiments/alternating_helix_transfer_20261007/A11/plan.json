@@ -1,0 +1,8 @@
+{
+  "change": "Continue A10 physical state after solver exception: bound joint-return velocity to feasible drive rate when dynamics overshoots software target box; retry connector unfolding",
+  "variant": 10,
+  "seconds": 120.0,
+  "start": "experiments\\alternating_helix_transfer_20261007\\A10\\final_state.npz",
+  "physics": "unmodified original model; joint ctrl only",
+  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
+}

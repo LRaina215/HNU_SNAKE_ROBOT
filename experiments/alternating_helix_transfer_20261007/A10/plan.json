@@ -1,0 +1,8 @@
+{
+  "change": "Continue A09: J10-J13 formed alternating near-limit folds below elbow; on blocked front explicitly unfold connector at 4 deg/s while maintaining existing grasp drives",
+  "variant": 10,
+  "seconds": 120.0,
+  "start": "experiments\\alternating_helix_transfer_20261007\\A09\\final_state.npz",
+  "physics": "unmodified original model; joint ctrl only",
+  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
+}

@@ -1,0 +1,8 @@
+{
+  "change": "A06 source contact on connector M9 prevented admission: explicitly peel connector from source and guide it over the elbow, retain no-slip constraints only on supporting segments",
+  "variant": 7,
+  "seconds": 240.0,
+  "start": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
+  "physics": "unmodified original model; joint ctrl only",
+  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
+}

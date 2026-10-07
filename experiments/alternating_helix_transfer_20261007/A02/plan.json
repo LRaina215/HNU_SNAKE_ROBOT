@@ -1,0 +1,8 @@
+{
+  "change": "A01 rear feed caused front retreat: retain front pitch and achieved axial position, add radial grasp correction and connector feed",
+  "variant": 2,
+  "seconds": 100.0,
+  "start": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
+  "physics": "unmodified original model; joint ctrl only",
+  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
+}

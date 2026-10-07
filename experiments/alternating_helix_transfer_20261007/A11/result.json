@@ -1,0 +1,246 @@
+{
+  "name": "A11",
+  "outcome": "duration_limit_incomplete",
+  "physical_seconds": 119.99999999716238,
+  "wall_seconds": 23.34399999998277,
+  "front_mean_y_advance_mm": 36.78517013999566,
+  "rear_mean_x_advance_mm": 206.94006031330588,
+  "tail_center_mm": [
+    1181.2883556859936,
+    108.10260736304835,
+    283.2920153495177
+  ],
+  "final_centers_mm": [
+    [
+      1177.0283131637152,
+      298.2054060481837,
+      1062.8712770715101
+    ],
+    [
+      1194.2724947936485,
+      255.786623732567,
+      1046.3621828315881
+    ],
+    [
+      1173.5945359480627,
+      212.44150558729405,
+      1054.3648566859038
+    ],
+    [
+      1132.621999311697,
+      204.89484305925276,
+      1080.743682568023
+    ],
+    [
+      1070.4427387252433,
+      221.00449276805284,
+      1080.1942222119787
+    ],
+    [
+      1030.266598489531,
+      247.2987053553261,
+      1054.6095910950494
+    ],
+    [
+      1012.9351399965794,
+      269.66592889636604,
+      1000.1917777532306
+    ],
+    [
+      1029.1522729105156,
+      275.18304324658453,
+      949.183643439966
+    ],
+    [
+      1060.4092070127708,
+      247.64673148067504,
+      923.3920639317626
+    ],
+    [
+      1074.415505113445,
+      185.46660769913012,
+      913.8161232444693
+    ],
+    [
+      1107.3615892829198,
+      158.46119599341176,
+      890.2595060306282
+    ],
+    [
+      1126.3871700693057,
+      162.7746919045677,
+      838.8731519560138
+    ],
+    [
+      1113.907253038304,
+      164.51792897279802,
+      775.6284369224222
+    ],
+    [
+      1115.2744479895919,
+      169.250213984551,
+      712.8871085514805
+    ],
+    [
+      1130.6416435944423,
+      175.804871688024,
+      650.5883907639925
+    ],
+    [
+      1140.5319533605514,
+      181.80350427609113,
+      587.379843956244
+    ],
+    [
+      1146.8032552365444,
+      169.53334520875018,
+      527.0347917690617
+    ],
+    [
+      1156.0587981118542,
+      139.77205879538593,
+      470.57660149453073
+    ],
+    [
+      1165.2653038329431,
+      121.59309891639518,
+      410.58014636173516
+    ],
+    [
+      1173.2803094780952,
+      114.84741869271059,
+      346.93656509810376
+    ],
+    [
+      1181.2883556859936,
+      108.10260736304835,
+      283.2920153495177
+    ]
+  ],
+  "final_target_modules": [
+    0,
+    3,
+    4,
+    7
+  ],
+  "final_source_modules": [],
+  "max_command_deg": 87.04448019654873,
+  "max_joint_deg": 90.04534012148324,
+  "max_torque_Nm": 2.355,
+  "events": [
+    {
+      "t_s": 12.0,
+      "old": "form_front",
+      "new": "front_roll",
+      "reason": "initial helix formation interval complete",
+      "front_progress_mm": 1.0550642288322485,
+      "rear_progress_mm": 0.8810770689593937
+    },
+    {
+      "t_s": 15.0,
+      "old": "front_roll",
+      "new": "unfold_connector",
+      "reason": "blocked front with folded connector: release its curvature",
+      "front_progress_mm": -0.05660532567488799,
+      "rear_progress_mm": 0.02887885402693056
+    },
+    {
+      "t_s": 30.0,
+      "old": "unfold_connector",
+      "new": "front_roll",
+      "reason": "connector unfolding interval complete",
+      "front_progress_mm": -10.34145978409864,
+      "rear_progress_mm": -15.613189254216351
+    },
+    {
+      "t_s": 35.550000000000004,
+      "old": "front_roll",
+      "new": "unfold_connector",
+      "reason": "blocked front with folded connector: release its curvature",
+      "front_progress_mm": 4.831637076410794,
+      "rear_progress_mm": 4.943905762831261
+    },
+    {
+      "t_s": 50.550000000000004,
+      "old": "unfold_connector",
+      "new": "front_roll",
+      "reason": "connector unfolding interval complete",
+      "front_progress_mm": 11.10398482009608,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 60.550000000000004,
+      "old": "front_roll",
+      "new": "rear_feed",
+      "reason": "front increment complete",
+      "front_progress_mm": 13.474922469136914,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 68.60000000000001,
+      "old": "rear_feed",
+      "new": "front_roll",
+      "reason": "rear reshape/feed interval complete",
+      "front_progress_mm": 4.391499480478995,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 77.4,
+      "old": "front_roll",
+      "new": "unfold_connector",
+      "reason": "blocked front with folded connector: release its curvature",
+      "front_progress_mm": 1.8779734981609355,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 84.35000000000001,
+      "old": "unfold_connector",
+      "new": "front_roll",
+      "reason": "connector unfolding interval complete",
+      "front_progress_mm": 10.84774556973456,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 94.35000000000001,
+      "old": "front_roll",
+      "new": "unfold_connector",
+      "reason": "blocked front with folded connector: release its curvature",
+      "front_progress_mm": 10.522357096067262,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 101.2,
+      "old": "unfold_connector",
+      "new": "front_roll",
+      "reason": "connector unfolding interval complete",
+      "front_progress_mm": 5.832884682077042,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 104.2,
+      "old": "front_roll",
+      "new": "rear_feed",
+      "reason": "front blocked",
+      "front_progress_mm": 1.2218150846133091,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 112.2,
+      "old": "rear_feed",
+      "new": "front_roll",
+      "reason": "rear reshape/feed interval complete",
+      "front_progress_mm": 0.6404077249198634,
+      "rear_progress_mm": 1000.0
+    },
+    {
+      "t_s": 115.2,
+      "old": "front_roll",
+      "new": "unfold_connector",
+      "reason": "blocked front with folded connector: release its curvature",
+      "front_progress_mm": 0.828150570005868,
+      "rear_progress_mm": 1000.0
+    }
+  ],
+  "complete": false,
+  "external_forces_zero": true
+}

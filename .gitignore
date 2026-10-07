@@ -46,3 +46,9 @@ venv/
 /experiments/segmented_pole_20261005/natural_takeover/archives/*.zip
 /experiments/segmented_pole_20261005/natural_takeover/reviews/*.mp4
 /experiments/segmented_pole_20261005/natural_takeover/reviews/*.png
+
+# Current alternating transfer: retain source/results; large evidence stays local.
+/experiments/alternating_helix_transfer_20261007/**/*.npz
+/experiments/alternating_helix_transfer_20261007/**/*.mp4
+/experiments/alternating_helix_transfer_20261007/**/*.jpg
+/experiments/alternating_helix_transfer_20261007/**/commands.json
