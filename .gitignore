@@ -52,3 +52,9 @@ venv/
 /experiments/alternating_helix_transfer_20261007/**/*.mp4
 /experiments/alternating_helix_transfer_20261007/**/*.jpg
 /experiments/alternating_helix_transfer_20261007/**/commands.json
+
+# Unified curve transfer: source/results tracked, actual trajectories/media local.
+/experiments/unified_curve_transfer_20261007/**/*.npz
+/experiments/unified_curve_transfer_20261007/**/*.mp4
+/experiments/unified_curve_transfer_20261007/**/*.jpg
+/experiments/unified_curve_transfer_20261007/**/commands.json

@@ -1,0 +1,9 @@
+2026-10-07：统一曲线第一阶段已恢复。
+
+实际动作运行次数：1（U01），与旧 A/B 和撤回的 C 派单分开。
+U01 实际运行 63.4 秒，未完成；参考 shift 66.2748 mm，无新增模块持续接管，目标管支撑不足后停止。
+
+首轮交付入口：U01/RESULT.txt、U01/replay_1x.mp4、U01/trace.npz、U01/result.json、U01/sources/。
+源码：snake_control/unified_curve_transfer.py、validation/unified_curve_transfer_experiment.py。
+
+待解决：把推进观测改成统一曲线投影，处理受限驱动下的关节指令积累，前部支撑不足时保住包绕；后部送身需要能让目标侧实际新增身体。
