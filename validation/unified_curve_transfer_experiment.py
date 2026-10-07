@@ -14,13 +14,14 @@ import numpy as np
 
 from hook_pull_experiment import Sim
 from snake_control.hook_pull_review_support import restore_saved_state
-from snake_control.unified_curve_transfer import UnifiedCurveTransfer, DT
+from snake_control.unified_curve_transfer import UnifiedCurveTransfer, DT, physical_wrap_masks, cylindrical_contact
 
 
 BASE = ROOT/'experiments/unified_curve_transfer_20261007'
 INITIAL = ROOT/'experiments/hook_pull_20261006/CLOSE1B/final_state.npz'
 SOURCES = ['snake_control/unified_curve_transfer.py',
            'validation/unified_curve_transfer_experiment.py',
+           'validation/recover_unified_curve_state.py',
            'snake_control/spatial_bishop_backbone.py']
 
 
@@ -37,14 +38,24 @@ class UnifiedSim(Sim):
     def snapshot(self):
         super().snapshot()
         deepest = selfdeep = 0.
-        for contact in self.scratch.contact:
+        cylinder_force = np.zeros((2, 21))
+        for index, contact in enumerate(self.scratch.contact):
             b1, b2 = self.m.geom_bodyid[[contact.geom1, contact.geom2]]
             one, two = self.head <= b1 < self.head+21, self.head <= b2 < self.head+21
             if one != two and any((self.m.geom(g).name or '').startswith('pipe_') for g in [contact.geom1, contact.geom2]):
                 deepest = min(deepest, float(contact.dist))
             if one and two and abs(b1-b2) > 1:
                 selfdeep = min(selfdeep, float(contact.dist))
+            for pipe, body in [(contact.geom1, b2), (contact.geom2, b1)]:
+                if not self.head <= body < self.head+21:
+                    continue
+                side = 0 if pipe in self.source else 1 if pipe in self.target else None
+                if side is not None and cylindrical_contact(side, contact.pos, contact.frame[:3]):
+                    f = np.zeros(6)
+                    mujoco.mj_contactForce(self.m, self.scratch, index, f)
+                    cylinder_force[side, body-self.head] += max(0., f[0])
         r = self.rows[-1]
+        source_wrap, target_wrap = physical_wrap_masks(r['centers_mm']/1000)
         reference = np.asarray(self.info.get('reference_points_mm', r['points_mm']))
         region = np.asarray(self.info.get('material_region_codes', [2]*8+[1]*5+[0]*8))
         r.update(shift_mm=self.info.get('shift_mm', 0.),
@@ -60,7 +71,9 @@ class UnifiedSim(Sim):
             reference_node_arclength_mm=np.asarray(self.info.get('reference_node_arclength_mm', np.zeros(22))),
             maximum_reference_link_error_mm=self.info.get('maximum_reference_link_error_mm', 0.),
             dynamic_grip_bias_deg=np.asarray(self.info.get('dynamic_grip_bias_deg', np.zeros(20))),
-            source_grip_region_mask=np.asarray(self.info.get('source_grip_region_mask', np.arange(21) >= 13), dtype=bool),
+            source_grip_region_mask=source_wrap, target_grip_region_mask=target_wrap,
+            cylindrical_contact_force_N=cylinder_force,
+            reference_source_region_mask=np.asarray(self.info.get('reference_source_region_mask', np.arange(21) >= 13), dtype=bool),
             pipe_penetration_mm=-1000*deepest, nonadjacent_self_penetration_mm=-1000*selfdeep)
 
 
@@ -140,20 +153,20 @@ def video(case, rows):
     cap.release()
 
 
-def run(name, initial, horizon, note):
+def run(name, initial, horizon, note, controller_state=None):
     BASE.mkdir(parents=True, exist_ok=True)
     case = BASE/name
     case.mkdir(exist_ok=False)
     with (BASE/'attempts.jsonl').open('a', encoding='utf8') as out:
-        out.write(json.dumps(dict(name=name, initial=str(initial), change=note), ensure_ascii=False)+'\n')
+        out.write(json.dumps(dict(name=name, initial=str(initial), controller_state=str(controller_state) if controller_state else None, change=note), ensure_ascii=False)+'\n')
     for source in SOURCES:
         dest = case/'sources'/source
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT/source, dest)
-    write(case/'plan.json', dict(initial=str(initial), change=note, horizon_s=horizon,
+    write(case/'plan.json', dict(initial=str(initial), controller_state=str(controller_state) if controller_state else None, change=note, horizon_s=horizon,
         physics='original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives',
         software_limits='88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp',
-        model='current curve arclength map; one head shift; every following node exactly one 64.5mm chord; inverse map for regions/feedback',
+        model='current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin',
         feedback='encoder target error/load plus explicitly labelled world-pose/contact simulation feedback',
         stops='ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s',
         completion='all centres on target, tail contacts target, no source contact, sustained 2s'))
@@ -162,6 +175,29 @@ def run(name, initial, horizon, note):
     sim.stage = 'saved_two_pipe_support'
     sim.snapshot()
     controller = UnifiedCurveTransfer(sim.m, sim.d)
+    time_offset = controller.load_state(controller_state) if controller_state else 0.
+    if not np.array_equal(controller.last, sim.d.ctrl):
+        raise ValueError('Controller checkpoint last target differs from physical saved ctrl')
+    controller.save_state(case/'initial_controller_state.json', time_offset)
+    initial_reference, initial_reference_centers, initial_locations = controller.curve.reference(controller.shift)
+    sim.info = dict(reference_points_mm=initial_reference*1000,
+        material_locations_mm=initial_locations*1000,
+        material_region_codes=controller.curve.regions(initial_locations),
+        reference_source_region_mask=controller.source_span(initial_locations),
+        shift_mm=controller.shift*1000, shift_speed_mm_s=controller.speed*1000,
+        reference_lead_mm=(controller.shift-controller.observed_shift)*1000,
+        actual_material_estimate_mm=controller.observed_shift*1000,
+        tracking_error_deg=float(np.degrees(np.abs(controller.last-sim.d.qpos[controller.qa])).max()),
+        body_curve_rms_error_mm=float(np.sqrt(np.mean((initial_reference_centers-sim.rows[0]['centers_mm']/1000)**2))*1000),
+        reference_node_arclength_mm=controller.curve.reference_node_arc*1000,
+        maximum_reference_link_error_mm=float(np.abs(np.linalg.norm(np.diff(initial_reference, axis=0),axis=1)-.0645).max()*1000),
+        curve_parameters=controller.curve.parameters())
+    sim.rows.pop()
+    sim.snapshot()
+    write(case/'continuation.json', dict(controller_elapsed_s=time_offset,
+        initial_physical_time=float(sim.d.time), first_saved_ctrl_rad=sim.d.ctrl.tolist(),
+        initial_reference_points_mm=initial_reference*1000,
+        acceptance='continuations are intermediate evidence; final version must run from CLOSE1B'))
     write(case/'initial_curve.json', dict(source_bound_mm=controller.curve.source_bound*1000,
         target_bound_mm=controller.curve.target_bound*1000, body_length_mm=controller.curve.length*1000,
         axis_radii_mm=np.array(controller.curve.radii)*1000,
@@ -177,15 +213,16 @@ def run(name, initial, horizon, note):
     age = np.zeros(21)
     admitted = set()
     last_progress_time = 0.
-    best_progress = 0.
+    best_progress = controller.last_body_progress
     admissions = []
     try:
         for tick in range(round(horizon/DT)):
             t = tick*DT
+            controller_t = time_offset+t
             r = sim.rows[-1]
-            target, info = controller.command(sim.d, t, r['contact_force_N'], r['torque'])
+            target, info = controller.command(sim.d, controller_t, r['contact_force_N'], r['torque'], r['cylindrical_contact_force_N'])
             sim.info, sim.stage = info, info['stage']
-            sim.commands.append(dict(t_s=t, target_rad=target.tolist(), **info))
+            sim.commands.append(dict(t_s=t, controller_t_s=controller_t, target_rad=target.tolist(), **info))
             sim.step_command(target)
             r = sim.rows[-1]
             c, f = r['centers_mm'], r['contact_force_N']
@@ -197,15 +234,18 @@ def run(name, initial, horizon, note):
                     mujoco.mj_getState(sim.m, sim.d, sim.state, mujoco.mjtState.mjSTATE_INTEGRATION)
                     np.savez_compressed(case/f'admitted_M{module:02d}.npz',
                         integration_state=sim.state.copy(), ctrl=sim.d.ctrl.copy(), sim_time=sim.d.time)
+                    controller.save_state(case/f'admitted_M{module:02d}_controller.json', time_offset+t+DT)
                     last_progress_time = t
             if controller.last_body_progress > best_progress+.005:
                 best_progress = controller.last_body_progress
                 last_progress_time = t
             source_count, target_count = [int(np.count_nonzero(x > .1)) for x in f]
             needs_source = c[-1, 1] < 80 or np.linalg.norm(c[-1, [0, 2]]-[1100, 1000]) > 130
-            posterior_count = int(np.count_nonzero((f[0] > .1) & r['source_grip_region_mask']))
+            cylinder_force = r['cylindrical_contact_force_N']
+            posterior_count = int(np.count_nonzero((cylinder_force[0] > .1) & r['source_grip_region_mask']))
+            receiving_count = int(np.count_nonzero((cylinder_force[1] > .1) & r['target_grip_region_mask']))
             source_lost = source_lost+1 if needs_source and posterior_count < 2 else 0
-            target_lost = target_lost+1 if target_count < 2 else 0
+            target_lost = target_lost+1 if receiving_count < 2 else 0
             if not np.isfinite(sim.d.qpos).all(): outcome = 'nonfinite'; break
             if info.get('maximum_reference_link_error_mm', 0.) > .001:
                 outcome = 'reference_link_length_invalid'; break
@@ -235,11 +275,13 @@ def run(name, initial, horizon, note):
         traceback.print_exc()
     finally:
         sim.save()
+        controller.save_state(case/'controller_state.json', time_offset+sim.d.time-t0)
     r = sim.rows[-1]
     force = np.array([x['contact_force_N'] for x in sim.rows])
     c = np.array([x['centers_mm'] for x in sim.rows])
     result = dict(name=name, outcome=outcome, complete=outcome == 'complete_transfer', error=error,
         physical_seconds=sim.d.time-t0, dynamics_wall_seconds=time.monotonic()-started,
+        controller_initial_elapsed_s=time_offset, controller_final_elapsed_s=time_offset+sim.d.time-t0,
         final_shift_mm=controller.shift*1000, final_curve_parameters=controller.curve.parameters(),
         initial_source_modules=source0, initial_target_modules=target0,
         final_source_modules=np.flatnonzero(force[-1, 0] > .1), final_target_modules=np.flatnonzero(force[-1, 1] > .1),
@@ -255,7 +297,8 @@ def run(name, initial, horizon, note):
         max_pipe_penetration_mm=max(x['pipe_penetration_mm'] for x in sim.rows),
         max_self_penetration_mm=max(x['nonadjacent_self_penetration_mm'] for x in sim.rows),
         max_reference_link_error_mm=max(x['maximum_reference_link_error_mm'] for x in sim.rows),
-        final_actual_source_grip_modules=sim.info.get('actual_source_grip_modules', []),
+        final_actual_source_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][0] > .1) & r['source_grip_region_mask']),
+        final_actual_target_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][1] > .1) & r['target_grip_region_mask']),
         drive_sign_counts=[dict(joint=j+1, positive_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) > .01)),
             negative_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) < -.01))) for j in range(20)],
         controller_events=controller.events, curve_feedback_updates=controller.n_adaptations)
@@ -269,7 +312,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--name', required=True)
     parser.add_argument('--initial', type=Path, default=INITIAL)
+    parser.add_argument('--controller-state', type=Path)
     parser.add_argument('--horizon', type=float, default=1800.)
     parser.add_argument('--note', required=True)
     args = parser.parse_args()
-    run(args.name, args.initial, args.horizon, args.note)
+    run(args.name, args.initial, args.horizon, args.note, args.controller_state)

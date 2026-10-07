@@ -1,0 +1,38 @@
+{
+  "U03": {
+    "geometric_source_band": [],
+    "actual_source_contacts": [
+      9,
+      10
+    ],
+    "source_contacts_in_band": [],
+    "reference_counted_source_contacts": []
+  },
+  "U06": {
+    "geometric_source_band": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "actual_source_contacts": [
+      13,
+      14,
+      18
+    ],
+    "source_contacts_in_band": [
+      13,
+      14,
+      18
+    ],
+    "reference_counted_source_contacts": [
+      18
+    ]
+  }
+}

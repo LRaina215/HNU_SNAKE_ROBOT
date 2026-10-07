@@ -7,11 +7,12 @@ in its shape tracking and traction solve. Encoder errors and actuator loads
 are separate inputs, not a claim of hardware-ready global observation.
 Units: metres, radians, seconds.
 """
+import json
 import math
 
 import mujoco
 import numpy as np
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import CubicSpline, PPoly
 from scipy.optimize import lsq_linear
 from scipy.spatial.transform import Rotation
 
@@ -27,6 +28,37 @@ CORNER = np.array([1.1, 0., 1.])
 def smooth(x):
     x = np.clip(x, 0., 1.)
     return x*x*(3-2*x)
+
+
+def physical_wrap_masks(centers):
+    """Observed cylinder bands, independent of commanded material regions.
+
+    The posterior-most connected source band must span at least three modules
+    and one radian around the cylinder. An isolated elbow touch cannot replace
+    that wrap. A band can shrink/move with the body; no fixed module ID is used.
+    Contact-side surface tests are applied separately to its normal forces.
+    """
+    centers = np.asarray(centers)
+    radial = centers[:, [1, 2]]-[0., 1.]
+    source_radius = np.linalg.norm(radial, axis=1)
+    candidate = (centers[:, 0] < 1.075) & (source_radius > .07) & (source_radius < .13)
+    breaks = np.flatnonzero(np.diff(np.r_[False, candidate, False]))
+    source = np.zeros(21, dtype=bool)
+    if len(breaks):
+        start, end = breaks[-2:]
+        angle = np.unwrap(np.arctan2(radial[start:end, 1], radial[start:end, 0]))
+        if end-start >= 3 and np.ptp(angle) >= 1.:
+            source[start:end] = True
+    target_radius = np.linalg.norm(centers[:, [0, 2]]-[1.1, 1.], axis=1)
+    target = (centers[:, 1] > .075) & (target_radius > .07) & (target_radius < .13)
+    return source, target
+
+
+def cylindrical_contact(side, point, normal):
+    """Known source/target side surface, excluding end/miter face contact."""
+    axis_component = abs(float(normal[side]))
+    away_from_corner = point[0] < 1.075 if side == 0 else point[1] > .075
+    return bool(away_from_corner and axis_component < .35)
 
 
 class RegisteredThreeRegionCurve:
@@ -237,6 +269,36 @@ class UnifiedCurveTransfer:
         self.projected_locations = self.curve.center_s0.copy()
         self.last_observer_time = -1.
         self.observed_shift = 0.
+        self.first_dispatch = True
+
+    def save_state(self, path, elapsed_s):
+        # Numeric route/controller history; MuJoCo physics is saved separately.
+        from validation.recover_unified_curve_state import save_state
+        save_state(path, self, elapsed_s)
+
+    def load_state(self, path):
+        state = json.loads(path.read_text(encoding='utf8'))
+        if state['version'] != 1:
+            raise ValueError('Unsupported controller checkpoint version')
+        arrays = {'last', 'initial_centers', 'initial_preload', 'curve_grip_strength',
+                  'support_force_goals', 'filtered_load', 'projected_locations'}
+        for key, value in state['controller'].items():
+            setattr(self, key, np.asarray(value) if key in arrays else value)
+        curve_arrays = {'node_s0', 'center_s0', 'phase', 'phase_correction', 'radius_delta',
+            'bridge_offset', 'shape_grid', 'shape_offsets', 'arc_grid_u', 'initial_node_arc',
+            'reference_node_arc', 'reference_center_arc', 'reference_node_parameters'}
+        for key, value in state['curve'].items():
+            if key not in {'base_x', 'base_c'}:
+                setattr(self.curve, key, np.asarray(value) if key in curve_arrays else value)
+        self.curve.base = PPoly(np.asarray(state['curve']['base_c']), np.asarray(state['curve']['base_x']))
+        self.curve.arc_cache = None
+        self.first_dispatch = True
+        reference, _, _ = self.curve.reference(self.shift)
+        if 'reference_points_mm' in state:
+            self.restored_reference_error_mm = float(np.max(np.abs(reference*1000-state['reference_points_mm'])))
+            if self.restored_reference_error_mm > 1e-6:
+                raise ValueError('Restored curve differs from checkpoint reference')
+        return float(state['elapsed_s'])
 
     def source_span(self, locations):
         # Include one link at the source/bridge handover. A connector touching
@@ -244,12 +306,7 @@ class UnifiedCurveTransfer:
         return np.asarray(locations) <= self.curve.source_bound+LINK
 
     def supported_curve_regions(self, locations, centers):
-        """Current source/receiving spans, never permanent joint identities."""
-        source_radius = np.linalg.norm(centers[:, [1, 2]]-[0., 1.], axis=1)
-        target_radius = np.linalg.norm(centers[:, [0, 2]]-[1.1, 1.], axis=1)
-        source_mask = self.source_span(locations) & (centers[:, 0] < 1.065) & (source_radius < .13)
-        target_mask = (np.asarray(locations) >= self.curve.target_bound-LINK) & (centers[:, 1] > .075) & (target_radius < .13)
-        return source_mask, target_mask
+        return physical_wrap_masks(centers)
 
     def observe_progress(self, centers, forces, t):
         """Fit the common shift-and-roll trajectory, including after turning.
@@ -369,7 +426,7 @@ class UnifiedCurveTransfer:
             self.curve.deposit(s, correction, .18, dt)
         self.n_adaptations += 1
 
-    def command(self, data, t, forces, torque):
+    def command(self, data, t, forces, torque, support_forces=None):
         p, centers = self.observe(data)
         q = data.qpos[self.qa]
         reference_p, reference_c, locations = self.curve.reference(self.shift)
@@ -392,8 +449,11 @@ class UnifiedCurveTransfer:
         error_scale = np.clip((np.radians(18)-maximum_error)/np.radians(14), 0., 1.)
         lag_scale = np.clip((.075-lag)/.05, 0., 1.)
         source_count, target_count = [int(np.count_nonzero(f > .1)) for f in forces]
-        posterior_count = int(np.count_nonzero((forces[0] > .1) & self.source_span(locations)))
-        support_scale = 1. if target_count >= 2 and (posterior_count >= 2 or (locations[-1] > self.curve.target_bound)) else 0.
+        support_forces = forces if support_forces is None else support_forces
+        source_grip_mask, target_grip_mask = physical_wrap_masks(centers)
+        posterior_count = int(np.count_nonzero((support_forces[0] > .1) & source_grip_mask))
+        receiver_count = int(np.count_nonzero((support_forces[1] > .1) & target_grip_mask))
+        support_scale = 1. if receiver_count >= 2 and (posterior_count >= 2 or target_grip_mask[-1]) else 0.
         requested = .004*float(error_scale)*float(lag_scale)*support_scale*smooth(t/2.)
         self.speed += np.clip(requested-self.speed, -.002*DT, .001*DT)
         mode = 'advance' if self.speed > .00015 else 'reshape_with_shift_braked'
@@ -429,6 +489,8 @@ class UnifiedCurveTransfer:
         target_axial = float(np.median(feedforward[current_regions == 2, 1])) if np.any(current_regions == 2) else 0.
         source_roll = float(np.clip(-np.sign(self.curve.theta_rates[0])*source_axial/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[0]**2)), -.12, .12))
         target_roll = float(np.clip(np.sign(self.curve.theta_rates[1])*target_axial/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[1]**2)), -.12, .12))
+        tangent_feedforward = []
+        solved_spin_rows = []
         for module, center in enumerate(centers):
             mujoco.mj_jac(self.m, self.d, jp, jr, center, self.head+module)
             u = self.d.xmat[self.head+module].reshape(3, 3)[:, 2]
@@ -438,9 +500,21 @@ class UnifiedCurveTransfer:
             add(jp, v, 2. if region != 1 else 2.5)
             wanted_u = wanted_p[module]-wanted_p[module+1]
             wanted_u /= max(np.linalg.norm(wanted_u), 1e-9)
-            add(jr, .35*np.cross(u, wanted_u), .055)
+            previous_u = reference_p[module]-reference_p[module+1]
+            previous_u /= max(np.linalg.norm(previous_u), 1e-9)
+            rotation_axis = np.cross(previous_u, wanted_u)
+            sine = np.linalg.norm(rotation_axis)
+            angle = math.atan2(sine, float(previous_u@wanted_u))
+            omega_ff = rotation_axis*(angle/(max(sine, 1e-12)*DT))
+            tangent_feedforward.append(omega_ff)
+            # A tangent fixes only the two perpendicular angular components.
+            # Axial material spin is a separate row in the same finite-joint
+            # solve; the tangent row must not also ask that spin to be zero.
+            perpendicular = np.eye(3)-np.outer(u, u)
+            add(perpendicular@jr, perpendicular@(omega_ff+.35*np.cross(u, wanted_u)), .055)
             spin = weights[module, 0]*source_roll+weights[module, 1]*target_roll
             add(u@jr, spin, .12)
+            solved_spin_rows.append((u@jr).copy())
 
         # Supporting points constrain the predicted free-root velocity. Only
         # solved joint increments are sent; the physical root is never assigned.
@@ -452,9 +526,10 @@ class UnifiedCurveTransfer:
                 if self.head <= body < self.head+21 and name.startswith('pipe_'):
                     module = body-self.head
                     side = 1 if name in ['pipe_sharp_out_03', 'pipe_straight_04'] else 0
-                    if module not in selected or contact.dist < selected[module][0]:
-                        selected[module] = (contact.dist, contact.pos.copy(), side)
-        for module, (_, point, side) in selected.items():
+                    key = (module, side)
+                    if key not in selected or contact.dist < selected[key][0]:
+                        selected[key] = (contact.dist, contact.pos.copy(), contact.frame[:3].copy())
+        for (module, side), (_, point, contact_normal) in selected.items():
             mujoco.mj_jac(self.m, self.d, jp, jr, point, self.head+module)
             axis = np.array([1., 0., 0.]) if side == 0 else np.array([0., 1., 0.])
             origin = np.array([0., 0., 1.]) if side == 0 else CORNER
@@ -465,11 +540,12 @@ class UnifiedCurveTransfer:
             # grip increment grew while actual contact pressure collapsed.
             # Regulate pressure in this SAME solve, on current support regions.
             current_mask = source_grip_mask if side == 0 else target_grip_mask
-            count = max(1, sum(int(s == side and current_mask[k]) for k, (_, _, s) in selected.items()))
-            goal_force = self.support_force_goals[side]/count if current_mask[module] else 0.
+            is_support = current_mask[module] and cylindrical_contact(side, point, contact_normal)
+            count = max(1, int(np.count_nonzero(current_mask & (support_forces[side] > .1))))
+            goal_force = self.support_force_goals[side]/count if is_support else 0.
             normal_velocity = np.clip(.00002*(forces[side, module]-goal_force), -.0006, .0006)
             # An ordinary bridge contact is free to peel; it is not a grasp anchor.
-            add(normal@jp, normal_velocity, 8. if current_mask[module] else 2.)
+            add(normal@jp, normal_velocity, 8. if is_support else 2.)
             add((np.eye(3)-np.outer(normal, normal))@jp, np.zeros(3), 3.)
         joint_jac = np.zeros((20, n))
         joint_jac[np.arange(20), self.va] = 1.
@@ -490,17 +566,19 @@ class UnifiedCurveTransfer:
         raw = np.clip(raw, q-np.radians(3.), q+np.radians(3.))
         target = np.clip(raw, np.maximum(-np.radians(88), self.last-speed*DT),
                         np.minimum(np.radians(88), self.last+speed*DT))
-        if t == 0.:
+        if self.first_dispatch:
             target = self.last.copy()
+            self.first_dispatch = False
         self.last = target.copy()
         info = dict(stage=mode, shift_mm=float(self.shift*1000), shift_speed_mm_s=float(self.speed*1000),
             actual_material_estimate_mm=actual_material*1000, actual_material_speed_mm_s=actual_speed*1000,
             reference_lead_mm=lag*1000, fixed_front_y_mm=front_progress*1000,
             fixed_rear_x_mm=rear_progress*1000, tracking_error_deg=math.degrees(maximum_error),
             source_modules=np.flatnonzero(forces[0] > .1).tolist(), target_modules=np.flatnonzero(forces[1] > .1).tolist(),
-            source_grip_region_mask=self.source_span(locations).tolist(),
-            actual_source_grip_modules=np.flatnonzero((forces[0] > .1) & source_grip_mask).tolist(),
-            actual_target_grip_modules=np.flatnonzero((forces[1] > .1) & target_grip_mask).tolist(),
+            source_grip_region_mask=source_grip_mask.tolist(),
+            reference_source_region_mask=self.source_span(locations).tolist(),
+            actual_source_grip_modules=np.flatnonzero((support_forces[0] > .1) & source_grip_mask).tolist(),
+            actual_target_grip_modules=np.flatnonzero((support_forces[1] > .1) & target_grip_mask).tolist(),
             initial_preload_deg=np.degrees(self.initial_preload).tolist(), dynamic_grip_bias_deg=np.zeros(20).tolist(),
             curve_feedback_curvature_strength=self.curve_grip_strength.tolist(), anti_windup_error_window_deg=3.,
             execution_grip='pressure feedback in the common spatial curve and current support solve; no additive joint bias',
@@ -517,6 +595,9 @@ class UnifiedCurveTransfer:
             maximum_reference_link_error_mm=float(np.abs(np.linalg.norm(np.diff(wanted_p, axis=0), axis=1)-LINK).max()*1000),
             body_curve_rms_error_mm=float(np.sqrt(np.mean((wanted_c-centers)**2))*1000),
             source_material_roll_rad_s=source_roll, target_material_roll_rad_s=target_roll,
+            reference_tangent_feedforward_rad_s=np.asarray(tangent_feedforward).tolist(),
+            solved_material_spin_rad_s=(np.asarray(solved_spin_rows)@solution.x).tolist(),
+            tangent_task='perpendicular angular velocity plus reference tangent change; axial spin has a separate row',
             curve_parameters=self.curve.parameters(), shape_updates=self.n_adaptations,
             bishop_joint_fit_max_error_deg=float(np.degrees(np.abs(bone_angles-q)).max()),
             solve_residual=float(np.linalg.norm(matrix@solution.x-vector)), solve_status=int(solution.status),

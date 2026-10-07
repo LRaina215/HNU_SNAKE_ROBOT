@@ -1,0 +1,8 @@
+{
+  "reference_max_difference_mm": 1.7462298274040222e-10,
+  "qpos_max_difference": 0.0,
+  "qvel_max_difference": 0.0,
+  "ctrl_max_difference": 0.0,
+  "physical_time": 398.64999999748505,
+  "controller_elapsed_s": 321.74999999748195
+}
