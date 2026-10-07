@@ -1,0 +1,81 @@
+{
+  "start_U32_local_time_s": 32.0,
+  "controller_initial_elapsed_s": 1187.449999980314,
+  "outcome": "posterior_source_support_below_two_1s",
+  "duration_s": 29.349999999305965,
+  "complete": false,
+  "feed": {
+    "start_local_s": 10.200000000000001,
+    "regrip_start_local_s": 26.650000000000002,
+    "start_U32_local_s": 42.2,
+    "end_U32_local_s": 58.650000000000006,
+    "raw_pipe_axial_progress_mm": [
+      3.1528696451941784,
+      1.3208240870572716
+    ],
+    "fixed_pitch_normalized_material_mm": [
+      12.339783944207388,
+      8.998863194603834
+    ],
+    "physical_axial_sines": [
+      0.2555044447657624,
+      0.14677677152035198
+    ],
+    "common_shift_advance_mm": 9.669623413062482,
+    "fixed_front_mean_y_advance_mm": 2.806761247102762,
+    "fixed_rear_mean_x_advance_mm": 5.439503269308683,
+    "M20_actual_xyz_advance_mm": [
+      -2.839473869019571,
+      -2.1380851809816903,
+      22.328423142292422
+    ],
+    "M20_reference_minus_actual_mm_at_feed_end": [
+      10.917452080806356,
+      -7.008521225703774,
+      -1.9166365901298832
+    ],
+    "feed_succeeded_flag": true
+  },
+  "regrip": {
+    "carrier_loss": {
+      "14": {
+        "first_noncontact_after_regrip_s": 28.28999999933103,
+        "final_force_N": 0.0
+      },
+      "15": {
+        "first_noncontact_after_regrip_s": null,
+        "final_force_N": 22.041929737312163
+      },
+      "16": {
+        "first_noncontact_after_regrip_s": 26.659999999369575,
+        "final_force_N": 0.0
+      },
+      "20": {
+        "first_noncontact_after_regrip_s": 28.269999999331503,
+        "final_force_N": 0.0
+      }
+    },
+    "handover_verified": false,
+    "M16_max_source_force_N_after_regrip": 0.0,
+    "M14_M20_last_target_max_force_N": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "history": {
+    "historical_origin_start_mm": 796.5881495788783,
+    "historical_origin_end_mm": 796.5881495788783,
+    "fixed_pitch_end": [
+      0.2555044447657624,
+      0.14677677152035198
+    ],
+    "observer_initializations": 0,
+    "registration_count": 1
+  },
+  "maximum_requested_rolling_contact_error_mm_s": 5.367382522679174e-16
+}

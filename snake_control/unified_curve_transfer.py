@@ -149,14 +149,41 @@ class RegisteredThreeRegionCurve:
         s = np.asarray(s)
         return np.where(s <= self.source_bound, 0, np.where(s >= self.target_bound, 2, 1))
 
-    def increment(self, shift_increment):
+    def increment(self, shift_increment, local_source=False):
         # For a helical centreline T=sin(alpha)*axis +/- cos(alpha)*azimuth:
         # centre axial speed = sin(alpha)*shift_dot. Rotate the spatial helix
         # as well, so centre velocity is orthogonal to T and consistent with
         # rolling of a shell about the local material tangent. Merely adding a
         # global roll phase to a moving curvature window can cancel one side.
-        self.phase += -np.sign(self.theta_rates)*shift_increment/(
+        phase_step = -np.sign(self.theta_rates)*shift_increment/(
             np.asarray(self.radii)*np.sqrt(1-np.asarray(self.axial_sines)**2))
+        if local_source and shift_increment > 0.:
+            # For the captured source shape use its LOCAL rolling field:
+            # V/ds = T - e_phi/(T.e_phi), hence T.V = 0. The uniform
+            # helix phase is valid only where local winding/pitch match it.
+            # Bake just the difference into the same spatial curve, then the
+            # existing common head shift and fixed-length chords place rods.
+            s = self.base.x
+            points = self.sample(s)
+            tangent = self.tangent(s)
+            axis = np.array([1., 0., 0.])
+            radial = points-np.array([0., 0., 1.])
+            radial[:, 0] = 0.
+            radius = np.maximum(np.linalg.norm(radial, axis=1), 1e-9)
+            azimuth = np.cross(axis, radial/radius[:, None])
+            winding = np.sum(tangent*azimuth, axis=1)
+            local_step = np.divide(-shift_increment, radius*winding,
+                out=np.zeros_like(radius), where=np.abs(winding) > 1e-6)
+            # Retain the existing 8mm/s centre-motion bound near an axial rod.
+            local_step = np.clip(local_step, -.008*DT/radius, .008*DT/radius)
+            window = smooth((s-self.node_s0[-1]+2*LINK)/(2*LINK))*smooth(
+                (self.source_bound+.5*LINK-s)/(.5*LINK))
+            delta = window*(local_step-phase_step[0])
+            correction = Rotation.from_rotvec(delta[:, None]*axis).apply(radial)-radial
+            correction = Rotation.from_rotvec(-self.phase[0]*axis).apply(correction)
+            self.base = CubicSpline(s, self.base(s)+correction, axis=0)
+            self.shape_revision += 1
+        self.phase += phase_step
 
     def phase_at(self, shift):
         return self.phase_correction+(np.asarray(shift)-self.phase_origin_shift)[..., None]*(-np.sign(self.theta_rates)/(
@@ -1104,7 +1131,7 @@ class UnifiedCurveTransfer:
         _, reshaped_c, _ = self.curve.reference(self.shift)
         shape_feedforward = (reshaped_c-reference_c)/DT
         ds = DT*self.speed
-        self.curve.increment(ds)
+        self.curve.increment(ds, local_source=self.alternating_yield_enabled)
         self.shift += ds
         wanted_p, wanted_c, locations = self.curve.reference(self.shift)
         feedforward = (wanted_c-reshaped_c)/DT
