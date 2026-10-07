@@ -1,0 +1,11 @@
+{
+  "initial": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\alternating_helix_transfer_20261007\\A07\\final_state.npz",
+  "revision": 1,
+  "change": "A07 saved state: admit M10 first while preserving remaining source contacts; rolling, local shape and support solved together; reversible contact protection; no joint-zeroing override",
+  "maximum_dispatch_runs": 2,
+  "admitted_contact_seconds": 0.75,
+  "maximum_no_admission_seconds": 90.0,
+  "completion": "all modules around target, tail-region support, no source contact, sustained 2 seconds",
+  "physics": "original XML, joint ctrl only; rate 10 deg/s, target 88 deg, drive 2.355 Nm",
+  "LocalSection": "fixed 0.01 parameter shape objective, not force-adaptive compliance"
+}
