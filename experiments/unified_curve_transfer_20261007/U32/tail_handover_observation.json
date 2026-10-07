@@ -1,0 +1,146 @@
+[
+  {
+    "t_s": 77.25,
+    "selected_constraint": {
+      "joint": 16,
+      "curve_angle_deg": -33.769205964782465,
+      "actual_angle_deg": -33.440319489839624,
+      "geometric_rate_deg_s": 0.1965772493685384,
+      "previous_target_deg": -33.78479034056239,
+      "target_rate_deg_s": 0.31168751559853364,
+      "source": "same curve adjacent-rod bend; one fixed variable in the existing support solve"
+    },
+    "M20_actual_q_deg": -73.13435805638785,
+    "M20_ctrl_deg": -73.16876664958946,
+    "M20_actual_center_mm": [
+      922.0476346634514,
+      -85.30763418306145,
+      981.3379371296458
+    ],
+    "M20_reference_center_mm": [
+      926.7907787080911,
+      -78.3218889229467,
+      944.9995060330036
+    ],
+    "M20_center_task_mm_s": [
+      5.676588414650407,
+      -0.05880132809651621,
+      2.8422657633002877
+    ],
+    "M20_coherent_rolling": true,
+    "source_roll_rad_s": 0.000726650309744693,
+    "anchor_recovery": false,
+    "anchor_pressure_goals_M14_M15_M16_M20_N": [
+      2.7359166279255875,
+      22.790170690841382,
+      23.06017707464059,
+      4.660627313804407
+    ]
+  },
+  {
+    "t_s": 78.0,
+    "selected_constraint": {
+      "joint": 16,
+      "curve_angle_deg": -33.672419548664955,
+      "actual_angle_deg": -33.357191073452974,
+      "geometric_rate_deg_s": -0.11032996632419224,
+      "previous_target_deg": -33.672419548664955,
+      "target_rate_deg_s": 0.0,
+      "source": "same curve adjacent-rod bend; one fixed variable in the existing support solve"
+    },
+    "M20_actual_q_deg": -72.43288405373265,
+    "M20_ctrl_deg": -72.46582359012504,
+    "M20_actual_center_mm": [
+      922.0472534261019,
+      -85.41344516109638,
+      981.6596951850925
+    ],
+    "M20_reference_center_mm": [
+      928.0627937116361,
+      -78.51209724880829,
+      944.770811981168
+    ],
+    "M20_center_task_mm_s": [
+      6.505213034913027e-16,
+      -0.8473626987121998,
+      2.431255911116428
+    ],
+    "M20_coherent_rolling": true,
+    "source_roll_rad_s": 0.0,
+    "anchor_recovery": false,
+    "anchor_pressure_goals_M14_M15_M16_M20_N": [
+      5.857738916710336,
+      18.32190492762369,
+      23.06017707464059,
+      4.75542716259398
+    ]
+  },
+  {
+    "t_s": 78.9,
+    "selected_constraint": {
+      "joint": 16,
+      "curve_angle_deg": -30.87889594721669,
+      "actual_angle_deg": -31.807548604354764,
+      "geometric_rate_deg_s": 0.3250284299983256,
+      "previous_target_deg": -31.891261494768404,
+      "target_rate_deg_s": 10.0,
+      "source": "same curve adjacent-rod bend; one fixed variable in the existing support solve"
+    },
+    "M20_actual_q_deg": -71.09311161191735,
+    "M20_ctrl_deg": -71.10918092942731,
+    "M20_actual_center_mm": [
+      922.9275817579314,
+      -86.6311480484272,
+      981.7892730264175
+    ],
+    "M20_reference_center_mm": [
+      930.2801077310734,
+      -78.84746375227621,
+      944.5245530309192
+    ],
+    "M20_center_task_mm_s": [
+      1.5170609920286342,
+      1.6060227278477082,
+      -7.688902193688102
+    ],
+    "M20_coherent_rolling": false,
+    "source_roll_rad_s": 0.0,
+    "anchor_recovery": false,
+    "anchor_pressure_goals_M14_M15_M16_M20_N": [
+      5.857738916710336,
+      18.32190492762369,
+      23.06017707464059,
+      4.75542716259398
+    ]
+  },
+  {
+    "t_s": 79.85000000000001,
+    "selected_constraint": null,
+    "M20_actual_q_deg": -70.28409634416136,
+    "M20_ctrl_deg": -70.30309202892363,
+    "M20_actual_center_mm": [
+      923.3109981391697,
+      -85.85889816171165,
+      974.3494688103734
+    ],
+    "M20_reference_center_mm": [
+      930.302269369868,
+      -78.85061841962121,
+      944.5226818078447
+    ],
+    "M20_center_task_mm_s": [
+      1.7797080452717868,
+      1.7840377563591987,
+      -7.592749736260226
+    ],
+    "M20_coherent_rolling": false,
+    "source_roll_rad_s": 0.0,
+    "anchor_recovery": true,
+    "anchor_pressure_goals_M14_M15_M16_M20_N": [
+      5.857738916710336,
+      18.32190492762369,
+      23.06017707464059,
+      4.75542716259398
+    ]
+  }
+]
