@@ -1,0 +1,3 @@
+trial_id,attempt_number,status,physical_steps,physical_seconds,outcome,two_pipe_holding_pass
+C0_HOLD,1,FINISHED,12000,12.0,completed_12s,True
+P1_PREFIX,2,FINISHED,12000,12.0,completed_12s,True

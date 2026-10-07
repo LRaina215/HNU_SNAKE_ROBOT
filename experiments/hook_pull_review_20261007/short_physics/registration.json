@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-07",
+  "scope": "Matched C0 and frozen prefix open-loop MuJoCo diagnosis only",
+  "initial_state": "experiments/hook_pull_20261006/CLOSE1B/final_state.npz",
+  "frozen_prefix": "experiments/hook_pull_review_20261007/entry_prefix_path.npz",
+  "previous_new_dynamics_trials_this_review": 0,
+  "review_total_limit": 4,
+  "this_dispatch_maximum_attempts": 2,
+  "entry_failure_or_interruption_counts": true,
+  "runs": [
+    {"id": "C0_HOLD", "duration_s": 12, "control": "Original executed ctrl unchanged", "next_run_only_if_completed_and_holding_pass": true},
+    {"id": "P1_PREFIX", "duration_s": 12, "control": "Frozen dispatch_time_s/dispatch_ctrl_rad at original 50 ms ticks for 0..2 s; final target held 2..12 s", "initial_state": "Independent restore of exactly the same CLOSE1B, not C0 final"}
+  ],
+  "timing": {"physics_dt_s": 0.001, "command_period_s": 0.05, "sample_and_safety_period_s": 0.01, "initial_target": "Original ctrl at t=0; no one-frame advance", "settle_period_s": 0},
+  "stop": {"actual_and_command_joint_limit_deg": 88, "command_rate_limit_deg_s": 10, "pipe_penetration_limit_mm": 3, "nonadjacent_self_penetration_limit_mm": 0.5, "front_wrap_min_deg": 180, "ground": "immediate", "nonfinite_or_exception": "immediate", "source_contacts_below_2_duration_s": 0.2, "target_contacts_zero_duration_s": 0.2, "module_speed_above_500_mm_s_duration_s": 0.2, "contact_threshold_N": 0.1, "apply_during_motion_and_hold": true},
+  "holding_gate": {"completed_duration_s": 12, "post_action_hold_at_least_s": 10, "last2s_all_module_3d_drift_max_mm": 6.45, "last5s_module_speed_strict_max_mm_s": 5, "last1s_target_contacts_min": 3, "last1s_source_contacts_min": 2, "last1s_front_polygon_encloses_axis_fraction_min": 0.95, "final_wrap_strict_min_deg": 180, "name": "two-pipe jointly supported holding, not independent front grasp"},
+  "feedback": "None added; only frozen open-loop joint commands",
+  "truth_use": "Private-data diagnostics, scoring and stops only",
+  "forbidden": ["Physical root/joint state overwrite after start", "Predictive qpos/root application", "External support", "Changed physics or friction or drive", "Refitting, rate clipping, slowing or new feedback", "Failure followed by extra hold", "Retry or additional candidate"],
+  "records": "Actual state and commands, module poses/roll, contact, speed, preload angle difference and torque; private forward must leave physical integration state unchanged",
+  "comparison": "Per-module and whole-front/rear changes at t=2 and t=12, P1 minus C0, prediction versus actual, motion versus after-stop support",
+  "large_files": "All raw trajectories and videos stay local; no file >=2MB committed",
+  "old_B_and_prefix_historical_admission": "Unchanged; this authorization is registered separately"
+}

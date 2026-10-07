@@ -1,0 +1,26 @@
+{
+  "trial": "C0_HOLD",
+  "outcome": "completed_12s",
+  "error": null,
+  "completed": true,
+  "physical_steps": 12000,
+  "physical_seconds": 12.0,
+  "entry_attempt_counts": 1,
+  "two_pipe_holding": {
+    "passed": true,
+    "name": "two-pipe jointly supported holding",
+    "completed_12s": true,
+    "last2s_all_module_max_3d_drift_mm": 0.8347472413745508,
+    "last5s_maximum_module_speed_mm_s": 0.6408976466199304,
+    "last1s_min_source_contacts": 3,
+    "last1s_min_target_contacts": 3,
+    "last1s_enclosed_axis_fraction": 1.0,
+    "final_wrap_deg": 267.60972064467626
+  },
+  "sampler_physical_state_max_difference": 0.0,
+  "wall_s": 3.4369999999762513,
+  "feedback_added": false,
+  "real_hardware": false,
+  "interpretation": "Open-loop two-pipe diagnosis, not independent grasp/feedback/crossing success",
+  "replay_available": true
+}
