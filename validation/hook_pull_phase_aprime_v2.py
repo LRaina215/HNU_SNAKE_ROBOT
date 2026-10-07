@@ -25,15 +25,14 @@ from scipy.spatial.transform import Rotation
 
 from curve_guided_geometry import MODEL, CORNER, points
 from snake_control.hook_pull_motion import RollSolver
+from snake_control.hook_pull_review_support import (
+    R95_MM, PITCH_MM, L_TURN_MM, ROT_PER_MM, AX_PER_MM,
+    restore_saved_state, axis_progress_mm)
 
 BASE = ROOT / 'experiments/hook_pull_20261006'
 OUT = BASE / 'phase_aprime'
 AXIS_T = np.array([1100., 0., 1000.])
 AXIS_S = np.array([0., 0., 1000.])
-R95, PITCH = .095, .220
-L_TURN = float(np.hypot(2 * np.pi * R95, PITCH))
-ROT_PER_MM = 2 * np.pi / L_TURN
-AX_PER_MM = PITCH / L_TURN
 W_STRONG, W_MED, W_CONT = 60., 15., 20.
 STEP_MM = 2.
 PULSE_MM = 8.
@@ -63,12 +62,9 @@ def run(start):
     source = {m.geom(x).id for x in ['pipe_straight_01', 'pipe_sharp_in_02']}
     target = {m.geom(x).id for x in ['pipe_sharp_out_03', 'pipe_straight_04']}
     floor = m.geom('floor').id
-    with np.load(BASE / start / 'final_state.npz') as state:
-        # integration_state 布局：[time(1), qpos(27), qvel(26), ...]
-        qpos0 = state['integration_state'][1:28].copy()
-        joints0 = state['integration_state'][8:28].copy()   # 实测关节角（qpos[7:27]），不是指令 ctrl
-    d.qpos[:] = qpos0
-    mujoco.mj_forward(m, d)
+    restore_saved_state(m, d, BASE / start / 'final_state.npz')
+    qpos0 = d.qpos.copy()
+    joints0 = d.qpos[qadr].copy()  # Planning shape only; not an executed target.
     P0 = points(m, d)
     C0 = (P0[:-1] + P0[1:]) / 2
     # 前部钩形螺旋参数（dθ/dy 与每弧度弧长）
@@ -130,6 +126,10 @@ def run(start):
         pulse_gain = 0.
         pulse_start_front = u_f
         pulse_start_rear = u_r
+        pulse_points, _ = forward(x)
+        pulse_centers = (pulse_points[:-1] + pulse_points[1:]) / 2
+        pulse_front_y = float(pulse_centers[:8, 1].mean())
+        pulse_rear_x = float(pulse_centers[13:21, 0].mean())
         pulse_log = 0
         while pulse_log < int(PULSE_MM / STEP_MM) + 6:
             if end == 'FRONT':
@@ -158,7 +158,8 @@ def run(start):
                 b1, b2 = int(m.geom_bodyid[c.geom1]), int(m.geom_bodyid[c.geom2])
                 ground |= (c.geom1 == floor and b2 >= head) or (c.geom2 == floor and b1 >= head)
                 selfhit |= b1 >= head and b2 >= head and abs(b1 - b2) > 1 and c.dist < -3e-3
-                deepest = min(deepest, float(c.dist))
+                if (c.geom1 in source | target and b2 >= head) or (c.geom2 in source | target and b1 >= head):
+                    deepest = min(deepest, float(c.dist))
             n_t = sum(1 for k in range(21) if 79.5 <= np.hypot(centers[k, 0] - 1100., centers[k, 2] - 1000.) <= 92. and centers[k, 1] >= -20.)
             n_s = sum(1 for k in range(21) if 79.5 <= np.hypot(centers[k, 1], centers[k, 2] - 1000.) <= 92. and centers[k, 0] <= 1112.)
             for k in range(8, 21):
@@ -178,7 +179,7 @@ def run(start):
                 failed.append(f'joint_limit J{int(np.argmax(abs(x[6:]))) + 1}')
             if selfhit or ground:
                 failed.append('self_or_ground')
-            if deepest < -3.:
+            if deepest * 1000 < -3.:
                 failed.append('pipe_penetration')
             if wrap < 180.:
                 failed.append('front_wrap_below_180')
@@ -189,10 +190,10 @@ def run(start):
             if failed:
                 stop = ','.join(failed)
                 break
-        front_now = (u_f - pulse_start_front)
-        rear_now = (u_r - pulse_start_rear)
+        front_now, rear_now = axis_progress_mm(centers, pulse_front_y, pulse_rear_x)
         gain = front_now if end == 'FRONT' else rear_now
-        pulses.append(dict(index=pulse, end=end, gain_mm=gain, front_y_mm=(u_f - pulse_start_front) * 0,
+        pulses.append(dict(index=pulse, end=end, gain_mm=gain, front_y_mm=front_now, rear_x_mm=rear_now,
+                           commanded_arc_gain_mm=(u_f - pulse_start_front) if end == 'FRONT' else (u_r - pulse_start_rear),
                            u_front_mm=u_f, u_rear_mm=u_r))
         print(f"pulse {pulse:2d} {end:5s}: 收益 {gain:5.2f} mm | 累计弧长 前 {u_f:6.1f} 后 {u_r:6.1f} mm "
               f"包绕 {wrap:5.1f}° |q|max {q:5.1f}° 迁移 {sorted(set(mm['module'] for mm in miter))}", flush=True)
@@ -208,13 +209,15 @@ def run(start):
     front_y = float(centers[:8, 1].mean()) - float(C0[:8, 1].mean())
     rear_x = float(centers[13:21, 0].mean()) - float(C0[13:21, 0].mean())
     result = dict(start=start, criterion=CRITERION, stop_reason=stop,
-                  A2=dict(front_y_mm=front_y * 1000, rear_x_mm=rear_x * 1000,
-                          passed=bool(front_y * 1000 >= CRITERION['A2_front_y_min_mm'] and rear_x * 1000 >= CRITERION['A2_rear_x_min_mm']),
+                  A2=dict(front_y_mm=front_y, rear_x_mm=rear_x,
+                          passed=bool(front_y >= CRITERION['A2_front_y_min_mm'] and rear_x >= CRITERION['A2_rear_x_min_mm']),
                           u_front_mm=u_f, u_rear_mm=u_r),
                   A3=dict(crossed=sorted(set(mm['module'] for mm in miter)), passed=bool(miter)),
                   pulses=pulses, events=events,
                   final_max_joint_deg=float(np.degrees(abs(x[6:]).max())), final_wrap_deg=wrap_angle(centers))
-    result['verdict'] = 'PASS' if (result['A2']['passed'] and result['A3']['passed']) else 'FAIL'
+    result.update(physics_steps=0, evidence_scope='offline geometry, not physical contact/holding or active rolling',
+                  dynamic_admission='NOT_ADMITTED', gates_passed=stop == 'pulse_cap')
+    result['verdict'] = 'PASS' if (result['A2']['passed'] and result['A3']['passed'] and result['gates_passed']) else 'FAIL'
     write(case / 'report.json', result)
     write(case / 'log.json', log[::10] + ([log[-1]] if log else []))
     print(json.dumps({k: v for k, v in result.items() if k not in ('pulses', 'events')}, ensure_ascii=False), flush=True)

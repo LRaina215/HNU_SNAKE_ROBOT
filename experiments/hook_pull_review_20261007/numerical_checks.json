@@ -1,0 +1,215 @@
+{
+  "scope": "CLOSE1B A-prime/B source and zero-input interface only",
+  "physics_steps": 0,
+  "physics_step_attempts": 0,
+  "new_dynamics_trials": 0,
+  "nonzero_action_candidates_solved": 0,
+  "units": [
+    {
+      "arc_mm": 2.0,
+      "rotation_rad": 0.019753641543529418,
+      "rotation_deg": 1.1318002904585247,
+      "axial_mm": 0.6916557330579873,
+      "independent_arc_mm": 2.0,
+      "old_unwrapped_rotation_rad": 19.75364154352942
+    },
+    {
+      "arc_mm": 8.0,
+      "rotation_rad": 0.07901456617411767,
+      "rotation_deg": 4.527201161834099,
+      "axial_mm": 2.7666229322319493,
+      "independent_arc_mm": 8.0,
+      "old_unwrapped_rotation_rad": 79.01456617411768
+    }
+  ],
+  "restoration": {
+    "integration_max_difference": 0.0,
+    "qpos_max_difference": 0.0,
+    "qvel_max_difference": 0.0,
+    "ctrl_max_difference": 0.0,
+    "preload_angle_error_max_difference": 0.0,
+    "actuator_force_max_difference": 0.0,
+    "saved_preload_angle_deg": [
+      0.025560444110553266,
+      -0.6208211446797955,
+      0.03718962119098016,
+      -8.849920474408883,
+      -0.40506735989850007,
+      -0.6369336675742256,
+      -0.2004192143409036,
+      0.2949716702891234,
+      -0.08600505715247397,
+      -0.06323035998637694,
+      -0.6767545645597576,
+      -0.09327548478845106,
+      -4.252413275398329,
+      -0.2211163779897995,
+      -0.11542655022092652,
+      -0.46480807612258224,
+      2.6946768851771536,
+      -0.21396205451130842,
+      0.9070271562457354,
+      -0.053925716467944536
+    ],
+    "maximum_saved_preload_angle_deg": 8.849920474408883,
+    "saved_qvel_maximum": 0.0020907084323604844,
+    "restored_time_s": 76.90000000000313,
+    "saved_controller_history": {
+      "psi_rad": -1.1178528496217934,
+      "sim_time": 76.90000000000313
+    }
+  },
+  "zero_motion_first_target": {
+    "input_front_arc_mm": 0.0,
+    "input_rear_arc_mm": 0.0,
+    "solver": {
+      "nfev": 1,
+      "cost": 0.0,
+      "wall_s": 0.0
+    },
+    "plan_minus_measured_max_deg": 0.0,
+    "physical_state_max_difference_after_plan": 0.0,
+    "first_target_minus_saved_ctrl_deg": [
+      -0.025560444110553266,
+      0.49999999999999434,
+      -0.03718962119098016,
+      0.49999999999999434,
+      0.40506735989850007,
+      0.49999999999999434,
+      0.2004192143409036,
+      -0.2949716702891234,
+      0.08600505715247397,
+      0.06323035998637694,
+      0.5000000000000007,
+      0.09327548478845106,
+      0.5000000000000007,
+      0.2211163779897995,
+      0.11542655022092652,
+      0.46480807612258224,
+      -0.5000000000000007,
+      0.21396205451130842,
+      -0.49999999999999434,
+      0.053925716467944536
+    ],
+    "maximum_first_target_change_deg": 0.5000000000000007,
+    "zero_motion_preserves_preload": false,
+    "first_target_not_dispatched": true,
+    "interpretation": "Loading is lossless; absolute measured-shape target still unloads preload at zero input"
+  },
+  "scoring_boundaries": [
+    {
+      "input_mm": [
+        0.025,
+        0.025
+      ],
+      "B2": {
+        "front_y_mm": 0.025,
+        "rear_x_mm": 0.025,
+        "crossed_modules": [
+          8
+        ],
+        "crossed_keep": [
+          8
+        ],
+        "passed": false
+      },
+      "verdict": "UNVALIDATED_SCORING"
+    },
+    {
+      "input_mm": [
+        24.999,
+        25.0
+      ],
+      "B2": {
+        "front_y_mm": 24.999,
+        "rear_x_mm": 25.0,
+        "crossed_modules": [
+          8
+        ],
+        "crossed_keep": [
+          8
+        ],
+        "passed": false
+      },
+      "verdict": "UNVALIDATED_SCORING"
+    },
+    {
+      "input_mm": [
+        25.0,
+        25.0
+      ],
+      "B2": {
+        "front_y_mm": 25.0,
+        "rear_x_mm": 25.0,
+        "crossed_modules": [
+          8
+        ],
+        "crossed_keep": [
+          8
+        ],
+        "passed": true
+      },
+      "verdict": "UNVALIDATED_SCORING"
+    }
+  ],
+  "safety_boundaries": [
+    {
+      "kind": "pipe",
+      "input_m": -0.003,
+      "pipe_depth_mm": -3.0,
+      "pipe_penetration_stop": false,
+      "self_contact_stop": false
+    },
+    {
+      "kind": "pipe",
+      "input_m": -0.0031,
+      "pipe_depth_mm": -3.1,
+      "pipe_penetration_stop": true,
+      "self_contact_stop": false
+    },
+    {
+      "kind": "self",
+      "input_m": -0.00049,
+      "pipe_depth_mm": 0.0,
+      "pipe_penetration_stop": false,
+      "self_contact_stop": false
+    },
+    {
+      "kind": "self",
+      "input_m": -0.00051,
+      "pipe_depth_mm": 0.0,
+      "pipe_penetration_stop": false,
+      "self_contact_stop": true
+    }
+  ],
+  "target_contact_position_gate": [
+    {
+      "y_m": 0.0749,
+      "counted": false
+    },
+    {
+      "y_m": 0.075,
+      "counted": false
+    },
+    {
+      "y_m": 0.0751,
+      "counted": true
+    }
+  ],
+  "saved_contact_diagnosis": {
+    "source_modules_above_0p1_N": [
+      14,
+      17,
+      20
+    ],
+    "target_modules_above_0p1_N": [
+      0,
+      3,
+      7
+    ],
+    "target_total_normal_N": 79.48506881444938,
+    "old_target_position_gate_count": 0,
+    "interpretation": "Single saved-state forward diagnosis; not a new holding test"
+  },
+  "status": "NUMERIC_REPAIRS_CHECKED; BLOCKED_PRELOAD_MAPPING_AND_ACTION_ADMISSION"
+}

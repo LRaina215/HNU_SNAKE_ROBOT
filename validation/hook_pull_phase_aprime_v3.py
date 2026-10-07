@@ -4,12 +4,12 @@
 但按用户设想组合：前部每步沿目标管螺旋推进（连续），后部按供料节奏推进。
 两种供料节奏都验证：
   mode=simultaneous：前后每步同时各进 2 mm（节奏上界）；
-  mode=alternate ：前部每步推进、后部每 4 步推进 8 mm（间歇供料）。
+  mode=alternate ：前部每步推进、后部每 4 步推进 2 mm（现有代码的间歇供料）。
 判据（运行前登记）：
   A2' 前部沿目标管轴向净前进 ≥25 mm 且 后部沿源管轴向净前进 ≥25 mm；
   A3' 至少 1 个 M≥8 模块落到目标管斜切区以外（垂足 y≥60 mm，中心距管轴 ≤92 mm）并保持；
   通用门槛：关节 ≤88°、无非相邻自碰、不触地、穿管 ≤3 mm、包绕 ≥180°、两管各 ≥1 接触、停滞。
-通过则导出 q(u) 参考表供阶段B动力学跟踪。
+导出的 q(u) 仅为几何拟合资料；未检查滚动执行/速率/接入，不授权阶段B。
 起点关节取实测 qpos（不是指令 ctrl——CLOSE 终态有 9–19° 饱和偏差）。
 """
 from pathlib import Path
@@ -27,15 +27,13 @@ from scipy.spatial.transform import Rotation
 
 from curve_guided_geometry import MODEL, points
 from snake_control.hook_pull_motion import RollSolver
+from snake_control.hook_pull_review_support import (
+    R95_MM, PITCH_MM, L_TURN_MM, ROT_PER_MM, AX_PER_MM, restore_saved_state)
 
 BASE = ROOT / 'experiments/hook_pull_20261006'
 OUT = BASE / 'phase_aprime'
 AXIS_T = np.array([1100., 0., 1000.])
 AXIS_S = np.array([0., 0., 1000.])
-R95, PITCH = .095, .220
-L_TURN = float(np.hypot(2 * np.pi * R95, PITCH))
-ROT_PER_MM = 2 * np.pi / L_TURN
-AX_PER_MM = PITCH / L_TURN
 STEP_MM = 2.
 W_STRONG, W_MED, W_CONT = 60., 15., 20.
 U_MAX = 300.
@@ -61,11 +59,10 @@ def run(start, mode):
     qadr = m.jnt_qposadr[m.actuator_trnid[:, 0]]
     head = m.body('head').id
     floor = m.geom('floor').id
-    with np.load(BASE / start / 'final_state.npz') as state:
-        qpos0 = state['integration_state'][1:28].copy()
-        joints0 = state['integration_state'][8:28].copy()
-    d.qpos[:] = qpos0
-    mujoco.mj_forward(m, d)
+    pipes = {m.geom(x).id for x in ['pipe_straight_01', 'pipe_sharp_in_02', 'pipe_sharp_out_03', 'pipe_straight_04']}
+    restore_saved_state(m, d, BASE / start / 'final_state.npz')
+    qpos0 = d.qpos.copy()
+    joints0 = d.qpos[qadr].copy()
     P0 = points(m, d)
     C0 = (P0[:-1] + P0[1:]) / 2
     th = np.arctan2(C0[:9, 2] - 1000., C0[:9, 0] - 1100.)
@@ -88,7 +85,7 @@ def run(start, mode):
     stop = 'u_cap'
     step = 0
     no_progress = 0
-    table_psi, table_q = [], []
+    table_psi, table_q = [0.], [joints0.copy()]
     while u_f < U_MAX and u_r < U_MAX:
         step += 1
         u_f += STEP_MM
@@ -111,7 +108,7 @@ def run(start, mode):
             p, _ = solver.forward(xx)
             return np.concatenate([(solver.weights[:, None] * (p - tgt)).ravel(), W_CONT * (xx[6:] - prev[6:])])
 
-        # 每步硬边界：关节 ≤3°、根位置 ≤3 mm、根姿态 ≤2°（与动力学 10°/s 跟踪一致，防零空间翻筋斗）
+        # 离散拟合边界；没有时标，不能据此宣称满足动力学 10°/s。
         d_rot = np.radians(2.)
         low = np.r_[x[:3] - 3., x[3:6] - d_rot, np.maximum(x[6:] - np.radians(3.), -np.pi / 2 + 1e-3)]
         high = np.r_[x[:3] + 3., x[3:6] + d_rot, np.minimum(x[6:] + np.radians(3.), np.pi / 2 - 1e-3)]
@@ -134,7 +131,8 @@ def run(start, mode):
             b1, b2 = int(m.geom_bodyid[c.geom1]), int(m.geom_bodyid[c.geom2])
             ground |= (c.geom1 == floor and b2 >= head) or (c.geom2 == floor and b1 >= head)
             selfhit |= b1 >= head and b2 >= head and abs(b1 - b2) > 1 and c.dist < -3e-3
-            deepest = min(deepest, float(c.dist))
+            if (c.geom1 in pipes and b2 >= head) or (c.geom2 in pipes and b1 >= head):
+                deepest = min(deepest, float(c.dist))
         n_t = sum(1 for k in range(21) if 79.5 <= np.hypot(centers[k, 0] - 1100., centers[k, 2] - 1000.) <= 92. and centers[k, 1] >= -20.)
         n_s = sum(1 for k in range(21) if 79.5 <= np.hypot(centers[k, 1], centers[k, 2] - 1000.) <= 92. and centers[k, 0] <= 1112.)
         for k in range(8, 21):
@@ -146,14 +144,12 @@ def run(start, mode):
         log.append(dict(step=step, u_front_mm=u_f, u_rear_mm=u_r, front_y_mm=front_y,
                         rear_x_mm=rear_x, max_joint_deg=q_deg, wrap_deg=wrap,
                         n_target=n_t, n_source=n_s, deepest_mm=deepest * 1000))
-        table_psi.append(u_f)
-        table_q.append(x[6:].copy())
         failed = []
         if q_deg > 88.:
             failed.append(f'joint_limit J{int(np.argmax(abs(x[6:]))) + 1}')
         if selfhit or ground:
             failed.append('self_or_ground')
-        if deepest < -3.:
+        if deepest * 1000 < -3.:
             failed.append('pipe_penetration')
         if wrap < 180.:
             failed.append('front_wrap_below_180')
@@ -164,6 +160,8 @@ def run(start, mode):
         if failed:
             stop = ','.join(failed)
             break
+        table_psi.append(u_f)
+        table_q.append(x[6:].copy())
         if step > 20 and abs(front_y) < .5 and abs(rear_x) < .5 and u_f > 20.:
             no_progress += 1
             if no_progress > 5:
@@ -182,14 +180,17 @@ def run(start, mode):
     a3_pass = bool(miter)
     table = np.array(table_q)
     np.savez(case / 'reference_table.npz', u_front_mm=np.array(table_psi), joint_rad=table,
-             kappa=kappa, arc_per_rad=arc_per_rad, start_qpos=qpos0)
+             kappa=kappa, arc_per_rad=arc_per_rad, start_qpos=qpos0, start_ctrl=d.ctrl.copy(),
+             dynamic_admitted=False)
     result = dict(start=start, mode=mode, criterion=CRITERION, stop_reason=stop,
                   u_front_mm=u_f, u_rear_mm=u_r, steps=len(log),
                   A2=dict(front_y_mm=front_y, rear_x_mm=rear_x, passed=a2_pass),
                   A3=dict(crossed=sorted(set(mm['module'] for mm in miter)), passed=a3_pass),
                   final_wrap_deg=wrap_angle(centers), final_max_joint_deg=float(np.degrees(abs(x[6:]).max())),
                   events=events)
-    result['verdict'] = 'PASS' if (a2_pass and a3_pass) else 'FAIL'
+    result.update(physics_steps=0, evidence_scope='offline geometry, not physical contact/holding or active rolling',
+                  dynamic_admission='NOT_ADMITTED', gates_passed=stop == 'u_cap')
+    result['verdict'] = 'PASS' if (a2_pass and a3_pass and result['gates_passed']) else 'FAIL'
     write(case / 'report.json', result)
     write(case / 'log.json', log[::5] + ([log[-1]] if log else []))
     print(json.dumps({k: v for k, v in result.items() if k not in ('events',)}, ensure_ascii=False), flush=True)

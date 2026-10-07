@@ -1,13 +1,11 @@
-"""阶段B动力学（脉冲式）：交替试探策略在 MuJoCo 物理中执行。
+"""阶段B历史实现：几何点目标拟合，当前仅供无步进接口复核。
 
-每个脉冲从当前实测状态（编码器角）重新求解一个可行关节构型：
-  FRONT 脉冲：前部 M0–M7 沿目标管螺旋推进 δ=8 mm（绕目标管轴转 φ、轴向 +Y），
-              后部 M10–M20 节点与姿态固定，过渡段 M8/M9 自由（带防钻管/自碰/限位约束）；
-  REAR  脉冲：后部沿源管螺旋向接头推进 δ=8 mm，前部固定，过渡段自由。
-关节目标以 ≤10°/s 速率线性插值下发（位置舵机 kp=127、力矩上限 2.355 N·m），
-物理自行决定滑移与顺应。卡住判断只用实机可得信息：过渡段 J8–J12 力矩
-（qfrc_actuator）与端部实际推进量（编码器 FK）；某端推进 <1 mm 或过渡力矩
-持续 >1.6 N·m 即切换到另一端。仿真接触真值只用于危险停止与评分。
+实际 run 调用 plan_step，不调用含连杆自转约束的 solve_pulse。
+plan_step 使用恢复时的世界配准先验和私有运动学 data；进展/包绕/接触是
+世界真值诊断，不是编码器可观测的全局滑移。后部供料读取仿真执行器力矩，
+尚无实机负载映射。模型参数与 10°/s 目标限制保留。
+加载后速度及 ctrl 预载现已保留，但零运动拟合目标仍趋向实测角；有效的
+几何增量到已执行目标映射尚未定义。DYNAMICS_ADMITTED=False 禁止运行。
 判据（运行前登记，同后续执行方案）：
   B2 前部沿目标管净前进 ≥25 mm 且后部沿源管净前进 ≥25 mm；≥1 个 M≥8 模块
      落到目标管斜切区以外（垂足 y≥60 mm）且接触力 >0.1 N 保持到结束；
@@ -31,7 +29,10 @@ from scipy.spatial.transform import Rotation
 from scipy.optimize import least_squares
 
 from curve_guided_geometry import MODEL, CORNER, points
-from snake_control.hook_pull_motion import SplitRollSolver
+from snake_control.hook_pull_motion import RollSolver, SplitRollSolver
+from snake_control.hook_pull_review_support import (
+    R95_MM, PITCH_MM, L_TURN_MM, ROT_PER_MM, AX_PER_MM,
+    restore_saved_state, axis_progress_mm, continuous_target)
 
 BASE = ROOT / 'experiments/hook_pull_20261006'
 OUT = BASE / 'phase_b'
@@ -39,10 +40,7 @@ AXIS_T = np.array([1100., 0., 1000.])   # mm（节点坐标为毫米）
 R_B = 29.   # 外壳半径 mm
 TOUCH = 84.
 AXIS_S = np.array([0., 0., 1000.])
-R95, PITCH = .095, .220
-L_TURN = float(np.hypot(2 * np.pi * R95, PITCH))
-ROT_PER_MM = 2 * np.pi / L_TURN
-AX_PER_MM = PITCH / L_TURN
+DYNAMICS_ADMITTED = False  # State loading/units alone do not admit an action.
 RATE = np.radians(10.)
 PULSE_MM = 8.
 JAM_TORQUE = 1.6
@@ -56,8 +54,8 @@ CRITERION = dict(B2_front_y_min_mm=25., B2_rear_x_min_mm=25., B2_contact_N=.1,
                  B3='保持10s：末2s模块位移≤6.45mm、目标管≥3接触、包绕>180°',
                  C='21模块全部离开源管',
                  gates='不触地、无非相邻自碰、包绕≥180°、穿管≤3mm、关节≤88°（安全停止）',
-                 pulse='δ=8mm/脉冲，规划=SplitRollSolver（推进端螺旋、另一端固定、过渡自由），跟踪≤10°/s',
-                 planning_info='关节角FK形状+qfrc_actuator力矩；仿真接触只用于安全停止与评分')
+                 pulse='实际为逐tick几何拟合，未调用SplitRollSolver；跟踪≤10°/s',
+                 planning_info='初态世界配准先验+仿真qfrc_actuator；世界位移用于诊断停滞/评分，非编码器滑移测量')
 
 
 def write(path, value):
@@ -65,10 +63,12 @@ def write(path, value):
 
 
 class Runner:
-    def __init__(self, start, record=True):
+    def __init__(self, start, record=True, case=None):
         self.start = start
-        self.case = OUT / f'{start}_dyn'
-        self.case.mkdir(parents=True, exist_ok=False)
+        self.case = Path(case) if case is not None else OUT / f'{start}_dyn'
+        # A disabled, non-recording load probe may reuse its diagnostic folder.
+        # A dynamics/video case always remains exclusive.
+        self.case.mkdir(parents=True, exist_ok=case is not None and not record and not DYNAMICS_ADMITTED)
         self.m = mujoco.MjModel.from_xml_path(str(MODEL))
         self.d = mujoco.MjData(self.m)
         self.qadr = self.m.jnt_qposadr[self.m.actuator_trnid[:, 0]]
@@ -77,12 +77,8 @@ class Runner:
         self.floor = self.m.geom('floor').id
         self.pipe_source = {self.m.geom(x).id for x in ['pipe_straight_01', 'pipe_sharp_in_02']}
         self.pipe_target = {self.m.geom(x).id for x in ['pipe_sharp_out_03', 'pipe_straight_04']}
-        with np.load(BASE / start / 'final_state.npz') as state:
-            mujoco.mj_setState(self.m, self.d, state['integration_state'], mujoco.mjtState.mjSTATE_INTEGRATION)
+        self.start_controller_history = restore_saved_state(self.m, self.d, BASE / start / 'final_state.npz')
         self.t0_state = float(self.d.time)
-        self.d.qvel[:] = 0
-        self.d.ctrl[:] = self.d.qpos[self.qadr]
-        mujoco.mj_forward(self.m, self.d)
         self.jacp = np.zeros((3, self.m.nv))
         self.jacr = np.zeros((3, self.m.nv))
         self.rows = []
@@ -140,7 +136,7 @@ class Runner:
             for pipe, body in [(c.geom1, b2), (c.geom2, b1)]:
                 if body < self.head:
                     continue
-                group = 0 if pipe in self.pipe_source else 1 if pipe in self.pipe_target and c.pos[1] > 75. else None
+                group = 0 if pipe in self.pipe_source else 1 if pipe in self.pipe_target and c.pos[1] * 1000 > 75. else None
                 if group is not None:
                     fv = np.zeros(6)
                     mujoco.mj_contactForce(self.m, self.d, index, fv)
@@ -152,8 +148,10 @@ class Runner:
         for c in self.d.contact:
             b1, b2 = int(self.m.geom_bodyid[c.geom1]), int(self.m.geom_bodyid[c.geom2])
             ground |= (c.geom1 == self.floor and b2 >= self.head) or (c.geom2 == self.floor and b1 >= self.head)
-            selfhit |= b1 >= self.head and b2 >= self.head and abs(b1 - b2) > 1 and c.dist < -0.5
-            deepest = min(deepest, float(c.dist))
+            # Same 0.5 mm threshold as hook_pull_step4_rolling.touching.
+            selfhit |= b1 >= self.head and b2 >= self.head and abs(b1 - b2) > 1 and c.dist < -0.5e-3
+            if (c.geom1 in self.pipe_source | self.pipe_target and b2 >= self.head) or (c.geom2 in self.pipe_source | self.pipe_target and b1 >= self.head):
+                deepest = min(deepest, float(c.dist))
         return deepest * 1000, bool(ground), bool(selfhit)
 
     def screw(self, pipe, u_mm):
@@ -170,14 +168,12 @@ class Runner:
         if end == 'FRONT':
             def screw(psi, pts):
                 rot, axis_point, shift = self.screw('target', psi / ROT_PER_MM)
-                return (rot.apply(pts - axis_point) + axis_point + shift,
-                        Rotation.from_rotvec([0., -ROT_PER_MM * psi, 0.]))
+                return (rot.apply(pts - axis_point) + axis_point + shift, rot)
             front_modules, rear_modules = list(range(0, 8)), list(range(10, 21))
         else:
             def screw(psi, pts):
                 rot, axis_point, shift = self.screw('source', psi / ROT_PER_MM)
-                return (rot.apply(pts - axis_point) + axis_point + shift,
-                        Rotation.from_rotvec([-ROT_PER_MM * psi, 0., 0.]))
+                return (rot.apply(pts - axis_point) + axis_point + shift, rot)
             front_modules, rear_modules = list(range(11, 21)), list(range(0, 9))
         solver = SplitRollSolver(self.m, d.qpos[:3] * 1000, d.qpos[3:7], d.qpos[self.qadr],
                                  front_modules, rear_modules, screw)
@@ -219,17 +215,8 @@ class Runner:
 
     def plan_step(self, u_f, u_r, rear_feed):
         """v2 式单步规划：前部沿自身钩形螺旋推进 2 mm 弧长；后部按供料节奏推进。"""
-        nodes = self.nodes()
-        centers = self.centers()
-        nv = self.m.nv
-        E, e = [], []
-        for (k, pipe) in self.planner_contacts(centers):
-            x, foot, r, n = self.closest(k, pipe)
-            rho = self.rho_planner.setdefault((k, pipe), r)
-            E.append(self.jac(x - R_B * n, k))
-            e.append(-5. * (r - rho) * n)
-        E = np.vstack(E) if E else np.zeros((0, nv))
-        e = np.concatenate(e) if len(e) else np.zeros(0)
+        # Removed unused E/e contact rows: they never entered this residual.
+        # Evaluate candidate root/joints on private kinematic data, not self.d.
         tgt = self.p0_plan.copy()
         axial_f = u_f / (abs(self.kappa) * self.arc_per_rad)
         rot_y = -self.kappa * axial_f
@@ -243,14 +230,7 @@ class Runner:
         self.w_plan[9] = 15.
 
         def residual(xx, prev):
-            save = self.d.qpos.copy()
-            self.d.qpos[:3] = xx[:3] / 1000
-            self.d.qpos[3:7] = Rotation.from_rotvec(xx[3:6]).as_quat()[[3, 0, 1, 2]]
-            self.d.qpos[self.qadr] = xx[6:]
-            mujoco.mj_kinematics(self.m, self.d)
-            p = points(self.m, self.d)
-            self.d.qpos[:] = save
-            mujoco.mj_kinematics(self.m, self.d)
+            p, _ = self.planner.forward(xx)
             return np.concatenate([(self.w_plan[:, None] * (p - tgt)).ravel(), 20. * (xx[6:] - prev[6:])])
 
         low = np.r_[np.full(6, -np.inf), np.full(20, -np.pi / 2 + 1e-3)]
@@ -273,14 +253,15 @@ class Runner:
         return out
 
     def run(self, max_run_s=MAX_RUN_S):
+        if not DYNAMICS_ADMITTED:
+            raise RuntimeError('Review only: zero-motion preload mapping and executable rolling/scoring admission are unresolved; do not step physics')
         start_nodes = self.nodes()
         start_front_y = float(((start_nodes[:-1] + start_nodes[1:]) / 2)[:8, 1].mean())
         start_rear_x = float(((start_nodes[:-1] + start_nodes[1:]) / 2)[13:21, 0].mean())
         C0 = self.centers()
-        with np.load(BASE / self.start / 'final_state.npz') as state:
-            joints0 = state['integration_state'][8:28].copy()
-        from snake_control.hook_pull_motion import RollSolver
+        joints0 = self.d.qpos[self.qadr].copy()
         solver = RollSolver(self.m, self.d.qpos[:3] * 1000, self.d.qpos[3:7], joints0, list(range(10, 21)))
+        self.planner = solver
         self.p0_plan = solver.p0.copy()
         self.x_plan = solver.x0.copy()
         th = np.arctan2(C0[:9, 2] - 1000., C0[:9, 0] - 1100.)
@@ -309,14 +290,12 @@ class Runner:
             if rear_feed:
                 u_r += STEP_MM
             u_f += STEP_MM
-            step_target = np.clip(self.x_plan[6:], self.d.ctrl - RATE * TICK, self.d.ctrl + RATE * TICK)
-            self.d.ctrl[:] = np.clip(step_target, -np.pi / 2, np.pi / 2)
+            self.d.ctrl[:] = continuous_target(self.d.ctrl, self.x_plan[6:], RATE, TICK)
             for _ in range(TICK_STEPS):
                 mujoco.mj_step(self.m, self.d)
             mujoco.mj_forward(self.m, self.d)
             centers = self.centers()
-            front_y = (float(centers[:8, 1].mean()) - start_front_y) * 1000
-            rear_x = (float(centers[13:21, 0].mean()) - start_rear_x) * 1000
+            front_y, rear_x = axis_progress_mm(centers, start_front_y, start_rear_x)
             tq = self.transition_torque()
             deepest, ground, selfhit = self.danger()
             f = self.module_forces()
@@ -366,8 +345,8 @@ class Runner:
             mujoco.mj_forward(self.m, self.d)
             f = self.module_forces()
             centers = self.centers()
-            hold_rows.append(dict(t=self.t(), front_y_mm=(centers[:8, 1].mean() - start_front_y) * 1000,
-                                  rear_x_mm=(centers[13:21, 0].mean() - start_rear_x) * 1000,
+            front_y, rear_x = axis_progress_mm(centers, start_front_y, start_rear_x)
+            hold_rows.append(dict(t=self.t(), front_y_mm=front_y, rear_x_mm=rear_x,
                                   target_contacts=int(np.count_nonzero(f[1] > .1)),
                                   source_contacts=int(np.count_nonzero(f[0] > .1)),
                                   wrap_deg=self.wrap_deg()))
@@ -390,8 +369,7 @@ class Runner:
 
     def evaluate(self, events, hold_rows, stop, sfy, srx):
         centers = self.centers()
-        front_y = (centers[:8, 1].mean() - sfy) * 1000
-        rear_x = (centers[13:21, 0].mean() - srx) * 1000
+        front_y, rear_x = axis_progress_mm(centers, sfy, srx)
         f = self.module_forces()
         wrap = self.wrap_deg()
         n_target = int(np.count_nonzero(f[1] > .1))
@@ -411,14 +389,16 @@ class Runner:
                          and hold.get('target_contacts_last1s', 0) >= 3 and wrap > 180)
         off_source = n_source == 0
         return dict(start=self.start, criterion=CRITERION, stop_reason=stop,
-                    pulses=ledger, events=events[:60],
+                    pulses=[], events=events[:60], diagnostic_only=True,
+                    scoring_complete=False, dynamics_admitted=DYNAMICS_ADMITTED,
                     final=dict(front_y_mm=front_y, rear_x_mm=rear_x, target_contacts=n_target,
                                source_contacts=n_source, wrap_deg=wrap,
                                transition_torque_Nm=self.transition_torque()),
                     B2=b2, B3=dict(**hold, passed=b3_passed),
                     C=dict(all_off_source=off_source, passed=bool(off_source and crossed),
                            note='整身 rolling 延续未单独运行' if not off_source else '全部离开源管'),
-                    verdict=('B2_PASS' if b2['passed'] else 'B2_NOT_PASSED') + ('+B3' if b3_passed else ''))
+                    verdict='UNVALIDATED_SCORING',
+                    missing_scoring='full-module drift, sustained contact history and failure-stop-qualified holding')
 
 
 def main():
@@ -427,6 +407,8 @@ def main():
     parser.add_argument('--max-run-s', type=float, default=MAX_RUN_S)
     parser.add_argument('--no-video', action='store_true')
     args = parser.parse_args()
+    if not DYNAMICS_ADMITTED:
+        raise RuntimeError('Review only: no dynamics admission; preserve previous results')
     OUT.mkdir(parents=True, exist_ok=True)
     summary = {}
     for start in args.starts:
