@@ -1,0 +1,112 @@
+[
+  {
+    "t_s": 0.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 0.20697859100281998,
+    "M15_source_force_N": 9.147217133188668,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 2.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 9.861529983435972,
+    "M15_source_force_N": 12.486576844347704,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 4.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 5.315766356662247,
+    "M15_source_force_N": 20.07254799912704,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 6.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 22.31762141785499,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 8.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": null,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 20.525839549736915,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 10.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": null,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 20.46482987014314,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 12.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 19.773348215030115,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 14.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 19.19762948463223,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 16.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 18.305556253385806,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 18.0,
+    "release_modules": [
+      14
+    ],
+    "curve_constraint_joint": 14,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 17.681359119998195,
+    "stage": "local_yield_regrip_reshape_with_shift_braked"
+  },
+  {
+    "t_s": 19.75,
+    "release_modules": [
+      15
+    ],
+    "curve_constraint_joint": null,
+    "M14_source_force_N": 0.0,
+    "M15_source_force_N": 16.885376913555803,
+    "stage": "local_yield_failed_reshape_with_shift_braked"
+  }
+]
