@@ -1028,6 +1028,24 @@ class UnifiedCurveTransfer:
         tracking = np.abs(self.last-q)
         support_forces = forces if support_forces is None else support_forces
         self.update_localized_yield(p, centers, q, tracking, support_forces, t, locations)
+        if (self.alternating_yield_enabled and self.yield_state is not None
+                and self.yield_state['stage'] == 'feed'
+                and not self.yield_state.get('feed_reference_registered', False)
+                and t >= self.yield_state.get('next_feed_registration_t', -1.)):
+            # The actual grasp/release cycle changed the supported shape. Reuse
+            # the existing ONLINE observed-route registration once per feed;
+            # never keep rolling back toward the previous action's pose.
+            # This preserves shared shift and the historical physical meter.
+            state = self.yield_state
+            state['next_feed_registration_t'] = t+.5
+            if self.repair_registered_route(p, centers, t, support_forces):
+                reference_p, reference_c, locations = self.curve.reference(self.shift)
+                state['parameter'] = float(self.curve.reference_node_parameters[state['selected_joint']])
+                state['reference_origin'] = self.curve.sample(state['parameter']).tolist()
+                state['feed_reference_registered'] = True
+                self.events.append(dict(t_s=t, mode='feed_reference_matches_current_supported_shape',
+                    shared_shift_mm=self.shift*1000, physical_pipe_progress_mm=(self.physical_pipe_progress*1000).tolist(),
+                    meaning='reference correspondence only; no physical/root/control/progress reset or feed credit'))
         maximum_error = float(tracking.max())
         front_progress = float(np.median(centers[:7, 1]-self.initial_centers[:7, 1]))
         rear_progress = float(np.median(centers[14:, 0]-self.initial_centers[14:, 0]))
