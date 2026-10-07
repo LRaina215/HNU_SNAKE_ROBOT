@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U14\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U14\\controller_state.json",
+  "change": "Same U14 complete state; keep U23 successful receiving unloading unchanged. Receiving grasps then carry while current posterior contact/load selects one small source span for the same bounded measured-shape curve lifting. Require its actual cylindrical contact force to disappear below the existing 0.1N contact significance before feed; retain at least 2 source and 3 receiving grasps. Remove only the incidental axial center motion of supported pose recovery using the actual contact lever, keeping coherent rolling and common feed signs. Handover/regrip requires 8mm actual progress on both sides; a 35s feed stall selects another supported posterior span rather than automatic completion. Original model, drive/angle/rate limits, 12s deadline per local release and 1s anchor recovery remain.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

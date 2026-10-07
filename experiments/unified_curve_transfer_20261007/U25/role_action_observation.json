@@ -1,0 +1,51 @@
+{
+  "physical_seconds": 192.79999999544088,
+  "front_unload_s": 3.55,
+  "first_source_lift_s": 7.8,
+  "second_source_lift_s": 44.9,
+  "actual_feed_handover": {
+    "feed_start_s": 44.89999999999998,
+    "progress_handover_s": 54.0,
+    "actual_cohort_axis_delta_mm": [
+      2.1045264877809227,
+      2.9465595020203224
+    ],
+    "pitch_normalized_material_delta_mm": [
+      8.236750987679606,
+      20.07510774013553
+    ],
+    "fixed_front_M0_M6_y_delta_mm": 0.7234020577605155,
+    "fixed_rear_M14_M20_x_delta_mm": 1.4456602456963148,
+    "end_source_grips": [
+      15,
+      16,
+      20
+    ],
+    "end_target_grips": [
+      0,
+      2,
+      7
+    ],
+    "physical_observer_fixed_pitch_sines": [
+      0.2555044447657624,
+      0.14677677152035198
+    ],
+    "meaning": "Pitch-normalized same-cohort estimates, not 8mm world-axis travel; fixed body segment deltas are recorded independently. Historical physical progress was never reset."
+  },
+  "post_sequence_actual_recontacts": [
+    {
+      "module": 13,
+      "first_1s_actual_source_recontact_start_s": 94.7099999977604,
+      "final_source_force_N": 8.622820865302954
+    },
+    {
+      "module": 14,
+      "first_1s_actual_source_recontact_start_s": 101.54999999759866,
+      "final_source_force_N": 0.0
+    }
+  ],
+  "maximum_M14_M20_target_force_N": 0.0,
+  "minimum_actual_source_supports": 2,
+  "minimum_actual_target_supports": 2,
+  "maximum_requested_rolling_contact_error_mm_s": 4.467839862130397e-16
+}

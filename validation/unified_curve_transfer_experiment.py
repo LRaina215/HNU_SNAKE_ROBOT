@@ -20,8 +20,10 @@ from snake_control.unified_curve_transfer import UnifiedCurveTransfer, DT, physi
 BASE = ROOT/'experiments/unified_curve_transfer_20261007'
 INITIAL = ROOT/'experiments/hook_pull_20261006/CLOSE1B/final_state.npz'
 SOURCES = ['snake_control/unified_curve_transfer.py',
+           'snake_control/pipe_clearance.py',
            'validation/unified_curve_transfer_experiment.py',
            'validation/recover_unified_curve_state.py',
+           'validation/recover_unified_checkpoint.py',
            'snake_control/spatial_bishop_backbone.py']
 
 
@@ -63,6 +65,7 @@ class UnifiedSim(Sim):
             reference_points_mm=reference, material_region_codes=region,
             material_locations_mm=np.asarray(self.info.get('material_locations_mm', np.zeros(21))),
             reference_lead_mm=self.info.get('reference_lead_mm', 0.),
+            reference_pipe_clearance_mm=self.info.get('reference_pipe_clearance_mm') if self.info.get('reference_pipe_clearance_mm') is not None else np.nan,
             actual_material_estimate_mm=self.info.get('actual_material_estimate_mm', 0.),
             tracking_error_deg=self.info.get('tracking_error_deg', 0.),
             body_curve_rms_error_mm=self.info.get('body_curve_rms_error_mm', 0.),
@@ -153,7 +156,7 @@ def video(case, rows):
     cap.release()
 
 
-def run(name, initial, horizon, note, controller_state=None):
+def run(name, initial, horizon, note, controller_state=None, preserve_grip_clearance=False, localized_yield=False, soft_positive_clearance=False, alternating_yield=False):
     BASE.mkdir(parents=True, exist_ok=True)
     case = BASE/name
     case.mkdir(exist_ok=False)
@@ -178,15 +181,26 @@ def run(name, initial, horizon, note, controller_state=None):
     time_offset = controller.load_state(controller_state) if controller_state else 0.
     if not np.array_equal(controller.last, sim.d.ctrl):
         raise ValueError('Controller checkpoint last target differs from physical saved ctrl')
+    controller.soft_positive_clearance_enabled = soft_positive_clearance
+    controller.curve.soft_positive_clearance = soft_positive_clearance
+    controller.curve.arc_cache = None
+    controller.curve.shape_revision += 1
+    if preserve_grip_clearance:
+        controller.retain_observed_grip_clearance(sim.d, time_offset, sim.rows[0]['cylindrical_contact_force_N'])
+    controller.localized_yield_enabled = localized_yield
+    controller.alternating_yield_enabled = alternating_yield
     controller.save_state(case/'initial_controller_state.json', time_offset)
     initial_reference, initial_reference_centers, initial_locations = controller.curve.reference(controller.shift)
+    initial_local_pipe_progress = (controller.physical_pipe_progress-controller.local_reference_pipe_progress_origin)/controller.physical_axial_sines
+    initial_local_progress = float(initial_local_pipe_progress[1] if physical_wrap_masks(sim.rows[0]['centers_mm']/1000)[1][-1] else min(initial_local_pipe_progress))
     sim.info = dict(reference_points_mm=initial_reference*1000,
         material_locations_mm=initial_locations*1000,
         material_region_codes=controller.curve.regions(initial_locations),
         reference_source_region_mask=controller.source_span(initial_locations),
         shift_mm=controller.shift*1000, shift_speed_mm_s=controller.speed*1000,
-        reference_lead_mm=(controller.shift-controller.observed_shift)*1000,
-        actual_material_estimate_mm=controller.observed_shift*1000,
+        reference_lead_mm=(controller.shift-controller.local_reference_shift_origin-initial_local_progress)*1000
+            if controller.local_reference_meter_ready else 0.,
+        actual_material_estimate_mm=controller.observed_shift*1000 if controller.physical_observer_ready else 0.,
         tracking_error_deg=float(np.degrees(np.abs(controller.last-sim.d.qpos[controller.qa])).max()),
         body_curve_rms_error_mm=float(np.sqrt(np.mean((initial_reference_centers-sim.rows[0]['centers_mm']/1000)**2))*1000),
         reference_node_arclength_mm=controller.curve.reference_node_arc*1000,
@@ -236,7 +250,9 @@ def run(name, initial, horizon, note, controller_state=None):
                         integration_state=sim.state.copy(), ctrl=sim.d.ctrl.copy(), sim_time=sim.d.time)
                     controller.save_state(case/f'admitted_M{module:02d}_controller.json', time_offset+t+DT)
                     last_progress_time = t
-            if controller.last_body_progress > best_progress+.005:
+            if info.get('physical_progress_observer_initialized'):
+                best_progress = controller.last_body_progress
+            elif controller.last_body_progress > best_progress+.005:
                 best_progress = controller.last_body_progress
                 last_progress_time = t
             source_count, target_count = [int(np.count_nonzero(x > .1)) for x in f]
@@ -247,6 +263,8 @@ def run(name, initial, horizon, note, controller_state=None):
             source_lost = source_lost+1 if needs_source and posterior_count < 2 else 0
             target_lost = target_lost+1 if receiving_count < 2 else 0
             if not np.isfinite(sim.d.qpos).all(): outcome = 'nonfinite'; break
+            if info.get('localized_yield') and info['localized_yield']['stage'] == 'failed':
+                outcome = info['localized_yield']['failure']; break
             if info.get('maximum_reference_link_error_mm', 0.) > .001:
                 outcome = 'reference_link_length_invalid'; break
             if r['ground']: outcome = 'ground_contact'; break
@@ -297,6 +315,7 @@ def run(name, initial, horizon, note, controller_state=None):
         max_pipe_penetration_mm=max(x['pipe_penetration_mm'] for x in sim.rows),
         max_self_penetration_mm=max(x['nonadjacent_self_penetration_mm'] for x in sim.rows),
         max_reference_link_error_mm=max(x['maximum_reference_link_error_mm'] for x in sim.rows),
+        minimum_reference_pipe_clearance_mm=min((x['reference_pipe_clearance_mm'] for x in sim.rows if np.isfinite(x['reference_pipe_clearance_mm'])), default=None),
         final_actual_source_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][0] > .1) & r['source_grip_region_mask']),
         final_actual_target_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][1] > .1) & r['target_grip_region_mask']),
         drive_sign_counts=[dict(joint=j+1, positive_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) > .01)),
@@ -313,7 +332,11 @@ if __name__ == '__main__':
     parser.add_argument('--name', required=True)
     parser.add_argument('--initial', type=Path, default=INITIAL)
     parser.add_argument('--controller-state', type=Path)
+    parser.add_argument('--preserve-grip-clearance', action='store_true')
+    parser.add_argument('--localized-yield', action='store_true')
+    parser.add_argument('--soft-positive-clearance', action='store_true')
+    parser.add_argument('--alternating-yield', action='store_true')
     parser.add_argument('--horizon', type=float, default=1800.)
     parser.add_argument('--note', required=True)
     args = parser.parse_args()
-    run(args.name, args.initial, args.horizon, args.note, args.controller_state)
+    run(args.name, args.initial, args.horizon, args.note, args.controller_state, args.preserve_grip_clearance, args.localized_yield, args.soft_positive_clearance, args.alternating_yield)

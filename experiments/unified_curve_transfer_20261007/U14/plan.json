@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U10\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U10\\controller_state.json",
+  "change": "Branch from the same complete U10 state. After reference registration fits the actual body, rebase only its local lead origin to the current shared shift and per-pipe measured axial totals. Historical physical progress and evaluation clocks are retained, including retreat. Keep the 15mm bootstrap limit and all gains/drive limits unchanged. Separate same-shift curve reshaping from shared-shift finite-difference feedforward: only actual shared-shift change generates nominal material roll. Shape feedback still controls pose/tangent recovery. Retain U13 coherent support rolling and U12 observed grip clearance.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

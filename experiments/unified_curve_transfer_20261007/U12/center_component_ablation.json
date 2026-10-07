@@ -1,0 +1,131 @@
+{
+  "method": "Same offline saved-state solve; split the existing pipe centre translation into radial, rolling perpendicular-to-module-axis, and other components. No dynamics.",
+  "reports": [
+    {
+      "case": "U10",
+      "requested": [
+        -0.0008400567323019904,
+        0.005611075081324094
+      ],
+      "variants": [
+        {
+          "omitted": [],
+          "spin": [
+            0.006901087604820217,
+            -0.0015198473868567215
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_radial"
+          ],
+          "spin": [
+            0.007463997393112223,
+            -0.0016512487993425168
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_rolling"
+          ],
+          "spin": [
+            0.007055819737349725,
+            -0.0026859754062247337
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_other"
+          ],
+          "spin": [
+            0.003612982326787017,
+            0.0016785341684859324
+          ]
+        },
+        {
+          "omitted": [
+            "center_motion_other"
+          ],
+          "spin": [
+            0.00399650729723037,
+            0.0015534773069306132
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_radial",
+            "pipe_center_rolling",
+            "pipe_center_other"
+          ],
+          "spin": [
+            0.004685621014468205,
+            0.0008665126572380245
+          ]
+        }
+      ]
+    },
+    {
+      "case": "U12",
+      "requested": [
+        -0.03382298686411627,
+        -0.0031741942491829048
+      ],
+      "variants": [
+        {
+          "omitted": [],
+          "spin": [
+            -0.008559875431053821,
+            -0.004455128976447258
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_radial"
+          ],
+          "spin": [
+            -0.00871238981888334,
+            -0.002165139104869963
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_rolling"
+          ],
+          "spin": [
+            -0.013491648205905739,
+            -0.005029922724797078
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_other"
+          ],
+          "spin": [
+            -0.007405381953157028,
+            -0.005699309509987776
+          ]
+        },
+        {
+          "omitted": [
+            "center_motion_other"
+          ],
+          "spin": [
+            -0.017699429390905394,
+            -0.006954302609035459
+          ]
+        },
+        {
+          "omitted": [
+            "pipe_center_radial",
+            "pipe_center_rolling",
+            "pipe_center_other"
+          ],
+          "spin": [
+            -0.011993477824180964,
+            -0.004413409346411188
+          ]
+        }
+      ]
+    }
+  ]
+}

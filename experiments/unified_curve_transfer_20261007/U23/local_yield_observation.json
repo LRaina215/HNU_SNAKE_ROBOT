@@ -1,0 +1,302 @@
+{
+  "source": "Existing 100Hz trace.npz and complete commands.json; no extra physical/offline control test",
+  "records": [
+    {
+      "t_s": 0.0,
+      "reference_bend_J4_deg": 75.95653731771871,
+      "actual_J4_deg": 75.95654190553691,
+      "sent_J4_deg": 78.95573005617823,
+      "actuator_J4_Nm": 2.355,
+      "M3_M4_target_force_N": 18.825458456205947,
+      "actual_node4_outward_mm": 0.0,
+      "reference_node4_outward_mm": -2.6866121291318916e-06
+    },
+    {
+      "t_s": 0.49999999998817657,
+      "reference_bend_J4_deg": 75.95653731771871,
+      "actual_J4_deg": 75.31927008857915,
+      "sent_J4_deg": 75.95653731771877,
+      "actuator_J4_Nm": 1.4125462431705387,
+      "M3_M4_target_force_N": 14.308248490393213,
+      "actual_node4_outward_mm": -0.22481600049966133,
+      "reference_node4_outward_mm": -2.6866121291318916e-06
+    },
+    {
+      "t_s": 1.9999999999527063,
+      "reference_bend_J4_deg": 76.49774145816319,
+      "actual_J4_deg": 75.88144332640861,
+      "sent_J4_deg": 76.49774145816325,
+      "actuator_J4_Nm": 1.366066809772036,
+      "M3_M4_target_force_N": 8.593586625261874,
+      "actual_node4_outward_mm": 0.2503327746479612,
+      "reference_node4_outward_mm": 3.430994369805913
+    },
+    {
+      "t_s": 4.999999999881766,
+      "reference_bend_J4_deg": 76.98982584171839,
+      "actual_J4_deg": 76.4619633285572,
+      "sent_J4_deg": 76.98982584171846,
+      "actuator_J4_Nm": 1.1700432342695137,
+      "M3_M4_target_force_N": 5.044751927448315,
+      "actual_node4_outward_mm": 0.726942492578357,
+      "reference_node4_outward_mm": 5.162204423681658
+    },
+    {
+      "t_s": 9.999999999763531,
+      "reference_bend_J4_deg": 76.98982594082845,
+      "actual_J4_deg": 76.47527349971263,
+      "sent_J4_deg": 76.9898259408285,
+      "actuator_J4_Nm": 1.1405405524990613,
+      "M3_M4_target_force_N": 4.291417122445237,
+      "actual_node4_outward_mm": 0.87792204917329,
+      "reference_node4_outward_mm": 5.162204423672345
+    },
+    {
+      "t_s": 90.0499999978706,
+      "reference_bend_J4_deg": 75.34480429196184,
+      "actual_J4_deg": 76.67787297778194,
+      "sent_J4_deg": 79.6758922234855,
+      "actuator_J4_Nm": 2.355,
+      "M3_M4_target_force_N": 11.794183841551748,
+      "actual_node4_outward_mm": 1.0300377842107074,
+      "reference_node4_outward_mm": 4.553002438166964
+    }
+  ],
+  "minimum_actual_source_supports": 5,
+  "minimum_actual_target_supports": 4,
+  "minimum_M3_M4_force_N": 3.1259407766796357,
+  "final_command_actual_target_grips": [
+    0,
+    2,
+    4,
+    5,
+    7
+  ],
+  "last_active_curve_constraint": {
+    "joint": 4,
+    "curve_angle_deg": 76.65748372346333,
+    "actual_angle_deg": 76.02734048274617,
+    "geometric_rate_deg_s": 0.18383480486028328,
+    "previous_target_deg": 76.65931948993287,
+    "target_rate_deg_s": -0.03671532939072131,
+    "source": "same curve adjacent-rod bend; one fixed variable in the existing support solve"
+  },
+  "final_yield_state": {
+    "stage": "completed",
+    "side": 1,
+    "parameter": 1.0964999016371675,
+    "started_t": 796.9499999887917,
+    "selected_joint": 4,
+    "initial_angle_deg": 75.95654190553691,
+    "initial_force_N": 18.825458456205947,
+    "initial_load_Nm": 2.3549999999999978,
+    "anchor_goals_N": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        12.413588199219783,
+        10.61975848332419,
+        0.23460300482047217,
+        15.733835342830634,
+        12.295816918399586,
+        0.0,
+        0.0,
+        7.479271158245505
+      ],
+      [
+        23.165945973438316,
+        0.0,
+        6.937062620859663,
+        0.0,
+        18.825458456205947,
+        0.11403379341330304,
+        0.0,
+        14.21828226112156,
+        0.0,
+        0.0,
+        2.7861409952449327,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "outward_normal": [
+      -0.9934014760196141,
+      0.0,
+      0.11468874156625825
+    ],
+    "reference_origin": [
+      0.9977660133905621,
+      0.24373611509820725,
+      1.0118028990665338
+    ],
+    "anchor_recovery_active": false,
+    "curve_unload_feedback": {
+      "remaining_load_fraction": 0.5471326700290645,
+      "curvature_fraction": -0.03282796020174387,
+      "requested_outward_step_mm": 2.7356633501453227,
+      "basis": "current measured local shape and remaining contact/actuator load; existing 12mm curve offset cap"
+    },
+    "feed_t": 800.4999999887916,
+    "feed_shift": 0.8140118995682457,
+    "feed_pipe_origin": [
+      -0.004522519914919865,
+      0.0020777817956079137
+    ],
+    "regrip_t": 835.4999999887916,
+    "achieved_material_mm": -10.042438841666092
+  },
+  "events": [
+    {
+      "t_s": 796.9499999887917,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 814.0118995682457,
+      "physical_progress_unchanged_mm": -16.372102304241082,
+      "observed_grip_clearance_enabled": true,
+      "registered_max_center_error_mm": 5.180281967960043,
+      "local_reference_shift_origin_mm": 814.0118995682457,
+      "local_pipe_progress_origin_mm": [
+        -4.183144908893377,
+        2.1407977785814767
+      ],
+      "old_reference_head_arc_mm": -11.964033698098287,
+      "meaning": "reference correspondence repair only; physical progress meter unchanged; captured gripping shape retained"
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "local_yield_unload",
+      "joint": 4,
+      "modules": [
+        3,
+        4
+      ],
+      "side": 1,
+      "load_Nm": 2.3549999999999978,
+      "tracking_deg": 2.9991881506413107,
+      "remaining_source": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2,
+        7,
+        10
+      ],
+      "action": "outward local plateau and endpoint-anchored curvature relief; other observed grasps retain their loads"
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "local_yield_unload_reshape_with_shift_braked",
+      "shift_mm": 814.0118995682457,
+      "maximum_tracking_error_deg": 2.9991881506413107,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 800.4999999887916,
+      "mode": "local_yield_feed",
+      "released_force_N": 5.199326709190484,
+      "current_joint": 4,
+      "angle_deg": 76.40684779629565,
+      "meaning": "local unloading observed; now resume the existing bounded common shift"
+    },
+    {
+      "t_s": 800.4999999887916,
+      "mode": "local_yield_feed_reshape_with_shift_braked",
+      "shift_mm": 814.0118995682457,
+      "maximum_tracking_error_deg": 0.5829780256030035,
+      "lag_mm": 1.3282548033072965
+    },
+    {
+      "t_s": 818.0499999887917,
+      "mode": "local_yield_feed_advance",
+      "shift_mm": 814.0193995682457,
+      "maximum_tracking_error_deg": 0.5302256938882862,
+      "lag_mm": 9.634462815148419
+    },
+    {
+      "t_s": 822.4499999887917,
+      "mode": "local_yield_feed_reshape_with_shift_braked",
+      "shift_mm": 814.7423120527118,
+      "maximum_tracking_error_deg": 0.5572273188835756,
+      "lag_mm": 10.517284380550663
+    },
+    {
+      "t_s": 835.4999999887916,
+      "mode": "local_yield_regrip",
+      "actual_material_mm": -10.042438841666092,
+      "action": "capture the current advanced shape with half the former local pressure; do not restore old joint pose"
+    },
+    {
+      "t_s": 835.4999999887916,
+      "mode": "local_yield_regrip_reshape_with_shift_braked",
+      "shift_mm": 816.1994901816769,
+      "maximum_tracking_error_deg": 0.6059106564898298,
+      "lag_mm": 12.659361578435536
+    },
+    {
+      "t_s": 843.4999999887916,
+      "mode": "local_yield_completed",
+      "current_local_force_N": 5.229368410566949
+    },
+    {
+      "t_s": 843.4999999887916,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 816.4572441058302,
+      "maximum_tracking_error_deg": 0.6316039356355275,
+      "lag_mm": 14.205030405188841
+    },
+    {
+      "t_s": 874.9499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 819.5950803457316,
+      "maximum_tracking_error_deg": 2.3103774998409343,
+      "lag_mm": 13.140480214567846
+    },
+    {
+      "t_s": 875.4499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 819.6715077402074,
+      "maximum_tracking_error_deg": 2.35287717110983,
+      "lag_mm": 13.213475917039268
+    },
+    {
+      "t_s": 884.9499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 820.8780823426041,
+      "maximum_tracking_error_deg": 3.0005149674397,
+      "lag_mm": 13.622963961834857
+    },
+    {
+      "t_s": 886.4499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 821.1217409901294,
+      "maximum_tracking_error_deg": 3.000469219934836,
+      "lag_mm": 13.538297713066548
+    }
+  ]
+}

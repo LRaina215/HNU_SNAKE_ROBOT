@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U14\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U14\\controller_state.json",
+  "change": "Same full U14 state. Retain physical bend-rate versus servo-preload separation and measured-shape/remaining-load local curve feedback. Apply the measured local feedback step with each node bounded by the existing 8mm/s cap over the 0.5s feedback interval, keeping Gaussian blend and total 12mm offset cap. Replace single-50ms local-anchor failure with pause/recover and the existing 1s persistence: freeze local letting-space and common feed, temporarily restore half local pressure to reacquire anchors, resume if recovered, stop only if shortage persists. Preserve 12s unloading deadline, force/load release criteria, model, drives, joint limits and original actual collision stops.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

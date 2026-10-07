@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U10\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U10\\controller_state.json",
+  "change": "Continue the complete U10 state. Replace the uniform 29mm tube envelope only on observed gripping spans with each restored physical chord clearance minus 1.5mm, allowing the actual mesh wrap and curve squeezing. Retain the conservative bridge core and a continuous half-link handover taper. The same-pipe correction guard uses this observed allowance; other-pipe and bridge solid guards remain. Keep physical progress history, common feed thresholds, force gains, original model and dynamics unchanged. This is a local observed allowance, not an exact mesh swept-volume guarantee.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

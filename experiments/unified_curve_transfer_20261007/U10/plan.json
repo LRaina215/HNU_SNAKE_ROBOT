@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U09\\resume_t107p70\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U09\\resume_t107p70\\controller_state.json",
+  "change": "Continue the exactly recovered U09 107.70s supported state. Measure same-module axial motion on each continuously occupied pipe; the slower side limits common feed, and curve registration never resets physical progress. Registration retains captured grip bends rather than immediately applying full helix smoothing. Add coordinated rolling for only the pipe-helical component of position recovery; radial squeezing and bridge deformation are excluded. Clearance threshold and force gains unchanged.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

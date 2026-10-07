@@ -1,0 +1,657 @@
+{
+  "name": "U10",
+  "outcome": "no_actual_body_progress_90s",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 90.0499999978706,
+  "dynamics_wall_seconds": 120.84299999999348,
+  "controller_initial_elapsed_s": 616.8499999930505,
+  "controller_final_elapsed_s": 706.8999999909211,
+  "final_shift_mm": 806.3515695887528,
+  "final_curve_parameters": {
+    "source_phase_rad": -0.19154340675505557,
+    "target_phase_rad": -0.02454368576364803,
+    "source_feedback_phase_rad": -0.2955157044182217,
+    "target_feedback_phase_rad": -0.1263724716529486,
+    "source_radius_delta_mm": -3.766105931581891,
+    "target_radius_delta_mm": -1.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.1800000000000001,
+    "phase_origin_shift_mm": 796.7831495788782,
+    "reference_pipe_clearance_mm": 30.159962647763606,
+    "maximum_route_clearance_correction_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    13,
+    15,
+    16,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    2,
+    5,
+    7,
+    10
+  ],
+  "final_source_modules": [
+    13,
+    15,
+    16,
+    17,
+    20
+  ],
+  "final_target_modules": [
+    0,
+    2,
+    4,
+    7,
+    10
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 5.693796453604169,
+  "fixed_rear_M14_M20_mean_x_advance_mm": -1.6846112434622487,
+  "final_centers_mm": [
+    [
+      1158.6440395766194,
+      281.4118590747206,
+      1070.9346579979333
+    ],
+    [
+      1097.9575601214779,
+      268.4210492122841,
+      1088.4659197217038
+    ],
+    [
+      1049.0805593126684,
+      260.37695717976385,
+      1070.8743865441984
+    ],
+    [
+      1014.1386333999906,
+      250.16104409686852,
+      1018.3221153962279
+    ],
+    [
+      1018.7118090877791,
+      245.63705224361718,
+      967.9449094783163
+    ],
+    [
+      1063.0082734004393,
+      244.28090944323864,
+      922.4886423792655
+    ],
+    [
+      1116.4592067188705,
+      245.12479560907383,
+      910.6706685850238
+    ],
+    [
+      1154.888626519978,
+      223.90420562677207,
+      933.5541427693178
+    ],
+    [
+      1176.8256108640355,
+      167.25136838377034,
+      940.395992739197
+    ],
+    [
+      1163.098599961323,
+      123.43965719992721,
+      925.9237145247812
+    ],
+    [
+      1108.287645431711,
+      91.58744463790603,
+      915.3809785253186
+    ],
+    [
+      1051.7892670071653,
+      88.81068833304435,
+      916.1505028473298
+    ],
+    [
+      1017.4466554926054,
+      99.46967367933894,
+      951.161528728159
+    ],
+    [
+      1002.922836999452,
+      85.36107633637101,
+      1011.72062658088
+    ],
+    [
+      1005.8008932256038,
+      56.37205079380904,
+      1064.5357297551548
+    ],
+    [
+      1011.7921793430653,
+      6.785901330410301,
+      1085.7495125633848
+    ],
+    [
+      1021.6517750376051,
+      -49.12042227302183,
+      1069.0837157027784
+    ],
+    [
+      1031.7563753115733,
+      -81.07837182375323,
+      1024.3022740028548
+    ],
+    [
+      1022.3941323197768,
+      -94.36402071703213,
+      961.9572629220086
+    ],
+    [
+      996.9160191034549,
+      -76.5537199959079,
+      927.3089485645955
+    ],
+    [
+      944.5753727846184,
+      -42.451461656712716,
+      924.5480510131797
+    ]
+  ],
+  "tail_center_mm": [
+    944.5753727846184,
+    -42.451461656712716,
+    924.5480510131797
+  ],
+  "final_q_deg": [
+    2.0218040724095956,
+    70.83144077931453,
+    15.245702005392145,
+    76.11662855051088,
+    20.360500937681557,
+    63.83478962428789,
+    79.73551934481016,
+    -37.17359720714099,
+    83.45170860201635,
+    9.790794420162774,
+    57.41524367121487,
+    77.82553411939345,
+    -16.22542762892395,
+    41.498527850988864,
+    -65.44042910793729,
+    46.935541495057834,
+    -59.725981594500745,
+    5.387653391664675,
+    -87.61060949232065,
+    -28.386917875224235
+  ],
+  "max_actual_joint_deg": 88.0275405293836,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.4330493890766119,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 0.9907354079619862,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 8.733663089954824e-05,
+  "minimum_reference_pipe_clearance_mm": 30.098173017978848,
+  "final_actual_source_grip_modules": [
+    13,
+    15,
+    16,
+    17,
+    20
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    2,
+    4,
+    7,
+    10
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 56,
+      "negative_frames": 229
+    },
+    {
+      "joint": 2,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 3,
+      "positive_frames": 6599,
+      "negative_frames": 1637
+    },
+    {
+      "joint": 4,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 5,
+      "positive_frames": 8980,
+      "negative_frames": 26
+    },
+    {
+      "joint": 6,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 7,
+      "positive_frames": 8999,
+      "negative_frames": 5
+    },
+    {
+      "joint": 8,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 9,
+      "positive_frames": 821,
+      "negative_frames": 8109
+    },
+    {
+      "joint": 10,
+      "positive_frames": 14,
+      "negative_frames": 8989
+    },
+    {
+      "joint": 11,
+      "positive_frames": 27,
+      "negative_frames": 8967
+    },
+    {
+      "joint": 12,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 13,
+      "positive_frames": 3,
+      "negative_frames": 9003
+    },
+    {
+      "joint": 14,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 15,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 16,
+      "positive_frames": 9000,
+      "negative_frames": 6
+    },
+    {
+      "joint": 17,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 18,
+      "positive_frames": 25,
+      "negative_frames": 8980
+    },
+    {
+      "joint": 19,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 20,
+      "positive_frames": 8936,
+      "negative_frames": 41
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014633740627833226,
+      "maximum_tracking_error_deg": 6.273096223994037,
+      "lag_mm": 0.014633740627833226
+    },
+    {
+      "t_s": 25.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 53.05051866958679,
+      "maximum_tracking_error_deg": 3.0535884719047277,
+      "lag_mm": 76.18822482399969
+    },
+    {
+      "t_s": 78.60000000000001,
+      "mode": "advance",
+      "shift_mm": 53.06371846939325,
+      "maximum_tracking_error_deg": 3.0519904793746973,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 158.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 196.92941178541463,
+      "maximum_tracking_error_deg": 3.004319000552725,
+      "lag_mm": 76.18822482399976
+    },
+    {
+      "t_s": 160.60000000000002,
+      "mode": "advance",
+      "shift_mm": 196.94261158522104,
+      "maximum_tracking_error_deg": 3.0091129788576523,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 178.10000000000002,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 219.01982444444445,
+      "maximum_tracking_error_deg": 3.0400203317787136,
+      "lag_mm": 74.92916832089375
+    },
+    {
+      "t_s": 214.60000000000002,
+      "mode": "advance",
+      "shift_mm": 219.0348043115861,
+      "maximum_tracking_error_deg": 3.0089836606940823,
+      "lag_mm": 70.00749999999998
+    },
+    {
+      "t_s": 287.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 369.13378930987756,
+      "maximum_tracking_error_deg": 3.0599713374583786,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 288.1,
+      "mode": "advance",
+      "shift_mm": 369.146989109684,
+      "maximum_tracking_error_deg": 3.040978488354644,
+      "lag_mm": 71.2014246238063
+    },
+    {
+      "t_s": 291.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 371.17162821996965,
+      "maximum_tracking_error_deg": 3.0727730427273277,
+      "lag_mm": 76.1808990537513
+    },
+    {
+      "t_s": 291.6,
+      "mode": "advance",
+      "shift_mm": 371.18488709856837,
+      "maximum_tracking_error_deg": 3.0522587980176303,
+      "lag_mm": 71.19415793235007
+    },
+    {
+      "t_s": 294.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 373.21026936351495,
+      "maximum_tracking_error_deg": 3.0695045868318016,
+      "lag_mm": 76.18096971737242
+    },
+    {
+      "t_s": 312.6,
+      "mode": "advance",
+      "shift_mm": 373.2235276722459,
+      "maximum_tracking_error_deg": 3.012074555685966,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 321.3,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 382.5052005850893,
+      "maximum_tracking_error_deg": 3.0356361534821676,
+      "lag_mm": 60.12785737006043
+    },
+    {
+      "t_s": 321.849999997482,
+      "mode": "advance",
+      "shift_mm": 382.516510146766,
+      "maximum_tracking_error_deg": 3.0123047891045394,
+      "lag_mm": 60.00749999999999
+    },
+    {
+      "t_s": 332.6499999974819,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 398.08267378517485,
+      "maximum_tracking_error_deg": 3.0441239448242507,
+      "lag_mm": 74.85788611220495
+    },
+    {
+      "t_s": 334.1499999974819,
+      "mode": "advance",
+      "shift_mm": 398.10613314207575,
+      "maximum_tracking_error_deg": 3.036631068161724,
+      "lag_mm": 69.88134546910585
+    },
+    {
+      "t_s": 337.599999997482,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 400.84872142329084,
+      "maximum_tracking_error_deg": 3.0378876874188867,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 419.59999999517987,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        10,
+        11
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    },
+    {
+      "t_s": 509.14999999305047,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 400.85442122309735,
+      "observer_rebased_from_mm": 240.85442122309732,
+      "observer_rebased_to_mm": 400.85442122309735,
+      "old_reference_head_arc_mm": 853.0017872840907,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 509.2499999930505,
+      "mode": "advance",
+      "shift_mm": 400.86192122309734,
+      "maximum_tracking_error_deg": 2.9529466983218886,
+      "lag_mm": 0.007499999999993623
+    },
+    {
+      "t_s": 561.8999999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 601.320270824949,
+      "observer_rebased_from_mm": 592.52027082495,
+      "observer_rebased_to_mm": 601.320270824949,
+      "old_reference_head_arc_mm": 369.5465031427234,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 616.8999999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 8,
+      "shared_shift_mm": 796.7831495788782,
+      "physical_progress_unchanged_mm": 0.0,
+      "old_reference_head_arc_mm": 174.34324761689135,
+      "meaning": "reference correspondence repair only; physical progress meter unchanged; captured gripping shape retained"
+    },
+    {
+      "t_s": 617.3999999930504,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        7
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    },
+    {
+      "t_s": 618.7499999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 800.4831495788783,
+      "maximum_tracking_error_deg": 2.40538671715679,
+      "lag_mm": 6.869960683926861
+    },
+    {
+      "t_s": 622.9499999930505,
+      "mode": "advance",
+      "shift_mm": 800.4956495788783,
+      "maximum_tracking_error_deg": 2.71850120053224,
+      "lag_mm": 8.725650026154167
+    },
+    {
+      "t_s": 623.8499999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 800.7368603754103,
+      "maximum_tracking_error_deg": 2.9290717742097674,
+      "lag_mm": 7.907866020353809
+    },
+    {
+      "t_s": 636.4499999930505,
+      "mode": "advance",
+      "shift_mm": 800.7511743557094,
+      "maximum_tracking_error_deg": 2.998889333628622,
+      "lag_mm": 9.70010032532068
+    },
+    {
+      "t_s": 638.9499999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 801.1620033935736,
+      "maximum_tracking_error_deg": 2.9914202593618775,
+      "lag_mm": 10.503098864036982
+    },
+    {
+      "t_s": 645.8499999930505,
+      "mode": "advance",
+      "shift_mm": 802.0509687659542,
+      "maximum_tracking_error_deg": 3.001103341566448,
+      "lag_mm": 11.635528357631308
+    },
+    {
+      "t_s": 646.1999999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 802.1037837449097,
+      "maximum_tracking_error_deg": 3.000810726870673,
+      "lag_mm": 11.688343336586904
+    },
+    {
+      "t_s": 646.3499999930505,
+      "mode": "advance",
+      "shift_mm": 802.1262306345743,
+      "maximum_tracking_error_deg": 3.0007958216097963,
+      "lag_mm": 11.622284592424428
+    },
+    {
+      "t_s": 650.7499999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 802.931175884782,
+      "maximum_tracking_error_deg": 3.0019940144258643,
+      "lag_mm": 12.149399978324796
+    },
+    {
+      "t_s": 650.8499999930505,
+      "mode": "advance",
+      "shift_mm": 802.9461628874758,
+      "maximum_tracking_error_deg": 3.0018194979061623,
+      "lag_mm": 12.12685289302579
+    },
+    {
+      "t_s": 652.1999999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 803.1553030626145,
+      "maximum_tracking_error_deg": 3.0021425956286207,
+      "lag_mm": 12.27818267909362
+    },
+    {
+      "t_s": 652.3499999930505,
+      "mode": "advance",
+      "shift_mm": 803.1777627386803,
+      "maximum_tracking_error_deg": 3.001917351186481,
+      "lag_mm": 11.76594116390684
+    },
+    {
+      "t_s": 655.3499999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 804.1663165114143,
+      "maximum_tracking_error_deg": 3.0018846840306472,
+      "lag_mm": 12.467515702990799
+    },
+    {
+      "t_s": 655.8999999930504,
+      "mode": "advance",
+      "shift_mm": 804.2162440504082,
+      "maximum_tracking_error_deg": 3.0022605447742445,
+      "lag_mm": 12.008443778307454
+    },
+    {
+      "t_s": 656.8999999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 804.534037187011,
+      "maximum_tracking_error_deg": 3.001461755993948,
+      "lag_mm": 12.50799893473393
+    },
+    {
+      "t_s": 657.8999999930504,
+      "mode": "advance",
+      "shift_mm": 804.6292544692622,
+      "maximum_tracking_error_deg": 3.002142669167625,
+      "lag_mm": 12.189407307548441
+    },
+    {
+      "t_s": 658.8999999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 804.9324081103891,
+      "maximum_tracking_error_deg": 3.003020435591364,
+      "lag_mm": 12.623623741464696
+    },
+    {
+      "t_s": 659.3499999930505,
+      "mode": "advance",
+      "shift_mm": 804.9870895469558,
+      "maximum_tracking_error_deg": 3.003441511861064,
+      "lag_mm": 12.070353234484758
+    },
+    {
+      "t_s": 662.2499999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 805.7830810060112,
+      "maximum_tracking_error_deg": 3.0030933079774815,
+      "lag_mm": 12.033094792643055
+    }
+  ],
+  "curve_feedback_updates": 1412
+}

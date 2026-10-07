@@ -1,0 +1,125 @@
+{
+  "source": "Existing 100Hz trace.npz and complete held commands.json; no new physical or offline control test",
+  "records": [
+    {
+      "t_s": 0.0,
+      "reference_bend_J4_deg": 73.97328211380079,
+      "actual_J4_deg": 77.11634310785541,
+      "sent_J4_deg": 79.89299038703969,
+      "actuator_J4_Nm": 2.355,
+      "M3_target_cylinder_force_N": 0.0,
+      "M4_target_cylinder_force_N": 10.855605615565755,
+      "M3_M4_target_force_N": 10.855605615565755
+    },
+    {
+      "t_s": 1.599999999962165,
+      "reference_bend_J4_deg": 73.03143056176835,
+      "actual_J4_deg": 77.18707319424863,
+      "sent_J4_deg": 80.04822864814675,
+      "actuator_J4_Nm": 2.355,
+      "M3_target_cylinder_force_N": 0.0,
+      "M4_target_cylinder_force_N": 10.466957015319942,
+      "M3_M4_target_force_N": 10.466957015319942
+    }
+  ],
+  "J4_positive_saturation_frame_fraction": 1.0,
+  "minimum_actual_source_supports": 5,
+  "minimum_actual_target_supports": 5,
+  "stage_counts": {
+    "failed": 1,
+    "unload": 31
+  },
+  "final_yield_state": {
+    "stage": "failed",
+    "side": 1,
+    "parameter": 1.0964999016371675,
+    "started_t": 796.9499999887917,
+    "selected_joint": 4,
+    "initial_angle_deg": 75.95654190553691,
+    "initial_force_N": 18.825458456205947,
+    "anchor_goals_N": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        12.413588199219783,
+        10.61975848332419,
+        0.23460300482047217,
+        15.733835342830634,
+        12.295816918399586,
+        0.0,
+        0.0,
+        7.479271158245505
+      ],
+      [
+        23.165945973438316,
+        0.0,
+        6.937062620859663,
+        0.0,
+        18.825458456205947,
+        0.13652023068762534,
+        0.0,
+        14.21828226112156,
+        0.0,
+        0.0,
+        2.7861409952449327,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "outward_normal": [
+      -0.9934014760196141,
+      0.0,
+      0.11468874156625825
+    ],
+    "reference_origin": [
+      0.9977660133905621,
+      0.24373611509820725,
+      1.0118028990665338
+    ],
+    "failure": "local_release_not_observed_12s"
+  },
+  "maximum_recorded_positive_clearance_deficit_mm": 0.059860435783400806,
+  "result": {
+    "physical_seconds": 1.599999999962165,
+    "outcome": "local_release_not_observed_12s",
+    "fixed_front_M0_M6_mean_y_advance_mm": 0.029110811544585755,
+    "fixed_rear_M14_M20_mean_x_advance_mm": -0.11930753012783109,
+    "max_pipe_penetration_mm": 0.9374622677640558,
+    "max_actual_joint_deg": 84.89406911127081,
+    "max_dispatch_step_deg": 0.2918450333897207,
+    "minimum_reference_pipe_clearance_mm": 25.702956667513952,
+    "final_actual_source_grip_modules": [
+      13,
+      14,
+      16,
+      17,
+      20
+    ],
+    "final_actual_target_grip_modules": [
+      0,
+      2,
+      4,
+      5,
+      7
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U25\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U25\\resume_verified_handover\\controller_state.json",
+  "change": "Lossless physical continuation from U25 full final state, retaining targets, reference and all historical actual progress. Correct the action cycle: elapsed 8s regrip is insufficient; require 1s actual restored/new carrying contact after actual dual-side feed, then choose the next supported posterior span. U25 restored M13 is verified from its existing final full second and only omitted handover metadata is recovered; no physics or progress reset. Continue role exchange rather than leaving completed to disable feedback. Same curve feedback, original model, drive/joint limits and actual stops.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

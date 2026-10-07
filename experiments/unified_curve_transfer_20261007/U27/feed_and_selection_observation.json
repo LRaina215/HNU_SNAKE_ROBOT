@@ -1,0 +1,447 @@
+{
+  "2_29.25": {
+    "duration_s": 27.25,
+    "shift_mm": 5.557723351442974,
+    "fixed_front_mean_y_mm": -2.3273026506880075,
+    "fixed_rear_mean_x_mm": 7.779889187789438,
+    "shared_feed_positive_fraction": 0.3339449541284404,
+    "brake_retreat_fraction": 0.48623853211009177,
+    "target_modules": {
+      "1": {
+        "force_above_0p1_fraction": 0.050256786500366836,
+        "requested_axial_center_mm_s": 0.7550802222076205,
+        "axial_displacement_mm": -1.0496572545026766,
+        "solved_spin_rad_s": -0.005232499111614454,
+        "coherent_rolling_fraction": 0.05321100917431193,
+        "planned_regions": [
+          2
+        ]
+      },
+      "2": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.49328336194063127,
+        "axial_displacement_mm": -3.013379549377987,
+        "solved_spin_rad_s": -0.008515852157483395,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ]
+      },
+      "3": {
+        "force_above_0p1_fraction": 0.10638297872340426,
+        "requested_axial_center_mm_s": -0.32433049675292175,
+        "axial_displacement_mm": -4.582035342592178,
+        "solved_spin_rad_s": 0.0016334910751816872,
+        "coherent_rolling_fraction": 0.10458715596330276,
+        "planned_regions": [
+          2
+        ]
+      },
+      "6": {
+        "force_above_0p1_fraction": 0.8921496698459281,
+        "requested_axial_center_mm_s": 0.04282811047998864,
+        "axial_displacement_mm": 0.9644136799165608,
+        "solved_spin_rad_s": 0.009346535529448995,
+        "coherent_rolling_fraction": 0.8954128440366973,
+        "planned_regions": [
+          2
+        ]
+      },
+      "7": {
+        "force_above_0p1_fraction": 0.789435069699193,
+        "requested_axial_center_mm_s": 0.15731232126257003,
+        "axial_displacement_mm": 3.9681678441164365,
+        "solved_spin_rad_s": -0.013255281984693,
+        "coherent_rolling_fraction": 0.7889908256880734,
+        "planned_regions": [
+          2
+        ]
+      },
+      "11": {
+        "force_above_0p1_fraction": 0.13169479090242112,
+        "requested_axial_center_mm_s": 1.5256229100389387,
+        "axial_displacement_mm": -0.8676960987081372,
+        "solved_spin_rad_s": -0.00281800166878066,
+        "coherent_rolling_fraction": 0.0,
+        "planned_regions": [
+          1
+        ]
+      }
+    }
+  },
+  "40.6_75.6": {
+    "duration_s": 34.99999999999999,
+    "shift_mm": 1.4329930715703085,
+    "fixed_front_mean_y_mm": 1.5328881478752976,
+    "fixed_rear_mean_x_mm": -1.8745579127622705,
+    "shared_feed_positive_fraction": 0.14285714285714285,
+    "brake_retreat_fraction": 0.7714285714285715,
+    "target_modules": {
+      "1": {
+        "force_above_0p1_fraction": 0.8154812910596972,
+        "requested_axial_center_mm_s": 0.719951777255521,
+        "axial_displacement_mm": 5.065659279945862,
+        "solved_spin_rad_s": -0.011148428232201309,
+        "coherent_rolling_fraction": 0.8142857142857143,
+        "planned_regions": [
+          2
+        ],
+        "actual_integrated_spin_rad_s": -0.009257849137100968
+      },
+      "2": {
+        "force_above_0p1_fraction": 0.8046272493573264,
+        "requested_axial_center_mm_s": 0.5322157866137419,
+        "axial_displacement_mm": 3.496704731553109,
+        "solved_spin_rad_s": -0.024649004876186913,
+        "coherent_rolling_fraction": 0.8042857142857143,
+        "planned_regions": [
+          2
+        ],
+        "actual_integrated_spin_rad_s": -0.011416464308692786
+      },
+      "3": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.7131926855047025,
+        "axial_displacement_mm": 3.0893083336744667,
+        "solved_spin_rad_s": -0.00946285503402879,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ],
+        "actual_integrated_spin_rad_s": -0.00971248513975391
+      },
+      "6": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.5633141872267308,
+        "axial_displacement_mm": -9.806658793847532,
+        "solved_spin_rad_s": -0.010469762939524537,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ],
+        "actual_integrated_spin_rad_s": -0.005223965332814348
+      },
+      "7": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.4263750853000841,
+        "axial_displacement_mm": -18.361258216763417,
+        "solved_spin_rad_s": -0.02032075032044742,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ],
+        "actual_integrated_spin_rad_s": -0.007407317211930521
+      },
+      "11": {
+        "force_above_0p1_fraction": 0.9728648957440731,
+        "requested_axial_center_mm_s": 2.5497157268721846,
+        "axial_displacement_mm": -7.942424674865691,
+        "solved_spin_rad_s": -0.004782110674803068,
+        "coherent_rolling_fraction": 0.0,
+        "planned_regions": [
+          1
+        ],
+        "actual_integrated_spin_rad_s": -0.0021059264647287474
+      }
+    }
+  },
+  "65.6_75.6": {
+    "duration_s": 10.0,
+    "shift_mm": 0.0,
+    "fixed_front_mean_y_mm": -0.1746609167159363,
+    "fixed_rear_mean_x_mm": 0.16284760577850324,
+    "shared_feed_positive_fraction": 0.0,
+    "brake_retreat_fraction": 0.7,
+    "target_modules": {
+      "1": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.5880198614613174,
+        "axial_displacement_mm": 0.9151021755916418,
+        "solved_spin_rad_s": -0.00787269779743296,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ]
+      },
+      "2": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.4822509385435221,
+        "axial_displacement_mm": 1.0084496153747295,
+        "solved_spin_rad_s": -0.02133219411019752,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ]
+      },
+      "3": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.5851904466097042,
+        "axial_displacement_mm": 0.26223382426337594,
+        "solved_spin_rad_s": -0.0071690903324719505,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ]
+      },
+      "6": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.4407898442886175,
+        "axial_displacement_mm": -1.8074577934219178,
+        "solved_spin_rad_s": -0.012204333827651953,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ]
+      },
+      "7": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 0.38734481355546485,
+        "axial_displacement_mm": -2.210143121201952,
+        "solved_spin_rad_s": -0.016063345457709648,
+        "coherent_rolling_fraction": 1.0,
+        "planned_regions": [
+          2
+        ]
+      },
+      "11": {
+        "force_above_0p1_fraction": 1.0,
+        "requested_axial_center_mm_s": 2.3027430370544293,
+        "axial_displacement_mm": 0.08436822748502948,
+        "solved_spin_rad_s": -0.004092815232637481,
+        "coherent_rolling_fraction": 0.0,
+        "planned_regions": [
+          1
+        ]
+      }
+    }
+  },
+  "terminal_selection": {
+    "actual_source": [
+      14,
+      15,
+      16,
+      17
+    ],
+    "actual_target": [
+      1,
+      2,
+      3,
+      7,
+      11
+    ],
+    "retained_free_parameters": [
+      0.4432379184814433
+    ],
+    "candidates": [
+      {
+        "joint": 2,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 3,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 4,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 5,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 6,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 7,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 8,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 9,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 10,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 11,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 12,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 13,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 14,
+        "distal_holds": true,
+        "modules": [
+          14
+        ],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": true
+      },
+      {
+        "joint": 15,
+        "distal_holds": true,
+        "modules": [
+          14,
+          15
+        ],
+        "remaining_source": [
+          16,
+          17
+        ],
+        "near_old_free": true
+      },
+      {
+        "joint": 16,
+        "distal_holds": true,
+        "modules": [
+          15,
+          16
+        ],
+        "remaining_source": [
+          17
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 17,
+        "distal_holds": true,
+        "modules": [
+          16,
+          17
+        ],
+        "remaining_source": [
+          15
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 18,
+        "distal_holds": false,
+        "modules": [
+          17
+        ],
+        "remaining_source": [
+          15,
+          16
+        ],
+        "near_old_free": false
+      },
+      {
+        "joint": 19,
+        "distal_holds": false,
+        "modules": [],
+        "remaining_source": [
+          15,
+          16,
+          17
+        ],
+        "near_old_free": false
+      }
+    ]
+  },
+  "last_second_M14": {
+    "force_above_0p1_fraction": 0.6732673267326733,
+    "continuous_at_end_s": 0.1
+  }
+}

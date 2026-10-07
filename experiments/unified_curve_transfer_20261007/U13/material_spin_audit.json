@@ -1,0 +1,120 @@
+{
+  "method": "600 held 50ms commands and trapezoidal integration of all 3001 actual 100Hz poses in the final 30s (60.05-90.05s). Spin=u dot angular Jacobian dot actual qvel; original model, kinematics/comPos. No dynamics. Earlier command-boundary and every-tenth-command means are superseded.",
+  "held_command_count": 600,
+  "actual_pose_count": 3001,
+  "sides": [
+    {
+      "side": 0,
+      "modules": [
+        13,
+        15,
+        16,
+        17,
+        20
+      ],
+      "mean_requested_rad_s": 0.00807588602907343,
+      "mean_solved_rad_s": 0.013973737208040661,
+      "mean_actual_rad_s": 0.008767537843546615
+    },
+    {
+      "side": 1,
+      "modules": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "mean_requested_rad_s": 0.03420198350445039,
+      "mean_solved_rad_s": 0.0074891628365537375,
+      "mean_actual_rad_s": 0.005773532000889657
+    }
+  ],
+  "superseded_sampling_audit": {
+    "method": "ALL 20Hz commands in t60 through t90 inclusive, and original-model angular Jacobian at corresponding actual qpos/qvel from the 100Hz trace. Fixed listed module groups; no new dynamics. Includes curve-update and intervening commands; does not subsample the 0.5s reshaping cycle.",
+    "window_local_s": [
+      60,
+      90
+    ],
+    "command_count": 601,
+    "sides": [
+      {
+        "side": 0,
+        "modules": [
+          13,
+          15,
+          16,
+          17,
+          20
+        ],
+        "mean_requested_rad_s": 0.008190074395686671,
+        "mean_solved_rad_s": 0.014116574893553313,
+        "mean_actual_rad_s": -0.001894694080887316,
+        "actual_rms_rad_s": 0.002997256422542799
+      },
+      {
+        "side": 1,
+        "modules": [
+          0,
+          2,
+          4,
+          7
+        ],
+        "mean_requested_rad_s": 0.03429361747544217,
+        "mean_solved_rad_s": 0.0075633240272226215,
+        "mean_actual_rad_s": -0.0031262753853747395,
+        "actual_rms_rad_s": 0.003461359405283455
+      }
+    ],
+    "superseded_sparse_check": {
+      "method": "Same last-30s sparse actual-pose angular Jacobian audit as U10; every tenth 20Hz command, fixed listed main-pipe module groups. No new dynamics. Requests can command retreat.",
+      "window_local_s": [
+        60,
+        90
+      ],
+      "groups": [
+        [
+          13,
+          15,
+          16,
+          17,
+          20
+        ],
+        [
+          0,
+          2,
+          4,
+          7
+        ]
+      ],
+      "sides": [
+        {
+          "side": 0,
+          "modules": [
+            13,
+            15,
+            16,
+            17,
+            20
+          ],
+          "mean_requested_rad_s": 0.001034452842604907,
+          "mean_solved_rad_s": 0.017648918566861474,
+          "mean_actual_rad_s": -0.00183797010971992,
+          "actual_rms_rad_s": 0.002729218056923639
+        },
+        {
+          "side": 1,
+          "modules": [
+            0,
+            2,
+            4,
+            7
+          ],
+          "mean_requested_rad_s": 0.07394937831180114,
+          "mean_solved_rad_s": 0.031062841864992165,
+          "mean_actual_rad_s": -0.002891848775613248,
+          "actual_rms_rad_s": 0.0030359364813790047
+        }
+      ]
+    }
+  }
+}

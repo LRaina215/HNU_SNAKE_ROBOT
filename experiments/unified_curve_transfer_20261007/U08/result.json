@@ -1,0 +1,471 @@
+{
+  "name": "U08",
+  "outcome": "no_actual_body_progress_90s",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 90.04999999787066,
+  "dynamics_wall_seconds": 77.73399999999674,
+  "controller_initial_elapsed_s": 419.09999999517987,
+  "controller_final_elapsed_s": 509.14999999305047,
+  "final_shift_mm": 400.85442122309735,
+  "final_curve_parameters": {
+    "source_phase_rad": -0.3150604809651973,
+    "target_phase_rad": 5.424982018418201,
+    "source_feedback_phase_rad": -4.898332572822779,
+    "target_feedback_phase_rad": 0.9731986520457631,
+    "source_radius_delta_mm": 3.6797355577125743,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 1.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    12,
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    2,
+    4,
+    5,
+    8,
+    11,
+    13
+  ],
+  "final_source_modules": [
+    13,
+    18
+  ],
+  "final_target_modules": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    7,
+    8,
+    13
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 29.843305828472758,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 1.9791215588955506,
+  "final_centers_mm": [
+    [
+      1151.0947902813582,
+      265.3091271012632,
+      927.3727522316411
+    ],
+    [
+      1181.5627112638417,
+      252.51199775294396,
+      968.5508244372222
+    ],
+    [
+      1179.4720653930472,
+      238.0289214552359,
+      1029.468390887
+    ],
+    [
+      1146.6598649294522,
+      230.25882916642908,
+      1071.6115746410028
+    ],
+    [
+      1089.2113174049855,
+      222.05013594114897,
+      1083.787597837722
+    ],
+    [
+      1037.4868044751342,
+      214.21010144396416,
+      1060.8722138135986
+    ],
+    [
+      1013.9923470191324,
+      204.44844857611542,
+      1011.4207970742739
+    ],
+    [
+      1027.77370629567,
+      194.56362867555546,
+      955.5138096068524
+    ],
+    [
+      1071.6863099670225,
+      190.57346958711196,
+      919.9180823800555
+    ],
+    [
+      1093.4966928357976,
+      151.935549982202,
+      898.7466144186534
+    ],
+    [
+      1083.4440391016137,
+      96.67222663563751,
+      902.3219746597106
+    ],
+    [
+      1050.59580507396,
+      67.42376900433652,
+      929.7176604686249
+    ],
+    [
+      1017.4981772023832,
+      80.11759471242985,
+      968.35291648324
+    ],
+    [
+      1019.025659527498,
+      81.24360214336956,
+      1025.7986617911579
+    ],
+    [
+      1015.2105684634508,
+      52.13829166330238,
+      1081.9204361738264
+    ],
+    [
+      1007.8481201865695,
+      4.702186991585748,
+      1112.9220335949367
+    ],
+    [
+      978.6851828520525,
+      -36.45791507656123,
+      1108.0457060315634
+    ],
+    [
+      927.2789853875242,
+      -55.29338313597894,
+      1077.5957381953533
+    ],
+    [
+      884.5879836026459,
+      -77.30102946986584,
+      1034.6347272890366
+    ],
+    [
+      866.7388485357178,
+      -96.85354010707117,
+      982.182502308097
+    ],
+    [
+      861.1840052454506,
+      -76.50965298752442,
+      936.6370640717264
+    ]
+  ],
+  "tail_center_mm": [
+    861.1840052454506,
+    -76.50965298752442,
+    936.6370640717264
+  ],
+  "final_q_deg": [
+    -70.11355216939788,
+    27.50824329365066,
+    -66.39513829471444,
+    46.348479687119855,
+    -55.37673232577437,
+    60.869776082728364,
+    -50.14284318066709,
+    57.05740210099055,
+    80.68516374355251,
+    58.471353235968984,
+    73.09480511399606,
+    71.2351667069482,
+    -53.971976218092124,
+    -21.812160879879077,
+    -55.26008329060603,
+    -76.4238177597889,
+    -27.53850301833619,
+    4.945314263534193,
+    -48.73235787887344,
+    -77.81662676015998
+  ],
+  "max_actual_joint_deg": 87.58961649175279,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.45303729526274417,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 0.9810149597262254,
+  "max_self_penetration_mm": 0.7598724225537961,
+  "max_reference_link_error_mm": 7.610437775806833e-05,
+  "final_actual_source_grip_modules": [
+    13,
+    18
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    7,
+    8,
+    13
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 2,
+      "positive_frames": 5751,
+      "negative_frames": 2734
+    },
+    {
+      "joint": 3,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 4,
+      "positive_frames": 8990,
+      "negative_frames": 10
+    },
+    {
+      "joint": 5,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 6,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 7,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 8,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 9,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 10,
+      "positive_frames": 1347,
+      "negative_frames": 7640
+    },
+    {
+      "joint": 11,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 12,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 13,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 14,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 15,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 16,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 17,
+      "positive_frames": 33,
+      "negative_frames": 8965
+    },
+    {
+      "joint": 18,
+      "positive_frames": 142,
+      "negative_frames": 8806
+    },
+    {
+      "joint": 19,
+      "positive_frames": 859,
+      "negative_frames": 5312
+    },
+    {
+      "joint": 20,
+      "positive_frames": 153,
+      "negative_frames": 8790
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014633740627833226,
+      "maximum_tracking_error_deg": 6.273096223994037,
+      "lag_mm": 0.014633740627833226
+    },
+    {
+      "t_s": 25.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 53.05051866958679,
+      "maximum_tracking_error_deg": 3.0535884719047277,
+      "lag_mm": 76.18822482399969
+    },
+    {
+      "t_s": 78.60000000000001,
+      "mode": "advance",
+      "shift_mm": 53.06371846939325,
+      "maximum_tracking_error_deg": 3.0519904793746973,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 158.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 196.92941178541463,
+      "maximum_tracking_error_deg": 3.004319000552725,
+      "lag_mm": 76.18822482399976
+    },
+    {
+      "t_s": 160.60000000000002,
+      "mode": "advance",
+      "shift_mm": 196.94261158522104,
+      "maximum_tracking_error_deg": 3.0091129788576523,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 178.10000000000002,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 219.01982444444445,
+      "maximum_tracking_error_deg": 3.0400203317787136,
+      "lag_mm": 74.92916832089375
+    },
+    {
+      "t_s": 214.60000000000002,
+      "mode": "advance",
+      "shift_mm": 219.0348043115861,
+      "maximum_tracking_error_deg": 3.0089836606940823,
+      "lag_mm": 70.00749999999998
+    },
+    {
+      "t_s": 287.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 369.13378930987756,
+      "maximum_tracking_error_deg": 3.0599713374583786,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 288.1,
+      "mode": "advance",
+      "shift_mm": 369.146989109684,
+      "maximum_tracking_error_deg": 3.040978488354644,
+      "lag_mm": 71.2014246238063
+    },
+    {
+      "t_s": 291.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 371.17162821996965,
+      "maximum_tracking_error_deg": 3.0727730427273277,
+      "lag_mm": 76.1808990537513
+    },
+    {
+      "t_s": 291.6,
+      "mode": "advance",
+      "shift_mm": 371.18488709856837,
+      "maximum_tracking_error_deg": 3.0522587980176303,
+      "lag_mm": 71.19415793235007
+    },
+    {
+      "t_s": 294.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 373.21026936351495,
+      "maximum_tracking_error_deg": 3.0695045868318016,
+      "lag_mm": 76.18096971737242
+    },
+    {
+      "t_s": 312.6,
+      "mode": "advance",
+      "shift_mm": 373.2235276722459,
+      "maximum_tracking_error_deg": 3.012074555685966,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 321.3,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 382.5052005850893,
+      "maximum_tracking_error_deg": 3.0356361534821676,
+      "lag_mm": 60.12785737006043
+    },
+    {
+      "t_s": 321.849999997482,
+      "mode": "advance",
+      "shift_mm": 382.516510146766,
+      "maximum_tracking_error_deg": 3.0123047891045394,
+      "lag_mm": 60.00749999999999
+    },
+    {
+      "t_s": 332.6499999974819,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 398.08267378517485,
+      "maximum_tracking_error_deg": 3.0441239448242507,
+      "lag_mm": 74.85788611220495
+    },
+    {
+      "t_s": 334.1499999974819,
+      "mode": "advance",
+      "shift_mm": 398.10613314207575,
+      "maximum_tracking_error_deg": 3.036631068161724,
+      "lag_mm": 69.88134546910585
+    },
+    {
+      "t_s": 337.599999997482,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 400.84872142329084,
+      "maximum_tracking_error_deg": 3.0378876874188867,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 419.59999999517987,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        10,
+        11
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    }
+  ],
+  "curve_feedback_updates": 1019
+}

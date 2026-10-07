@@ -18,9 +18,9 @@ import numpy as np
 
 def export_state(controller, elapsed_s):
     values = {k: v for k, v in controller.__dict__.items()
-              if k not in {'m', 'd', 'qa', 'va', 'head', 'curve', 'first_dispatch'}}
+              if k not in {'m', 'd', 'qa', 'va', 'head', 'curve', 'first_dispatch', 'pipe_geometry', 'execution_tasks', 'capture_execution_tasks'}}
     curve = {k: v for k, v in controller.curve.__dict__.items()
-             if k not in {'base', 'arc_cache'}}
+             if k not in {'base', 'arc_cache', 'clearance'}}
     curve['base_x'] = controller.curve.base.x
     curve['base_c'] = controller.curve.base.c
     reference, _, _ = controller.curve.reference(controller.shift)

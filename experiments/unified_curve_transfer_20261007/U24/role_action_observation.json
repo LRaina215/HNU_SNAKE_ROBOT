@@ -1,0 +1,308 @@
+{
+  "events": [
+    {
+      "t_s": 796.9499999887917,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 814.0118995682457,
+      "physical_progress_unchanged_mm": -16.372102304241082,
+      "observed_grip_clearance_enabled": true,
+      "registered_max_center_error_mm": 5.180281967960043,
+      "local_reference_shift_origin_mm": 814.0118995682457,
+      "local_pipe_progress_origin_mm": [
+        -4.183144908893377,
+        2.1407977785814767
+      ],
+      "old_reference_head_arc_mm": -11.964033698098287,
+      "meaning": "reference correspondence repair only; physical progress meter unchanged; captured gripping shape retained",
+      "run_t_s": 0.0
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "local_yield_unload",
+      "joint": 4,
+      "modules": [
+        3,
+        4
+      ],
+      "side": 1,
+      "load_Nm": 2.3549999999999978,
+      "tracking_deg": 2.9991881506413107,
+      "remaining_source": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2,
+        7,
+        10
+      ],
+      "action": "outward local plateau and endpoint-anchored curvature relief; other observed grasps retain their loads",
+      "run_t_s": 0.0
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "local_yield_unload_reshape_with_shift_braked",
+      "shift_mm": 814.0118995682457,
+      "maximum_tracking_error_deg": 2.9991881506413107,
+      "lag_mm": 0.0,
+      "run_t_s": 0.0
+    },
+    {
+      "t_s": 800.4999999887916,
+      "mode": "receiving_local_unload_observed",
+      "current_joint": 4,
+      "actual_force_N": 5.199326709255513,
+      "run_t_s": 3.5499999999999545
+    },
+    {
+      "t_s": 800.4999999887916,
+      "mode": "front_carries_rear_span_unload",
+      "joint": 17,
+      "modules": [
+        16,
+        17
+      ],
+      "current_source_force_N": 24.96373585299944,
+      "remaining_source": [
+        13,
+        14,
+        15,
+        20
+      ],
+      "receiving_grasps": [
+        0,
+        2,
+        4,
+        7,
+        10
+      ],
+      "meaning": "curve lifts a measured posterior span; source contact must actually disappear before feed",
+      "run_t_s": 3.5499999999999545
+    },
+    {
+      "t_s": 807.9999999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        13
+      ],
+      "remaining_target": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "run_t_s": 11.049999999999955
+    },
+    {
+      "t_s": 808.0499999887917,
+      "mode": "local_yield_anchors_recovered",
+      "run_t_s": 11.100000000000023
+    },
+    {
+      "t_s": 808.0999999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        13
+      ],
+      "remaining_target": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "run_t_s": 11.149999999999977
+    },
+    {
+      "t_s": 809.0999999887916,
+      "mode": "local_yield_failed_reshape_with_shift_braked",
+      "shift_mm": 814.0118995682457,
+      "maximum_tracking_error_deg": 0.40048178434669895,
+      "lag_mm": 10.599529577168699,
+      "run_t_s": 12.149999999999977
+    }
+  ],
+  "minimum_source_supports": 2,
+  "minimum_target_supports": 4,
+  "samples": [
+    {
+      "t_s": 3.5499999999160536,
+      "actual_source_grips": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        20
+      ],
+      "actual_target_grips": [
+        0,
+        2,
+        4,
+        7,
+        10
+      ],
+      "M14_M15_M16_M17_M20_source_force_N": [
+        7.892661542299889,
+        2.4708458368456987,
+        13.836780930039096,
+        11.126954922960344,
+        6.80429457024421
+      ],
+      "J17_actual_deg": -56.686870592943585,
+      "J17_torque_Nm": -1.2174872443883658,
+      "planned_release_modules": [
+        16,
+        17
+      ],
+      "anchor_recovery_active": false
+    },
+    {
+      "t_s": 4.999999999881766,
+      "actual_source_grips": [
+        13,
+        16,
+        17,
+        20
+      ],
+      "actual_target_grips": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "M14_M15_M16_M17_M20_source_force_N": [
+        0.0,
+        0.0,
+        16.17716819640002,
+        5.509735672798975,
+        0.7238831017051721
+      ],
+      "J17_actual_deg": -54.92389452050152,
+      "J17_torque_Nm": -0.2882918838637494,
+      "planned_release_modules": [
+        16,
+        17
+      ],
+      "anchor_recovery_active": false
+    },
+    {
+      "t_s": 7.999999999810825,
+      "actual_source_grips": [
+        13,
+        16,
+        20
+      ],
+      "actual_target_grips": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "M14_M15_M16_M17_M20_source_force_N": [
+        0.0,
+        0.0,
+        18.660207319012077,
+        0.0,
+        1.579546298822329
+      ],
+      "J17_actual_deg": -54.37529753730953,
+      "J17_torque_Nm": -0.2724674564540379,
+      "planned_release_modules": [
+        16,
+        17
+      ],
+      "anchor_recovery_active": false
+    },
+    {
+      "t_s": 9.999999999763531,
+      "actual_source_grips": [
+        13,
+        16,
+        20
+      ],
+      "actual_target_grips": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "M14_M15_M16_M17_M20_source_force_N": [
+        0.0,
+        0.0,
+        18.735133570751472,
+        0.0,
+        1.2774489442561838
+      ],
+      "J17_actual_deg": -54.93126745537408,
+      "J17_torque_Nm": -0.2367030945352866,
+      "planned_release_modules": [
+        16,
+        17
+      ],
+      "anchor_recovery_active": false
+    },
+    {
+      "t_s": 11.149999999736337,
+      "actual_source_grips": [
+        13,
+        16,
+        17
+      ],
+      "actual_target_grips": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "M14_M15_M16_M17_M20_source_force_N": [
+        0.0,
+        0.0,
+        18.013042388242162,
+        2.8019342149544424,
+        0.0
+      ],
+      "J17_actual_deg": -53.651336893798806,
+      "J17_torque_Nm": -0.19450976384081287,
+      "planned_release_modules": [
+        16,
+        17
+      ],
+      "anchor_recovery_active": true
+    },
+    {
+      "t_s": 12.14999999971269,
+      "actual_source_grips": [
+        13,
+        16,
+        17
+      ],
+      "actual_target_grips": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "M14_M15_M16_M17_M20_source_force_N": [
+        0.0,
+        0.0,
+        12.734862033849064,
+        7.080781666716869,
+        0.0
+      ],
+      "J17_actual_deg": -55.995002003125855,
+      "J17_torque_Nm": -0.20902416511219712,
+      "planned_release_modules": [
+        16,
+        17
+      ],
+      "anchor_recovery_active": true
+    }
+  ]
+}

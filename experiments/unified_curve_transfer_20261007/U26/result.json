@@ -1,0 +1,1412 @@
+{
+  "name": "U26",
+  "outcome": "no_actual_body_progress_90s",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 90.0499999978706,
+  "dynamics_wall_seconds": 205.45300000003772,
+  "controller_initial_elapsed_s": 989.7499999842325,
+  "controller_final_elapsed_s": 1079.799999982103,
+  "final_shift_mm": 842.6208582963073,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.31844509335062327,
+    "target_phase_rad": 0.30511307345652455,
+    "source_feedback_phase_rad": 0.0,
+    "target_feedback_phase_rad": 0.0,
+    "source_radius_delta_mm": 0.0,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.0,
+    "phase_origin_shift_mm": 814.0118995682457,
+    "reference_pipe_clearance_mm": 27.29741299641713,
+    "reference_clearance_deficit_mm": 0.08302809796185626,
+    "observed_grip_clearance_range_mm": [
+      23.97857017952681,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 40.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    13,
+    15,
+    16,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    1,
+    2,
+    6,
+    11
+  ],
+  "final_source_modules": [
+    13,
+    14,
+    15,
+    16,
+    20
+  ],
+  "final_target_modules": [
+    0,
+    1,
+    2,
+    6,
+    11
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": -0.023491945290065326,
+  "fixed_rear_M14_M20_mean_x_advance_mm": -0.6520166436615844,
+  "final_centers_mm": [
+    [
+      1166.1371156580342,
+      279.34388155397744,
+      1059.8296963613839
+    ],
+    [
+      1107.9328752803272,
+      278.5186500895891,
+      1084.2084158815555
+    ],
+    [
+      1056.4669934918318,
+      266.9103274655384,
+      1074.188431282982
+    ],
+    [
+      1018.9077903551442,
+      254.13589837584195,
+      1028.4797813902373
+    ],
+    [
+      1016.6629883971905,
+      248.5708052665447,
+      973.9903212633233
+    ],
+    [
+      1050.2344837029275,
+      249.45664415849777,
+      922.7224451219715
+    ],
+    [
+      1098.0110535033868,
+      252.6665627370374,
+      911.4413714372173
+    ],
+    [
+      1147.6963099432573,
+      221.19249359225017,
+      925.0183491331657
+    ],
+    [
+      1182.5021563631335,
+      169.58163728707098,
+      936.5467362949857
+    ],
+    [
+      1177.126429224211,
+      123.95254614655869,
+      929.2985745266399
+    ],
+    [
+      1129.1701160206378,
+      91.19003604177816,
+      915.560884275204
+    ],
+    [
+      1068.3161162715264,
+      77.27266032401025,
+      917.9585091730164
+    ],
+    [
+      1024.6813916805538,
+      89.1109605567124,
+      943.9848266302403
+    ],
+    [
+      1004.4593100212132,
+      87.89964774412672,
+      1000.1026774981698
+    ],
+    [
+      998.2319381061264,
+      64.41194547853527,
+      1058.6913636788404
+    ],
+    [
+      1008.5397729152508,
+      22.73264050120909,
+      1084.4895004329796
+    ],
+    [
+      1020.5679628031903,
+      -39.89102971247027,
+      1075.4703721715473
+    ],
+    [
+      1025.4760542256236,
+      -78.85246895158951,
+      1039.5648455037153
+    ],
+    [
+      1013.8923104146002,
+      -94.62152710276985,
+      979.5363137383623
+    ],
+    [
+      993.2447178230027,
+      -77.07060329348162,
+      933.8029387124159
+    ],
+    [
+      954.7578508534283,
+      -50.29963783911761,
+      928.369150999144
+    ]
+  ],
+  "tail_center_mm": [
+    954.7578508534283,
+    -50.29963783911761,
+    928.369150999144
+  ],
+  "final_q_deg": [
+    -23.842208994595833,
+    67.26917114850927,
+    -40.44500335803822,
+    63.59726586149491,
+    -36.31541780591423,
+    80.59152903203976,
+    41.269618887056524,
+    22.055240395430936,
+    87.70429749806989,
+    44.57308289477631,
+    28.81721621786709,
+    72.04098304682194,
+    -44.663323515308015,
+    20.92319874139312,
+    -78.10269386030704,
+    -6.285408247300896,
+    -68.83129405100522,
+    -23.60021199352834,
+    -68.99042661787726,
+    -85.93863398149742
+  ],
+  "max_actual_joint_deg": 87.75371934144094,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.04539283013598792,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 0.7311542356151889,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 7.669514226482654e-05,
+  "minimum_reference_pipe_clearance_mm": 27.08044668049537,
+  "final_actual_source_grip_modules": [
+    13,
+    14,
+    15,
+    16,
+    20
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    1,
+    2,
+    6,
+    11
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 1113,
+      "negative_frames": 1449
+    },
+    {
+      "joint": 2,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 3,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 4,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 5,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 6,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 7,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 8,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 9,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 10,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 11,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 12,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 13,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 14,
+      "positive_frames": 9006,
+      "negative_frames": 0
+    },
+    {
+      "joint": 15,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 16,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 17,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 18,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 19,
+      "positive_frames": 0,
+      "negative_frames": 9006
+    },
+    {
+      "joint": 20,
+      "positive_frames": 28,
+      "negative_frames": 8949
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014633740627833226,
+      "maximum_tracking_error_deg": 6.273096223994037,
+      "lag_mm": 0.014633740627833226
+    },
+    {
+      "t_s": 25.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 53.05051866958679,
+      "maximum_tracking_error_deg": 3.0535884719047277,
+      "lag_mm": 76.18822482399969
+    },
+    {
+      "t_s": 78.60000000000001,
+      "mode": "advance",
+      "shift_mm": 53.06371846939325,
+      "maximum_tracking_error_deg": 3.0519904793746973,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 158.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 196.92941178541463,
+      "maximum_tracking_error_deg": 3.004319000552725,
+      "lag_mm": 76.18822482399976
+    },
+    {
+      "t_s": 160.60000000000002,
+      "mode": "advance",
+      "shift_mm": 196.94261158522104,
+      "maximum_tracking_error_deg": 3.0091129788576523,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 178.10000000000002,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 219.01982444444445,
+      "maximum_tracking_error_deg": 3.0400203317787136,
+      "lag_mm": 74.92916832089375
+    },
+    {
+      "t_s": 214.60000000000002,
+      "mode": "advance",
+      "shift_mm": 219.0348043115861,
+      "maximum_tracking_error_deg": 3.0089836606940823,
+      "lag_mm": 70.00749999999998
+    },
+    {
+      "t_s": 287.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 369.13378930987756,
+      "maximum_tracking_error_deg": 3.0599713374583786,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 288.1,
+      "mode": "advance",
+      "shift_mm": 369.146989109684,
+      "maximum_tracking_error_deg": 3.040978488354644,
+      "lag_mm": 71.2014246238063
+    },
+    {
+      "t_s": 291.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 371.17162821996965,
+      "maximum_tracking_error_deg": 3.0727730427273277,
+      "lag_mm": 76.1808990537513
+    },
+    {
+      "t_s": 291.6,
+      "mode": "advance",
+      "shift_mm": 371.18488709856837,
+      "maximum_tracking_error_deg": 3.0522587980176303,
+      "lag_mm": 71.19415793235007
+    },
+    {
+      "t_s": 294.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 373.21026936351495,
+      "maximum_tracking_error_deg": 3.0695045868318016,
+      "lag_mm": 76.18096971737242
+    },
+    {
+      "t_s": 312.6,
+      "mode": "advance",
+      "shift_mm": 373.2235276722459,
+      "maximum_tracking_error_deg": 3.012074555685966,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 321.3,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 382.5052005850893,
+      "maximum_tracking_error_deg": 3.0356361534821676,
+      "lag_mm": 60.12785737006043
+    },
+    {
+      "t_s": 321.849999997482,
+      "mode": "advance",
+      "shift_mm": 382.516510146766,
+      "maximum_tracking_error_deg": 3.0123047891045394,
+      "lag_mm": 60.00749999999999
+    },
+    {
+      "t_s": 332.6499999974819,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 398.08267378517485,
+      "maximum_tracking_error_deg": 3.0441239448242507,
+      "lag_mm": 74.85788611220495
+    },
+    {
+      "t_s": 334.1499999974819,
+      "mode": "advance",
+      "shift_mm": 398.10613314207575,
+      "maximum_tracking_error_deg": 3.036631068161724,
+      "lag_mm": 69.88134546910585
+    },
+    {
+      "t_s": 337.599999997482,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 400.84872142329084,
+      "maximum_tracking_error_deg": 3.0378876874188867,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 419.59999999517987,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        10,
+        11
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    },
+    {
+      "t_s": 509.14999999305047,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 400.85442122309735,
+      "observer_rebased_from_mm": 240.85442122309732,
+      "observer_rebased_to_mm": 400.85442122309735,
+      "old_reference_head_arc_mm": 853.0017872840907,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 509.2499999930505,
+      "mode": "advance",
+      "shift_mm": 400.86192122309734,
+      "maximum_tracking_error_deg": 2.9529466983218886,
+      "lag_mm": 0.007499999999993623
+    },
+    {
+      "t_s": 561.8999999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 601.320270824949,
+      "observer_rebased_from_mm": 592.52027082495,
+      "observer_rebased_to_mm": 601.320270824949,
+      "old_reference_head_arc_mm": 369.5465031427234,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 616.8999999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 8,
+      "shared_shift_mm": 796.7831495788782,
+      "physical_progress_unchanged_mm": 0.0,
+      "old_reference_head_arc_mm": 174.34324761689135,
+      "meaning": "reference correspondence repair only; physical progress meter unchanged; captured gripping shape retained"
+    },
+    {
+      "t_s": 617.3999999930504,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        7
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    },
+    {
+      "t_s": 618.7499999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 800.4831495788783,
+      "maximum_tracking_error_deg": 2.40538671715679,
+      "lag_mm": 6.869960683926861
+    },
+    {
+      "t_s": 622.9499999930505,
+      "mode": "advance",
+      "shift_mm": 800.4956495788783,
+      "maximum_tracking_error_deg": 2.71850120053224,
+      "lag_mm": 8.725650026154167
+    },
+    {
+      "t_s": 623.8499999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 800.7368603754103,
+      "maximum_tracking_error_deg": 2.9290717742097674,
+      "lag_mm": 7.907866020353809
+    },
+    {
+      "t_s": 636.4499999930505,
+      "mode": "advance",
+      "shift_mm": 800.7511743557094,
+      "maximum_tracking_error_deg": 2.998889333628622,
+      "lag_mm": 9.70010032532068
+    },
+    {
+      "t_s": 638.9499999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 801.1620033935736,
+      "maximum_tracking_error_deg": 2.9914202593618775,
+      "lag_mm": 10.503098864036982
+    },
+    {
+      "t_s": 645.8499999930505,
+      "mode": "advance",
+      "shift_mm": 802.0509687659542,
+      "maximum_tracking_error_deg": 3.001103341566448,
+      "lag_mm": 11.635528357631308
+    },
+    {
+      "t_s": 646.1999999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 802.1037837449097,
+      "maximum_tracking_error_deg": 3.000810726870673,
+      "lag_mm": 11.688343336586904
+    },
+    {
+      "t_s": 646.3499999930505,
+      "mode": "advance",
+      "shift_mm": 802.1262306345743,
+      "maximum_tracking_error_deg": 3.0007958216097963,
+      "lag_mm": 11.622284592424428
+    },
+    {
+      "t_s": 650.7499999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 802.931175884782,
+      "maximum_tracking_error_deg": 3.0019940144258643,
+      "lag_mm": 12.149399978324796
+    },
+    {
+      "t_s": 650.8499999930505,
+      "mode": "advance",
+      "shift_mm": 802.9461628874758,
+      "maximum_tracking_error_deg": 3.0018194979061623,
+      "lag_mm": 12.12685289302579
+    },
+    {
+      "t_s": 652.1999999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 803.1553030626145,
+      "maximum_tracking_error_deg": 3.0021425956286207,
+      "lag_mm": 12.27818267909362
+    },
+    {
+      "t_s": 652.3499999930505,
+      "mode": "advance",
+      "shift_mm": 803.1777627386803,
+      "maximum_tracking_error_deg": 3.001917351186481,
+      "lag_mm": 11.76594116390684
+    },
+    {
+      "t_s": 655.3499999930505,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 804.1663165114143,
+      "maximum_tracking_error_deg": 3.0018846840306472,
+      "lag_mm": 12.467515702990799
+    },
+    {
+      "t_s": 655.8999999930504,
+      "mode": "advance",
+      "shift_mm": 804.2162440504082,
+      "maximum_tracking_error_deg": 3.0022605447742445,
+      "lag_mm": 12.008443778307454
+    },
+    {
+      "t_s": 656.8999999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 804.534037187011,
+      "maximum_tracking_error_deg": 3.001461755993948,
+      "lag_mm": 12.50799893473393
+    },
+    {
+      "t_s": 657.8999999930504,
+      "mode": "advance",
+      "shift_mm": 804.6292544692622,
+      "maximum_tracking_error_deg": 3.002142669167625,
+      "lag_mm": 12.189407307548441
+    },
+    {
+      "t_s": 658.8999999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 804.9324081103891,
+      "maximum_tracking_error_deg": 3.003020435591364,
+      "lag_mm": 12.623623741464696
+    },
+    {
+      "t_s": 659.3499999930505,
+      "mode": "advance",
+      "shift_mm": 804.9870895469558,
+      "maximum_tracking_error_deg": 3.003441511861064,
+      "lag_mm": 12.070353234484758
+    },
+    {
+      "t_s": 662.2499999930504,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 805.7830810060112,
+      "maximum_tracking_error_deg": 3.0030933079774815,
+      "lag_mm": 12.033094792643055
+    },
+    {
+      "t_s": 706.8999999909211,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 806.3515695887528,
+      "physical_progress_unchanged_mm": -7.015599737615347,
+      "observed_grip_clearance_enabled": true,
+      "registered_max_center_error_mm": 3.2615375190910636,
+      "local_reference_shift_origin_mm": 806.3515695887528,
+      "local_pipe_progress_origin_mm": [
+        -1.7925169156582377,
+        3.0466986050362093
+      ],
+      "old_reference_head_arc_mm": 0.5606613488242651,
+      "meaning": "reference correspondence repair only; physical progress meter unchanged; captured gripping shape retained"
+    },
+    {
+      "t_s": 706.9999999909211,
+      "mode": "advance",
+      "shift_mm": 806.3603031434794,
+      "maximum_tracking_error_deg": 2.9970081018058714,
+      "lag_mm": 0.008733554726636505
+    },
+    {
+      "t_s": 712.4999999909211,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 808.8547152288768,
+      "maximum_tracking_error_deg": 2.997809724074575,
+      "lag_mm": 3.114502809949644
+    },
+    {
+      "t_s": 717.3999999909211,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        9
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    },
+    {
+      "t_s": 725.4999999909211,
+      "mode": "advance",
+      "shift_mm": 808.8677763903612,
+      "maximum_tracking_error_deg": 2.999786286732422,
+      "lag_mm": 6.73530571851276
+    },
+    {
+      "t_s": 726.449999990921,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 809.1066075238771,
+      "maximum_tracking_error_deg": 3.017383180227809,
+      "lag_mm": 7.339540010265761
+    },
+    {
+      "t_s": 729.4999999909211,
+      "mode": "advance",
+      "shift_mm": 809.1172389905089,
+      "maximum_tracking_error_deg": 3.008106004412697,
+      "lag_mm": 8.349002785563728
+    },
+    {
+      "t_s": 730.3999999909211,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 809.312460167193,
+      "maximum_tracking_error_deg": 3.0016573229266696,
+      "lag_mm": 8.08418050906808
+    },
+    {
+      "t_s": 737.9999999909211,
+      "mode": "advance",
+      "shift_mm": 809.3271253050178,
+      "maximum_tracking_error_deg": 3.003068825201615,
+      "lag_mm": 4.519129990671824
+    },
+    {
+      "t_s": 738.449999990921,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 809.4538303297172,
+      "maximum_tracking_error_deg": 2.9909111306146245,
+      "lag_mm": 4.505398594907097
+    },
+    {
+      "t_s": 740.9999999909211,
+      "mode": "advance",
+      "shift_mm": 809.470942921639,
+      "maximum_tracking_error_deg": 3.004399728998737,
+      "lag_mm": 4.486081806339025
+    },
+    {
+      "t_s": 743.449999990921,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 810.2577235049266,
+      "maximum_tracking_error_deg": 3.0003327970969065,
+      "lag_mm": 5.6812415625525094
+    },
+    {
+      "t_s": 743.9999999909211,
+      "mode": "advance",
+      "shift_mm": 810.2717778615781,
+      "maximum_tracking_error_deg": 3.0043088190854514,
+      "lag_mm": 5.776307530349278
+    },
+    {
+      "t_s": 745.449999990921,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 810.6849025812191,
+      "maximum_tracking_error_deg": 2.993711745373444,
+      "lag_mm": 6.50016201648017
+    },
+    {
+      "t_s": 748.9999999909211,
+      "mode": "advance",
+      "shift_mm": 810.6969186411444,
+      "maximum_tracking_error_deg": 3.002788144631371,
+      "lag_mm": 7.267313223339635
+    },
+    {
+      "t_s": 750.3999999909211,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 811.036792294781,
+      "maximum_tracking_error_deg": 3.0015012985371907,
+      "lag_mm": 7.915498600632599
+    },
+    {
+      "t_s": 750.9999999909211,
+      "mode": "advance",
+      "shift_mm": 811.0533200176781,
+      "maximum_tracking_error_deg": 3.0043574864319527,
+      "lag_mm": 8.012970474579687
+    },
+    {
+      "t_s": 758.9999999909211,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 812.5397915213589,
+      "maximum_tracking_error_deg": 3.0013861597245186,
+      "lag_mm": 10.504212312442442
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 814.0118995682457,
+      "physical_progress_unchanged_mm": -16.372102304241082,
+      "observed_grip_clearance_enabled": true,
+      "registered_max_center_error_mm": 5.180281967960043,
+      "local_reference_shift_origin_mm": 814.0118995682457,
+      "local_pipe_progress_origin_mm": [
+        -4.183144908893377,
+        2.1407977785814767
+      ],
+      "old_reference_head_arc_mm": -11.964033698098287,
+      "meaning": "reference correspondence repair only; physical progress meter unchanged; captured gripping shape retained"
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "local_yield_unload",
+      "joint": 4,
+      "modules": [
+        3,
+        4
+      ],
+      "side": 1,
+      "load_Nm": 2.3549999999999978,
+      "tracking_deg": 2.9991881506413107,
+      "remaining_source": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2,
+        7,
+        10
+      ],
+      "action": "outward local plateau and endpoint-anchored curvature relief; other observed grasps retain their loads"
+    },
+    {
+      "t_s": 796.9499999887917,
+      "mode": "local_yield_unload_reshape_with_shift_braked",
+      "shift_mm": 814.0118995682457,
+      "maximum_tracking_error_deg": 2.9991881506413107,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 800.4999999887916,
+      "mode": "receiving_local_unload_observed",
+      "current_joint": 4,
+      "actual_force_N": 5.199326709255513
+    },
+    {
+      "t_s": 800.4999999887916,
+      "mode": "front_carries_rear_span_unload",
+      "joint": 17,
+      "modules": [
+        16,
+        17
+      ],
+      "current_source_force_N": 24.96373585299944,
+      "remaining_source": [
+        13,
+        14,
+        15,
+        20
+      ],
+      "receiving_grasps": [
+        0,
+        2,
+        4,
+        7,
+        10
+      ],
+      "meaning": "curve lifts a measured posterior span; source contact must actually disappear before feed"
+    },
+    {
+      "t_s": 804.7499999887916,
+      "mode": "rear_contact_lift_observed_front_carries",
+      "lifted_modules": [
+        17
+      ],
+      "retained_loaded_neighbors": [
+        16
+      ],
+      "remaining_source": [
+        13,
+        16,
+        20
+      ],
+      "receiving_grasps": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "meaning": "lifted span has no intersecting source contact; loaded neighbour stays a holder"
+    },
+    {
+      "t_s": 804.7499999887916,
+      "mode": "local_yield_feed",
+      "released_force_N": 18.904960666249483,
+      "current_joint": 17,
+      "angle_deg": -54.36989541777059,
+      "meaning": "local unloading observed; now resume the existing bounded common shift"
+    },
+    {
+      "t_s": 804.7499999887916,
+      "mode": "local_yield_feed_reshape_with_shift_braked",
+      "shift_mm": 814.0118995682457,
+      "maximum_tracking_error_deg": 0.4467662608247668,
+      "lag_mm": 1.4514404381563568
+    },
+    {
+      "t_s": 839.7499999887916,
+      "mode": "feed_insufficient_choose_next_rear_span",
+      "actual_material_mm": -13.702733749735645,
+      "meaning": "timeout is no successful handover"
+    },
+    {
+      "t_s": 839.7499999887916,
+      "mode": "front_carries_rear_span_unload",
+      "joint": 14,
+      "modules": [
+        13,
+        14
+      ],
+      "current_source_force_N": 7.69371138098468,
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "receiving_grasps": [
+        0,
+        2,
+        4,
+        5,
+        7
+      ],
+      "meaning": "curve lifts a measured posterior span; source contact must actually disappear before feed"
+    },
+    {
+      "t_s": 839.7499999887916,
+      "mode": "local_yield_unload_reshape_with_shift_braked",
+      "shift_mm": 814.2574079349596,
+      "maximum_tracking_error_deg": 0.5508936950465236,
+      "lag_mm": 14.48261429246785
+    },
+    {
+      "t_s": 840.0999999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        13,
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 840.2999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 840.3499999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 840.5999999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 840.6499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 840.7999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 840.8499999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 840.9499999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 840.9999999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 841.0499999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 841.0999999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 841.1999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 841.2499999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 841.3999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 841.4499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 841.6499999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 841.6999999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 841.8499999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 841.8499999887916,
+      "mode": "rear_contact_lift_observed_front_carries",
+      "lifted_modules": [
+        13,
+        14
+      ],
+      "retained_loaded_neighbors": [],
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "receiving_grasps": [
+        0,
+        2,
+        7
+      ],
+      "meaning": "lifted span has no intersecting source contact; loaded neighbour stays a holder"
+    },
+    {
+      "t_s": 841.8499999887916,
+      "mode": "local_yield_feed",
+      "released_force_N": 0.0,
+      "current_joint": 14,
+      "angle_deg": 51.22332776259615,
+      "meaning": "local unloading observed; now resume the existing bounded common shift"
+    },
+    {
+      "t_s": 841.8499999887916,
+      "mode": "local_yield_feed_reshape_with_shift_braked",
+      "shift_mm": 814.2574079349596,
+      "maximum_tracking_error_deg": 0.3561658712469692,
+      "lag_mm": 5.692297100088169
+    },
+    {
+      "t_s": 841.8999999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 842.0499999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 842.0999999887916,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 842.2499999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 842.2999999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 842.3999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 842.4499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 842.5999999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 842.6499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 842.7499999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 842.7999999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 842.8999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 842.9499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 843.0999999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 843.1499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 843.2499999887916,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 843.2999999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 843.3999999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 843.4499999887917,
+      "mode": "local_yield_pause_restore_anchors",
+      "remaining_source": [
+        15,
+        16,
+        20
+      ],
+      "remaining_target": [
+        0,
+        2
+      ]
+    },
+    {
+      "t_s": 843.5499999887917,
+      "mode": "local_yield_anchors_recovered"
+    },
+    {
+      "t_s": 844.0499999887917,
+      "mode": "local_yield_feed_advance",
+      "shift_mm": 814.2649079349596,
+      "maximum_tracking_error_deg": 0.3667864577514384,
+      "lag_mm": 5.47983185136323
+    },
+    {
+      "t_s": 850.9499999887917,
+      "mode": "local_yield_regrip",
+      "actual_material_mm": 8.236750987679605,
+      "action": "capture the current advanced shape with half the former local pressure; do not restore old joint pose"
+    },
+    {
+      "t_s": 850.9499999887917,
+      "mode": "local_yield_regrip_advance",
+      "shift_mm": 822.4792634288206,
+      "maximum_tracking_error_deg": 0.7277006201470149,
+      "lag_mm": 5.677401606269573
+    },
+    {
+      "t_s": 858.9499999887917,
+      "mode": "local_yield_completed",
+      "current_local_force_N": 0.0
+    },
+    {
+      "t_s": 858.9499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 826.0246174822959,
+      "maximum_tracking_error_deg": 0.6848052022637497,
+      "lag_mm": 8.535781559075076
+    },
+    {
+      "t_s": 878.9499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 836.9551380625815,
+      "maximum_tracking_error_deg": 0.9670339525534832,
+      "lag_mm": 9.78344279339558
+    },
+    {
+      "t_s": 882.0499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 836.9663594272178,
+      "maximum_tracking_error_deg": 0.9896982880617472,
+      "lag_mm": 10.004571419864435
+    },
+    {
+      "t_s": 882.4499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 837.0317617717023,
+      "maximum_tracking_error_deg": 0.9946205988943376,
+      "lag_mm": 10.028673543000881
+    },
+    {
+      "t_s": 891.5499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 837.0424921994749,
+      "maximum_tracking_error_deg": 0.999322325529713,
+      "lag_mm": 0.5221683317373875
+    },
+    {
+      "t_s": 894.0499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 838.9110718852388,
+      "maximum_tracking_error_deg": 1.0123930241103067,
+      "lag_mm": 4.344538450858221
+    },
+    {
+      "t_s": 917.4499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 839.001362903346,
+      "maximum_tracking_error_deg": 0.8368199320970222,
+      "lag_mm": 13.51415965281079
+    },
+    {
+      "t_s": 918.5499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 839.3413068821593,
+      "maximum_tracking_error_deg": 0.8136041124986764,
+      "lag_mm": 13.978813538394045
+    },
+    {
+      "t_s": 931.4499999887917,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 839.5892992211437,
+      "maximum_tracking_error_deg": 0.7959466003922528,
+      "lag_mm": 17.945809615949642
+    },
+    {
+      "t_s": 934.9499999887917,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 840.2877648855623,
+      "maximum_tracking_error_deg": 0.9304995503499833,
+      "lag_mm": 17.842963797468673
+    },
+    {
+      "t_s": 1042.4999999842325,
+      "mode": "local_yield_completed_advance",
+      "shift_mm": 840.7565741095381,
+      "maximum_tracking_error_deg": 1.0582523750467658,
+      "lag_mm": 19.538273430315378
+    },
+    {
+      "t_s": 1046.9999999842325,
+      "mode": "local_yield_completed_reshape_with_shift_braked",
+      "shift_mm": 841.5879787083595,
+      "maximum_tracking_error_deg": 1.2312084733903548,
+      "lag_mm": 19.592250855477772
+    }
+  ],
+  "curve_feedback_updates": 2157
+}

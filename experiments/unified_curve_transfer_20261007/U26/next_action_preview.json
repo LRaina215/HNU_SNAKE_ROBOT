@@ -1,0 +1,28 @@
+{
+  "source": "One requested read-only command from the same complete U26 saved state; no mj_step and no physical mutation",
+  "selected_stage": "unload",
+  "role": "rear_release",
+  "joint": 15,
+  "release_modules": [
+    14,
+    15
+  ],
+  "remaining_source": [
+    13,
+    16,
+    20
+  ],
+  "receiving_grasps": [
+    0,
+    1,
+    2,
+    6,
+    11
+  ],
+  "retained_old_free_parameters": [
+    0.22698309995109353
+  ],
+  "first_ctrl_kept": true,
+  "physical_history_material_mm": -8.276560817751026,
+  "reference_shift_mm": 842.6208582963073
+}

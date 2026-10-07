@@ -1,0 +1,236 @@
+{
+  "method": "Read-only next-step local solve at full saved U10/U12 end states. Remove one existing objective group at a time only in offline solves; no new dynamics or physical ctrl assignment.",
+  "reports": [
+    {
+      "case": "U10",
+      "requested_roll_rad_s": [
+        -0.0008400567323019904,
+        0.005611075081324094
+      ],
+      "groups": {
+        "source_modules": [
+          13,
+          15,
+          16,
+          17,
+          20
+        ],
+        "target_modules": [
+          0,
+          2,
+          4,
+          7,
+          10
+        ]
+      },
+      "variants": [
+        {
+          "omitted": null,
+          "source_mean_spin_rad_s": 0.006901087604820222,
+          "target_mean_spin_rad_s": -0.0015198473868567076,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0005707234145221184,
+            "contact_pressure": 4.6652013224367354e-05,
+            "contact_tangent_stationary": 0.00011065474741317366,
+            "joint_limit_release": 3.002257712215607e-06,
+            "material_spin": 2.6599786650008643e-05,
+            "tangent_motion": 0.00035896572769920817
+          }
+        },
+        {
+          "omitted": "center_motion",
+          "source_mean_spin_rad_s": 0.0022206323361931056,
+          "target_mean_spin_rad_s": 0.0036454280947319194,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0010228359598263835,
+            "contact_pressure": 1.87086348730766e-06,
+            "contact_tangent_stationary": 4.853756816605601e-06,
+            "joint_limit_release": 8.945959007953555e-07,
+            "material_spin": 2.7501111512464367e-06,
+            "tangent_motion": 0.00037982360067080097
+          }
+        },
+        {
+          "omitted": "contact_pressure",
+          "source_mean_spin_rad_s": -0.0001767649071844915,
+          "target_mean_spin_rad_s": 0.0026752495203809746,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0003934707472902935,
+            "contact_pressure": 0.0010481767302145655,
+            "contact_tangent_stationary": 0.00017502125632377696,
+            "joint_limit_release": 2.198743740316147e-06,
+            "material_spin": 1.867305459491412e-05,
+            "tangent_motion": 0.00034643973619388107
+          }
+        },
+        {
+          "omitted": "contact_tangent_stationary",
+          "source_mean_spin_rad_s": 0.008441263531892609,
+          "target_mean_spin_rad_s": -0.004219342414908593,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.00045539388956362427,
+            "contact_pressure": 7.42021711772822e-05,
+            "contact_tangent_stationary": 0.0002887878402311261,
+            "joint_limit_release": 5.172386453266095e-06,
+            "material_spin": 5.2311623309252934e-05,
+            "tangent_motion": 0.00035519774384886404
+          }
+        },
+        {
+          "omitted": "joint_limit_release",
+          "source_mean_spin_rad_s": 0.0072761661716175124,
+          "target_mean_spin_rad_s": -0.001480831964201543,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0005688711053973309,
+            "contact_pressure": 4.6093639877205455e-05,
+            "contact_tangent_stationary": 0.00011161360437456247,
+            "joint_limit_release": 3.145828307163294e-06,
+            "material_spin": 2.7828889723155673e-05,
+            "tangent_motion": 0.00035906888207848896
+          }
+        },
+        {
+          "omitted": "material_spin",
+          "source_mean_spin_rad_s": 0.01687953853780911,
+          "target_mean_spin_rad_s": -0.0031948961451773216,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0005370851330746789,
+            "contact_pressure": 3.809193003821474e-05,
+            "contact_tangent_stationary": 0.0001328147572231555,
+            "joint_limit_release": 6.089271003065421e-06,
+            "material_spin": 7.696133117696549e-05,
+            "tangent_motion": 0.0003592701973522131
+          }
+        },
+        {
+          "omitted": "tangent_motion",
+          "source_mean_spin_rad_s": 0.00648315847604467,
+          "target_mean_spin_rad_s": -0.002419928835490084,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0005756169987642955,
+            "contact_pressure": 4.279054932430167e-05,
+            "contact_tangent_stationary": 0.00010748768361387839,
+            "joint_limit_release": 3.2160420113429016e-06,
+            "material_spin": 2.637422910934807e-05,
+            "tangent_motion": 0.0003637422251522003
+          }
+        }
+      ]
+    },
+    {
+      "case": "U12",
+      "requested_roll_rad_s": [
+        -0.03382298686411627,
+        -0.0031741942491829048
+      ],
+      "groups": {
+        "source_modules": [
+          13,
+          15,
+          17,
+          20
+        ],
+        "target_modules": [
+          0,
+          2,
+          5,
+          8,
+          12
+        ]
+      },
+      "variants": [
+        {
+          "omitted": null,
+          "source_mean_spin_rad_s": -0.008559875431053809,
+          "target_mean_spin_rad_s": -0.004455128976447247,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0010851286987042102,
+            "contact_pressure": 2.374332269182651e-05,
+            "contact_tangent_stationary": 1.9827583666745898e-05,
+            "joint_limit_release": 9.51540417041926e-07,
+            "material_spin": 0.00011075431936657708,
+            "tangent_motion": 0.0015860734155391215
+          }
+        },
+        {
+          "omitted": "center_motion",
+          "source_mean_spin_rad_s": -0.020211616316495977,
+          "target_mean_spin_rad_s": -0.006331742582662381,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.001304530040207701,
+            "contact_pressure": 4.823628322531873e-06,
+            "contact_tangent_stationary": 1.1685510130761801e-05,
+            "joint_limit_release": 2.4969450748555837e-06,
+            "material_spin": 4.514305157523385e-05,
+            "tangent_motion": 0.0015969783459558581
+          }
+        },
+        {
+          "omitted": "contact_pressure",
+          "source_mean_spin_rad_s": -0.011363022624686045,
+          "target_mean_spin_rad_s": -0.009775078586099193,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0009759011362452969,
+            "contact_pressure": 0.0006070780124029134,
+            "contact_tangent_stationary": 2.4579506159303117e-05,
+            "joint_limit_release": 2.5523885832227338e-06,
+            "material_spin": 9.461544126341864e-05,
+            "tangent_motion": 0.0016123745124122983
+          }
+        },
+        {
+          "omitted": "contact_tangent_stationary",
+          "source_mean_spin_rad_s": -0.0077677046518459195,
+          "target_mean_spin_rad_s": -0.004633165614999919,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0010623819168884905,
+            "contact_pressure": 2.4657845885451383e-05,
+            "contact_tangent_stationary": 6.0599282435310335e-05,
+            "joint_limit_release": 8.970036740563144e-07,
+            "material_spin": 0.00012508081706441657,
+            "tangent_motion": 0.0015789591538838217
+          }
+        },
+        {
+          "omitted": "joint_limit_release",
+          "source_mean_spin_rad_s": -0.008748610987833123,
+          "target_mean_spin_rad_s": -0.004508092223189,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.00108569550403688,
+            "contact_pressure": 2.386929050022747e-05,
+            "contact_tangent_stationary": 1.9718564408576733e-05,
+            "joint_limit_release": 9.865185490292993e-07,
+            "material_spin": 0.00010931517205808121,
+            "tangent_motion": 0.0015868528073819306
+          }
+        },
+        {
+          "omitted": "material_spin",
+          "source_mean_spin_rad_s": 0.0329511072586289,
+          "target_mean_spin_rad_s": 0.0003667730676049405,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0009510637184649498,
+            "contact_pressure": 2.255973930489311e-05,
+            "contact_tangent_stationary": 7.84920761928358e-05,
+            "joint_limit_release": 6.991097918669104e-06,
+            "material_spin": 0.0006707901581480099,
+            "tangent_motion": 0.0015037367232465535
+          }
+        },
+        {
+          "omitted": "tangent_motion",
+          "source_mean_spin_rad_s": -0.014574745413311368,
+          "target_mean_spin_rad_s": -0.004205331720055756,
+          "weighted_task_squared_errors": {
+            "center_motion": 0.0011026411510353668,
+            "contact_pressure": 2.9089911867556424e-05,
+            "contact_tangent_stationary": 1.9171761856009506e-05,
+            "joint_limit_release": 2.922496588415049e-06,
+            "material_spin": 7.008273300684764e-05,
+            "tangent_motion": 0.0016216363424490833
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "window_s": [
+    3.5499999999160536,
+    38.54999999908841
+  ],
+  "continuous_support_groups": [
+    [
+      13,
+      14,
+      15,
+      16,
+      17,
+      20
+    ],
+    [
+      0,
+      2,
+      7
+    ]
+  ],
+  "actual_material_spin_rad_s": [
+    -8.32544518808796e-06,
+    -0.0021239114830109997
+  ],
+  "sides": [
+    {
+      "side": "source",
+      "requested_spin_rad_s": 0.009556557309162068,
+      "solved_spin_rad_s": 0.0008934571970698273,
+      "requested_center_axis_mm_s": 0.0917237550053451,
+      "actual_center_axis_mm_s": -0.022934080142928793
+    },
+    {
+      "side": "target",
+      "requested_spin_rad_s": -0.008191621634859215,
+      "solved_spin_rad_s": -0.0005624639269188531,
+      "requested_center_axis_mm_s": -0.06858007948916836,
+      "actual_center_axis_mm_s": -0.031749553128845615
+    }
+  ]
+}

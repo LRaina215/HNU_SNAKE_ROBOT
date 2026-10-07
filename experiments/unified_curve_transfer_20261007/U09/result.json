@@ -1,0 +1,509 @@
+{
+  "name": "U09",
+  "outcome": "target_support_below_two_1s",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 167.44999999604033,
+  "dynamics_wall_seconds": 492.21899999998277,
+  "controller_initial_elapsed_s": 509.14999999305047,
+  "controller_final_elapsed_s": 676.5999999890907,
+  "final_shift_mm": 1025.8537345250584,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.7054023335415498,
+    "target_phase_rad": 0.6829663554470845,
+    "source_feedback_phase_rad": -0.856560092758549,
+    "target_feedback_phase_rad": -0.8229535673070439,
+    "source_radius_delta_mm": -1.6083129732901618,
+    "target_radius_delta_mm": -0.25,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 1.0,
+    "phase_origin_shift_mm": 888.1837470096665,
+    "reference_pipe_clearance_mm": 30.26966368618838,
+    "maximum_route_clearance_correction_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    13,
+    18
+  ],
+  "initial_target_modules": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    7,
+    8,
+    13
+  ],
+  "final_source_modules": [
+    14,
+    15,
+    20
+  ],
+  "final_target_modules": [],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": -20.973054499465622,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 86.17315445658618,
+  "final_centers_mm": [
+    [
+      1015.0526707218056,
+      276.33016027263875,
+      922.9706250165675
+    ],
+    [
+      1007.4897151342083,
+      231.27193902065335,
+      877.89370469686
+    ],
+    [
+      1018.5078831735314,
+      201.12117127579478,
+      827.2835888521586
+    ],
+    [
+      1059.427552758958,
+      180.2960471803635,
+      798.6089189194413
+    ],
+    [
+      1114.681067131318,
+      183.77169112821915,
+      799.6185516943908
+    ],
+    [
+      1153.4978553165531,
+      210.78113760187148,
+      828.6190977787448
+    ],
+    [
+      1186.645553623807,
+      196.43403346130032,
+      865.4066072185913
+    ],
+    [
+      1185.9241075871364,
+      155.30760898192062,
+      889.3908107082643
+    ],
+    [
+      1148.8096365340539,
+      115.19884748745412,
+      887.4360422285947
+    ],
+    [
+      1105.6654567178261,
+      99.64754580860787,
+      854.5415559723979
+    ],
+    [
+      1058.3945496884107,
+      97.71583269942153,
+      863.4921803320597
+    ],
+    [
+      1022.3121210480851,
+      97.09692770416054,
+      914.2433864527458
+    ],
+    [
+      1011.7409884628876,
+      105.35391120719072,
+      972.5277663127785
+    ],
+    [
+      1014.456331234057,
+      84.85916015918278,
+      1028.5847064845711
+    ],
+    [
+      1018.0675539685706,
+      40.645252270720476,
+      1074.1536359722063
+    ],
+    [
+      1016.9325693708445,
+      -12.293657359688893,
+      1085.3874317163954
+    ],
+    [
+      1025.162467225734,
+      -64.4666649150157,
+      1058.9787993642672
+    ],
+    [
+      1038.3222903018982,
+      -85.59158318537175,
+      1010.472141213009
+    ],
+    [
+      1040.5154253515589,
+      -76.67340747261453,
+      947.4618709803005
+    ],
+    [
+      1026.7209213731544,
+      -43.14965041459153,
+      917.6936208444431
+    ],
+    [
+      979.0245478777542,
+      -2.7205775420427987,
+      915.8042346126515
+    ]
+  ],
+  "tail_center_mm": [
+    979.0245478777542,
+    -2.7205775420427987,
+    915.8042346126515
+  ],
+  "final_q_deg": [
+    11.377853773922489,
+    43.385505586445596,
+    65.87469763669576,
+    61.707427256337574,
+    61.35540991803304,
+    -73.87259050096011,
+    84.8416741452749,
+    -64.0604780590034,
+    57.90617795905872,
+    83.4228695653853,
+    30.19534522601837,
+    43.97803437331739,
+    -44.26318786905,
+    19.209042045289134,
+    -65.8845765144393,
+    47.43523277062295,
+    -64.60075296544863,
+    18.336003982395592,
+    -86.68857839166239,
+    -28.218797322448
+  ],
+  "max_actual_joint_deg": 88.48632704074831,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 3.545186606414855,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 0.00015312766461772487,
+  "minimum_reference_pipe_clearance_mm": 29.760514352050293,
+  "final_actual_source_grip_modules": [
+    14,
+    15,
+    20
+  ],
+  "final_actual_target_grip_modules": [],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 6179,
+      "negative_frames": 6783
+    },
+    {
+      "joint": 2,
+      "positive_frames": 16621,
+      "negative_frames": 107
+    },
+    {
+      "joint": 3,
+      "positive_frames": 7325,
+      "negative_frames": 9233
+    },
+    {
+      "joint": 4,
+      "positive_frames": 16720,
+      "negative_frames": 17
+    },
+    {
+      "joint": 5,
+      "positive_frames": 8130,
+      "negative_frames": 8564
+    },
+    {
+      "joint": 6,
+      "positive_frames": 15797,
+      "negative_frames": 904
+    },
+    {
+      "joint": 7,
+      "positive_frames": 9341,
+      "negative_frames": 7148
+    },
+    {
+      "joint": 8,
+      "positive_frames": 2025,
+      "negative_frames": 14652
+    },
+    {
+      "joint": 9,
+      "positive_frames": 13772,
+      "negative_frames": 2727
+    },
+    {
+      "joint": 10,
+      "positive_frames": 6259,
+      "negative_frames": 10430
+    },
+    {
+      "joint": 11,
+      "positive_frames": 13759,
+      "negative_frames": 2867
+    },
+    {
+      "joint": 12,
+      "positive_frames": 16744,
+      "negative_frames": 0
+    },
+    {
+      "joint": 13,
+      "positive_frames": 1439,
+      "negative_frames": 15090
+    },
+    {
+      "joint": 14,
+      "positive_frames": 14133,
+      "negative_frames": 2595
+    },
+    {
+      "joint": 15,
+      "positive_frames": 566,
+      "negative_frames": 16135
+    },
+    {
+      "joint": 16,
+      "positive_frames": 7724,
+      "negative_frames": 8903
+    },
+    {
+      "joint": 17,
+      "positive_frames": 31,
+      "negative_frames": 16706
+    },
+    {
+      "joint": 18,
+      "positive_frames": 1931,
+      "negative_frames": 14747
+    },
+    {
+      "joint": 19,
+      "positive_frames": 414,
+      "negative_frames": 15982
+    },
+    {
+      "joint": 20,
+      "positive_frames": 8299,
+      "negative_frames": 7897
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014633740627833226,
+      "maximum_tracking_error_deg": 6.273096223994037,
+      "lag_mm": 0.014633740627833226
+    },
+    {
+      "t_s": 25.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 53.05051866958679,
+      "maximum_tracking_error_deg": 3.0535884719047277,
+      "lag_mm": 76.18822482399969
+    },
+    {
+      "t_s": 78.60000000000001,
+      "mode": "advance",
+      "shift_mm": 53.06371846939325,
+      "maximum_tracking_error_deg": 3.0519904793746973,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 158.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 196.92941178541463,
+      "maximum_tracking_error_deg": 3.004319000552725,
+      "lag_mm": 76.18822482399976
+    },
+    {
+      "t_s": 160.60000000000002,
+      "mode": "advance",
+      "shift_mm": 196.94261158522104,
+      "maximum_tracking_error_deg": 3.0091129788576523,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 178.10000000000002,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 219.01982444444445,
+      "maximum_tracking_error_deg": 3.0400203317787136,
+      "lag_mm": 74.92916832089375
+    },
+    {
+      "t_s": 214.60000000000002,
+      "mode": "advance",
+      "shift_mm": 219.0348043115861,
+      "maximum_tracking_error_deg": 3.0089836606940823,
+      "lag_mm": 70.00749999999998
+    },
+    {
+      "t_s": 287.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 369.13378930987756,
+      "maximum_tracking_error_deg": 3.0599713374583786,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 288.1,
+      "mode": "advance",
+      "shift_mm": 369.146989109684,
+      "maximum_tracking_error_deg": 3.040978488354644,
+      "lag_mm": 71.2014246238063
+    },
+    {
+      "t_s": 291.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 371.17162821996965,
+      "maximum_tracking_error_deg": 3.0727730427273277,
+      "lag_mm": 76.1808990537513
+    },
+    {
+      "t_s": 291.6,
+      "mode": "advance",
+      "shift_mm": 371.18488709856837,
+      "maximum_tracking_error_deg": 3.0522587980176303,
+      "lag_mm": 71.19415793235007
+    },
+    {
+      "t_s": 294.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 373.21026936351495,
+      "maximum_tracking_error_deg": 3.0695045868318016,
+      "lag_mm": 76.18096971737242
+    },
+    {
+      "t_s": 312.6,
+      "mode": "advance",
+      "shift_mm": 373.2235276722459,
+      "maximum_tracking_error_deg": 3.012074555685966,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 321.3,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 382.5052005850893,
+      "maximum_tracking_error_deg": 3.0356361534821676,
+      "lag_mm": 60.12785737006043
+    },
+    {
+      "t_s": 321.849999997482,
+      "mode": "advance",
+      "shift_mm": 382.516510146766,
+      "maximum_tracking_error_deg": 3.0123047891045394,
+      "lag_mm": 60.00749999999999
+    },
+    {
+      "t_s": 332.6499999974819,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 398.08267378517485,
+      "maximum_tracking_error_deg": 3.0441239448242507,
+      "lag_mm": 74.85788611220495
+    },
+    {
+      "t_s": 334.1499999974819,
+      "mode": "advance",
+      "shift_mm": 398.10613314207575,
+      "maximum_tracking_error_deg": 3.036631068161724,
+      "lag_mm": 69.88134546910585
+    },
+    {
+      "t_s": 337.599999997482,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 400.84872142329084,
+      "maximum_tracking_error_deg": 3.0378876874188867,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 419.59999999517987,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        10,
+        11
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    },
+    {
+      "t_s": 509.14999999305047,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 400.85442122309735,
+      "observer_rebased_from_mm": 240.85442122309732,
+      "observer_rebased_to_mm": 400.85442122309735,
+      "old_reference_head_arc_mm": 853.0017872840907,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 509.2499999930505,
+      "mode": "advance",
+      "shift_mm": 400.86192122309734,
+      "maximum_tracking_error_deg": 2.9529466983218886,
+      "lag_mm": 0.007499999999993623
+    },
+    {
+      "t_s": 561.8999999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 9,
+      "shared_shift_mm": 601.320270824949,
+      "observer_rebased_from_mm": 592.52027082495,
+      "observer_rebased_to_mm": 601.320270824949,
+      "old_reference_head_arc_mm": 369.5465031427234,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 616.8999999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 12,
+      "target_node": 8,
+      "shared_shift_mm": 796.7881495788782,
+      "observer_rebased_from_mm": 774.7881495788785,
+      "observer_rebased_to_mm": 796.7881495788782,
+      "old_reference_head_arc_mm": 174.34324761689135,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    },
+    {
+      "t_s": 640.2499999930504,
+      "mode": "repair_external_supported_route",
+      "source_node": 13,
+      "target_node": 8,
+      "shared_shift_mm": 888.1837470096665,
+      "observer_rebased_from_mm": 866.7887470096667,
+      "observer_rebased_to_mm": 888.1837470096665,
+      "old_reference_head_arc_mm": -9.710067851425697,
+      "meaning": "reference correspondence repair only; no physical progress claimed; actual supported winding chooses the bridge side"
+    }
+  ],
+  "curve_feedback_updates": 1351
+}

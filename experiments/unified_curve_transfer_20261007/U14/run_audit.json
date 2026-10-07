@@ -1,0 +1,84 @@
+{
+  "physical_seconds": 90.0499999978706,
+  "outcome": "no_actual_body_progress_90s",
+  "error": null,
+  "fixed_front_M0_M6_mean_y_advance_mm": 2.2706514842444556,
+  "fixed_rear_M14_M20_mean_x_advance_mm": -2.475967550691881,
+  "final_shift_mm": 814.0118995682457,
+  "tail_center_mm": [
+    941.725907716721,
+    -52.45096616881285,
+    932.3062588059819
+  ],
+  "max_pipe_penetration_mm": 1.1648221965785406,
+  "max_self_penetration_mm": -0.0,
+  "max_actual_joint_deg": 87.61109316915895,
+  "max_reference_link_error_mm": 7.662011258791068e-05,
+  "max_dispatch_step_deg": 0.27787041736650236,
+  "first_ctrl_error_rad": 0.0,
+  "new_sustained_target_modules": [],
+  "final_actual_source_grip_modules": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    20
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    2,
+    4,
+    7,
+    10
+  ],
+  "minimum_support": [
+    5,
+    5
+  ],
+  "max_M14_M20_target_force_N": 0.0,
+  "maximum_requested_rolling_contact_error_mm_s": 4.5436350575631e-16,
+  "entry_errors": {
+    "qpos": 0.0,
+    "qvel": 0.0,
+    "ctrl": 0.0
+  },
+  "initial_meter": {
+    "actual_material_estimate_mm": -7.015599737615347,
+    "reference_lead_mm": 0.0,
+    "historical_shift_lead_mm": 16.779019747489862,
+    "bootstrap_feed_limit_mm_s": 0.5
+  },
+  "final_meter": {
+    "physical_progress_origin_shift_mm": 796.5881495788783,
+    "physical_pipe_axial_progress_mm": [
+      -4.183144908893377,
+      2.1407977785814767
+    ],
+    "actual_material_estimate_mm": -16.372102304241082,
+    "reference_lead_mm": 17.01683254611869,
+    "historical_shift_lead_mm": 33.79585229360855,
+    "local_actual_material_progress_mm": -9.356502566625736,
+    "bootstrap_feed_limit_mm_s": 0.0
+  },
+  "nonzero_bootstrap_commands": 1580,
+  "advance_commands": 422,
+  "peak_common_shift_speed_mm_s": 0.5171608994064985,
+  "zero_shift_speed_commands": 952,
+  "maximum_nominal_spin_at_zero_shift_rad_s": 0.0,
+  "t0p5": {
+    "shift_speed_mm_s": 0.49402455358367753,
+    "nominal_material_roll_rad_s": [
+      0.0007787565559998368,
+      -0.0006207578347956633
+    ],
+    "common_shift_feedforward_axial_mm_s": [
+      0.022420746126350366,
+      0.01768243309108186
+    ],
+    "shape_feedforward_axial_mm_s": [
+      -6.442816236029714,
+      1.2146673871427094
+    ]
+  }
+}

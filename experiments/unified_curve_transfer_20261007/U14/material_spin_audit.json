@@ -1,0 +1,69 @@
+{
+  "method": "600 held 50ms commands and trapezoidal integration of all 3001 actual 100Hz poses in the final 30s (60.05-90.05s). Spin=u dot angular Jacobian dot actual qvel; original model, kinematics/comPos. No dynamics. Earlier command-boundary and every-tenth-command means are superseded.",
+  "held_command_count": 600,
+  "actual_pose_count": 3001,
+  "sides": [
+    {
+      "side": 0,
+      "modules": [
+        13,
+        15,
+        16,
+        17,
+        20
+      ],
+      "mean_requested_rad_s": 0.004086163572076335,
+      "mean_solved_rad_s": 0.002535145708906646,
+      "mean_actual_rad_s": 0.0018978274057343885
+    },
+    {
+      "side": 1,
+      "modules": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "mean_requested_rad_s": -0.0005350320807151063,
+      "mean_solved_rad_s": 0.0002126019390154997,
+      "mean_actual_rad_s": 0.00019864122771654974
+    }
+  ],
+  "superseded_sampling_audit": {
+    "method": "ALL 20Hz commands in t60 through t90 inclusive, and original-model angular Jacobian at corresponding actual qpos/qvel from the 100Hz trace. Fixed listed module groups; no new dynamics. Includes curve-update and intervening commands; does not subsample the 0.5s reshaping cycle.",
+    "window_local_s": [
+      60,
+      90
+    ],
+    "command_count": 601,
+    "sides": [
+      {
+        "side": 0,
+        "modules": [
+          13,
+          15,
+          16,
+          17,
+          20
+        ],
+        "mean_requested_rad_s": 0.004082493939216725,
+        "mean_solved_rad_s": 0.0025469017013153967,
+        "mean_actual_rad_s": -0.00018141827102506885,
+        "actual_rms_rad_s": 0.000492561204764904
+      },
+      {
+        "side": 1,
+        "modules": [
+          0,
+          2,
+          4,
+          7
+        ],
+        "mean_requested_rad_s": -0.0005412360111508707,
+        "mean_solved_rad_s": 0.0002081023710967958,
+        "mean_actual_rad_s": -0.00010855294471488316,
+        "actual_rms_rad_s": 0.00033136879663135747
+      }
+    ]
+  }
+}
