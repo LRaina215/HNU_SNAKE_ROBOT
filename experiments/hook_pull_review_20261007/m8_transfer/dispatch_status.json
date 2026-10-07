@@ -1,0 +1,15 @@
+{
+  "status": "STOP_OFFLINE_NOT_READY",
+  "candidate_count": 1,
+  "complete_local_path_generated": false,
+  "saved_partial_reference_s": 6.05,
+  "physical_entry_started": false,
+  "new_dynamics_trials": 0,
+  "review_dynamics_used": 2,
+  "review_dynamics_limit": 4,
+  "this_dispatch_dynamics_limit": 1,
+  "remaining_budget_enabled": false,
+  "actual_migration_or_handoff": "NOT_TESTED",
+  "reference_replay_is_experiment": false,
+  "next": "Deliver the candidate implementation and numerical obstruction; no refit, new C0, dynamics retry, hardware collection or connection."
+}

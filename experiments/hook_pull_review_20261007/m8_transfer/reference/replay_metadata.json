@@ -1,0 +1,11 @@
+{
+  "kind": "OFFLINE_PARTIAL_REFERENCE_NOT_EXPERIMENT",
+  "physics_steps": 0,
+  "source": "saved private predicted_qpos",
+  "nominal_seconds": 6.050000000000001,
+  "playback_speed": 1.0,
+  "fps": 20.0,
+  "frames": 122,
+  "opened": true,
+  "includes_private_root_variable": true
+}

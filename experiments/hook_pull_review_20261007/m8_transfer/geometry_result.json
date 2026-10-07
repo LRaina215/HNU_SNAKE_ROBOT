@@ -1,0 +1,15 @@
+{
+  "ready": false,
+  "stop_reason": "RuntimeError('Constrained approach blocked at 6.05s: Positive directional derivative for linesearch; M8 error 0.340 mm')",
+  "first_geometry_failure": null,
+  "completed_path_s": 6.050000000000001,
+  "physics_steps": 0,
+  "sole_candidate": true,
+  "wall_s": 1.5150000000139698,
+  "maximum_command_rate_deg_s": 10.000000000000012,
+  "maximum_command_angle_deg": 88.0,
+  "maximum_pipe_penetration_mm": 2.5408777075779705,
+  "minimum_wrap_deg": 267.75286558136906,
+  "M8_final_region": false,
+  "limits": "private support/contact geometry only; no friction/load/dynamic guarantee; predicted root never actuated"
+}
