@@ -78,6 +78,7 @@ class RegisteredThreeRegionCurve:
         self.base = CubicSpline(locations, values, axis=0)
         self.domain = [float(locations[0]), float(locations[-1])]
         self.phase = np.zeros(2)
+        self.phase_correction = np.zeros(2)
         self.radius_delta = np.zeros(2)
         self.bridge_offset = np.zeros(3)
         self.shape_grid = np.arange(self.domain[0], self.domain[1]+LINK/2, LINK/2)
@@ -111,7 +112,7 @@ class RegisteredThreeRegionCurve:
             np.asarray(self.radii)*np.sqrt(1-np.asarray(self.axial_sines)**2))
 
     def phase_at(self, shift):
-        return np.asarray(shift)[..., None]*(-np.sign(self.theta_rates)/(
+        return self.phase_correction+np.asarray(shift)[..., None]*(-np.sign(self.theta_rates)/(
             np.asarray(self.radii)*np.sqrt(1-np.asarray(self.axial_sines)**2)))
 
     def sample(self, s, phase=None):
@@ -187,6 +188,7 @@ class RegisteredThreeRegionCurve:
         if phase is None:
             self.reference_node_arc = node_arc
             self.reference_center_arc = center_arc
+            self.reference_node_parameters = np.interp(node_arc, arc, self.arc_grid_u)
             self.current_target_arc_bound = float(np.interp(self.target_bound, self.arc_grid_u, arc))
         return nodes, (nodes[:-1]+nodes[1:])/2, locations
 
@@ -200,6 +202,8 @@ class RegisteredThreeRegionCurve:
 
     def parameters(self):
         return dict(source_phase_rad=float(self.phase[0]), target_phase_rad=float(self.phase[1]),
+                    source_feedback_phase_rad=float(self.phase_correction[0]),
+                    target_feedback_phase_rad=float(self.phase_correction[1]),
                     source_radius_delta_mm=float(self.radius_delta[0]*1000),
                     target_radius_delta_mm=float(self.radius_delta[1]*1000),
                     bridge_offset_mm=(self.bridge_offset*1000).tolist(),
@@ -215,7 +219,11 @@ class UnifiedCurveTransfer:
         self.last = data.ctrl.copy()
         p, c = self.observe(data)
         self.initial_centers = c.copy()
-        self.preload = data.ctrl-data.qpos[self.qa]
+        # Save only for reporting. The initial target is continuous at t=0;
+        # its target-minus-encoder bias must not become a permanent sign lock.
+        self.initial_preload = data.ctrl-data.qpos[self.qa]
+        self.curve_grip_strength = np.zeros(21)
+        self.support_force_goals = None
         self.curve = RegisteredThreeRegionCurve(p)
         self.shift = 0.
         self.speed = 0.
@@ -229,6 +237,19 @@ class UnifiedCurveTransfer:
         self.projected_locations = self.curve.center_s0.copy()
         self.last_observer_time = -1.
         self.observed_shift = 0.
+
+    def source_span(self, locations):
+        # Include one link at the source/bridge handover. A connector touching
+        # the elbow is not counted as the remaining posterior wrap.
+        return np.asarray(locations) <= self.curve.source_bound+LINK
+
+    def supported_curve_regions(self, locations, centers):
+        """Current source/receiving spans, never permanent joint identities."""
+        source_radius = np.linalg.norm(centers[:, [1, 2]]-[0., 1.], axis=1)
+        target_radius = np.linalg.norm(centers[:, [0, 2]]-[1.1, 1.], axis=1)
+        source_mask = self.source_span(locations) & (centers[:, 0] < 1.065) & (source_radius < .13)
+        target_mask = (np.asarray(locations) >= self.curve.target_bound-LINK) & (centers[:, 1] > .075) & (target_radius < .13)
+        return source_mask, target_mask
 
     def observe_progress(self, centers, forces, t):
         """Fit the common shift-and-roll trajectory, including after turning.
@@ -276,13 +297,13 @@ class UnifiedCurveTransfer:
         regions = self.curve.regions(s)
         stressed = (self.filtered_load > 1.9) & (tracking > np.radians(3.))
         module_stress = np.r_[stressed[0], stressed] | np.r_[stressed, stressed[-1]]
+        centers = (p[:-1]+p[1:])/2
         for side, code in [(0, 0), (1, 2)]:
             ids = np.flatnonzero(regions == code)
             if len(ids) < 3:
                 continue
             axis = np.array([1., 0., 0.]) if side == 0 else np.array([0., 1., 0.])
             origin = np.array([0., 0., 1.]) if side == 0 else CORNER
-            centers = (p[:-1]+p[1:])/2
             radial = centers[ids]-origin
             radial -= (radial@axis)[:, None]*axis
             normal = radial/np.maximum(np.linalg.norm(radial, axis=1)[:, None], 1e-8)
@@ -291,6 +312,8 @@ class UnifiedCurveTransfer:
             # Target capture retains a small inward bias if position tracks.
             bias = .001 if module_stress[ids].any() else (-.0006 if side == 1 else -.0003)
             wanted = np.clip(self.curve.radius_delta[side]+.15*mismatch+bias, -.004, .004)
+            pressure_deficit = (self.support_force_goals[side]-forces[side].sum())/self.support_force_goals[side]
+            wanted = np.clip(wanted-.001*np.clip(pressure_deficit, -1., 1.), -.004, .004)
             if side == 1:
                 # U01 opened the receiving wrap under tracking stress, then lost
                 # M3 and M0. Receiving support takes priority over unloading it.
@@ -298,6 +321,41 @@ class UnifiedCurveTransfer:
                 upper = 0. if count >= 3 else -.0015
                 wanted = min(wanted, upper)
             self.curve.radius_delta[side] += np.clip(wanted-self.curve.radius_delta[side], -.00025*dt, .00025*dt)
+            # Register the reference wrap to supported material observations,
+            # rather than keeping a fictional pipe phase after actual slipping.
+            supported = ids[forces[side, ids] > .1]
+            if len(supported) >= 2:
+                xy = [1, 2] if side == 0 else [0, 2]
+                o = np.array([0., 1.]) if side == 0 else np.array([1.1, 1.])
+                measured_r = centers[supported][:, xy]-o
+                reference_r = reference[supported][:, xy]-o
+                errors = np.arctan2(measured_r[:, 1], measured_r[:, 0])-np.arctan2(reference_r[:, 1], reference_r[:, 0])
+                angle = float(np.angle(np.sum(forces[side, supported]*np.exp(1j*errors))))
+                change = float(np.clip(.15*angle, -.04*dt, .04*dt))
+                self.curve.phase_correction[side] += change
+                self.curve.phase[side] += change
+
+        # The squeeze is now a change of the common 3D route. Integrate the
+        # measured Bishop field with pressure-based curvature gains, compare it
+        # to the SAME field without those gains, and deposit only that shape
+        # increment at current route coordinates. No joint clamp target is added
+        # after motion generation, so tracking cannot undo a separate objective.
+        measured_bone = SpatialBishopBackbone(p*1000, np.full(21, LINK*1000))
+        strength = np.zeros(21)
+        for side, code in [(0, 0), (1, 2)]:
+            mask = regions == code
+            count = max(1, np.count_nonzero(mask & (forces[side] > .1)))
+            goal = self.support_force_goals[side]/count
+            strength[mask] = np.clip(.018*(goal-forces[side, mask])/max(goal, 1.), -.006, .018)
+        gain = np.zeros(len(measured_bone.field))
+        gain[1:-1] = (strength[:-1]+strength[1:])/2
+        self.curve_grip_strength = strength.copy()
+        ordinary = measured_bone.sample(step_mm=3.)
+        tightened = measured_bone.sample(field=measured_bone.field*(1+gain[:, None]), step_mm=3.)
+        material_nodes = np.arange(22)*LINK*1000
+        delta = np.column_stack([np.interp(material_nodes, tightened['s_mm'], np.array(tightened['points_mm'])[:, j])-
+                                 np.interp(material_nodes, ordinary['s_mm'], np.array(ordinary['points_mm'])[:, j]) for j in range(3)])/1000
+        self.curve.deposit(self.curve.reference_node_parameters, delta, .18, dt)
         transition = regions == 1
         if transition.any():
             correction = residual.copy()
@@ -316,7 +374,11 @@ class UnifiedCurveTransfer:
         q = data.qpos[self.qa]
         reference_p, reference_c, locations = self.curve.reference(self.shift)
         self.filtered_load += .1*(np.abs(torque)-self.filtered_load)
-        tracking = np.abs(self.last-q-self.preload)
+        if self.support_force_goals is None:
+            # Preserve the measured supported loading scale, not captured joint
+            # target signs. Distribution changes with current contact modules.
+            self.support_force_goals = np.maximum(forces.sum(1), 1.)
+        tracking = np.abs(self.last-q)
         maximum_error = float(tracking.max())
         front_progress = float(np.median(centers[:7, 1]-self.initial_centers[:7, 1]))
         rear_progress = float(np.median(centers[14:, 0]-self.initial_centers[14:, 0]))
@@ -330,7 +392,8 @@ class UnifiedCurveTransfer:
         error_scale = np.clip((np.radians(18)-maximum_error)/np.radians(14), 0., 1.)
         lag_scale = np.clip((.075-lag)/.05, 0., 1.)
         source_count, target_count = [int(np.count_nonzero(f > .1)) for f in forces]
-        support_scale = 1. if target_count >= 2 and (source_count >= 2 or (locations[-1] > self.curve.target_bound)) else 0.
+        posterior_count = int(np.count_nonzero((forces[0] > .1) & self.source_span(locations)))
+        support_scale = 1. if target_count >= 2 and (posterior_count >= 2 or (locations[-1] > self.curve.target_bound)) else 0.
         requested = .004*float(error_scale)*float(lag_scale)*support_scale*smooth(t/2.)
         self.speed += np.clip(requested-self.speed, -.002*DT, .001*DT)
         mode = 'advance' if self.speed > .00015 else 'reshape_with_shift_braked'
@@ -352,6 +415,7 @@ class UnifiedCurveTransfer:
         bone = SpatialBishopBackbone(wanted_p*1000, np.full(21, LINK*1000))
         material_field, _ = bone.material_field(q)
         bone_angles = bone.joint_angles(field=material_field)
+        source_grip_mask, target_grip_mask = self.supported_curve_regions(locations, centers)
 
         n = self.m.nv
         A, b = [], []
@@ -360,8 +424,11 @@ class UnifiedCurveTransfer:
             A.append(weight*np.atleast_2d(j).copy())
             b.append(weight*np.atleast_1d(value).copy())
         weights = self.curve.weights(locations)
-        source_roll = -np.sign(self.curve.theta_rates[0])*self.speed*self.curve.axial_sines[0]/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[0]**2))
-        target_roll = np.sign(self.curve.theta_rates[1])*self.speed*self.curve.axial_sines[1]/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[1]**2))
+        current_regions = self.curve.regions(locations)
+        source_axial = float(np.median(feedforward[current_regions == 0, 0])) if np.any(current_regions == 0) else 0.
+        target_axial = float(np.median(feedforward[current_regions == 2, 1])) if np.any(current_regions == 2) else 0.
+        source_roll = float(np.clip(-np.sign(self.curve.theta_rates[0])*source_axial/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[0]**2)), -.12, .12))
+        target_roll = float(np.clip(np.sign(self.curve.theta_rates[1])*target_axial/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[1]**2)), -.12, .12))
         for module, center in enumerate(centers):
             mujoco.mj_jac(self.m, self.d, jp, jr, center, self.head+module)
             u = self.d.xmat[self.head+module].reshape(3, 3)[:, 2]
@@ -394,7 +461,15 @@ class UnifiedCurveTransfer:
             normal = point-origin
             normal -= normal@axis*axis
             normal /= max(np.linalg.norm(normal), 1e-9)
-            add(normal@jp, 0., 8.)
+            # U04's unconstrained pose correction undid an additive clamp:
+            # grip increment grew while actual contact pressure collapsed.
+            # Regulate pressure in this SAME solve, on current support regions.
+            current_mask = source_grip_mask if side == 0 else target_grip_mask
+            count = max(1, sum(int(s == side and current_mask[k]) for k, (_, _, s) in selected.items()))
+            goal_force = self.support_force_goals[side]/count if current_mask[module] else 0.
+            normal_velocity = np.clip(.00002*(forces[side, module]-goal_force), -.0006, .0006)
+            # An ordinary bridge contact is free to peel; it is not a grasp anchor.
+            add(normal@jp, normal_velocity, 8. if current_mask[module] else 2.)
             add((np.eye(3)-np.outer(normal, normal))@jp, np.zeros(3), 3.)
         joint_jac = np.zeros((20, n))
         joint_jac[np.arange(20), self.va] = 1.
@@ -406,11 +481,13 @@ class UnifiedCurveTransfer:
         high[self.va] = np.clip((np.radians(88)-self.last)/DT, -speed+1e-7, speed)
         matrix, vector = np.vstack(A), np.concatenate(b)
         solution = lsq_linear(matrix, vector, bounds=(low, high), tol=1e-6, max_iter=60)
+        # The single updated route and its support objectives generate execution;
+        # there is no separate additive joint-grip target for tracking to undo.
         raw = self.last+DT*solution.x[self.va]
-        # Position targets cannot accumulate indefinitely through a saturated
-        # actuator while shift is braked. Retain initial clamp preload; bound
-        # only the EXTRA target-minus-encoder error from this new motion.
-        raw = np.clip(raw, q+self.preload-np.radians(3.), q+self.preload+np.radians(3.))
+        # Symmetric anti-windup around the CURRENT encoders. Dynamic gripping
+        # does not shift this window, so every joint can receive either sign of
+        # drive. Rate limiting unwinds the first saved clamp continuously.
+        raw = np.clip(raw, q-np.radians(3.), q+np.radians(3.))
         target = np.clip(raw, np.maximum(-np.radians(88), self.last-speed*DT),
                         np.minimum(np.radians(88), self.last+speed*DT))
         if t == 0.:
@@ -421,6 +498,15 @@ class UnifiedCurveTransfer:
             reference_lead_mm=lag*1000, fixed_front_y_mm=front_progress*1000,
             fixed_rear_x_mm=rear_progress*1000, tracking_error_deg=math.degrees(maximum_error),
             source_modules=np.flatnonzero(forces[0] > .1).tolist(), target_modules=np.flatnonzero(forces[1] > .1).tolist(),
+            source_grip_region_mask=self.source_span(locations).tolist(),
+            actual_source_grip_modules=np.flatnonzero((forces[0] > .1) & source_grip_mask).tolist(),
+            actual_target_grip_modules=np.flatnonzero((forces[1] > .1) & target_grip_mask).tolist(),
+            initial_preload_deg=np.degrees(self.initial_preload).tolist(), dynamic_grip_bias_deg=np.zeros(20).tolist(),
+            curve_feedback_curvature_strength=self.curve_grip_strength.tolist(), anti_windup_error_window_deg=3.,
+            execution_grip='pressure feedback in the common spatial curve and current support solve; no additive joint bias',
+            support_force_goals_N=self.support_force_goals.tolist(), actual_pipe_normal_force_N=forces.sum(1).tolist(),
+            current_target_minus_encoder_deg=np.degrees(target-q).tolist(),
+            unwinding_or_transient_joints=(np.flatnonzero(abs(target-q) > np.radians(3.01))+1).tolist(),
             material_locations_mm=(locations*1000).tolist(), material_region_codes=self.curve.regions(locations).tolist(),
             observed_projected_locations_mm=(self.projected_locations*1000).tolist(),
             observed_projected_region_codes=self.curve.regions(self.projected_locations).tolist(),

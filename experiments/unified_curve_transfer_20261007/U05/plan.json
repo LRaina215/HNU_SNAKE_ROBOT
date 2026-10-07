@@ -1,0 +1,11 @@
+{
+  "initial": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
+  "change": "U04 additive curvature grip was undone while pipe pressure fell: regulate support pressure via contact-normal objectives in the same whole-body solve, distribute initial pipe pressure over current support modules; retain encoder-symmetric anti-windup and dynamic curve grip/fixed chords.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; inverse map for regions/feedback",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

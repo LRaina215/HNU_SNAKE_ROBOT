@@ -1,0 +1,11 @@
+{
+  "initial": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
+  "change": "U04/U05 gripping execution still opposed common pose tracking: pressure-derived measured Bishop deformation and supported pipe phase correction now update common spatial curve before arclength/chord remapping; no additive joint grip; material spin follows current reference axial velocity; keep same-solve pressure support.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; inverse map for regions/feedback",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

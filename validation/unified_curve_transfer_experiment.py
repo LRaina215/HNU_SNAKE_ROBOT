@@ -59,6 +59,8 @@ class UnifiedSim(Sim):
                                       self.info.get('curve_parameters', {}).get('target_radius_delta_mm', 0.)]),
             reference_node_arclength_mm=np.asarray(self.info.get('reference_node_arclength_mm', np.zeros(22))),
             maximum_reference_link_error_mm=self.info.get('maximum_reference_link_error_mm', 0.),
+            dynamic_grip_bias_deg=np.asarray(self.info.get('dynamic_grip_bias_deg', np.zeros(20))),
+            source_grip_region_mask=np.asarray(self.info.get('source_grip_region_mask', np.arange(21) >= 13), dtype=bool),
             pipe_penetration_mm=-1000*deepest, nonadjacent_self_penetration_mm=-1000*selfdeep)
 
 
@@ -150,7 +152,7 @@ def run(name, initial, horizon, note):
         shutil.copy2(ROOT/source, dest)
     write(case/'plan.json', dict(initial=str(initial), change=note, horizon_s=horizon,
         physics='original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives',
-        software_limits='88 degrees, 10 degrees per second, first saved ctrl exactly retained',
+        software_limits='88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp',
         model='current curve arclength map; one head shift; every following node exactly one 64.5mm chord; inverse map for regions/feedback',
         feedback='encoder target error/load plus explicitly labelled world-pose/contact simulation feedback',
         stops='ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s',
@@ -201,7 +203,8 @@ def run(name, initial, horizon, note):
                 last_progress_time = t
             source_count, target_count = [int(np.count_nonzero(x > .1)) for x in f]
             needs_source = c[-1, 1] < 80 or np.linalg.norm(c[-1, [0, 2]]-[1100, 1000]) > 130
-            source_lost = source_lost+1 if needs_source and source_count < 2 else 0
+            posterior_count = int(np.count_nonzero((f[0] > .1) & r['source_grip_region_mask']))
+            source_lost = source_lost+1 if needs_source and posterior_count < 2 else 0
             target_lost = target_lost+1 if target_count < 2 else 0
             if not np.isfinite(sim.d.qpos).all(): outcome = 'nonfinite'; break
             if info.get('maximum_reference_link_error_mm', 0.) > .001:
@@ -209,7 +212,7 @@ def run(name, initial, horizon, note):
             if r['ground']: outcome = 'ground_contact'; break
             if np.max(abs(r['q'])) > np.radians(90.5): outcome = 'actual_joint_limit'; break
             if r['nonadjacent_self_penetration_mm'] > 3.: outcome = 'nonadjacent_self_interference'; break
-            if source_lost >= 20: outcome = 'source_support_below_two_1s'; break
+            if source_lost >= 20: outcome = 'posterior_source_support_below_two_1s'; break
             if target_lost >= 20: outcome = 'target_support_below_two_1s'; break
             radii = np.linalg.norm(c[:, [0, 2]]-[1100, 1000], axis=1)
             complete = ((c[:, 1] > 80).all() and (radii < 125).all() and source_count == 0
@@ -224,6 +227,7 @@ def run(name, initial, horizon, note):
                     front_y=round(info['fixed_front_y_mm'], 2), rear_x=round(info['fixed_rear_x_mm'], 2),
                     tracking=round(info['tracking_error_deg'], 2),
                     source=np.flatnonzero(f[0] > .1).tolist(), target=np.flatnonzero(f[1] > .1).tolist(),
+                    posterior_support=posterior_count,
                     admitted=sorted(admitted))), flush=True)
     except Exception as exc:
         outcome, error = 'controller_exception', repr(exc)
@@ -251,6 +255,9 @@ def run(name, initial, horizon, note):
         max_pipe_penetration_mm=max(x['pipe_penetration_mm'] for x in sim.rows),
         max_self_penetration_mm=max(x['nonadjacent_self_penetration_mm'] for x in sim.rows),
         max_reference_link_error_mm=max(x['maximum_reference_link_error_mm'] for x in sim.rows),
+        final_actual_source_grip_modules=sim.info.get('actual_source_grip_modules', []),
+        drive_sign_counts=[dict(joint=j+1, positive_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) > .01)),
+            negative_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) < -.01))) for j in range(20)],
         controller_events=controller.events, curve_feedback_updates=controller.n_adaptations)
     write(case/'result.json', result)
     print(json.dumps({k: result[k] for k in ['name', 'outcome', 'physical_seconds', 'final_shift_mm', 'new_sustained_target_modules', 'error']}), flush=True)

@@ -1,0 +1,472 @@
+{
+  "name": "U06",
+  "outcome": "posterior_source_support_below_two_1s",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 321.74999999748195,
+  "dynamics_wall_seconds": 262.6720000000205,
+  "final_shift_mm": 382.509010146766,
+  "final_curve_parameters": {
+    "source_phase_rad": -0.5248174554379772,
+    "target_phase_rad": 3.8351077183956725,
+    "source_feedback_phase_rad": -4.898332572822751,
+    "target_feedback_phase_rad": -0.4129363562167304,
+    "source_radius_delta_mm": 3.7353986346557675,
+    "target_radius_delta_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    13,
+    14,
+    18
+  ],
+  "final_target_modules": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    11,
+    13
+  ],
+  "new_sustained_target_modules": [
+    8,
+    10,
+    11,
+    12,
+    13
+  ],
+  "admissions": [
+    {
+      "t_s": 239.90000000000003,
+      "module": 8,
+      "center_mm": [
+        1056.036895299268,
+        221.30957097454404,
+        927.2246788847192
+      ]
+    },
+    {
+      "t_s": 240.70000000000002,
+      "module": 11,
+      "center_mm": [
+        1047.6428813104772,
+        86.16775739358539,
+        933.1988648864873
+      ]
+    },
+    {
+      "t_s": 256.25,
+      "module": 10,
+      "center_mm": [
+        1077.475198378198,
+        122.01857897577082,
+        902.957080067047
+      ]
+    },
+    {
+      "t_s": 264.5,
+      "module": 13,
+      "center_mm": [
+        1015.6429686302436,
+        88.00247410320023,
+        1010.3742325109595
+      ]
+    },
+    {
+      "t_s": 286.05,
+      "module": 12,
+      "center_mm": [
+        1022.8603991816831,
+        79.43651557458591,
+        963.5593007489181
+      ]
+    }
+  ],
+  "maximum_new_module_target_force_N": [
+    9.388270416246302,
+    0.0,
+    7.76951303884003,
+    48.27579557498562,
+    8.966124380363752,
+    11.63112580372529,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 69.89535242334127,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 100.70113193829005,
+  "final_centers_mm": [
+    [
+      1122.677262471011,
+      254.90997348569846,
+      916.1897134225635
+    ],
+    [
+      1167.5335987962358,
+      246.52897583734256,
+      946.0762421943039
+    ],
+    [
+      1184.545260623385,
+      234.09449190317065,
+      1001.683884956283
+    ],
+    [
+      1167.290981134528,
+      219.72476576903807,
+      1055.146354470384
+    ],
+    [
+      1121.8814545759192,
+      203.63916145363783,
+      1082.8805829323828
+    ],
+    [
+      1064.0523547122805,
+      183.57262291268063,
+      1077.6370632601684
+    ],
+    [
+      1024.224331918998,
+      169.7485918643539,
+      1041.9534632749364
+    ],
+    [
+      1011.7597277918649,
+      173.357506164306,
+      985.4888803130573
+    ],
+    [
+      1035.433919651813,
+      190.36201110987002,
+      941.2726612752826
+    ],
+    [
+      1057.1174217163366,
+      163.92373569911865,
+      909.393693949178
+    ],
+    [
+      1061.0518006681737,
+      108.68644648043062,
+      907.2728083345119
+    ],
+    [
+      1043.505660859052,
+      77.0820272943146,
+      936.9277244571562
+    ],
+    [
+      1014.6323625236294,
+      86.01643534256027,
+      982.736371431016
+    ],
+    [
+      1023.1670062039514,
+      79.20898810765885,
+      1035.7583416311058
+    ],
+    [
+      1013.2797072111443,
+      39.4561253564891,
+      1075.064417855954
+    ],
+    [
+      977.2682915556975,
+      -7.570313795913766,
+      1097.625474363059
+    ],
+    [
+      931.7759534692409,
+      -45.29340172019424,
+      1095.983722964506
+    ],
+    [
+      882.3560943471091,
+      -71.9944792615924,
+      1068.1644684774458
+    ],
+    [
+      843.1050203520571,
+      -84.42643320698349,
+      1022.9896895885718
+    ],
+    [
+      819.6044645291392,
+      -81.54376648389733,
+      965.2895476283162
+    ],
+    [
+      820.4949285871398,
+      -54.86915895269822,
+      917.1260888860168
+    ]
+  ],
+  "tail_center_mm": [
+    820.4949285871398,
+    -54.86915895269822,
+    917.1260888860168
+  ],
+  "final_q_deg": [
+    -64.50321229473253,
+    45.57259246544219,
+    -51.94205741452349,
+    60.956858644891945,
+    -35.463070315034415,
+    62.186702122965855,
+    -52.14450158577982,
+    69.61480634524068,
+    87.09832903284008,
+    61.54823311954312,
+    87.07915657624585,
+    63.38757663919687,
+    -65.8695983445082,
+    -56.67180809548225,
+    -21.364353562609068,
+    -47.131199591304544,
+    -27.26268103238279,
+    -37.24762130995411,
+    -29.538090904581868,
+    -62.76591191702335
+  ],
+  "max_actual_joint_deg": 90.10705258658254,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 4.614779323028749,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 9.565702549507726e-05,
+  "final_actual_source_grip_modules": [
+    18
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 2633,
+      "negative_frames": 27104
+    },
+    {
+      "joint": 2,
+      "positive_frames": 6492,
+      "negative_frames": 25000
+    },
+    {
+      "joint": 3,
+      "positive_frames": 2140,
+      "negative_frames": 29589
+    },
+    {
+      "joint": 4,
+      "positive_frames": 7157,
+      "negative_frames": 24943
+    },
+    {
+      "joint": 5,
+      "positive_frames": 889,
+      "negative_frames": 31248
+    },
+    {
+      "joint": 6,
+      "positive_frames": 11313,
+      "negative_frames": 20810
+    },
+    {
+      "joint": 7,
+      "positive_frames": 3155,
+      "negative_frames": 28608
+    },
+    {
+      "joint": 8,
+      "positive_frames": 28269,
+      "negative_frames": 3693
+    },
+    {
+      "joint": 9,
+      "positive_frames": 27084,
+      "negative_frames": 4955
+    },
+    {
+      "joint": 10,
+      "positive_frames": 21790,
+      "negative_frames": 10348
+    },
+    {
+      "joint": 11,
+      "positive_frames": 14921,
+      "negative_frames": 17211
+    },
+    {
+      "joint": 12,
+      "positive_frames": 24047,
+      "negative_frames": 8125
+    },
+    {
+      "joint": 13,
+      "positive_frames": 3567,
+      "negative_frames": 28537
+    },
+    {
+      "joint": 14,
+      "positive_frames": 51,
+      "negative_frames": 32095
+    },
+    {
+      "joint": 15,
+      "positive_frames": 28057,
+      "negative_frames": 3876
+    },
+    {
+      "joint": 16,
+      "positive_frames": 122,
+      "negative_frames": 31961
+    },
+    {
+      "joint": 17,
+      "positive_frames": 32176,
+      "negative_frames": 0
+    },
+    {
+      "joint": 18,
+      "positive_frames": 2345,
+      "negative_frames": 29642
+    },
+    {
+      "joint": 19,
+      "positive_frames": 31966,
+      "negative_frames": 179
+    },
+    {
+      "joint": 20,
+      "positive_frames": 3406,
+      "negative_frames": 28116
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014633740627833226,
+      "maximum_tracking_error_deg": 6.273096223994037,
+      "lag_mm": 0.014633740627833226
+    },
+    {
+      "t_s": 25.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 53.05051866958679,
+      "maximum_tracking_error_deg": 3.0535884719047277,
+      "lag_mm": 76.18822482399969
+    },
+    {
+      "t_s": 78.60000000000001,
+      "mode": "advance",
+      "shift_mm": 53.06371846939325,
+      "maximum_tracking_error_deg": 3.0519904793746973,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 158.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 196.92941178541463,
+      "maximum_tracking_error_deg": 3.004319000552725,
+      "lag_mm": 76.18822482399976
+    },
+    {
+      "t_s": 160.60000000000002,
+      "mode": "advance",
+      "shift_mm": 196.94261158522104,
+      "maximum_tracking_error_deg": 3.0091129788576523,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 178.10000000000002,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 219.01982444444445,
+      "maximum_tracking_error_deg": 3.0400203317787136,
+      "lag_mm": 74.92916832089375
+    },
+    {
+      "t_s": 214.60000000000002,
+      "mode": "advance",
+      "shift_mm": 219.0348043115861,
+      "maximum_tracking_error_deg": 3.0089836606940823,
+      "lag_mm": 70.00749999999998
+    },
+    {
+      "t_s": 287.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 369.13378930987756,
+      "maximum_tracking_error_deg": 3.0599713374583786,
+      "lag_mm": 76.18822482399985
+    },
+    {
+      "t_s": 288.1,
+      "mode": "advance",
+      "shift_mm": 369.146989109684,
+      "maximum_tracking_error_deg": 3.040978488354644,
+      "lag_mm": 71.2014246238063
+    },
+    {
+      "t_s": 291.05,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 371.17162821996965,
+      "maximum_tracking_error_deg": 3.0727730427273277,
+      "lag_mm": 76.1808990537513
+    },
+    {
+      "t_s": 291.6,
+      "mode": "advance",
+      "shift_mm": 371.18488709856837,
+      "maximum_tracking_error_deg": 3.0522587980176303,
+      "lag_mm": 71.19415793235007
+    },
+    {
+      "t_s": 294.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 373.21026936351495,
+      "maximum_tracking_error_deg": 3.0695045868318016,
+      "lag_mm": 76.18096971737242
+    },
+    {
+      "t_s": 312.6,
+      "mode": "advance",
+      "shift_mm": 373.2235276722459,
+      "maximum_tracking_error_deg": 3.012074555685966,
+      "lag_mm": 70.0075
+    },
+    {
+      "t_s": 321.3,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 382.5052005850893,
+      "maximum_tracking_error_deg": 3.0356361534821676,
+      "lag_mm": 60.12785737006043
+    }
+  ],
+  "curve_feedback_updates": 644
+}
