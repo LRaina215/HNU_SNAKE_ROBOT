@@ -100,7 +100,11 @@ class RegisteredThreeRegionCurve:
         self.phase += -np.sign(self.theta_rates)*shift_increment/(
             np.asarray(self.radii)*np.sqrt(1-np.asarray(self.axial_sines)**2))
 
-    def sample(self, s):
+    def phase_at(self, shift):
+        return np.asarray(shift)[..., None]*(-np.sign(self.theta_rates)/(
+            np.asarray(self.radii)*np.sqrt(1-np.asarray(self.axial_sines)**2)))
+
+    def sample(self, s, phase=None):
         s = np.asarray(s)
         base = self.base(s)
         transformed = []
@@ -111,8 +115,8 @@ class RegisteredThreeRegionCurve:
             radial = relative-(relative@axis)[..., None]*axis
             normal = radial/np.maximum(np.linalg.norm(radial, axis=-1)[..., None], 1e-9)
             # Positive polar angle is +X rotation at source, -Y at target.
-            angle = self.phase[side]*(1 if side == 0 else -1)
-            transformed.append(origin+Rotation.from_rotvec(axis*angle).apply(
+            angle = (self.phase[side] if phase is None else np.asarray(phase)[..., side])*(1 if side == 0 else -1)
+            transformed.append(origin+Rotation.from_rotvec(np.asarray(angle)[..., None]*axis).apply(
                 relative+self.radius_delta[side]*normal))
         weights = self.weights(s)
         point = weights[..., 0, None]*transformed[0]+weights[..., 1, None]*transformed[1]
@@ -162,6 +166,37 @@ class UnifiedCurveTransfer:
         self.progress_history = []
         self.last_body_progress = 0.
         self.n_adaptations = 0
+        self.projected_locations = self.curve.center_s0.copy()
+
+    def observe_progress(self, centers, forces):
+        """Fit the common shift-and-roll trajectory, including after turning.
+
+        This is a world-pose-based simulation observer. It is an estimate of
+        correspondence to the deformed route. Candidate shift AND its pipe phase
+        are evaluated together: projecting onto the already rotated current
+        helix alone can return the commanded shift even for a stationary body.
+        Physical contact/position completion remains separate.
+        Taking the slower occupied pipe region prevents rear movement from
+        masking a retreating front. No fixed module group remains a source-X
+        progress sensor once that group has crossed the junction.
+        """
+        candidates = self.shift+np.linspace(-.16, .16, 65)
+        grid = self.curve.center_s0[:, None]+candidates
+        phases = np.tile(self.curve.phase_at(candidates), (21, 1))
+        points = (self.curve.sample((grid+LINK/2).ravel(), phases)+
+                  self.curve.sample((grid-LINK/2).ravel(), phases)).reshape(21, 65, 3)/2
+        distance = np.linalg.norm(points-centers[:, None, :], axis=2)
+        indices = np.argmin(distance, axis=1)
+        self.projected_locations = grid[np.arange(21), indices]
+        shifts = self.projected_locations-self.curve.center_s0
+        regions = self.curve.regions(self.projected_locations)
+        usable = (distance[np.arange(21), indices] < .065) | (forces.sum(0) > .1)
+        group_progress = []
+        for region in [0, 2]:
+            mask = usable & (regions == region)
+            if mask.sum() >= 2:
+                group_progress.append(float(np.median(shifts[mask])))
+        return min(group_progress) if group_progress else float(np.median(shifts[usable])) if usable.any() else self.last_body_progress
 
     def observe(self, data):
         self.d.qpos[:] = data.qpos
@@ -171,7 +206,7 @@ class UnifiedCurveTransfer:
                        self.d.site('s_tail').xpos])
         return p, (p[:-1]+p[1:])/2
 
-    def feedback_shape(self, p, q, reference, s, tracking, dt):
+    def feedback_shape(self, p, q, reference, s, tracking, forces, dt):
         """Measured bends and load change the route before target generation."""
         residual = (p[:-1]+p[1:])/2-reference
         regions = self.curve.regions(s)
@@ -192,6 +227,12 @@ class UnifiedCurveTransfer:
             # Target capture retains a small inward bias if position tracks.
             bias = .001 if module_stress[ids].any() else (-.0006 if side == 1 else -.0003)
             wanted = np.clip(self.curve.radius_delta[side]+.15*mismatch+bias, -.004, .004)
+            if side == 1:
+                # U01 opened the receiving wrap under tracking stress, then lost
+                # M3 and M0. Receiving support takes priority over unloading it.
+                count = np.count_nonzero(forces[1] > .1)
+                upper = 0. if count >= 3 else -.0015
+                wanted = min(wanted, upper)
             self.curve.radius_delta[side] += np.clip(wanted-self.curve.radius_delta[side], -.00025*dt, .00025*dt)
         transition = regions == 1
         if transition.any():
@@ -216,8 +257,7 @@ class UnifiedCurveTransfer:
         maximum_error = float(tracking.max())
         front_progress = float(np.median(centers[:7, 1]-self.initial_centers[:7, 1]))
         rear_progress = float(np.median(centers[14:, 0]-self.initial_centers[14:, 0]))
-        actual_material = float(np.median([front_progress/self.curve.axial_sines[1],
-                                          rear_progress/self.curve.axial_sines[0]]))
+        actual_material = self.observe_progress(centers, forces)
         self.last_body_progress = actual_material
         lag = self.shift-actual_material
         self.progress_history.append((t, actual_material))
@@ -236,7 +276,7 @@ class UnifiedCurveTransfer:
                 maximum_tracking_error_deg=math.degrees(maximum_error), lag_mm=lag*1000))
             self.last_mode = mode
         if t-self.last_shape_time >= .5:
-            self.feedback_shape(p, q, reference_c, locations, tracking, .5)
+            self.feedback_shape(p, q, reference_c, locations, tracking, forces, .5)
             self.last_shape_time = t
         ds = DT*self.speed
         self.curve.increment(ds)
@@ -257,8 +297,8 @@ class UnifiedCurveTransfer:
             A.append(weight*np.atleast_2d(j).copy())
             b.append(weight*np.atleast_1d(value).copy())
         weights = self.curve.weights(locations)
-        source_roll = self.speed*self.curve.axial_sines[0]/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[0]**2))
-        target_roll = -self.speed*self.curve.axial_sines[1]/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[1]**2))
+        source_roll = -np.sign(self.curve.theta_rates[0])*self.speed*self.curve.axial_sines[0]/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[0]**2))
+        target_roll = np.sign(self.curve.theta_rates[1])*self.speed*self.curve.axial_sines[1]/(BODY_RADIUS*math.sqrt(1-self.curve.axial_sines[1]**2))
         for module, center in enumerate(centers):
             mujoco.mj_jac(self.m, self.d, jp, jr, center, self.head+module)
             u = self.d.xmat[self.head+module].reshape(3, 3)[:, 2]
@@ -304,6 +344,10 @@ class UnifiedCurveTransfer:
         matrix, vector = np.vstack(A), np.concatenate(b)
         solution = lsq_linear(matrix, vector, bounds=(low, high), tol=1e-6, max_iter=60)
         raw = self.last+DT*solution.x[self.va]
+        # Position targets cannot accumulate indefinitely through a saturated
+        # actuator while shift is braked. Retain initial clamp preload; bound
+        # only the EXTRA target-minus-encoder error from this new motion.
+        raw = np.clip(raw, q+self.preload-np.radians(3.), q+self.preload+np.radians(3.))
         target = np.clip(raw, np.maximum(-np.radians(88), self.last-speed*DT),
                         np.minimum(np.radians(88), self.last+speed*DT))
         if t == 0.:
@@ -315,6 +359,8 @@ class UnifiedCurveTransfer:
             fixed_rear_x_mm=rear_progress*1000, tracking_error_deg=math.degrees(maximum_error),
             source_modules=np.flatnonzero(forces[0] > .1).tolist(), target_modules=np.flatnonzero(forces[1] > .1).tolist(),
             material_locations_mm=(locations*1000).tolist(), material_region_codes=self.curve.regions(locations).tolist(),
+            observed_projected_locations_mm=(self.projected_locations*1000).tolist(),
+            observed_projected_region_codes=self.curve.regions(self.projected_locations).tolist(),
             reference_points_mm=(wanted_p*1000).tolist(), reference_centers_mm=(wanted_c*1000).tolist(),
             body_curve_rms_error_mm=float(np.sqrt(np.mean((wanted_c-centers)**2))*1000),
             source_material_roll_rad_s=source_roll, target_material_roll_rad_s=target_roll,
@@ -323,5 +369,5 @@ class UnifiedCurveTransfer:
             solve_residual=float(np.linalg.norm(matrix@solution.x-vector)), solve_status=int(solution.status),
             feedback_fields=dict(hardware_candidates=['joint_angles', 'actuator_load', 'last_sent_targets'],
                 simulation_truth_used=['world_body_pose', 'pipe_contact_points', 'pipe_contact_force_for_support_gate']),
-            limitation='material estimate uses fixed original front/rear groups and is an early-transfer diagnostic')
+            limitation='curve-projected material progress requires world-pose truth; actual target contacts/positions score completion')
         return target, info
