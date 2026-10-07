@@ -32,10 +32,10 @@ def smooth(x):
 class RegisteredThreeRegionCurve:
     """A single increasing tail-to-head route; all material locations share shift.
 
-    The initial coordinate is measured link length, as in FiveSegmentCurve's
-    material_positions. A spline between link nodes is an approximation to
-    arclength, so the finite-link solver must enforce the real mechanism.
-    Region bounds, node samples and feedback deposition use this same coordinate.
+    After each deformation the CURRENT curve is reparameterized by arclength.
+    One shift advances the head; all remaining nodes follow with exactly one
+    fixed-length link chord. Region/feedback coordinates use the same inverse
+    arclength map. The underlying spline parameter is not called arclength.
     """
     def __init__(self, points, source_node=13, target_node=8):
         points = np.asarray(points, float)
@@ -82,6 +82,16 @@ class RegisteredThreeRegionCurve:
         self.bridge_offset = np.zeros(3)
         self.shape_grid = np.arange(self.domain[0], self.domain[1]+LINK/2, LINK/2)
         self.shape_offsets = np.zeros((len(self.shape_grid), 3))
+        self.arc_grid_u = np.unique(np.r_[locations, np.linspace(self.domain[0], self.domain[1],
+            math.ceil((self.domain[1]-self.domain[0])/.0025)+1)])
+        self.shape_revision = 0
+        self.arc_cache = None
+        arc, _ = self.arc_map(np.zeros(2))
+        self.initial_node_arc = np.interp(self.node_s0, self.arc_grid_u, arc)
+        self.initial_head_arc = float(self.initial_node_arc[0])
+        self.reference_node_arc = self.initial_node_arc.copy()
+        self.reference_center_arc = (self.initial_node_arc[:-1]+self.initial_node_arc[1:])/2
+        self.current_target_arc_bound = float(np.interp(self.target_bound, self.arc_grid_u, arc))
 
     def weights(self, s):
         f = smooth((np.asarray(s)-self.source_bound)/(self.target_bound-self.source_bound))
@@ -126,10 +136,59 @@ class RegisteredThreeRegionCurve:
         point += np.stack([np.interp(s, self.shape_grid, self.shape_offsets[:, i]) for i in range(3)], axis=-1)
         return point
 
-    def reference(self, shift):
-        nodes_s = self.node_s0+shift
-        p = self.sample(nodes_s)
-        return p, (p[:-1]+p[1:])/2, self.center_s0+shift
+    def tangent(self, s):
+        tangent = self.sample(np.asarray(s)+1e-5)-self.sample(np.asarray(s)-1e-5)
+        return tangent/np.maximum(np.linalg.norm(tangent, axis=-1)[..., None], 1e-9)
+
+    def arc_map(self, phase=None):
+        phase = self.phase if phase is None else np.asarray(phase)
+        key = (*phase, *self.radius_delta, *self.bridge_offset, self.shape_revision)
+        if self.arc_cache is not None and self.arc_cache[0] == key:
+            return self.arc_cache[1], self.arc_cache[2]
+        xyz = self.sample(self.arc_grid_u, np.broadcast_to(phase, (len(self.arc_grid_u), 2)))
+        arc = np.r_[0., np.cumsum(np.linalg.norm(np.diff(xyz, axis=0), axis=1))]
+        arc -= np.interp(self.source_bound, self.arc_grid_u, arc)
+        if np.any(np.diff(arc) <= 1e-10):
+            raise ValueError('Degenerate current curve cannot define arclength')
+        if np.array_equal(phase, self.phase):
+            self.arc_cache = key, arc, xyz
+        return arc, xyz
+
+    def reference(self, shift, phase=None):
+        arc, xyz = self.arc_map(phase)
+        def point(s):
+            return np.array([np.interp(s, arc, xyz[:, j]) for j in range(3)])
+        node_arc = [self.initial_head_arc+shift]
+        if node_arc[0] >= arc[-1]-.3:
+            raise ValueError('Head has exhausted the target helix extension')
+        nodes = [point(node_arc[0])]
+        for module in range(21):
+            right = node_arc[-1]
+            span = LINK*1.25
+            left = right-span
+            while np.linalg.norm(point(left)-nodes[-1]) < LINK and span < .35:
+                span *= 1.35
+                left = right-span
+            if left <= arc[0] or np.linalg.norm(point(left)-nodes[-1]) < LINK:
+                raise ValueError('Cannot place one fixed-length chord on current route')
+            for _ in range(19):
+                middle = (left+right)/2
+                if np.linalg.norm(point(middle)-nodes[-1]) >= LINK:
+                    left = middle
+                else:
+                    right = middle
+            coordinate = (left+right)/2
+            node_arc.append(coordinate)
+            nodes.append(point(coordinate))
+        node_arc = np.asarray(node_arc)
+        nodes = np.asarray(nodes)
+        center_arc = (node_arc[:-1]+node_arc[1:])/2
+        locations = np.interp(center_arc, arc, self.arc_grid_u)
+        if phase is None:
+            self.reference_node_arc = node_arc
+            self.reference_center_arc = center_arc
+            self.current_target_arc_bound = float(np.interp(self.target_bound, self.arc_grid_u, arc))
+        return nodes, (nodes[:-1]+nodes[1:])/2, locations
 
     def deposit(self, locations, changes, rate, dt):
         weights = np.exp(-.5*((self.shape_grid[:, None]-locations[None, :])/(.8*LINK))**2)
@@ -137,6 +196,7 @@ class RegisteredThreeRegionCurve:
         self.shape_offsets += rate*dt*averaged
         norm = np.linalg.norm(self.shape_offsets, axis=1)
         self.shape_offsets *= np.minimum(1., .012/np.maximum(norm, 1e-9))[:, None]
+        self.shape_revision += 1
 
     def parameters(self):
         return dict(source_phase_rad=float(self.phase[0]), target_phase_rad=float(self.phase[1]),
@@ -167,8 +227,10 @@ class UnifiedCurveTransfer:
         self.last_body_progress = 0.
         self.n_adaptations = 0
         self.projected_locations = self.curve.center_s0.copy()
+        self.last_observer_time = -1.
+        self.observed_shift = 0.
 
-    def observe_progress(self, centers, forces):
+    def observe_progress(self, centers, forces, t):
         """Fit the common shift-and-roll trajectory, including after turning.
 
         This is a world-pose-based simulation observer. It is an estimate of
@@ -180,23 +242,25 @@ class UnifiedCurveTransfer:
         masking a retreating front. No fixed module group remains a source-X
         progress sensor once that group has crossed the junction.
         """
-        candidates = self.shift+np.linspace(-.16, .16, 65)
-        grid = self.curve.center_s0[:, None]+candidates
-        phases = np.tile(self.curve.phase_at(candidates), (21, 1))
-        points = (self.curve.sample((grid+LINK/2).ravel(), phases)+
-                  self.curve.sample((grid-LINK/2).ravel(), phases)).reshape(21, 65, 3)/2
-        distance = np.linalg.norm(points-centers[:, None, :], axis=2)
-        indices = np.argmin(distance, axis=1)
-        self.projected_locations = grid[np.arange(21), indices]
-        shifts = self.projected_locations-self.curve.center_s0
-        regions = self.curve.regions(self.projected_locations)
-        usable = (distance[np.arange(21), indices] < .065) | (forces.sum(0) > .1)
+        if t-self.last_observer_time < .5:
+            return self.observed_shift
+        candidates = self.shift+np.linspace(-.16, .16, 17)
+        hypotheses = [self.curve.reference(h, self.curve.phase_at(h)) for h in candidates]
+        points = np.asarray([x[1] for x in hypotheses])
+        distance = np.linalg.norm(points-centers[None, :, :], axis=2)
+        best = np.argmin(distance, axis=0)
+        self.projected_locations = np.asarray([hypotheses[k][2][j] for j, k in enumerate(best)])
         group_progress = []
-        for region in [0, 2]:
-            mask = usable & (regions == region)
+        for side in range(2):
+            mask = forces[side] > .1
             if mask.sum() >= 2:
-                group_progress.append(float(np.median(shifts[mask])))
-        return min(group_progress) if group_progress else float(np.median(shifts[usable])) if usable.any() else self.last_body_progress
+                cost = np.mean(distance[:, mask]**2, axis=1)
+                group_progress.append(float(candidates[np.argmin(cost)]))
+        estimate = min(group_progress) if group_progress else self.observed_shift
+        elapsed = .5 if self.last_observer_time < 0 else t-self.last_observer_time
+        self.observed_shift += np.clip(estimate-self.observed_shift, -.01*elapsed, .01*elapsed)
+        self.last_observer_time = t
+        return self.observed_shift
 
     def observe(self, data):
         self.d.qpos[:] = data.qpos
@@ -240,8 +304,7 @@ class UnifiedCurveTransfer:
             correction[~transition] = 0.
             # Remove path-tangent mismatch: shape yielding must not silently
             # replace a stalled shift with a different feed for each module.
-            tangent = self.curve.base(s, 1)
-            tangent /= np.maximum(np.linalg.norm(tangent, axis=1)[:, None], 1e-9)
+            tangent = self.curve.tangent(s)
             correction -= np.sum(correction*tangent, axis=1)[:, None]*tangent
             lengths = np.linalg.norm(correction, axis=1)
             correction *= np.minimum(1., .008/np.maximum(lengths, 1e-9))[:, None]
@@ -257,7 +320,7 @@ class UnifiedCurveTransfer:
         maximum_error = float(tracking.max())
         front_progress = float(np.median(centers[:7, 1]-self.initial_centers[:7, 1]))
         rear_progress = float(np.median(centers[14:, 0]-self.initial_centers[14:, 0]))
-        actual_material = self.observe_progress(centers, forces)
+        actual_material = self.observe_progress(centers, forces, t)
         self.last_body_progress = actual_material
         lag = self.shift-actual_material
         self.progress_history.append((t, actual_material))
@@ -362,6 +425,10 @@ class UnifiedCurveTransfer:
             observed_projected_locations_mm=(self.projected_locations*1000).tolist(),
             observed_projected_region_codes=self.curve.regions(self.projected_locations).tolist(),
             reference_points_mm=(wanted_p*1000).tolist(), reference_centers_mm=(wanted_c*1000).tolist(),
+            reference_node_arclength_mm=(self.curve.reference_node_arc*1000).tolist(),
+            reference_center_arclength_mm=(self.curve.reference_center_arc*1000).tolist(),
+            current_source_arc_bound_mm=0., current_target_arc_bound_mm=self.curve.current_target_arc_bound*1000,
+            maximum_reference_link_error_mm=float(np.abs(np.linalg.norm(np.diff(wanted_p, axis=0), axis=1)-LINK).max()*1000),
             body_curve_rms_error_mm=float(np.sqrt(np.mean((wanted_c-centers)**2))*1000),
             source_material_roll_rad_s=source_roll, target_material_roll_rad_s=target_roll,
             curve_parameters=self.curve.parameters(), shape_updates=self.n_adaptations,

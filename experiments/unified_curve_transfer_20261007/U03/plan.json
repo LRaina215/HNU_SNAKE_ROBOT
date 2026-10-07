@@ -1,0 +1,11 @@
+{
+  "initial": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
+  "change": "U02 reference lengths were 108-118mm: rebuild current spatial curve arclength anchored at source boundary, one shared head shift and exact 64.5mm chord walk for all nodes; region/load feedback uses inverse map and current deformed tangent; trajectory observer uses same fixed-length mapping.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second, first saved ctrl exactly retained",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; inverse map for regions/feedback",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

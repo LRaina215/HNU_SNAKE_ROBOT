@@ -57,6 +57,8 @@ class UnifiedSim(Sim):
             body_curve_rms_error_mm=self.info.get('body_curve_rms_error_mm', 0.),
             radius_delta_mm=np.array([self.info.get('curve_parameters', {}).get('source_radius_delta_mm', 0.),
                                       self.info.get('curve_parameters', {}).get('target_radius_delta_mm', 0.)]),
+            reference_node_arclength_mm=np.asarray(self.info.get('reference_node_arclength_mm', np.zeros(22))),
+            maximum_reference_link_error_mm=self.info.get('maximum_reference_link_error_mm', 0.),
             pipe_penetration_mm=-1000*deepest, nonadjacent_self_penetration_mm=-1000*selfdeep)
 
 
@@ -149,7 +151,7 @@ def run(name, initial, horizon, note):
     write(case/'plan.json', dict(initial=str(initial), change=note, horizon_s=horizon,
         physics='original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives',
         software_limits='88 degrees, 10 degrees per second, first saved ctrl exactly retained',
-        model='one registered three-region spatial route and one common material shift',
+        model='current curve arclength map; one head shift; every following node exactly one 64.5mm chord; inverse map for regions/feedback',
         feedback='encoder target error/load plus explicitly labelled world-pose/contact simulation feedback',
         stops='ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s',
         completion='all centres on target, tail contacts target, no source contact, sustained 2s'))
@@ -162,7 +164,9 @@ def run(name, initial, horizon, note):
         target_bound_mm=controller.curve.target_bound*1000, body_length_mm=controller.curve.length*1000,
         axis_radii_mm=np.array(controller.curve.radii)*1000,
         axial_sines=controller.curve.axial_sines, polar_angle_rates_rad_m=controller.curve.theta_rates,
-        initial_node_material_positions_mm=controller.curve.node_s0*1000))
+        initial_spline_node_parameters_mm=controller.curve.node_s0*1000,
+        initial_node_arclength_mm=controller.curve.initial_node_arc*1000,
+        initial_head_arclength_mm=controller.curve.initial_head_arc*1000))
     started, t0 = time.monotonic(), float(sim.d.time)
     outcome, error = 'horizon_limit', None
     source_lost = target_lost = complete_ticks = 0
@@ -188,6 +192,9 @@ def run(name, initial, horizon, note):
                 if module > initial_target_end and module not in admitted:
                     admitted.add(int(module))
                     admissions.append(dict(t_s=t+DT, module=int(module), center_mm=c[module].tolist()))
+                    mujoco.mj_getState(sim.m, sim.d, sim.state, mujoco.mjtState.mjSTATE_INTEGRATION)
+                    np.savez_compressed(case/f'admitted_M{module:02d}.npz',
+                        integration_state=sim.state.copy(), ctrl=sim.d.ctrl.copy(), sim_time=sim.d.time)
                     last_progress_time = t
             if controller.last_body_progress > best_progress+.005:
                 best_progress = controller.last_body_progress
@@ -197,6 +204,8 @@ def run(name, initial, horizon, note):
             source_lost = source_lost+1 if needs_source and source_count < 2 else 0
             target_lost = target_lost+1 if target_count < 2 else 0
             if not np.isfinite(sim.d.qpos).all(): outcome = 'nonfinite'; break
+            if info.get('maximum_reference_link_error_mm', 0.) > .001:
+                outcome = 'reference_link_length_invalid'; break
             if r['ground']: outcome = 'ground_contact'; break
             if np.max(abs(r['q'])) > np.radians(90.5): outcome = 'actual_joint_limit'; break
             if r['nonadjacent_self_penetration_mm'] > 3.: outcome = 'nonadjacent_self_interference'; break
@@ -241,6 +250,7 @@ def run(name, initial, horizon, note):
         first_ctrl_error_rad=float(abs(sim.rows[0]['ctrl']-sim.commands[0]['target_rad']).max()) if sim.commands else None,
         max_pipe_penetration_mm=max(x['pipe_penetration_mm'] for x in sim.rows),
         max_self_penetration_mm=max(x['nonadjacent_self_penetration_mm'] for x in sim.rows),
+        max_reference_link_error_mm=max(x['maximum_reference_link_error_mm'] for x in sim.rows),
         controller_events=controller.events, curve_feedback_updates=controller.n_adaptations)
     write(case/'result.json', result)
     print(json.dumps({k: result[k] for k in ['name', 'outcome', 'physical_seconds', 'final_shift_mm', 'new_sustained_target_modules', 'error']}), flush=True)
