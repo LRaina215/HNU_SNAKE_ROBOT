@@ -1,0 +1,317 @@
+--- /dev/null
++++ b/snake_control/hook_pull_entry_prefix.py
+@@ -0,0 +1,26 @@
++"""One fixed-origin command-entry candidate; no feedback or physical stepping."""
++import numpy as np
++
++
++class FixedPreloadEntry:
++    """q_hold + (q_shape(s) - q_shape(0)); no error-state accumulation.
++
++    Exact zero input retains the executed target. Nonzero input does not imply
++    preserved clamp force, feasible contact, or a compliance control law.
++    """
++
++    def __init__(self, held_target, measured_initial_shape):
++        self.held = np.asarray(held_target, dtype=float).copy()
++        self.initial_shape = np.asarray(measured_initial_shape, dtype=float).copy()
++        if self.held.shape != (20,) or self.initial_shape.shape != (20,):
++            raise ValueError('Twenty held targets and measured joints required')
++        if not np.isfinite(self.held).all() or not np.isfinite(self.initial_shape).all():
++            raise ValueError('Finite entry references required')
++        self.held.setflags(write=False)
++        self.initial_shape.setflags(write=False)
++
++    def __call__(self, predicted_shape):
++        shape = np.asarray(predicted_shape, dtype=float)
++        if shape.shape != (20,) or not np.isfinite(shape).all():
++            raise ValueError('Twenty finite predicted joint angles required')
++        return self.held + (shape - self.initial_shape)
+--- /dev/null
++++ b/validation/hook_pull_entry_prefix_review.py
+@@ -0,0 +1,285 @@
++"""One registered noslip CLOSE1B prefix, private kinematics only, no mj_step."""
++from pathlib import Path
++import sys
++ROOT = Path(__file__).resolve().parents[1]
++sys.path[:0] = [str(ROOT), str(ROOT / 'validation')]
++import json
++import time
++import mujoco
++import numpy as np
++from scipy.spatial.transform import Rotation
++import hook_pull_step4_rolling as old
++from snake_control.hook_pull_entry_prefix import FixedPreloadEntry
++from snake_control.hook_pull_review_support import restore_saved_state
++
++OUT = ROOT / 'experiments/hook_pull_review_20261007'
++CAP_S = 2.  # Both requested velocities stay at the original 1 mm/s.
++SOLVE_BUDGET_S = 1200.
++
++
++def write(name, value):
++    def native(x):
++        if isinstance(x, np.ndarray):
++            return x.tolist()
++        if isinstance(x, np.generic):
++            return x.item()
++        raise TypeError(type(x).__name__)
++    (OUT / name).write_text(json.dumps(value, ensure_ascii=False, indent=2, default=native) + '\n', encoding='utf8')
++
++
++def contacts_at(model):
++    pairs, deepest, ground, selfhit = model.touching()
++    return pairs, dict(pipe_depth_mm=float(deepest * 1000), ground=ground, nonadjacent_self_contact=selfhit,
++                       shape_max_joint_deg=float(np.degrees(abs(model.d.qpos[model.qadr])).max()),
++                       wrap_deg=old.wrap_deg(model.nodes()))
++
++
++def geometry_failures(check):
++    problems = []
++    if check['shape_max_joint_deg'] > 88. + 1e-10:
++        problems.append('predicted_shape_joint_limit')
++    if check['pipe_depth_mm'] < -3.:
++        problems.append('predicted_shape_pipe_penetration')
++    if check['ground'] or check['nonadjacent_self_contact']:
++        problems.append('predicted_shape_ground_or_self_contact')
++    if check['wrap_deg'] < 180.:
++        problems.append('predicted_shape_wrap_below_180')
++    return problems
++
++
++def main():
++    marker = OUT / 'entry_prefix_started.json'
++    if marker.exists() or (OUT / 'entry_prefix_result.json').exists():
++        raise FileExistsError('The sole prefix is already registered/attempted; no second candidate')
++    model = old.Model()
++    history = restore_saved_state(model.m, model.d, old.START)
++    # A separate, untouched input data guards against accidental root driving.
++    saved = mujoco.MjData(model.m)
++    restore_saved_state(model.m, saved, old.START)
++    spec = mujoco.mjtState.mjSTATE_INTEGRATION
++    saved_vector = np.empty(mujoco.mj_stateSize(model.m, spec))
++    mujoco.mj_getState(model.m, saved, saved_vector, spec)
++    qpos0 = model.d.qpos.copy()
++    held, shape0 = model.d.ctrl.copy(), model.d.qpos[model.qadr].copy()
++    entry = FixedPreloadEntry(held, shape0)
++    assert np.array_equal(entry(shape0), held)
++    original_step = mujoco.mj_step
++    step_attempts = []
++    def forbidden_step(*args, **kwargs):
++        step_attempts.append(True)
++        raise RuntimeError('No physical evolution in prefix review')
++    mujoco.mj_step = forbidden_step
++    begin = time.monotonic()
++    old.FREE_FLOOR.clear()
++    old.LANDING = 'noslip'
++    model.update()
++    pairs, initial_geometry = contacts_at(model)
++    contacts = sorted(key for key, distance in pairs.items() if distance < 1e-3)
++    rho0 = {}
++    for key in contacts:
++        k, pipe = key
++        x, foot = old.closest(model.nodes()[k], model.nodes()[k + 1], pipe)
++        rho0[key] = old.radial(x, foot)[0]
++    initial_contacts = contacts.copy()
++
++    # Existing full constant-control history, not a first-command comparison.
++    with np.load(old.BASE / 'EXTHOLD_1B/trace.npz') as trace:
++        zctrl = entry(shape0)
++        history_checks = dict(
++            recorded_frames=int(len(trace['sim_time'])),
++            duration_s=float(trace['sim_time'][-1] - trace['sim_time'][0]),
++            all_recorded_targets_equal_zero_input=bool(np.array_equal(trace['ctrl'], np.broadcast_to(zctrl, trace['ctrl'].shape))),
++            maximum_target_difference_rad=float(abs(trace['ctrl'] - zctrl).max()),
++            initial_qpos_max_difference=float(abs(trace['qpos'][0] - qpos0).max()),
++            initial_qvel_max_difference=float(abs(trace['qvel'][0] - saved.qvel).max()),
++            initial_time_difference_s=float(trace['sim_time'][0] - saved.time))
++    # The historical hold calls mj_forward after setState and changes warmstart.
++    historical_entry = mujoco.MjData(model.m)
++    with np.load(old.START) as state:
++        mujoco.mj_setState(model.m, historical_entry, state['integration_state'], spec)
++        historical_entry.ctrl[:] = state['ctrl']
++    mujoco.mj_forward(model.m, historical_entry)
++    historical_vector = saved_vector.copy()
++    mujoco.mj_getState(model.m, historical_entry, historical_vector, spec)
++    history_checks.update(
++        historical_entry_integration_max_difference=float(abs(historical_vector - saved_vector).max()),
++        historical_entry_warmstart_max_difference=float(abs(historical_entry.qacc_warmstart - saved.qacc_warmstart).max()),
++        full_start_state_and_target_history_equivalent=bool(np.array_equal(historical_vector, saved_vector)
++            and history_checks['all_recorded_targets_equal_zero_input']),
++        interpretation='Constant targets match the whole stored hold; historical forward updates warmstart, so complete entry-state equivalence is not asserted')
++    write('entry_zero_input_check.json', dict(physics_steps=0, zero_target_exact=True,
++        held_target_rad=held, measured_shape0_rad=shape0, history=history, EXTHOLD_1B=history_checks))
++
++    write('entry_prefix_started.json', dict(candidate='CLOSE1B_noslip_both_1mm_s_2mm_fixed_entry',
++        physics_steps=0, request_mm_s=[1., 1.], maximum_parameter_time_s=CAP_S,
++        requested_prefix_mm=[2., 2.], solve_budget_s=SOLVE_BUDGET_S,
++        landing='noslip', maximum_joint_increment_deg=.2, maximum_parameter_step_s=.05,
++        limits=dict(predicted_joint_deg=88., command_joint_deg=88., command_rate_deg_s=10.,
++                    pipe_penetration_mm=3., nonadjacent_self_penetration_mm=.5),
++        root='private kinematic solve only', never_restart_candidate=True))
++
++    elapsed, solve_s = 0., 0.
++    qpositions, times, targets = [qpos0.copy()], [0.], [held.copy()]
++    centers0 = (model.nodes()[:-1] + model.nodes()[1:]) / 2
++    rows, events = [], []
++    frames0 = model.d.xmat[model.head:model.head + 21].reshape(-1, 3, 3).copy()
++    previous_frames = frames0.copy()
++    roll_fk, roll_jac = np.zeros(21), np.zeros(21)
++    landed = set()
++    stop = 'completed_registered_prefix'
++    failure = geometry_failures(initial_geometry)
++    initial_limit = np.flatnonzero(abs(held) > old.LIMIT_GATE + 1e-12)
++    if len(initial_limit):
++        failure.append('saved_held_target_above_88deg')
++    if failure:
++        stop = ','.join(failure)
++    try:
++        while not failure and elapsed < CAP_S - 1e-12:
++            if time.monotonic() - begin >= SOLVE_BUDGET_S:
++                failure = ['offline_budget_exhausted']; stop = failure[0]; break
++            before_q = model.d.qpos.copy()
++            before_nodes = model.nodes().copy()
++            before_centers = (before_nodes[:-1] + before_nodes[1:]) / 2
++            before_target = targets[-1]
++            started = time.monotonic()
++            velocity, info = old.solve_active(model, contacts, rho0, (1., 1.))
++            solve_s += time.monotonic() - started
++            jmax = float(abs(velocity[model.vadr]).max())
++            if not np.isfinite(velocity).all() or jmax < 1e-12:
++                failure = ['nonfinite_or_no_joint_motion']; stop = failure[0]; break
++            dt = min(old.DQ_MAX / jmax, .05, CAP_S - elapsed)
++            if dt < 1e-7:
++                failure = ['parameter_step_collapsed']; stop = failure[0]; break
++            tangent_residual, correction_speed = 0., 0.
++            for k, pipe in contacts:
++                x, foot = old.closest(before_nodes[k], before_nodes[k + 1], pipe)
++                radius, normal = old.radial(x, foot)
++                contact_velocity = model.jac(x - old.R_B * normal, k)[0] @ velocity
++                tangent = contact_velocity - normal * (normal @ contact_velocity)
++                tangent_residual = max(tangent_residual, float(np.linalg.norm(tangent) * 1000))
++                correction_speed = max(correction_speed, float(abs(normal @ contact_velocity) * 1000))
++            for k in range(21):
++                axis = previous_frames[k, :, 2]
++                jr = model.jac(model.d.xpos[model.head + k], k)[1]
++                roll_jac[k] += float(axis @ (jr @ velocity)) * dt
++            proposed = before_q.copy()
++            mujoco.mj_integratePos(model.m, proposed, velocity, dt)
++            model.d.qpos[:] = proposed
++            model.update()
++            elapsed += dt
++            nodes = model.nodes().copy()
++            centers = (nodes[:-1] + nodes[1:]) / 2
++            frames = model.d.xmat[model.head:model.head + 21].reshape(-1, 3, 3).copy()
++            for k in range(21):
++                angular_delta = (Rotation.from_matrix(frames[k]) * Rotation.from_matrix(previous_frames[k]).inv()).as_rotvec()
++                midpoint_axis = previous_frames[k, :, 2] + frames[k, :, 2]
++                midpoint_axis /= np.linalg.norm(midpoint_axis)
++                roll_fk[k] += float(midpoint_axis @ angular_delta)
++            previous_frames = frames
++            command = entry(proposed[model.qadr])
++            command_rate = abs(np.degrees(command - before_target)) / dt
++            pairs, geometry = contacts_at(model)
++            failure = geometry_failures(geometry)
++            bad_command = np.flatnonzero(abs(command) > old.LIMIT_GATE + 1e-12)
++            if len(bad_command):
++                failure.append('command_absolute_88deg_limit')
++            if command_rate.max() > 10. + 1e-10:
++                failure.append('command_rate_above_10deg_s')
++            # Midpoint on the same free-joint interpolation, without a second solve.
++            halfway = before_q.copy()
++            mujoco.mj_integratePos(model.m, halfway, velocity, dt / 2)
++            model.d.qpos[:] = halfway; model.update()
++            _, midpoint_geometry = contacts_at(model)
++            failure += ['midpoint_' + f for f in geometry_failures(midpoint_geometry)]
++            model.d.qpos[:] = proposed; model.update()
++            for key, distance in pairs.items():
++                if key not in contacts and key not in landed and distance < 3e-4:
++                    k, pipe = key
++                    x, foot = old.closest(nodes[k], nodes[k + 1], pipe)
++                    if not old.MITER[pipe](foot):
++                        landed.add(key); contacts.append(key)
++                        rho0[key] = old.radial(x, foot)[0]
++                        events.append(dict(time_s=elapsed, event='land_noslip', module=k, pipe=pipe))
++            for key in list(contacts):
++                k, pipe = key
++                x, foot = old.closest(nodes[k], nodes[k + 1], pipe)
++                if old.MITER[pipe](foot):
++                    contacts.remove(key)
++                    events.append(dict(time_s=elapsed, event='release_at_miter', module=k, pipe=pipe))
++            contacts.sort()
++            if not any(pipe == 'source' for _, pipe in contacts) or not any(pipe == 'target' for _, pipe in contacts):
++                failure.append('lost_contact_constraint_side')
++            qpositions.append(proposed.copy()); times.append(elapsed); targets.append(command.copy())
++            row = dict(time_s=elapsed, dt_s=dt, **geometry,
++                midpoint_geometry=midpoint_geometry,
++                front_all_y_mm=float((centers[:8, 1] - centers0[:8, 1]).mean() * 1000),
++                rear_all_x_mm=float((centers[13:21, 0] - centers0[13:21, 0]).mean() * 1000),
++                achieved_contact_rate_mm_s=info['achieved'], active_inequalities=info['active'],
++                contact_equality_residual_m_s=info['contact_residual'],
++                contact_tangent_speed_max_mm_s=tangent_residual,
++                contact_normal_correction_max_mm_s=correction_speed,
++                command_max_joint_deg=float(np.degrees(abs(command)).max()),
++                command_max_rate_deg_s=float(command_rate.max()),
++                command_rate_argmax_joint_1based=int(command_rate.argmax() + 1),
++                command_limit_joints_1based=(bad_command + 1).tolist(),
++                predicted_axial_roll_fk_deg=np.degrees(roll_fk),
++                predicted_axial_roll_jac_deg=np.degrees(roll_jac),
++                front_mean_roll_deg=float(np.degrees(roll_fk[:8].mean())),
++                rear_mean_roll_deg=float(np.degrees(roll_fk[13:21].mean())),
++                constraint_contacts=[list(key) for key in contacts], failures=failure)
++            rows.append(row)
++            if failure:
++                stop = ','.join(failure); break
++            if len(rows) % 50 == 0:
++                print(json.dumps(dict(prefix_parameter_s=elapsed, steps=len(rows), wall_s=time.monotonic()-begin)), flush=True)
++        if rows and not failure:
++            if rows[-1]['front_all_y_mm'] <= 0 or rows[-1]['rear_all_x_mm'] <= 0:
++                failure.append('predicted_front_or_rear_direction_not_positive')
++            if rows[-1]['front_mean_roll_deg'] >= 0 or rows[-1]['rear_mean_roll_deg'] <= 0:
++                failure.append('predicted_axial_roll_sign_not_original_convention')
++            if failure:
++                stop = ','.join(failure)
++    except Exception as error:
++        failure.append('program_error:' + repr(error)); stop = failure[-1]
++    finally:
++        mujoco.mj_step = original_step
++    after = saved_vector.copy()
++    mujoco.mj_getState(model.m, saved, after, spec)
++    assert np.array_equal(saved_vector, after) and not step_attempts
++    qpositions, times, targets = np.array(qpositions), np.array(times), np.array(targets)
++    # Check the actual 50 ms joint-command sequence by interpolation, no clamp.
++    dispatch_t = np.unique(np.r_[np.arange(0., times[-1], .05), times[-1]])
++    dispatch_q = np.column_stack([np.interp(dispatch_t, times, targets[:, j]) for j in range(20)])
++    dispatch_rate = abs(np.degrees(np.diff(dispatch_q, axis=0))) / np.diff(dispatch_t)[:, None]
++    write('entry_prefix_steps.json', rows)
++    np.savez_compressed(OUT / 'entry_prefix_path.npz', parameter_time_s=times,
++        requested_progress_mm=times, predicted_qpos=qpositions, predicted_shape_rad=qpositions[:, model.qadr],
++        held_ctrl_rad=held, desired_ctrl_rad=targets, dispatch_time_s=dispatch_t, dispatch_ctrl_rad=dispatch_q,
++        dynamic_admitted=False)
++    result = dict(candidate='CLOSE1B_noslip_both_1mm_s_2mm_fixed_entry', physics_steps=0,
++        physics_step_attempts=len(step_attempts), new_dynamics_trials=0, nonzero_candidate_count=1,
++        prefix_completed=bool(not failure and abs(elapsed-CAP_S)<1e-10), stop_reason=stop,
++        completed_parameter_s=elapsed, requested_endpoint_mm=[2.,2.],
++        generated_steps=len(rows), solve_wall_s=solve_s, total_check_wall_s=time.monotonic()-begin,
++        saved_input_integration_max_difference=float(abs(after-saved_vector).max()),
++        initial_geometry=initial_geometry, initial_constraint_contacts=[list(k) for k in initial_contacts],
++        exact_zero_motion_target=bool(np.array_equal(entry(shape0),held)), EXTHOLD_1B=history_checks,
++        maximum_command_rate_deg_s=float(dispatch_rate.max()) if dispatch_rate.size else 0.,
++        maximum_command_absolute_deg=float(np.degrees(abs(targets)).max()),
++        maximum_predicted_shape_joint_deg=max([initial_geometry['shape_max_joint_deg']]+[r['shape_max_joint_deg'] for r in rows]),
++        deepest_predicted_pipe_mm=min([initial_geometry['pipe_depth_mm']]+[r['pipe_depth_mm'] for r in rows]),
++        maximum_contact_tangent_speed_mm_s=max([0.]+[r['contact_tangent_speed_max_mm_s'] for r in rows]),
++        maximum_roll_fk_vs_jac_difference_deg=float(abs(np.degrees(roll_fk-roll_jac)).max()),
++        last_prediction=rows[-1] if rows else None, events=events,
++        full_dynamics_admitted=False, worth_short_physics_after_review=bool(not failure),
++        limits='Bilateral point contact; no friction cone/load or guarantee preload/body follows geometric prefix',
++        collision_object='predicted rolling qpos including private free root, not the preloaded ctrl FK',
++        history_reuse='whole command history matches; complete warmstart entry does not, so not asserted fully equivalent',
++        next='Review this sole prefix; no automatic dynamics or additional candidate')
++    write('entry_prefix_result.json', result)
++    print(json.dumps({k:v for k,v in result.items() if k not in ('last_prediction','initial_geometry')},
++        ensure_ascii=False, indent=2), flush=True)
++
++
++if __name__ == '__main__':
++    main()
