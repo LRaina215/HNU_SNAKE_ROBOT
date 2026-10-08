@@ -1,0 +1,7 @@
+U81G: actual 20.55s from CLOSE1B; normal diagnostic save; complete=false.
+Front target-axis mean +1.301086mm; rear source-axis mean -26.620263mm; shared shift 0.086949mm; no new target material.
+Actual front N0-N8 right-hand span -4.812534 -> -4.740683rad. Still opposite-handed; not a transfer success.
+Actual/global RMS 58.707002 -> 60.682624mm. Local/global RMS 58.736963 -> 61.153254mm.
+Confirmed common-branch correction: initial head-only branch -1 required target rotations -2.420 to -11.301rad; whole-span branch0 minimizes squared tangential travel and gives +3.863 to -5.017rad. One common branch preserves target winding and frozen global destination. It did not establish successful actual untwisting/transport.
+U81G original raw trace, full final integration/ctrl, final controller state, frozen source and continuous actual-qpos 1x video saved. Original20-joint actuation,2.355Nm,88deg/10deg-per-second and first ctrl retained. No root assignment, static dynamics test, SHA or Git operation.
+Next U82G addresses material-node deformation versus equal-chord resampling and propagated old-winding pressure squeeze. This is a candidate correction, not an asserted unique cause.

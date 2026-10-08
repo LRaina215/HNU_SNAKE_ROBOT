@@ -1,0 +1,10 @@
+{
+  "reference_jump_s": 40.75,
+  "maximum_reference_node_step_mm": 140.19976128832366,
+  "maximum_jump_node": 17,
+  "guide_only_reported_node_step_mm": 0.20022830259756833,
+  "reference_node_steps_above1mm": 42,
+  "new_target_material": [],
+  "complete": false,
+  "meaning": "The full reference changed much more than the accepted guide-only step; material/chord branch and clearance updates must be bounded together. The later M6 contact loss is observed, not proved to have this as its unique cause."
+}

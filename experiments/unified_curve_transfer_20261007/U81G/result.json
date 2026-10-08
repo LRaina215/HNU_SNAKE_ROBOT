@@ -1,0 +1,374 @@
+{
+  "name": "U81G",
+  "outcome": "requested_diagnostic_stop_saved",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 20.550000000098123,
+  "dynamics_wall_seconds": 174.1720000000205,
+  "controller_initial_elapsed_s": 0.0,
+  "controller_final_elapsed_s": 20.550000000098123,
+  "final_shift_mm": 0.08694935105708178,
+  "final_curve_parameters": {
+    "source_phase_rad": -0.7063213412204339,
+    "target_phase_rad": -0.2209281595034252,
+    "source_feedback_phase_rad": -0.7073154989819701,
+    "target_feedback_phase_rad": -0.21993400174188898,
+    "source_radius_delta_mm": 2.426578105555739,
+    "target_radius_delta_mm": -3.1374122727423073,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.025500000000000012,
+    "phase_origin_shift_mm": 0.0,
+    "reference_pipe_clearance_mm": 22.83479246242548,
+    "reference_clearance_deficit_mm": 6.146234253096624,
+    "observed_grip_clearance_range_mm": [
+      23.955655049244537,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 40.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    12,
+    15,
+    17,
+    19,
+    20
+  ],
+  "final_target_modules": [
+    0,
+    6
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "action_checkpoints": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 1.301085524947977,
+  "fixed_rear_M14_M20_mean_x_advance_mm": -26.620263142381354,
+  "final_centers_mm": [
+    [
+      1036.8970445831349,
+      196.48360223892576,
+      942.4591103095015
+    ],
+    [
+      1081.0865283984017,
+      165.92994856678234,
+      912.0283261817729
+    ],
+    [
+      1134.093637333809,
+      148.79937689323162,
+      912.7397838289031
+    ],
+    [
+      1187.6489172195293,
+      138.30068267627558,
+      945.8980303602991
+    ],
+    [
+      1200.6813774444877,
+      140.49151672065543,
+      991.0970101765964
+    ],
+    [
+      1172.1134827213566,
+      131.12407590016926,
+      1046.011312149728
+    ],
+    [
+      1127.8076929545018,
+      110.9295119411291,
+      1079.9331324460934
+    ],
+    [
+      1072.855484870731,
+      82.29157608412308,
+      1088.963339081343
+    ],
+    [
+      1026.2324571800546,
+      39.15471155361521,
+      1097.8902223655884
+    ],
+    [
+      985.4157821183702,
+      -8.860630434772707,
+      1110.6269659574414
+    ],
+    [
+      943.4620727805443,
+      -46.247816842599974,
+      1096.707384566766
+    ],
+    [
+      904.7914285606341,
+      -74.82722635642162,
+      1054.8650285016051
+    ],
+    [
+      883.0880498443289,
+      -85.89833464891821,
+      1001.060096886516
+    ],
+    [
+      857.1312184642618,
+      -67.59626852054026,
+      947.7477997692638
+    ],
+    [
+      838.0929296421141,
+      -24.90865004139419,
+      914.2079715359794
+    ],
+    [
+      821.3083341793335,
+      27.72855712164211,
+      917.9900218021314
+    ],
+    [
+      795.1265380411448,
+      73.57935406080986,
+      953.5556586484726
+    ],
+    [
+      773.4673735095187,
+      86.97980230092594,
+      1001.7669966730534
+    ],
+    [
+      743.6576665265906,
+      67.19943870631894,
+      1055.2605426032815
+    ],
+    [
+      723.067528490214,
+      25.442973629706405,
+      1082.9222171195597
+    ],
+    [
+      701.9143240979124,
+      -32.73617959310309,
+      1077.7084696897073
+    ]
+  ],
+  "tail_center_mm": [
+    701.9143240979124,
+    -32.73617959310309,
+    1077.7084696897073
+  ],
+  "final_q_deg": [
+    33.62171710812474,
+    -60.52250828793292,
+    16.179847763756698,
+    -86.21077826320834,
+    -27.84189605428224,
+    -46.137227632001796,
+    -27.72566088453932,
+    12.08044720870654,
+    -9.164296271861186,
+    -52.31766531810372,
+    -17.590578716851528,
+    -47.38259277372262,
+    31.647265260678456,
+    -53.767543347044466,
+    61.68703561451429,
+    -18.505224227514205,
+    64.57984803165301,
+    7.710899756222913,
+    65.80277076637134,
+    31.19651673750068
+  ],
+  "max_actual_joint_deg": 87.37920474527765,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 1.108539056360996,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 0.00012573693458639568,
+  "minimum_reference_pipe_clearance_mm": 21.780573932451695,
+  "final_actual_source_grip_modules": [
+    12,
+    15,
+    17,
+    19,
+    20
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    6
+  ],
+  "final_geometrically_filtered_source_grip_modules": [
+    12,
+    15,
+    17,
+    19,
+    20
+  ],
+  "final_geometrically_filtered_target_grip_modules": [
+    0,
+    6
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 956,
+      "negative_frames": 972
+    },
+    {
+      "joint": 2,
+      "positive_frames": 0,
+      "negative_frames": 2056
+    },
+    {
+      "joint": 3,
+      "positive_frames": 756,
+      "negative_frames": 1247
+    },
+    {
+      "joint": 4,
+      "positive_frames": 0,
+      "negative_frames": 2056
+    },
+    {
+      "joint": 5,
+      "positive_frames": 482,
+      "negative_frames": 1531
+    },
+    {
+      "joint": 6,
+      "positive_frames": 601,
+      "negative_frames": 1370
+    },
+    {
+      "joint": 7,
+      "positive_frames": 352,
+      "negative_frames": 1688
+    },
+    {
+      "joint": 8,
+      "positive_frames": 1285,
+      "negative_frames": 759
+    },
+    {
+      "joint": 9,
+      "positive_frames": 288,
+      "negative_frames": 1755
+    },
+    {
+      "joint": 10,
+      "positive_frames": 422,
+      "negative_frames": 1622
+    },
+    {
+      "joint": 11,
+      "positive_frames": 0,
+      "negative_frames": 2056
+    },
+    {
+      "joint": 12,
+      "positive_frames": 19,
+      "negative_frames": 2037
+    },
+    {
+      "joint": 13,
+      "positive_frames": 0,
+      "negative_frames": 2056
+    },
+    {
+      "joint": 14,
+      "positive_frames": 0,
+      "negative_frames": 2056
+    },
+    {
+      "joint": 15,
+      "positive_frames": 1783,
+      "negative_frames": 212
+    },
+    {
+      "joint": 16,
+      "positive_frames": 656,
+      "negative_frames": 1381
+    },
+    {
+      "joint": 17,
+      "positive_frames": 2056,
+      "negative_frames": 0
+    },
+    {
+      "joint": 18,
+      "positive_frames": 1049,
+      "negative_frames": 1000
+    },
+    {
+      "joint": 19,
+      "positive_frames": 2056,
+      "negative_frames": 0
+    },
+    {
+      "joint": 20,
+      "positive_frames": 1232,
+      "negative_frames": 744
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014599600341875615,
+      "maximum_tracking_error_deg": 6.3466823601171996,
+      "lag_mm": 0.014599600341875615
+    },
+    {
+      "t_s": 0.55,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.07842085085273716,
+      "maximum_tracking_error_deg": 3.880049395983813,
+      "lag_mm": 1.2782343029617247
+    },
+    {
+      "t_s": 4.1000000000000005,
+      "mode": "smooth_captured_receiving_bends",
+      "joints": [
+        2
+      ],
+      "action": "same fitted target helix gradually replaces captured pipe-span curvature peaks; local limit feedback relaxes curvature"
+    }
+  ],
+  "curve_feedback_updates": 411
+}

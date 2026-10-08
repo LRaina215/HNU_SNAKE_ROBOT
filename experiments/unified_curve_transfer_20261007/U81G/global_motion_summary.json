@@ -1,0 +1,114 @@
+{
+  "name": "U81G",
+  "initial": "CLOSE1B",
+  "actual_seconds": 20.550000000098123,
+  "outcome": "requested_diagnostic_stop_saved",
+  "complete": false,
+  "front_target_axis_net_mm": 1.301085524947977,
+  "rear_source_axis_net_mm": -26.620263142381354,
+  "new_target_material": [],
+  "actual_initial": {
+    "actual_global_goal_rms_mm": 58.707002077959736,
+    "actual_local_reference_rms_mm": 0.041977108357373026,
+    "actual_front_N0_N8_delta_y_mm": -119.03492477050624,
+    "actual_front_N0_N8_right_hand_delta_phi_rad": -4.81253433596963,
+    "actual_front_N0_N8_axial_fold_count": 1,
+    "actual_tail_N21_mm": [
+      710.9061671889128,
+      -39.90719937595853,
+      1084.1924402402803
+    ],
+    "global_node_parameters_mm": [
+      1354.5,
+      1288.8654867618038,
+      1223.2324060202068,
+      1157.5982872375955,
+      1091.962735958386,
+      1026.328368045932,
+      960.695266543515,
+      895.0609816743415,
+      832.2315828432268,
+      756.1953889845255,
+      693.7599163776902,
+      646.1234376757664,
+      601.6864789555141,
+      556.5298386056425,
+      509.0092333208679,
+      443.3737028024789,
+      377.73970858479004,
+      312.1066278431931,
+      246.47201080089604,
+      180.8365010433275,
+      115.2026729122007,
+      49.569612931424196
+    ]
+  },
+  "actual_final": {
+    "actual_global_goal_rms_mm": 60.68262380261659,
+    "actual_local_reference_rms_mm": 11.335235398001496,
+    "actual_front_N0_N8_delta_y_mm": -158.11544913318323,
+    "actual_front_N0_N8_right_hand_delta_phi_rad": -4.740683463230507,
+    "actual_front_N0_N8_axial_fold_count": 1,
+    "actual_tail_N21_mm": [
+      684.538360565306,
+      -58.94611453167503,
+      1070.5546104634325
+    ],
+    "global_node_parameters_mm": [
+      1354.5869515394058,
+      1288.9521476497248,
+      1223.3191084297675,
+      1157.6853841027419,
+      1092.049874345172,
+      1026.4151950204118,
+      960.782135039634,
+      895.1482238652246,
+      832.2945760398652,
+      756.337525355051,
+      693.8863181403085,
+      646.2604395278582,
+      601.8456220482469,
+      556.7149825129281,
+      509.28362816918826,
+      443.648222215721,
+      378.01323147865895,
+      312.38027530198417,
+      246.74686238726224,
+      181.1114149121538,
+      115.47652797919238,
+      49.843530280876266
+    ]
+  },
+  "guidance_acceptance_counts": {
+    "0.0625": 1,
+    "0.125": 87,
+    "0.25": 96,
+    "0.5": 116,
+    "1.0": 111
+  },
+  "local_reference_to_global_rms_mm": [
+    58.736963404450265,
+    61.15325437463942
+  ],
+  "root_models": [
+    "measured root velocity; actuated remainder of same tasks"
+  ],
+  "final_source_raw": [
+    12,
+    15,
+    17,
+    19,
+    20
+  ],
+  "final_target_raw": [
+    0,
+    6
+  ],
+  "max_actual_joint_deg": 87.37920474527765,
+  "max_drive_torque_Nm": 2.355,
+  "max_ctrl_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "planned_source_right_hand_dphi_daxis": -33.40233998017938,
+  "planned_target_right_hand_dphi_daxis": -33.40233998017938,
+  "limitation": "Reference changes, accepted proposals and predicted rollouts are not actual transfer or proof of a same-handed final whole body."
+}

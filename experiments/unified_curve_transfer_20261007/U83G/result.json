@@ -1,0 +1,3349 @@
+{
+  "name": "U83G",
+  "outcome": "requested_diagnostic_stop_saved",
+  "complete": false,
+  "error": null,
+  "physical_seconds": 27.40000000013083,
+  "dynamics_wall_seconds": 259.7970000000205,
+  "controller_initial_elapsed_s": 0.0,
+  "controller_final_elapsed_s": 27.40000000013083,
+  "final_shift_mm": 15.162146830673844,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.17336030424621346,
+    "target_phase_rad": -0.17336030424621346,
+    "source_feedback_phase_rad": 0.0,
+    "target_feedback_phase_rad": 0.0,
+    "source_radius_delta_mm": 0.0,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.0,
+    "phase_origin_shift_mm": 0.0,
+    "reference_pipe_clearance_mm": 25.445573355892556,
+    "reference_clearance_deficit_mm": 4.304426644107444,
+    "observed_grip_clearance_range_mm": [
+      23.955655049244537,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 18.43611047709428,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 1.303126987990778
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    12,
+    14,
+    16,
+    17,
+    19,
+    20
+  ],
+  "final_target_modules": [
+    0,
+    3,
+    6,
+    7
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "action_checkpoints": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 2.793699822555319,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 8.038369056336624,
+  "final_centers_mm": [
+    [
+      1028.791529410403,
+      198.73478184696648,
+      954.1414732814146
+    ],
+    [
+      1056.2307102190712,
+      162.77374625870422,
+      908.4632307319782
+    ],
+    [
+      1096.690697953537,
+      139.30438972743244,
+      903.0226566418669
+    ],
+    [
+      1153.1612988332863,
+      135.31094151907052,
+      933.7473735104386
+    ],
+    [
+      1192.1514918681205,
+      149.46133981087135,
+      974.9974226912543
+    ],
+    [
+      1194.6945956584211,
+      141.7773411130644,
+      1023.5572787927497
+    ],
+    [
+      1159.8092798875387,
+      115.14447474431107,
+      1062.1055746275101
+    ],
+    [
+      1102.9554431695374,
+      99.57257117754352,
+      1084.5434060790453
+    ],
+    [
+      1051.8671319424748,
+      66.84132210197282,
+      1101.442460628865
+    ],
+    [
+      1011.4791718952117,
+      19.58443181667035,
+      1109.8734894017723
+    ],
+    [
+      967.9123162750358,
+      -26.424165466297733,
+      1101.5443538253903
+    ],
+    [
+      931.886575333705,
+      -64.08406656149808,
+      1071.5042270116626
+    ],
+    [
+      901.2148742970546,
+      -83.21976348312754,
+      1021.2172981019735
+    ],
+    [
+      877.4011176870152,
+      -80.79360748925708,
+      963.7375158299592
+    ],
+    [
+      862.7191698295344,
+      -46.86652030975908,
+      925.966563000557
+    ],
+    [
+      842.8827068800098,
+      13.277587878627886,
+      913.7533004166767
+    ],
+    [
+      831.2454662364038,
+      59.233410037214426,
+      935.663269675305
+    ],
+    [
+      811.9833255918072,
+      83.98016283708778,
+      989.4197719012635
+    ],
+    [
+      791.9859308058124,
+      76.99159899135444,
+      1043.0435967369044
+    ],
+    [
+      766.5797154163431,
+      38.9239423240732,
+      1076.8559951011148
+    ],
+    [
+      731.8488051179434,
+      -13.130472803503382,
+      1083.2238235823547
+    ]
+  ],
+  "tail_center_mm": [
+    731.8488051179434,
+    -13.130472803503382,
+    1083.2238235823547
+  ],
+  "final_q_deg": [
+    -9.3512795152719,
+    -86.21550969874745,
+    5.9921524420860015,
+    -49.82603899564819,
+    -80.49647592565812,
+    -50.17731097216801,
+    -24.142797727530265,
+    24.89749267015602,
+    -26.881248513139568,
+    -15.537099635475855,
+    -42.304859921282244,
+    -32.43746889531598,
+    -30.255698044406834,
+    -69.95068737986335,
+    -0.9521247574970969,
+    -71.86989164975803,
+    30.45807651062171,
+    -53.26596788804362,
+    56.17974064266653,
+    -25.574609095742073
+  ],
+  "max_actual_joint_deg": 87.38654318854383,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 1.180112914171749,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 1.5265566588595902e-13,
+  "minimum_reference_pipe_clearance_mm": 24.69466379392992,
+  "final_actual_source_grip_modules": [
+    12,
+    14,
+    16,
+    17,
+    19,
+    20
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    3,
+    6,
+    7
+  ],
+  "final_geometrically_filtered_source_grip_modules": [
+    12,
+    14,
+    16,
+    17,
+    19,
+    20
+  ],
+  "final_geometrically_filtered_target_grip_modules": [
+    0,
+    3,
+    6,
+    7
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 1013,
+      "negative_frames": 1380
+    },
+    {
+      "joint": 2,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 3,
+      "positive_frames": 418,
+      "negative_frames": 2273
+    },
+    {
+      "joint": 4,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 5,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 6,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 7,
+      "positive_frames": 20,
+      "negative_frames": 2622
+    },
+    {
+      "joint": 8,
+      "positive_frames": 2741,
+      "negative_frames": 0
+    },
+    {
+      "joint": 9,
+      "positive_frames": 852,
+      "negative_frames": 1860
+    },
+    {
+      "joint": 10,
+      "positive_frames": 2664,
+      "negative_frames": 65
+    },
+    {
+      "joint": 11,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 12,
+      "positive_frames": 2651,
+      "negative_frames": 85
+    },
+    {
+      "joint": 13,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 14,
+      "positive_frames": 625,
+      "negative_frames": 1976
+    },
+    {
+      "joint": 15,
+      "positive_frames": 587,
+      "negative_frames": 2126
+    },
+    {
+      "joint": 16,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 17,
+      "positive_frames": 2741,
+      "negative_frames": 0
+    },
+    {
+      "joint": 18,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    },
+    {
+      "joint": 19,
+      "positive_frames": 2741,
+      "negative_frames": 0
+    },
+    {
+      "joint": 20,
+      "positive_frames": 0,
+      "negative_frames": 2741
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 0.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 0.0,
+      "maximum_tracking_error_deg": 8.849920474408883,
+      "lag_mm": 0.0
+    },
+    {
+      "t_s": 0.30000000000000004,
+      "mode": "advance",
+      "shift_mm": 0.014561972705940299,
+      "maximum_tracking_error_deg": 6.407622117719798,
+      "lag_mm": 0.014561972705940299
+    },
+    {
+      "t_s": 2.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.977529mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.6500000000000004,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 1.006032mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 1.018844mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.979946mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.8000000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.920608mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.905997mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.9000000000000004,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.902531mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 2.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.831347mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.802916mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.0500000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.724948mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.680635mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.1500000000000004,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.635344mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.575039mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.513031mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.3000000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.458036mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.409822mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.4000000000000004,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.402283mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.403854mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.5500000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.443783mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.448483mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.6500000000000004,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.453175mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.457855mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.462524mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.8000000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.467182mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.471828mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.9000000000000004,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.476464mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 3.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.481089mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.485705mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.489824mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.1000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.493734mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.497632mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.501521mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.505402mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.509274mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.3500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.513134mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.516983mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.520823mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.524655mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.528387mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.6000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.532108mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.535819mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.539522mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.543218mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.800000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.546903mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.8500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.550578mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.554243mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 4.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.557898mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.561548mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.050000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.565016mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.1000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.568472mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.571917mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.575355mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.578850mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.300000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.582623mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.3500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.586386mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.590939mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.595557mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.600165mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.550000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.604709mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.6000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.609186mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.613652mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.618108mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.622553mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.800000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.626988mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.8500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.631412mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.635825mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 5.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.640228mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.644621mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.050000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.649012mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.1000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.653392mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.657763mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.662123mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.666474mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.300000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.670361mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.3500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.672543mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.669331mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.666260mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.663331mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.550000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.660214mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.6000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.657271mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.654481mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.651820mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.649330mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.800000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.647022mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.8500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.644967mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.642990mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 6.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.640354mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.635725mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.050000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.630812mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.1000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.625895mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.620974mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.616042mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.611100mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.300000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.606156mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.3500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.601210mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.596261mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.591310mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.586357mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.550000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.581610mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.6000000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.576862mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.572114mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.567362mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.562609mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.800000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.557854mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.8500000000000005,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.553096mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.548338mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 7.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.543578mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.538817mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.534286mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.529755mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.525223mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.520695mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.516165mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.511638mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.507110mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.502592mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.498059mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.493527mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.489220mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.484948mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.480683mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.476419mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.472156mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.467896mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.463631mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.459370mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 8.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.455122mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.450948mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.452508mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.448624mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.444741mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.440858mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.436976mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.433092mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.429210mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.423867mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.419956mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.416050mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.411614mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.406646mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.401131mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.614962mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.620266mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.625833mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.631389mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 9.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.637009mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.642678mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.648945mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.100000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.655676mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.662550mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.669218mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.675622mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.682104mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.350000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.688662mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.695293mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.702006mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.708795mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.716192mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.722953mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.728128mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.733281mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.738437mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.743593mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.748751mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.751397mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 10.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.752538mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.752620mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.752831mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.100000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.753174mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.753643mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.754235mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.754951mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.755781mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.350000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756728mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756727mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756505mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756396mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756395mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756593mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.757158mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.757677mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.758216mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.758875mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.759643mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.760513mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 11.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.761486mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.762559mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.763805mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.100000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.765221mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.766755mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.768205mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.766003mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.764704mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.350000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.763449mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.762243mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.761282mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.760560mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.760052mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.758481mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756570mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.754838mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.753279mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.752181mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.750993mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.749943mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 12.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.746666mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.745939mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.745368mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.100000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.744942mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.744686mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.744599mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.744711mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.744951mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.350000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.745347mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.745969mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.749004mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.749895mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.748605mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.750153mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.751542mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.753090mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.754787mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.756632mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.758610mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.760728mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 13.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.770116mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.772485mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.775045mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.100000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.777693mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.780446mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.783301mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.786288mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.789426mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.350000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.792658mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.796155mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.800199mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.804038mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.808057mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.812176mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.816393mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.820703mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.825945mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.829860mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.830981mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.832395mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 14.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.834148mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.835954mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.837740mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.100000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.839814mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.15,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.842196mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.200000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.844820mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.847679mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.850788mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.350000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.854116mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.4,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.859043mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.450000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.860559mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.861911mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.854279mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.600000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.843635mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.65,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.833165mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.700000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.822879mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.811598mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.800142mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.850000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.788596mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.9,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.777763mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 15.950000000000001,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.767009mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.760756mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.751122mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.742553mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.734873mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.726980mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.719022mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.711056mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.702808mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.694910mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.686889mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.678982mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.671905mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.665211mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.659947mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.655098mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.650259mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.645419mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.640599mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.635784mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 16.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.630976mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.626177mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.622236mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.618674mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.615111mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.611559mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.608016mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.604478mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.600943mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.597416mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.593885mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.590355mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.586881mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.583432mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.579938mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.576496mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.572894mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.569468mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.565993mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.562510mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 17.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.559040mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.555573mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.552215mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.548859mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.545509mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.2,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.542363mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.539023mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.535681mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.532351mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.529030mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.45,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.525713mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.522370mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.518713mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.515082mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.511457mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.7,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.507835mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.504238mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.500666mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.497102mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.493681mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 18.95,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.490089mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.486532mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.482983mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.479431mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.470842mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.467289mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.463739mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.460194mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.456658mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.453129mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.449597mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.445996mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.442504mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.438755mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.434948mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.431148mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.427344mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.423512mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.419803mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.416008mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 19.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.412212mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.408478mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.404606mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.400715mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.694754mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.698504mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.702057mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.705542mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.708974mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.712303mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.715602mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.718875mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.721407mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.723121mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.724878mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.726678mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.728521mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 20.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.730406mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.732333mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.733881mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.735492mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.737175mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.738881mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.740611mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.742519mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.744295mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.746095mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.747916mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.749757mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.751232mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.752717mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.754207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.755701mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.757207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.758724mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.760251mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.761791mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 21.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.763341mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.764902mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.766404mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.767915mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.769433mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.770969mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.772507mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.774055mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.775609mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.777173mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.778742mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.780321mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781036mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781039mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781043mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781047mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781051mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781055mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781059mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781064mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 22.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781068mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 14.781171536235686,
+      "maximum_tracking_error_deg": 3.006309156525937,
+      "lag_mm": 8.404704684093371
+    },
+    {
+      "t_s": 23.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781072mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781075mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 23.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781075mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781076mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781077mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.6,
+      "mode": "advance",
+      "shift_mm": 14.796284116956587,
+      "maximum_tracking_error_deg": 3.0059481844065115,
+      "lag_mm": 8.715735330965712
+    },
+    {
+      "t_s": 24.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781080mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781084mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781091mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781098mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781104mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781111mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781117mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 24.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781124mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781131mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781139mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781147mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781154mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781161mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781168mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781176mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781183mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781188mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781196mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.5,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 14.977345433209774,
+      "maximum_tracking_error_deg": 3.0116994963709423,
+      "lag_mm": 9.100028382483117
+    },
+    {
+      "t_s": 25.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781204mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 25.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781207mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781209mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.1,
+      "mode": "advance",
+      "shift_mm": 14.989924754422178,
+      "maximum_tracking_error_deg": 3.0097212364549484,
+      "lag_mm": 9.196530176382941
+    },
+    {
+      "t_s": 26.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781213mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781219mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781226mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781234mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781241mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781249mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.400000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781256mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.450000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781264mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.5,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781271mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.55,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781279mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.6,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781286mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.650000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781294mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.700000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781302mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.75,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781309mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.8,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781317mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.85,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781325mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.900000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781333mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 26.950000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781341mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.0,
+      "mode": "reshape_with_shift_braked",
+      "shift_mm": 15.157897591086673,
+      "maximum_tracking_error_deg": 3.0046380164011257,
+      "lag_mm": 9.599432874371088
+    },
+    {
+      "t_s": 27.0,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781348mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.05,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.1,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.150000000000002,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.200000000000003,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.25,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.3,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    },
+    {
+      "t_s": 27.35,
+      "mode": "shape_increment_rejected_by_original_solid_guard",
+      "reason": "Complete feedback/reference update exceeds8mm/s node step: 0.781352mm",
+      "meaning": "rollback only unexecuted curve update; actual pose/ctrl/history unchanged"
+    }
+  ],
+  "curve_feedback_updates": 548
+}
