@@ -1542,7 +1542,8 @@ class UnifiedCurveTransfer:
                 # A finite 1mm shared-reference probe tests coordinated feed
                 # even during the preceding reshape retreat. Once consumed,
                 # the original measured-retreat brake controls continuation.
-                requested = (min(.0005,max(0.,slower)+action_bootstrap)
+                requested = (min(.004*float(error_scale)*float(np.clip((.075-action_lag)/.05,0.,1.)),
+                    max(0.,slower)+action_bootstrap)
                     if slower >= -.0002 else min(.0005,probe_remaining/DT))
         if self.yield_state is not None and self.yield_state.get('anchor_recovery_active', False):
             requested = 0.
@@ -2046,11 +2047,15 @@ class UnifiedCurveTransfer:
                 and self.yield_state is not None and self.yield_state['stage'] in ['unload','feed']):
             target, physics_execution = self.refine_physical_execution(data,target,
                 np.vstack(physical_A),np.concatenate(physical_b),local_bend_constraint,support_forces)
+            if physics_execution.get('forward_probe_rejected',False):
+                self.speed = 0.
         if self.first_dispatch:
             target = self.last.copy()
             self.first_dispatch = False
+        if local_bend_constraint is not None:
+            local_bend_constraint['final_dispatch_rate_deg_s'] = math.degrees((target[local_bend_constraint['joint']-1]-self.last[local_bend_constraint['joint']-1])/DT)
         self.last = target.copy()
-        info = dict(stage=mode, shift_mm=float(self.shift*1000), shift_speed_mm_s=float(self.speed*1000),
+        info = dict(stage=mode, shift_mm=float(self.shift*1000), shift_speed_mm_s=float(ds/DT*1000),
             actual_material_estimate_mm=actual_material*1000, actual_material_speed_mm_s=actual_speed*1000,
             reference_lead_mm=lag*1000, fixed_front_y_mm=front_progress*1000,
             historical_shift_lead_mm=historical_lag*1000,
@@ -2174,41 +2179,67 @@ class UnifiedCurveTransfer:
         if selected is not None:
             # The final physical support solve may reduce this same curve
             # increment, but cannot add an opposite yielding motion afterward.
-            lower[selected] = min(self.last[selected],target[selected])
-            upper[selected] = max(self.last[selected],target[selected])
+            lower[selected] = max(lower[selected],min(self.last[selected],target[selected]))
+            upper[selected] = min(upper[selected],max(self.last[selected],target[selected]))
         active = [i for i in range(20) if upper[i]-lower[i]>1e-8]
-        jacobian = np.empty((len(vector),len(active)))
-        feature_jacobian = np.empty((len(feature_floor),len(active)))
-        for column,joint in enumerate(active):
-            positive_step = min(.002,max(0.,upper[joint]-target[joint]))
-            negative_step = min(.002,max(0.,target[joint]-lower[joint]))
-            step = positive_step if positive_step>=negative_step else -negative_step
-            candidate = target.copy();candidate[joint] += step
-            residual,_,feature = predict(candidate)
-            jacobian[:,column] = (residual-baseline)/step
-            feature_jacobian[:,column] = (feature-baseline_feature)/step
-        low = lower[active]-target[active]
-        high = upper[active]-target[active]
-        fit = lsq_linear(np.vstack([jacobian,.5*np.eye(len(active))]),
-            np.r_[-baseline,np.zeros(len(active))],bounds=(low,high),tol=1e-7,max_iter=60)
-        def objective(change):
-            error = baseline+jacobian@change
-            return .5*(error@error+.25*(change@change))
-        def gradient(change):
-            return jacobian.T@(baseline+jacobian@change)+.25*change
-        constrained = minimize(objective,fit.x,jac=gradient,method='SLSQP',bounds=list(zip(low,high)),
-            constraints=[dict(type='ineq',fun=lambda change:baseline_feature+feature_jacobian@change-feature_floor,
-                jac=lambda change:feature_jacobian)],options=dict(ftol=1e-10,maxiter=80))
-        candidate = target.copy();candidate[active] += constrained.x
-        corrected,corrected_velocity,corrected_feature = predict(candidate)
-        feasible = bool(np.all(corrected_feature>=feature_floor-1e-7))
+        center = target.copy()
+        current_residual,current_feature = baseline,baseline_feature
+        options = [(target.copy(),baseline,baseline_velocity,baseline_feature)]
+        predictions = 1
+        for iteration in range(3):
+            jacobian = np.empty((len(vector),len(active)))
+            feature_jacobian = np.empty((len(feature_floor),len(active)))
+            for column,joint in enumerate(active):
+                positive_step = min(.002,max(0.,upper[joint]-center[joint]))
+                negative_step = min(.002,max(0.,center[joint]-lower[joint]))
+                step = positive_step if positive_step>=negative_step else -negative_step
+                perturbation = center.copy();perturbation[joint] += step
+                residual,_,feature = predict(perturbation)
+                predictions += 1
+                jacobian[:,column] = (residual-current_residual)/step
+                feature_jacobian[:,column] = (feature-current_feature)/step
+            low,high = lower[active]-center[active],upper[active]-center[active]
+            fit = lsq_linear(np.vstack([jacobian,.5*np.eye(len(active))]),
+                np.r_[-current_residual,np.zeros(len(active))],bounds=(low,high),tol=1e-7,max_iter=60)
+            def objective(change):
+                error = current_residual+jacobian@change
+                return .5*(error@error+.25*(change@change))
+            def gradient(change):
+                return jacobian.T@(current_residual+jacobian@change)+.25*change
+            constrained = minimize(objective,fit.x,jac=gradient,method='SLSQP',bounds=list(zip(low,high)),
+                constraints=[dict(type='ineq',fun=lambda change:current_feature+feature_jacobian@change-feature_floor,
+                    jac=lambda change:feature_jacobian)],options=dict(ftol=1e-10,maxiter=80))
+            candidate = center.copy();candidate[active] += constrained.x
+            candidate = np.clip(candidate,lower,upper)
+            corrected,corrected_velocity,corrected_feature = predict(candidate)
+            predictions += 1
+            options.append((candidate.copy(),corrected,corrected_velocity,corrected_feature))
+            feasible = bool(np.all(corrected_feature>=feature_floor-1e-7))
+            if feasible:
+                break
+            center,current_residual,current_feature = candidate,corrected,corrected_feature
         baseline_feasible = bool(np.all(baseline_feature>=feature_floor-1e-7))
         accepted = feasible and (np.linalg.norm(corrected)<np.linalg.norm(baseline) or not baseline_feasible)
         # A nonlinear contact change may invalidate the local differential.
         # Only a model-confirmed improvement replaces the original increment.
         final = candidate if accepted else target
+        support_fallback = False
+        if not feasible:
+            hold = np.clip(self.last,lower,upper)
+            hold_residual,hold_velocity,hold_feature = predict(hold)
+            predictions += 1
+            options.append((hold,hold_residual,hold_velocity,hold_feature))
+            # When forward motion is not confirmed, select the evaluated
+            # braking option with least ORIGINAL carrier-threshold violation.
+            # Do not silently dispatch the known-unsafe kinematic proposal.
+            def support_score(option):
+                deficit = np.maximum(feature_floor[:len(required)]-option[3][:len(required)],0.)
+                return (float(deficit@deficit),float(np.linalg.norm(option[1])))
+            final,corrected,corrected_velocity,corrected_feature = min(options,key=support_score)
+            support_fallback = True
         return final,dict(horizon_s=DT,physics_steps_per_prediction=steps,
-            predicted_candidates=len(active)+2,accepted=bool(accepted),
+            predicted_candidates=predictions,linearizations=iteration+1,accepted=bool(accepted),
+            support_fallback=support_fallback,forward_probe_rejected=bool(forward and not feasible),
             baseline_task_residual=float(np.linalg.norm(baseline)),
             corrected_task_residual=float(np.linalg.norm(corrected)),
             maximum_ctrl_correction_deg=float(np.degrees(abs(final-target)).max()),
