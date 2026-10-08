@@ -1,0 +1,532 @@
+{
+  "name": "N02W",
+  "outcome": "no_real_progress_45s_after_action_window",
+  "complete": false,
+  "physical_seconds": 207.95000000017293,
+  "final_shift_mm": 31.81934341132099,
+  "fixed_front_M0_M6_mean_y_advance_mm": -40.9908604282147,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 79.394662843384,
+  "new_sustained_target_modules": [],
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 3.6817801342521648,
+  "max_actual_joint_deg": 87.37921281199465,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "save_errors": [],
+  "maximum_actual_front_mean_y_advance_mm": 11.440574388807041,
+  "maximum_actual_rear_mean_x_advance_mm": 79.44282213294217,
+  "maximum_actual_front_winding_span_rad": 4.349390462855913,
+  "final_actual_front_temporal_azimuth_change_rad": [
+    -0.7479021209498149,
+    -0.523759687782348,
+    -0.4688016145966747,
+    -0.4175925390798808,
+    -0.3305407295528714,
+    -0.35771748538839276,
+    -0.30233546559280977,
+    -0.2658391938438569
+  ],
+  "final_actual_front_radius_mm": [
+    99.23737227376145,
+    107.7629413637895,
+    96.49154423861005,
+    86.64363442849887,
+    96.73605229271568,
+    104.20609695507716,
+    99.64142304880362,
+    84.65042910564681
+  ],
+  "target_helix_spatial_dphi_dy_rad_per_mm": 0.019972828740171474,
+  "final_curve_guide_front_temporal_azimuth_change_rad": [
+    0.06920696068489818,
+    -0.08417278815208862,
+    -0.17358194819792727,
+    -0.009567338932731873,
+    -0.1494692045869573,
+    -0.2029647333830532,
+    -0.18955246071616194,
+    -0.23197704069514424
+  ],
+  "temporal_azimuth_note": "the spatial helix is also phase-rotated during rolling; its static dphi/dy is not a valid temporal motion law",
+  "rejection_counts": {},
+  "maximum_bridge_clearance_field_mm": 0.0,
+  "accepted_pressure_shape_command_frames": 3827,
+  "maximum_pressure_normal_curve_velocity_mm_s": 0.6,
+  "maximum_loaded_tracking_normal_curve_velocity_mm_s": 1.0000000000000002,
+  "final_geometric_tracking_max_deg": 0.003449621677972676,
+  "evidence": "saved actual trace and commands only; no simulation steps; world-axis displacement, nominal shift and field size are not by themselves physical handover",
+  "checkpoints": [
+    {
+      "t_s": 0.0,
+      "actual_front_mean_y_advance_mm": 0.0,
+      "actual_rear_mean_x_advance_mm": 0.0,
+      "actual_front_winding_span_rad": 4.163843061358122,
+      "actual_front_temporal_azimuth_change_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_front_radius_mm": [
+        84.78641966571341,
+        101.91433579091543,
+        98.67205371853677,
+        84.65510859935182,
+        91.31198445834507,
+        96.45264422421788,
+        89.81004436774745,
+        84.34770127785418
+      ],
+      "actual_front_mean_z_change_mm": 0.0,
+      "posterior_geometrically_filtered_source_contacts": [
+        14,
+        17,
+        20
+      ],
+      "target_cylinder_contacts": [
+        0,
+        3,
+        7
+      ],
+      "shared_shift_mm": 0.0,
+      "requested_speed_mm_s": 0.0,
+      "accepted_speed_mm_s": 0.0,
+      "geometric_tracking_max_deg": 0.0,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 5.000000000023874,
+      "actual_front_mean_y_advance_mm": 4.357996663511559,
+      "actual_rear_mean_x_advance_mm": 11.940933888084844,
+      "actual_front_winding_span_rad": 4.2284428197083415,
+      "actual_front_temporal_azimuth_change_rad": [
+        0.062096505775334876,
+        0.03844913807862338,
+        0.03608697004321293,
+        0.058588029234591055,
+        0.03537342756849654,
+        -0.003670245433374908,
+        -0.0021519435116410524,
+        -0.0025032525748838186
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        -0.018733923770893668,
+        -0.03604250058642933,
+        -0.040873524352653456,
+        -0.002784674657386521,
+        -0.02300128550407092,
+        -0.029681099925105925,
+        -0.024981253380766733,
+        -0.009169586293410914
+      ],
+      "actual_front_radius_mm": [
+        87.34441410890803,
+        102.99244662724126,
+        100.31743832654223,
+        84.63331222186126,
+        87.71072241825418,
+        93.53118302199775,
+        88.99187356525321,
+        84.50503907048555
+      ],
+      "actual_front_mean_z_change_mm": -0.7254781544196334,
+      "posterior_geometrically_filtered_source_contacts": [
+        14,
+        16,
+        20
+      ],
+      "target_cylinder_contacts": [
+        3,
+        7
+      ],
+      "shared_shift_mm": 6.950000000000006,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 2.0,
+      "geometric_tracking_max_deg": 2.217940392521959,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 15.000000000071623,
+      "actual_front_mean_y_advance_mm": 8.78181470375695,
+      "actual_rear_mean_x_advance_mm": 52.557672324685186,
+      "actual_front_winding_span_rad": 4.347753741383396,
+      "actual_front_temporal_azimuth_change_rad": [
+        0.2994945469633201,
+        0.18102500245646902,
+        0.10546041385672922,
+        0.14900128035869342,
+        0.12972622305528084,
+        0.06004574556133807,
+        0.09924444887051076,
+        0.11558386693804601
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        -0.039152223637450856,
+        -0.10084334752607504,
+        -0.1318928395990948,
+        0.0018833345233980614,
+        -0.05882661853834774,
+        -0.08696300347413366,
+        -0.0778488398097189,
+        -0.01663948460769138
+      ],
+      "actual_front_radius_mm": [
+        86.5021064024433,
+        92.52672373586957,
+        93.58521691677835,
+        84.98302990991051,
+        86.14809196642291,
+        94.14518769192998,
+        91.82385598758547,
+        84.56392005252454
+      ],
+      "actual_front_mean_z_change_mm": 1.78782249191417,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        14,
+        20
+      ],
+      "target_cylinder_contacts": [
+        0,
+        3,
+        7
+      ],
+      "shared_shift_mm": 23.97884111922631,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.02460322228735095,
+      "geometric_tracking_max_deg": 1.6098402703002939,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 30.000000000143245,
+      "actual_front_mean_y_advance_mm": -4.766506745173402,
+      "actual_rear_mean_x_advance_mm": 47.810944525376144,
+      "actual_front_winding_span_rad": 4.280723852580811,
+      "actual_front_temporal_azimuth_change_rad": [
+        0.1227432853027457,
+        0.060157151099027084,
+        0.044597820592847004,
+        0.13232820330926542,
+        0.12035231287392836,
+        0.023678086067509152,
+        0.021529046801906704,
+        0.005862494080056679
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        -0.04114561140103312,
+        -0.10891515595310408,
+        -0.13787453340477063,
+        -0.010993730167845994,
+        -0.07899202191953708,
+        -0.1055368361814587,
+        -0.0953761814046502,
+        -0.043713710333241895
+      ],
+      "actual_front_radius_mm": [
+        85.1396171250226,
+        98.07000306124775,
+        99.43504032839711,
+        87.49551761642545,
+        86.20556106546015,
+        91.31744478521043,
+        88.72246028184557,
+        84.5930375714691
+      ],
+      "actual_front_mean_z_change_mm": -1.4404671546263899,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        14,
+        20
+      ],
+      "target_cylinder_contacts": [
+        0,
+        4,
+        7
+      ],
+      "shared_shift_mm": 24.208190805586753,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.0016749722342337332,
+      "geometric_tracking_max_deg": 3.288772019223419,
+      "shape_update_fraction": 0.03125,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 45.00000000021487,
+      "actual_front_mean_y_advance_mm": -69.4581618096582,
+      "actual_rear_mean_x_advance_mm": 53.02808730691178,
+      "actual_front_winding_span_rad": 3.7307505688533014,
+      "actual_front_temporal_azimuth_change_rad": [
+        -0.5784575162045973,
+        -0.34456239156815305,
+        -0.23736633179317979,
+        -0.10056464549523902,
+        -0.03503182533750947,
+        -0.10774659584606572,
+        -0.13038707942299788,
+        -0.1453650236997761
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        -0.031126314109650277,
+        -0.1110136329985838,
+        -0.14099222734829397,
+        -0.013680744171889692,
+        -0.08628107984733813,
+        -0.11359696516271534,
+        -0.10304397202462379,
+        -0.05205228645139415
+      ],
+      "actual_front_radius_mm": [
+        104.6852599905584,
+        121.60676644676063,
+        113.26765655199966,
+        94.47415833563505,
+        94.93587366425623,
+        95.63221608388669,
+        91.0460387376664,
+        84.8797116506287
+      ],
+      "actual_front_mean_z_change_mm": -8.135786246229642,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        20
+      ],
+      "target_cylinder_contacts": [],
+      "shared_shift_mm": 24.583523315046076,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.07618104617308141,
+      "geometric_tracking_max_deg": 0.035566882462691435,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 60.00000000028649,
+      "actual_front_mean_y_advance_mm": -74.94262369481835,
+      "actual_rear_mean_x_advance_mm": 53.03185895671793,
+      "actual_front_winding_span_rad": 3.8322435731581437,
+      "actual_front_temporal_azimuth_change_rad": [
+        -0.6204249207768961,
+        -0.36169916081260833,
+        -0.2618258806922913,
+        -0.17951255677284472,
+        -0.1388456442090969,
+        -0.22999980946080956,
+        -0.26157037014347895,
+        -0.2888254325769173
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        0.00018320087721557243,
+        -0.108871555663965,
+        -0.14484889624546016,
+        -0.005476309575801475,
+        -0.0810273500620964,
+        -0.10860511067162515,
+        -0.09412501209896973,
+        -0.059464230495065884
+      ],
+      "actual_front_radius_mm": [
+        113.108244841821,
+        121.00828623110584,
+        105.75521704898904,
+        84.96581127680142,
+        88.11924718831847,
+        91.26421382128088,
+        88.72382158869694,
+        85.11562546862658
+      ],
+      "actual_front_mean_z_change_mm": -4.823561019969631,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        12
+      ],
+      "target_cylinder_contacts": [
+        7
+      ],
+      "shared_shift_mm": 25.755955125724572,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.05655232398449385,
+      "geometric_tracking_max_deg": 0.00429926325768894,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 90.00000000042974,
+      "actual_front_mean_y_advance_mm": -55.792549421239734,
+      "actual_rear_mean_x_advance_mm": 61.083806065653576,
+      "actual_front_winding_span_rad": 3.887102794177774,
+      "actual_front_temporal_azimuth_change_rad": [
+        -0.5908008466464201,
+        -0.3703454185200641,
+        -0.30262517359837915,
+        -0.23942200873654707,
+        -0.189170730715427,
+        -0.28137359210837976,
+        -0.2925709726914457,
+        -0.3140605794660716
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        0.03464581965843916,
+        -0.10416167073151894,
+        -0.15528150945473906,
+        0.0021603837465736797,
+        -0.07804486877293575,
+        -0.10570844521285638,
+        -0.08495502007069045,
+        -0.07241429823027823
+      ],
+      "actual_front_radius_mm": [
+        110.14568125698092,
+        116.1256288003986,
+        101.95055071904194,
+        85.00874796240723,
+        88.96668918162476,
+        93.11396880250733,
+        90.63466149267794,
+        84.79915411801635
+      ],
+      "actual_front_mean_z_change_mm": -1.2120623320488022,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        12,
+        20
+      ],
+      "target_cylinder_contacts": [
+        7
+      ],
+      "shared_shift_mm": 27.718920333616943,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.10119047619011072,
+      "geometric_tracking_max_deg": 0.004956321591587221,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 120.00000000057298,
+      "actual_front_mean_y_advance_mm": -44.74615948160275,
+      "actual_rear_mean_x_advance_mm": 69.3445874642435,
+      "actual_front_winding_span_rad": 3.8699385947909795,
+      "actual_front_temporal_azimuth_change_rad": [
+        -0.6021595741182164,
+        -0.39269616920310146,
+        -0.3370558158128949,
+        -0.2790045360104172,
+        -0.22258773792298048,
+        -0.3073449559824517,
+        -0.2999567652020535,
+        -0.3082551075510731
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        0.049430904251714924,
+        -0.10191581254705784,
+        -0.16718546760026753,
+        0.004296885246043436,
+        -0.09227441387545779,
+        -0.12912506701860949,
+        -0.11090916208616386,
+        -0.11041391934549138
+      ],
+      "actual_front_radius_mm": [
+        107.64087517283546,
+        113.01924463210753,
+        99.68912109790507,
+        85.34311370592485,
+        90.37158573943834,
+        95.47946946502016,
+        92.7992270841974,
+        84.67394836183568
+      ],
+      "actual_front_mean_z_change_mm": 1.3090573157070367,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        12,
+        20
+      ],
+      "target_cylinder_contacts": [
+        7
+      ],
+      "shared_shift_mm": 29.7171358990625,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.05238095238095238,
+      "geometric_tracking_max_deg": 0.0026929890778603577,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    },
+    {
+      "t_s": 207.95000000017293,
+      "actual_front_mean_y_advance_mm": -40.9908604282147,
+      "actual_rear_mean_x_advance_mm": 79.394662843384,
+      "actual_front_winding_span_rad": 3.6817801342521648,
+      "actual_front_temporal_azimuth_change_rad": [
+        -0.7479021209498149,
+        -0.523759687782348,
+        -0.4688016145966747,
+        -0.4175925390798808,
+        -0.3305407295528714,
+        -0.35771748538839276,
+        -0.30233546559280977,
+        -0.2658391938438569
+      ],
+      "curve_guide_front_temporal_azimuth_change_rad": [
+        0.06920696068489818,
+        -0.08417278815208862,
+        -0.17358194819792727,
+        -0.009567338932731873,
+        -0.1494692045869573,
+        -0.2029647333830532,
+        -0.18955246071616194,
+        -0.23197704069514424
+      ],
+      "actual_front_radius_mm": [
+        99.23737227376145,
+        107.7629413637895,
+        96.49154423861005,
+        86.64363442849887,
+        96.73605229271568,
+        104.20609695507716,
+        99.64142304880362,
+        84.65042910564681
+      ],
+      "actual_front_mean_z_change_mm": 8.656578499057233,
+      "posterior_geometrically_filtered_source_contacts": [
+        10,
+        14,
+        20
+      ],
+      "target_cylinder_contacts": [
+        7
+      ],
+      "shared_shift_mm": 31.81934341132099,
+      "requested_speed_mm_s": 2.0,
+      "accepted_speed_mm_s": 0.0016128786148559844,
+      "geometric_tracking_max_deg": 0.003449621677972676,
+      "shape_update_fraction": 1.0,
+      "bridge_clearance_field_mm": 0.0,
+      "proposal_rejections": []
+    }
+  ]
+}

@@ -1,0 +1,473 @@
+{
+  "name": "N05L",
+  "outcome": "local_front_winding_bound_without_verified_handover",
+  "complete": false,
+  "physical_seconds": 52.650000000251396,
+  "final_shift_mm": 33.144926051885136,
+  "fixed_front_M0_M6_mean_y_advance_mm": 68.46176540490215,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 211.58498045090897,
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 4.193404491357279,
+  "new_sustained_target_modules": [],
+  "max_actual_joint_deg": 87.4002249003379,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "save_errors": [],
+  "maximum_actual_front_mean_y_advance_mm": 68.46176540490215,
+  "maximum_actual_rear_mean_x_advance_mm": 211.58498045090897,
+  "maximum_actual_front_winding_span_rad": 4.283570963413487,
+  "maximum_front_integral_tracking_error_deg": 9.260516267479948,
+  "maximum_rear_integral_tracking_error_deg": 30.42620537495544,
+  "final_local_action": {
+    "action": "bounded front curve winding; measured-load rear curve feed; verified handover lets common shift absorb local departures",
+    "front_local_material_mm": 64.5,
+    "rear_local_material_mm": 14.122330858801352,
+    "local_material_limit_mm": 64.5,
+    "front_requested_speed_mm_s": 1.3529671018320761,
+    "front_accepted_speed_mm_s": 0.6875344996473687,
+    "rear_requested_speed_mm_s": 0.0,
+    "rear_accepted_speed_mm_s": 0.0,
+    "target_load_N": 81.83272791825449,
+    "source_load_N": 50.479488319571146,
+    "rear_feed_load_ratio": 1.0,
+    "rear_load_scale": 0.9125,
+    "front_integral_tracking_error_deg": 9.176263185343391,
+    "rear_integral_tracking_error_deg": 30.42620537495544,
+    "curve_pipe_motion": {
+      "phase_rad": [
+        0.015468587280140882,
+        0.18512196258333072
+      ],
+      "axis_extension_m": [
+        0.004371032502007915,
+        0.03096
+      ],
+      "local_material_extension_m": [
+        0.014122330858801352,
+        0.0645
+      ]
+    },
+    "local_rejections": [],
+    "verified_handover_material_credit_mm": 0.0,
+    "actual_target_cohort_material_estimate_mm": 130.94868929017682,
+    "confirmed_new_body_material_span_mm": 0.0,
+    "existing_supported_target_cohort": [
+      0,
+      7
+    ],
+    "existing_supported_target_axis_advance_mm": 62.85537085928486,
+    "bounded_common_window_credit_mm": 147.07368929017682,
+    "common_window_lead_limit_mm": 16.125,
+    "shape_update_fraction": 1.0,
+    "requested_common_shift_speed_mm_s": 0.0,
+    "accepted_common_shift_speed_mm_s": 0.0,
+    "common_shift_rejections": [],
+    "pipe_material_roll_phases_rad": [
+      0.5305267218528543,
+      -1.842300164233379
+    ],
+    "failure": "local_front_winding_bound_without_verified_handover",
+    "primary_front_execution": "same full-curve integral; local parameter survives rejected common shift; no additional joint wave"
+  },
+  "local_rejection_counts": {},
+  "common_shift_rejection_counts": {},
+  "final_actual_front_temporal_azimuth_change_rad": [
+    0.21828110689960356,
+    0.14373951257798567,
+    0.007968689292680686,
+    0.296300858320496,
+    0.3226470213266168,
+    0.19190684670356795,
+    0.13340168720076606,
+    0.18871967690044644
+  ],
+  "final_actual_incoming_M8_M12_radius_mm": [
+    103.05205811733566,
+    137.0025877259623,
+    166.4570822485368,
+    189.7302131351316,
+    190.60605414900112
+  ],
+  "maximum_actual_new_body_target_cylinder_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "evidence": "existing saved actual trace and commands; local phases, rear displacement and nominal shift alone do not confirm handover; no simulation steps",
+  "new_body_contact_intervals": [],
+  "checkpoints": [
+    {
+      "t_s": 0.0,
+      "actual_front_mean_y_advance_mm": 0.0,
+      "actual_rear_mean_x_advance_mm": 0.0,
+      "actual_front_winding_span_rad": 4.163843061358122,
+      "incoming_M8_M12_radius_mm": [
+        109.7197371651419,
+        144.9112455061297,
+        178.71763715340867,
+        196.68631873756192,
+        210.36457974633637
+      ],
+      "incoming_M8_M12_y_mm": [
+        70.1186473504269,
+        25.905266134452006,
+        -20.156411609354617,
+        -66.04096085185756,
+        -87.77239289139808
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        3,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 0.0,
+        "rear_local_material_mm": 0.0,
+        "front_requested_speed_mm_s": 0.0,
+        "front_accepted_speed_mm_s": 0.0,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 0.0,
+        "rear_integral_tracking_error_deg": 0.0,
+        "existing_supported_target_axis_advance_mm": 0.0,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 0.0,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.0,
+          0.0
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 5.000000000023874,
+      "actual_front_mean_y_advance_mm": 3.6476991156530687,
+      "actual_rear_mean_x_advance_mm": 12.708975419152255,
+      "actual_front_winding_span_rad": 4.220398248533274,
+      "incoming_M8_M12_radius_mm": [
+        111.33542103448403,
+        147.21678441928958,
+        181.03246390991063,
+        197.931318109858,
+        209.4135399448396
+      ],
+      "incoming_M8_M12_y_mm": [
+        67.01417257571653,
+        23.686535797256727,
+        -22.68402067318585,
+        -69.85208271067658,
+        -92.17612867244995
+      ],
+      "actual_target_cylinder_modules": [
+        3,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 5.249999999999997,
+        "rear_local_material_mm": 4.419416684692752,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 1.5361833971425511,
+        "rear_accepted_speed_mm_s": 1.5361833971425511,
+        "front_integral_tracking_error_deg": 1.4115274644330127,
+        "rear_integral_tracking_error_deg": 2.455800053827738,
+        "existing_supported_target_axis_advance_mm": 0.3145553964769843,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 0.655323742660384,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.06980660527437971,
+          -0.1330147574789897
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 15.000000000071623,
+      "actual_front_mean_y_advance_mm": 7.090967425183154,
+      "actual_rear_mean_x_advance_mm": 54.54947959704776,
+      "actual_front_winding_span_rad": 4.264246045970378,
+      "incoming_M8_M12_radius_mm": [
+        111.23477562088463,
+        148.26931667166934,
+        183.15201686549776,
+        199.95161745420813,
+        205.85902521151502
+      ],
+      "incoming_M8_M12_y_mm": [
+        62.470649839161666,
+        24.645470767179845,
+        -21.279720814000928,
+        -72.6828342478613,
+        -98.54796937190386
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 17.43866400719441,
+        "rear_local_material_mm": 9.374032895178194,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 1.18340850881453,
+        "rear_accepted_speed_mm_s": 1.18340850881453,
+        "front_integral_tracking_error_deg": 0.030047923751879077,
+        "rear_integral_tracking_error_deg": 6.716770875638004,
+        "existing_supported_target_axis_advance_mm": 0.8975361189655084,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 1.8698669145114761,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.21309139090387827,
+          -0.5103615872066208
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 30.000000000143245,
+      "actual_front_mean_y_advance_mm": 19.167788279797744,
+      "actual_rear_mean_x_advance_mm": 121.816966650635,
+      "actual_front_winding_span_rad": 4.11723775331374,
+      "incoming_M8_M12_radius_mm": [
+        114.58248759120156,
+        154.745405822257,
+        193.1236589623705,
+        220.6604200014942,
+        225.20363794638416
+      ],
+      "incoming_M8_M12_y_mm": [
+        84.47641635978499,
+        55.42022231072393,
+        11.454907132417418,
+        -40.826271959538346,
+        -76.67913252621891
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 33.71667421216465,
+        "rear_local_material_mm": 9.491061223993652,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 1.4895595470273095,
+        "rear_accepted_speed_mm_s": 1.4895595470273095,
+        "front_integral_tracking_error_deg": 0.10996771885633856,
+        "rear_integral_tracking_error_deg": 0.044832779660978934,
+        "existing_supported_target_axis_advance_mm": 22.474926257190635,
+        "bounded_common_window_credit_mm": 62.94776303581383,
+        "actual_target_cohort_material_estimate_mm": 46.82276303581383,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 1.4577158801190846,
+        "accepted_common_shift_speed_mm_s": 1.4577158801190846,
+        "pipe_material_roll_phases_rad": [
+          0.36842024641116833,
+          -1.0763818317980682
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 45.00000000021487,
+      "actual_front_mean_y_advance_mm": 52.378714752909566,
+      "actual_rear_mean_x_advance_mm": 192.28699532282351,
+      "actual_front_winding_span_rad": 4.1497366971513365,
+      "incoming_M8_M12_radius_mm": [
+        106.29410493685403,
+        141.6400178426606,
+        173.22676955026935,
+        199.39820130761717,
+        204.7060712686243
+      ],
+      "incoming_M8_M12_y_mm": [
+        101.85186233751853,
+        71.2876337197736,
+        20.966914973477706,
+        -33.47566358630229,
+        -79.77795478951533
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 54.06709876564493,
+        "rear_local_material_mm": 14.45266247919033,
+        "front_requested_speed_mm_s": 1.7428740250046526,
+        "front_accepted_speed_mm_s": 1.7428740250046526,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 6.057007799962779,
+        "rear_integral_tracking_error_deg": 19.398939258950463,
+        "existing_supported_target_axis_advance_mm": 49.91103264553063,
+        "bounded_common_window_credit_mm": 120.10631801152215,
+        "actual_target_cohort_material_estimate_mm": 103.98131801152215,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.05634944447339412,
+        "accepted_common_shift_speed_mm_s": 0.05634944447339412,
+        "pipe_material_roll_phases_rad": [
+          0.5305267218528543,
+          -1.639226574465482
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 52.650000000251396,
+      "actual_front_mean_y_advance_mm": 68.46176540490215,
+      "actual_rear_mean_x_advance_mm": 211.58498045090897,
+      "actual_front_winding_span_rad": 4.193404491357279,
+      "incoming_M8_M12_radius_mm": [
+        103.05205811733566,
+        137.0025877259623,
+        166.4570822485368,
+        189.7302131351316,
+        190.60605414900112
+      ],
+      "incoming_M8_M12_y_mm": [
+        111.180868480798,
+        78.70985801187979,
+        26.05234031246736,
+        -30.27742110058289,
+        -77.84005946974521
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 64.5,
+        "rear_local_material_mm": 14.122330858801352,
+        "front_requested_speed_mm_s": 1.3529671018320761,
+        "front_accepted_speed_mm_s": 0.6875344996473687,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 9.176263185343391,
+        "rear_integral_tracking_error_deg": 30.42620537495544,
+        "existing_supported_target_axis_advance_mm": 62.85537085928486,
+        "bounded_common_window_credit_mm": 147.07368929017682,
+        "actual_target_cohort_material_estimate_mm": 130.94868929017682,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.5305267218528543,
+          -1.842300164233379
+        ],
+        "failure": "local_front_winding_bound_without_verified_handover"
+      }
+    }
+  ],
+  "feedback": {
+    "accepted_curve_pressure_update_frames": 1053,
+    "maximum_pressure_normal_curve_velocity_mm_s": 0.5579426755092617,
+    "maximum_loaded_tracking_normal_curve_velocity_mm_s": 1.0000000000000002,
+    "pressure_station_goals_final_N": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        25.439547413526746,
+        0.0,
+        6.129268433052588,
+        16.225891624301617,
+        0.0,
+        9.849950538363196
+      ],
+      [
+        12.287154584329786,
+        6.1640084641942465,
+        0.0,
+        8.92722269002968,
+        9.353901310726725,
+        0.0,
+        0.0,
+        19.347249377380493,
+        23.405532387788448,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "video_readback": {
+    "fps": 20.0,
+    "frames": 1054,
+    "playback_seconds": 52.7,
+    "actual_last_frame_s": 52.65,
+    "checks": [
+      {
+        "t_s": 0.0,
+        "frame": 0,
+        "readable": true
+      },
+      {
+        "t_s": 15.0,
+        "frame": 300,
+        "readable": true
+      },
+      {
+        "t_s": 30.0,
+        "frame": 600,
+        "readable": true
+      },
+      {
+        "t_s": 52.65,
+        "frame": 1053,
+        "readable": true
+      }
+    ]
+  }
+}

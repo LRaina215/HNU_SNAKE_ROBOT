@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "t": 0.0,
+      "max_fit_step_deg": 1.335832966214677e-13,
+      "max_dispatch_step_deg": 0.0,
+      "feasible": true
+    },
+    {
+      "t": 0.05,
+      "max_fit_step_deg": 0.0001562372962928878,
+      "max_dispatch_step_deg": 0.5000000000000007,
+      "feasible": true
+    }
+  ],
+  "no_actual_dynamics_advanced": true
+}

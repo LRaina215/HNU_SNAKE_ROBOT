@@ -1,0 +1,33 @@
+{
+  "name": "N01W",
+  "outcome": "no_real_progress_45s_after_action_window",
+  "complete": false,
+  "physical_seconds": 135.05000000064484,
+  "error": null,
+  "final_shift_mm": 34.307251048183964,
+  "fixed_front_M0_M6_mean_y_advance_mm": -35.48744082463613,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 69.63743226190726,
+  "new_sustained_target_modules": [],
+  "final_actual_source_grip_modules": [
+    10,
+    12,
+    14,
+    15,
+    16,
+    20
+  ],
+  "final_actual_target_grip_modules": [
+    3,
+    7
+  ],
+  "max_actual_joint_deg": 87.37921262328767,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "maximum_front_mean_advance_mm": 13.284390529423558,
+  "maximum_rear_mean_advance_mm": 69.63743226190726,
+  "maximum_body_curve_rms_mm": 3.759748247836772,
+  "maximum_measured_stored_material_mm": null,
+  "gait_events": [],
+  "evidence": "trace actual qpos/centers/contact forces; commands feedback separate; nominal shift is not physical progress"
+}

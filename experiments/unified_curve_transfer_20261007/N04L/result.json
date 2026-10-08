@@ -1,0 +1,404 @@
+{
+  "name": "N04L",
+  "outcome": "local_front_winding_bound_without_verified_handover",
+  "complete": false,
+  "error": null,
+  "save_errors": [],
+  "night_policy": true,
+  "deadline_utc": "2026-10-09T00:00:00+00:00",
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 4.317287070903832,
+  "action_opportunity_window_s": 90.0,
+  "action_opportunity_reference_shift_mm": 129.0,
+  "physical_seconds": 33.80000000016139,
+  "dynamics_wall_seconds": 43.45300000000134,
+  "controller_initial_elapsed_s": 0.0,
+  "controller_final_elapsed_s": 33.80000000016139,
+  "final_shift_mm": 0.0,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.0,
+    "target_phase_rad": 0.0,
+    "source_feedback_phase_rad": 0.0,
+    "target_feedback_phase_rad": 0.0,
+    "source_radius_delta_mm": 0.0,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.0,
+    "phase_origin_shift_mm": 0.0,
+    "reference_pipe_clearance_mm": 15.997681413243654,
+    "reference_clearance_deficit_mm": null,
+    "observed_grip_clearance_range_mm": [
+      23.955655049244537,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    10,
+    11,
+    16,
+    17
+  ],
+  "final_target_modules": [
+    0,
+    4,
+    6
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "action_checkpoints": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 34.94926857177976,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 139.84183526429217,
+  "final_centers_mm": [
+    [
+      1029.0856500131758,
+      256.67601689134784,
+      952.2318616694297
+    ],
+    [
+      1070.0776767686305,
+      230.58825435236884,
+      916.1504295971165
+    ],
+    [
+      1119.5803589882062,
+      195.43226300617727,
+      904.6001665075942
+    ],
+    [
+      1162.7548279339755,
+      169.7977142500772,
+      927.0786026299215
+    ],
+    [
+      1184.4353577611605,
+      154.42110612175773,
+      979.4170351548526
+    ],
+    [
+      1178.8059559606945,
+      137.35400233575336,
+      1040.077130508377
+    ],
+    [
+      1143.697870616247,
+      123.32663930750934,
+      1075.9262722198646
+    ],
+    [
+      1083.123274218548,
+      102.89056582239117,
+      1084.2556705849643
+    ],
+    [
+      1021.6387211350733,
+      84.33712311944561,
+      1088.9389769353331
+    ],
+    [
+      965.5375869318036,
+      54.95790944512525,
+      1089.6405540068763
+    ],
+    [
+      915.2575082154506,
+      15.027397725991957,
+      1085.5162193824606
+    ],
+    [
+      883.4358134350111,
+      -36.09736926191158,
+      1077.3131089856183
+    ],
+    [
+      876.032613404243,
+      -79.22762584735844,
+      1043.4491329301502
+    ],
+    [
+      895.978838377679,
+      -104.56500342856656,
+      992.6273421118374
+    ],
+    [
+      933.5755320483061,
+      -100.26815548076044,
+      950.9657225753191
+    ],
+    [
+      974.7702562733015,
+      -64.83497426692296,
+      918.1297979874985
+    ],
+    [
+      993.4486091020776,
+      -16.28415965074933,
+      913.4668880958372
+    ],
+    [
+      982.6878533722643,
+      45.48817755710285,
+      928.5790828467925
+    ],
+    [
+      951.0254025080175,
+      83.84424998416976,
+      953.271149474397
+    ],
+    [
+      893.5291241253794,
+      99.87410716740345,
+      969.1980043126177
+    ],
+    [
+      832.8326059041965,
+      95.63586711675686,
+      967.7065522885803
+    ]
+  ],
+  "tail_center_mm": [
+    832.8326059041965,
+    95.63586711675686,
+    967.7065522885803
+  ],
+  "final_q_deg": [
+    40.46084258944765,
+    -33.24180491380666,
+    62.939301036162796,
+    -48.96396125931084,
+    22.44859220435038,
+    -72.2435018317308,
+    3.5343217658219666,
+    -6.588165632259667,
+    -21.838825962973885,
+    -8.091343734432183,
+    -39.13254589185166,
+    -61.84044715038051,
+    -42.13443742742625,
+    -58.478111152359155,
+    -20.32678958169129,
+    -71.85842894084426,
+    -0.8990208744370911,
+    -61.163394357800506,
+    33.413500434884,
+    -38.66753703398343
+  ],
+  "max_actual_joint_deg": 87.4002249003379,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 3.9785983304536305,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 4.163336342344337e-13,
+  "minimum_reference_pipe_clearance_mm": -6.865301262016413,
+  "final_actual_source_grip_modules": [
+    10,
+    11,
+    16,
+    17
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    4,
+    6
+  ],
+  "final_geometrically_filtered_source_grip_modules": [
+    10,
+    11,
+    16,
+    17
+  ],
+  "final_geometrically_filtered_target_grip_modules": [
+    0,
+    4,
+    6
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 3184,
+      "negative_frames": 46
+    },
+    {
+      "joint": 2,
+      "positive_frames": 16,
+      "negative_frames": 3359
+    },
+    {
+      "joint": 3,
+      "positive_frames": 3285,
+      "negative_frames": 33
+    },
+    {
+      "joint": 4,
+      "positive_frames": 0,
+      "negative_frames": 3381
+    },
+    {
+      "joint": 5,
+      "positive_frames": 2561,
+      "negative_frames": 808
+    },
+    {
+      "joint": 6,
+      "positive_frames": 195,
+      "negative_frames": 3180
+    },
+    {
+      "joint": 7,
+      "positive_frames": 44,
+      "negative_frames": 3335
+    },
+    {
+      "joint": 8,
+      "positive_frames": 688,
+      "negative_frames": 2657
+    },
+    {
+      "joint": 9,
+      "positive_frames": 198,
+      "negative_frames": 3150
+    },
+    {
+      "joint": 10,
+      "positive_frames": 0,
+      "negative_frames": 3381
+    },
+    {
+      "joint": 11,
+      "positive_frames": 734,
+      "negative_frames": 2637
+    },
+    {
+      "joint": 12,
+      "positive_frames": 0,
+      "negative_frames": 3381
+    },
+    {
+      "joint": 13,
+      "positive_frames": 0,
+      "negative_frames": 3381
+    },
+    {
+      "joint": 14,
+      "positive_frames": 295,
+      "negative_frames": 3069
+    },
+    {
+      "joint": 15,
+      "positive_frames": 0,
+      "negative_frames": 3381
+    },
+    {
+      "joint": 16,
+      "positive_frames": 0,
+      "negative_frames": 3381
+    },
+    {
+      "joint": 17,
+      "positive_frames": 2687,
+      "negative_frames": 690
+    },
+    {
+      "joint": 18,
+      "positive_frames": 579,
+      "negative_frames": 2785
+    },
+    {
+      "joint": 19,
+      "positive_frames": 2677,
+      "negative_frames": 691
+    },
+    {
+      "joint": 20,
+      "positive_frames": 0,
+      "negative_frames": 2897
+    }
+  ],
+  "controller_events": [],
+  "curve_feedback_updates": 676,
+  "final_adaptive_front_winding_action": {
+    "action": "bounded front curve winding; measured-load rear curve feed; verified handover lets common shift absorb local departures",
+    "front_local_material_mm": 64.5,
+    "rear_local_material_mm": 35.18924786988888,
+    "local_material_limit_mm": 64.5,
+    "front_requested_speed_mm_s": 2.0,
+    "front_accepted_speed_mm_s": 0.9999999999837916,
+    "rear_requested_speed_mm_s": 0.40604720619442575,
+    "rear_accepted_speed_mm_s": 0.40604720619442575,
+    "target_load_N": 53.53715800726474,
+    "source_load_N": 57.69465496840999,
+    "rear_feed_load_ratio": 0.6735498730238548,
+    "rear_load_scale": 0.9125,
+    "front_integral_tracking_error_deg": 1.7079725353707895,
+    "rear_integral_tracking_error_deg": 12.036077586943312,
+    "curve_pipe_motion": {
+      "phase_rad": [
+        0.03854377563025656,
+        0.18512196258333072
+      ],
+      "axis_extension_m": [
+        0.010891498556319205,
+        0.03096
+      ],
+      "local_material_extension_m": [
+        0.03518924786988888,
+        0.0645
+      ]
+    },
+    "local_rejections": [],
+    "verified_handover_material_credit_mm": 0.0,
+    "actual_target_cohort_material_estimate_mm": 75.01695433453393,
+    "shape_update_fraction": 1.0,
+    "requested_common_shift_speed_mm_s": 0.0,
+    "accepted_common_shift_speed_mm_s": 0.0,
+    "common_shift_rejections": [],
+    "pipe_material_roll_phases_rad": [
+      0.39496339616566317,
+      -1.216943525871595
+    ],
+    "failure": "local_front_winding_bound_without_verified_handover",
+    "primary_front_execution": "same full-curve integral; local parameter survives rejected common shift; no additional joint wave"
+  },
+  "runtime_effective_sliding_friction": null,
+  "contact_tangent_constraint_scale": null,
+  "force_time_weighted_contact_sliding_mm_s": [
+    3.9841853782391543,
+    1.274466268716131
+  ],
+  "maximum_supported_contact_sliding_mm_s": [
+    131.23552801144908,
+    25.759927706459123
+  ]
+}

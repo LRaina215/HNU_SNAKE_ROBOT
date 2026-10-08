@@ -1,0 +1,676 @@
+{
+  "name": "N08U",
+  "outcome": "requested_diagnostic_stop_saved",
+  "complete": false,
+  "physical_seconds": 67.25000000032111,
+  "final_shift_mm": 27.31258499627604,
+  "fixed_front_M0_M6_mean_y_advance_mm": 4.733400557376925,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 255.8168855514935,
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 3.8188080021002535,
+  "new_sustained_target_modules": [
+    18
+  ],
+  "max_actual_joint_deg": 87.46751648245194,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "save_errors": [],
+  "maximum_actual_front_mean_y_advance_mm": 48.45263560684882,
+  "maximum_actual_rear_mean_x_advance_mm": 255.96999365622437,
+  "maximum_actual_front_winding_span_rad": 4.283570963413487,
+  "maximum_front_integral_tracking_error_deg": 18.65828934810043,
+  "maximum_rear_integral_tracking_error_deg": 48.90231556156157,
+  "final_local_action": {
+    "action": "load-driven source helix unfolds into bridge; posterior support stays helical; front keeps bounded winding; common window follows existing supported motion",
+    "front_local_material_mm": 64.5,
+    "rear_local_material_mm": 12.87793536847401,
+    "local_material_limit_mm": 64.5,
+    "front_requested_speed_mm_s": 2.0,
+    "front_accepted_speed_mm_s": 0.0,
+    "rear_requested_speed_mm_s": 0.0,
+    "rear_accepted_speed_mm_s": 0.0,
+    "target_load_N": 41.79532472968211,
+    "source_load_N": 6.378602588011279,
+    "rear_feed_load_ratio": 0.5258261124142632,
+    "rear_load_scale": 0.825,
+    "front_integral_tracking_error_deg": 0.00671548878729981,
+    "rear_integral_tracking_error_deg": 45.44141986940987,
+    "curve_pipe_motion": {
+      "phase_rad": [
+        0.014105565804040442,
+        0.18512196258333072
+      ],
+      "axis_extension_m": [
+        0.00398587702109217,
+        0.03096
+      ],
+      "local_material_extension_m": [
+        0.01287793536847401,
+        0.0645
+      ]
+    },
+    "local_rejections": [
+      {
+        "fraction": 1.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.5,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.25,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.125,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.0625,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.03125,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.015625,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.0078125,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.00390625,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.001953125,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.0009765625,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "fraction": 0.00048828125,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      }
+    ],
+    "verified_handover_material_credit_mm": 709.5,
+    "actual_target_cohort_material_estimate_mm": 0.0,
+    "confirmed_new_body_material_span_mm": 709.5,
+    "existing_supported_target_cohort": [
+      7
+    ],
+    "existing_supported_target_axis_advance_mm": 0.0,
+    "bounded_common_window_credit_mm": 0.0,
+    "common_window_lead_limit_mm": 16.125,
+    "shape_update_fraction": 0.0,
+    "requested_common_shift_speed_mm_s": 0.0,
+    "accepted_common_shift_speed_mm_s": 0.0,
+    "target_entry_capture_feedback": {},
+    "curve_shape_update_rejections": [
+      {
+        "fraction": 1.0,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.5,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.25,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.125,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.0625,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.03125,
+        "reason": "Continuous material window crosses original pipe solid"
+      }
+    ],
+    "common_shift_rejections": [
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.001486mm"
+      }
+    ],
+    "pipe_material_roll_phases_rad": [
+      0.45109757604424505,
+      -1.7322593938721569
+    ],
+    "failure": null,
+    "primary_front_execution": "same full-curve integral; local parameter survives rejected common shift; no additional joint wave"
+  },
+  "local_rejection_counts": {
+    "bridge curve remains inside original solid": 2148
+  },
+  "common_shift_rejection_counts": {
+    "continuous curve node speed bound": 36,
+    "bridge curve remains inside original solid": 2148
+  },
+  "final_actual_front_temporal_azimuth_change_rad": [
+    -0.4067112339858081,
+    -0.27785017337754425,
+    -0.3075082031406491,
+    -0.009726242190689294,
+    0.05403163912266454,
+    -0.02275360094882789,
+    -0.09022303459216585,
+    -0.06167617472793907
+  ],
+  "final_actual_incoming_M8_M12_radius_mm": [
+    106.39600325781036,
+    141.54349816387557,
+    159.3082707264428,
+    151.4545296990185,
+    113.2522371156554
+  ],
+  "maximum_actual_new_body_target_cylinder_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    11.608519665159854,
+    0.0,
+    0.0
+  ],
+  "evidence": "existing saved actual trace and commands; local phases, rear displacement and nominal shift alone do not confirm handover; no simulation steps",
+  "new_body_contact_intervals": [
+    {
+      "module": 18,
+      "kind": "cylinder",
+      "intervals_s": [
+        [
+          45.640000000217924,
+          67.25000000032111
+        ]
+      ]
+    },
+    {
+      "module": 18,
+      "kind": "geometry_valid_cylinder",
+      "intervals_s": [
+        [
+          45.640000000217924,
+          67.25000000032111
+        ]
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "t_s": 0.0,
+      "actual_front_mean_y_advance_mm": 0.0,
+      "actual_rear_mean_x_advance_mm": 0.0,
+      "actual_front_winding_span_rad": 4.163843061358122,
+      "incoming_M8_M12_radius_mm": [
+        109.7197371651419,
+        144.9112455061297,
+        178.71763715340867,
+        196.68631873756192,
+        210.36457974633637
+      ],
+      "incoming_M8_M12_y_mm": [
+        70.1186473504269,
+        25.905266134452006,
+        -20.156411609354617,
+        -66.04096085185756,
+        -87.77239289139808
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        3,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 0.0,
+        "rear_local_material_mm": 0.0,
+        "front_requested_speed_mm_s": 0.0,
+        "front_accepted_speed_mm_s": 0.0,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 0.0,
+        "rear_integral_tracking_error_deg": 0.0,
+        "existing_supported_target_axis_advance_mm": 0.0,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 0.0,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.0,
+          0.0
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 5.000000000023874,
+      "actual_front_mean_y_advance_mm": 3.6476991156530687,
+      "actual_rear_mean_x_advance_mm": 12.708975419152255,
+      "actual_front_winding_span_rad": 4.220398248533274,
+      "incoming_M8_M12_radius_mm": [
+        111.33542103448403,
+        147.21678441928958,
+        181.03246390991063,
+        197.931318109858,
+        209.4135399448396
+      ],
+      "incoming_M8_M12_y_mm": [
+        67.01417257571653,
+        23.686535797256727,
+        -22.68402067318585,
+        -69.85208271067658,
+        -92.17612867244995
+      ],
+      "actual_target_cylinder_modules": [
+        3,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 5.249999999999997,
+        "rear_local_material_mm": 4.419416684692752,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 1.5361833971425511,
+        "rear_accepted_speed_mm_s": 1.5361833971425511,
+        "front_integral_tracking_error_deg": 1.4115274644330127,
+        "rear_integral_tracking_error_deg": 2.455800053827738,
+        "existing_supported_target_axis_advance_mm": 0.3145553964769843,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 0.655323742660384,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.06980660527437971,
+          -0.1330147574789897
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 15.000000000071623,
+      "actual_front_mean_y_advance_mm": 7.090967425183154,
+      "actual_rear_mean_x_advance_mm": 54.54947959704776,
+      "actual_front_winding_span_rad": 4.264246045970378,
+      "incoming_M8_M12_radius_mm": [
+        111.23477562088463,
+        148.26931667166934,
+        183.15201686549776,
+        199.95161745420813,
+        205.85902521151502
+      ],
+      "incoming_M8_M12_y_mm": [
+        62.470649839161666,
+        24.645470767179845,
+        -21.279720814000928,
+        -72.6828342478613,
+        -98.54796937190386
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 17.43866400719441,
+        "rear_local_material_mm": 9.374032895178194,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 1.18340850881453,
+        "rear_accepted_speed_mm_s": 1.18340850881453,
+        "front_integral_tracking_error_deg": 0.030047923751879077,
+        "rear_integral_tracking_error_deg": 6.716770875638004,
+        "existing_supported_target_axis_advance_mm": 0.8975361189655084,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 1.8698669145114761,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.21309139090387827,
+          -0.5103615872066208
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 30.000000000143245,
+      "actual_front_mean_y_advance_mm": 14.77655676697405,
+      "actual_rear_mean_x_advance_mm": 123.02279375009707,
+      "actual_front_winding_span_rad": 4.075622343658002,
+      "incoming_M8_M12_radius_mm": [
+        116.05994319278999,
+        157.0736245080703,
+        195.43426854934725,
+        218.24538759757544,
+        215.44416130083798
+      ],
+      "incoming_M8_M12_y_mm": [
+        85.74073495812641,
+        57.15132637692708,
+        13.039578880485205,
+        -40.30614554330829,
+        -77.27407810410122
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        7
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 35.19091740164022,
+        "rear_local_material_mm": 10.750225287803472,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 1.6208387232332997,
+        "rear_accepted_speed_mm_s": 1.6208387232332997,
+        "front_integral_tracking_error_deg": 0.1565470849761013,
+        "rear_integral_tracking_error_deg": 1.2133794112993097,
+        "existing_supported_target_axis_advance_mm": 20.964139620281735,
+        "bounded_common_window_credit_mm": 59.80029087558695,
+        "actual_target_cohort_material_estimate_mm": 43.675290875586946,
+        "shape_update_fraction": 1.0,
+        "requested_common_shift_speed_mm_s": 1.1780276959919693,
+        "accepted_common_shift_speed_mm_s": 1.1780276959919693,
+        "pipe_material_roll_phases_rad": [
+          0.3660062027171566,
+          -1.0763818317980682
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 45.00000000021487,
+      "actual_front_mean_y_advance_mm": 41.938505952745246,
+      "actual_rear_mean_x_advance_mm": 208.6166366744226,
+      "actual_front_winding_span_rad": 4.11850596827,
+      "incoming_M8_M12_radius_mm": [
+        113.55156742494907,
+        151.9401609377434,
+        180.86354137406602,
+        193.1146564821848,
+        174.37553470905578
+      ],
+      "incoming_M8_M12_y_mm": [
+        100.19114732365496,
+        68.18368025051466,
+        16.183513694735378,
+        -42.7483023309774,
+        -84.25674346442005
+      ],
+      "actual_target_cylinder_modules": [
+        0,
+        4,
+        6
+      ],
+      "actual_valid_new_target_modules": [],
+      "local_action": {
+        "front_local_material_mm": 59.75256992972266,
+        "rear_local_material_mm": 12.893090294471897,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 2.0,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 3.910429342638331,
+        "rear_integral_tracking_error_deg": 24.340208087793542,
+        "existing_supported_target_axis_advance_mm": 83.71477336901006,
+        "bounded_common_window_credit_mm": 190.5307778521043,
+        "actual_target_cohort_material_estimate_mm": 174.4057778521043,
+        "shape_update_fraction": 0.5,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.45109757604424505,
+          -1.6424020763895157
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 60.00000000028649,
+      "actual_front_mean_y_advance_mm": 30.945832526855693,
+      "actual_rear_mean_x_advance_mm": 255.9052853203836,
+      "actual_front_winding_span_rad": 4.077950813396428,
+      "incoming_M8_M12_radius_mm": [
+        107.77512521172194,
+        141.2576102712519,
+        162.13121178067206,
+        160.4240051204997,
+        125.04757232279485
+      ],
+      "incoming_M8_M12_y_mm": [
+        79.8669795991554,
+        40.49336881071186,
+        -17.83510957463995,
+        -77.5886416225489,
+        -111.50708645282748
+      ],
+      "actual_target_cylinder_modules": [
+        6,
+        7,
+        18
+      ],
+      "actual_valid_new_target_modules": [
+        18
+      ],
+      "local_action": {
+        "front_local_material_mm": 64.5,
+        "rear_local_material_mm": 12.87793536847401,
+        "front_requested_speed_mm_s": 0.8794041809356873,
+        "front_accepted_speed_mm_s": 0.0,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 12.9647665525145,
+        "rear_integral_tracking_error_deg": 31.09998793278361,
+        "existing_supported_target_axis_advance_mm": 0.0,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 0.0,
+        "shape_update_fraction": 0.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.45109757604424505,
+          -1.7322593938721569
+        ],
+        "failure": null
+      }
+    },
+    {
+      "t_s": 67.25000000032111,
+      "actual_front_mean_y_advance_mm": 4.733400557376925,
+      "actual_rear_mean_x_advance_mm": 255.8168855514935,
+      "actual_front_winding_span_rad": 3.8188080021002535,
+      "incoming_M8_M12_radius_mm": [
+        106.39600325781036,
+        141.54349816387557,
+        159.3082707264428,
+        151.4545296990185,
+        113.2522371156554
+      ],
+      "incoming_M8_M12_y_mm": [
+        73.22825358432267,
+        33.19717628606277,
+        -24.953267221198196,
+        -83.88992933293099,
+        -110.04837370223765
+      ],
+      "actual_target_cylinder_modules": [
+        6,
+        7,
+        18
+      ],
+      "actual_valid_new_target_modules": [
+        18
+      ],
+      "local_action": {
+        "front_local_material_mm": 64.5,
+        "rear_local_material_mm": 12.87793536847401,
+        "front_requested_speed_mm_s": 2.0,
+        "front_accepted_speed_mm_s": 0.0,
+        "rear_requested_speed_mm_s": 0.0,
+        "rear_accepted_speed_mm_s": 0.0,
+        "front_integral_tracking_error_deg": 0.00671548878729981,
+        "rear_integral_tracking_error_deg": 45.44141986940987,
+        "existing_supported_target_axis_advance_mm": 0.0,
+        "bounded_common_window_credit_mm": 0.0,
+        "actual_target_cohort_material_estimate_mm": 0.0,
+        "shape_update_fraction": 0.0,
+        "requested_common_shift_speed_mm_s": 0.0,
+        "accepted_common_shift_speed_mm_s": 0.0,
+        "pipe_material_roll_phases_rad": [
+          0.45109757604424505,
+          -1.7322593938721569
+        ],
+        "failure": null
+      }
+    }
+  ],
+  "feedback": {
+    "accepted_curve_pressure_update_frames": 1166,
+    "maximum_pressure_normal_curve_velocity_mm_s": 0.6,
+    "maximum_loaded_tracking_normal_curve_velocity_mm_s": 1.0000000000000002,
+    "pressure_station_goals_final_N": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        22.020442541024043,
+        35.6242154682201,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        15.740650249318149,
+        6.372962522171333,
+        0.0,
+        13.945210677363006,
+        9.122380538070482,
+        0.0,
+        0.0,
+        34.303864827526404,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "video_readback": {
+    "fps": 20.0,
+    "frames": 1346,
+    "playback_seconds": 67.3,
+    "actual_last_frame_s": 67.25,
+    "checks": [
+      {
+        "t_s": 0.0,
+        "frame": 0,
+        "readable": true
+      },
+      {
+        "t_s": 15.0,
+        "frame": 300,
+        "readable": true
+      },
+      {
+        "t_s": 30.0,
+        "frame": 600,
+        "readable": true
+      },
+      {
+        "t_s": 67.25,
+        "frame": 1345,
+        "readable": true
+      }
+    ]
+  }
+}

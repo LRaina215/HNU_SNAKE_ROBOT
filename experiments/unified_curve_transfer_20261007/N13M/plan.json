@@ -1,0 +1,12 @@
+{
+  "initial": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
+  "controller_state": null,
+  "change": "Correction2 final planned trial: N12 ordered M8/M9 progress stalls before M10 despite following integral; actual head axial material roll differs ~46deg and tangent ~30deg, whole placement drifts. Retain fixed route/window control and bounded per-next-body opportunity, add continuous measured head-roll phase observation (0.2/s, <=5deg/s) into full curve frame; initial material normals unchanged, no actual-q gauge reset, pure rolling law or real root pose assignment. Tests phase part of placement mismatch, not claimed to fix tilt or isolate all causes.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "one head shift; planned local guide uses ordered continuous material arc correspondence with recorded discrete chord error; original articulated model enforces actual64.5mm rods; projected tangent rate and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

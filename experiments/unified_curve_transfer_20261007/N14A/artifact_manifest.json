@@ -1,0 +1,59 @@
+{
+  "files": {
+    "trace.npz": {
+      "exists": true,
+      "bytes": 23483449
+    },
+    "commands.json": {
+      "exists": true,
+      "bytes": 49948730
+    },
+    "initial_controller_state.json": {
+      "exists": true,
+      "bytes": 326738
+    },
+    "controller_state.json": {
+      "exists": true,
+      "bytes": 347748
+    },
+    "final_state.npz": {
+      "exists": true,
+      "bytes": 3310
+    },
+    "result.json": {
+      "exists": true,
+      "bytes": 14287
+    },
+    "replay_1x.mp4": {
+      "exists": true,
+      "bytes": 33985472
+    },
+    "video.json": {
+      "exists": true,
+      "bytes": 203
+    },
+    "sources/snake_control/axis_wrap_transfer.py": {
+      "exists": true,
+      "bytes": 11205
+    }
+  },
+  "record": {
+    "actual_trace_rows": 12041,
+    "qpos_shape": [
+      12041,
+      27
+    ],
+    "qvel_shape": [
+      12041,
+      26
+    ],
+    "torque_shape": [
+      12041,
+      20
+    ],
+    "any_ground_contact": false,
+    "maximum_self_penetration_mm": -0.0,
+    "saved_controller_elapsed_s": 120.40000000057489
+  },
+  "verification": "saved file existence, dimensions, physical guards, video readback; no new dynamics or hash checks"
+}

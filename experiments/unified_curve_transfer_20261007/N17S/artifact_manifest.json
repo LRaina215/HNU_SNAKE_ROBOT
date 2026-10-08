@@ -1,0 +1,63 @@
+{
+  "files": {
+    "trace.npz": {
+      "exists": true,
+      "bytes": 44701605
+    },
+    "commands.json": {
+      "exists": true,
+      "bytes": 115543488
+    },
+    "initial_controller_state.json": {
+      "exists": true,
+      "bytes": 656768
+    },
+    "controller_state.json": {
+      "exists": true,
+      "bytes": 680083
+    },
+    "final_state.npz": {
+      "exists": true,
+      "bytes": 3310
+    },
+    "result.json": {
+      "exists": true,
+      "bytes": 18136
+    },
+    "replay_1x.mp4": {
+      "exists": true,
+      "bytes": 65747441
+    },
+    "video.json": {
+      "exists": true,
+      "bytes": 203
+    },
+    "sources/snake_control/compact_helix_transfer.py": {
+      "exists": true,
+      "bytes": 7331
+    },
+    "sources/snake_control/axis_wrap_transfer.py": {
+      "exists": true,
+      "bytes": 13592
+    }
+  },
+  "record": {
+    "actual_trace_rows": 22931,
+    "qpos_shape": [
+      22931,
+      27
+    ],
+    "qvel_shape": [
+      22931,
+      26
+    ],
+    "torque_shape": [
+      22931,
+      20
+    ],
+    "any_ground_contact": false,
+    "maximum_self_penetration_mm": -0.0,
+    "saved_controller_elapsed_s": 229.29999999966807
+  },
+  "verification": "saved file existence, dimensions, physical guards and video readback; no new dynamics or hash checks"
+}

@@ -1,0 +1,587 @@
+{
+  "name": "N15B",
+  "outcome": "no_real_progress_45s_after_action_window",
+  "complete": false,
+  "error": null,
+  "save_errors": [],
+  "night_policy": true,
+  "deadline_utc": "2026-10-08T22:30:00+00:00",
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 2.8194212937493974,
+  "action_opportunity_window_s": 90.0,
+  "action_opportunity_reference_shift_mm": 64.74749281843906,
+  "physical_seconds": 193.00000000052646,
+  "dynamics_wall_seconds": 379.6399999999994,
+  "controller_initial_elapsed_s": 0.0,
+  "controller_final_elapsed_s": 193.00000000052646,
+  "final_shift_mm": 280.24670208538527,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.0,
+    "target_phase_rad": 0.0,
+    "source_feedback_phase_rad": 0.0,
+    "target_feedback_phase_rad": 0.0,
+    "source_radius_delta_mm": 0.0,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.0,
+    "phase_origin_shift_mm": 0.0,
+    "reference_pipe_clearance_mm": 9.412478663207152,
+    "reference_clearance_deficit_mm": null,
+    "observed_grip_clearance_range_mm": [
+      23.955655049244537,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    13
+  ],
+  "final_target_modules": [
+    0,
+    9
+  ],
+  "new_sustained_target_modules": [
+    8,
+    9
+  ],
+  "admissions": [
+    {
+      "t_s": 71.1,
+      "module": 8,
+      "center_mm": [
+        1100.2076710361239,
+        103.28333321064729,
+        1084.9449473286813
+      ]
+    },
+    {
+      "t_s": 94.35000000000001,
+      "module": 9,
+      "center_mm": [
+        1060.7743380485197,
+        111.92235825243353,
+        1075.1388711456934
+      ]
+    }
+  ],
+  "action_checkpoints": [],
+  "maximum_new_module_target_force_N": [
+    44.94130756378892,
+    34.0731218221347,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 48.51876811046805,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 265.0222352871218,
+  "final_centers_mm": [
+    [
+      1004.37045061005,
+      314.31465959124256,
+      1012.2868376415021
+    ],
+    [
+      976.249062228424,
+      257.2626564489235,
+      1001.7819417198833
+    ],
+    [
+      968.7567115599547,
+      210.42263964338144,
+      970.7674149208569
+    ],
+    [
+      994.0689151577294,
+      169.95994365350856,
+      932.3895163439506
+    ],
+    [
+      1040.8221074558205,
+      142.049847090458,
+      903.8002868080071
+    ],
+    [
+      1098.3735784322794,
+      132.90602758814424,
+      897.6603841112628
+    ],
+    [
+      1158.9395947490975,
+      135.66671902015128,
+      916.9811383605235
+    ],
+    [
+      1187.4301505789344,
+      147.52934779414602,
+      957.7712785894059
+    ],
+    [
+      1183.4470374230204,
+      160.85249787090743,
+      1020.6864193463223
+    ],
+    [
+      1153.0232238154776,
+      168.53928090068865,
+      1067.4740350326488
+    ],
+    [
+      1115.4912590224858,
+      141.1143148890267,
+      1098.0103220494123
+    ],
+    [
+      1089.2112057193385,
+      87.71207071066647,
+      1105.294950722021
+    ],
+    [
+      1062.8872360408336,
+      32.101207284901534,
+      1087.8553283069532
+    ],
+    [
+      1046.0882810826897,
+      -28.528284693049507,
+      1078.4892290790367
+    ],
+    [
+      1044.419990906408,
+      -91.53695569195857,
+      1076.3792977068688
+    ],
+    [
+      1052.4884658503838,
+      -151.54648361233254,
+      1058.6651689082887
+    ],
+    [
+      1073.1827945379096,
+      -200.68717457386043,
+      1027.054913304688
+    ],
+    [
+      1089.8122644302705,
+      -215.81530972473638,
+      978.8772512290035
+    ],
+    [
+      1087.6035580565663,
+      -203.51059633337516,
+      915.6223429937528
+    ],
+    [
+      1068.1050224766714,
+      -171.71445937733498,
+      877.2619841004087
+    ],
+    [
+      1022.5200872351409,
+      -129.98886827256467,
+      862.7188523589202
+    ]
+  ],
+  "tail_center_mm": [
+    1022.5200872351409,
+    -129.98886827256467,
+    862.7188523589202
+  ],
+  "final_q_deg": [
+    3.6214150849299767,
+    57.033457550314445,
+    36.56696409382505,
+    35.09042572928546,
+    49.412226794996606,
+    18.810125502255858,
+    75.06362963372388,
+    5.200783983483288,
+    58.280433151930055,
+    -60.85337925258464,
+    43.23878156751515,
+    -14.969268104471729,
+    -19.089294441562608,
+    -24.20814485573028,
+    24.0256975931441,
+    -32.09862531028147,
+    68.97309773767893,
+    -2.9637238988318155,
+    67.90042053555747,
+    20.342612467751398
+  ],
+  "max_actual_joint_deg": 87.61222351186278,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 1.4136062631702384,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 4.579669976578771e-13,
+  "minimum_reference_pipe_clearance_mm": -3.7405392861281914,
+  "final_actual_source_grip_modules": [
+    13
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    9
+  ],
+  "final_geometrically_filtered_source_grip_modules": [
+    13
+  ],
+  "final_geometrically_filtered_target_grip_modules": [
+    0,
+    9
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 18360,
+      "negative_frames": 155
+    },
+    {
+      "joint": 2,
+      "positive_frames": 2124,
+      "negative_frames": 16963
+    },
+    {
+      "joint": 3,
+      "positive_frames": 18631,
+      "negative_frames": 379
+    },
+    {
+      "joint": 4,
+      "positive_frames": 1959,
+      "negative_frames": 17218
+    },
+    {
+      "joint": 5,
+      "positive_frames": 14164,
+      "negative_frames": 4855
+    },
+    {
+      "joint": 6,
+      "positive_frames": 2486,
+      "negative_frames": 16759
+    },
+    {
+      "joint": 7,
+      "positive_frames": 9736,
+      "negative_frames": 9404
+    },
+    {
+      "joint": 8,
+      "positive_frames": 10015,
+      "negative_frames": 9218
+    },
+    {
+      "joint": 9,
+      "positive_frames": 5712,
+      "negative_frames": 13391
+    },
+    {
+      "joint": 10,
+      "positive_frames": 9977,
+      "negative_frames": 9146
+    },
+    {
+      "joint": 11,
+      "positive_frames": 758,
+      "negative_frames": 18526
+    },
+    {
+      "joint": 12,
+      "positive_frames": 14089,
+      "negative_frames": 5006
+    },
+    {
+      "joint": 13,
+      "positive_frames": 33,
+      "negative_frames": 19240
+    },
+    {
+      "joint": 14,
+      "positive_frames": 14949,
+      "negative_frames": 3891
+    },
+    {
+      "joint": 15,
+      "positive_frames": 3436,
+      "negative_frames": 15662
+    },
+    {
+      "joint": 16,
+      "positive_frames": 143,
+      "negative_frames": 19068
+    },
+    {
+      "joint": 17,
+      "positive_frames": 19301,
+      "negative_frames": 0
+    },
+    {
+      "joint": 18,
+      "positive_frames": 174,
+      "negative_frames": 19071
+    },
+    {
+      "joint": 19,
+      "positive_frames": 18989,
+      "negative_frames": 121
+    },
+    {
+      "joint": 20,
+      "positive_frames": 950,
+      "negative_frames": 17965
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 71.35000000000001,
+      "mode": "fixed_spatial_window_actual_ordered_handover",
+      "module": 8
+    },
+    {
+      "t_s": 94.60000000000001,
+      "mode": "fixed_spatial_window_actual_ordered_handover",
+      "module": 9
+    }
+  ],
+  "curve_feedback_updates": 3860,
+  "final_adaptive_front_winding_action": null,
+  "final_source_unfolding": null,
+  "ordered_target_handover_modules": [
+    8,
+    9
+  ],
+  "final_moving_compliance": null,
+  "final_fixed_spatial_shift": {
+    "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+    "nominal_speed_mm_s": 1.5,
+    "requested_speed_mm_s": 1.5,
+    "accepted_speed_mm_s": 1.5,
+    "full_integral_tracking_error_deg": 0.019681509485965077,
+    "follow_scale": 1.0,
+    "load_scale": 1.0,
+    "initial_curve_fit_error_mm": 0.0,
+    "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+    "next_receiver_whole_rod_in_target_reference": true,
+    "active_receiver_module": 10,
+    "receiver_action_start_s": 94.60000000000001,
+    "receiver_action_opportunity_end_s": 147.9275902366758,
+    "spatial_route_phase_rad": [
+      0.0,
+      0.0
+    ],
+    "material_axial_roll_phase_rad": [
+      0.0,
+      0.0
+    ],
+    "continuous_observed_material_phase_feedback": false,
+    "observed_head_roll_phase_rad": 0.0,
+    "actual_head_roll_error_before_feedback_deg": -30.433410945275515,
+    "head_roll_observation_valid": true,
+    "head_roll_phase_feedback_step_deg": 0.0,
+    "actual_head_normal_projection_length": 0.6977968560609854,
+    "actual_head_tangent_error_deg": 47.23730564418172,
+    "shape_update_fraction": 1.0,
+    "shape_rejections": [],
+    "window_rejections": [],
+    "guide_global_rms_error_mm": 92.93073743343936,
+    "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+    "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+  },
+  "final_axis_wrap": {
+    "action": "pipe-axis front wrap goal located by stable actual bearing; local radial and tilt curve field plus bounded material phase from physical FK residual",
+    "stable_target_bearing_modules": [
+      0,
+      9
+    ],
+    "bearing_age_s": [
+      193.00000000000963,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      32.05000000000032,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_CLOSE_anchor_prior": false,
+    "actual_anchor_curve_station_mm": 1071.8209760638565,
+    "local_connection_axis_offset_mm": 5.466950598726345,
+    "local_connection_azimuth_offset_deg": 42.10054305346246,
+    "goal_front_modules": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "goal_front_centers_mm": [
+      [
+        1078.6430935486694,
+        334.43610520281663,
+        1084.4801752551416
+      ],
+      [
+        1033.5289864257445,
+        303.1103536923105,
+        1055.7623703383429
+      ],
+      [
+        1014.247041358896,
+        271.29817715095504,
+        1005.6611110896631
+      ],
+      [
+        1028.5985530647733,
+        239.5461648866218,
+        953.7741668038753
+      ],
+      [
+        1071.0918151087756,
+        206.4296907010146,
+        922.1283486105485
+      ],
+      [
+        1125.8559660626433,
+        172.8065463513416,
+        906.1540955886854
+      ],
+      [
+        1164.23676990768,
+        148.43533109717043,
+        923.4495333460617
+      ],
+      [
+        1183.031810689594,
+        137.88017726832965,
+        980.1233510779898
+      ],
+      [
+        1181.2293767434162,
+        149.15775331660095,
+        1037.2878802578775
+      ],
+      [
+        1151.7198957730695,
+        148.75894341903236,
+        1080.598009697837
+      ],
+      [
+        1103.953999921456,
+        126.53647394228057,
+        1093.1112232286303
+      ],
+      [
+        1051.885112062016,
+        112.008739839989,
+        1067.4365603401754
+      ]
+    ],
+    "parameters": {
+      "material_phase_deg": -102.25036411478882,
+      "radial_curve_offset_mm": 2.4054899924218764,
+      "local_tilt_x_deg": 8.59431593258776,
+      "local_tilt_z_deg": -4.534983351059752
+    },
+    "proposed_normalized_parameter_step": [
+      -0.8855684678452221,
+      0.877563383594817,
+      -5.114500090209681e-05,
+      -0.37282262109733894
+    ],
+    "accepted_fraction": 1.0,
+    "rejections": [],
+    "physical_FK_goal_residual_before_rms_mm": 31.915708077209178,
+    "physical_FK_goal_residual_after_rms_mm": 31.8222191773428,
+    "maximum_local_curve_field_mm": 40.0,
+    "physical_FK_prediction_registration": {
+      "anchor_module": 9,
+      "rotation": [
+        [
+          0.9999952917478705,
+          0.00237772636652858,
+          -0.0019398194299740455
+        ],
+        [
+          -0.0023808713400099725,
+          0.9999958525836562,
+          -0.001620576179107635
+        ],
+        [
+          0.0019359580980252658,
+          0.001625187009512076,
+          0.9999968054116124
+        ]
+      ],
+      "translation_mm": [
+        1.4674258473093005,
+        4.382515173414426,
+        -2.006165907426638
+      ],
+      "assumption": "short-time physical FK prediction registered to measured bearing body pose; bearing is not actually pinned and physical root is never assigned"
+    },
+    "bounded_parameter_solver": "four normalized curve/frame increments solved within remaining parameter bounds; reject predicted residual increase",
+    "feedback_truth": "simulation actual world nodes, body/root orientation, measured cylinder load, target/source geometric membership; physical root is observed only; initial material normals fixed",
+    "long_term_goal": "original fixed route and single inherited target helix about +Y; actual anchors bound only local connection, no unrestricted actual-pose overwrite",
+    "actual_front_span_rad": 2.819029780330941,
+    "actual_front_median_radius_mm": 107.6992214508592,
+    "recovery_active": false,
+    "recovery_started_s": null,
+    "recovery_budget_s": 20.0,
+    "failure": null
+  },
+  "runtime_effective_sliding_friction": null,
+  "contact_tangent_constraint_scale": null,
+  "force_time_weighted_contact_sliding_mm_s": [
+    1.918766292559985,
+    1.2577213830129037
+  ],
+  "maximum_supported_contact_sliding_mm_s": [
+    28.807553999383,
+    11.482611958977106
+  ]
+}

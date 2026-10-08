@@ -1,0 +1,832 @@
+{
+  "name": "N09C",
+  "outcome": "requested_diagnostic_stop_saved",
+  "complete": false,
+  "error": null,
+  "save_errors": [],
+  "night_policy": true,
+  "deadline_utc": "2026-10-09T00:00:00+00:00",
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 4.074881045792864,
+  "action_opportunity_window_s": 90.0,
+  "action_opportunity_reference_shift_mm": 129.0,
+  "physical_seconds": 95.85000000045767,
+  "dynamics_wall_seconds": 759.344000000001,
+  "controller_initial_elapsed_s": 0.0,
+  "controller_final_elapsed_s": 95.85000000045767,
+  "final_shift_mm": 53.21977606304718,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.6085019933681464,
+    "target_phase_rad": 0.6629622492084573,
+    "source_feedback_phase_rad": 0.0,
+    "target_feedback_phase_rad": 0.0,
+    "source_radius_delta_mm": 0.0,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.0,
+    "phase_origin_shift_mm": 0.0,
+    "reference_pipe_clearance_mm": 1.3310303970115456e-05,
+    "reference_clearance_deficit_mm": null,
+    "observed_grip_clearance_range_mm": [
+      23.955655049244537,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    10
+  ],
+  "final_target_modules": [
+    1,
+    4
+  ],
+  "new_sustained_target_modules": [],
+  "admissions": [],
+  "action_checkpoints": [],
+  "maximum_new_module_target_force_N": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": 22.800671889420407,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 302.7512380988719,
+  "final_centers_mm": [
+    [
+      1007.4223307502889,
+      211.64394157596158,
+      985.8329807727905
+    ],
+    [
+      1043.141200682926,
+      198.20109085270417,
+      936.766380613132
+    ],
+    [
+      1090.702518823382,
+      175.5284813127037,
+      901.4785076512189
+    ],
+    [
+      1135.7225414078766,
+      162.0926758135799,
+      908.8410240689273
+    ],
+    [
+      1174.2156681858296,
+      157.37228415442135,
+      958.5831406683868
+    ],
+    [
+      1194.0298015682479,
+      150.8429248617451,
+      1017.3186297150756
+    ],
+    [
+      1179.9546562190205,
+      126.87442091736031,
+      1058.0023071225019
+    ],
+    [
+      1139.9029152707612,
+      79.86616316916475,
+      1075.599042741052
+    ],
+    [
+      1094.29573395816,
+      36.05489667342256,
+      1084.2199362977017
+    ],
+    [
+      1066.4143227425675,
+      -18.159508039398478,
+      1083.423802608514
+    ],
+    [
+      1059.3807586826947,
+      -66.21945725075159,
+      1055.1119186981916
+    ],
+    [
+      1057.517055782711,
+      -98.86307833216117,
+      999.5981169700904
+    ],
+    [
+      1060.7389569377167,
+      -113.85613190928734,
+      939.7897081094939
+    ],
+    [
+      1062.714310664369,
+      -110.53485795374448,
+      875.490529525171
+    ],
+    [
+      1061.16746914977,
+      -109.49423950316587,
+      811.0696498247312
+    ],
+    [
+      1067.5482471548762,
+      -111.7342967197414,
+      747.4554795076793
+    ],
+    [
+      1082.0804087121826,
+      -114.75019221818734,
+      684.6863426163609
+    ],
+    [
+      1104.7315634488261,
+      -118.47602309182977,
+      625.0449614803705
+    ],
+    [
+      1128.772376558118,
+      -91.96384360944981,
+      584.8699375173553
+    ],
+    [
+      1135.5677679432442,
+      -35.70116250628578,
+      556.3267608793809
+    ],
+    [
+      1122.3673702085835,
+      20.48138073326987,
+      549.333872607151
+    ]
+  ],
+  "tail_center_mm": [
+    1122.3673702085835,
+    20.48138073326987,
+    549.333872607151
+  ],
+  "final_q_deg": [
+    30.949743986622625,
+    -21.055944886770178,
+    84.99695545213484,
+    -24.144019322774533,
+    29.805294008178475,
+    -80.3794481020457,
+    10.776737082735963,
+    -16.580115571313602,
+    -38.092839820028814,
+    -58.69990910922312,
+    -5.445690110682846,
+    -33.624243203255475,
+    5.8768962898648756,
+    4.6083443973072535,
+    -14.66391779461268,
+    0.13885726823350525,
+    -15.556159330188668,
+    -66.94031055226748,
+    20.667711470413224,
+    -51.33806236859703
+  ],
+  "max_actual_joint_deg": 87.53342544877604,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 1.0735154473876398,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 5.273559366969494e-13,
+  "minimum_reference_pipe_clearance_mm": -48.26283947401871,
+  "final_actual_source_grip_modules": [
+    10
+  ],
+  "final_actual_target_grip_modules": [
+    1,
+    4
+  ],
+  "final_geometrically_filtered_source_grip_modules": [
+    10
+  ],
+  "final_geometrically_filtered_target_grip_modules": [
+    1,
+    4
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 8372,
+      "negative_frames": 334
+    },
+    {
+      "joint": 2,
+      "positive_frames": 321,
+      "negative_frames": 9114
+    },
+    {
+      "joint": 3,
+      "positive_frames": 9077,
+      "negative_frames": 276
+    },
+    {
+      "joint": 4,
+      "positive_frames": 0,
+      "negative_frames": 9586
+    },
+    {
+      "joint": 5,
+      "positive_frames": 8318,
+      "negative_frames": 1156
+    },
+    {
+      "joint": 6,
+      "positive_frames": 0,
+      "negative_frames": 9586
+    },
+    {
+      "joint": 7,
+      "positive_frames": 4478,
+      "negative_frames": 4617
+    },
+    {
+      "joint": 8,
+      "positive_frames": 5371,
+      "negative_frames": 3795
+    },
+    {
+      "joint": 9,
+      "positive_frames": 1419,
+      "negative_frames": 7538
+    },
+    {
+      "joint": 10,
+      "positive_frames": 7415,
+      "negative_frames": 1855
+    },
+    {
+      "joint": 11,
+      "positive_frames": 579,
+      "negative_frames": 8652
+    },
+    {
+      "joint": 12,
+      "positive_frames": 134,
+      "negative_frames": 9403
+    },
+    {
+      "joint": 13,
+      "positive_frames": 121,
+      "negative_frames": 9449
+    },
+    {
+      "joint": 14,
+      "positive_frames": 170,
+      "negative_frames": 9279
+    },
+    {
+      "joint": 15,
+      "positive_frames": 316,
+      "negative_frames": 9217
+    },
+    {
+      "joint": 16,
+      "positive_frames": 0,
+      "negative_frames": 9586
+    },
+    {
+      "joint": 17,
+      "positive_frames": 2890,
+      "negative_frames": 6447
+    },
+    {
+      "joint": 18,
+      "positive_frames": 0,
+      "negative_frames": 9586
+    },
+    {
+      "joint": 19,
+      "positive_frames": 2585,
+      "negative_frames": 6565
+    },
+    {
+      "joint": 20,
+      "positive_frames": 8,
+      "negative_frames": 9569
+    }
+  ],
+  "controller_events": [],
+  "curve_feedback_updates": 2395,
+  "final_adaptive_front_winding_action": {
+    "action": "independent bounded front winding with actual-position moving compliant exit/bridge; load feed; actual target bearing restores following",
+    "front_local_material_mm": 31.494188780700572,
+    "rear_local_material_mm": 3.5930439705206973,
+    "local_material_limit_mm": 64.5,
+    "front_requested_speed_mm_s": 2.0,
+    "front_accepted_speed_mm_s": 0.0,
+    "rear_requested_speed_mm_s": 0.5,
+    "rear_accepted_speed_mm_s": 0.0,
+    "target_load_N": 6.929197486520261,
+    "source_load_N": 1.5576121484362693,
+    "rear_feed_load_ratio": 0.25,
+    "rear_load_scale": 1.0,
+    "front_integral_tracking_error_deg": 55.32276596467503,
+    "rear_integral_tracking_error_deg": 65.60756131698217,
+    "front_speed_guard_error_deg": 0.002878532442880658,
+    "rear_speed_guard_error_deg": 3.076101720996062e-05,
+    "common_speed_guard_error_deg": 0.002878532442880658,
+    "curve_pipe_motion": {
+      "phase_rad": [
+        0.003935562395122975,
+        0.09039172150470086
+      ],
+      "axis_extension_m": [
+        0.0011120906409370543,
+        0.015117210614736275
+      ],
+      "local_material_extension_m": [
+        0.0035930439705206974,
+        0.03149418878070057
+      ]
+    },
+    "local_rejections": [
+      {
+        "fraction": 1.0,
+        "reason": "bridge curve remains inside original solid: -0.032917mm"
+      },
+      {
+        "fraction": 0.5,
+        "reason": "bridge curve remains inside original solid: -0.016243mm"
+      },
+      {
+        "fraction": 0.25,
+        "reason": "bridge curve remains inside original solid: -0.007910mm"
+      },
+      {
+        "fraction": 0.125,
+        "reason": "bridge curve remains inside original solid: -0.003976mm"
+      },
+      {
+        "fraction": 0.0625,
+        "reason": "bridge curve remains inside original solid: -0.002006mm"
+      },
+      {
+        "fraction": 0.03125,
+        "reason": "bridge curve remains inside original solid: -0.001002mm"
+      },
+      {
+        "fraction": 0.015625,
+        "reason": "bridge curve remains inside original solid: -0.000528mm"
+      },
+      {
+        "fraction": 0.0078125,
+        "reason": "bridge curve remains inside original solid: -0.000355mm"
+      },
+      {
+        "fraction": 0.00390625,
+        "reason": "bridge curve remains inside original solid: -0.000224mm"
+      },
+      {
+        "fraction": 0.001953125,
+        "reason": "bridge curve remains inside original solid: -0.000159mm"
+      },
+      {
+        "fraction": 0.0009765625,
+        "reason": "bridge curve remains inside original solid: -0.000126mm"
+      },
+      {
+        "fraction": 0.00048828125,
+        "reason": "bridge curve remains inside original solid: -0.000110mm"
+      }
+    ],
+    "verified_handover_material_credit_mm": 0.0,
+    "actual_target_cohort_material_estimate_mm": 0.0,
+    "confirmed_new_body_material_span_mm": 0.0,
+    "existing_supported_target_cohort": [],
+    "existing_supported_target_axis_advance_mm": 0.0,
+    "bounded_common_window_credit_mm": 0.0,
+    "common_window_lead_limit_mm": 16.125,
+    "shape_update_fraction": 0.0,
+    "requested_common_shift_speed_mm_s": 0.0,
+    "accepted_common_shift_speed_mm_s": 0.0,
+    "target_entry_capture_feedback": {},
+    "curve_shape_update_rejections": [
+      {
+        "fraction": 1.0,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.5,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.25,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.125,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.0625,
+        "reason": "Continuous material window crosses original pipe solid"
+      },
+      {
+        "fraction": 0.03125,
+        "reason": "Continuous material window crosses original pipe solid"
+      }
+    ],
+    "common_shift_rejections": [
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      },
+      {
+        "proposed_shift_step_mm": 0.0,
+        "reason": "bridge curve remains inside original solid: -0.000093mm"
+      }
+    ],
+    "pipe_material_roll_phases_rad": [
+      0.6376659265118372,
+      -1.5983273033723497
+    ],
+    "failure": null,
+    "primary_front_execution": "same full-curve integral; local parameter survives rejected common shift; no additional joint wave"
+  },
+  "final_source_unfolding": null,
+  "ordered_target_handover_modules": [],
+  "final_moving_compliance": {
+    "actual_projected_joint_curve_coordinates_mm": [
+      1394.1983784124934,
+      1334.2646079314748,
+      1273.630026837818,
+      1230.9271956225873,
+      1144.574961736966,
+      1083.9959709808222,
+      1055.4088070705086,
+      946.3760402058906,
+      829.6370384953192,
+      738.9559143359153,
+      711.4462260726965,
+      609.8291710250363,
+      576.7327077662484,
+      543.3418397524074,
+      482.22869451433075,
+      449.06971303945426,
+      383.1801265264657,
+      316.7531916684761,
+      252.76806119644468,
+      187.57920695821744
+    ],
+    "filtered_actual_joint_curve_coordinates_mm": [
+      1394.2344072302105,
+      1334.3006735585884,
+      1273.6749381350887,
+      1230.9694037732843,
+      1144.570028055925,
+      1083.9959709808345,
+      1055.3944929710935,
+      946.3848410377653,
+      829.6709837304497,
+      738.9970741236268,
+      711.4367433971576,
+      609.9179060444302,
+      576.7327077662288,
+      543.4287604742344,
+      482.3017035176756,
+      449.06971303941754,
+      383.1801265264276,
+      316.75319166843957,
+      252.7680611964075,
+      187.57920695817984
+    ],
+    "nominal_joint_curve_coordinates_mm": [
+      1352.151680143682,
+      1283.568032085509,
+      1215.1725897495376,
+      1151.3973957627115,
+      1083.9959709808222,
+      1015.0430990474293,
+      947.6463247290073,
+      871.9714679505148,
+      807.3398433901982,
+      761.4203167182955,
+      713.9345779909376,
+      637.4043255332741,
+      576.7327077662484,
+      513.7756564816088,
+      449.06971303945426,
+      383.1801265264657,
+      316.7531916684761,
+      252.76806119644468,
+      187.57920695821744,
+      122.04281368208834
+    ],
+    "actual_projection_distance_mm": [
+      47.83729215527508,
+      27.751220311629076,
+      42.54395076538989,
+      14.409665551439002,
+      16.73476018626754,
+      19.47804112835078,
+      56.9443308923364,
+      74.84980525785733,
+      98.97859051091393,
+      119.25211283525655,
+      125.90451303561795,
+      156.66868040411134,
+      183.74021837747097,
+      216.58232107353945,
+      252.07421945716624,
+      301.33965366815806,
+      399.5953308570045,
+      512.3904631475975,
+      567.7951257439573,
+      636.4261677303547
+    ],
+    "softness": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.15640971659390773,
+      0.8665858998605167,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.9999999999999993,
+      0.8092166530582605,
+      0.0,
+      0.0
+    ],
+    "spatial_requested_softness": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.38774165981131103,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3677678859381665,
+      0.0,
+      0.0
+    ],
+    "actual_ordered_target_bearing_age_s": [
+      67.04999999999833,
+      28.650000000000272,
+      0.0,
+      72.14999999999804,
+      72.14999999999804,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_bearing_recovery_allowed": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "permitted_soft_posture_error_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.07397945714900975,
+      0.02394658451144023,
+      55.32276596467503,
+      22.455883828422806,
+      46.2302671475881,
+      54.69124287463938,
+      44.95009426842156,
+      27.511839799727674,
+      65.60756131698217,
+      2.2212225350928896,
+      0.5413811558021627,
+      0.0,
+      0.0
+    ],
+    "rigid_speed_guard_error_deg": [
+      8.742145559395015e-07,
+      0.00015018234228279424,
+      0.002372202227328044,
+      0.0006138031175404639,
+      0.002878532442880658,
+      0.0007020272387814474,
+      3.8852117220500654e-05,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      3.076101720996062e-05,
+      4.359640651200439e-06
+    ],
+    "material_joint_members": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "lower_curve_station_mm": 290.25,
+    "target_recovery_curve_station_mm": 870.75,
+    "ordered_incoming_target_modules": [],
+    "basis": "actual hinges projected onto current curve within material neighbourhood; actual ordered target support permits gradual recovery; compliant posture error excluded from motion guards",
+    "position_following_scale": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.8482825749039096,
+      0.1594116771352988,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.030000000000000693,
+      0.2150598465334873,
+      1.0,
+      1.0
+    ],
+    "software_effort_band_Nm": [
+      2.355,
+      2.355,
+      2.355,
+      2.355,
+      2.355,
+      2.355,
+      2.355,
+      2.0413985182292147,
+      0.6174952707796639,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.3500000000000013,
+      0.7325206106181876,
+      2.355,
+      2.355
+    ],
+    "nominal_effective_position_gain_Nm_rad": [
+      127.0,
+      127.0,
+      127.0,
+      127.0,
+      127.0,
+      127.0,
+      127.0,
+      107.73188701279652,
+      20.245282996182947,
+      3.810000000000088,
+      3.810000000000088,
+      3.810000000000088,
+      3.810000000000088,
+      3.810000000000088,
+      3.810000000000088,
+      3.810000000000088,
+      3.810000000000088,
+      27.312600509752887,
+      127.0,
+      127.0
+    ],
+    "caveat": "software ctrl-q effort band is not an instantaneous measured-torque cap; raw actual actuator forces are retained in trace"
+  },
+  "runtime_effective_sliding_friction": null,
+  "contact_tangent_constraint_scale": null,
+  "force_time_weighted_contact_sliding_mm_s": [
+    2.6469828470526426,
+    1.0446734260656831
+  ],
+  "maximum_supported_contact_sliding_mm_s": [
+    99.14107115345507,
+    37.39661041121624
+  ]
+}

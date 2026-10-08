@@ -1,0 +1,46 @@
+{
+  "name": "N10R",
+  "no_physics_steps": true,
+  "common_window_mm": 25.7555153310562,
+  "local_front_rear_mm": [
+    15.234426075193458,
+    0.19172801959218091
+  ],
+  "saved_final_reference": {
+    "minimum_mm": 8.38436707562007e-06,
+    "limiting_rod": 16,
+    "point_mm": [
+      839.3223421526866,
+      42.45330278280564,
+      962.7177249853905
+    ],
+    "limiting_rod_material_midstation_mm": 401.00364382551277,
+    "inside_original_bridge_avoidance_scope": false
+  },
+  "initial_to_corridor_maximum_captured_residual_mm": 86.30204435440679,
+  "same_progress_without_pressure_or_clearance_fields": {
+    "minimum_mm": -1.7068946354853036,
+    "limiting_rod": 14,
+    "point_mm": [
+      861.2517327270108,
+      -29.904264033033318,
+      954.0868277274437
+    ],
+    "limiting_rod_material_midstation_mm": 524.9708994652879,
+    "inside_original_bridge_avoidance_scope": true
+  },
+  "bounded_bridge_avoidance": {
+    "minimum_mm": -3.2516851392657906,
+    "limiting_rod": 16,
+    "point_mm": [
+      842.2568536695292,
+      36.00574049237315,
+      960.770295857555
+    ],
+    "limiting_rod_material_midstation_mm": 407.79232809492567,
+    "inside_original_bridge_avoidance_scope": false
+  },
+  "bounded_bridge_avoidance_error": "bridge curve remains inside original solid: -3.251685mm",
+  "bounded_bridge_avoidance_field_mm": 3.1327435306896665,
+  "meaning": "captured initial Cartesian residual deploys the new corridor through source rods; original bridge-only avoidance can move an intrusion to an uncovered source rod; no actual-motion or shell-safety conclusion"
+}

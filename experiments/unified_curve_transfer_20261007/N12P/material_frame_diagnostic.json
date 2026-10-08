@@ -1,0 +1,97 @@
+{
+  "no_physics_steps": true,
+  "checkpoints": [
+    {
+      "t_s": 30.0,
+      "actual_head_axial_material_phase_offset_deg": -3.2547525411932137,
+      "normal_projection_length": 0.9944637145237215,
+      "head_axis_offset_deg": 6.114397761194232,
+      "M10_center_mm": [
+        961.4608523160273,
+        -7.1052531598384805,
+        1101.4841295314004
+      ],
+      "M10_radius_mm": 171.73271088452444,
+      "max_motor_abs_Nm": 1.4188731309707663
+    },
+    {
+      "t_s": 60.0,
+      "actual_head_axial_material_phase_offset_deg": -12.647665988485967,
+      "normal_projection_length": 0.8519116316588057,
+      "head_axis_offset_deg": 34.00755274216209,
+      "M10_center_mm": [
+        963.6197628642037,
+        55.148124708729334,
+        1094.8073128521737
+      ],
+      "M10_radius_mm": 166.09634448556045,
+      "max_motor_abs_Nm": 0.9794022567361651
+    },
+    {
+      "t_s": 90.0,
+      "actual_head_axial_material_phase_offset_deg": -41.58520737088979,
+      "normal_projection_length": 0.6931425688335681,
+      "head_axis_offset_deg": 46.1337956815962,
+      "M10_center_mm": [
+        1000.9750220300809,
+        73.42419840861334,
+        1071.7193564799295
+      ],
+      "M10_radius_mm": 122.26860740123837,
+      "max_motor_abs_Nm": 2.355
+    },
+    {
+      "t_s": 120.0,
+      "actual_head_axial_material_phase_offset_deg": -51.767438039586516,
+      "normal_projection_length": 0.8177815403012103,
+      "head_axis_offset_deg": 37.00680883233205,
+      "M10_center_mm": [
+        1006.392605649012,
+        82.62580509449674,
+        1074.4155965774207
+      ],
+      "M10_radius_mm": 119.58271317859788,
+      "max_motor_abs_Nm": 2.292136195854937
+    },
+    {
+      "t_s": 150.0,
+      "actual_head_axial_material_phase_offset_deg": -46.708922054440144,
+      "normal_projection_length": 0.9143798007876248,
+      "head_axis_offset_deg": 34.26630164129678,
+      "M10_center_mm": [
+        1053.7108997709702,
+        74.78125308991432,
+        1094.1977022167944
+      ],
+      "M10_radius_mm": 104.95660009230976,
+      "max_motor_abs_Nm": 1.8894258419756227
+    },
+    {
+      "t_s": 180.0,
+      "actual_head_axial_material_phase_offset_deg": -45.99760360371459,
+      "normal_projection_length": 0.959064036825485,
+      "head_axis_offset_deg": 30.540422651426127,
+      "M10_center_mm": [
+        1112.9350855426314,
+        74.63692391502427,
+        1103.5987242387123
+      ],
+      "M10_radius_mm": 104.40312304660213,
+      "max_motor_abs_Nm": 1.5445262090825196
+    },
+    {
+      "t_s": 194.3,
+      "actual_head_axial_material_phase_offset_deg": -45.661878419318924,
+      "normal_projection_length": 0.9690012649234571,
+      "head_axis_offset_deg": 30.043273740578645,
+      "M10_center_mm": [
+        1126.550702162841,
+        73.57851327504017,
+        1103.1693324559178
+      ],
+      "M10_radius_mm": 106.53098584327277,
+      "max_motor_abs_Nm": 1.4411210720031349
+    }
+  ],
+  "meaning": "observed mismatch between transported head reference and actual free-body frame; phase mismatch is a candidate cause, not an isolated causal proof"
+}

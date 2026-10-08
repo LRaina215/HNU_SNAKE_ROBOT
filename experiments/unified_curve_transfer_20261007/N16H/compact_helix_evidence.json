@@ -1,0 +1,1138 @@
+{
+  "name": "N16H",
+  "curve": {
+    "action": "fixed route continues current hook tangent and handedness; future axial pitch decreases smoothly over three rods, then stays 180 mm",
+    "physical_body_length_mm": 1354.5,
+    "physical_shell_diameter_mm": 58.0,
+    "target_radius_mm": 91.50645144282909,
+    "old_pitch_mm": 314.58665114081595,
+    "new_pitch_mm": 180.0,
+    "old_axial_fraction": 0.48,
+    "new_axial_fraction": 0.29877019028706364,
+    "ideal_all_body_old_axis_span_mm": 650.16,
+    "ideal_all_body_new_axis_span_mm": 404.6842227438277,
+    "ideal_all_body_old_turns": 2.06671197789945,
+    "ideal_all_body_new_turns": 2.2482456819101535,
+    "axial_span_reduction_fraction": 0.3775621035686174,
+    "ideal_new_turn_normal_shell_gap_mm": 113.77851582204612,
+    "new_helix_curvature_per_m": 9.95270124713378,
+    "new_helix_torsion_per_m": -3.1158883730270808,
+    "future_transition_length_mm": 193.5,
+    "initial_route_fit_error_mm": 0.0,
+    "join_first_derivative_error": 0.0,
+    "initial_material_normals": "same CLOSE calibration as N15; retained without actual-q refit",
+    "compactness_caveat": "ideal uniform-helix totals exclude inherited hook and transition; actual wrapping requires dynamics"
+  },
+  "preflight_path": "../COMPACT_HELIX_20261009/preflight.json",
+  "actual_result": {
+    "outcome": "no_real_progress_45s_after_action_window",
+    "complete": false,
+    "physical_seconds": 237.2999999994789,
+    "final_shift_mm": 314.3547495469509,
+    "admissions": [
+      {
+        "t_s": 72.55,
+        "module": 8,
+        "center_mm": [
+          1101.495327525548,
+          108.55021672046362,
+          1084.9045951352348
+        ]
+      },
+      {
+        "t_s": 92.45,
+        "module": 9,
+        "center_mm": [
+          1058.8783237722864,
+          111.54860469434054,
+          1074.2580709933177
+        ]
+      },
+      {
+        "t_s": 173.00000000000003,
+        "module": 10,
+        "center_mm": [
+          1088.133467403144,
+          133.08741885977813,
+          1084.2695566143989
+        ]
+      }
+    ],
+    "ordered_target_handover_modules": [
+      8,
+      9,
+      10
+    ],
+    "final_target_modules": [
+      0,
+      6,
+      7
+    ],
+    "final_source_modules": [
+      12,
+      13
+    ],
+    "error": null,
+    "save_errors": []
+  },
+  "actual_front_wrap_initial_rad": 4.163843061358122,
+  "actual_front_wrap_final_rad": 3.7562599358150606,
+  "actual_checkpoints": [
+    {
+      "t_s": 0.0,
+      "front_mean_y_mm": 0.0,
+      "rear_mean_x_mm": 0.0,
+      "front_wrap_span_rad": 4.163843061358122,
+      "ordered": [],
+      "M8_M12_radius_mm": [
+        109.7197371651419,
+        144.9112455061297,
+        178.71763715340867,
+        196.68631873756192,
+        210.36457974633637
+      ],
+      "M8_M12_axis_mm": [
+        70.1186473504269,
+        25.905266134452006,
+        -20.156411609354617,
+        -66.04096085185756,
+        -87.77239289139808
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 0.0,
+      "head_actual_vs_transported_reference_full_frame_deg": 5.909346665088991e-15,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": 3.3989613338875745e-15,
+      "actual_entered_body_target_handed_sign_fraction": 0.8571428571428571,
+      "actual_entered_body_forward_order_violations": 1,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 0.0,
+        "accepted_speed_mm_s": 0.0,
+        "full_integral_tracking_error_deg": 0.0,
+        "follow_scale": 1.0,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 8,
+        "receiver_action_start_s": 0.0,
+        "receiver_action_opportunity_end_s": 90.0,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": 3.479766914270331e-15,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 1.0000000000000004,
+        "actual_head_tangent_error_deg": 0.0,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 0.0,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 15.000000000071623,
+      "front_mean_y_mm": 8.466171760954435,
+      "rear_mean_x_mm": -1.989571324373888,
+      "front_wrap_span_rad": 4.193101337231236,
+      "ordered": [],
+      "M8_M12_radius_mm": [
+        106.51337744976833,
+        140.53554169987692,
+        174.78392988802761,
+        193.91999316938072,
+        209.56666065717556
+      ],
+      "M8_M12_axis_mm": [
+        69.74244224736442,
+        28.06777707083853,
+        -16.719792961305245,
+        -62.57274068783275,
+        -87.40458272536543
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 2.4717491238857403,
+      "head_actual_vs_transported_reference_full_frame_deg": 3.4019013428161324,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -2.346262188757323,
+      "actual_entered_body_target_handed_sign_fraction": 0.8571428571428571,
+      "actual_entered_body_forward_order_violations": 1,
+      "maximum_actual_motor_abs_torque_Nm": 0.8552062922819985,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.5,
+        "accepted_speed_mm_s": 1.5,
+        "full_integral_tracking_error_deg": 0.00915849746243474,
+        "follow_scale": 1.0,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 8,
+        "receiver_action_start_s": 0.0,
+        "receiver_action_opportunity_end_s": 90.0,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -2.349295864037153,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.9999748118258173,
+        "actual_head_tangent_error_deg": 2.466913289568948,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 6.375996847716905,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 30.000000000143245,
+      "front_mean_y_mm": 16.54317487298472,
+      "rear_mean_x_mm": -7.760788784250898,
+      "front_wrap_span_rad": 4.226333993962728,
+      "ordered": [],
+      "M8_M12_radius_mm": [
+        105.74749693190229,
+        139.30608273517754,
+        174.17143705335008,
+        195.44141420672852,
+        214.41683085025764
+      ],
+      "M8_M12_axis_mm": [
+        71.14792524844421,
+        32.01376432008102,
+        -11.306422317982236,
+        -56.61209236674337,
+        -83.92273855584483
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 7.065982457982004,
+      "head_actual_vs_transported_reference_full_frame_deg": 7.352559361474699,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -2.175743160160122,
+      "actual_entered_body_target_handed_sign_fraction": 1.0,
+      "actual_entered_body_forward_order_violations": 0,
+      "maximum_actual_motor_abs_torque_Nm": 0.9254482200593657,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.5,
+        "accepted_speed_mm_s": 1.5,
+        "full_integral_tracking_error_deg": 0.00809599262967452,
+        "follow_scale": 1.0,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 8,
+        "receiver_action_start_s": 0.0,
+        "receiver_action_opportunity_end_s": 90.0,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -2.188690663111263,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.9933270694085817,
+        "actual_head_tangent_error_deg": 7.053546541649166,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 11.815731621750643,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 45.00000000021487,
+      "front_mean_y_mm": 23.126348028708573,
+      "rear_mean_x_mm": -0.8525573316520975,
+      "front_wrap_span_rad": 4.169909849847973,
+      "ordered": [],
+      "M8_M12_radius_mm": [
+        101.5766634778312,
+        133.7149719795157,
+        169.49966703514238,
+        192.93693126743702,
+        213.00137725696032
+      ],
+      "M8_M12_axis_mm": [
+        79.07221403780554,
+        43.30302152882852,
+        1.6661047459457627,
+        -44.48170328485698,
+        -78.9229251198743
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 13.667294712609404,
+      "head_actual_vs_transported_reference_full_frame_deg": 13.67420356239229,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": 0.6965284531028529,
+      "actual_entered_body_target_handed_sign_fraction": 1.0,
+      "actual_entered_body_forward_order_violations": 0,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.5,
+        "accepted_speed_mm_s": 1.5,
+        "full_integral_tracking_error_deg": 0.591223973100809,
+        "follow_scale": 1.0,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 8,
+        "receiver_action_start_s": 0.0,
+        "receiver_action_opportunity_end_s": 90.0,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": 0.702925549487923,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.972403967367199,
+        "actual_head_tangent_error_deg": 13.667607646618082,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 14.571857001886233,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 60.00000000028649,
+      "front_mean_y_mm": 38.17183814584423,
+      "rear_mean_x_mm": 7.6263919941303095,
+      "front_wrap_span_rad": 4.123179229873298,
+      "ordered": [],
+      "M8_M12_radius_mm": [
+        93.25212963273083,
+        121.91949849452138,
+        159.20518400740366,
+        185.97551402336347,
+        209.1492539067716
+      ],
+      "M8_M12_axis_mm": [
+        91.08821834219765,
+        58.95780655099014,
+        20.035850391872167,
+        -25.632116776081972,
+        -64.80804879727
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 18.764454830710562,
+      "head_actual_vs_transported_reference_full_frame_deg": 18.78513483411569,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -1.03807959689218,
+      "actual_entered_body_target_handed_sign_fraction": 1.0,
+      "actual_entered_body_forward_order_violations": 0,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.4786210704536056,
+        "accepted_speed_mm_s": 1.4786210704536056,
+        "full_integral_tracking_error_deg": 4.228041915161538,
+        "follow_scale": 0.9857473803024038,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 8,
+        "receiver_action_start_s": 0.0,
+        "receiver_action_opportunity_end_s": 90.0,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -1.0227485957168982,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.9469533613836345,
+        "actual_head_tangent_error_deg": 18.76795490208506,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 17.585652961414873,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 75.00000000035811,
+      "front_mean_y_mm": 32.13633740923108,
+      "rear_mean_x_mm": 9.85176222217899,
+      "front_wrap_span_rad": 3.8006732397775984,
+      "ordered": [
+        8
+      ],
+      "M8_M12_radius_mm": [
+        84.59919369776944,
+        104.76547049597609,
+        144.90613346188238,
+        180.00847996390894,
+        209.9045072492586
+      ],
+      "M8_M12_axis_mm": [
+        112.51833852160789,
+        93.36568657875894,
+        61.32441534490805,
+        15.045442247452236,
+        -33.205955801355806
+      ],
+      "M8_M12_force_N": [
+        23.682583176623414,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 33.89892735745941,
+      "head_actual_vs_transported_reference_full_frame_deg": 35.57290103620039,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -11.004205770682299,
+      "actual_entered_body_target_handed_sign_fraction": 0.75,
+      "actual_entered_body_forward_order_violations": 2,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.4725027811359612,
+        "accepted_speed_mm_s": 1.4725027811359612,
+        "full_integral_tracking_error_deg": 4.293303667883082,
+        "follow_scale": 0.9816685207573074,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 9,
+        "receiver_action_start_s": 72.8,
+        "receiver_action_opportunity_end_s": 108.8723344281916,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -11.00617008170852,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.8299807080048132,
+        "actual_head_tangent_error_deg": 33.903803134828514,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 21.93913678277389,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 90.00000000042974,
+      "front_mean_y_mm": 2.837504258884138,
+      "rear_mean_x_mm": 28.695492553412482,
+      "front_wrap_span_rad": 3.43698301788704,
+      "ordered": [
+        8
+      ],
+      "M8_M12_radius_mm": [
+        86.54023921757079,
+        88.11312853338464,
+        126.96991181734634,
+        172.73254758204936,
+        213.66252164612487
+      ],
+      "M8_M12_axis_mm": [
+        115.95118606513611,
+        108.01258948559925,
+        83.46452603638951,
+        43.58183555533017,
+        -1.6720692118706193
+      ],
+      "M8_M12_force_N": [
+        22.864053929711137,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 48.80572308301538,
+      "head_actual_vs_transported_reference_full_frame_deg": 56.041264269551874,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -32.8767345737003,
+      "actual_entered_body_target_handed_sign_fraction": 0.625,
+      "actual_entered_body_forward_order_violations": 3,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.4514683680379048,
+        "accepted_speed_mm_s": 1.4514683680379046,
+        "full_integral_tracking_error_deg": 4.517670740929013,
+        "follow_scale": 0.9676455786919366,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 9,
+        "receiver_action_start_s": 72.8,
+        "receiver_action_opportunity_end_s": 108.8723344281916,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -32.92791540888749,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.6686482501092741,
+        "actual_head_tangent_error_deg": 48.81224884467372,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 36.26962566551259,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 120.00000000057298,
+      "front_mean_y_mm": 2.120122235407984,
+      "rear_mean_x_mm": 76.37461694780286,
+      "front_wrap_span_rad": 3.319778699402859,
+      "ordered": [
+        8,
+        9
+      ],
+      "M8_M12_radius_mm": [
+        89.31608672865102,
+        85.19597667481605,
+        121.96660595306814,
+        172.52218635179926,
+        213.96053246195206
+      ],
+      "M8_M12_axis_mm": [
+        163.52334644417397,
+        136.4193489553905,
+        106.52643868925273,
+        72.59855643214274,
+        27.01403371523164
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        25.443990250879363,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 46.22510775831284,
+      "head_actual_vs_transported_reference_full_frame_deg": 62.96273410474283,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -50.95217839277332,
+      "actual_entered_body_target_handed_sign_fraction": 0.625,
+      "actual_entered_body_forward_order_violations": 3,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.5,
+        "accepted_speed_mm_s": 1.5,
+        "full_integral_tracking_error_deg": 1.0998825200112434,
+        "follow_scale": 1.0,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 10,
+        "receiver_action_start_s": 92.7,
+        "receiver_action_opportunity_end_s": 147.1982637439919,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -51.032079045646455,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.9546184304527451,
+        "actual_head_tangent_error_deg": 46.2243180044502,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 60.18141964500431,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 150.00000000071623,
+      "front_mean_y_mm": 37.98088211644047,
+      "rear_mean_x_mm": 145.68361403140696,
+      "front_wrap_span_rad": 2.9770220863747165,
+      "ordered": [
+        8,
+        9
+      ],
+      "M8_M12_radius_mm": [
+        84.74400095445901,
+        85.1848909116454,
+        90.52578811238433,
+        111.68121594636916,
+        143.1191922986507
+      ],
+      "M8_M12_axis_mm": [
+        178.8985692520627,
+        165.78711663010455,
+        139.75124462817269,
+        90.95247474357261,
+        38.900284006528544
+      ],
+      "M8_M12_force_N": [
+        18.440896887400225,
+        0.9638750490577283,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 44.87696886325512,
+      "head_actual_vs_transported_reference_full_frame_deg": 54.14201119995959,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -21.746411949390545,
+      "actual_entered_body_target_handed_sign_fraction": 0.6666666666666666,
+      "actual_entered_body_forward_order_violations": 3,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.3666838721493422,
+        "accepted_speed_mm_s": 1.3666838721493422,
+        "full_integral_tracking_error_deg": 5.422038697073683,
+        "follow_scale": 0.9111225814328948,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": true,
+        "active_receiver_module": 10,
+        "receiver_action_start_s": 92.7,
+        "receiver_action_opportunity_end_s": 147.1982637439919,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -21.800006871418027,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.886784554811546,
+        "actual_head_tangent_error_deg": 44.87186961386308,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 66.76487729751805,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 180.00000000083386,
+      "front_mean_y_mm": 79.6386169901501,
+      "rear_mean_x_mm": 200.59181707296253,
+      "front_wrap_span_rad": 3.5321537505921805,
+      "ordered": [
+        8,
+        9,
+        10
+      ],
+      "M8_M12_radius_mm": [
+        91.65203516089909,
+        93.75865546755699,
+        84.80296142245868,
+        93.19736281781985,
+        111.58696054798564
+      ],
+      "M8_M12_axis_mm": [
+        180.4132001854523,
+        164.9582745475648,
+        132.98659323105593,
+        81.77697407998161,
+        27.478232398699753
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        8.741077955560707,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 46.85630056811402,
+      "head_actual_vs_transported_reference_full_frame_deg": 51.059861805096816,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -11.636687955183309,
+      "actual_entered_body_target_handed_sign_fraction": 0.8888888888888888,
+      "actual_entered_body_forward_order_violations": 1,
+      "maximum_actual_motor_abs_torque_Nm": 1.5776915191292744,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 1.5,
+        "accepted_speed_mm_s": 1.5,
+        "full_integral_tracking_error_deg": 0.051645444039910914,
+        "follow_scale": 1.0,
+        "load_scale": 1.0,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": false,
+        "active_receiver_module": 11,
+        "receiver_action_start_s": 173.25,
+        "receiver_action_opportunity_end_s": 192.22318572834334,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -11.690599601899292,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.7498268258124645,
+        "actual_head_tangent_error_deg": 46.823946694290846,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 71.6443051902693,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    },
+    {
+      "t_s": 237.2999999994789,
+      "front_mean_y_mm": 77.75854497960539,
+      "rear_mean_x_mm": 325.8150244606691,
+      "front_wrap_span_rad": 3.7562599358150606,
+      "ordered": [
+        8,
+        9,
+        10
+      ],
+      "M8_M12_radius_mm": [
+        92.79595766991578,
+        103.58676867768958,
+        112.20744943295107,
+        102.99679176072972,
+        86.40920988090934
+      ],
+      "M8_M12_axis_mm": [
+        199.92654674315236,
+        174.58118638550764,
+        130.66301818133675,
+        81.75094314455646,
+        20.991269278094805
+      ],
+      "M8_M12_force_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "head_actual_vs_transported_reference_axis_deg": 47.486125018767616,
+      "head_actual_vs_transported_reference_full_frame_deg": 64.75656268509326,
+      "head_actual_vs_transported_reference_projected_axial_phase_deg": -54.832870343344865,
+      "actual_entered_body_target_handed_sign_fraction": 0.75,
+      "actual_entered_body_forward_order_violations": 2,
+      "maximum_actual_motor_abs_torque_Nm": 2.355,
+      "action": {
+        "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+        "nominal_speed_mm_s": 1.5,
+        "requested_speed_mm_s": 0.2974013834444284,
+        "accepted_speed_mm_s": 0.2974013834444284,
+        "full_integral_tracking_error_deg": 16.74637802727463,
+        "follow_scale": 0.20335137329533565,
+        "load_scale": 0.975,
+        "initial_curve_fit_error_mm": 0.0,
+        "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+        "next_receiver_whole_rod_in_target_reference": true,
+        "active_receiver_module": 11,
+        "receiver_action_start_s": 173.25,
+        "receiver_action_opportunity_end_s": 192.22318572834334,
+        "spatial_route_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "material_axial_roll_phase_rad": [
+          0.0,
+          0.0
+        ],
+        "continuous_observed_material_phase_feedback": false,
+        "observed_head_roll_phase_rad": 0.0,
+        "actual_head_roll_error_before_feedback_deg": -54.82718815024422,
+        "head_roll_observation_valid": true,
+        "head_roll_phase_feedback_step_deg": 0.0,
+        "actual_head_normal_projection_length": 0.9117904412972825,
+        "actual_head_tangent_error_deg": 47.4834374609089,
+        "shape_update_fraction": 1.0,
+        "shape_rejections": [],
+        "window_rejections": [],
+        "guide_global_rms_error_mm": 106.71215725750383,
+        "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+        "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+      }
+    }
+  ],
+  "axis_feedback": {
+    "final": {
+      "action": "pipe-axis front wrap goal located by stable actual bearing; local radial and tilt curve field plus bounded material phase from physical FK residual",
+      "stable_target_bearing_modules": [
+        0,
+        6,
+        7
+      ],
+      "bearing_age_s": [
+        72.24999999999804,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        26.750000000000245,
+        9.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_CLOSE_anchor_prior": false,
+      "actual_anchor_curve_station_mm": 1383.901579421262,
+      "local_connection_axis_offset_mm": 32.25,
+      "local_connection_azimuth_offset_deg": 45.0,
+      "goal_front_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "goal_front_centers_mm": [
+        [
+          1115.9168088617062,
+          343.605500337719,
+          1084.8780544838776
+        ],
+        [
+          1059.050585639188,
+          324.1050009901564,
+          1075.79695475452
+        ],
+        [
+          1020.3877845092861,
+          303.8560533999386,
+          1032.849026505258
+        ],
+        [
+          1017.7217908990448,
+          280.0496662395363,
+          976.518222307682
+        ],
+        [
+          1049.9882985392578,
+          250.13868131870043,
+          932.7275052819582
+        ],
+        [
+          1101.6593269070172,
+          216.77415842384102,
+          912.5838905710424
+        ],
+        [
+          1153.2748361588033,
+          185.18339208946043,
+          913.4532667248327
+        ],
+        [
+          1179.096743833938,
+          167.1596979635409,
+          951.0153062286477
+        ],
+        [
+          1184.048024358298,
+          168.70996600284565,
+          1013.3133005914133
+        ],
+        [
+          1166.644333111879,
+          179.71642805004404,
+          1064.8959142606013
+        ],
+        [
+          1124.5225693391897,
+          165.27010326575626,
+          1093.3666104773458
+        ],
+        [
+          1074.4260336303012,
+          144.58655703578694,
+          1083.6585940328407
+        ],
+        [
+          1026.3446685669098,
+          130.18871132184125,
+          1046.2644666886983
+        ]
+      ],
+      "parameters": {
+        "material_phase_deg": -174.943795823197,
+        "radial_curve_offset_mm": -6.471798195501055,
+        "local_tilt_x_deg": 8.58799212530583,
+        "local_tilt_z_deg": -4.874699964891198
+      },
+      "proposed_normalized_parameter_step": [
+        -0.4988450156193733,
+        0.16486556864522406,
+        -0.002855312418125311,
+        -0.6687517670633734
+      ],
+      "accepted_fraction": 1.0,
+      "rejections": [],
+      "physical_FK_goal_residual_before_rms_mm": 28.72750971106725,
+      "physical_FK_goal_residual_after_rms_mm": 28.70143805158275,
+      "maximum_local_curve_field_mm": 22.431894170031043,
+      "physical_FK_prediction_registration": {
+        "anchor_module": 6,
+        "rotation": [
+          [
+            0.9999811700604437,
+            0.0012511489226485408,
+            0.006007840786974435
+          ],
+          [
+            -0.0012638327999612954,
+            0.9999969797619149,
+            0.002107888446812841
+          ],
+          [
+            -0.006005185359505589,
+            -0.002115441661644328,
+            0.9999797311222746
+          ]
+        ],
+        "translation_mm": [
+          -5.7808626084407955,
+          -0.7551375519959103,
+          6.5161727903406685
+        ],
+        "assumption": "short-time physical FK prediction registered to measured bearing body pose; bearing is not actually pinned and physical root is never assigned"
+      },
+      "bounded_parameter_solver": "four normalized curve/frame increments solved within remaining parameter bounds; reject predicted residual increase",
+      "feedback_truth": "simulation actual world nodes, body/root orientation, measured cylinder load, target/source geometric membership; physical root is observed only; initial material normals fixed",
+      "long_term_goal": "original fixed route and single inherited target helix about +Y; actual anchors bound only local connection, no unrestricted actual-pose overwrite",
+      "actual_front_span_rad": 3.7556612703550414,
+      "actual_front_median_radius_mm": 94.09693939852917,
+      "recovery_active": false,
+      "recovery_started_s": null,
+      "recovery_budget_s": 20.0,
+      "failure": null
+    },
+    "parameter_absolute_maxima": {
+      "material_phase_deg": 174.943795823197,
+      "radial_curve_offset_mm": 8.71439957526722,
+      "local_tilt_x_deg": 8.594366844912946,
+      "local_tilt_z_deg": 8.594366926917273
+    },
+    "rejected_candidates_by_reason": {
+      "fixed spatial window intersects original solid": 454,
+      "full curve node speed bound": 894
+    },
+    "accepted_positive_step_fraction": 0.9723978086809946,
+    "modeled_residual_improved_fraction": 0.9928360724820902,
+    "modeled_residual_worsened_fraction": 0.006110408765276022,
+    "prediction_anchor_module_counts": {
+      "7": 2239,
+      "8": 1130,
+      "9": 897,
+      "6": 480
+    },
+    "prediction_anchor_changes": [
+      {
+        "t_s": 0.0,
+        "module": 7
+      },
+      {
+        "t_s": 73.15,
+        "module": 8
+      },
+      {
+        "t_s": 93.05000000000001,
+        "module": 9
+      },
+      {
+        "t_s": 124.4,
+        "module": 8
+      },
+      {
+        "t_s": 139.1,
+        "module": 9
+      },
+      {
+        "t_s": 151.3,
+        "module": 8
+      },
+      {
+        "t_s": 173.0,
+        "module": 9
+      },
+      {
+        "t_s": 174.3,
+        "module": 8
+      },
+      {
+        "t_s": 174.5,
+        "module": 7
+      },
+      {
+        "t_s": 213.3,
+        "module": 6
+      }
+    ],
+    "first_recovery_t_s": null,
+    "actual_final_front_median_radius_mm": 94.08226298252359,
+    "warning": "FK residual improvement is a predicted action effect, not proof of actual front recovery; actual qpos, wrap and video establish motion"
+  },
+  "video": {
+    "frames": 4747,
+    "fps": 20.0,
+    "last_actual_frame_s": 237.3,
+    "checks": [
+      {
+        "t_s": 0.0,
+        "readable": true
+      },
+      {
+        "t_s": 30.0,
+        "readable": true
+      },
+      {
+        "t_s": 90.0,
+        "readable": true
+      },
+      {
+        "t_s": 237.3,
+        "readable": true
+      }
+    ]
+  },
+  "nominal_uniform_compact_extension": {
+    "first_module_centre_in_uniform_extension_t_s": 164.95000000000002,
+    "maximum_number_of_module_centres_in_uniform_extension": 2,
+    "final_modules": [
+      0,
+      1
+    ],
+    "warning": "nominal reference centres, not proof of actual helix membership; inherited hook and pitch ramp precede this uniform extension"
+  },
+  "facts_vs_inference": "raw dynamics establish motion and contact; geometric compactness is an ideal target property, not successful feeding or wrapping"
+}

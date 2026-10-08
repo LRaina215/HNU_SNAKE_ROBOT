@@ -1,0 +1,421 @@
+{
+  "name": "N11G",
+  "outcome": "no_real_progress_45s_after_action_window",
+  "complete": false,
+  "error": null,
+  "save_errors": [],
+  "night_policy": true,
+  "deadline_utc": "2026-10-09T00:00:00+00:00",
+  "actual_front_winding_span_initial_rad": 4.163843061358122,
+  "actual_front_winding_span_final_rad": 3.1011605345275157,
+  "action_opportunity_window_s": 90.0,
+  "action_opportunity_reference_shift_mm": 64.74749281843906,
+  "physical_seconds": 135.05000000064484,
+  "dynamics_wall_seconds": 106.68800000000192,
+  "controller_initial_elapsed_s": 0.0,
+  "controller_final_elapsed_s": 135.05000000064484,
+  "final_shift_mm": 189.70011894434535,
+  "final_curve_parameters": {
+    "source_phase_rad": 0.0,
+    "target_phase_rad": 0.0,
+    "source_feedback_phase_rad": 0.0,
+    "target_feedback_phase_rad": 0.0,
+    "source_radius_delta_mm": 0.0,
+    "target_radius_delta_mm": 0.0,
+    "source_captured_bend_smoothing": 0.0,
+    "target_captured_bend_smoothing": 0.0,
+    "phase_origin_shift_mm": 0.0,
+    "reference_pipe_clearance_mm": 15.921311589506223,
+    "reference_clearance_deficit_mm": null,
+    "observed_grip_clearance_range_mm": [
+      23.955655049244537,
+      29.750000000000004
+    ],
+    "maximum_route_clearance_correction_mm": 0.0,
+    "bridge_offset_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum_spatial_shape_offset_mm": 12.000000000000002
+  },
+  "initial_source_modules": [
+    14,
+    17,
+    20
+  ],
+  "initial_target_modules": [
+    0,
+    3,
+    7
+  ],
+  "final_source_modules": [
+    11,
+    12
+  ],
+  "final_target_modules": [
+    0,
+    7,
+    8
+  ],
+  "new_sustained_target_modules": [
+    8,
+    9
+  ],
+  "admissions": [
+    {
+      "t_s": 64.25,
+      "module": 8,
+      "center_mm": [
+        1092.8132088616283,
+        96.49518493893098,
+        1084.5402272472782
+      ]
+    },
+    {
+      "t_s": 85.60000000000001,
+      "module": 9,
+      "center_mm": [
+        1055.885800510695,
+        88.3618032748603,
+        1072.9112766744126
+      ]
+    }
+  ],
+  "action_checkpoints": [],
+  "maximum_new_module_target_force_N": [
+    25.771068490140348,
+    32.34800810141711,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_front_M0_M6_mean_y_advance_mm": -7.111016437761519,
+  "fixed_rear_M14_M20_mean_x_advance_mm": 127.37291194972197,
+  "final_centers_mm": [
+    [
+      1023.2738369585466,
+      258.2178755615145,
+      942.2050017656265
+    ],
+    [
+      1013.1764228551137,
+      205.25770163615763,
+      914.7779557759814
+    ],
+    [
+      1034.5666123168494,
+      154.93936647722902,
+      893.0201395981114
+    ],
+    [
+      1076.9523317403266,
+      107.21781460096125,
+      888.3761859945063
+    ],
+    [
+      1124.1787091624874,
+      81.94139804833078,
+      905.8930254108277
+    ],
+    [
+      1171.298795859515,
+      74.4017402277143,
+      949.2868568270678
+    ],
+    [
+      1189.7001027210624,
+      91.19810464629514,
+      995.2842411960057
+    ],
+    [
+      1169.702033301107,
+      114.13366811901128,
+      1048.2150036430548
+    ],
+    [
+      1124.730325005345,
+      126.65423602970546,
+      1081.9265519694736
+    ],
+    [
+      1070.2251458679793,
+      115.50371127274889,
+      1087.1848962418233
+    ],
+    [
+      1021.4778429647588,
+      73.3078684235096,
+      1085.999854768025
+    ],
+    [
+      975.0240879310147,
+      28.820127727656896,
+      1082.764541653527
+    ],
+    [
+      931.5097913024063,
+      -18.636250358628654,
+      1082.6542793425056
+    ],
+    [
+      908.7985746081974,
+      -74.74039830332711,
+      1082.1752751601612
+    ],
+    [
+      903.864409125559,
+      -133.63111628173894,
+      1062.239386439317
+    ],
+    [
+      917.988443254088,
+      -181.18536550495475,
+      1027.6337214712657
+    ],
+    [
+      941.7606236568604,
+      -197.7110466194295,
+      979.2451034773629
+    ],
+    [
+      959.1675663258842,
+      -185.62232403749198,
+      918.7283695688238
+    ],
+    [
+      957.0583767389651,
+      -149.53820631501992,
+      882.17949283907
+    ],
+    [
+      921.6895496622187,
+      -100.7491207303025,
+      862.6716670145856
+    ],
+    [
+      873.0579513679761,
+      -64.00227722445561,
+      858.0107129287861
+    ]
+  ],
+  "tail_center_mm": [
+    873.0579513679761,
+    -64.00227722445561,
+    858.0107129287861
+  ],
+  "final_q_deg": [
+    40.62215593988012,
+    -48.33723711461658,
+    14.337512568689286,
+    -58.20619977431291,
+    0.4910178005020631,
+    -71.60665122536903,
+    -37.62518446599909,
+    -53.55970451604454,
+    -59.91690697556363,
+    -2.548261650673627,
+    -6.327639195933854,
+    6.800788019247112,
+    -40.421909500549276,
+    -29.537530043698162,
+    -40.64472712400124,
+    -58.08928435581605,
+    -12.439889946193196,
+    -74.31931580268284,
+    21.77087055352992,
+    -37.19632979520932
+  ],
+  "max_actual_joint_deg": 87.68833097029604,
+  "max_actuator_torque_Nm": 2.355,
+  "max_dispatch_step_deg": 0.5000000000000007,
+  "first_ctrl_error_rad": 0.0,
+  "max_pipe_penetration_mm": 1.0718920418429263,
+  "max_self_penetration_mm": -0.0,
+  "max_reference_link_error_mm": 4.163336342344337e-13,
+  "minimum_reference_pipe_clearance_mm": 6.533222907118046,
+  "final_actual_source_grip_modules": [
+    11,
+    12
+  ],
+  "final_actual_target_grip_modules": [
+    0,
+    7,
+    8
+  ],
+  "final_geometrically_filtered_source_grip_modules": [
+    11,
+    12
+  ],
+  "final_geometrically_filtered_target_grip_modules": [
+    0,
+    7,
+    8
+  ],
+  "drive_sign_counts": [
+    {
+      "joint": 1,
+      "positive_frames": 4361,
+      "negative_frames": 7160
+    },
+    {
+      "joint": 2,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    },
+    {
+      "joint": 3,
+      "positive_frames": 4890,
+      "negative_frames": 8337
+    },
+    {
+      "joint": 4,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    },
+    {
+      "joint": 5,
+      "positive_frames": 5488,
+      "negative_frames": 6890
+    },
+    {
+      "joint": 6,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    },
+    {
+      "joint": 7,
+      "positive_frames": 3316,
+      "negative_frames": 9779
+    },
+    {
+      "joint": 8,
+      "positive_frames": 6628,
+      "negative_frames": 6780
+    },
+    {
+      "joint": 9,
+      "positive_frames": 950,
+      "negative_frames": 12268
+    },
+    {
+      "joint": 10,
+      "positive_frames": 11185,
+      "negative_frames": 2147
+    },
+    {
+      "joint": 11,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    },
+    {
+      "joint": 12,
+      "positive_frames": 12940,
+      "negative_frames": 453
+    },
+    {
+      "joint": 13,
+      "positive_frames": 3082,
+      "negative_frames": 10311
+    },
+    {
+      "joint": 14,
+      "positive_frames": 3170,
+      "negative_frames": 8782
+    },
+    {
+      "joint": 15,
+      "positive_frames": 5268,
+      "negative_frames": 7981
+    },
+    {
+      "joint": 16,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    },
+    {
+      "joint": 17,
+      "positive_frames": 11629,
+      "negative_frames": 1502
+    },
+    {
+      "joint": 18,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    },
+    {
+      "joint": 19,
+      "positive_frames": 10712,
+      "negative_frames": 2733
+    },
+    {
+      "joint": 20,
+      "positive_frames": 0,
+      "negative_frames": 13506
+    }
+  ],
+  "controller_events": [
+    {
+      "t_s": 64.5,
+      "mode": "fixed_spatial_window_actual_ordered_handover",
+      "module": 8
+    },
+    {
+      "t_s": 85.85000000000001,
+      "mode": "fixed_spatial_window_actual_ordered_handover",
+      "module": 9
+    }
+  ],
+  "curve_feedback_updates": 2701,
+  "final_adaptive_front_winding_action": null,
+  "final_source_unfolding": null,
+  "ordered_target_handover_modules": [
+    8,
+    9
+  ],
+  "final_moving_compliance": null,
+  "final_fixed_spatial_shift": {
+    "action": "stationary captured spatial curve; common window advances all integral angles; parallel transported initial material phase; tangential motion allowed",
+    "nominal_speed_mm_s": 1.5,
+    "requested_speed_mm_s": 1.5,
+    "accepted_speed_mm_s": 1.5,
+    "full_integral_tracking_error_deg": 0.422378487071251,
+    "follow_scale": 1.0,
+    "load_scale": 1.0,
+    "initial_curve_fit_error_mm": 0.0,
+    "initial_M8_required_complete_receiver_window_mm": 64.74749281843906,
+    "next_receiver_whole_rod_in_target_reference": false,
+    "spatial_route_phase_rad": [
+      0.0,
+      0.0
+    ],
+    "material_axial_roll_phase_rad": [
+      0.0,
+      0.0
+    ],
+    "shape_update_fraction": 1.0,
+    "shape_rejections": [],
+    "window_rejections": [],
+    "guide_global_rms_error_mm": 78.20391926058277,
+    "material_correspondence": "initial smooth-curve arc intervals captured once and shifted together; physical rods and integration cells remain 64.5 mm",
+    "observer_caveat": "legacy rolling-motion estimate is diagnostic only and does not gate or establish progress"
+  },
+  "runtime_effective_sliding_friction": null,
+  "contact_tangent_constraint_scale": null,
+  "force_time_weighted_contact_sliding_mm_s": [
+    1.5254800665912123,
+    1.0574844828045185
+  ],
+  "maximum_supported_contact_sliding_mm_s": [
+    6.998861502146928,
+    17.07256725045269
+  ]
+}

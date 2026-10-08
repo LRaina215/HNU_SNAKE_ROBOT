@@ -1,0 +1,13 @@
+{
+  "name": "N01W",
+  "no_physics_steps": true,
+  "requested_pure_window_increment_mm": 0.1,
+  "current_abstract_curve_minimum_mm": 0.0005509519596103019,
+  "candidate_abstract_curve_minimum_mm": -0.153151365138271,
+  "candidate_abstract_curve_limiting_rod": 10,
+  "candidate_maximum_node_step_mm": 0.17645133256799236,
+  "actual_rod_centerline_clearance_mm": 24.0852351951363,
+  "candidate_exact_20hinge_FK_centerline_clearance_mm": 23.82080953488585,
+  "candidate_maximum_integral_joint_increment_deg": 0.16317277235367356,
+  "distinction": "abstract curve and exact alternating-chain integral target are different geometries; positive centreline clearance does not alone prove shell clearance or physical feasibility"
+}

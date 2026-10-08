@@ -1,0 +1,41 @@
+{
+  "name": "N03W",
+  "no_physics_steps": true,
+  "requested_window_increment_mm": 0.1,
+  "current_abstract_curve": {
+    "minimum_mm": 3.1983433679272366e-06,
+    "limiting_rod": 10,
+    "point_mm": [
+      965.6269894843961,
+      -5.159472183872324,
+      1056.2465345769276
+    ]
+  },
+  "pure_increment_abstract_curve": {
+    "minimum_mm": -0.16307829924810946,
+    "limiting_rod": 10,
+    "point_mm": [
+      965.3221930089428,
+      -6.068309128354505,
+      1055.9844057672892
+    ]
+  },
+  "bounded_clearance_increment_curve": {
+    "minimum_mm": -0.16087015611532252,
+    "limiting_rod": 10,
+    "point_mm": [
+      965.6682258284491,
+      -5.1460627165408805,
+      1056.0861259734088
+    ]
+  },
+  "bounded_clearance_rejection": "bridge curve remains inside original solid: -0.160870mm",
+  "maximum_bridge_clearance_field_mm": 50.00000000000001,
+  "candidate_maximum_node_step_mm": 0.16841320052449943,
+  "actual_rod_centerline_clearance_mm": 22.752652463053025,
+  "candidate_exact_chain_centerline_clearance_mm": -40.95760376941393,
+  "actual_shell_pipe_contact_penetration_mm": 0.4407672796900386,
+  "candidate_exact_integral_shell_pipe_contact_penetration_mm": 69.57844970882454,
+  "candidate_maximum_integral_goal_change_deg": 0.10660056456237736,
+  "distinction": "candidate is the full integral goal at measured root, not the next rate-limited command; contact distances are geometry-only; neither this nor positive centreline clearance proves executable motion"
+}

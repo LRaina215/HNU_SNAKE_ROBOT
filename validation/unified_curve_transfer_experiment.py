@@ -7,6 +7,7 @@ import argparse
 import json
 import shutil
 import time
+from datetime import datetime
 
 import cv2
 import mujoco
@@ -20,16 +21,55 @@ from snake_control.unified_curve_transfer import UnifiedCurveTransfer, DT, physi
 BASE = ROOT/'experiments/unified_curve_transfer_20261007'
 INITIAL = ROOT/'experiments/hook_pull_20261006/CLOSE1B/final_state.npz'
 SOURCES = ['snake_control/unified_curve_transfer.py',
+           'snake_control/coordinated_curve_transfer.py',
+           'snake_control/direct_curve_transfer.py',
+           'snake_control/articulated_shift_transfer.py',
+           'snake_control/explicit_winding_transfer.py',
+           'snake_control/adaptive_front_winding_transfer.py',
+           'snake_control/unfolding_transfer.py',
+           'snake_control/moving_compliance_transfer.py',
+           'snake_control/fixed_spatial_shift_transfer.py',
+           'snake_control/axis_wrap_transfer.py',
+           'snake_control/compact_helix_transfer.py',
+           'snake_control/executable_chain_transfer.py',
+           'validation/check_executable_chain.py',
+           'validation/review_executable_chain.py',
+           'validation/check_compact_helix_geometry.py',
+           'validation/review_compact_helix.py',
+           'validation/review_fixed_spatial_shift.py',
            'snake_control/pipe_clearance.py',
+           'snake_control/global_transfer_route.py',
            'validation/unified_curve_transfer_experiment.py',
            'validation/recover_unified_curve_state.py',
            'validation/recover_unified_checkpoint.py',
            'snake_control/spatial_bishop_backbone.py']
 
 
+def json_default(value):
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    if isinstance(value, np.generic):
+        return value.item()
+    raise TypeError(f'Object of type {type(value).__name__} is not JSON serializable')
+
+
 def write(path, value):
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2,
-        default=lambda x: x.tolist() if isinstance(x, np.ndarray) else x.item())+'\n', encoding='utf8')
+    encoded = json.dumps(value, ensure_ascii=False, indent=2, default=json_default)+'\n'
+    path.write_text(encoded, encoding='utf8')
+
+
+def snake_pipe_parameters(sim):
+    rows=[]
+    for contact in sim.d.contact:
+        for pipe,robot in [(contact.geom1,contact.geom2),(contact.geom2,contact.geom1)]:
+            body=int(sim.m.geom_bodyid[robot])
+            if pipe not in sim.source|sim.target or not sim.head<=body<sim.head+21:
+                continue
+            rows.append(dict(pipe=sim.m.geom(pipe).name,module=body-sim.head,
+                geom_priorities=sim.m.geom_priority[[pipe,robot]].tolist(),
+                geom_friction=sim.m.geom_friction[[pipe,robot]].tolist(),
+                combined_contact_friction=contact.friction.tolist()))
+    return rows
 
 
 class UnifiedSim(Sim):
@@ -37,10 +77,34 @@ class UnifiedSim(Sim):
         super().__init__(case)
         self.info = {}
 
+    def save(self):
+        # Each artifact is independent: a JSON failure must not prevent the
+        # authoritative trajectory and full MuJoCo integration state saving.
+        errors = []
+        def attempt(label, operation):
+            try:
+                operation()
+            except Exception as exc:
+                errors.append(dict(artifact=label,error=repr(exc)))
+        def physical_state():
+            mujoco.mj_getState(self.m,self.d,self.state,mujoco.mjtState.mjSTATE_INTEGRATION)
+            np.savez(self.case/'final_state.npz',integration_state=self.state.copy(),
+                     ctrl=self.d.ctrl.copy(),psi_rad=self.psi,sim_time=self.d.time)
+        attempt('final_state.npz',physical_state)
+        if self.rows:
+            attempt('trace.npz',lambda: np.savez_compressed(self.case/'trace.npz',
+                **{k:np.array([r[k] for r in self.rows]) for k in self.rows[0]}))
+        attempt('commands.json',lambda: write(self.case/'commands.json',self.commands))
+        return errors
+
     def snapshot(self):
         super().snapshot()
         deepest = selfdeep = 0.
         cylinder_force = np.zeros((2, 21))
+        sliding_sum = np.zeros((2,21))
+        contact_sliding_max = np.zeros((2,21))
+        effective_sliding_friction = np.full((2,21),np.nan)
+        jp,jr = np.zeros((3,self.m.nv)),np.zeros((3,self.m.nv))
         for index, contact in enumerate(self.scratch.contact):
             b1, b2 = self.m.geom_bodyid[[contact.geom1, contact.geom2]]
             one, two = self.head <= b1 < self.head+21, self.head <= b2 < self.head+21
@@ -55,9 +119,18 @@ class UnifiedSim(Sim):
                 if side is not None and cylindrical_contact(side, contact.pos, contact.frame[:3]):
                     f = np.zeros(6)
                     mujoco.mj_contactForce(self.m, self.scratch, index, f)
-                    cylinder_force[side, body-self.head] += max(0., f[0])
+                    normal_force=max(0.,f[0]);module=body-self.head
+                    cylinder_force[side,module] += normal_force
+                    mujoco.mj_jac(self.m,self.scratch,jp,jr,contact.pos,int(body))
+                    velocity=jp@self.scratch.qvel
+                    normal=contact.frame[:3]
+                    sliding=float(np.linalg.norm(velocity-normal*(normal@velocity))*1000)
+                    sliding_sum[side,module] += normal_force*sliding
+                    contact_sliding_max[side,module] = max(contact_sliding_max[side,module],sliding)
+                    effective_sliding_friction[side,module] = contact.friction[0]
         r = self.rows[-1]
         source_wrap, target_wrap = physical_wrap_masks(r['centers_mm']/1000)
+        front_phi=np.unwrap(np.arctan2(-(r['centers_mm'][:8,2]-1000),r['centers_mm'][:8,0]-1100))
         reference = np.asarray(self.info.get('reference_points_mm', r['points_mm']))
         region = np.asarray(self.info.get('material_region_codes', [2]*8+[1]*5+[0]*8))
         r.update(shift_mm=self.info.get('shift_mm', 0.),
@@ -76,6 +149,11 @@ class UnifiedSim(Sim):
             dynamic_grip_bias_deg=np.asarray(self.info.get('dynamic_grip_bias_deg', np.zeros(20))),
             source_grip_region_mask=source_wrap, target_grip_region_mask=target_wrap,
             cylindrical_contact_force_N=cylinder_force,
+            force_weighted_contact_sliding_mm_s=sliding_sum/np.maximum(cylinder_force,1e-12),
+            maximum_contact_sliding_mm_s=contact_sliding_max,
+            effective_sliding_friction=effective_sliding_friction,
+            actual_front_target_winding_span_rad=float(front_phi[0]-front_phi[-1]),
+            moving_compliance_softness=np.asarray(self.info.get('moving_compliance',{}).get('softness',np.zeros(20))),
             reference_source_region_mask=np.asarray(self.info.get('reference_source_region_mask', np.arange(21) >= 13), dtype=bool),
             pipe_penetration_mm=-1000*deepest, nonadjacent_self_penetration_mm=-1000*selfdeep)
 
@@ -156,7 +234,7 @@ def video(case, rows):
     cap.release()
 
 
-def run(name, initial, horizon, note, controller_state=None, preserve_grip_clearance=False, localized_yield=False, soft_positive_clearance=False, alternating_yield=False):
+def run(name, initial, horizon, note, controller_state=None, preserve_grip_clearance=False, localized_yield=False, soft_positive_clearance=False, alternating_yield=False, global_route=None, coordinated=False, direct=False, articulated=False, sliding_friction=None, contact_tangent_scale=None, explicit_winding=False, night_policy=False, deadline_utc=None,adaptive_front_winding=False,unfolding_transfer=False,moving_compliance=False,fixed_spatial_shift=False,material_phase_feedback=False,axis_wrap=False,compact_helix=False,executable_chain=False):
     BASE.mkdir(parents=True, exist_ok=True)
     case = BASE/name
     case.mkdir(exist_ok=False)
@@ -169,16 +247,87 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
     write(case/'plan.json', dict(initial=str(initial), controller_state=str(controller_state) if controller_state else None, change=note, horizon_s=horizon,
         physics='original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives',
         software_limits='88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp',
-        model='current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin',
+        model=('one common curve window; 20-variable original articulated FK with prescribed bearing sliding/rolling registration, no free root or integral prior; approximate guide nodes, original shell constraints' if executable_chain else 'one head shift; planned local guide uses ordered continuous material arc correspondence with recorded discrete chord error; original articulated model enforces actual64.5mm rods; projected tangent rate and separate axial spin'),
         feedback='encoder target error/load plus explicitly labelled world-pose/contact simulation feedback',
-        stops='ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s',
+        stops=('ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, detached falling hook, failed bounded front recovery; complete receiver action opportunity then 45s without real progress; low contact count alone does not stop' if night_policy else 'ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s'),
         completion='all centres on target, tail contacts target, no source contact, sustained 2s'))
     sim = UnifiedSim(case)
     restore_saved_state(sim.m, sim.d, initial)
+    before_contact=snake_pipe_parameters(sim)
+    if sliding_friction is not None:
+        before_friction=sim.m.geom_friction.copy()
+        original_state=np.empty_like(sim.state)
+        mujoco.mj_getState(sim.m,sim.d,original_state,mujoco.mjtState.mjSTATE_INTEGRATION)
+        ids=sorted(sim.source|sim.target)
+        sim.m.geom_friction[ids,0]=sliding_friction
+        restore_saved_state(sim.m,sim.d,initial)
+        mujoco.mj_getState(sim.m,sim.d,sim.state,mujoco.mjtState.mjSTATE_INTEGRATION)
+        after_contact=snake_pipe_parameters(sim)
+        if not np.array_equal(original_state,sim.state):
+            raise RuntimeError('Friction comparison changed initial integration state')
+        if not np.array_equal(before_friction[:,1:],sim.m.geom_friction[:,1:]):
+            raise RuntimeError('Torsional or rolling friction changed')
+        if not after_contact or any(not np.allclose(row['combined_contact_friction'][:2],sliding_friction) for row in after_contact):
+            raise RuntimeError('Requested effective sliding friction was not obtained in actual contacts')
+        write(case/'runtime_friction.json',dict(original_xml_untouched=True,
+            initial_full_integration_state_identical=True,requested_effective_sliding_friction=sliding_friction,
+            modified_runtime_pipe_geom_ids=ids,original_geom_friction=before_friction[ids],
+            runtime_geom_friction=sim.m.geom_friction[ids],before_actual_contacts=before_contact,
+            after_actual_contacts=after_contact,rule_source='https://mujoco.readthedocs.io/en/stable/modeling.html#contact-parameters'))
     sim.stage = 'saved_two_pipe_support'
     sim.snapshot()
-    controller = UnifiedCurveTransfer(sim.m, sim.d)
+    if executable_chain:
+        from snake_control.executable_chain_transfer import ExecutableChainTransfer
+        controller=ExecutableChainTransfer(sim.m,sim.d)
+        coordinated=adaptive_front_winding=fixed_spatial_shift=True
+    elif compact_helix:
+        from snake_control.compact_helix_transfer import CompactHelixTransfer
+        controller=CompactHelixTransfer(sim.m,sim.d)
+        coordinated=adaptive_front_winding=fixed_spatial_shift=True
+    elif axis_wrap:
+        from snake_control.axis_wrap_transfer import AxisWrapTransfer
+        controller=AxisWrapTransfer(sim.m,sim.d)
+        coordinated=adaptive_front_winding=fixed_spatial_shift=True
+    elif fixed_spatial_shift:
+        from snake_control.fixed_spatial_shift_transfer import FixedSpatialShiftTransfer
+        controller=FixedSpatialShiftTransfer(sim.m,sim.d,material_phase_feedback)
+        coordinated=adaptive_front_winding=True
+    elif moving_compliance:
+        from snake_control.moving_compliance_transfer import MovingComplianceTransfer
+        controller=MovingComplianceTransfer(sim.m,sim.d)
+        coordinated=adaptive_front_winding=True
+    elif unfolding_transfer:
+        from snake_control.unfolding_transfer import UnfoldingTransfer
+        controller=UnfoldingTransfer(sim.m,sim.d)
+        coordinated=adaptive_front_winding=True
+    elif adaptive_front_winding:
+        from snake_control.adaptive_front_winding_transfer import AdaptiveFrontWindingTransfer
+        controller=AdaptiveFrontWindingTransfer(sim.m,sim.d)
+        coordinated=True
+    elif explicit_winding:
+        from snake_control.explicit_winding_transfer import ExplicitWindingTransfer
+        controller=ExplicitWindingTransfer(sim.m,sim.d)
+        coordinated=True
+    elif articulated:
+        from snake_control.articulated_shift_transfer import ArticulatedShiftTransfer
+        controller = ArticulatedShiftTransfer(sim.m, sim.d)
+        coordinated = True
+    elif direct:
+        from snake_control.direct_curve_transfer import DirectCurveTransfer
+        controller = DirectCurveTransfer(sim.m, sim.d)
+        coordinated = True
+    elif coordinated:
+        from snake_control.coordinated_curve_transfer import CoordinatedCurveTransfer
+        controller = CoordinatedCurveTransfer(sim.m, sim.d)
+    else:
+        controller = UnifiedCurveTransfer(sim.m, sim.d)
+    if contact_tangent_scale is not None:
+        controller.contact_tangent_constraint_scale=contact_tangent_scale
     time_offset = controller.load_state(controller_state) if controller_state else 0.
+    if global_route is not None:
+        if controller_state is not None:
+            raise ValueError('New manual global route starts from CLOSE1B; do not reset old continuation correspondence')
+        controller.enable_planned_route(json.loads(global_route.read_text(encoding='utf8')))
     if not np.array_equal(controller.last, sim.d.ctrl):
         raise ValueError('Controller checkpoint last target differs from physical saved ctrl')
     controller.soft_positive_clearance_enabled = soft_positive_clearance
@@ -228,15 +377,25 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
     admitted = set()
     last_progress_time = 0.
     best_progress = controller.last_body_progress
+    best_actual_front = best_actual_rear = 0.
     admissions = []
     action_checkpoints = []
     last_action_stage = controller.yield_state['stage'] if controller.yield_state else None
     last_continuation_checkpoint = 0
     tail_motion_history=[]
     uncontrolled_tail_fall_ticks=0
+    detached_front_ticks=0
+    opportunity_started=False
+    deadline_timestamp=datetime.fromisoformat(deadline_utc).timestamp() if deadline_utc else None
+    best_winding_span=sim.rows[0]['actual_front_target_winding_span_rad']
     try:
         for tick in range(round(horizon/DT)):
             t = tick*DT
+            if deadline_timestamp is not None and time.time()>=deadline_timestamp:
+                outcome='night_deadline_saved';break
+            if (case/'stop_and_save.request').exists():
+                outcome = 'requested_diagnostic_stop_saved'
+                break
             controller_t = time_offset+t
             r = sim.rows[-1]
             target, info = controller.command(sim.d, controller_t, r['contact_force_N'], r['torque'], r['cylindrical_contact_force_N'])
@@ -259,7 +418,23 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             last_action_stage = action['stage'] if action else None
             last_continuation_checkpoint = continuous_checkpoint
             c, f = r['centers_mm'], r['contact_force_N']
-            age = np.where(f[1] > .1, age+DT, 0.)
+            if night_policy and t>=getattr(controller,'action_opportunity_time',90.) and not opportunity_started:
+                opportunity_started=True
+                last_progress_time=max(last_progress_time,t)
+            if coordinated:
+                real_front = float(np.mean(c[:7,1]-sim.rows[0]['centers_mm'][:7,1]))
+                real_rear = float(np.mean(c[14:,0]-sim.rows[0]['centers_mm'][14:,0]))
+                credible_front=(not night_policy or bool(np.any(r['cylindrical_contact_force_N'][1]>.1)))
+                credible_rear=(not night_policy or bool(np.any((r['cylindrical_contact_force_N'][0]>.1)&r['source_grip_region_mask'])))
+                if not adaptive_front_winding and ((credible_front and real_front>best_actual_front+5.) or (credible_rear and real_rear>best_actual_rear+5.)):
+                    best_actual_front=max(best_actual_front,real_front)
+                    best_actual_rear=max(best_actual_rear,real_rear)
+                    last_progress_time=t
+                if night_policy and credible_front and r['actual_front_target_winding_span_rad']>best_winding_span+.25:
+                    best_winding_span=r['actual_front_target_winding_span_rad']
+                    last_progress_time=t
+            admission_contact=(r['cylindrical_contact_force_N'][1]>.1)&r['target_grip_region_mask'] if adaptive_front_winding else f[1]>.1
+            age = np.where(admission_contact, age+DT, 0.)
             for module in np.flatnonzero(age >= .75):
                 if module > initial_target_end and module not in admitted:
                     admitted.add(int(module))
@@ -271,7 +446,7 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
                     last_progress_time = t
             if info.get('physical_progress_observer_initialized'):
                 best_progress = controller.last_body_progress
-            elif controller.last_body_progress > best_progress+.005:
+            elif not adaptive_front_winding and controller.last_body_progress > best_progress+.005:
                 best_progress = controller.last_body_progress
                 last_progress_time = t
             source_count, target_count = [int(np.count_nonzero(x > .1)) for x in f]
@@ -280,7 +455,8 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             posterior_count = int(np.count_nonzero((cylinder_force[0] > .1) & r['source_grip_region_mask']))
             receiving_count = int(np.count_nonzero((cylinder_force[1] > .1) & r['target_grip_region_mask']))
             carried_by_target=controller.target_carries_transfer(c/1000,cylinder_force)
-            source_lost = source_lost+1 if needs_source and posterior_count < 2 and not carried_by_target else 0
+            handover_verified=max(controller.transferred_material_modules,default=-1)>=15
+            source_lost=source_lost+1 if needs_source and posterior_count<2 and not handover_verified else 0
             reference_centers=(r['reference_points_mm'][:-1]+r['reference_points_mm'][1:])/2
             tail_error=c[-1]-reference_centers[-1]
             tail_motion_history.append((t,float(c[-1,2]),float(tail_error[2])))
@@ -294,21 +470,50 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             if not np.isfinite(sim.d.qpos).all(): outcome = 'nonfinite'; break
             if info.get('localized_yield') and info['localized_yield']['stage'] == 'failed':
                 outcome = info['localized_yield']['failure']; break
-            if info.get('maximum_reference_link_error_mm', 0.) > .001:
+            # Planned execution nodes are a soft ordered guide. Actual rods
+            # remain exactly fixed by the original MuJoCo articulated model.
+            if controller.curve.planned_route_spec is None and info.get('maximum_reference_link_error_mm', 0.) > .001:
                 outcome = 'reference_link_length_invalid'; break
             if r['ground']: outcome = 'ground_contact'; break
             if np.max(abs(r['q'])) > np.radians(90.5): outcome = 'actual_joint_limit'; break
             if r['nonadjacent_self_penetration_mm'] > 3.: outcome = 'nonadjacent_self_interference'; break
-            if source_lost >= 20: outcome = 'posterior_source_support_below_two_1s'; break
-            if target_lost >= 20: outcome = 'target_support_below_two_1s'; break
+            if info.get('adaptive_front_winding',{}).get('failure'):
+                outcome=info['adaptive_front_winding']['failure'];break
+            if info.get('axis_wrap',{}).get('failure'):
+                outcome=info['axis_wrap']['failure'];break
+            if not night_policy and source_lost >= 20: outcome = 'posterior_source_support_below_two_1s'; break
+            if not night_policy and target_lost >= 20: outcome = 'target_support_below_two_1s'; break
+            if night_policy:
+                initial_c=sim.rows[0]['centers_mm']
+                front_radius=np.linalg.norm(c[:8,[0,2]]-[1100,1000],axis=1)
+                front_fallen=(c[:8,2].mean()<initial_c[:8,2].mean()-80.)
+                lost_hook=bool(r['cylindrical_contact_force_N'][1].sum()<.1 and np.median(front_radius)>160. and front_fallen)
+                detached_front_ticks=detached_front_ticks+1 if lost_hook else 0
+                if detached_front_ticks>=20:outcome='target_hook_detached_and_falling_1s';break
             if uncontrolled_tail_fall_ticks>=20: outcome='target_carried_uncontrolled_tail_fall_1s'; break
             radii = np.linalg.norm(c[:, [0, 2]]-[1100, 1000], axis=1)
             complete = ((c[:, 1] > 80).all() and (radii < 125).all() and source_count == 0
                         and target_count >= 4 and np.any(f[1, 17:] > .1))
+            if controller.curve.planned_route_spec is not None:
+                # Check the chosen target helix, which continues the inherited
+                # front hook. Source handedness is not a completion condition.
+                phi_y = np.unwrap(np.arctan2(-(c[:, 2]-1000), c[:, 0]-1100))
+                dy, da = np.diff(c[:, 1]), np.diff(phi_y)
+                meaningful = np.abs(dy) > 2.
+                sign = np.sign(controller.curve.planned_route_spec['target_right_hand_dphi_daxis'])
+                target_axial = controller.curve.planned_route_spec.get('pipe_axial_sines',
+                    [controller.curve.planned_route_spec['axial_sine']]*2)[1]
+                minimum_target_span_mm = .65*21*.0645*target_axial*1000
+                same_hand = bool(np.count_nonzero(meaningful)>=16 and
+                    np.mean(np.sign(da[meaningful]*dy[meaningful]) == sign)>=.9 and
+                    np.max(dy)<3. and c[0,1]-c[-1,1]>minimum_target_span_mm)
+                complete = complete and same_hand
             complete_ticks = complete_ticks+1 if complete else 0
             if complete_ticks >= 40: outcome = 'complete_transfer'; break
-            if t-last_progress_time >= 90.:
-                outcome = 'no_actual_body_progress_90s'; break
+            receiver_window_end=info.get('fixed_spatial_shift',{}).get('receiver_action_opportunity_end_s',0.)
+            no_progress_since=max(last_progress_time,receiver_window_end) if fixed_spatial_shift else last_progress_time
+            if (night_policy and opportunity_started and t-no_progress_since>=45.) or (not night_policy and t-last_progress_time>=90.):
+                outcome='no_real_progress_45s_after_action_window' if night_policy else 'no_actual_body_progress_90s';break
             if tick % 100 == 99:
                 print(json.dumps(dict(t_s=round(t+DT, 2), stage=sim.stage,
                     shift_mm=round(info['shift_mm'], 2), speed=round(info['shift_speed_mm_s'], 2),
@@ -316,18 +521,47 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
                     tracking=round(info['tracking_error_deg'], 2),
                     source=np.flatnonzero(f[0] > .1).tolist(), target=np.flatnonzero(f[1] > .1).tolist(),
                     posterior_support=posterior_count,
+                    contact_sliding_mm_s=[round(float(np.sum(r['force_weighted_contact_sliding_mm_s'][side]*cylinder_force[side])/max(cylinder_force[side].sum(),1e-12)),3) for side in range(2)],
+                    front_winding_span_rad=round(r['actual_front_target_winding_span_rad'],3),
+                    local_front_winding=({k:info['adaptive_front_winding'].get(k) for k in [
+                        'front_local_material_mm','rear_local_material_mm','front_requested_speed_mm_s','front_accepted_speed_mm_s',
+                        'front_integral_tracking_error_deg','rear_integral_tracking_error_deg',
+                        'common_speed_guard_error_deg','failure']} if info.get('adaptive_front_winding') else None),
+                    curve_rejection_summary=({key:[item['reason'].split(':')[0] for item in info['adaptive_front_winding'][key]]
+                        for key in ['curve_shape_update_rejections','local_rejections','common_shift_rejections']}
+                        if info.get('adaptive_front_winding') else None),
+                    source_unfolding=info.get('source_unfolding'),
+                    fixed_spatial_shift=info.get('fixed_spatial_shift'),
+                    axis_wrap=({k:info['axis_wrap'].get(k) for k in ['stable_target_bearing_modules','parameters',
+                        'physical_FK_goal_residual_before_rms_mm','physical_FK_goal_residual_after_rms_mm',
+                        'accepted_fraction','actual_front_span_rad','actual_front_median_radius_mm','recovery_active','failure']}
+                        if info.get('axis_wrap') else None),
+                    skin_curve_feedback=({k:info['skin_curve_feedback'].get(k) for k in ['maximum_predicted_goal_pipe_skin_penetration_mm',
+                        'maximum_actual_pipe_skin_penetration_mm']} if info.get('skin_curve_feedback') else None),
+                    moving_compliance=({k:info['moving_compliance'].get(k) for k in ['material_joint_members','ordered_incoming_target_modules',
+                        'actual_bearing_recovery_allowed']} if info.get('moving_compliance') else None),
+                    global_guidance=info.get('global_route_guidance'),
                     admitted=sorted(admitted))), flush=True)
     except Exception as exc:
         outcome, error = 'controller_exception', repr(exc)
         import traceback
         traceback.print_exc()
     finally:
-        sim.save()
-        controller.save_state(case/'controller_state.json', time_offset+sim.d.time-t0)
+        save_errors = sim.save()
+        try:
+            controller.save_state(case/'controller_state.json', time_offset+sim.d.time-t0)
+        except Exception as exc:
+            save_errors.append(dict(artifact='controller_state.json',error=repr(exc)))
     r = sim.rows[-1]
     force = np.array([x['contact_force_N'] for x in sim.rows])
     c = np.array([x['centers_mm'] for x in sim.rows])
     result = dict(name=name, outcome=outcome, complete=outcome == 'complete_transfer', error=error,
+        save_errors=save_errors,
+        night_policy=night_policy,deadline_utc=deadline_utc,
+        actual_front_winding_span_initial_rad=sim.rows[0]['actual_front_target_winding_span_rad'],
+        actual_front_winding_span_final_rad=r['actual_front_target_winding_span_rad'],
+        action_opportunity_window_s=getattr(controller,'action_opportunity_time',None),
+        action_opportunity_reference_shift_mm=getattr(controller,'action_opportunity_shift',0.)*1000,
         physical_seconds=sim.d.time-t0, dynamics_wall_seconds=time.monotonic()-started,
         controller_initial_elapsed_s=time_offset, controller_final_elapsed_s=time_offset+sim.d.time-t0,
         final_shift_mm=controller.shift*1000, final_curve_parameters=controller.curve.parameters(),
@@ -347,11 +581,28 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
         max_self_penetration_mm=max(x['nonadjacent_self_penetration_mm'] for x in sim.rows),
         max_reference_link_error_mm=max(x['maximum_reference_link_error_mm'] for x in sim.rows),
         minimum_reference_pipe_clearance_mm=min((x['reference_pipe_clearance_mm'] for x in sim.rows if np.isfinite(x['reference_pipe_clearance_mm'])), default=None),
-        final_actual_source_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][0] > .1) & r['source_grip_region_mask']),
-        final_actual_target_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][1] > .1) & r['target_grip_region_mask']),
+        final_actual_source_grip_modules=np.flatnonzero(r['cylindrical_contact_force_N'][0] > .1),
+        final_actual_target_grip_modules=np.flatnonzero(r['cylindrical_contact_force_N'][1] > .1),
+        final_geometrically_filtered_source_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][0] > .1) & r['source_grip_region_mask']),
+        final_geometrically_filtered_target_grip_modules=np.flatnonzero((r['cylindrical_contact_force_N'][1] > .1) & r['target_grip_region_mask']),
         drive_sign_counts=[dict(joint=j+1, positive_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) > .01)),
             negative_frames=int(np.count_nonzero(np.array([x['torque'][j] for x in sim.rows]) < -.01))) for j in range(20)],
         controller_events=controller.events, curve_feedback_updates=controller.n_adaptations)
+    result['final_adaptive_front_winding_action']=getattr(controller,'local_action',None)
+    result['final_source_unfolding']=getattr(controller.curve,'source_release',None)
+    result['ordered_target_handover_modules']=controller.transferred_material_modules if getattr(controller,'ordered_handover_required',False) else None
+    result['final_moving_compliance']=getattr(controller,'compliance_feedback',None)
+    result['final_fixed_spatial_shift']=getattr(controller,'fixed_spatial_action',None)
+    result['final_axis_wrap']=getattr(controller,'wrap_feedback',None)
+    result['compact_helix']=getattr(controller,'compact_curve_action',None)
+    result['final_executable_chain']=getattr(controller,'chain_feedback',None)
+    result['final_skin_curve_feedback']=getattr(controller,'skin_feedback',None)
+    sliding=np.array([x['force_weighted_contact_sliding_mm_s'] for x in sim.rows])
+    cylinder_forces=np.array([x['cylindrical_contact_force_N'] for x in sim.rows])
+    result['runtime_effective_sliding_friction']=sliding_friction
+    result['contact_tangent_constraint_scale']=contact_tangent_scale
+    result['force_time_weighted_contact_sliding_mm_s']=(np.sum(sliding*cylinder_forces,axis=(0,2))/np.maximum(np.sum(cylinder_forces,axis=(0,2)),1e-12)).tolist()
+    result['maximum_supported_contact_sliding_mm_s']=[float(sliding[:,side][cylinder_forces[:,side]>.1].max()) for side in range(2)]
     write(case/'result.json', result)
     print(json.dumps({k: result[k] for k in ['name', 'outcome', 'physical_seconds', 'final_shift_mm', 'new_sustained_target_modules', 'error']}), flush=True)
     video(case, sim.rows)
@@ -367,7 +618,24 @@ if __name__ == '__main__':
     parser.add_argument('--localized-yield', action='store_true')
     parser.add_argument('--soft-positive-clearance', action='store_true')
     parser.add_argument('--alternating-yield', action='store_true')
+    parser.add_argument('--global-route', type=Path)
+    parser.add_argument('--coordinated', action='store_true')
+    parser.add_argument('--direct', action='store_true')
+    parser.add_argument('--articulated', action='store_true')
+    parser.add_argument('--sliding-friction',type=float)
+    parser.add_argument('--contact-tangent-scale',type=float)
+    parser.add_argument('--explicit-winding',action='store_true')
+    parser.add_argument('--adaptive-front-winding',action='store_true')
+    parser.add_argument('--unfolding-transfer',action='store_true')
+    parser.add_argument('--moving-compliance',action='store_true')
+    parser.add_argument('--fixed-spatial-shift',action='store_true')
+    parser.add_argument('--material-phase-feedback',action='store_true')
+    parser.add_argument('--axis-wrap',action='store_true')
+    parser.add_argument('--compact-helix',action='store_true')
+    parser.add_argument('--executable-chain',action='store_true')
+    parser.add_argument('--night-policy',action='store_true')
+    parser.add_argument('--deadline-utc')
     parser.add_argument('--horizon', type=float, default=1800.)
     parser.add_argument('--note', required=True)
     args = parser.parse_args()
-    run(args.name, args.initial, args.horizon, args.note, args.controller_state, args.preserve_grip_clearance, args.localized_yield, args.soft_positive_clearance, args.alternating_yield)
+    run(args.name, args.initial, args.horizon, args.note, args.controller_state, args.preserve_grip_clearance, args.localized_yield, args.soft_positive_clearance, args.alternating_yield, args.global_route, args.coordinated, args.direct, args.articulated,args.sliding_friction,args.contact_tangent_scale,args.explicit_winding,args.night_policy,args.deadline_utc,args.adaptive_front_winding,args.unfolding_transfer,args.moving_compliance,args.fixed_spatial_shift,args.material_phase_feedback,args.axis_wrap,args.compact_helix,args.executable_chain)
