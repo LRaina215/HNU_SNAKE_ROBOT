@@ -1,0 +1,194 @@
+{
+  "first_M14_target_cylinder_contact_loss_t_s": 1.1699999999723332,
+  "action_at_loss": {
+    "stage": "unload",
+    "role": "rear_release",
+    "side": 0,
+    "parameter": 0.4184774046630214,
+    "started_t": 1334.5999999781845,
+    "selected_joint": 15,
+    "initial_angle_deg": 52.489157477114425,
+    "initial_force_N": 16.334169825516824,
+    "initial_load_Nm": 0.729588098748081,
+    "anchor_goals_N": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        16.334169825516824,
+        0.0,
+        0.6295240236922984,
+        7.756962455340066,
+        0.0,
+        0.9510947743668318
+      ],
+      [
+        0.0,
+        10.291198191999122,
+        10.420632592019423,
+        5.3115002403371925,
+        0.0,
+        0.0,
+        6.347084939631949,
+        0.0,
+        19.80058697365264,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        5.978066342099849,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "outward_normal": [
+      0.0,
+      0.791642888900583,
+      0.610984072176304
+    ],
+    "reference_origin": [
+      1.0301077985617488,
+      0.06437307665139225,
+      1.0448868156394862
+    ],
+    "receiving_unload": {
+      "parameter": 0.0636089819998119,
+      "selected_joint": 20,
+      "unloaded_t": 1334.5999999781845,
+      "actual_force_N": 0.0
+    },
+    "freed_source_parameters": [],
+    "intended_center_parameters": [
+      0.38298480960293346
+    ],
+    "intended_material_modules": [
+      15
+    ],
+    "feed_total_pipe_origin": [
+      -0.00452251991493724,
+      0.0020777817956091696
+    ],
+    "anchor_recovery_active": false
+  },
+  "selected_joints": [
+    15,
+    19,
+    20
+  ],
+  "action_events": [
+    {
+      "t_s": 1333.5999999781845,
+      "mode": "resume_protected_handover_reference_continuously",
+      "maximum_baking_error_mm": 0.0003248849698579849,
+      "maximum_legacy_reference_correction_mm": 11.810839236505016,
+      "meaning": "correct saved reference transition only; full physical integration state, ctrl, shift and actual progress unchanged",
+      "local_t_s": 0.0
+    },
+    {
+      "t_s": 1333.5999999781845,
+      "mode": "local_yield_regrip_reshape_with_shift_braked",
+      "shift_mm": 909.1623468610615,
+      "maximum_tracking_error_deg": 0.8115616290741141,
+      "lag_mm": 9.055818855115746,
+      "local_t_s": 0.0
+    },
+    {
+      "t_s": 1334.5999999781845,
+      "mode": "front_carries_rear_span_unload",
+      "joint": 15,
+      "modules": [
+        15
+      ],
+      "current_source_force_N": 16.334169825516824,
+      "remaining_source": [
+        17,
+        18,
+        20
+      ],
+      "receiving_grasps": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        14
+      ],
+      "meaning": "curve lifts a measured posterior span; source contact must actually disappear before feed",
+      "local_t_s": 1.0
+    },
+    {
+      "t_s": 1334.5999999781845,
+      "mode": "local_yield_unload_reshape_with_shift_braked",
+      "shift_mm": 909.1623468610615,
+      "maximum_tracking_error_deg": 0.7716282105083602,
+      "lag_mm": 8.261899317755807,
+      "local_t_s": 1.0
+    },
+    {
+      "t_s": 1336.0999999781845,
+      "mode": "keep_loaded_release_candidate_restore_tail",
+      "kept_modules": [
+        15
+      ],
+      "remaining_source": [
+        20
+      ],
+      "meaning": "do not count the intended released rod as its own replacement",
+      "local_t_s": 2.5
+    },
+    {
+      "t_s": 1336.0999999781845,
+      "mode": "restore_remaining_source_span_after_material_transfer",
+      "selected_joint": 19,
+      "modules": [
+        19
+      ],
+      "preserved_target_modules": [
+        14
+      ],
+      "actual_source_force_N": 0.0,
+      "recovery_goal_N": 6.344391800577235,
+      "remaining_source": [
+        15,
+        20
+      ],
+      "meaning": "fresh source normal and current load share; recovery alone is not successful feed",
+      "local_t_s": 2.5
+    },
+    {
+      "t_s": 1336.0999999781845,
+      "mode": "local_yield_regrip_reshape_with_shift_braked",
+      "shift_mm": 909.1623468610615,
+      "maximum_tracking_error_deg": 0.35060378797124836,
+      "lag_mm": 16.845013638340767,
+      "local_t_s": 2.5
+    },
+    {
+      "t_s": 1383.6999999781845,
+      "mode": "local_yield_failed_reshape_with_shift_braked",
+      "shift_mm": 909.1623468610615,
+      "maximum_tracking_error_deg": 0.23369358529454803,
+      "lag_mm": 45.468554771682555,
+      "local_t_s": 50.09999999999991
+    }
+  ],
+  "maximum_M18_reference_endpoint_drift_mm": 41.64376636065087,
+  "M20_max_source_cylinder_force_N": 4.0743224208402635
+}

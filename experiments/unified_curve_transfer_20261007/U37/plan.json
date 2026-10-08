@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U34\\admitted_M14.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U34\\admitted_M14_controller.json",
+  "change": "Same actual M14 state and contact field; bound observed-reference curve correction to original 8mm/s and require transported supporting-centre step within that bound after fixed chords, with clearance backtracking and corrected continuous source-band classification.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

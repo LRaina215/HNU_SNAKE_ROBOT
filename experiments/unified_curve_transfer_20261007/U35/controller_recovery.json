@@ -1,0 +1,7 @@
+{
+  "method": "Frozen controller on original observed poses and force/torque; no physics steps",
+  "maximum_ctrl_error_rad": 0.0,
+  "successful_commands": 258,
+  "elapsed_s": 1220.199999980009,
+  "meaning": "Last dispatched valid state, not the unexecuted failing curve update"
+}

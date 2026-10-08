@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U40\\resume_t36p25\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U40\\resume_t36p25\\controller_state.json",
+  "change": "Continue same full U40 handover state with reference-only continuity repair and shared restoration entry. During unload suppress old whole-side pose-error rolling; coordinated rolling derives only from current curve deformation and actual contact geometry, with original local pressure feedback retained. Preserve proximal target M14 complete reference rod for J15 lift; posterior source holders are free to coordinate through contact motion rather than fixing both world poses. Original physical progress/support/drive/continuous handover/completion rules retained.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

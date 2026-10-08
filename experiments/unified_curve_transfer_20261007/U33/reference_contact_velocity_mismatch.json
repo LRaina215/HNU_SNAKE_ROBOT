@@ -1,0 +1,95 @@
+{
+  "basis": "Recorded reference finite difference over complete 50ms commands versus final coherent contact centre task; actual force from command-entry physical pose.",
+  "samples": [
+    {
+      "t_s": 20.05,
+      "M20_coherent_contact": true,
+      "M20_source_force_N": 2.150748295261912,
+      "shape_updated_this_tick": false,
+      "reference_center_velocity_mm_s": [
+        -1.259625194752516,
+        -0.3173789587484066,
+        1.708928124041904
+      ],
+      "final_center_task_velocity_mm_s": [
+        1.3043016267866085,
+        -4.670802079172039,
+        6.271064086120442
+      ],
+      "difference_norm_mm_s": 6.8072827286764745,
+      "side_spin_rad_s": 0.013497197417711342
+    },
+    {
+      "t_s": 21.05,
+      "M20_coherent_contact": true,
+      "M20_source_force_N": 2.1435706952274276,
+      "shape_updated_this_tick": false,
+      "reference_center_velocity_mm_s": [
+        3.3824727082992467,
+        -2.2985810275281437,
+        2.630308904967933
+      ],
+      "final_center_task_velocity_mm_s": [
+        1.627901435100657,
+        -3.285646915112193,
+        5.478151002842335
+      ],
+      "difference_norm_mm_s": 3.4875527284317123,
+      "side_spin_rad_s": 0.03173882056738974
+    },
+    {
+      "t_s": 25.05,
+      "M20_coherent_contact": true,
+      "M20_source_force_N": 2.8368017978102387,
+      "shape_updated_this_tick": false,
+      "reference_center_velocity_mm_s": [
+        -2.1781250084745807,
+        -1.1290868667583709,
+        5.0104594998515495
+      ],
+      "final_center_task_velocity_mm_s": [
+        -1.152460753842487,
+        -2.1770776241756646,
+        6.150685738489638
+      ],
+      "difference_norm_mm_s": 1.8575219153864226,
+      "side_spin_rad_s": 0.021968612601751585
+    },
+    {
+      "t_s": 26.6,
+      "M20_coherent_contact": true,
+      "M20_source_force_N": 2.847023412621325,
+      "shape_updated_this_tick": false,
+      "reference_center_velocity_mm_s": [
+        1.435531339022873,
+        -1.4566299166591534,
+        5.242738509359697
+      ],
+      "final_center_task_velocity_mm_s": [
+        0.4560842496920644,
+        -0.8792130149950608,
+        4.411921401132039
+      ],
+      "difference_norm_mm_s": 1.4081846279695431,
+      "side_spin_rad_s": 0.0102464669259396
+    },
+    {
+      "t_s": 27.05,
+      "M20_coherent_contact": true,
+      "M20_source_force_N": 2.9881571331710197,
+      "shape_updated_this_tick": false,
+      "reference_center_velocity_mm_s": [
+        1.8853273800232273,
+        -1.3631407257616956,
+        5.3125273876912615
+      ],
+      "final_center_task_velocity_mm_s": [
+        0.7082155875341904,
+        -0.7166079318972963,
+        3.9701989991407505
+      ],
+      "difference_norm_mm_s": 1.8988002339023111,
+      "side_spin_rad_s": 0.011919360788073683
+    }
+  ]
+}

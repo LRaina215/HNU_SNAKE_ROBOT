@@ -1,0 +1,46 @@
+{
+  "basis": "Same original 100Hz poses and cylindrical contact forces; only geometric source candidate endpoint changes from 1.075m to actual corner axial plane 1.1m, retaining radius, posterior connection, 3 modules and 1rad span.",
+  "final_new_candidate_modules": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "final_new_source_support_modules": [
+    15,
+    18
+  ],
+  "final_span_rad": 3.0389796124081547,
+  "final_old_count": 0,
+  "final_new_count": 2,
+  "original_last_second_old_count_min": 0,
+  "original_last_second_new_count_min": 2,
+  "old_false_below_two_frames": 99,
+  "final_module17_center_x_m": 1.0758505423121196,
+  "final_module17_source_radius_m": 0.09246740336687972,
+  "implemented_single_rod_bridge": {
+    "rule": "Only fill one centre buffer hole when both neighbouring source candidates qualify, radius remains 70-130mm and centre stays before x=1100mm; original cylindrical-force checks unchanged.",
+    "final_wrap_modules": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "final_wrap_span_rad": 3.0389796124081547,
+    "M15_M20_whole_span_rad": 1.9184800652046436,
+    "final_qualified_source_modules": [
+      15,
+      18
+    ],
+    "last_second_min_qualified_source_count": 2,
+    "original_false_below_two_frames_corrected": 99
+  }
+}

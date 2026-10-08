@@ -1,0 +1,65 @@
+{
+  "basis": "private kinematic copies of recorded physical poses, no physics stepping or root assignment to actual run",
+  "rows": [
+    {
+      "t_s": 0.9999999999763531,
+      "q15_deg": -52.47049522100652,
+      "M15_source_force_N": 17.087476231587534,
+      "M15_centre_source_radial_gradient_J15_mm_rad": 29.762894838053377,
+      "actual_cylinder_contact_point_gradients": [
+        {
+          "gap_mm": -0.4776382452982381,
+          "normal_gap_gradient_J15_mm_rad": 38.11470101680177
+        }
+      ]
+    },
+    {
+      "t_s": 1.9999999999527063,
+      "q15_deg": -42.732040098438404,
+      "M15_source_force_N": 17.445836250671977,
+      "M15_centre_source_radial_gradient_J15_mm_rad": 30.192558434750243,
+      "actual_cylinder_contact_point_gradients": [
+        {
+          "gap_mm": -0.46722056961701747,
+          "normal_gap_gradient_J15_mm_rad": 42.072758905703324
+        }
+      ]
+    },
+    {
+      "t_s": 4.999999999881766,
+      "q15_deg": -16.550861053532113,
+      "M15_source_force_N": 16.13504738118576,
+      "M15_centre_source_radial_gradient_J15_mm_rad": 29.206390236722417,
+      "actual_cylinder_contact_point_gradients": [
+        {
+          "gap_mm": -0.44975309197626095,
+          "normal_gap_gradient_J15_mm_rad": 30.464511252736667
+        }
+      ]
+    },
+    {
+      "t_s": 9.999999999763531,
+      "q15_deg": -16.01653637697209,
+      "M15_source_force_N": 8.217207687893078,
+      "M15_centre_source_radial_gradient_J15_mm_rad": 29.30112671758264,
+      "actual_cylinder_contact_point_gradients": [
+        {
+          "gap_mm": -0.2846819765838544,
+          "normal_gap_gradient_J15_mm_rad": 30.502625643875085
+        }
+      ]
+    },
+    {
+      "t_s": 12.99999999969259,
+      "q15_deg": -15.942963408904653,
+      "M15_source_force_N": 6.48622457265072,
+      "M15_centre_source_radial_gradient_J15_mm_rad": 29.561301251547572,
+      "actual_cylinder_contact_point_gradients": [
+        {
+          "gap_mm": -0.23801176505667743,
+          "normal_gap_gradient_J15_mm_rad": 30.839111986158628
+        }
+      ]
+    }
+  ]
+}

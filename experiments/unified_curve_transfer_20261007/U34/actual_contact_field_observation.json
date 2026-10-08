@@ -1,0 +1,121 @@
+{
+  "duration_s": 28.79999999931897,
+  "outcome": "posterior_source_support_below_two_1s",
+  "complete": false,
+  "feeds": [
+    {
+      "start_s": 2.3000000000000003,
+      "end_s": 12.65,
+      "selected_joint": 16,
+      "raw_axis_mm": [
+        2.9792626222197036,
+        1.343368282054488
+      ],
+      "fixed_pitch_material_mm": [
+        11.660316222486808,
+        9.152458308896769
+      ],
+      "fixed_front_mean_y_mm": 6.014264009199954,
+      "fixed_rear_mean_x_mm": 3.8071217387437337,
+      "M20_axis_x_mm": 1.4934823764090197,
+      "end_stage": "regrip",
+      "feed_succeeded_flag": true
+    },
+    {
+      "start_s": 20.650000000000002,
+      "end_s": 28.75,
+      "selected_joint": 15,
+      "raw_axis_mm": [
+        1.3217505071276818,
+        2.2265286340626567
+      ],
+      "fixed_pitch_material_mm": [
+        5.173101815662803,
+        15.16948908876857
+      ],
+      "fixed_front_mean_y_mm": 3.01091031727911,
+      "fixed_rear_mean_x_mm": 2.09744301555749,
+      "M20_axis_x_mm": 2.8601336136305235,
+      "end_stage": "feed",
+      "feed_succeeded_flag": null
+    }
+  ],
+  "handover_events": [
+    {
+      "t_s": 1205.399999980314,
+      "mode": "actual_grasp_handover_observed",
+      "side": 0,
+      "holder_modules": [
+        14
+      ],
+      "current_local_force_N": 0.0,
+      "feed_succeeded": true,
+      "meaning": "same actual holder remains for 1s; restoration alone is no body-transfer success",
+      "local_t_s": 17.950000000000045
+    }
+  ],
+  "M14_admission": [
+    {
+      "t_s": 19.85,
+      "module": 14,
+      "center_mm": [
+        1025.709622210987,
+        78.07310187826917,
+        1040.433859509022
+      ]
+    }
+  ],
+  "M14_actual_target_contact_periods": [
+    {
+      "start_s": 19.119999999547872,
+      "end_s": 28.79999999931897,
+      "duration_s": 9.689999999771098,
+      "min_force_N": 1.881933497944075,
+      "max_force_N": 32.60474635091246
+    }
+  ],
+  "final_source_force_modules": [
+    15,
+    18
+  ],
+  "final_cylindrical_source_force_modules": [
+    15,
+    18
+  ],
+  "final_qualified_source_grip_modules": [],
+  "final_posterior_candidate_band": [
+    18,
+    19,
+    20
+  ],
+  "final_posterior_band_angle_span_rad": 0.24732978967517916,
+  "fixed_chord_contact_field_residual_mm_s": {
+    "all_p50_p90_p99_max": [
+      0.668535649504583,
+      2.358350797271989,
+      14.322747119336633,
+      74.25580301266909
+    ],
+    "M20_p50_p90_p99_max": [
+      1.0417333847168346,
+      2.9778077722557823,
+      29.44281529058123,
+      74.25580301266909
+    ]
+  },
+  "maximum_internal_rolling_error_mm_s": 5.145054107348237e-16,
+  "physical_history": {
+    "origin_initial_mm": 796.5881495788783,
+    "origin_final_mm": 796.5881495788783,
+    "fixed_sines_initial": [
+      0.2555044447657624,
+      0.14677677152035198
+    ],
+    "fixed_sines_final": [
+      0.2555044447657624,
+      0.14677677152035198
+    ],
+    "observer_initializations": 0
+  },
+  "maximum_final_contact_transport_offset_mm": 16.153693074882476
+}

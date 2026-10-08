@@ -18,15 +18,81 @@ from snake_control.hook_pull_review_support import restore_saved_state
 from validation.recover_unified_curve_state import save_state
 
 
-def recover(case, seconds):
+def recover_current(case, seconds, plan, commands, trace, frozen):
+    """Reconstruct current contact/yield history with its frozen controller."""
     destination = case/f'resume_t{seconds:.2f}'.replace('.', 'p')
     destination.mkdir(exist_ok=False)
+    model = mujoco.MjModel.from_xml_path(str(ROOT/'mujoco_model/Snake_Robot_o20_Pipe_elbow90_horizontal.xml'))
+    physical, observed = mujoco.MjData(model), mujoco.MjData(model)
+    restore_saved_state(model, physical, ROOT/plan['initial'])
+    restore_saved_state(model, observed, ROOT/plan['initial'])
+    controller = frozen.UnifiedCurveTransfer(model, observed)
+    offset = controller.load_state(ROOT/plan['controller_state'])
+    initial = json.loads((case/'initial_controller_state.json').read_text(encoding='utf8'))
+    controller.soft_positive_clearance_enabled = initial['controller']['soft_positive_clearance_enabled']
+    controller.curve.soft_positive_clearance = initial['curve']['soft_positive_clearance']
+    controller.curve.arc_cache = None
+    controller.curve.shape_revision += 1
+    controller.localized_yield_enabled = initial['controller']['localized_yield_enabled']
+    controller.alternating_yield_enabled = initial['controller']['alternating_yield_enabled']
+    count = round(seconds/frozen.DT)
+    if abs(count*frozen.DT-seconds) > 1e-8 or count > len(commands):
+        raise ValueError('Checkpoint must lie on a recorded command boundary')
+    maximum_reference_error = maximum_ctrl_error = 0.
+    for tick, command in enumerate(commands[:count]):
+        index = tick*5
+        # Observations are diagnostic copies. The physical replay below only
+        # receives the original dispatched controls after its full restoration.
+        observed.qpos[:] = trace['qpos'][index]
+        observed.qvel[:] = trace['qvel'][index]
+        observed.ctrl[:] = trace['ctrl'][index]
+        target, info = controller.command(observed, command['controller_t_s'],
+            trace['contact_force_N'][index], trace['torque'][index],
+            trace['cylindrical_contact_force_N'][index])
+        maximum_ctrl_error = max(maximum_ctrl_error,
+            float(np.max(np.abs(target-command['target_rad']))))
+        maximum_reference_error = max(maximum_reference_error,
+            float(np.max(np.abs(np.asarray(info['reference_points_mm'])-command['reference_points_mm']))))
+        physical.ctrl[:] = command['target_rad']
+        for _ in range(50):
+            mujoco.mj_step(model, physical)
+        if tick % 500 == 0:
+            print(f'Restored {tick*frozen.DT:.2f}s; ctrl error {maximum_ctrl_error:.3g}; reference error {maximum_reference_error:.3g} mm', flush=True)
+    boundary = count*5
+    errors = dict(qpos=float(np.max(np.abs(physical.qpos-trace['qpos'][boundary]))),
+        qvel=float(np.max(np.abs(physical.qvel-trace['qvel'][boundary]))),
+        ctrl=float(np.max(np.abs(physical.ctrl-trace['ctrl'][boundary]))))
+    if maximum_reference_error > 1e-5 or maximum_ctrl_error > 1e-10 or max(errors.values()) > 1e-10:
+        raise RuntimeError(f'Checkpoint reconstruction differs: {errors}; ctrl {maximum_ctrl_error}; reference {maximum_reference_error}')
+    integration = np.empty(mujoco.mj_stateSize(model, mujoco.mjtState.mjSTATE_INTEGRATION))
+    mujoco.mj_getState(model, physical, integration, mujoco.mjtState.mjSTATE_INTEGRATION)
+    np.savez_compressed(destination/'final_state.npz', integration_state=integration,
+        ctrl=physical.ctrl.copy(), sim_time=physical.time)
+    save_state(destination/'controller_state.json', controller, offset+seconds)
+    report = dict(source=str(case), checkpoint_s=seconds,
+        physics='original dispatched ctrl replay in unchanged model; no physical root assignment',
+        controller='frozen controller on original recorded observations, including contact/yield/progress history',
+        maximum_reference_error_mm=maximum_reference_error, maximum_dispatched_ctrl_error_rad=maximum_ctrl_error,
+        physical_boundary_errors=errors, shift_mm=controller.shift*1000,
+        localized_yield=controller.yield_state,
+        source_contacts=np.flatnonzero(trace['contact_force_N'][boundary, 0] > .1).tolist(),
+        target_contacts=np.flatnonzero(trace['contact_force_N'][boundary, 1] > .1).tolist())
+    (destination/'recovery.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
+    print(json.dumps({k: report[k] for k in ['checkpoint_s', 'maximum_reference_error_mm',
+        'maximum_dispatched_ctrl_error_rad', 'physical_boundary_errors', 'source_contacts', 'target_contacts']}), flush=True)
+
+
+def recover(case, seconds):
     plan = json.loads((case/'plan.json').read_text(encoding='utf8'))
     commands = json.loads((case/'commands.json').read_text(encoding='utf8'))
     trace = np.load(case/'trace.npz')
     specification = importlib.util.spec_from_file_location('frozen_checkpoint_curve', case/'sources/snake_control/unified_curve_transfer.py')
     frozen = importlib.util.module_from_spec(specification)
     specification.loader.exec_module(frozen)
+    if commands and 'shared_curve_contact_field' in commands[0]:
+        return recover_current(case, seconds, plan, commands, trace, frozen)
+    destination = case/f'resume_t{seconds:.2f}'.replace('.', 'p')
+    destination.mkdir(exist_ok=False)
     model = mujoco.MjModel.from_xml_path(str(ROOT/'mujoco_model/Snake_Robot_o20_Pipe_elbow90_horizontal.xml'))
     physical, observed = mujoco.MjData(model), mujoco.MjData(model)
     restore_saved_state(model, physical, ROOT/plan['initial'])

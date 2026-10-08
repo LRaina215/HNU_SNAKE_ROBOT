@@ -229,6 +229,8 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
     last_progress_time = 0.
     best_progress = controller.last_body_progress
     admissions = []
+    action_checkpoints = []
+    last_action_stage = controller.yield_state['stage'] if controller.yield_state else None
     try:
         for tick in range(round(horizon/DT)):
             t = tick*DT
@@ -239,6 +241,17 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             sim.commands.append(dict(t_s=t, controller_t_s=controller_t, target_rad=target.tolist(), **info))
             sim.step_command(target)
             r = sim.rows[-1]
+            action = info.get('localized_yield')
+            if action and action['stage'] != last_action_stage and action['stage'] in ['feed', 'completed']:
+                label = f'action_t{t+DT:.2f}_{action["stage"]}'.replace('.', 'p')
+                mujoco.mj_getState(sim.m, sim.d, sim.state, mujoco.mjtState.mjSTATE_INTEGRATION)
+                np.savez_compressed(case/f'{label}.npz', integration_state=sim.state.copy(),
+                    ctrl=sim.d.ctrl.copy(), sim_time=sim.d.time)
+                controller.save_state(case/f'{label}_controller.json', time_offset+t+DT)
+                action_checkpoints.append(dict(t_s=t+DT, stage=action['stage'],
+                    joint=action['selected_joint'], physical_state=f'{label}.npz',
+                    controller_state=f'{label}_controller.json'))
+            last_action_stage = action['stage'] if action else None
             c, f = r['centers_mm'], r['contact_force_N']
             age = np.where(f[1] > .1, age+DT, 0.)
             for module in np.flatnonzero(age >= .75):
@@ -304,6 +317,7 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
         initial_source_modules=source0, initial_target_modules=target0,
         final_source_modules=np.flatnonzero(force[-1, 0] > .1), final_target_modules=np.flatnonzero(force[-1, 1] > .1),
         new_sustained_target_modules=sorted(admitted), admissions=admissions,
+        action_checkpoints=action_checkpoints,
         maximum_new_module_target_force_N=force[:, 1, initial_target_end+1:].max(axis=0),
         fixed_front_M0_M6_mean_y_advance_mm=float((c[-1, :7, 1]-c[0, :7, 1]).mean()),
         fixed_rear_M14_M20_mean_x_advance_mm=float((c[-1, 14:, 0]-c[0, 14:, 0]).mean()),
