@@ -1,0 +1,2 @@
+U49：从U47/action_t0p05_completed完整实际物理/控制器状态分支。
+Complete the replacement-support transition tested in U48: after excluding intended release modules, immediately retain the still-loaded candidate and enter explicit free-tail restoration if physical source/target holders remain adequate. Original true-contact one-second restoration and next-candidate cohort continuity retained; no extra anchor-loss grace, force/rate/cap increase. Same actual U47 M20 handover full state; continue rear release/feed/material transfer.

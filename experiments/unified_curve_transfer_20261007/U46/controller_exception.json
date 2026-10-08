@@ -1,0 +1,8 @@
+{
+  "outcome": "controller_exception",
+  "physical_seconds": 3.949999999906595,
+  "failing_action": "persist final reference at actual source grasp handover before dispatching another control",
+  "error": "Degenerate current curve cannot define arclength",
+  "physical_state_saved": true,
+  "controller_state_export_failed": true
+}

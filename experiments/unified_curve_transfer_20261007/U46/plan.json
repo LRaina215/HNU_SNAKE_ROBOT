@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U44\\action_t1p05_completed.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U44\\action_t1p05_completed_controller.json",
+  "change": "Continue U44 full 1.05s handover state after U45 actually validated small-step guard and intermittent tail contact. Tail centre radial execution and tail contact-normal pressure now subtract measured physical root velocity and use actuated Jacobian columns for the remaining normal task, preventing virtual root borrowing; tangential shared/contact motion remains. Same guarded curve motion, original pressure targets, 12mm curve cap, drives, supports, shared shift, actual progress and handover/completion checks; continue actual rear release/feed/material transfer.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

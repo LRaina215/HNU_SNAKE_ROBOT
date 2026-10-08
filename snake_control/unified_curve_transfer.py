@@ -7,13 +7,14 @@ in its shape tracking and traction solve. Encoder errors and actuator loads
 are separate inputs, not a claim of hardware-ready global observation.
 Units: metres, radians, seconds.
 """
+import copy
 import json
 import math
 
 import mujoco
 import numpy as np
 from scipy.interpolate import CubicSpline, PPoly
-from scipy.optimize import lsq_linear
+from scipy.optimize import lsq_linear, minimize
 from scipy.spatial.transform import Rotation
 
 from snake_control.spatial_bishop_backbone import SpatialBishopBackbone
@@ -474,6 +475,17 @@ class RegisteredThreeRegionCurve:
         """Put the final protected reference into the lasting spatial curve."""
         if getattr(self, 'tail_recovery_boundary', None) is None:
             return 0.
+        previous = copy.deepcopy(self.__dict__)
+        try:
+            return self._persist_tail_recovery_reference(shift)
+        except Exception:
+            # A rejected representation update must leave the last valid
+            # reference exportable; no physical state is changed here.
+            self.__dict__.clear()
+            self.__dict__.update(previous)
+            raise
+
+    def _persist_tail_recovery_reference(self, shift):
         protected_shift = self.tail_recovery_boundary['shift']
         saved_phase = self.phase.copy()
         if abs(shift-protected_shift) > 1e-12:
@@ -490,7 +502,15 @@ class RegisteredThreeRegionCurve:
         previous_grid = self.arc_grid_u.copy()
         previous_offsets = self.contact_transport_offsets.copy()
         previous_persisted = self.persisted_reference_offsets.copy()
-        self.arc_grid_u = np.unique(np.r_[previous_grid, parameters])
+        # Repeated handovers recompute material coordinates with roundoff.
+        # np.unique retains almost identical knots, whose sampled chord can
+        # fall below the arclength map's numerical nondegeneracy threshold.
+        # Keep existing knots and add only materially separated coordinates.
+        merged_grid = previous_grid.tolist()
+        for parameter in parameters:
+            if np.min(np.abs(np.asarray(merged_grid)-parameter)) > 1e-8:
+                merged_grid.append(float(parameter))
+        self.arc_grid_u = np.sort(np.asarray(merged_grid))
         self.contact_transport_offsets = np.column_stack([
             np.interp(self.arc_grid_u, previous_grid, previous_offsets[:, j]) for j in range(3)])
         self.persisted_reference_offsets = np.column_stack([
@@ -539,6 +559,7 @@ class UnifiedCurveTransfer:
         self.va = model.jnt_dofadr[model.actuator_trnid[:, 0]]
         self.head = model.body('head').id
         self.last = data.ctrl.copy()
+        self.physics_execution_prediction_enabled = True
         p, c = self.observe(data)
         self.initial_centers = c.copy()
         # Save only for reporting. The initial target is continuous at t=0;
@@ -777,6 +798,10 @@ class UnifiedCurveTransfer:
         return p, (p[:-1]+p[1:])/2
 
     def feedback_shape(self, p, q, reference, s, tracking, forces, dt):
+        coordinated_yielding = (self.yield_state is not None
+            and self.yield_state['stage']=='feed'
+            and self.yield_state.get('coordinated_feed_active',False)
+            and not self.yield_state.get('contact_loss_after_partial_feed',False))
         """Measured bends and load change the route before target generation."""
         if self.yield_state is not None and self.yield_state.get('target_handover_pending', False):
             # Verify the actual target grasp without simultaneously pulling
@@ -872,7 +897,7 @@ class UnifiedCurveTransfer:
             local_joint = int(self.yield_state['selected_joint'])
             gain[:] = 0.
             strength[:] = 0.
-            if self.yield_state['stage'] == 'unload' and not self.yield_state.get('anchor_recovery_active', False):
+            if (self.yield_state['stage'] == 'unload' or coordinated_yielding) and not self.yield_state.get('anchor_recovery_active', False):
                 side = self.yield_state['side']
                 force_ratio = forces[side, self.yield_release_modules].sum()/max(self.yield_state['initial_force_N'], .1)
                 load_ratio = self.filtered_load[local_joint-1]/max(self.yield_state.get('initial_load_Nm', 2.355), .1)
@@ -893,7 +918,7 @@ class UnifiedCurveTransfer:
                                  np.interp(material_nodes, ordinary['s_mm'], np.array(ordinary['points_mm'])[:, j]) for j in range(3)])/1000
         if local_joint is not None:
             low, high = max(0, local_joint-2), min(21, local_joint+2)
-            if self.yield_state['stage'] in ['unload', 'regrip'] and not self.yield_state.get('anchor_recovery_active', False):
+            if (self.yield_state['stage'] in ['unload', 'regrip'] or coordinated_yielding) and not self.yield_state.get('anchor_recovery_active', False):
                 current_reference_p, _, _ = self.curve.reference(self.shift)
                 # Continue making room from the CURRENT measured shape while
                 # load remains, rather than exhausting a fixed displacement
@@ -915,7 +940,7 @@ class UnifiedCurveTransfer:
                 local[low:high+1] = delta[low:high+1]-(1-fraction)*delta[low]-fraction*delta[high]
             # A small outward plateau makes actual room; its central three
             # nodes translate together, preserving the curvature relief there.
-            if self.yield_state['stage'] == 'unload' and not self.yield_state.get('anchor_recovery_active', False):
+            if (self.yield_state['stage'] == 'unload' or coordinated_yielding) and not self.yield_state.get('anchor_recovery_active', False):
                 side = self.yield_state['side']
                 axis = np.eye(3)[side]
                 origin = np.array([0., 0., 1.]) if side == 0 else CORNER
@@ -945,7 +970,7 @@ class UnifiedCurveTransfer:
         deposit_rate = .18
         if self.yield_state is not None and self.yield_state.get('anchor_recovery_active', False):
             delta[:] = 0.
-        elif local_joint is not None and self.yield_state['stage'] in ['unload', 'regrip']:
+        elif local_joint is not None and (self.yield_state['stage'] in ['unload', 'regrip'] or coordinated_yielding):
             # A measured-shape feedback step must reach the local reference,
             # rather than remain behind the actual opening for the whole 12s
             # action. Bound each node by the existing 8mm/s motion cap and keep
@@ -1241,8 +1266,13 @@ class UnifiedCurveTransfer:
                 state.pop('target_handover_continuous_modules', None)
         joint = int(state['selected_joint'])
         current_force = float(forces[state['side'], modules].sum())
+        if state['stage'] == 'unload' and t-state['started_t'] >= 12.:
+            state.update(stage='failed', failure='local_release_not_observed_12s')
+            return
         if (state['stage'] == 'feed' and state.get('anchor_recovery_active', False)
-                and np.any(held[state['side'], modules])):
+                and np.any(held[state['side'], modules])
+                and (not state.get('contact_retained_feed',False)
+                     or state.get('contact_loss_after_partial_feed',False))):
             material = (self.physical_pipe_progress-np.asarray(state['feed_pipe_origin']))/self.physical_axial_sines
             returned = modules[held[state['side'], modules]].tolist()
             self.begin_local_regrip(t, min(material) >= .008, float(min(material)*1000), held)
@@ -1250,7 +1280,10 @@ class UnifiedCurveTransfer:
                 modules=returned, meaning='contact returned; enter regrip and apply original 1s confirmation, no immediate handover'))
         remaining = held.copy()
         if state.get('role') == 'rear_release' and state['stage'] == 'unload':
-            remaining[0, modules[forces[0, modules] <= .1]] = False
+            # The candidate remains a real holder until lifted, but cannot
+            # replace the two OTHER rods that must carry its release. Detect
+            # their loss immediately even while this candidate is still loaded.
+            remaining[0, modules] = False
         elif state['stage'] not in ['regrip', 'completed']:
             remaining[state['side'], modules] = False
         for other in state.get('freed_source_parameters', []):
@@ -1262,12 +1295,19 @@ class UnifiedCurveTransfer:
                     remaining_source=np.flatnonzero(remaining[0]).tolist(),
                     remaining_target=np.flatnonzero(remaining[1]).tolist()))
             state['anchor_recovery_active'] = True
-            if t-state['anchor_loss_t'] >= 1.:
+            safely_holding_coordinated_action = (state['stage']=='feed'
+                and state.get('coordinated_feed_active',False)
+                and held[0].sum()>=2 and held[1].sum()>=3)
+            if t-state['anchor_loss_t'] >= 1. and not safely_holding_coordinated_action:
                 state['stage'] = 'failed'
                 state['failure'] = 'remaining_observed_anchors_insufficient_1s'
         else:
             if state.get('anchor_recovery_active', False):
-                if state.get('role') == 'rear_release' and state['stage'] == 'unload':
+                # The loss timer measures continuous actual insufficiency.
+                # Restored holders still need their original one-second
+                # confirmation, but that interval is not continuing loss.
+                state['anchor_loss_t'] = t
+                if state.get('role') == 'rear_release' and state['stage'] in ['unload','feed']:
                     carrying = held[0].copy()
                     carrying[modules] = False
                     cohort = np.flatnonzero(carrying).tolist()
@@ -1275,7 +1315,8 @@ class UnifiedCurveTransfer:
                     if len(continuous) < 2 or held[1].sum() < 3:
                         state.pop('anchor_handover_seen_t', None)
                         state.pop('anchor_handover_continuous_modules', None)
-                        if held[0].sum() >= 2 and held[1].sum() >= 3:
+                        if (held[0].sum() >= 2 and held[1].sum() >= 3
+                                and not state.get('coordinated_feed_active',False)):
                             transferred = list(self.transferred_material_modules)
                             self.events.append(dict(t_s=t, mode='keep_loaded_release_candidate_restore_tail',
                                 kept_modules=modules.tolist(), remaining_source=cohort,
@@ -1317,6 +1358,27 @@ class UnifiedCurveTransfer:
                     if not intersecting:
                         free_modules.append(int(module))
                 relieved = (bool(free_modules) and self.filtered_load[joint-1] < 1.9)
+                # Contact loss remains a recorded event, not the only way to
+                # try transport. A measured reduction in load can admit one
+                # small COMMON shift while the other observed rods carry.
+                reduced = (current_force < .9*state['initial_force_N']
+                    and self.filtered_load[joint-1] < 1.9
+                    and remaining[0].sum() >= 2 and remaining[1].sum() >= 3
+                    and not state['anchor_recovery_active'])
+                if reduced and not state.get('coordinated_feed_active', False):
+                    error = self.curve.persist_tail_recovery_reference(self.shift)
+                    state.update(coordinated_feed_active=True,
+                        coordination_shift_origin=self.shift,
+                        coordination_pipe_origin=self.physical_pipe_progress.tolist(),
+                        stage='feed', feed_t=t, feed_shift=self.shift,
+                        feed_pipe_origin=self.physical_pipe_progress.tolist(),
+                        feed_reference_registered=True, contact_retained_feed=bool(held[0,joint]))
+                    self.events.append(dict(t_s=t, mode='partial_unload_common_feed_admitted',
+                        module=joint, actual_force_N=current_force,
+                        initial_force_N=state['initial_force_N'], still_contacting=bool(held[0, joint]),
+                        maximum_reference_point_change_mm=error,
+                        meaning='measured unloading admits bounded common transport; contact loss and actual progress remain separate'))
+                    return
             if t-state['started_t'] >= 2. and relieved and not state['anchor_recovery_active']:
                 if self.alternating_yield_enabled and state.get('role') != 'rear_release':
                     self.events.append(dict(t_s=t, mode='receiving_local_unload_observed',
@@ -1345,6 +1407,19 @@ class UnifiedCurveTransfer:
             elif t-state['started_t'] >= 12.:
                 state.update(stage='failed', failure='local_release_not_observed_12s')
         elif state['stage'] == 'feed':
+            if (state.get('contact_retained_feed', False)
+                    and not state.get('contact_loss_after_partial_feed', False)
+                    and current_force <= .1):
+                intersecting = any(contact.dist <= 0. and any(
+                    int(self.m.geom_bodyid[robot]) == self.head+joint and
+                    (self.m.geom(pipe).name or '') in ['pipe_straight_01','pipe_sharp_in_02']
+                    for robot,pipe in [(contact.geom1,contact.geom2),(contact.geom2,contact.geom1)])
+                    for contact in self.d.contact)
+                if not intersecting:
+                    state['contact_loss_after_partial_feed'] = True
+                    self.events.append(dict(t_s=t, mode='actual_contact_loss_after_partial_feed',
+                        modules=modules.tolist(), actual_force_N=current_force,
+                        meaning='physical lift recorded separately from earlier load-reduced feed admission'))
             material = (self.physical_pipe_progress-np.asarray(state['feed_pipe_origin']))/self.physical_axial_sines
             if min(material) >= .008 or (not self.alternating_yield_enabled and t-state['feed_t'] >= 35.):
                 self.begin_local_regrip(t, min(material) >= .008, float(min(material)*1000), held)
@@ -1457,6 +1532,18 @@ class UnifiedCurveTransfer:
         requested = min(requested, physical_limit)
         if self.yield_state is not None and self.yield_state['stage'] in ['unload', 'failed']:
             requested = 0.
+        if self.yield_state is not None:
+            state = self.yield_state
+            if state['stage'] in ['unload','feed'] and state.get('coordinated_feed_active',False):
+                action_material = (self.physical_pipe_progress-np.asarray(state['coordination_pipe_origin']))/self.physical_axial_sines
+                action_lag = self.shift-state['coordination_shift_origin']-float(min(action_material))
+                action_bootstrap = .0005*float(np.clip((.015-action_lag)/.015,0.,1.))
+                probe_remaining = max(0., .001-(self.shift-state['coordination_shift_origin']))
+                # A finite 1mm shared-reference probe tests coordinated feed
+                # even during the preceding reshape retreat. Once consumed,
+                # the original measured-retreat brake controls continuation.
+                requested = (min(.0005,max(0.,slower)+action_bootstrap)
+                    if slower >= -.0002 else min(.0005,probe_remaining/DT))
         if self.yield_state is not None and self.yield_state.get('anchor_recovery_active', False):
             requested = 0.
         restoring_stalled_grasp = (self.yield_state is not None and self.yield_state['stage'] == 'regrip'
@@ -1480,6 +1567,9 @@ class UnifiedCurveTransfer:
         reshaped_p, reshaped_c, _ = self.curve.reference(self.shift)
         shape_feedforward = (reshaped_c-reference_c)/DT
         ds = DT*self.speed
+        if self.yield_state is not None and self.yield_state.get('coordinated_feed_active',False) and slower < -.0002:
+            ds = min(ds,max(0.,.001-(self.shift-self.yield_state['coordination_shift_origin'])))
+            self.speed = ds/DT
         self.curve.increment(ds)
         self.shift += ds
         wanted_p, wanted_c, locations = self.curve.reference(self.shift)
@@ -1487,11 +1577,13 @@ class UnifiedCurveTransfer:
         source_grip_mask, target_grip_mask = self.supported_curve_regions(locations, centers)
 
         n = self.m.nv
-        A, b, task_labels = [], [], []
+        A, b, physical_A, physical_b, task_labels = [], [], [], [], []
         jp, jr = np.zeros((3, n)), np.zeros((3, n))
-        def add(j, value, weight, label):
+        def add(j, value, weight, label, physical_j=None, physical_value=None):
             A.append(weight*np.atleast_2d(j).copy())
             b.append(weight*np.atleast_1d(value).copy())
+            physical_A.append(weight*np.atleast_2d(j if physical_j is None else physical_j).copy())
+            physical_b.append(weight*np.atleast_1d(value if physical_value is None else physical_value).copy())
             task_labels.extend([label]*len(np.atleast_1d(value)))
         weights = self.curve.weights(locations)
         current_regions = self.curve.regions(locations)
@@ -1502,7 +1594,8 @@ class UnifiedCurveTransfer:
         nominal_roll = np.array([source_roll, target_roll])
         recovery_roll = np.zeros(2)
         correction = .35*(wanted_c-centers)
-        if self.yield_state is not None and self.yield_state['stage'] in ['unload', 'failed']:
+        if self.yield_state is not None and (self.yield_state['stage'] in ['unload', 'failed'] or
+                (self.yield_state.get('role') == 'rear_release' and self.yield_state['stage']=='feed')):
             # Switching from restoration to unload must not reactivate an old
             # whole-side pose error as backward rolling. Coordinated rolling
             # here comes only from THIS step's curve deformation; local normal
@@ -1731,6 +1824,9 @@ class UnifiedCurveTransfer:
 
         solved_spin_rows, avoided_corrections = [], []
         center_task_velocities, rolling_consistency_errors, uncontacted_axial_recovery_removed = [], [], []
+        small_step_grasp_approaches = []
+        tail_normal_execution = []
+        tail_normal_rows = []
         for module, center in enumerate(centers):
             mujoco.mj_jac(self.m, self.d, jp, jr, center, self.head+module)
             u = axes[module]
@@ -1771,16 +1867,67 @@ class UnifiedCurveTransfer:
                     removed_pose_axial_mm_s=float(pose_velocity[1]*1000),
                     common_feed_axial_mm_s=float(feedforward[module, 1]*1000),
                     shape_feed_axial_mm_s=float(shape_feedforward[module, 1]*1000)))
+            approaching_grasp = (self.yield_state is not None and
+                self.yield_state['stage'] == 'regrip' and module in self.yield_release_modules and
+                support_forces[self.yield_state['side'], module] <= .1 and
+                module not in rolling_contacts)
+            if self.yield_state is not None and self.yield_state['stage'] in ['unload', 'feed']:
+                carrying_side = supported_side
+                if (carrying_side is not None and module not in self.yield_release_modules
+                        and self.yield_state['anchor_goals_N'][carrying_side][module] > .1
+                        and support_forces[carrying_side, module] <= .1
+                        and module not in rolling_contacts):
+                    # A temporarily detached carrying rod needs the same real
+                    # bounded-step approach as the named regrip object. Its
+                    # distant shape goal must not erase safe contact recovery.
+                    approaching_grasp = True
+            if approaching_grasp:
+                # The distant reference is a shape objective, not the path
+                # traversed by this control tick. Check the bounded real step
+                # to reach contact, then let the original pressure task take
+                # over. Every original pipe face is still checked by the guard.
+                v *= min(1., .008/max(np.linalg.norm(v), 1e-9))
+                requested_v = v.copy()
+                full_goal = guard_goal.copy()
+                guard_goal = center+DT*v
             v, avoided = self.pipe_geometry.guard_velocity(center, guard_goal, v, BODY_RADIUS,
                 supported_side=supported_side, retained_margin=retained_margin)
+            if approaching_grasp:
+                small_step_grasp_approaches.append(dict(module=module, side=supported_side,
+                    requested_velocity_mm_s=(requested_v*1000).tolist(),
+                    applied_velocity_mm_s=(v*1000).tolist(),
+                    requested_step_mm=float(np.linalg.norm(DT*requested_v)*1000),
+                    current_pipe_distance_mm=float(self.pipe_geometry.signed(center)*1000),
+                    full_reference_pipe_distance_mm=float(self.pipe_geometry.signed(full_goal)*1000),
+                    step_pipe_distance_mm=float(self.pipe_geometry.signed(guard_goal)*1000),
+                    guard_removed_component=bool(avoided)))
             if avoided:
                 avoided_corrections.append(module)
             v *= min(1., .008/max(np.linalg.norm(v), 1e-9))
             if module in rolling_contacts:
                 rolling_consistency_errors.append(float(np.linalg.norm(v+np.cross(omega, point-center)-vn*normal)))
             center_task_velocities.append(v)
-            add(jp, v, 2. if region != 1 else 2.5,
-                'coherent_rolling_center' if module in rolling_contacts else 'center_motion_other')
+            center_jac, execution_v = jp, v
+            if (self.localized_yield_enabled and self.yield_state is not None and
+                    module == len(centers)-1 and supported_side is not None):
+                origin = np.array([0., 0., 1.]) if supported_side == 0 else CORNER
+                radial_normal = center-origin
+                radial_normal[supported_side] = 0.
+                radial_normal /= max(np.linalg.norm(radial_normal), 1e-9)
+                root_normal = float(radial_normal@jp[:, :6]@data.qvel[:6])
+                center_jac = jp.copy()
+                center_jac[:, :6] -= np.outer(radial_normal, radial_normal@jp[:, :6])
+                execution_v = v-root_normal*radial_normal
+                row = radial_normal@center_jac
+                tail_normal_rows.append(row.copy())
+                tail_normal_execution.append(dict(module=module, side=supported_side,
+                    requested_world_radial_mm_s=float(radial_normal@v*1000),
+                    measured_root_radial_mm_s=root_normal*1000,
+                    requested_actuated_radial_mm_s=float(radial_normal@execution_v*1000),
+                    basis='same guarded centre motion; subtract measured root velocity, never borrow predicted unactuated radial root motion'))
+            add(center_jac, execution_v, 2. if region != 1 else 2.5,
+                'coherent_rolling_center' if module in rolling_contacts else 'center_motion_other',
+                physical_j=jp, physical_value=v)
             perpendicular = np.eye(3)-np.outer(u, u)
             add(perpendicular@jr, perpendicular_omega[module], .055, 'tangent_motion')
             add(u@jr, spin, .12, 'material_spin')
@@ -1791,7 +1938,13 @@ class UnifiedCurveTransfer:
         for (module, side), (_, point, _) in selected.items():
             mujoco.mj_jac(self.m, self.d, jp, jr, point, self.head+module)
             normal, normal_velocity, is_support, peeling = pressure_targets[module, side]
-            add(normal@jp, normal_velocity, 8. if is_support or peeling else 2., 'contact_pressure')
+            pressure_jac = normal@jp
+            physical_pressure_jac, physical_normal_velocity = pressure_jac.copy(), normal_velocity
+            if self.localized_yield_enabled and self.yield_state is not None and module == len(centers)-1:
+                normal_velocity -= float(pressure_jac[:6]@data.qvel[:6])
+                pressure_jac[:6] = 0.
+            add(pressure_jac, normal_velocity, 8. if is_support or peeling else 2., 'contact_pressure',
+                physical_j=physical_pressure_jac, physical_value=physical_normal_velocity)
             if not peeling:
                 add((np.eye(3)-np.outer(normal, normal))@jp, np.zeros(3), 3., 'contact_tangent_stationary')
         joint_jac = np.zeros((20, n))
@@ -1803,6 +1956,16 @@ class UnifiedCurveTransfer:
         low[self.va] = np.clip((np.radians(-88)-self.last)/DT, -speed, speed-1e-7)
         high[self.va] = np.clip((np.radians(88)-self.last)/DT, -speed+1e-7, speed)
         matrix, vector = np.vstack(A), np.concatenate(b)
+        measured_root_execution = (self.localized_yield_enabled and self.yield_state is not None
+            and self.yield_state.get('role') == 'rear_release')
+        if measured_root_execution:
+            # Every world/contact task must use the root motion that actually
+            # exists. Solve the remaining SAME motion with actuated joints;
+            # six unactuated prediction variables cannot promise propulsion.
+            # Tail-normal rows already removed their root component, so this
+            # also subtracts only their remaining tangential root contribution.
+            vector -= matrix[:,:6]@data.qvel[:6]
+            matrix[:,:6] = 0.
         local_bend_constraint = None
         if (self.yield_state is not None and self.yield_state['stage'] in ['unload', 'feed', 'regrip']
                 and not self.yield_state.get('anchor_recovery_active', False)
@@ -1829,6 +1992,11 @@ class UnifiedCurveTransfer:
             # recovery as the existing tangent tasks, then dispatch its curve
             # position separately through the unchanged actuator limits.
             geometric_rate = (curve_q-previous_curve_q)/DT+.35*(curve_q-q[joint-1])
+            if self.yield_state.get('role') == 'rear_release' and self.yield_state['stage'] in ['unload', 'feed']:
+                # Local yielding follows THIS accepted finite-link curve
+                # increment. An old absolute angular mismatch is not another
+                # opening command that may undo the carrying-contact motion.
+                geometric_rate = (curve_q-previous_curve_q)/DT
             fixed_rate = float(np.clip(geometric_rate, low[column], high[column]))
             free = np.arange(n) != column
             solution = lsq_linear(matrix[:, free], vector-matrix[:, column]*fixed_rate,
@@ -1845,6 +2013,11 @@ class UnifiedCurveTransfer:
                 source='same curve adjacent-rod bend; one fixed variable in the existing support solve')
         else:
             solution = lsq_linear(matrix, vector, bounds=(low, high), tol=1e-6, max_iter=60)
+        if measured_root_execution:
+            solution.x[:6] = data.qvel[:6]
+        for record, row in zip(tail_normal_execution, tail_normal_rows):
+            record['predicted_actuated_radial_mm_s'] = float(row@solution.x*1000)
+            record['predicted_world_radial_mm_s'] = record['predicted_actuated_radial_mm_s']+record['measured_root_radial_mm_s']
         if getattr(self, 'capture_execution_tasks', False):
             self.execution_tasks = dict(matrix=matrix, vector=vector, low=low, high=high,
                 labels=task_labels, solution=solution.x, spin_rows=np.asarray(solved_spin_rows),
@@ -1855,14 +2028,24 @@ class UnifiedCurveTransfer:
         # The single updated route and its support objectives generate execution;
         # there is no separate additive joint-grip target for tracking to undo.
         raw = self.last+DT*solution.x[self.va]
-        if local_bend_constraint is not None:
+        coordinated_rear_release = (self.yield_state is not None
+            and self.yield_state.get('role') == 'rear_release'
+            and self.yield_state['stage'] in ['unload', 'feed'])
+        if local_bend_constraint is not None and not coordinated_rear_release:
             raw[local_bend_constraint['joint']-1] = curve_q
+        if local_bend_constraint is not None and coordinated_rear_release:
+            local_bend_constraint['dispatch'] = 'same solved increment as carrying-contact compensation; no curve-position overwrite'
         # Symmetric anti-windup around the CURRENT encoders. Dynamic gripping
         # does not shift this window, so every joint can receive either sign of
         # drive. Rate limiting unwinds the first saved clamp continuously.
         raw = np.clip(raw, q-np.radians(3.), q+np.radians(3.))
         target = np.clip(raw, np.maximum(-np.radians(88), self.last-speed*DT),
                         np.minimum(np.radians(88), self.last+speed*DT))
+        physics_execution = None
+        if (self.physics_execution_prediction_enabled and not self.first_dispatch
+                and self.yield_state is not None and self.yield_state['stage'] in ['unload','feed']):
+            target, physics_execution = self.refine_physical_execution(data,target,
+                np.vstack(physical_A),np.concatenate(physical_b),local_bend_constraint,support_forces)
         if self.first_dispatch:
             target = self.last.copy()
             self.first_dispatch = False
@@ -1919,6 +2102,8 @@ class UnifiedCurveTransfer:
             shared_curve_contact_field=shared_curve_field_error,
             contact_transport_fraction=getattr(self.curve, 'contact_transport_fraction', 0.),
             uncontacted_axial_pose_recovery_removed=uncontacted_axial_recovery_removed,
+            small_step_grasp_approaches=small_step_grasp_approaches,
+            tail_normal_execution=tail_normal_execution,
             rolling_motion_scale=roll_scale.tolist(),
             maximum_requested_rolling_contact_error_mm_s=max(rolling_consistency_errors, default=0.)*1000,
             center_task_velocity_mm_s=(np.asarray(center_task_velocities)*1000).tolist(),
@@ -1929,7 +2114,108 @@ class UnifiedCurveTransfer:
             curve_parameters=self.curve.parameters(), shape_updates=self.n_adaptations,
             bishop_joint_fit_max_error_deg=float(np.degrees(np.abs(bone_angles-q)).max()),
             solve_residual=float(np.linalg.norm(matrix@solution.x-vector)), solve_status=int(solution.status),
+            root_execution_model='measured root velocity; actuated remainder of same tasks' if measured_root_execution else 'free-root kinematic prediction',
+            physics_execution_prediction=physics_execution,
             feedback_fields=dict(hardware_candidates=['joint_angles', 'actuator_load', 'last_sent_targets'],
                 simulation_truth_used=['world_body_pose', 'pipe_contact_points', 'pipe_contact_force_for_support_gate']),
             limitation='physical cohort axial progress requires world-pose truth; pitch-normalized progress is approximate; contacts/positions score completion')
         return target, info
+
+    def refine_physical_execution(self,data,target,matrix,vector,local_bend,forces):
+        """Predict joint-only servo/contact response to the same curve tasks."""
+        specification = mujoco.mjtState.mjSTATE_INTEGRATION
+        integration = np.empty(mujoco.mj_stateSize(self.m,specification))
+        mujoco.mj_getState(self.m,data,integration,specification)
+        shadow = mujoco.MjData(self.m)
+        steps = round(DT/self.m.opt.timestep)
+        points,centers = self.observe(data)
+        masks = np.asarray(physical_wrap_masks(centers)) & (forces>.1)
+        if self.yield_state.get('anchor_recovery_active',False):
+            goals = np.asarray(self.yield_state['anchor_goals_N'])
+            masks |= np.asarray(physical_wrap_masks(centers)) & (goals>.1)
+        masks[0,self.transferred_material_modules] = False
+        masks[self.yield_state['side'],self.yield_release_modules] = False
+        required = [(side,int(module)) for side,count in [(0,2),(1,3)]
+            for module in sorted(np.flatnonzero(masks[side]),key=lambda i:forces[side,i],reverse=True)[:count]]
+        forward = self.yield_state['stage']=='feed' and self.speed>0.
+        feature_floor = np.r_[np.full(len(required),.100001),[5e-6,5e-6] if forward else []]
+        def predict(candidate):
+            mujoco.mj_setState(self.m,shadow,integration,specification)
+            shadow.ctrl[:] = candidate
+            for _ in range(steps):
+                mujoco.mj_step(self.m,shadow)
+            velocity = np.empty(self.m.nv)
+            mujoco.mj_differentiatePos(self.m,velocity,DT,data.qpos,shadow.qpos)
+            residual = matrix@velocity-vector
+            mujoco.mj_forward(self.m,shadow)
+            predicted_force = np.zeros((2,21))
+            for index,contact in enumerate(shadow.contact):
+                for robot,pipe in [(contact.geom1,contact.geom2),(contact.geom2,contact.geom1)]:
+                    module = int(self.m.geom_bodyid[robot])-self.head
+                    name = self.m.geom(pipe).name or ''
+                    side = (0 if name in ['pipe_straight_01','pipe_sharp_in_02'] else
+                        1 if name in ['pipe_sharp_out_03','pipe_straight_04'] else None)
+                    if 0<=module<21 and side is not None and cylindrical_contact(side,contact.pos,contact.frame[:3]):
+                        force = np.zeros(6);mujoco.mj_contactForce(self.m,shadow,index,force)
+                        predicted_force[side,module] += max(0.,force[0])
+            feature = [predicted_force[side,module] for side,module in required]
+            if forward:
+                predicted_points = np.vstack([shadow.site('s_head').xpos,
+                    *[shadow.joint('joint'+str(i)).xanchor for i in range(1,21)],shadow.site('s_tail').xpos])
+                predicted_centers = .5*(predicted_points[:-1]+predicted_points[1:])
+                feature.extend([float(np.mean((predicted_centers[masks[side],side]-centers[masks[side],side])/DT))
+                    for side in range(2)])
+            return residual,velocity,np.asarray(feature)
+        baseline,baseline_velocity,baseline_feature = predict(target)
+        selected = None if local_bend is None else local_bend['joint']-1
+        q = data.qpos[self.qa]
+        lower = np.maximum(np.maximum(-np.radians(88),self.last-np.radians(10)*DT),q-np.radians(3))
+        upper = np.minimum(np.minimum(np.radians(88),self.last+np.radians(10)*DT),q+np.radians(3))
+        if selected is not None:
+            # The final physical support solve may reduce this same curve
+            # increment, but cannot add an opposite yielding motion afterward.
+            lower[selected] = min(self.last[selected],target[selected])
+            upper[selected] = max(self.last[selected],target[selected])
+        active = [i for i in range(20) if upper[i]-lower[i]>1e-8]
+        jacobian = np.empty((len(vector),len(active)))
+        feature_jacobian = np.empty((len(feature_floor),len(active)))
+        for column,joint in enumerate(active):
+            positive_step = min(.002,max(0.,upper[joint]-target[joint]))
+            negative_step = min(.002,max(0.,target[joint]-lower[joint]))
+            step = positive_step if positive_step>=negative_step else -negative_step
+            candidate = target.copy();candidate[joint] += step
+            residual,_,feature = predict(candidate)
+            jacobian[:,column] = (residual-baseline)/step
+            feature_jacobian[:,column] = (feature-baseline_feature)/step
+        low = lower[active]-target[active]
+        high = upper[active]-target[active]
+        fit = lsq_linear(np.vstack([jacobian,.5*np.eye(len(active))]),
+            np.r_[-baseline,np.zeros(len(active))],bounds=(low,high),tol=1e-7,max_iter=60)
+        def objective(change):
+            error = baseline+jacobian@change
+            return .5*(error@error+.25*(change@change))
+        def gradient(change):
+            return jacobian.T@(baseline+jacobian@change)+.25*change
+        constrained = minimize(objective,fit.x,jac=gradient,method='SLSQP',bounds=list(zip(low,high)),
+            constraints=[dict(type='ineq',fun=lambda change:baseline_feature+feature_jacobian@change-feature_floor,
+                jac=lambda change:feature_jacobian)],options=dict(ftol=1e-10,maxiter=80))
+        candidate = target.copy();candidate[active] += constrained.x
+        corrected,corrected_velocity,corrected_feature = predict(candidate)
+        feasible = bool(np.all(corrected_feature>=feature_floor-1e-7))
+        baseline_feasible = bool(np.all(baseline_feature>=feature_floor-1e-7))
+        accepted = feasible and (np.linalg.norm(corrected)<np.linalg.norm(baseline) or not baseline_feasible)
+        # A nonlinear contact change may invalidate the local differential.
+        # Only a model-confirmed improvement replaces the original increment.
+        final = candidate if accepted else target
+        return final,dict(horizon_s=DT,physics_steps_per_prediction=steps,
+            predicted_candidates=len(active)+2,accepted=bool(accepted),
+            baseline_task_residual=float(np.linalg.norm(baseline)),
+            corrected_task_residual=float(np.linalg.norm(corrected)),
+            maximum_ctrl_correction_deg=float(np.degrees(abs(final-target)).max()),
+            baseline_predicted_root_velocity=baseline_velocity[:6].tolist(),
+            corrected_predicted_root_velocity=corrected_velocity[:6].tolist(),
+            required_actual_carriers=required,feature_floor=feature_floor.tolist(),
+            baseline_support_and_axial_features=baseline_feature.tolist(),
+            corrected_support_and_axial_features=corrected_feature.tolist(),
+            corrected_feasible=feasible,constrained_status=str(constrained.message),
+            basis='private original-model joint ctrl rollouts from full INTEGRATION state; no root assignment, actual progress credit or parameter change')

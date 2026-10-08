@@ -1,0 +1,2 @@
+U47：U46/resume_t3p95完整状态；参考写入合并距旧格点1e-8米以内数值重复坐标，失败回滚曲线；原运动控制保持。
+Continue recovered full U46 3.95s state after actual M20 source contact held 1.05s. Persistence coalesces only near-duplicate arclength knots and restores last valid curve if rejected. U46 measured-root normal execution, U45 small-step guard, original drives/pressure/shape cap/shared material shift/support and physical completion criteria retained. Continue actual handover, rear release, feed and material transfer.

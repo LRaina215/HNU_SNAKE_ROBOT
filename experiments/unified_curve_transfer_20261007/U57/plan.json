@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U54\\action_t3p50_feed.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U54\\action_t3p50_feed_controller.json",
+  "change": "Actual coordinated feed with short original-model actuator/contact execution prediction: same world/contact/curve task velocities evaluated on private50ms full-INTEGRATION ctrl rollouts whose root evolves naturally; bounded differential correction of other joint ctrl keeps selected rear increment and all original +/-88deg,10deg/s,+/-3deg encoder constraints. Accept correction only if nonlinear predicted same-task residual improves. Same load-based coordinated yielding feedback, continuous reference/common shift, unchanged drives/pressure/12mm cap and actual support/progress checks. Prediction rollouts are not actual trial evidence; only dispatched joint ctrl dynamics count. Continue full U54 actual3.50s feed checkpoint toward real coordinated transfer.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

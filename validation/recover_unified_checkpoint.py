@@ -46,7 +46,8 @@ def recover_current(case, seconds, plan, commands, trace, frozen):
         observed.qpos[:] = trace['qpos'][index]
         observed.qvel[:] = trace['qvel'][index]
         observed.ctrl[:] = trace['ctrl'][index]
-        target, info = controller.command(observed, command['controller_t_s'],
+        command_data = physical if getattr(controller,'physics_execution_prediction_enabled',False) else observed
+        target, info = controller.command(command_data, command['controller_t_s'],
             trace['contact_force_N'][index], trace['torque'][index],
             trace['cylindrical_contact_force_N'][index])
         maximum_ctrl_error = max(maximum_ctrl_error,

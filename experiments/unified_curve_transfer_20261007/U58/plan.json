@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U54\\action_t3p50_feed.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U54\\action_t3p50_feed_controller.json",
+  "change": "Actual full coordinated yielding/feed with nonlinear original-model execution correction constrained by original replacement carriers (2source/3target >0.1N). During positive common feed require predicted actual same-carrier axial motion forward on BOTH occupied sides; never credit prediction as real progress. Same finite-link curve task residual, no pressure target/drive/shape increase. Physical correction can reduce same selected rear curve increment, final support solve includes chosen actual ctrl; no opposite bend/post-overwrite. All original joint/encoder/rate limits retained. Nonlinear confirmation required before accepting candidate. Same full U54 3.50s state; run actual coordination and record whether feasibility becomes actual motion.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

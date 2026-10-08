@@ -1,0 +1,128 @@
+{
+  "source": "experiments\\unified_curve_transfer_20261007\\U46",
+  "checkpoint_s": 3.95,
+  "physics": "original dispatched ctrl replay in unchanged model; no physical root assignment",
+  "controller": "frozen controller on original recorded observations, including contact/yield/progress history",
+  "maximum_reference_error_mm": 0.0,
+  "maximum_dispatched_ctrl_error_rad": 0.0,
+  "physical_boundary_errors": {
+    "qpos": 0.0,
+    "qvel": 0.0,
+    "ctrl": 0.0
+  },
+  "shift_mm": 909.1623468610615,
+  "localized_yield": {
+    "stage": "regrip",
+    "role": "rear_release",
+    "side": 0,
+    "parameter": 0.07296536991548117,
+    "started_t": 1349.0499999778758,
+    "regrip_t": 1349.0499999778758,
+    "selected_joint": 20,
+    "initial_angle_deg": 61.087173109443064,
+    "initial_force_N": 0.0,
+    "initial_load_Nm": 0.05829507055110828,
+    "recovery_force_goal_N": 5.408423903952354,
+    "anchor_goals_N": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.8779242648062597,
+        7.031976608177153,
+        0.0,
+        0.0,
+        12.463372782750644,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        13.548104029056974,
+        0.0,
+        3.568874984170846,
+        0.0,
+        0.8749081420707147,
+        0.896647947363421,
+        0.0,
+        3.1079455169634627,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.849794843468261,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "outward_normal": [
+      0.0,
+      -0.9756203438828405,
+      0.2194651329982244
+    ],
+    "reference_origin": [
+      0.9533770112015515,
+      -0.09123078644276059,
+      1.0012962795811264
+    ],
+    "intended_material_modules": [
+      20
+    ],
+    "released_material_modules": [
+      20
+    ],
+    "released_center_parameters": [
+      0.04171432924155877
+    ],
+    "freed_source_parameters": [],
+    "feed_total_pipe_origin": [
+      -0.00452251991493724,
+      0.0020777817956091696
+    ],
+    "feed_succeeded": false,
+    "handover_verified": false,
+    "handover_baseline_modules": [
+      15,
+      18
+    ],
+    "anchor_recovery_active": false,
+    "transferred_target_modules": [
+      14
+    ],
+    "preceding_action_joint": 18,
+    "preceding_feed_succeeded": false,
+    "preceding_material_mm": null,
+    "target_handover_pending": false,
+    "handover_continuous_modules": [
+      20
+    ],
+    "handover_contact_seen_t": 1350.649999977876
+  },
+  "source_contacts": [
+    14,
+    15,
+    18,
+    20
+  ],
+  "target_contacts": [
+    1,
+    3,
+    6
+  ]
+}

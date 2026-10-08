@@ -1,0 +1,55 @@
+{
+  "error": "Degenerate current curve cannot define arclength",
+  "method": "Private command from recovered full checkpoint; no physics step or control dispatch",
+  "previous_grid_count": 2813,
+  "failed_grid_count": 2834,
+  "minimum_parameter_spacing_m": 8.881784197001252e-16,
+  "minimum_sample_segment_m": 1.1322097734007351e-15,
+  "degenerate_segments": [
+    {
+      "index": 1289,
+      "parameters": [
+        0.8412030179558749,
+        0.8412030180255403
+      ],
+      "spacing_m": 6.966538457220395e-11,
+      "segment_m": 6.416258818644865e-11
+    },
+    {
+      "index": 1418,
+      "parameters": [
+        1.1023488190917754,
+        1.1023488191677266
+      ],
+      "spacing_m": 7.595124529302666e-11,
+      "segment_m": 9.32088932089784e-11
+    },
+    {
+      "index": 1458,
+      "parameters": [
+        1.1782720810849154,
+        1.1782720810849248
+      ],
+      "spacing_m": 9.325873406851315e-15,
+      "segment_m": 8.458303897953864e-15
+    },
+    {
+      "index": 1488,
+      "parameters": [
+        1.2367272190685894,
+        1.2367272190685925
+      ],
+      "spacing_m": 3.1086244689504383e-15,
+      "segment_m": 3.521787733787174e-15
+    },
+    {
+      "index": 1521,
+      "parameters": [
+        1.3055044770509683,
+        1.3055044770509692
+      ],
+      "spacing_m": 8.881784197001252e-16,
+      "segment_m": 1.1322097734007351e-15
+    }
+  ]
+}
