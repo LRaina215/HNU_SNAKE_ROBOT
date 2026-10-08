@@ -801,6 +801,7 @@ class UnifiedCurveTransfer:
         coordinated_yielding = (self.yield_state is not None
             and self.yield_state['stage']=='feed'
             and self.yield_state.get('coordinated_feed_active',False)
+            and not self.yield_state.get('supported_feed_continuation',False)
             and not self.yield_state.get('contact_loss_after_partial_feed',False))
         """Measured bends and load change the route before target generation."""
         if self.yield_state is not None and self.yield_state.get('target_handover_pending', False):
@@ -868,6 +869,15 @@ class UnifiedCurveTransfer:
             count = max(1, np.count_nonzero(mask & (forces[side] > .1)))
             goal = self.support_force_goals[side]/count
             strength[mask] = np.clip(.018*(goal-forces[side, mask])/max(goal, 1.), -.006, .018)
+        continuing = self.yield_state is not None and self.yield_state.get('supported_feed_continuation',False)
+        if continuing:
+            strength[:] = 0.
+            masks = np.asarray(physical_wrap_masks(centers))
+            masks[0,self.transferred_material_modules] = False
+            goals = np.asarray(self.yield_state['anchor_goals_N'])
+            for side in range(2):
+                mask = masks[side] & (goals[side]>.1)
+                strength[mask] = np.clip(.018*(goals[side,mask]-forces[side,mask])/np.maximum(goals[side,mask],1.),-.006,.018)
         gain = np.zeros(len(measured_bone.field))
         gain[1:-1] = (strength[:-1]+strength[1:])/2
         source_support, target_support = physical_wrap_masks(centers)
@@ -893,7 +903,7 @@ class UnifiedCurveTransfer:
         self.curve_grip_strength = strength.copy()
         local_joint = None
         local_remaining_load = 0.
-        if self.yield_state is not None:
+        if self.yield_state is not None and not continuing:
             local_joint = int(self.yield_state['selected_joint'])
             gain[:] = 0.
             strength[:] = 0.
@@ -1030,6 +1040,28 @@ class UnifiedCurveTransfer:
         held = np.asarray([source, target]) & (forces > .1)
         held[0, self.transferred_material_modules] = False
         old = self.yield_state
+        if old.get('feed_succeeded',False) and held[0].sum()>=2 and held[1].sum()>=3:
+            # A successful continuous feed is allowed to keep its actual holders.
+            # Choosing another release is necessary only after real stagnation.
+            self.curve.persist_tail_recovery_reference(self.shift)
+            material = (self.physical_pipe_progress-np.asarray(old['feed_pipe_origin']))/self.physical_axial_sines
+            goals = np.asarray(old['anchor_goals_N']).copy()
+            goals[held] = forces[held]
+            old.update(stage='feed',supported_feed_continuation=True,
+                coordinated_feed_active=True,feed_reference_registered=True,
+                anchor_recovery_active=False,anchor_goals_N=goals.tolist(),
+                continuation_last_progress_t=t,continuation_best_material=float(min(material)),
+                continuation_milestone_material=float(min(material)),continuation_checkpoint=0,
+                freed_source_parameters=[],intended_material_modules=[],intended_center_parameters=[],
+                released_material_modules=[],released_center_parameters=[],contact_retained_feed=False)
+            for key in ['next_release_pending','next_release_joint','next_release_seen_t','next_release_continuous_modules','anchor_loss_t']:
+                old.pop(key,None)
+            self.yield_release_modules=[]
+            self.events.append(dict(t_s=t,mode='successful_feed_continues_with_actual_holders',
+                source_holders=np.flatnonzero(held[0]).tolist(),target_holders=np.flatnonzero(held[1]).tolist(),
+                actual_material_mm=float(min(material)*1000),
+                meaning='retain historical progress and same common feed; no mandatory new release after successful handover'))
+            return True
         old_spans = list(old.get('freed_source_parameters', []))
         # A restored contact is a holder again. Retire old free-space labels
         # whenever that spatial neighbourhood is actually carrying load.
@@ -1104,7 +1136,18 @@ class UnifiedCurveTransfer:
                 receiving_grasps=np.flatnonzero(remaining[1]).tolist(),
                 meaning='curve lifts a measured posterior span; source contact must actually disappear before feed'))
             return True
-        if old.get('transferred_target_modules') and old['selected_joint'] == 20:
+        if self.transferred_material_modules and held[0].sum()>=2 and held[1].sum()>=3 and old['selected_joint']!=20:
+            free_source = source & ~target & ~held[0]
+            free_source[self.transferred_material_modules] = False
+            if np.any(free_source[2:]):
+                self.events.append(dict(t_s=t,mode='restore_replacement_after_successful_feed',
+                    previous_feed_succeeded=old.get('feed_succeeded',False),
+                    previous_material_mm=old.get('achieved_material_mm'),
+                    meaning='keep actual loaded rods and completed progress; restore a free source carrier before next distinct action'))
+                self.restore_posterior_after_transfer(p,centers,q,forces,held,t,locations,
+                    list(self.transferred_material_modules),verify_target=False)
+                return True
+        if self.transferred_material_modules and old['selected_joint'] == 20:
             old.update(stage='regrip', next_release_pending=True)
             old.pop('next_release_joint', None)
             old.pop('next_release_seen_t', None)
@@ -1151,7 +1194,8 @@ class UnifiedCurveTransfer:
         normal /= max(np.linalg.norm(normal), 1e-9)
         source_count = int(held[0].sum())
         carrying_share = float(forces[0, held[0]].sum())/max(1, source_count+1)
-        goal = max(float(old['anchor_goals_N'][0][module]), carrying_share)
+        previous_goal = float(old['anchor_goals_N'][0][module])
+        goal = previous_goal if previous_goal>.1 else carrying_share
         anchor_goals = forces.copy()
         if not verify_target:
             for side in range(2):
@@ -1236,6 +1280,8 @@ class UnifiedCurveTransfer:
             modules = np.asarray(state['released_material_modules'], dtype=int)
         elif state.get('released_center_parameters'):
             modules = np.unique([int(np.argmin(abs(locations-value))) for value in state['released_center_parameters']])
+        if state.get('supported_feed_continuation',False):
+            modules = np.asarray([],dtype=int)
         self.yield_release_modules = modules.tolist()
         if state.pop('refresh_anchor_goals', False):
             # Carrying roles changed during feed. Old low-pressure goals must
@@ -1407,6 +1453,23 @@ class UnifiedCurveTransfer:
             elif t-state['started_t'] >= 12.:
                 state.update(stage='failed', failure='local_release_not_observed_12s')
         elif state['stage'] == 'feed':
+            if state.get('supported_feed_continuation',False):
+                material = (self.physical_pipe_progress-np.asarray(state['feed_pipe_origin']))/self.physical_axial_sines
+                progress = float(min(material))
+                if progress>=state['continuation_best_material']+.001:
+                    state.update(continuation_best_material=progress,continuation_last_progress_t=t)
+                if progress>=state['continuation_milestone_material']+.008:
+                    state['continuation_milestone_material']=progress
+                    state['continuation_checkpoint']+=1
+                    self.events.append(dict(t_s=t,mode='supported_common_feed_actual_progress',
+                        actual_material_mm=progress*1000,source_holders=np.flatnonzero(held[0]).tolist(),
+                        target_holders=np.flatnonzero(held[1]).tolist()))
+                if t-state['continuation_last_progress_t']>=35.:
+                    state.update(supported_feed_continuation=False,feed_succeeded=False)
+                    self.events.append(dict(t_s=t,mode='supported_common_feed_stalled',actual_material_mm=progress*1000))
+                    if not self.start_rear_release(p,centers,q,tracking,forces,t,locations):
+                        state.update(stage='failed',failure='no_supported_rear_release_available_after_feed_stall')
+                return
             if (state.get('contact_retained_feed', False)
                     and not state.get('contact_loss_after_partial_feed', False)
                     and current_force <= .1):
@@ -1547,8 +1610,7 @@ class UnifiedCurveTransfer:
                     if slower >= -.0002 else min(.0005,probe_remaining/DT))
         if self.yield_state is not None and self.yield_state.get('anchor_recovery_active', False):
             requested = 0.
-        restoring_stalled_grasp = (self.yield_state is not None and self.yield_state['stage'] == 'regrip'
-            and not self.yield_state.get('feed_succeeded', True))
+        restoring_stalled_grasp = (self.yield_state is not None and self.yield_state['stage'] == 'regrip')
         if restoring_stalled_grasp:
             requested = 0.
         self.speed += np.clip(requested-self.speed, -.002*DT, .001*DT)
@@ -1969,6 +2031,7 @@ class UnifiedCurveTransfer:
             matrix[:,:6] = 0.
         local_bend_constraint = None
         if (self.yield_state is not None and self.yield_state['stage'] in ['unload', 'feed', 'regrip']
+                and not self.yield_state.get('supported_feed_continuation',False)
                 and not self.yield_state.get('anchor_recovery_active', False)
                 and not self.yield_state.get('target_handover_pending', False)):
             joint = int(self.yield_state['selected_joint'])
@@ -2044,7 +2107,7 @@ class UnifiedCurveTransfer:
                         np.minimum(np.radians(88), self.last+speed*DT))
         physics_execution = None
         if (self.physics_execution_prediction_enabled and not self.first_dispatch
-                and self.yield_state is not None and self.yield_state['stage'] in ['unload','feed']):
+                and self.yield_state is not None and self.yield_state['stage'] in ['unload','feed','regrip']):
             target, physics_execution = self.refine_physical_execution(data,target,
                 np.vstack(physical_A),np.concatenate(physical_b),local_bend_constraint,support_forces)
             if physics_execution.get('forward_probe_rejected',False):
@@ -2135,15 +2198,18 @@ class UnifiedCurveTransfer:
         steps = round(DT/self.m.opt.timestep)
         points,centers = self.observe(data)
         masks = np.asarray(physical_wrap_masks(centers)) & (forces>.1)
-        if self.yield_state.get('anchor_recovery_active',False):
-            goals = np.asarray(self.yield_state['anchor_goals_N'])
-            masks |= np.asarray(physical_wrap_masks(centers)) & (goals>.1)
         masks[0,self.transferred_material_modules] = False
-        masks[self.yield_state['side'],self.yield_release_modules] = False
-        required = [(side,int(module)) for side,count in [(0,2),(1,3)]
+        opening = (self.yield_state['stage'] in ['unload','feed']
+            and not self.yield_state.get('anchor_recovery_active',False))
+        if opening:
+            masks[self.yield_state['side'],self.yield_release_modules] = False
+        required = [(side,int(module)) for side,count in [(0,2 if opening else 21),(1,3)]
             for module in sorted(np.flatnonzero(masks[side]),key=lambda i:forces[side,i],reverse=True)[:count]]
         forward = self.yield_state['stage']=='feed' and self.speed>0.
-        feature_floor = np.r_[np.full(len(required),.100001),[5e-6,5e-6] if forward else []]
+        feature_floor = np.full(len(required),.100001)
+        # Forward motion is a soft part of the SAME action objective. Do not
+        # require both occupied sides to advance in every 50ms substep.
+        nominal_axis_goal = self.speed*self.physical_axial_sines if forward else np.zeros(2)
         def predict(candidate):
             mujoco.mj_setState(self.m,shadow,integration,specification)
             shadow.ctrl[:] = candidate
@@ -2171,6 +2237,10 @@ class UnifiedCurveTransfer:
                 feature.extend([float(np.mean((predicted_centers[masks[side],side]-centers[masks[side],side])/DT))
                     for side in range(2)])
             return residual,velocity,np.asarray(feature)
+        def cost_residual(residual,feature):
+            return np.r_[residual,2.*(feature[len(required):]-nominal_axis_goal)] if forward else residual
+        def force_features(feature):
+            return feature[:len(required)]
         baseline,baseline_velocity,baseline_feature = predict(target)
         selected = None if local_bend is None else local_bend['joint']-1
         q = data.qpos[self.qa]
@@ -2183,11 +2253,11 @@ class UnifiedCurveTransfer:
             upper[selected] = min(upper[selected],max(self.last[selected],target[selected]))
         active = [i for i in range(20) if upper[i]-lower[i]>1e-8]
         center = target.copy()
-        current_residual,current_feature = baseline,baseline_feature
+        current_residual,current_feature = cost_residual(baseline,baseline_feature),baseline_feature
         options = [(target.copy(),baseline,baseline_velocity,baseline_feature)]
         predictions = 1
         for iteration in range(3):
-            jacobian = np.empty((len(vector),len(active)))
+            jacobian = np.empty((len(current_residual),len(active)))
             feature_jacobian = np.empty((len(feature_floor),len(active)))
             for column,joint in enumerate(active):
                 positive_step = min(.002,max(0.,upper[joint]-center[joint]))
@@ -2196,8 +2266,8 @@ class UnifiedCurveTransfer:
                 perturbation = center.copy();perturbation[joint] += step
                 residual,_,feature = predict(perturbation)
                 predictions += 1
-                jacobian[:,column] = (residual-current_residual)/step
-                feature_jacobian[:,column] = (feature-current_feature)/step
+                jacobian[:,column] = (cost_residual(residual,feature)-current_residual)/step
+                feature_jacobian[:,column] = (force_features(feature)-force_features(current_feature))/step
             low,high = lower[active]-center[active],upper[active]-center[active]
             fit = lsq_linear(np.vstack([jacobian,.5*np.eye(len(active))]),
                 np.r_[-current_residual,np.zeros(len(active))],bounds=(low,high),tol=1e-7,max_iter=60)
@@ -2207,19 +2277,19 @@ class UnifiedCurveTransfer:
             def gradient(change):
                 return jacobian.T@(current_residual+jacobian@change)+.25*change
             constrained = minimize(objective,fit.x,jac=gradient,method='SLSQP',bounds=list(zip(low,high)),
-                constraints=[dict(type='ineq',fun=lambda change:current_feature+feature_jacobian@change-feature_floor,
+                constraints=[dict(type='ineq',fun=lambda change:force_features(current_feature)+feature_jacobian@change-feature_floor,
                     jac=lambda change:feature_jacobian)],options=dict(ftol=1e-10,maxiter=80))
             candidate = center.copy();candidate[active] += constrained.x
             candidate = np.clip(candidate,lower,upper)
             corrected,corrected_velocity,corrected_feature = predict(candidate)
             predictions += 1
             options.append((candidate.copy(),corrected,corrected_velocity,corrected_feature))
-            feasible = bool(np.all(corrected_feature>=feature_floor-1e-7))
+            feasible = bool(np.all(force_features(corrected_feature)>=feature_floor-1e-7))
             if feasible:
                 break
-            center,current_residual,current_feature = candidate,corrected,corrected_feature
-        baseline_feasible = bool(np.all(baseline_feature>=feature_floor-1e-7))
-        accepted = feasible and (np.linalg.norm(corrected)<np.linalg.norm(baseline) or not baseline_feasible)
+            center,current_residual,current_feature = candidate,cost_residual(corrected,corrected_feature),corrected_feature
+        baseline_feasible = bool(np.all(force_features(baseline_feature)>=feature_floor-1e-7))
+        accepted = feasible and (np.linalg.norm(cost_residual(corrected,corrected_feature))<np.linalg.norm(cost_residual(baseline,baseline_feature)) or not baseline_feasible)
         # A nonlinear contact change may invalidate the local differential.
         # Only a model-confirmed improvement replaces the original increment.
         final = candidate if accepted else target
@@ -2246,6 +2316,8 @@ class UnifiedCurveTransfer:
             baseline_predicted_root_velocity=baseline_velocity[:6].tolist(),
             corrected_predicted_root_velocity=corrected_velocity[:6].tolist(),
             required_actual_carriers=required,feature_floor=feature_floor.tolist(),
+            axial_goal_kind='soft common-shift motion; continuous actual net progress decides success',
+            nominal_axis_goal_mm_s=(nominal_axis_goal*1000).tolist(),
             baseline_support_and_axial_features=baseline_feature.tolist(),
             corrected_support_and_axial_features=corrected_feature.tolist(),
             corrected_feasible=feasible,constrained_status=str(constrained.message),

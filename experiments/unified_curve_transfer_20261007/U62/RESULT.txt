@@ -1,0 +1,6 @@
+U62: 68.10s actual dynamics, local_release_not_observed_12s; complete=False.
+Fixed M0-M6 mean target-Y advance -27.470200mm; fixed M14-M20 mean source-X advance -1.309566mm. Negative result retained; U61 earlier positive progress is not erased.
+M20 actual restoration confirmed at 8.50s (full state 8.55s). A forced new release/feed began at 18.95s (full state 19.00s), stalled, and restored at 55.00s (full state 55.05s). Next unload failed its original12s observation rule.
+New sustained target modules: []; admissions: []. No M15+ admission; whole body transfer incomplete.
+Final actual source holders [15, 17, 18]; target holders [0, 1, 5]. Max actuator torque 2.355000Nm; pipe penetration 0.773149mm; max reference chord error 0.000130295mm.
+Only20 physical joint ctrl dispatched; private original-model predictions are not actual trials/progress. Original limits, drive, pressure rules and12mm curve cap retained. Frozen source, full states, actual trace, commands and1x replay saved. Large files remain local.

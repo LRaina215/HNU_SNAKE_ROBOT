@@ -231,6 +231,7 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
     admissions = []
     action_checkpoints = []
     last_action_stage = controller.yield_state['stage'] if controller.yield_state else None
+    last_continuation_checkpoint = 0
     try:
         for tick in range(round(horizon/DT)):
             t = tick*DT
@@ -242,7 +243,9 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             sim.step_command(target)
             r = sim.rows[-1]
             action = info.get('localized_yield')
-            if action and action['stage'] != last_action_stage and action['stage'] in ['feed', 'completed']:
+            continuous_checkpoint = action.get('continuation_checkpoint',0) if action else 0
+            if action and ((action['stage'] != last_action_stage and action['stage'] in ['feed', 'completed'])
+                    or continuous_checkpoint>last_continuation_checkpoint):
                 label = f'action_t{t+DT:.2f}_{action["stage"]}'.replace('.', 'p')
                 mujoco.mj_getState(sim.m, sim.d, sim.state, mujoco.mjtState.mjSTATE_INTEGRATION)
                 np.savez_compressed(case/f'{label}.npz', integration_state=sim.state.copy(),
@@ -252,6 +255,7 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
                     joint=action['selected_joint'], physical_state=f'{label}.npz',
                     controller_state=f'{label}_controller.json'))
             last_action_stage = action['stage'] if action else None
+            last_continuation_checkpoint = continuous_checkpoint
             c, f = r['centers_mm'], r['contact_force_N']
             age = np.where(f[1] > .1, age+DT, 0.)
             for module in np.flatnonzero(age >= .75):

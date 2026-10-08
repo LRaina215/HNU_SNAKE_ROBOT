@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U61\\action_t13p15_completed.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U61\\action_t13p15_completed_controller.json",
+  "change": "Continue confirmed U61 handover with current actual holders and same historical progress/common feed. Successful feed does not force another unload-regrip cycle. Retire old release roles, capture current holder loads, retain established free-carrier pressure goal, measured shared shape feedback with original12mm cap and limits. Save further8mm actual-material milestones; only35s actual stagnation admits restoration or another release. Per50ms forward is soft, original physical supports/drive/ctrl/collision/full-body completion stay.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}
