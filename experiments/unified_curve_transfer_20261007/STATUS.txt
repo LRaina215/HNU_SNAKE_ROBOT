@@ -1,6 +1,6 @@
 2026-10-08：统一曲线跨管，完整整身跨越未完成。
 
-2026-10-08: 63 actual attempts started; U01-U62 ended; U63 running from U61 confirmed13.15s handover. U61 actual13.20s: fixed front+6.728668mm/rear+2.484844mm, original pitch-normalized slower-side material8.251066mm and1s M18 handover; no new M15+ admission. U62 forced next cycle:68.10s, fixed front-27.470200mm/rear-1.309566mm, no admission. U63 retains actual holders and continues common feed; restoration/switch only after actual stagnation. Whole-body transfer incomplete. Initialization failure without dynamics is listed separately, not counted as trial.
+2026-10-08:70 actual attempts started; U64/U68 interrupted by steering, U70 running; other U01-U69 ended. M15 new actual target handover confirmed from U63 incoming contact and U65/U66 actual continuation. U69 true source-reduced transport7.25s: front+5.433214mm/rear+3.289450mm, tail last1s Z-0.553112mm; old handover revocation on isolated M15 contact gap caused source-count stop while M15 remained target-side and5 targets held. U70 retains support handover/active motion side, omits empty means, observes actual tail/target/joint stability for finite30s. Whole-body transfer incomplete; no M16+ sustained admission yet. No history jump or fake bilateral material credit.
 
 U25已有真实前后配合：7.8秒M17抬离、保留承重M16；第二次后部让位后44.9–54秒固定前/后身体段前进0.723/1.446mm，实际同批轴向累计源2.105/目标2.947mm，按保存观测器斜率折算8.237/20.075mm，才转重抓持。192.8秒再次停滞；最终前/后净2.637/0.246mm，M11历史重新接管，M14–M20目标力仍全为0，整身跨越未完成。
 

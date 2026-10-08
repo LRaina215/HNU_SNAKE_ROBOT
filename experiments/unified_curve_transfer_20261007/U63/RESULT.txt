@@ -1,0 +1,9 @@
+U63: 50.90s actual dynamics; controller_exception; complete=False.
+Final fixed M0-M6 mean target-Y advance -1.996276mm; fixed M14-M20 mean source-X advance 4.611765mm.
+Continuous feed milestones before any new unload/regrip:
+  13.95s: fixed front 8.666872mm, rear 3.093185mm; original pitch-normalized material [16.98355381581078, 77.6530197756131]mm; action_t13p95_feed.npz.
+  15.95s: fixed front 8.857479mm, rear 5.289735mm; original pitch-normalized material [25.094329820290096, 77.61846040724505]mm; action_t15p95_feed.npz.
+New M15+ target admission: []. Historical target readmission: [14]; M14 is already transferred and is not a new material frontier.
+Stop error: ValueError('min() arg is an empty sequence'). The35s stagnation transition attempted to protect an empty released-module list; its failed proposal was not dispatched. Final physical state is valid but controller export includes that partial proposal; direct resume labels the empty-span support wait, retains actual ctrl/reference/history and actual incoming M15 contact timer; no full replay required.
+Max torque 2.355000Nm; max pipe penetration 0.863122mm; chord error 0.000102942mm; first saved ctrl error 0.0rad.
+Positive intermediate motion does not erase subsequent retreat or imply full transfer. See evidence_summary.json for actual stage transitions. Only20 actual joint ctrl; private physics predictions are not actual trials/progress. Actual traces/commands/1x replay/full states remain local; frozen source and concise reports preserved. Final same-version CLOSE1B full transfer still required.

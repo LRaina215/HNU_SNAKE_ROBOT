@@ -1,0 +1,8 @@
+U66: 5.55s actual dynamics; posterior_source_support_below_two_1s; complete=False; error=None.
+Fixed front mean target-Y advance 1.611010mm; fixed rear mean source-X advance 3.470604mm.
+M15 qualified actual target-cylinder contact remains positive throughout this trace: True; min force 3.285529N, final force 6.943585N.
+Original20-joint ctrl only; first saved ctrl error 0.0rad; max torque 2.355000Nm; pipe penetration 0.870427mm; reference chord error 0.000075939mm.
+New material admission is useful progress but is not whole-body transfer. Frozen source, full physical/controller states, actual100Hz trace, commands and1x replay retained; large files local.
+M15 is formally registered with the unchanged1s actual rule at continuation start, sustained new-material admission checkpoint at0.75s. Initial frontier comes from historical transferred registry, not transient initial M15 contact.
+Existing actual-support route registration admits common feed; historical physical meter/root/ctrl unchanged. M20 true lift recorded0.70s. Feed reaches original9.336376mm material at4.60s then regrips as source cylinder holder M17 also loses contact; remaining M16 only. Original source<2 for1s stops5.55s. No M16+ admission.
+U67 branches from U65 still-supported incoming-M15 full state, cancelling stale M20 release after new target material admission and protecting all current source carriers.

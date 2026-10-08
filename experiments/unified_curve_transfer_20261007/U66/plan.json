@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U65\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U65\\repaired_incoming_controller.json",
+  "change": "Direct U65 full actual3.00s state continuation; preserve continuously incoming M15 target cylinder contact begun U63 50.55s, original1s actual rule, original min carriers/drive/limits/12mm shared-shape cap. Correct incoming-material registration placement in per-command update. On rejected protected-reference persistence, keep original pipe-solid guard and attempt existing measured-supported-route registration; no actual state/root/ctrl/history reset. If no admissible registration, defer feed transition keeping last valid protected reference. Braked common feed retains soft physical axial goal. New material frontier uses historical transferred registry rather than transient initial target contact, so incoming M15 remains measurable. Continue actual shared curve feed and further material handover.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

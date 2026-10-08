@@ -797,6 +797,14 @@ class UnifiedCurveTransfer:
                        self.d.site('s_tail').xpos])
         return p, (p[:-1]+p[1:])/2
 
+    def target_carries_transfer(self,centers,forces):
+        target_geometry=physical_wrap_masks(centers)[1]
+        target=target_geometry & (forces[1]>.1)
+        admitted=[module for module in self.transferred_material_modules if module>=15]
+        # A registered target rod can momentarily roll off contact while other
+        # receiving rods carry it. Do not undo handover at that single contact.
+        return bool(admitted and target.sum()>=4 and np.any(target_geometry[admitted]))
+
     def feedback_shape(self, p, q, reference, s, tracking, forces, dt):
         coordinated_yielding = (self.yield_state is not None
             and self.yield_state['stage']=='feed'
@@ -869,7 +877,8 @@ class UnifiedCurveTransfer:
             count = max(1, np.count_nonzero(mask & (forces[side] > .1)))
             goal = self.support_force_goals[side]/count
             strength[mask] = np.clip(.018*(goal-forces[side, mask])/max(goal, 1.), -.006, .018)
-        continuing = self.yield_state is not None and self.yield_state.get('supported_feed_continuation',False)
+        continuing = self.yield_state is not None and (self.yield_state.get('supported_feed_continuation',False)
+            or self.yield_state.get('waiting_rear_release_support',False))
         if continuing:
             strength[:] = 0.
             masks = np.asarray(physical_wrap_masks(centers))
@@ -1005,6 +1014,9 @@ class UnifiedCurveTransfer:
 
     def protect_local_carrying_rods(self, p, held, forces, t, joint, modules):
         """One entry for release, tail restoration and its support wait."""
+        if not len(modules):
+            # A common-feed support wait has not selected a released span.
+            return
         current = getattr(self.curve, 'tail_recovery_boundary', None)
         if current is not None and current.get('action_joint') == joint:
             return
@@ -1048,6 +1060,7 @@ class UnifiedCurveTransfer:
             goals = np.asarray(old['anchor_goals_N']).copy()
             goals[held] = forces[held]
             old.update(stage='feed',supported_feed_continuation=True,
+                waiting_rear_release_support=False,
                 coordinated_feed_active=True,feed_reference_registered=True,
                 anchor_recovery_active=False,anchor_goals_N=goals.tolist(),
                 continuation_last_progress_t=t,continuation_best_material=float(min(material)),
@@ -1102,6 +1115,7 @@ class UnifiedCurveTransfer:
                 continuous = cohort
                 old['next_release_seen_t'] = t
             old.update(stage='regrip', next_release_pending=True,
+                waiting_rear_release_support=not bool(self.yield_release_modules),
                 next_release_joint=joint, next_release_continuous_modules=continuous)
             old.setdefault('next_release_seen_t', t)
             if t-old['next_release_seen_t'] < 1.:
@@ -1265,6 +1279,59 @@ class UnifiedCurveTransfer:
         if self.yield_state is None:
             return
         state = self.yield_state
+        # Retain newly arriving material through feed/braking/support wait.
+        # Use the unchanged original one-second actual target-cylinder rule.
+        frontier=max(self.transferred_material_modules,default=14)
+        incoming=np.flatnonzero(held[1] & ~held[0] & (np.arange(21)>frontier))
+        old_seen=state.setdefault('incoming_target_contact_seen_t',{})
+        seen={str(module):old_seen.get(str(module),t) for module in incoming}
+        state['incoming_target_contact_seen_t']=seen
+        state['incoming_target_material_modules']=incoming.tolist()
+        if held[0].sum()>=2 and held[1].sum()>=3:
+            verified=[int(module) for module,start in seen.items() if t-start>=1.]
+            if verified:
+                self.transferred_material_modules=sorted(set(self.transferred_material_modules+verified))
+                held[0,verified]=False
+                for module in verified:
+                    state['anchor_goals_N'][1][module]=float(forces[1,module])
+                self.events.append(dict(t_s=t,mode='new_material_target_handover_retained',
+                    modules=verified,actual_target_force_N=forces[1,verified].tolist(),
+                    meaning='new material holds actual target cylinder for original1s; retain target role; no physical progress reset'))
+                # Actual new material admission is forward transfer evidence,
+                # including when front averages caused the old feed to brake.
+                # Keep its current carriers instead of completing a stale lift.
+                try:
+                    self.curve.persist_tail_recovery_reference(self.shift)
+                except ValueError:
+                    previous_curve=self.curve
+                    try:
+                        repaired=self.repair_registered_route(p,centers,t,forces)
+                    except ValueError:
+                        self.curve=previous_curve
+                        repaired=False
+                    if not repaired:
+                        state['target_handover_pending']=True
+                        return
+                goals=np.asarray(state['anchor_goals_N']).copy()
+                goals[held]=np.maximum(goals[held],forces[held])
+                state.setdefault('feed_pipe_origin',state.get('feed_total_pipe_origin',self.physical_pipe_progress.tolist()))
+                state.setdefault('coordination_pipe_origin',state['feed_pipe_origin'])
+                state.setdefault('coordination_shift_origin',self.shift)
+                material=(self.physical_pipe_progress-np.asarray(state['feed_pipe_origin']))/self.physical_axial_sines
+                state.update(stage='feed',supported_feed_continuation=True,waiting_rear_release_support=False,
+                    coordinated_feed_active=True,feed_reference_registered=True,anchor_recovery_active=False,
+                    target_handover_pending=False,anchor_goals_N=goals.tolist(),
+                    continuation_last_progress_t=t,continuation_best_material=float(min(material)),
+                    continuation_milestone_material=float(min(material)),continuation_checkpoint=0,
+                    intended_material_modules=[],intended_center_parameters=[],released_material_modules=[],
+                    released_center_parameters=[],freed_source_parameters=[],contact_retained_feed=False)
+                for key in ['next_release_pending','next_release_joint','next_release_seen_t','next_release_continuous_modules','anchor_loss_t']:
+                    state.pop(key,None)
+                self.yield_release_modules=[]
+                self.events.append(dict(t_s=t,mode='common_feed_retains_carriers_after_new_material_admission',
+                    modules=verified,source_holders=np.flatnonzero(held[0]).tolist(),
+                    meaning='actual new target material cancels stale release; retain current supports and historical progress; no8mm feed-success credit'))
+                return
         # Keep this selected physical hinge and its released rods for the
         # duration of this action. Its location follows the shared curve map;
         # the next action is selected afresh from current measured contacts.
@@ -1280,8 +1347,10 @@ class UnifiedCurveTransfer:
             modules = np.asarray(state['released_material_modules'], dtype=int)
         elif state.get('released_center_parameters'):
             modules = np.unique([int(np.argmin(abs(locations-value))) for value in state['released_center_parameters']])
-        if state.get('supported_feed_continuation',False):
+        if state.get('supported_feed_continuation',False) or state.get('waiting_rear_release_support',False):
             modules = np.asarray([],dtype=int)
+        target_carried=self.target_carries_transfer(centers,forces)
+        state['target_carried_transfer_active']=target_carried
         self.yield_release_modules = modules.tolist()
         if state.pop('refresh_anchor_goals', False):
             # Carrying roles changed during feed. Old low-pressure goals must
@@ -1334,7 +1403,7 @@ class UnifiedCurveTransfer:
             remaining[state['side'], modules] = False
         for other in state.get('freed_source_parameters', []):
             remaining[0, abs(locations-other) < .75*LINK] = False
-        if remaining[0].sum() < 2 or remaining[1].sum() < 3:
+        if (remaining[0].sum() < 2 and not target_carried) or remaining[1].sum() < 3:
             if not state.get('anchor_recovery_active', False):
                 state['anchor_loss_t'] = t
                 self.events.append(dict(t_s=t, mode='local_yield_pause_restore_anchors',
@@ -1353,7 +1422,7 @@ class UnifiedCurveTransfer:
                 # Restored holders still need their original one-second
                 # confirmation, but that interval is not continuing loss.
                 state['anchor_loss_t'] = t
-                if state.get('role') == 'rear_release' and state['stage'] in ['unload','feed']:
+                if state.get('role') == 'rear_release' and state['stage'] in ['unload','feed'] and not target_carried:
                     carrying = held[0].copy()
                     carrying[modules] = False
                     cohort = np.flatnonzero(carrying).tolist()
@@ -1412,7 +1481,22 @@ class UnifiedCurveTransfer:
                     and remaining[0].sum() >= 2 and remaining[1].sum() >= 3
                     and not state['anchor_recovery_active'])
                 if reduced and not state.get('coordinated_feed_active', False):
-                    error = self.curve.persist_tail_recovery_reference(self.shift)
+                    try:
+                        error=self.curve.persist_tail_recovery_reference(self.shift)
+                    except ValueError as rejected:
+                        previous_curve=self.curve
+                        try:
+                            repaired=self.repair_registered_route(p,centers,t,forces)
+                        except ValueError:
+                            self.curve=previous_curve
+                            repaired=False
+                        if not repaired:
+                            self.events.append(dict(t_s=t,mode='feed_reference_transition_deferred',
+                                reason=str(rejected),meaning='retain last valid protected reference; original pipe-solid guard unchanged'))
+                            return
+                        error=0.
+                        self.events.append(dict(t_s=t,mode='feed_reference_transition_registered_to_actual_support',
+                            reason=str(rejected),meaning='existing measured-route registration after rejected persistence; actual state, ctrl and historical progress unchanged'))
                     state.update(coordinated_feed_active=True,
                         coordination_shift_origin=self.shift,
                         coordination_pipe_origin=self.physical_pipe_progress.tolist(),
@@ -1455,7 +1539,8 @@ class UnifiedCurveTransfer:
         elif state['stage'] == 'feed':
             if state.get('supported_feed_continuation',False):
                 material = (self.physical_pipe_progress-np.asarray(state['feed_pipe_origin']))/self.physical_axial_sines
-                progress = float(min(material))
+                progress=float(material[1] if target_carried and held[0].sum()<2 else min(material))
+                state['continuation_motion_meter']='actual target cohort after support handover' if target_carried and held[0].sum()<2 else 'slower actual occupied-pipe cohort'
                 if progress>=state['continuation_best_material']+.001:
                     state.update(continuation_best_material=progress,continuation_last_progress_t=t)
                 if progress>=state['continuation_milestone_material']+.008:
@@ -1465,6 +1550,9 @@ class UnifiedCurveTransfer:
                         actual_material_mm=progress*1000,source_holders=np.flatnonzero(held[0]).tolist(),
                         target_holders=np.flatnonzero(held[1]).tolist()))
                 if t-state['continuation_last_progress_t']>=35.:
+                    if target_carried and held[0].sum()<2:
+                        state.update(stage='failed',failure='target_carried_feed_stalled_35s')
+                        return
                     state.update(supported_feed_continuation=False,feed_succeeded=False)
                     self.events.append(dict(t_s=t,mode='supported_common_feed_stalled',actual_material_mm=progress*1000))
                     if not self.start_rear_release(p,centers,q,tracking,forces,t,locations):
@@ -1580,13 +1668,15 @@ class UnifiedCurveTransfer:
         source_grip_mask, target_grip_mask = physical_wrap_masks(centers)
         posterior_count = int(np.count_nonzero((support_forces[0] > .1) & source_grip_mask))
         receiver_count = int(np.count_nonzero((support_forces[1] > .1) & target_grip_mask))
-        local_material = float(local_pipe_material[1] if target_grip_mask[-1] else min(local_pipe_material))
+        target_carried=self.target_carries_transfer(centers,support_forces)
+        target_motion_meter=target_grip_mask[-1] or (target_carried and posterior_count<2)
+        local_material = float(local_pipe_material[1] if target_motion_meter else min(local_pipe_material))
         lag = self.shift-self.local_reference_shift_origin-local_material
         lag_scale = np.clip((.075-lag)/.05, 0., 1.)
-        support_scale = 1. if receiver_count >= 2 and (posterior_count >= 2 or target_grip_mask[-1]) else 0.
+        support_scale = 1. if receiver_count >= 2 and (posterior_count >= 2 or target_grip_mask[-1] or target_carried) else 0.
         requested = .004*float(error_scale)*float(lag_scale)*support_scale*smooth(t/2.)
         physical_speeds = self.physical_pipe_speed/self.physical_axial_sines
-        occupied_speeds = [physical_speeds[1]] if target_grip_mask[-1] else list(physical_speeds)
+        occupied_speeds = [physical_speeds[1]] if target_motion_meter else list(physical_speeds)
         slower = float(min(occupied_speeds))
         # A small, bounded lead starts rolling from rest. It disappears at
         # 15mm of unmatched feed; actual retreat brakes both pipe regions.
@@ -1599,7 +1689,7 @@ class UnifiedCurveTransfer:
             state = self.yield_state
             if state['stage'] in ['unload','feed'] and state.get('coordinated_feed_active',False):
                 action_material = (self.physical_pipe_progress-np.asarray(state['coordination_pipe_origin']))/self.physical_axial_sines
-                action_lag = self.shift-state['coordination_shift_origin']-float(min(action_material))
+                action_lag = self.shift-state['coordination_shift_origin']-float(action_material[1] if target_motion_meter else min(action_material))
                 action_bootstrap = .0005*float(np.clip((.015-action_lag)/.015,0.,1.))
                 probe_remaining = max(0., .001-(self.shift-state['coordination_shift_origin']))
                 # A finite 1mm shared-reference probe tests coordinated feed
@@ -1756,6 +1846,12 @@ class UnifiedCurveTransfer:
             tangent_feedforward.append(omega_ff)
             perpendicular = np.eye(3)-np.outer(u, u)
             pose_omega = perpendicular@(.35*np.cross(u, wanted_u))
+            if (self.yield_state is not None and (self.yield_state.get('supported_feed_continuation',False)
+                    or self.yield_state.get('waiting_rear_release_support',False))):
+                # Continue the measured common curve increment. Absolute old
+                # tangent recovery is another motion even when phase is braked;
+                # pressure feedback already reshapes this same current curve.
+                pose_omega[:] = 0.
             perpendicular_recovery.append(pose_omega)
             perpendicular_omega.append(perpendicular@omega_ff+pose_omega)
             reshaped_u = reshaped_p[module]-reshaped_p[module+1]
@@ -1879,8 +1975,11 @@ class UnifiedCurveTransfer:
                 axis_change = np.cross(old_u, new_u)
                 sine = np.linalg.norm(axis_change)
                 omega_ff = axis_change*math.atan2(sine, float(old_u@new_u))/(max(sine, 1e-12)*DT)
-                perpendicular_omega[module] = (np.eye(3)-np.outer(u, u))@(
-                    omega_ff+.35*np.cross(u, new_u))
+                pose_omega = .35*np.cross(u,new_u)
+                if (self.yield_state is not None and (self.yield_state.get('supported_feed_continuation',False)
+                        or self.yield_state.get('waiting_rear_release_support',False))):
+                    pose_omega[:] = 0.
+                perpendicular_omega[module] = (np.eye(3)-np.outer(u,u))@(omega_ff+pose_omega)
         bone = SpatialBishopBackbone(wanted_p*1000, np.full(21, LINK*1000))
         material_field, _ = bone.material_field(q)
         bone_angles = bone.joint_angles(field=material_field)
@@ -1930,6 +2029,14 @@ class UnifiedCurveTransfer:
                     removed_pose_axial_mm_s=float(pose_velocity[1]*1000),
                     common_feed_axial_mm_s=float(feedforward[module, 1]*1000),
                     shape_feed_axial_mm_s=float(shape_feedforward[module, 1]*1000)))
+            elif (self.yield_state is not None and self.yield_state.get('supported_feed_continuation',False)
+                    and source_grip_mask[module] and module not in self.transferred_material_modules):
+                v -= pose_velocity[0]*np.array([1.,0.,0.])
+                guard_goal = center+DT*v
+                uncontacted_axial_recovery_removed.append(dict(module=module,side=0,
+                    removed_pose_axial_mm_s=float(pose_velocity[0]*1000),
+                    common_feed_axial_mm_s=float(feedforward[module,0]*1000),
+                    shape_feed_axial_mm_s=float(shape_feedforward[module,0]*1000)))
             approaching_grasp = (self.yield_state is not None and
                 self.yield_state['stage'] == 'regrip' and module in self.yield_release_modules and
                 support_forces[self.yield_state['side'], module] <= .1 and
@@ -2032,6 +2139,7 @@ class UnifiedCurveTransfer:
         local_bend_constraint = None
         if (self.yield_state is not None and self.yield_state['stage'] in ['unload', 'feed', 'regrip']
                 and not self.yield_state.get('supported_feed_continuation',False)
+                and not self.yield_state.get('waiting_rear_release_support',False)
                 and not self.yield_state.get('anchor_recovery_active', False)
                 and not self.yield_state.get('target_handover_pending', False)):
             joint = int(self.yield_state['selected_joint'])
@@ -2184,6 +2292,9 @@ class UnifiedCurveTransfer:
             solve_residual=float(np.linalg.norm(matrix@solution.x-vector)), solve_status=int(solution.status),
             root_execution_model='measured root velocity; actuated remainder of same tasks' if measured_root_execution else 'free-root kinematic prediction',
             physics_execution_prediction=physics_execution,
+            target_carried_transfer_active=target_carried,
+            occupied_motion_meter='actual target cohort after support handover' if target_motion_meter else 'both occupied pipe cohorts',
+            continuation_tangent_task='current common curve increment only; measured pressure reshapes same curve' if self.yield_state is not None and (self.yield_state.get('supported_feed_continuation',False) or self.yield_state.get('waiting_rear_release_support',False)) else 'curve increment plus absolute tangent recovery',
             feedback_fields=dict(hardware_candidates=['joint_angles', 'actuator_load', 'last_sent_targets'],
                 simulation_truth_used=['world_body_pose', 'pipe_contact_points', 'pipe_contact_force_for_support_gate']),
             limitation='physical cohort axial progress requires world-pose truth; pitch-normalized progress is approximate; contacts/positions score completion')
@@ -2203,13 +2314,24 @@ class UnifiedCurveTransfer:
             and not self.yield_state.get('anchor_recovery_active',False))
         if opening:
             masks[self.yield_state['side'],self.yield_release_modules] = False
-        required = [(side,int(module)) for side,count in [(0,2 if opening else 21),(1,3)]
-            for module in sorted(np.flatnonzero(masks[side]),key=lambda i:forces[side,i],reverse=True)[:count]]
-        forward = self.yield_state['stage']=='feed' and self.speed>0.
+        required=[]
+        source_requirement=0 if self.target_carries_transfer(centers,forces) else (21 if not opening else 2)
+        for side,count in [(0,source_requirement),(1,3)]:
+            ordered=sorted(np.flatnonzero(masks[side]),key=lambda i:forces[side,i],reverse=True)
+            if side==1:
+                # Incoming posterior material is an actual holder now. Preserve
+                # it together with the other carriers under the same threshold.
+                incoming=[module for module in ordered if module>=15]
+                ordered=incoming+[module for module in ordered if module not in incoming]
+            required.extend((side,int(module)) for module in ordered[:count])
+        forward = self.yield_state['stage']=='feed' and (self.speed>0.
+            or self.yield_state.get('supported_feed_continuation',False))
         feature_floor = np.full(len(required),.100001)
+        axial_sides=([1] if self.target_carries_transfer(centers,forces) and masks[0].sum()<2
+            else [side for side in range(2) if np.any(masks[side])])
         # Forward motion is a soft part of the SAME action objective. Do not
         # require both occupied sides to advance in every 50ms substep.
-        nominal_axis_goal = self.speed*self.physical_axial_sines if forward else np.zeros(2)
+        nominal_axis_goal = self.speed*self.physical_axial_sines[axial_sides] if forward else np.zeros(len(axial_sides))
         def predict(candidate):
             mujoco.mj_setState(self.m,shadow,integration,specification)
             shadow.ctrl[:] = candidate
@@ -2235,7 +2357,7 @@ class UnifiedCurveTransfer:
                     *[shadow.joint('joint'+str(i)).xanchor for i in range(1,21)],shadow.site('s_tail').xpos])
                 predicted_centers = .5*(predicted_points[:-1]+predicted_points[1:])
                 feature.extend([float(np.mean((predicted_centers[masks[side],side]-centers[masks[side],side])/DT))
-                    for side in range(2)])
+                    for side in axial_sides])
             return residual,velocity,np.asarray(feature)
         def cost_residual(residual,feature):
             return np.r_[residual,2.*(feature[len(required):]-nominal_axis_goal)] if forward else residual
@@ -2318,6 +2440,7 @@ class UnifiedCurveTransfer:
             required_actual_carriers=required,feature_floor=feature_floor.tolist(),
             axial_goal_kind='soft common-shift motion; continuous actual net progress decides success',
             nominal_axis_goal_mm_s=(nominal_axis_goal*1000).tolist(),
+            actual_axial_motion_sides=axial_sides,
             baseline_support_and_axial_features=baseline_feature.tolist(),
             corrected_support_and_axial_features=corrected_feature.tolist(),
             corrected_feasible=feasible,constrained_status=str(constrained.message),

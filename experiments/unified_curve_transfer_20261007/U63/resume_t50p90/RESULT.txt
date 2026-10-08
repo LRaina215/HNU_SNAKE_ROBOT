@@ -1,0 +1,1 @@
+Checkpoint reconstruction interrupted by task steering; no completed/usable recovered state exported. Not an additional actual trial. Direct U65 resume uses original U63 full integration/ctrl and repaired logical wait label, preserving incoming M15.

@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U63\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U63\\repaired_stalled_controller.json",
+  "change": "Direct full264dim U63 50.90s actual integration/ctrl resume preserving incoming M15 target contact from50.55s; do not replay51s or rewind physical body. Label partial failed empty-span candidate wait so no old selected hinge bend. Retain original historical progress/reference/load goals; track same original1s new-material target handover during common feed/brake/wait and prioritize actual incoming M15 among original3 required target carriers. Already loaded M15 actual goal captured, no new pressure limit. During supported feed/wait same measured curve tangent increment replaces independent old absolute tangent recovery; physical axial soft objective remains on when common phase braked. Original drive/limits12mm shape/contact/collision/completion unchanged; no per50ms simultaneous-forward requirement.",
+  "horizon_s": 1800.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}

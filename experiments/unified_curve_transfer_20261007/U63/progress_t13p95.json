@@ -1,0 +1,16 @@
+{
+  "checkpoint": "action_t13p95_feed.npz",
+  "t_s": 13.95,
+  "fixed_front_mean_y_advance_mm": 8.666872469810786,
+  "fixed_rear_mean_x_advance_mm": 3.093185385444849,
+  "same_cohort_axial_since_resume_mm": [
+    2.3601724627314025,
+    6.277897848486299
+  ],
+  "original_action_pitch_normalized_material_mm": [
+    16.98355381581078,
+    77.6530197756131
+  ],
+  "continued_actual_feed": true,
+  "meaning": "actual saved integration state and existing observer; private reconstruction for reporting only; no extra dynamics or progress credit"
+}

@@ -1,0 +1,1 @@
+Continuation uses shared current curve tangent increment rather than independent old absolute tangent recovery, detached-source axial pose recovery removed, soft physical axial objective retained when phase braked. Original pressure/limits/12mm curve cap remain.15.95s positive U63 checkpoint is kept as alternate branch; U65 prioritizes actual incoming M15.

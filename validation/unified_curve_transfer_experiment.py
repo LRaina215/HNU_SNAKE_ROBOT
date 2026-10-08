@@ -223,7 +223,7 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
     outcome, error = 'horizon_limit', None
     source_lost = target_lost = complete_ticks = 0
     source0, target0 = [np.flatnonzero(x > .1).tolist() for x in sim.rows[0]['contact_force_N']]
-    initial_target_end = max(target0)
+    initial_target_end = max(controller.transferred_material_modules,default=max(target0))
     age = np.zeros(21)
     admitted = set()
     last_progress_time = 0.
@@ -232,6 +232,8 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
     action_checkpoints = []
     last_action_stage = controller.yield_state['stage'] if controller.yield_state else None
     last_continuation_checkpoint = 0
+    tail_motion_history=[]
+    uncontrolled_tail_fall_ticks=0
     try:
         for tick in range(round(horizon/DT)):
             t = tick*DT
@@ -277,7 +279,17 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             cylinder_force = r['cylindrical_contact_force_N']
             posterior_count = int(np.count_nonzero((cylinder_force[0] > .1) & r['source_grip_region_mask']))
             receiving_count = int(np.count_nonzero((cylinder_force[1] > .1) & r['target_grip_region_mask']))
-            source_lost = source_lost+1 if needs_source and posterior_count < 2 else 0
+            carried_by_target=controller.target_carries_transfer(c/1000,cylinder_force)
+            source_lost = source_lost+1 if needs_source and posterior_count < 2 and not carried_by_target else 0
+            reference_centers=(r['reference_points_mm'][:-1]+r['reference_points_mm'][1:])/2
+            tail_error=c[-1]-reference_centers[-1]
+            tail_motion_history.append((t,float(c[-1,2]),float(tail_error[2])))
+            tail_motion_history=[row for row in tail_motion_history if row[0]>=t-1.]
+            old_t,old_z,old_error=tail_motion_history[0]
+            falling_uncontrolled=(carried_by_target and t-old_t>=.95 and
+                c[-1,2]-old_z < -10. and tail_error[2]-old_error < -10. and
+                tail_error[2] < -20. and np.linalg.norm(tail_error)>64.5)
+            uncontrolled_tail_fall_ticks=uncontrolled_tail_fall_ticks+1 if falling_uncontrolled else 0
             target_lost = target_lost+1 if receiving_count < 2 else 0
             if not np.isfinite(sim.d.qpos).all(): outcome = 'nonfinite'; break
             if info.get('localized_yield') and info['localized_yield']['stage'] == 'failed':
@@ -289,6 +301,7 @@ def run(name, initial, horizon, note, controller_state=None, preserve_grip_clear
             if r['nonadjacent_self_penetration_mm'] > 3.: outcome = 'nonadjacent_self_interference'; break
             if source_lost >= 20: outcome = 'posterior_source_support_below_two_1s'; break
             if target_lost >= 20: outcome = 'target_support_below_two_1s'; break
+            if uncontrolled_tail_fall_ticks>=20: outcome='target_carried_uncontrolled_tail_fall_1s'; break
             radii = np.linalg.norm(c[:, [0, 2]]-[1100, 1000], axis=1)
             complete = ((c[:, 1] > 80).all() and (radii < 125).all() and source_count == 0
                         and target_count >= 4 and np.any(f[1, 17:] > .1))

@@ -1,0 +1,12 @@
+{
+  "initial": "experiments\\unified_curve_transfer_20261007\\U69\\final_state.npz",
+  "controller_state": "experiments\\unified_curve_transfer_20261007\\U69\\retained_handover_controller.json",
+  "change": "Direct full U69 actual7.25s continuation: genuine new M15 remains geometrically on target but temporarily off contact, other5 actual target carriers and1 source still bear; last1s tailZ-0.55mm, no actual instability trigger. Do not revoke verified support handover for an individual rolling contact gap. Keep source-reduction phase while verified new material remains target-side with4+ actual receiving carriers; original target-loss/ground/self/joint and measured uncontrolled-tail-fall guards. Empty source cohort omitted from soft physical axial means (noNaN); current actual participating target side drives shared phase/action lag/stagnation meter, historical cumulative physical observer unchanged/no jump or bilateral8mm credit. Preserve original ctrl/drive/pressure rules/12mm/solid guards/full completion. Finite30s actual continuation for new M16+ transport.",
+  "horizon_s": 30.0,
+  "physics": "original horizontal L-pipe XML, 20 joint ctrl only, 2.355 Nm drives",
+  "software_limits": "88 degrees, 10 degrees per second; first saved ctrl retained, symmetric encoder +/-3deg anti-windup with current-curve pressure-dependent clamp",
+  "model": "current curve arclength map; one head shift; every following node exactly one 64.5mm chord; projected tangent rate including feedforward and separate axial spin",
+  "feedback": "encoder target error/load plus explicitly labelled world-pose/contact simulation feedback",
+  "stops": "ground, >3 mm nonadjacent self penetration, actual q>90.5 deg, required support lost 1s, no real progress 90s",
+  "completion": "all centres on target, tail contacts target, no source contact, sustained 2s"
+}
