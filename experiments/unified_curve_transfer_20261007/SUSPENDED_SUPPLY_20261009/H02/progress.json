@@ -1,0 +1,19 @@
+{
+  "t_s": 10.0,
+  "stage": "unfold",
+  "phase": 0.0,
+  "shift_mm": 0.0,
+  "actual_exited": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "actual_retained": [],
+  "target_normal_n": 65.96,
+  "tracking_deg": 0.93,
+  "fit_rms_mm": 190.11,
+  "candidate": false
+}

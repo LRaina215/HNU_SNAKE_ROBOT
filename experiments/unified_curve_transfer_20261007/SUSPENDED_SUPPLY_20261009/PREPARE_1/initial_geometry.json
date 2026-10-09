@@ -1,0 +1,32 @@
+{
+  "solver_success": true,
+  "solver_message": "`xtol` termination condition is satisfied.",
+  "evaluations": 48,
+  "guide_rms_mm": 132.24622450980385,
+  "target_center_radii_mm": [
+    128.22060513729687,
+    128.51297946417046,
+    147.67593172502603,
+    161.8420893976393,
+    147.8047732989344,
+    119.07341179698031,
+    103.00741679888856,
+    94.88294422998031,
+    85.1625262618791
+  ],
+  "source_center_radii_mm": [
+    102.30768879752003,
+    143.63366568334467,
+    157.52905808099854,
+    146.37309691462767,
+    125.289901084398,
+    92.54886057696004
+  ],
+  "target_wrap_span_rad": 1.007411935442938,
+  "maximum_joint_deg": 85.75637726660118,
+  "pipe_depth_mm": 4.026964196430564,
+  "self_depth_mm": 2.838186111316607,
+  "physical_steps": 0,
+  "root_placement": "one artificial initial placement before first physics step",
+  "ready": false
+}

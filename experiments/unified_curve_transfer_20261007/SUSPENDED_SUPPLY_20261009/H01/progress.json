@@ -1,0 +1,17 @@
+{
+  "t_s": 10.0,
+  "stage": "peel",
+  "phase": 0.041,
+  "shift_mm": 0.0,
+  "actual_exited": [
+    15,
+    16,
+    17,
+    18
+  ],
+  "actual_retained": [],
+  "target_normal_n": 89.75,
+  "tracking_deg": 0.9,
+  "fit_rms_mm": 119.66,
+  "candidate": false
+}

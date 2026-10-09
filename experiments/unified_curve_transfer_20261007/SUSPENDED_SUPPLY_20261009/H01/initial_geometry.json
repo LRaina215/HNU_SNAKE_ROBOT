@@ -1,0 +1,32 @@
+{
+  "solver_success": true,
+  "solver_message": "`ftol` termination condition is satisfied.",
+  "evaluations": 93,
+  "guide_rms_mm": 29.032199921222446,
+  "target_center_radii_mm": [
+    90.99345998037005,
+    87.3234795224188,
+    85.33508196985785,
+    86.34685083812072,
+    84.69511234247119,
+    86.39385650846141,
+    85.24552390341528,
+    88.7060479764262,
+    87.35262633082456
+  ],
+  "source_center_radii_mm": [
+    84.90338510192659,
+    100.6638315555921,
+    101.93483061976957,
+    88.2596447430919,
+    85.42667550638082,
+    89.34255295093728
+  ],
+  "target_wrap_span_rad": 5.152790089501959,
+  "maximum_joint_deg": 88.0,
+  "pipe_depth_mm": 0.5857673572925531,
+  "self_depth_mm": 0.0,
+  "physical_steps": 0,
+  "root_placement": "one artificial initial placement before first physics step",
+  "ready": true
+}
