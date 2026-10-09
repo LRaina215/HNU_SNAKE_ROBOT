@@ -1,0 +1,6 @@
+{
+  "physical_steps": 0,
+  "executed_in_formal_trials": false,
+  "source_file": "snake_control/braced_inner_probe.py",
+  "status": "target-polar node interpolation only; rigid link feasibility remains unresolved; not a successful gait"
+}

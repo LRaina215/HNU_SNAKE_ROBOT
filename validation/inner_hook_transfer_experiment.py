@@ -20,8 +20,8 @@ IMODEL=ROOT/'mujoco_model/Snake_Robot_o20_inner_hook_transfer.xml'
 
 
 class InnerSim(LSim):
-    def __init__(self,case,initial):
-        self.case=case;self.m=mujoco.MjModel.from_xml_path(str(IMODEL));self.d=mujoco.MjData(self.m);self.scratch=mujoco.MjData(self.m)
+    def __init__(self,case,initial,model_path=IMODEL):
+        self.case=case;self.m=mujoco.MjModel.from_xml_path(str(model_path));self.d=mujoco.MjData(self.m);self.scratch=mujoco.MjData(self.m)
         self.qa=self.m.jnt_qposadr[self.m.actuator_trnid[:,0]];self.va=self.m.jnt_dofadr[self.m.actuator_trnid[:,0]];self.head=self.m.body('head').id
         self.source=[self.m.geom(n).id for n in ['pipe_straight_01','pipe_sharp_in_02']];self.target=[self.m.geom(n).id for n in ['pipe_straight_04','pipe_sharp_out_03']]
         self.floor=self.m.geom('floor').id;self.robot=[next(g for g in range(self.m.ngeom) if self.m.geom_bodyid[g]==self.head+j) for j in range(21)]

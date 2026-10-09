@@ -4,7 +4,7 @@ from scipy.optimize import brentq
 from scipy.spatial.transform import Rotation
 from scipy.interpolate import CubicSpline
 from snake_control.suspended_transfer_route import receiving,R,ALPHA,BETA,INTAKE,A
-from snake_control.suspended_supply_transfer import LINK,DT,LIMIT,nodes
+from snake_control.suspended_supply_transfer import LINK,DT,LIMIT,nodes,WholeCurveMapper
 from snake_control.horizontal_pipe_roll import HingePhaseMapper
 
 FRONT,BRIDGE,SOURCE=8,7,6
@@ -56,11 +56,11 @@ class ThreeSegmentRoute:
         return p,v
 
 class ThreeSegmentTransfer:
-    def __init__(self,model,data,speed=.005,rate_deg_s=20.,roll_factor=None,bridge_gain=.25,adaptive_supply=False,route=None,source_start=15,intake_y=.15,preserve_preload=False,handoff_on_posterior_exit=False,handoff_exit_count=None,continuous_reform_handoff=False,event_progress=False):
+    def __init__(self,model,data,speed=.005,rate_deg_s=20.,roll_factor=None,bridge_gain=.25,adaptive_supply=False,route=None,source_start=15,intake_y=.15,preserve_preload=False,handoff_on_posterior_exit=False,handoff_exit_count=None,continuous_reform_handoff=False,event_progress=False,initial_front=FRONT,acquisition=False,anchored_probe=False):
         self.m=model;self.mapper=HingePhaseMapper(model,data);self.qa=self.mapper.qa;self.va=self.mapper.va;self.route=ThreeSegmentRoute() if route is None else route
         self.custom_route=route is not None
         self.winding_sign=float(getattr(self.route,'winding_sign',1.))
-        self.front=FRONT;self.source_start=source_start;self.source_count=21-source_start;self.intake_y=intake_y
+        self.front=int(initial_front);self.acquisition=bool(acquisition);self.source_start=source_start;self.source_count=21-source_start;self.intake_y=intake_y
         self.total=getattr(self.route,'total',TOTAL);self.cut=getattr(self.route,'source_cut',CUT);self.join=getattr(self.route,'target_join',0.)
         self.preload=data.ctrl-data.qpos[self.qa] if preserve_preload else np.zeros(20)
         self.handoff_on_posterior_exit=handoff_on_posterior_exit
@@ -71,16 +71,24 @@ class ThreeSegmentTransfer:
         self.roll_factor=ALPHA/BETA**2 if roll_factor is None else roll_factor;self.bridge_gain=bridge_gain
         self.adaptive_supply=adaptive_supply;self.source_release_latch=set();self.free_mode_age=0.;self.free_supply_latch=False
         self.frame_offset=np.eye(3) if route is not None else self.route.frame(FRONT*LINK).T@self.mapper.rotation
-        self.coeff=np.zeros((2,3));self.receive_age=np.zeros(21);self.received=set(range(FRONT));self.engaged=set(range(FRONT))
+        self.coeff=np.zeros((2,3));self.receive_age=np.zeros(21);self.received=set(range(self.front));self.engaged=set(range(self.front))
         self.exit_age=np.zeros(21);self.exited=set();self.best_counts=0;self.last_progress=0.;self.failure=None
         self.initial_centers=.5*(nodes(data)[:-1]+nodes(data)[1:]);self.initial_head_axis=float(self.initial_centers[0,1])
         self.progress_head_axis=self.initial_head_axis
+        self.anchored_probe=bool(anchored_probe);self.probe_mapper=WholeCurveMapper(model) if anchored_probe else None
+        if self.probe_mapper is not None:self.probe_mapper.bearing_module=16
+        self.previous_guide=self.route.window(0.)[0];self.acquisition_latched=not acquisition
+        self.probe_progress=0.;self.probe_grid=np.linspace(0.,min(self.total,1.2),2401)
+        self.probe_path=self.route.sample(getattr(self.route,'origin',FRONT*LINK)+self.probe_grid)
 
     def command(self,data,t,forces,source_any):
         p=nodes(data);c=.5*(p[:-1]+p[1:]);rt=np.linalg.norm(c[:,[0,2]]-[1.1,1.],axis=1);rs=np.linalg.norm(c[:,[1,2]]-[0.,1.],axis=1)
         near=(rt>.065)&(rt<.125)&(c[:,1]>self.intake_y);phi=self.winding_sign*np.unwrap(np.arctan2(c[:,2]-1,c[:,0]-1.1));da=np.diff(phi);dy=np.diff(c[:,1])
-        connected=np.zeros(21,bool);connected[:FRONT]=near[:FRONT]
+        connected=np.zeros(21,bool);connected[:max(1,self.front)]=near[:max(1,self.front)]
         connected[1:]=near[1:]&near[:-1]&(da>.30)&(da<1.10)&(dy<-.002)&(dy>-.045)&(np.abs(dy+.180/(2*np.pi)*da)<.025)
+        if self.acquisition:
+            local_target=np.array([forces[1,max(0,j-1):min(21,j+2)].sum()>.2 for j in range(21)])
+            connected &= local_target
         self.receive_age=np.where(connected,self.receive_age+DT,0.);self.received={j for j in range(21) if self.receive_age[j]>=1.};self.engaged.update(self.received)
         local_source=np.array([source_any[max(0,j-1):min(21,j+2)].any() or forces[0,max(0,j-1):min(21,j+2)].sum()>.1 for j in range(21)])
         clear=(~local_source) if self.adaptive_supply else (rs>.130)&(~source_any)&(forces[0]<.1)
@@ -91,21 +99,32 @@ class ThreeSegmentTransfer:
         self.observed_received.update(self.received);self.observed_exited.update(self.exited)
         actual_prefix=0
         while actual_prefix in self.received:actual_prefix+=1
+        if self.acquisition and not self.acquisition_latched and actual_prefix>=FRONT and forces[1,:FRONT].sum()>1.:
+            self.acquisition_latched=True
+            self.mapper.root=data.qpos[:3].copy();self.mapper.tilt[:]=0.
+            if hasattr(self.route,'register_acquired_frame'):self.route.register_acquired_frame(data,self.shift,self.phase)
         continuous_intake=actual_prefix>=FRONT and forces[1,:FRONT].sum()>1. and c[0,1]-self.progress_head_axis>=.010
         if self.event_progress:
             if new_intake or new_exit or continuous_intake:self.last_progress=t
             if continuous_intake:self.progress_head_axis=float(c[0,1])
             self.best_counts=max(self.best_counts,count)
         elif count>self.best_counts:self.best_counts=count;self.last_progress=t
+        if self.acquisition and not self.acquisition_latched:
+            distances=np.linalg.norm(self.probe_path-p[0],axis=1);at=int(np.argmin(distances))
+            if distances[at]<.08 and self.probe_grid[at]>=self.probe_progress+.010:
+                self.probe_progress=float(self.probe_grid[at]);self.last_progress=t
         controlled=self.kp>.5 if self.custom_route else np.ones(20,dtype=bool)
         tracking=float(np.degrees(abs(self.last-data.qpos[self.qa])[controlled]).max()) if controlled.any() else 0.
         scale=float(np.clip((25.-tracking)/20.,.2,1.));increment=self.speed*DT*scale;self.shift=min(self.total,self.shift+increment)
+        if self.anchored_probe and not self.acquisition_latched and np.linalg.norm(p[0]-self.previous_guide[0])>.060:
+            self.shift-=increment;increment=0.
         # Match roll feeding to the helix axial fraction; J03's hanging supply
         # could drift along the pipe, whereas the L bridge needs both anchors.
         axial_error=ALPHA*self.shift-(c[0,1]-self.initial_head_axis)
+        if hasattr(self.route,'axial_progress_error'):axial_error=self.route.axial_progress_error(self.shift,c,self.initial_centers)
         fully_free=self.adaptive_supply and len(self.exited)==self.source_count and not source_any.any() and forces[0].sum()<.1
         posterior_released=self.adaptive_supply and len(self.exited)==self.source_count
-        handoff_ready=self.adaptive_supply and len(self.exited)>=self.handoff_exit_count
+        handoff_ready=self.adaptive_supply and len(self.exited)>=self.handoff_exit_count and (not self.acquisition or actual_prefix>=FRONT)
         self.free_supply_latch=self.free_supply_latch or fully_free or (self.handoff_on_posterior_exit and handoff_ready)
         self.free_mode_age=self.free_mode_age+DT if self.free_supply_latch else 0.
         supply_handoff=float(np.clip(self.free_mode_age/1.5,0.,1.))
@@ -128,7 +147,7 @@ class ThreeSegmentTransfer:
         roles=np.ones(21,int);roles[(v[:-1]+v[1:])*.5<self.cut]=0
         roles[carried_source]=0;roles[(v[:-1]+v[1:])*.5>=0.]=2
         for j in self.engaged:roles[j]=2
-        if self.adaptive_supply:
+        if self.adaptive_supply and self.acquisition_latched:
             for j in self.source_release_latch:
                 if j not in self.engaged and not carried_source[j]:roles[j]=1
         desired_kp=np.full(20,127.*self.bridge_gain)
@@ -139,9 +158,13 @@ class ThreeSegmentTransfer:
             if j==0:continue
             if roles[j]==0 or j in self.engaged:desired_kp[j-1]=127.
             elif v[j]>=-2*LINK:desired_kp[j-1]=63.5
-        prefix=FRONT
+        if self.anchored_probe and not self.acquisition_latched:
+            probe_nodes=v>=self.cut
+            weights[probe_nodes]=np.maximum(weights[probe_nodes],2.5)
+            desired_kp[v[1:21]>=self.cut]=np.maximum(desired_kp[v[1:21]>=self.cut],63.5)
+        prefix=self.front
         while prefix in self.engaged:prefix+=1
-        if self.adaptive_supply:
+        if self.adaptive_supply and self.acquisition_latched:
             active_end=min(20,prefix+3)
             # A measured free supply curve replaces the exited source helix.
             # Register only after both pipe supports are no longer required.
@@ -188,17 +211,23 @@ class ThreeSegmentTransfer:
         if hasattr(self.route,'head_orientation'):orientation=self.route.head_orientation(self.mapper.rotation,self.shift,self.phase)
         active_mask=desired_kp>.5 if self.adaptive_supply else None
         fade=float(np.clip(1-self.shift/.20,0,1));preload=self.preload*(fade*fade*(3-2*fade))
-        q,projection=self.mapper.solve(guide,self.shift,self.phase,self.last-preload,node_weights=weights,orientation_override=orientation,command_step=self.step,active_mask=active_mask,observed_q=data.qpos[self.qa])
+        if self.anchored_probe and not self.acquisition_latched:
+            _,q,projection=self.probe_mapper.solve(guide,self.previous_guide,data,forces,self.last-preload,node_weights=weights)
+            projection['points_mm']=nodes(self.probe_mapper.d)*1000
+        else:
+            q,projection=self.mapper.solve(guide,self.shift,self.phase,self.last-preload,node_weights=weights,orientation_override=orientation,command_step=self.step,active_mask=active_mask,observed_q=data.qpos[self.qa])
+        self.previous_guide=guide.copy()
         q=np.clip(q+preload,-LIMIT,LIMIT)
         if self.adaptive_supply:q[~active_mask]=np.clip(data.qpos[self.qa][~active_mask],-LIMIT,LIMIT)
         target=self.last+np.clip(q-self.last,-self.step,self.step);self.last=target.copy()
-        if self.shift>=2*LINK and t-self.last_progress>45.:self.failure='no_actual_source_exit_or_target_intake_45s'
+        if self.shift>=2*LINK and t-self.last_progress>45. and (not self.acquisition or self.shift>LINK):self.failure='no_actual_source_exit_or_target_intake_45s'
         # Once all registered modules have been connected, the runner still
         # verifies the whole reference window and actual tail geometry. A wide
         # connection count must not stop that final physical winding action.
         if self.shift>=self.total and len(self.received)<21 and t-self.last_progress>25.:self.failure='whole_reference_complete_without_whole_actual_transfer'
         region_codes=np.where(self.kp>126,0,np.where(self.kp<.5,2,1))
-        info=dict(stage='simultaneous_source_bridge_target',shape_parameter=self.phase,shift_mm=self.shift*1000,tracking_deg=tracking,
+        stage='simultaneous_source_bridge_target' if not self.acquisition or actual_prefix>=FRONT else 'active_inner_probe_and_acquisition'
+        info=dict(stage=stage,shape_parameter=self.phase,shift_mm=self.shift*1000,tracking_deg=tracking,
             curve_radius_delta_mm=0.,reference_points_mm=guide*1000,material_coordinate_mm=v*1000,body_route_regions=roles,
             kp_nm_per_rad=self.kp.copy(),active_joint_mask=self.kp>.5,region_codes=region_codes,
             actual_new_retained_modules=sorted(j for j in self.received if j>=FRONT),actual_received_modules=sorted(self.received),actual_source_exited_modules=sorted(self.exited),

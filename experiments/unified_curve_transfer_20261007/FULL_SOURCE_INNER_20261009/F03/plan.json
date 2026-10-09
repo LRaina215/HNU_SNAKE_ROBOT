@@ -1,0 +1,18 @@
+{
+  "name": "F03",
+  "registered_utc": "2026-10-09T07:48:32.602034+00:00",
+  "maximum_branch_trials": 3,
+  "action": "same shared material shift from source helix through inner bridge into target helix; source/bridge/target chord frame then local roll; no initial target admission",
+  "speed_mm_s": 5.0,
+  "rate_deg_s": 20,
+  "bridge_rods": 5,
+  "complete_shift_mm": 1677.0,
+  "max_actual_seconds": 650,
+  "max_wall_seconds": 800.0,
+  "deadline_utc": "2026-10-09T08:20:27+00:00",
+  "probe_limit_seconds": 180,
+  "acquisition_limit_seconds": 280,
+  "completion": "I01 strict actual all21 coil, original source absent, posterior target bearing, all Kp127 for one actual second",
+  "physical_root_reset": false,
+  "yamada_compliance_enabled": false
+}

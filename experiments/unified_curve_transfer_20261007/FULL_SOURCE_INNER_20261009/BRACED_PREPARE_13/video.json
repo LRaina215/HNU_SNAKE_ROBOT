@@ -1,0 +1,21 @@
+{
+  "fps": 20.0,
+  "frames": 1,
+  "actual_seconds": 0.0,
+  "speed": 1.0,
+  "source": "saved actual qpos; artificial inner-side whole-curve placement then continuous original-gravity dynamics",
+  "readback": [
+    {
+      "frame": 0,
+      "readable": true
+    },
+    {
+      "frame": 0,
+      "readable": false
+    },
+    {
+      "frame": 0,
+      "readable": false
+    }
+  ]
+}
