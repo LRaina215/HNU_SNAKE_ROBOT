@@ -91,7 +91,7 @@ class WholeCurveMapper:
                     jac[21+i,3:]=contact.frame[:3]@(a-self.jp[:,self.va])
         return values,jac,depth,selfdepth
 
-    def initialize(self,guide):
+    def initialize(self,guide,initial_pose=None):
         bone=SpatialBishopBackbone(guide*1000,np.full(21,LINK*1000))
         q=np.clip(bone.joint_angles(),-LIMIT,LIMIT)
         z=guide[0]-guide[1];z/=np.linalg.norm(z)
@@ -100,6 +100,11 @@ class WholeCurveMapper:
         x=-bone.start_frame[:,1].copy();x-=x@z*z;x/=np.linalg.norm(x)
         rotation=np.column_stack([x,np.cross(z,x),z])
         root=guide[0]-LINK*z
+        if initial_pose is not None:
+            # A private kinematic continuation seed, never a physical reset.
+            root=np.asarray(initial_pose)[:3].copy()
+            rotation=Rotation.from_quat(np.asarray(initial_pose)[3:7][[1,2,3,0]]).as_matrix()
+            q=np.clip(np.asarray(initial_pose)[self.qa],-LIMIT,LIMIT)
         base=np.r_[root,np.zeros(3),q]
         units=np.r_[np.full(3,.03),np.full(3,.2),np.full(20,.2)]
         lo=np.r_[np.full(3,-4.),np.full(3,-8.),(-LIMIT-base[6:])/.2]

@@ -1,0 +1,21 @@
+{
+  "fps": 20.0,
+  "frames": 2235,
+  "actual_seconds": 111.7000000001693,
+  "speed": 1.0,
+  "source": "saved actual qpos; artificial all21-source placement then one continuous original-gravity run; no I01 state inserted",
+  "readback": [
+    {
+      "frame": 0,
+      "readable": true
+    },
+    {
+      "frame": 1117,
+      "readable": true
+    },
+    {
+      "frame": 2234,
+      "readable": true
+    }
+  ]
+}

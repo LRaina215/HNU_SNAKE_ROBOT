@@ -93,6 +93,7 @@ def render(case,rows,lower_entry=False,model_name=None,initial_label=None):
         lines=['Saved true hook / one L-pipe',f'Shared shift {r["shift_mm"]:.1f}mm',f'Source clear {r["actual_exit_mask"][source_start:].sum()}/{source_count}',f'Target connected {r["actual_received_mask"].sum()}/21',f'Bearing N {r["contact_force_N"].sum(1).round(1)}',f'Front wrap8 {np.degrees(r["actual_front_span_rad"]):.1f}deg',f'Actual pipe/self {r["pipe_depth_mm"]:.2f}/{r["self_depth_mm"]:.2f}mm','Joint   Kp    DriveNm / original damping1.5']
         if lower_entry:lines[0]='Lower entry / gravity -9.81 unchanged'
         if 'inner' in initial_label.lower():lines[0]='Inner hook / source+Y / target-X up'
+        if 'full source' in initial_label.lower():lines[0]='All-source / actual positioning'
         for j,line in enumerate(lines):cv2.putText(panel,line,(10,22+23*j),0,.43,(225,225,225),1)
         for j in range(20):cv2.putText(panel,f'{j+1:02d} {r["kp_nm_per_rad"][j]:5.1f} {r["torque"][j]:+4.2f}',(10+(j//10)*176,235+(j%10)*32),0,.43,(220,225,180),1)
         frame=np.hstack([im,panel]);writer.write(frame)
@@ -100,6 +101,7 @@ def render(case,rows,lower_entry=False,model_name=None,initial_label=None):
     writer.release();ren.close();cap=cv2.VideoCapture(str(case/'replay_1x.mp4'));n=int(cap.get(cv2.CAP_PROP_FRAME_COUNT));checks=[]
     for i in [0,n//2,n-1]:cap.set(cv2.CAP_PROP_POS_FRAMES,i);ok,_=cap.read();checks.append(dict(frame=i,readable=bool(ok)))
     source='saved actual qpos; artificial inner-side whole-curve placement then continuous original-gravity dynamics' if 'inner' in initial_label.lower() else 'saved actual qpos; artificial lower placement then continuous original-gravity dynamics' if lower_entry else 'saved actual qpos from lossless CLOSE1B restore through every physical step'
+    if 'full source' in initial_label.lower():source='saved actual qpos; artificial all21-source placement then one continuous original-gravity run; no I01 state inserted'
     write(case/'video.json',dict(fps=cap.get(cv2.CAP_PROP_FPS),frames=n,actual_seconds=rows[-1]['sim_time'],speed=1.,source=source,readback=checks));cap.release()
 
 def run(args):

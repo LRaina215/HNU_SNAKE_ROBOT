@@ -1,0 +1,118 @@
+{
+  "physical_steps": 0,
+  "seed_actual_time_s": 111.7000000001693,
+  "checks": [
+    {
+      "smooth_source": false,
+      "shift_mm": 0,
+      "fit_rms_mm": 0.6360793611343901,
+      "pipe_depth_mm": 0.40974810704203585,
+      "self_depth_mm": 0.20214532553306233,
+      "maxq": 87.99999993300308
+    },
+    {
+      "smooth_source": false,
+      "shift_mm": 25.0,
+      "fit_rms_mm": 8.257803840029114,
+      "pipe_depth_mm": 0.4441570266590437,
+      "self_depth_mm": 0.23076832618014484,
+      "maxq": 88.0
+    },
+    {
+      "smooth_source": false,
+      "shift_mm": 70.0,
+      "fit_rms_mm": 15.730107481734201,
+      "pipe_depth_mm": 0.4677763584685374,
+      "self_depth_mm": 0.0,
+      "maxq": 88.0
+    },
+    {
+      "smooth_source": false,
+      "shift_mm": 150.0,
+      "fit_rms_mm": 16.44670731220454,
+      "pipe_depth_mm": 0.46250305960612237,
+      "self_depth_mm": 0.20388598342061454,
+      "maxq": 88.0
+    },
+    {
+      "smooth_source": false,
+      "shift_mm": 250.0,
+      "fit_rms_mm": 17.910980635535644,
+      "pipe_depth_mm": 0.4745210203332622,
+      "self_depth_mm": 0.0,
+      "maxq": 87.99999999999787
+    },
+    {
+      "smooth_source": false,
+      "shift_mm": 450.0,
+      "fit_rms_mm": 22.100146142713438,
+      "pipe_depth_mm": 0.5608311663707937,
+      "self_depth_mm": 0.0,
+      "maxq": 88.0
+    },
+    {
+      "smooth_source": false,
+      "shift_mm": 700.0,
+      "fit_rms_mm": 25.460676078955462,
+      "pipe_depth_mm": 0.5361697365355047,
+      "self_depth_mm": 0.0,
+      "maxq": 87.99999999925372
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 0,
+      "fit_rms_mm": 24.082801927572923,
+      "pipe_depth_mm": 0.6915254432510775,
+      "self_depth_mm": 0.0,
+      "maxq": 71.24167901809241
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 25.0,
+      "fit_rms_mm": 23.85180342917152,
+      "pipe_depth_mm": 0.6897259210255955,
+      "self_depth_mm": 0.0,
+      "maxq": 71.2147449748658
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 70.0,
+      "fit_rms_mm": 23.408849672307557,
+      "pipe_depth_mm": 0.6912059844287235,
+      "self_depth_mm": 0.0,
+      "maxq": 71.16009846032522
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 150.0,
+      "fit_rms_mm": 21.12893665873232,
+      "pipe_depth_mm": 0.6432857914782835,
+      "self_depth_mm": 0.0,
+      "maxq": 71.53341685660895
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 250.0,
+      "fit_rms_mm": 20.009739198490454,
+      "pipe_depth_mm": 0.6240389684100984,
+      "self_depth_mm": 0.0,
+      "maxq": 80.94455564228669
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 450.0,
+      "fit_rms_mm": 16.60584301966763,
+      "pipe_depth_mm": 0.5146041419085479,
+      "self_depth_mm": 0.0,
+      "maxq": 87.9998442956839
+    },
+    {
+      "smooth_source": true,
+      "shift_mm": 700.0,
+      "fit_rms_mm": 14.491421588520899,
+      "pipe_depth_mm": 0.5087205773451855,
+      "self_depth_mm": 0.0,
+      "maxq": 88.0
+    }
+  ]
+}

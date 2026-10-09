@@ -1,0 +1,10 @@
+{
+  "physical_steps": 0,
+  "seed_actual_time_s": 111.65000000016906,
+  "purpose": "Distinguish independently initialized optimizer basins from a continued private20-hinge solution; not physical execution or a global infeasibility proof",
+  "ready": false,
+  "maximum_fit_rms_mm": 61.01634310241552,
+  "maximum_pipe_depth_mm": 13.103136659010701,
+  "maximum_self_depth_mm": 0.30588239799883604,
+  "remaining_formal_trial_allowance": 0
+}

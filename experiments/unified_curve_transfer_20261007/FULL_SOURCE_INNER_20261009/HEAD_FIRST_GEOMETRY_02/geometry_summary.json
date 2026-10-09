@@ -1,0 +1,15 @@
+{
+  "physical_steps": 0,
+  "seed": "read-only F04 actual junction sample, not a future physical reset",
+  "seed_time_s": 14.749999999997264,
+  "curve": "actual source spline, one inner Bezier bridge, one target helix; nearest previous exact64.5mm chord intersection",
+  "bridge_length_mm": 391.7032869718081,
+  "bridge_target_node_clearance_mm": 91.49999999999997,
+  "bridge_source_node_clearance_mm": 99.71825300865255,
+  "maximum_rod_length_error_mm": 2.6759892080008285e-09,
+  "maximum_true_hinge_fit_rms_mm": 221.75330754822994,
+  "maximum_predicted_pipe_depth_mm": 82.12190584068618,
+  "maximum_joint_deg": 87.99999999999999,
+  "wall_s": 4.671999999998661,
+  "ready": false
+}

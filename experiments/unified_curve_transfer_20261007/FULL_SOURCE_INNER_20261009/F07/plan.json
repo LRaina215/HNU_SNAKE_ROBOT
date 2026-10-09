@@ -1,0 +1,19 @@
+{
+  "name": "F07",
+  "registered_utc": "2026-10-09T08:49:12.684640+00:00",
+  "maximum_new_formal_trials": 2,
+  "action": "Same real approach/pitch/backoff as F06, but enter the head-first route immediately when actual lower-inner head, upward entry and16 posterior source radii qualify; actual-state exact-rod20-hinge preflight before feed; measured source spline and contact-registered joint projection during supported intake",
+  "repositioning_hypothesis": "Different source pitches may produce different circumferential/axial rolling ratios. This is unverified until actual dynamics.",
+  "initial_state_is_artificial": true,
+  "physical_root_reset_during_run": false,
+  "original_physics": "I01 robot, gravity, friction, inertia, damping1.5, torque2.355Nm, Kp127 source, ctrl88deg; actual limit90.5deg stop",
+  "max_actual_seconds": 650,
+  "max_wall_seconds": 800,
+  "deadline_utc": "2026-10-09T09:05:00+00:00",
+  "source_reposition_limit_seconds": 220,
+  "completion": "Strict actual all21 target single coil, source clear, posterior target bearing, all Kp127 for one actual second",
+  "yamada_compliance_enabled": false,
+  "basis": "F06 actual111.2-113.1s lower inner upward exit, with18 posterior rods still near source; fixed750mm retreat target missed this usable event",
+  "actual_exit_gate": true,
+  "anchored_feed": true
+}
