@@ -1,0 +1,21 @@
+{
+  "fps": 20.0,
+  "frames": 2038,
+  "actual_seconds": 101.85000000012226,
+  "speed": 1.0,
+  "source": "saved actual qpos only",
+  "readback": [
+    {
+      "frame": 0,
+      "readable": true
+    },
+    {
+      "frame": 1019,
+      "readable": true
+    },
+    {
+      "frame": 2037,
+      "readable": true
+    }
+  ]
+}

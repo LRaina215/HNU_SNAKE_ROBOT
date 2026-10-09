@@ -18,20 +18,26 @@ class HingePhaseMapper:
         self.head=model.body('head').id;self.rotation=Rotation.from_quat(data.qpos[3:7][[1,2,3,0]]).as_matrix()
         self.jp=np.zeros((3,model.nv));self.jr=np.zeros((3,model.nv));self.root=data.qpos[:3].copy();self.tilt=np.zeros(3)
 
-    def solve(self,guide,shift,phase,previous,rate_bound=True,passive_rear=False,active_prefix=9,observed_q=None):
+    def solve(self,guide,shift,phase,previous,rate_bound=True,passive_rear=False,active_prefix=9,observed_q=None,node_weights=None,orientation_override=None,command_step=None,active_mask=None):
         screw=Rotation.from_rotvec([0.,BETA*shift/R,0.]).as_matrix()
         orientation=screw@self.rotation@Rotation.from_rotvec([0.,0.,-phase]).as_matrix()
+        if orientation_override is not None:orientation=np.asarray(orientation_override)
         # The root is private FK geometry only; actual data is never assigned.
-        qlo=np.maximum(-LIMIT,previous-STEP) if rate_bound else np.full(20,-LIMIT)
-        qhi=np.minimum(LIMIT,previous+STEP) if rate_bound else np.full(20,LIMIT)
+        step=STEP if command_step is None else command_step
+        qlo=np.maximum(-LIMIT,previous-step) if rate_bound else np.full(20,-LIMIT)
+        qhi=np.minimum(LIMIT,previous+step) if rate_bound else np.full(20,LIMIT)
         if passive_rear and observed_q is not None:
             count=min(20,active_prefix+3);held=np.clip(observed_q[count:],-LIMIT+1e-7,LIMIT-1e-7)
             qlo[count:]=held-1e-8;qhi[count:]=held+1e-8
+        if active_mask is not None and observed_q is not None:
+            held=np.clip(observed_q[~np.asarray(active_mask)],-LIMIT+1e-7,LIMIT-1e-7)
+            qlo[~np.asarray(active_mask)]=held-1e-8;qhi[~np.asarray(active_mask)]=held+1e-8
         guess=np.r_[self.root,self.tilt,np.clip(previous,qlo,qhi)]
         lo=np.r_[np.full(3,-4.),[-.5,-.5,-.07],qlo];hi=np.r_[np.full(3,4.),[.5,.5,.07],qhi]
         weights=np.ones(22);weights[:10]=3.
         if passive_rear:
             weights[:active_prefix+1]=3.;weights[active_prefix+1:active_prefix+5]=.5;weights[active_prefix+5:]=0.
+        if node_weights is not None:weights=np.asarray(node_weights)
         cache={}
         def evaluate(x):
             if 'x' in cache and np.array_equal(x,cache['x']):return cache

@@ -1,0 +1,2441 @@
+{
+  "case": "L04",
+  "read_only": true,
+  "physical_steps": 0,
+  "samples_100hz": 16891,
+  "actual_duration_s": 168.90000000044242,
+  "maximum_current_target_connected": 21,
+  "maximum_current_target_connected_time_s": 141.9000000003135,
+  "final_actual_target_connected": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "final_source_contact_modules": [],
+  "whole_source_clear_first_time_s": 12.819999999998334,
+  "source_clear_intervals_at_least_half_second": [
+    {
+      "start_s": 24.490000000006948,
+      "end_s": 168.90000000044242,
+      "duration_s": 144.41000000043547
+    }
+  ],
+  "actual_pipe_depth_max_mm": 1.006017210830095,
+  "actual_joint_max_deg": 90.08687416960971,
+  "last_second_fk_max_point_difference_mm": 0.0,
+  "last_second_samples": 101,
+  "last_second_original_helix_guard": true,
+  "last_second_all_source_clear": true,
+  "last_second_all_full_kp": true,
+  "last_second_all_kp_exact127": true,
+  "last_second_all_strict_whole_shape": true,
+  "last_second_all_full_reference_window": true,
+  "last_second_tail_supported": true,
+  "initial_mid_final": [
+    {
+      "t_s": 0.0,
+      "shift_mm": 0.0,
+      "actual_points_mm": [
+        [
+          1049.7859560659313,
+          348.4577681281167,
+          922.5927078409456
+        ],
+        [
+          1111.125318395539,
+          342.3711123315793,
+          903.6009925363298
+        ],
+        [
+          1154.7865169113268,
+          308.1671971179281,
+          936.5257845360121
+        ],
+        [
+          1201.133558778578,
+          296.65912741907977,
+          979.8820533095322
+        ],
+        [
+          1173.0556173064103,
+          278.91434930525617,
+          1035.172215656705
+        ],
+        [
+          1145.500546584211,
+          253.2771213179207,
+          1087.5525613850405
+        ],
+        [
+          1081.3004182904529,
+          248.83398585390867,
+          1083.2106638374894
+        ],
+        [
+          1034.425582723446,
+          208.96563208548648,
+          1063.8841494502028
+        ],
+        [
+          1010.421716672209,
+          208.70803470532647,
+          1004.0176474797017
+        ],
+        [
+          1007.7194279919661,
+          189.80873712812902,
+          942.4078740100877
+        ],
+        [
+          1004.2535305200626,
+          170.01070204919242,
+          881.1194137444925
+        ],
+        [
+          964.5706952457715,
+          185.90267547731796,
+          832.8186087289109
+        ],
+        [
+          922.9468963114538,
+          139.24656748736098,
+          848.6589669794351
+        ],
+        [
+          877.3535655509764,
+          98.84185783452018,
+          869.8475872279398
+        ],
+        [
+          839.4021805568433,
+          55.938999754579804,
+          899.500363583613
+        ],
+        [
+          817.5208651016309,
+          -4.0397104440359,
+          908.6661890707122
+        ],
+        [
+          810.0720295583452,
+          -64.29827950071063,
+          930.430143313704
+        ],
+        [
+          773.6435013852782,
+          -82.66545159250761,
+          980.388719399241
+        ],
+        [
+          765.4034368773321,
+          -94.99546901169401,
+          1043.1607036545395
+        ],
+        [
+          746.2062367582008,
+          -39.99653099711948,
+          1070.8524772498693
+        ],
+        [
+          719.9598855310736,
+          12.777601273380741,
+          1097.049232971867
+        ],
+        [
+          708.4813581816481,
+          65.83251735414731,
+          1062.2114763054096
+        ]
+      ],
+      "executed_reference_points_mm": [
+        [
+          1049.7859560659313,
+          348.4577681281167,
+          922.5927078409456
+        ],
+        [
+          1111.125318395539,
+          342.3711123315793,
+          903.6009925363298
+        ],
+        [
+          1154.7865169113268,
+          308.1671971179281,
+          936.5257845360121
+        ],
+        [
+          1201.133558778578,
+          296.65912741907977,
+          979.8820533095322
+        ],
+        [
+          1173.0556173064103,
+          278.91434930525617,
+          1035.172215656705
+        ],
+        [
+          1145.500546584211,
+          253.2771213179207,
+          1087.5525613850405
+        ],
+        [
+          1081.3004182904529,
+          248.83398585390867,
+          1083.2106638374894
+        ],
+        [
+          1034.425582723446,
+          208.96563208548648,
+          1063.8841494502028
+        ],
+        [
+          1010.421716672209,
+          208.70803470532647,
+          1004.0176474797017
+        ],
+        [
+          1007.7194279919661,
+          189.80873712812902,
+          942.4078740100877
+        ],
+        [
+          1004.2535305200626,
+          170.01070204919242,
+          881.1194137444925
+        ],
+        [
+          964.5706952457715,
+          185.90267547731796,
+          832.8186087289109
+        ],
+        [
+          922.9468963114538,
+          139.24656748736098,
+          848.6589669794351
+        ],
+        [
+          877.3535655509764,
+          98.84185783452018,
+          869.8475872279398
+        ],
+        [
+          839.4021805568433,
+          55.938999754579804,
+          899.500363583613
+        ],
+        [
+          817.5208651016309,
+          -4.0397104440359,
+          908.6661890707122
+        ],
+        [
+          810.0720295583452,
+          -64.29827950071063,
+          930.430143313704
+        ],
+        [
+          773.6435013852782,
+          -82.66545159250761,
+          980.388719399241
+        ],
+        [
+          765.4034368773321,
+          -94.99546901169401,
+          1043.1607036545395
+        ],
+        [
+          746.2062367582008,
+          -39.99653099711948,
+          1070.8524772498693
+        ],
+        [
+          719.9598855310736,
+          12.777601273380741,
+          1097.049232971867
+        ],
+        [
+          708.4813581816481,
+          65.83251735414731,
+          1062.2114763054096
+        ]
+      ],
+      "current_target_connected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_contacts": [
+        16,
+        18,
+        19
+      ],
+      "source_target_force_n": [
+        11.32176460481778,
+        37.56391465003273
+      ],
+      "kp_nm_per_rad": [
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0
+      ]
+    },
+    {
+      "t_s": 84.45000000003918,
+      "shift_mm": 421.28421748583514,
+      "actual_points_mm": [
+        [
+          1133.572570783288,
+          717.2010298029451,
+          1090.7110642682162
+        ],
+        [
+          1077.6781842439507,
+          686.0590876388808,
+          1082.5718387742747
+        ],
+        [
+          1018.1447175632323,
+          681.2336744102245,
+          1058.2257562937498
+        ],
+        [
+          1017.3492412175575,
+          652.5821560176282,
+          1000.4442046428794
+        ],
+        [
+          1017.8318733626032,
+          634.7333113752106,
+          938.4648870349596
+        ],
+        [
+          1078.5517703306646,
+          622.597287708556,
+          920.4077266338768
+        ],
+        [
+          1133.4073195755684,
+          590.5340775081946,
+          909.3140676934107
+        ],
+        [
+          1176.7062748396258,
+          589.005836167671,
+          957.0960198453089
+        ],
+        [
+          1189.1399227788875,
+          550.4088175176715,
+          1007.2550125610134
+        ],
+        [
+          1168.9478863942018,
+          549.5694124762824,
+          1068.5071722438852
+        ],
+        [
+          1115.7573065369652,
+          515.7064522839871,
+          1082.0833330217336
+        ],
+        [
+          1052.6318784800671,
+          505.1972807940911,
+          1090.1448246473171
+        ],
+        [
+          1025.3257450858227,
+          485.72338734669313,
+          1035.0504278990531
+        ],
+        [
+          999.6001578783244,
+          459.341226531618,
+          982.1124854233872
+        ],
+        [
+          1043.8263371711546,
+          453.50266567389684,
+          935.5270126634256
+        ],
+        [
+          1090.6098368963414,
+          428.22743231380764,
+          899.0206196334849
+        ],
+        [
+          1153.380214916662,
+          419.47262394812105,
+          887.0421817692994
+        ],
+        [
+          1215.4499947661825,
+          419.2216139667834,
+          869.5056649138536
+        ],
+        [
+          1277.4110092393273,
+          418.71629472841107,
+          851.5940112234188
+        ],
+        [
+          1339.304062284767,
+          418.5941848584326,
+          833.4422875065353
+        ],
+        [
+          1401.1531433682455,
+          418.3713585808897,
+          815.1422460426659
+        ],
+        [
+          1453.9798655079062,
+          439.6951217701622,
+          784.8951874844038
+        ]
+      ],
+      "executed_reference_points_mm": [
+        [
+          1185.9265030084432,
+          480.05056580077735,
+          968.5534408759875
+        ],
+        [
+          1186.8006076757808,
+          460.77865109532877,
+          1028.9465802317854
+        ],
+        [
+          1149.8525149182765,
+          441.5067363898802,
+          1076.7266365503076
+        ],
+        [
+          1091.1818592450059,
+          422.2348216844316,
+          1091.0740928784094
+        ],
+        [
+          1036.3535898117161,
+          402.962906978983,
+          1065.7372380781603
+        ],
+        [
+          1009.2583876458278,
+          383.69099227353445,
+          1011.7562658767636
+        ],
+        [
+          1021.7026226913404,
+          364.4190775680858,
+          952.6526589280306
+        ],
+        [
+          1068.263886888041,
+          345.14716286263723,
+          914.1800190832872
+        ],
+        [
+          1128.6537355584946,
+          325.87524815718865,
+          913.1022817414412
+        ],
+        [
+          1176.5581043196298,
+          306.60333345174007,
+          949.8890564548551
+        ],
+        [
+          1191.1033087432945,
+          287.3314187462915,
+          1008.5110008826213
+        ],
+        [
+          1165.9514716184053,
+          268.0595040408429,
+          1063.424391139109
+        ],
+        [
+          1112.0621677084055,
+          248.7875893353943,
+          1090.7014559429688
+        ],
+        [
+          1052.9169364419645,
+          229.51567462994572,
+          1078.4565811515515
+        ],
+        [
+          1014.2875169070495,
+          210.2437599244971,
+          1032.025306275517
+        ],
+        [
+          1008.5000000000002,
+          192.35057835263618,
+          970.7801974671785
+        ],
+        [
+          1008.5000000000002,
+          185.44062915739323,
+          906.7619493066187
+        ],
+        [
+          1008.5000000000002,
+          185.43414039298833,
+          842.2619631052951
+        ],
+        [
+          1008.5000000000002,
+          185.43414039298833,
+          777.7619631052951
+        ],
+        [
+          1008.5000000000002,
+          185.43414039298833,
+          713.2619631052951
+        ],
+        [
+          1008.5000000000002,
+          185.43414039298833,
+          648.7619631052951
+        ],
+        [
+          964.7241087194342,
+          209.07494793059305,
+          603.2040514628028
+        ]
+      ],
+      "current_target_connected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "source_contacts": [],
+      "source_target_force_n": [
+        0.0,
+        71.82148370833491
+      ],
+      "kp_nm_per_rad": [
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        63.5,
+        63.5,
+        63.5,
+        63.5,
+        0.0
+      ]
+    },
+    {
+      "t_s": 168.90000000044242,
+      "shift_mm": 838.5,
+      "actual_points_mm": [
+        [
+          1088.7824698739823,
+          1181.804669530586,
+          1086.2258623630023
+        ],
+        [
+          1027.4966344691047,
+          1169.7907474784586,
+          1070.1025235136306
+        ],
+        [
+          1018.8683834709178,
+          1142.282847045153,
+          1012.4040079481184
+        ],
+        [
+          1009.8838792018829,
+          1120.2304799506633,
+          952.4605196564819
+        ],
+        [
+          1066.876048890008,
+          1112.969930330176,
+          923.1445340266517
+        ],
+        [
+          1118.8893854132434,
+          1078.2274748392663,
+          907.4020878957989
+        ],
+        [
+          1171.1745757579629,
+          1078.4859343906458,
+          945.1703559164104
+        ],
+        [
+          1187.1063189236854,
+          1040.4173664607836,
+          994.740646368161
+        ],
+        [
+          1179.717551110742,
+          1038.3328613412668,
+          1058.7821247131612
+        ],
+        [
+          1126.4736073341655,
+          1007.6595729858251,
+          1078.3903330091955
+        ],
+        [
+          1066.62432943142,
+          992.2355541549219,
+          1096.8406332133623
+        ],
+        [
+          1031.905316441186,
+          976.2398543554102,
+          1044.8889467642405
+        ],
+        [
+          1002.4372973299362,
+          946.1199251702377,
+          996.0558051948183
+        ],
+        [
+          1036.526766786966,
+          943.1873446336849,
+          941.3789541192958
+        ],
+        [
+          1079.1721328887102,
+          905.0556219397397,
+          911.5864303181763
+        ],
+        [
+          1143.5759598229513,
+          905.898280437982,
+          915.0050561941134
+        ],
+        [
+          1174.3526227817197,
+          870.847797467682,
+          959.5529030631944
+        ],
+        [
+          1200.1233331744493,
+          863.4905900595857,
+          1018.221395331262
+        ],
+        [
+          1156.4424229527438,
+          840.7467365109671,
+          1059.874068810431
+        ],
+        [
+          1113.031053289242,
+          817.0706769999908,
+          1101.2884043715808
+        ],
+        [
+          1056.9037476957533,
+          808.4885716484764,
+          1070.6890083881528
+        ],
+        [
+          1011.3240403040198,
+          778.3154205727299,
+          1036.449831583736
+        ]
+      ],
+      "executed_reference_points_mm": [
+        [
+          1099.0744364943366,
+          604.7102088144204,
+          1091.4953186354194
+        ],
+        [
+          1042.2641535684895,
+          585.4382941089717,
+          1070.9846605742187
+        ],
+        [
+          1010.6114892434192,
+          566.1663794035233,
+          1019.5433913311032
+        ],
+        [
+          1017.9086663062835,
+          546.8944646980747,
+          959.5863521519417
+        ],
+        [
+          1060.9760379907075,
+          527.622549992626,
+          917.2390165047728
+        ],
+        [
+          1121.0475762925826,
+          508.3506352871774,
+          910.9536663741402
+        ],
+        [
+          1171.9479162910316,
+          489.0787205817289,
+          943.4690585486255
+        ],
+        [
+          1191.4979193836634,
+          469.80680587628024,
+          1000.6170481834007
+        ],
+        [
+          1171.1789346482672,
+          450.53489117083166,
+          1057.4961673708583
+        ],
+        [
+          1119.8446864159557,
+          431.2629764653831,
+          1089.3221048848065
+        ],
+        [
+          1059.8633829664518,
+          411.9910617599345,
+          1082.2271364763621
+        ],
+        [
+          1017.3710705972685,
+          392.7191470544859,
+          1039.302799210214
+        ],
+        [
+          1010.8832029497945,
+          373.44723234903734,
+          979.2527957663577
+        ],
+        [
+          1043.2267810969438,
+          354.17531764358876,
+          928.2431075409083
+        ],
+        [
+          1100.308525845596,
+          334.9034029381401,
+          908.5005201555626
+        ],
+        [
+          1157.255834606353,
+          315.63148823269154,
+          928.6276005480412
+        ],
+        [
+          1189.2546834635302,
+          296.35957352724296,
+          979.8542441237607
+        ],
+        [
+          1182.3620043758945,
+          277.0876588217944,
+          1039.8591298849483
+        ],
+        [
+          1139.5811895571542,
+          257.8157441163458,
+          1082.4959358589297
+        ],
+        [
+          1079.5534037110615,
+          238.5438294108972,
+          1089.1862472593011
+        ],
+        [
+          1028.4349472143076,
+          219.2719147054486,
+          1057.0148508704624
+        ],
+        [
+          1008.5000000000002,
+          200.0,
+          1000.0
+        ]
+      ],
+      "current_target_connected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "source_contacts": [],
+      "source_target_force_n": [
+        0.0,
+        164.8763888505143
+      ],
+      "kp_nm_per_rad": [
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0,
+        127.0
+      ]
+    }
+  ],
+  "last_second": [
+    {
+      "t_s": 167.90000000043764,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.73785310883258,
+      "axis_rms_mm": 1.3301259184118819,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.464612647600159,
+      "tail_dy_mm": -17.864811451307805,
+      "tail_dphi_rad": 0.7066021591308118,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.9100000004377,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.72581947630945,
+      "axis_rms_mm": 1.3331365827039492,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 10.799234304190847,
+      "tail_dy_mm": -17.883770280706646,
+      "tail_dphi_rad": 0.70678599277446,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.92000000043774,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.70303129873304,
+      "axis_rms_mm": 1.332866810971103,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.652399083188469,
+      "tail_dy_mm": -17.909227956839246,
+      "tail_dphi_rad": 0.707065048811657,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.9300000004378,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6795233001483,
+      "axis_rms_mm": 1.3282473392714862,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.34491740201819,
+      "tail_dy_mm": -17.918297926085014,
+      "tail_dphi_rad": 0.7072891323824155,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.94000000043783,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.66087897601452,
+      "axis_rms_mm": 1.323109516814631,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.398943812561608,
+      "tail_dy_mm": -17.91591838358153,
+      "tail_dphi_rad": 0.7074320941300716,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.95000000043788,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.64741083409598,
+      "axis_rms_mm": 1.3197429883565583,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.282212934200626,
+      "tail_dy_mm": -17.912518125868914,
+      "tail_dphi_rad": 0.7075083140994476,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.96000000043793,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.63504424593634,
+      "axis_rms_mm": 1.32262344854739,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.482781554464122,
+      "tail_dy_mm": -17.94509525029997,
+      "tail_dphi_rad": 0.7076664729497963,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.97000000043798,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.61861097869536,
+      "axis_rms_mm": 1.3251333639967697,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.570285886485077,
+      "tail_dy_mm": -17.988093299297404,
+      "tail_dphi_rad": 0.7078547763944929,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.98000000043803,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.60202940069777,
+      "axis_rms_mm": 1.3231622001954428,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.93452537819035,
+      "tail_dy_mm": -18.011828300229737,
+      "tail_dphi_rad": 0.7079980015668266,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 167.99000000043807,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.5881800988228,
+      "axis_rms_mm": 1.318859518649005,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.877476341180058,
+      "tail_dy_mm": -18.02038472369183,
+      "tail_dphi_rad": 0.708080822959964,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.00000000043812,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.57737696947038,
+      "axis_rms_mm": 1.3146991264850092,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.716249095221638,
+      "tail_dy_mm": -18.024117399215058,
+      "tail_dphi_rad": 0.7081106775342239,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.01000000043817,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.59158400684504,
+      "axis_rms_mm": 1.3394219734184707,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.747397428406174,
+      "tail_dy_mm": -18.005326303259793,
+      "tail_dphi_rad": 0.7083597907205057,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.02000000043822,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.61931691331628,
+      "axis_rms_mm": 1.3723349053854756,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.452363600331786,
+      "tail_dy_mm": -17.97920726574287,
+      "tail_dphi_rad": 0.7086938332114521,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.03000000043826,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6420208333837,
+      "axis_rms_mm": 1.3883050135080288,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.731562987269754,
+      "tail_dy_mm": -17.965612487864657,
+      "tail_dphi_rad": 0.7089015474808011,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.0400000004383,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.65796671940416,
+      "axis_rms_mm": 1.3900785000475975,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.715986916601315,
+      "tail_dy_mm": -17.96467649773481,
+      "tail_dphi_rad": 0.7089776583270453,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.05000000043836,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6695227975502,
+      "axis_rms_mm": 1.3862043137913338,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.596813211889273,
+      "tail_dy_mm": -17.970804057792613,
+      "tail_dphi_rad": 0.7089761791598175,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.0600000004384,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.68876261062056,
+      "axis_rms_mm": 1.4000529559919463,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.139311841437669,
+      "tail_dy_mm": -17.99991419084335,
+      "tail_dphi_rad": 0.7089147364034911,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.07000000043845,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.70576106307456,
+      "axis_rms_mm": 1.414701544271183,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.38168685879507,
+      "tail_dy_mm": -18.033667962427558,
+      "tail_dphi_rad": 0.7088477363245875,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.0800000004385,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.71805135827486,
+      "axis_rms_mm": 1.4217766387434798,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.441081242456528,
+      "tail_dy_mm": -18.05202639001291,
+      "tail_dphi_rad": 0.7088149736365494,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.09000000043855,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.72722442987913,
+      "axis_rms_mm": 1.423493569916638,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.409168662391394,
+      "tail_dy_mm": -18.058342501005686,
+      "tail_dphi_rad": 0.7088056424850926,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.1000000004386,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.73437907340445,
+      "axis_rms_mm": 1.4227262775381577,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.36522391023805,
+      "tail_dy_mm": -18.060446491380723,
+      "tail_dphi_rad": 0.708800605797121,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.11000000043865,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.73097058241774,
+      "axis_rms_mm": 1.4214252028505474,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 11.581689699862917,
+      "tail_dy_mm": -18.098695563472322,
+      "tail_dphi_rad": 0.7089247910559564,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.1200000004387,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.7129401019902,
+      "axis_rms_mm": 1.4136146870277502,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.194217773931953,
+      "tail_dy_mm": -18.14659233016702,
+      "tail_dphi_rad": 0.7091202081800834,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.13000000043874,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.69357735873893,
+      "axis_rms_mm": 1.403242715843047,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.67999705038405,
+      "tail_dy_mm": -18.166735215435104,
+      "tail_dphi_rad": 0.7092945968570827,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.1400000004388,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6806127735764,
+      "axis_rms_mm": 1.395594273247681,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.598677489893717,
+      "tail_dy_mm": -18.164438380458336,
+      "tail_dphi_rad": 0.7094236713014084,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.15000000043884,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.67291321765754,
+      "axis_rms_mm": 1.3913123959502542,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.402596147658329,
+      "tail_dy_mm": -18.15593424532791,
+      "tail_dphi_rad": 0.7095003415744845,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.16000000043888,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.68635121973645,
+      "axis_rms_mm": 1.4063239139728632,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.837908240055366,
+      "tail_dy_mm": -18.1849747145707,
+      "tail_dphi_rad": 0.709356847092609,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.17000000043893,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.71059649708613,
+      "axis_rms_mm": 1.425379599132812,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.100735252184124,
+      "tail_dy_mm": -18.222687405103912,
+      "tail_dphi_rad": 0.7091529286819984,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.18000000043898,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.73145719729226,
+      "axis_rms_mm": 1.4330854028436713,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.304237643420858,
+      "tail_dy_mm": -18.236959235784944,
+      "tail_dphi_rad": 0.7090669372915794,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.19000000043903,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.74759401017553,
+      "axis_rms_mm": 1.432157321372669,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.460491940810403,
+      "tail_dy_mm": -18.23300465553057,
+      "tail_dphi_rad": 0.7090843035943521,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.20000000043908,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.76062601019333,
+      "axis_rms_mm": 1.4285025010431613,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.574611903691377,
+      "tail_dy_mm": -18.223418096236287,
+      "tail_dphi_rad": 0.7091427878722474,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.21000000043912,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.78680190142958,
+      "axis_rms_mm": 1.4433835566226534,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.53530250561272,
+      "tail_dy_mm": -18.19197077981949,
+      "tail_dphi_rad": 0.7095303074017636,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.22000000043917,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.81835400513765,
+      "axis_rms_mm": 1.4590750235247032,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.430889696553841,
+      "tail_dy_mm": -18.154279531574,
+      "tail_dphi_rad": 0.7100403100230057,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.23000000043922,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.84620345859267,
+      "axis_rms_mm": 1.4675419152523004,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.687022293315874,
+      "tail_dy_mm": -18.129073767753525,
+      "tail_dphi_rad": 0.7103855135193715,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.24000000043927,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.86871702295514,
+      "axis_rms_mm": 1.470469056416463,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.556194252375702,
+      "tail_dy_mm": -18.11699166370362,
+      "tail_dphi_rad": 0.7105513175357991,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.25000000043931,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.88640765244685,
+      "axis_rms_mm": 1.4705294750278386,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.318456350812557,
+      "tail_dy_mm": -18.11315589079687,
+      "tail_dphi_rad": 0.7106035140564941,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.26000000043936,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.89003900010363,
+      "axis_rms_mm": 1.4630557182430017,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.229504849405203,
+      "tail_dy_mm": -18.176193081480886,
+      "tail_dphi_rad": 0.710569964260511,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.2700000004394,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.8806756332429,
+      "axis_rms_mm": 1.4492632505652243,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.270402623481889,
+      "tail_dy_mm": -18.258920534073077,
+      "tail_dphi_rad": 0.7105260986806243,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.28000000043946,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.8706280069544,
+      "axis_rms_mm": 1.4383511687724928,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.516139677083588,
+      "tail_dy_mm": -18.301013870759775,
+      "tail_dphi_rad": 0.7105316395742296,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.2900000004395,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.8647053365574,
+      "axis_rms_mm": 1.4338015051769248,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.390320727526122,
+      "tail_dy_mm": -18.30771264078157,
+      "tail_dphi_rad": 0.7105696631856606,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.30000000043955,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.86155087208644,
+      "axis_rms_mm": 1.4334523112749677,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.217700494104207,
+      "tail_dy_mm": -18.300290983841005,
+      "tail_dphi_rad": 0.7106077699055913,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.3100000004396,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.8490217147284,
+      "axis_rms_mm": 1.4228070053991586,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.396051834905673,
+      "tail_dy_mm": -18.343123349053194,
+      "tail_dphi_rad": 0.7107335048357672,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.32000000043965,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.82894134076255,
+      "axis_rms_mm": 1.4062631640550198,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.968838380866513,
+      "tail_dy_mm": -18.403496440158374,
+      "tail_dphi_rad": 0.7108959387537723,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.3300000004397,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.81424689676433,
+      "axis_rms_mm": 1.396889532120161,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.469576228567542,
+      "tail_dy_mm": -18.432508563719473,
+      "tail_dphi_rad": 0.7110367829040776,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.34000000043974,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.80688697097892,
+      "axis_rms_mm": 1.3953814645216753,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.405044392052718,
+      "tail_dy_mm": -18.43452268312351,
+      "tail_dphi_rad": 0.7111419109354742,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.3500000004398,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.80406030638596,
+      "axis_rms_mm": 1.3976980954213323,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.20318885433732,
+      "tail_dy_mm": -18.426641343529116,
+      "tail_dphi_rad": 0.7112083057072809,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.36000000043984,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.80071128396003,
+      "axis_rms_mm": 1.3857160998805127,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.924525166289978,
+      "tail_dy_mm": -18.487812292464213,
+      "tail_dphi_rad": 0.7112881396737052,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.3700000004399,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.79712676105962,
+      "axis_rms_mm": 1.3692464475140838,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 15.15471033235095,
+      "tail_dy_mm": -18.57518113694767,
+      "tail_dphi_rad": 0.7113447052951773,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.38000000043994,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.79795928968335,
+      "axis_rms_mm": 1.3624221542844266,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 15.447677375369981,
+      "tail_dy_mm": -18.624839085214397,
+      "tail_dphi_rad": 0.7113969051555458,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.39000000043998,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.80206262252938,
+      "axis_rms_mm": 1.364356095456536,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 15.257037651546598,
+      "tail_dy_mm": -18.637154298969172,
+      "tail_dphi_rad": 0.7114516890216276,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.40000000044003,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.80713984431011,
+      "axis_rms_mm": 1.3696605173960832,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.997219708805886,
+      "tail_dy_mm": -18.63037246047128,
+      "tail_dphi_rad": 0.7114993815770827,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.41000000044008,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.79737962264343,
+      "axis_rms_mm": 1.3687768288878492,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.736979875579397,
+      "tail_dy_mm": -18.65945721157103,
+      "tail_dphi_rad": 0.7116748784665781,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.42000000044013,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.77448979586472,
+      "axis_rms_mm": 1.3622415211636756,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.816449985025287,
+      "tail_dy_mm": -18.700878491811235,
+      "tail_dphi_rad": 0.7119121456323221,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.43000000044017,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.75533231920542,
+      "axis_rms_mm": 1.3578677853575858,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 15.451816826539963,
+      "tail_dy_mm": -18.71569392415062,
+      "tail_dphi_rad": 0.7121191145844641,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.44000000044022,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.7439370305159,
+      "axis_rms_mm": 1.3578181676887298,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 15.331181060073025,
+      "tail_dy_mm": -18.70867685624267,
+      "tail_dphi_rad": 0.7122749805877859,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.45000000044027,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.7372951886725,
+      "axis_rms_mm": 1.360712034147158,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 15.040288799342648,
+      "tail_dy_mm": -18.694988007657344,
+      "tail_dphi_rad": 0.7123747880935962,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.46000000044032,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.72934276291173,
+      "axis_rms_mm": 1.3664855216802356,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.262898735748873,
+      "tail_dy_mm": -18.732014943981024,
+      "tail_dphi_rad": 0.7123918500250017,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.47000000044036,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.7178659675688,
+      "axis_rms_mm": 1.3713956711770114,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.396770012505485,
+      "tail_dy_mm": -18.78499861516991,
+      "tail_dphi_rad": 0.7123695208369796,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.4800000004404,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.7072142029709,
+      "axis_rms_mm": 1.3761975046432167,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.773649979068308,
+      "tail_dy_mm": -18.808262274769838,
+      "tail_dphi_rad": 0.7123756313265339,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.49000000044046,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.69922909858613,
+      "axis_rms_mm": 1.381956620685246,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.777252560217818,
+      "tail_dy_mm": -18.804985692056352,
+      "tail_dphi_rad": 0.7124155653471558,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.5000000004405,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.69313951241682,
+      "axis_rms_mm": 1.3884619235265476,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.712405618696401,
+      "tail_dy_mm": -18.790607437492724,
+      "tail_dphi_rad": 0.7124695490471158,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.51000000044056,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.67870233252472,
+      "axis_rms_mm": 1.393222764208357,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 11.63908701835054,
+      "tail_dy_mm": -18.80678226099919,
+      "tail_dphi_rad": 0.7126127990097757,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.5200000004406,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6560482346966,
+      "axis_rms_mm": 1.3947247342062141,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.055793279973223,
+      "tail_dy_mm": -18.836104094500094,
+      "tail_dphi_rad": 0.712760290672632,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.53000000044065,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6355514481089,
+      "axis_rms_mm": 1.395357640741377,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.659819827348844,
+      "tail_dy_mm": -18.849817265574885,
+      "tail_dphi_rad": 0.7128718947745956,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.5400000004407,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.62048437767703,
+      "axis_rms_mm": 1.3970664793940406,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.789696520154056,
+      "tail_dy_mm": -18.849461315810444,
+      "tail_dphi_rad": 0.7129520656832931,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.55000000044075,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6099085654035,
+      "axis_rms_mm": 1.400038308893963,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.775994639310948,
+      "tail_dy_mm": -18.843848735212056,
+      "tail_dphi_rad": 0.7130084956149538,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.5600000004408,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.60632831936002,
+      "axis_rms_mm": 1.4161458349969687,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.331267555286058,
+      "tail_dy_mm": -18.827011247823265,
+      "tail_dphi_rad": 0.7132707153737723,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.57000000044084,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6061124929298,
+      "axis_rms_mm": 1.4336812013166707,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.491917628193267,
+      "tail_dy_mm": -18.809686742986997,
+      "tail_dphi_rad": 0.7135967415429647,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.5800000004409,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.60491709542842,
+      "axis_rms_mm": 1.4423264646697884,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.97361672610714,
+      "tail_dy_mm": -18.802833925267937,
+      "tail_dphi_rad": 0.7138000805735061,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.59000000044094,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.60296324294367,
+      "axis_rms_mm": 1.4441395870136318,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.034212604074078,
+      "tail_dy_mm": -18.80530458925367,
+      "tail_dphi_rad": 0.713882927850177,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.60000000044099,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.6011648668811,
+      "axis_rms_mm": 1.443408262295073,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.954836895058666,
+      "tail_dy_mm": -18.812453347245793,
+      "tail_dphi_rad": 0.7138970246125762,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.61000000044103,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.58587280950144,
+      "axis_rms_mm": 1.4365174017150846,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 11.784042804168427,
+      "tail_dy_mm": -18.86799450731025,
+      "tail_dphi_rad": 0.7139224837627935,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.62000000044108,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.55657265340204,
+      "axis_rms_mm": 1.4282203535697673,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.37290359438806,
+      "tail_dy_mm": -18.93475931437594,
+      "tail_dphi_rad": 0.7139694952159719,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.63000000044113,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.53063490167395,
+      "axis_rms_mm": 1.4226531567656915,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.927899198919468,
+      "tail_dy_mm": -18.96940962258786,
+      "tail_dphi_rad": 0.7140330445399989,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.64000000044118,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.51281989294108,
+      "axis_rms_mm": 1.420014589605244,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.943568464512511,
+      "tail_dy_mm": -18.977679264874816,
+      "tail_dphi_rad": 0.7140991110722812,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.65000000044122,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.5004975522957,
+      "axis_rms_mm": 1.4190738538178078,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.839759578837866,
+      "tail_dy_mm": -18.975609400061266,
+      "tail_dphi_rad": 0.7141499581555042,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.66000000044127,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.48551367460436,
+      "axis_rms_mm": 1.4205238588787905,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.253860775858907,
+      "tail_dy_mm": -18.993704826333445,
+      "tail_dphi_rad": 0.7142769760837222,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.67000000044132,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.46842234057723,
+      "axis_rms_mm": 1.4223975770054005,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.573116103162157,
+      "tail_dy_mm": -19.020819411209587,
+      "tail_dphi_rad": 0.7144241576596304,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.68000000044137,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.45507181651794,
+      "axis_rms_mm": 1.4225893979949122,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.103826844240203,
+      "tail_dy_mm": -19.040259729441345,
+      "tail_dphi_rad": 0.7145222014572461,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.69000000044142,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.44598148231944,
+      "axis_rms_mm": 1.4208672644133427,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.152619730747613,
+      "tail_dy_mm": -19.053169951362747,
+      "tail_dphi_rad": 0.7145676566785397,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.70000000044146,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.43952697692038,
+      "axis_rms_mm": 1.417739899920787,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.045545710753524,
+      "tail_dy_mm": -19.06358287389054,
+      "tail_dphi_rad": 0.7145752501518974,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.7100000004415,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.42859078070438,
+      "axis_rms_mm": 1.414404051661744,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 12.008805108742076,
+      "tail_dy_mm": -19.092140134901125,
+      "tail_dphi_rad": 0.7146373847654264,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.72000000044156,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.41478903752488,
+      "axis_rms_mm": 1.4114240163240948,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.217821248428248,
+      "tail_dy_mm": -19.117244823858016,
+      "tail_dphi_rad": 0.7147523567307541,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.7300000004416,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.4051467229935,
+      "axis_rms_mm": 1.4096487175524712,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.682187326393624,
+      "tail_dy_mm": -19.12311318653426,
+      "tail_dphi_rad": 0.7148669845571689,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.74000000044165,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.4002286052741,
+      "axis_rms_mm": 1.4093137467445713,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.741154315591793,
+      "tail_dy_mm": -19.118084702498763,
+      "tail_dphi_rad": 0.7149543211866796,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.7500000004417,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.397850465603,
+      "axis_rms_mm": 1.4099288442414823,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.685937528659839,
+      "tail_dy_mm": -19.11240786863,
+      "tail_dphi_rad": 0.7150065204005109,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.76000000044175,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.4086648346958,
+      "axis_rms_mm": 1.4203456996020611,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.942264131741027,
+      "tail_dy_mm": -19.139799935267266,
+      "tail_dphi_rad": 0.7149599759181378,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.7700000004418,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.42666077062742,
+      "axis_rms_mm": 1.4332043154916105,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.061764233877915,
+      "tail_dy_mm": -19.17042443450856,
+      "tail_dphi_rad": 0.7149104943483024,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.78000000044185,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.44280530183798,
+      "axis_rms_mm": 1.4402906551253558,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.049731701735606,
+      "tail_dy_mm": -19.176071485484613,
+      "tail_dphi_rad": 0.7149354576140148,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.7900000004419,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.45564856770307,
+      "axis_rms_mm": 1.4425397196143686,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.99606337733442,
+      "tail_dy_mm": -19.16396081473437,
+      "tail_dphi_rad": 0.7150066956059788,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.80000000044194,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.4659881352993,
+      "axis_rms_mm": 1.4427746631882319,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.953743508637235,
+      "tail_dy_mm": -19.147659332472312,
+      "tail_dphi_rad": 0.7150792670527082,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.810000000442,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.47107616031067,
+      "axis_rms_mm": 1.449426394971862,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.085189934186834,
+      "tail_dy_mm": -19.1623980102138,
+      "tail_dphi_rad": 0.7150896165363996,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.82000000044204,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.4702308326474,
+      "axis_rms_mm": 1.4591181573650385,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.808417922797076,
+      "tail_dy_mm": -19.188858913435247,
+      "tail_dphi_rad": 0.7150732174616419,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.83000000044208,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.46699910405866,
+      "axis_rms_mm": 1.4665128078705258,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.090935829274454,
+      "tail_dy_mm": -19.202345935535604,
+      "tail_dphi_rad": 0.7150752758544154,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.84000000044213,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.46336290634756,
+      "axis_rms_mm": 1.4714470792182417,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.166382361323167,
+      "tail_dy_mm": -19.204131947722413,
+      "tail_dphi_rad": 0.715097805140978,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.85000000044218,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.46014315901738,
+      "axis_rms_mm": 1.4749179215961918,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 14.164317148814696,
+      "tail_dy_mm": -19.201785801252758,
+      "tail_dphi_rad": 0.7151239071597661,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.86000000044223,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.44345214575014,
+      "axis_rms_mm": 1.465019208277749,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 11.400038506472209,
+      "tail_dy_mm": -19.252022878931463,
+      "tail_dphi_rad": 0.7150975344320099,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.87000000044227,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.4170999265094,
+      "axis_rms_mm": 1.451192061064942,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.040497916979652,
+      "tail_dy_mm": -19.32226492809197,
+      "tail_dphi_rad": 0.7150405177361261,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.88000000044232,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.3968135406527,
+      "axis_rms_mm": 1.4461293696301178,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.67150123430123,
+      "tail_dy_mm": -19.363904820519085,
+      "tail_dphi_rad": 0.7150181691566164,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.89000000044237,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.38492930647772,
+      "axis_rms_mm": 1.4489664221175433,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.780301903959302,
+      "tail_dy_mm": -19.377626871908138,
+      "tail_dphi_rad": 0.7150350524761127,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    },
+    {
+      "t_s": 168.90000000044242,
+      "all_near": true,
+      "all_connected": true,
+      "strict_actual_whole_shape": true,
+      "pitch_mm": 184.37761526648427,
+      "axis_rms_mm": 1.4548764666098577,
+      "source_contact": false,
+      "source_force_n": 0.0,
+      "target_posterior_force_n": 13.755958362475663,
+      "tail_dy_mm": -19.377628213630427,
+      "tail_dphi_rad": 0.7150703567563195,
+      "all_full_kp": true,
+      "all_kp_exact127": true
+    }
+  ],
+  "yamada_compliance_enabled": false,
+  "tail_and_completion_caveat": {
+    "recorded_guard_used_radius_band_mm": [
+      75,
+      105
+    ],
+    "recorded_guard_is_not_strict_uniform_radius_verification": false,
+    "final_all_center_radius_mm": [
+      88.66757101724006,
+      87.19380059158188,
+      87.40750677163459,
+      87.55315241767711,
+      85.02509953312014,
+      86.3805554296693,
+      84.65153464005806,
+      87.59978686830125,
+      86.73644748527447,
+      87.68342203658442,
+      87.15432663867928,
+      85.32121999416734,
+      86.38139554879298,
+      84.74351551816818,
+      87.44711011811049,
+      86.08550426877613,
+      87.9429374917019,
+      87.48105153572689,
+      87.74951091500232,
+      87.29282142785799,
+      84.91561529829889
+    ],
+    "final_first20_median_radius_mm": 87.24331100971993,
+    "last_second_tail_radius_range_mm": [
+      84.73488921565394,
+      84.97330487713721
+    ],
+    "last_second_tail_radial_excess_over_first20_median_range_mm": [
+      -2.4182675534033526,
+      -1.890881354666127
+    ],
+    "final_tail_direct_force_n": 5.781334758224184,
+    "last_second_tail_direct_force_max_n": 6.483316189451415,
+    "last_second_tail_neighbor19_20_force_min_n": 10.799234304190847,
+    "full_kp_above120_recorded_interval_s": 25.390000000121233,
+    "full_kp127_recorded_interval_s": 25.340000000120995,
+    "final_reference_shift_mm": 838.5,
+    "nominal_final_reference_shift_mm": 838.5,
+    "review_tail_radial_consistency_tolerance_mm": 6.0,
+    "strict_uniform_radius_tail_helix_verified": true
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "physical_steps": 0,
+  "joints": [
+    {
+      "joint": 1,
+      "actual_angle_min_deg": -58.11083437426547,
+      "actual_angle_max_deg": 88.05608755670772,
+      "max_drive_torque_nm": 2.2194463901584527,
+      "max_passive_torque_nm": 1.3684667190797362,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 2,
+      "actual_angle_min_deg": -70.87472851227201,
+      "actual_angle_max_deg": 88.0635157996257,
+      "max_drive_torque_nm": 1.4113371955394953,
+      "max_passive_torque_nm": 1.0167702548620374,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 3,
+      "actual_angle_min_deg": -71.9045694618237,
+      "actual_angle_max_deg": 72.01271837713269,
+      "max_drive_torque_nm": 2.334417153561546,
+      "max_passive_torque_nm": 1.3264411378991645,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 4,
+      "actual_angle_min_deg": -70.97899128207798,
+      "actual_angle_max_deg": 10.559250865735757,
+      "max_drive_torque_nm": 2.3024956126768075,
+      "max_passive_torque_nm": 1.2730473126179231,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 5,
+      "actual_angle_min_deg": -71.1092761499281,
+      "actual_angle_max_deg": 65.31622211465717,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.2910922823935187,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 6,
+      "actual_angle_min_deg": -83.7363390306001,
+      "actual_angle_max_deg": 40.26502247812557,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.2426838958685762,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 7,
+      "actual_angle_min_deg": -71.8962909795386,
+      "actual_angle_max_deg": 55.83100637673529,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 0.9891602750179468,
+      "min_kp": 127.0,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 8,
+      "actual_angle_min_deg": -71.7173472808001,
+      "actual_angle_max_deg": 32.04456378064538,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.209256780842233,
+      "min_kp": 63.5,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 9,
+      "actual_angle_min_deg": -66.21899471394198,
+      "actual_angle_max_deg": 36.664798237425686,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.331286281175901,
+      "min_kp": 63.5,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 10,
+      "actual_angle_min_deg": -71.0171230171823,
+      "actual_angle_max_deg": 2.771075989465005,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.15273770123202,
+      "min_kp": 63.5,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 11,
+      "actual_angle_min_deg": -46.85714741470406,
+      "actual_angle_max_deg": 89.8377991371724,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.3069124179099916,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 12,
+      "actual_angle_min_deg": -70.26033160378923,
+      "actual_angle_max_deg": 21.74733644149972,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.2503548425259479,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 13,
+      "actual_angle_min_deg": -67.9594129835537,
+      "actual_angle_max_deg": 89.32617941349051,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.009504439911433,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 14,
+      "actual_angle_min_deg": -42.07341177789453,
+      "actual_angle_max_deg": 87.92995898733669,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.715947801703846,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 15,
+      "actual_angle_min_deg": -57.515440878257664,
+      "actual_angle_max_deg": 35.5849443177381,
+      "max_drive_torque_nm": 1.7675544637126066,
+      "max_passive_torque_nm": 1.3807108014949987,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 127.0,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 16,
+      "actual_angle_min_deg": -56.646106035377606,
+      "actual_angle_max_deg": 88.46470013384715,
+      "max_drive_torque_nm": 1.8861063939355986,
+      "max_passive_torque_nm": 1.3894800418855986,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 63.5,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 17,
+      "actual_angle_min_deg": -53.306618731916004,
+      "actual_angle_max_deg": 88.33861026117418,
+      "max_drive_torque_nm": 1.8010159099599008,
+      "max_passive_torque_nm": 1.3869027435901913,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 63.5,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 18,
+      "actual_angle_min_deg": -73.0571794942658,
+      "actual_angle_max_deg": 85.62430125420397,
+      "max_drive_torque_nm": 2.355,
+      "max_passive_torque_nm": 1.3668433805333888,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 31.75,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 19,
+      "actual_angle_min_deg": -37.19001154276051,
+      "actual_angle_max_deg": 77.12387585752032,
+      "max_drive_torque_nm": 1.9434654396719964,
+      "max_passive_torque_nm": 1.478157013090496,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 31.75,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    },
+    {
+      "joint": 20,
+      "actual_angle_min_deg": -58.7042145133189,
+      "actual_angle_max_deg": 51.11593423253031,
+      "max_drive_torque_nm": 2.113986284863131,
+      "max_passive_torque_nm": 1.3931669344358513,
+      "min_kp": 31.75,
+      "max_kp": 127.0,
+      "final_kp": 31.75,
+      "original_damping": 1.5,
+      "measured_supply_seconds": 0.0
+    }
+  ],
+  "source_clear_intervals_at_least_half_second": [
+    {
+      "start_s": 28.60000000001197,
+      "end_s": 101.85000000012226,
+      "duration_s": 73.25000000011029
+    }
+  ],
+  "model": {
+    "gravity": [
+      0.0,
+      0.0,
+      -9.81
+    ],
+    "hinge_range_deg": [
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ],
+      [
+        -90.0,
+        90.0
+      ]
+    ],
+    "force_range_nm": [
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ],
+      [
+        -2.355,
+        2.355
+      ]
+    ],
+    "mass_total_kg": 2.8560000000000008,
+    "original_robot": true
+  }
+}

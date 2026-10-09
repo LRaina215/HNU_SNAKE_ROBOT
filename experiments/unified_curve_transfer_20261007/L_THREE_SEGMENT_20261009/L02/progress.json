@@ -1,0 +1,26 @@
+{
+  "t_s": 70.0,
+  "shift_mm": 348.4,
+  "phase": 8.86,
+  "exited": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "received": [
+    0,
+    7,
+    8
+  ],
+  "normal_n": [
+    6.9,
+    20.3
+  ],
+  "front_span_rad": 1.945,
+  "tracking_deg": 5.64,
+  "head_axis_error_mm": 253.2,
+  "fit_rms_mm": 168.57
+}

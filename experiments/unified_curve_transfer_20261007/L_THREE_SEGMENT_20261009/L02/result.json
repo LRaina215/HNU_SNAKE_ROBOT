@@ -1,0 +1,63 @@
+{
+  "name": "L02",
+  "outcome": "no_actual_source_exit_or_target_intake_45s",
+  "actual_seconds": 74.49999999999167,
+  "wall_seconds": 85.18700000000536,
+  "shift_mm": 368.0181656817868,
+  "roll_phase_rad": 9.279422002314329,
+  "actual_current_source_exited": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "actual_current_received_target": [
+    0
+  ],
+  "actual_target_near_modules": [
+    0,
+    1,
+    6
+  ],
+  "maximum_actual_joint_deg": 90.16669868261756,
+  "maximum_drive_torque_nm": 2.355,
+  "maximum_command_step_deg": 1.0000000000000013,
+  "maximum_pipe_depth_mm": 5.344029454010606,
+  "maximum_self_depth_mm": 0.0,
+  "ground": false,
+  "initial_front_span_rad": 4.521074431051055,
+  "final_front_span_rad": 1.837361015784695,
+  "final_source_target_force_n": [
+    10.87596168238012,
+    19.77748888465786
+  ],
+  "final_kp": [
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    127.0,
+    63.5,
+    63.5,
+    31.75,
+    31.75,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "save_errors": [],
+  "error": null,
+  "physical_root_reset_during_run": false,
+  "whole_L_transfer_complete": false,
+  "yamada_compliance_enabled": false
+}

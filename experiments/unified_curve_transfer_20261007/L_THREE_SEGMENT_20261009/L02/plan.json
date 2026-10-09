@@ -1,0 +1,21 @@
+{
+  "name": "L02",
+  "registered_utc": "2026-10-09T02:31:44.266351+00:00",
+  "task": "one robot, one L-pipe, simultaneous source exit and target helix uptake",
+  "initial": "manual dual-pipe8 front,7 continuous bridge,6 source; zero root assignments after first step",
+  "same_version_continuous": true,
+  "total_reference_shift_mm": 838.5,
+  "speed_mm_s": 5.0,
+  "nominal_seconds": 167.7,
+  "rate_setting_deg_s": 20.0,
+  "roll_factor": null,
+  "adaptive_released_supply": true,
+  "maximum_branch_dynamics_trials": 3,
+  "max_actual_seconds": 360,
+  "max_wall": 420,
+  "deadline_utc": "2026-10-09T02:53:55+00:00",
+  "physics": "original robot, gravity, friction, damping1.5, hinge range90deg, ctrl88deg, force2.355Nm; target pipe extended before start to Y1.65m",
+  "control_layers": "common shift; transported material frame; exact twenty-hinge numerical geometry; moving guided compliant bridge; actual connection stiffness restoration; smooth bridge posture feedback; no Yamada compliance",
+  "complete": "all21 in a single same-pitch target helix including tail, all6 original source rods currently clear0.5s, source force/contact absent, target posterior bearing, all joints recovered full stiffness and1s actual retention; reference shift alone insufficient",
+  "stop": "ground, actual joint>90.5deg, nonfinite, actual self>3mm, actual pipe>3mm sustained0.2s, target support collapsed and falling1s, initial bearing unavailable3s, no actual transfer progress45s"
+}

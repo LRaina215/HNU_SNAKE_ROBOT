@@ -1,0 +1,187 @@
+{
+  "physical_steps": 0,
+  "initial_frame_offset_deg": 55.748849694854535,
+  "implemented_formula": "exact J03: Ry(BETA*shift/R) @ initial_actual_head_rotation @ Rz(-phase)",
+  "rows": [
+    {
+      "shift_mm": 0,
+      "phase_rad": 0,
+      "old_difference_deg": 5.2317228890681904e-15,
+      "corrected_difference_deg": 5.2317228890681904e-15
+    },
+    {
+      "shift_mm": 0,
+      "phase_rad": 1,
+      "old_difference_deg": 22.785427100912525,
+      "corrected_difference_deg": 6.671046385669657e-15
+    },
+    {
+      "shift_mm": 0,
+      "phase_rad": 1.5,
+      "old_difference_deg": 32.45090007052682,
+      "corrected_difference_deg": 5.747188425962716e-15
+    },
+    {
+      "shift_mm": 0,
+      "phase_rad": 3.141592653589793,
+      "old_difference_deg": 47.793929509305855,
+      "corrected_difference_deg": 5.231722889068191e-15
+    },
+    {
+      "shift_mm": 0,
+      "phase_rad": 6.283185307179586,
+      "old_difference_deg": 5.139633055636668e-15,
+      "corrected_difference_deg": 5.231722889068192e-15
+    },
+    {
+      "shift_mm": 0,
+      "phase_rad": 25,
+      "old_difference_deg": 3.146957717486629,
+      "corrected_difference_deg": 5.498357449396445e-15
+    },
+    {
+      "shift_mm": 100.0,
+      "phase_rad": 0,
+      "old_difference_deg": 0.00020445088483904802,
+      "corrected_difference_deg": 0.00020445088483904802
+    },
+    {
+      "shift_mm": 100.0,
+      "phase_rad": 1,
+      "old_difference_deg": 22.785485443449417,
+      "corrected_difference_deg": 0.00020445088483857547
+    },
+    {
+      "shift_mm": 100.0,
+      "phase_rad": 1.5,
+      "old_difference_deg": 32.450951665684414,
+      "corrected_difference_deg": 0.000204450884840673
+    },
+    {
+      "shift_mm": 100.0,
+      "phase_rad": 3.141592653589793,
+      "old_difference_deg": 47.79393921120898,
+      "corrected_difference_deg": 0.00020445088483800553
+    },
+    {
+      "shift_mm": 100.0,
+      "phase_rad": 6.283185307179586,
+      "old_difference_deg": 0.00020445088484179877,
+      "corrected_difference_deg": 0.00020445088483904804
+    },
+    {
+      "shift_mm": 100.0,
+      "phase_rad": 25,
+      "old_difference_deg": 3.146897514975809,
+      "corrected_difference_deg": 0.00020445088484070964
+    },
+    {
+      "shift_mm": 200.0,
+      "phase_rad": 0,
+      "old_difference_deg": 0.00034458063771786434,
+      "corrected_difference_deg": 0.00034458063771786434
+    },
+    {
+      "shift_mm": 200.0,
+      "phase_rad": 1,
+      "old_difference_deg": 22.7854855210863,
+      "corrected_difference_deg": 0.00034458063771923027
+    },
+    {
+      "shift_mm": 200.0,
+      "phase_rad": 1.5,
+      "old_difference_deg": 32.4509484368391,
+      "corrected_difference_deg": 0.0003445806377189504
+    },
+    {
+      "shift_mm": 200.0,
+      "phase_rad": 3.141592653589793,
+      "old_difference_deg": 47.79392738955899,
+      "corrected_difference_deg": 0.00034458063771786434
+    },
+    {
+      "shift_mm": 200.0,
+      "phase_rad": 6.283185307179586,
+      "old_difference_deg": 0.00034458063773875355,
+      "corrected_difference_deg": 0.0003445806377172843
+    },
+    {
+      "shift_mm": 200.0,
+      "phase_rad": 25,
+      "old_difference_deg": 3.1468903685607654,
+      "corrected_difference_deg": 0.0003445806377180751
+    },
+    {
+      "shift_mm": 400.0,
+      "phase_rad": 0,
+      "old_difference_deg": 0.0006063661006806976,
+      "corrected_difference_deg": 0.0006063661006806976
+    },
+    {
+      "shift_mm": 400.0,
+      "phase_rad": 1,
+      "old_difference_deg": 22.785528502199835,
+      "corrected_difference_deg": 0.0006063661006827646
+    },
+    {
+      "shift_mm": 400.0,
+      "phase_rad": 1.5,
+      "old_difference_deg": 32.450983821179,
+      "corrected_difference_deg": 0.0006063661006794023
+    },
+    {
+      "shift_mm": 400.0,
+      "phase_rad": 3.141592653589793,
+      "old_difference_deg": 47.79392511574822,
+      "corrected_difference_deg": 0.000606366100681917
+    },
+    {
+      "shift_mm": 400.0,
+      "phase_rad": 6.283185307179586,
+      "old_difference_deg": 0.0006063661006625913,
+      "corrected_difference_deg": 0.0006063661006804087
+    },
+    {
+      "shift_mm": 400.0,
+      "phase_rad": 25,
+      "old_difference_deg": 3.1468404186901746,
+      "corrected_difference_deg": 0.0006063661006788279
+    },
+    {
+      "shift_mm": 838.5,
+      "phase_rad": 0,
+      "old_difference_deg": 0.0011039347359170012,
+      "corrected_difference_deg": 0.0011039347359170012
+    },
+    {
+      "shift_mm": 838.5,
+      "phase_rad": 1,
+      "old_difference_deg": 22.785657745181776,
+      "corrected_difference_deg": 0.0011039347359161282
+    },
+    {
+      "shift_mm": 838.5,
+      "phase_rad": 1.5,
+      "old_difference_deg": 32.45109712354879,
+      "corrected_difference_deg": 0.0011039347359158534
+    },
+    {
+      "shift_mm": 838.5,
+      "phase_rad": 3.141592653589793,
+      "old_difference_deg": 47.79394305681211,
+      "corrected_difference_deg": 0.001103934735917144
+    },
+    {
+      "shift_mm": 838.5,
+      "phase_rad": 6.283185307179586,
+      "old_difference_deg": 0.0011039347359098148,
+      "corrected_difference_deg": 0.0011039347359157062
+    },
+    {
+      "shift_mm": 838.5,
+      "phase_rad": 25,
+      "old_difference_deg": 3.1467050581124036,
+      "corrected_difference_deg": 0.0011039347359160377
+    }
+  ]
+}
