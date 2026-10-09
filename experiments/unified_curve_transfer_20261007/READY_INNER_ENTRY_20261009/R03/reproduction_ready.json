@@ -1,0 +1,19 @@
+{
+  "status": "exact_frozen_sources_ready_without_dynamics",
+  "case": "R03",
+  "physical_steps": 0,
+  "source_near_rods": 21,
+  "head_mm": [
+    979.7647809011088,
+    59.30870055147497,
+    935.5575985659847
+  ],
+  "head_entry_vector_mm": [
+    31.797422981515776,
+    49.18341623021594,
+    27.02157396710836
+  ],
+  "initial_state": "Same artificial all21 source lower-inner upward start; no initial target hook",
+  "output_root": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\tmp\\R03R",
+  "new_run_requires_new_formal_trial_authorization": true
+}

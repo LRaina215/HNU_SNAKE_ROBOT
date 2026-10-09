@@ -1,0 +1,186 @@
+{
+  "name": "R01",
+  "physical_steps_in_review": 0,
+  "outcome": "unsafe_current_joint_command_before_dispatch",
+  "actual_seconds": 4.199999999999737,
+  "actual_head_displacement_mm": [
+    12.245182915540443,
+    -0.5369238772043733,
+    -11.813357830506522
+  ],
+  "actual_head_displacement_norm_mm": 17.02316701194421,
+  "maximum_world_head_error_mm": 24.979952911095324,
+  "initial_source_radius_mm": [
+    85.33445463757211,
+    85.03613656341332,
+    84.58020777831379,
+    87.62015319993618,
+    86.7094943759271,
+    87.61516969433276,
+    87.13945340470814,
+    84.9381217294841,
+    85.97043125853985,
+    84.45049167821537,
+    87.44489888411451,
+    86.11722600244411,
+    88.01475491119804,
+    87.46225014384652,
+    86.55413128982872,
+    86.77633998475052,
+    84.68377558323711,
+    87.40119253373797,
+    85.41935386284197,
+    84.78994093469998,
+    85.90590884732029
+  ],
+  "initial_target_force_n": 0.0,
+  "maximum_target_force_n": 0.0,
+  "final_source_target_force_n": [
+    132.71243355766063,
+    0.0
+  ],
+  "maximum_actual_pipe_depth_mm": 0.7194044552824027,
+  "maximum_actual_self_depth_mm": 0.0,
+  "maximum_actual_joint_deg": 71.09894030043888,
+  "frozen_fk_node_error_mm": 2.2204629898446352e-13,
+  "actual_dispatched_commands": 84,
+  "explicit_anchor_roll_target_commands": 0,
+  "current_rejected_projected_pipe_depth_mm": 1.1992776744330795,
+  "current_rejected_fixed_root_pipe_depth_mm": 4.7080772647005995,
+  "current_rejected_fit_rms_mm": 7.580696530353079,
+  "reconstructed_current_candidate_pipe_contacts": [
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 4,
+      "depth_mm": 1.1992776744331328
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 6,
+      "depth_mm": 1.1633271934725598
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 11,
+      "depth_mm": 1.1562735338564256
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 8,
+      "depth_mm": 1.0665117534143003
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 2,
+      "depth_mm": 0.9910409758005969
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 13,
+      "depth_mm": 0.9640510493803942
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 9,
+      "depth_mm": 0.9448430537809419
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 15,
+      "depth_mm": 0.8685491426364595
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 16,
+      "depth_mm": 0.758707795735426
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 18,
+      "depth_mm": 0.7255497931847016
+    },
+    {
+      "geometry_names": [
+        "pipe_sharp_in_02",
+        ""
+      ],
+      "robot_module": 1,
+      "depth_mm": 0.6785063027541726
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 7,
+      "depth_mm": 0.671803698225927
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 19,
+      "depth_mm": 0.670298158298185
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 1,
+      "depth_mm": 0.342583741672332
+    },
+    {
+      "geometry_names": [
+        "pipe_straight_01",
+        ""
+      ],
+      "robot_module": 20,
+      "depth_mm": 0.3407609023031689
+    }
+  ],
+  "whole_transfer_complete": false,
+  "active_target_acquisition": false,
+  "physical_root_reset": false,
+  "yamada_compliance_enabled": false,
+  "last_dispatched_shift_mm": 21.000000000000014,
+  "next_rejected_shift_mm": 21.250000000000014,
+  "reference_head_displacement_at_actual_stop_mm": [
+    9.87407421677517,
+    17.594858609286987,
+    5.204701836851086
+  ],
+  "maximum_issued_reference_rod_error_mm": 2.3549802108391305e-09,
+  "next_rejected_joint_target_change_deg": 0.9998277850506001
+}

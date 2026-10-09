@@ -164,7 +164,7 @@ class WholeCurveMapper:
             and np.count_nonzero((tr>.065)&(tr<.125))>=7 and np.count_nonzero((sr>.065)&(sr<.13))>=4 and np.ptp(phi)>4.5)
         return self.d.qpos.copy(),report
 
-    def solve(self,guide,before_guide,data,forces,previous,max_nfev=18,active_mask=None,node_weights=None):
+    def solve(self,guide,before_guide,data,forces,previous,max_nfev=18,active_mask=None,node_weights=None,roll_increment=0.):
         weights=np.ones(22);weights[:10]=2.
         if node_weights is not None:weights=np.asarray(node_weights)
         active=np.arange(20) if active_mask is None else np.flatnonzero(active_mask)
@@ -206,6 +206,15 @@ class WholeCurveMapper:
             if den>1e-12:omega+=inverse*((requested/DT-pressure)[side]-float(row@omega))/den
             spin=float(actual_rotation[:,2]@omega);perpendicular=omega-spin*actual_rotation[:,2]
             omega*=min(1.,.12/max(abs(spin),1e-12),.15/max(np.linalg.norm(perpendicular),1e-12))
+        if roll_increment:
+            # Same material roll sign as HingePhaseMapper's local -phase.
+            roll_omega=-float(roll_increment)/DT*actual_rotation[:,2]
+            combined=omega+roll_omega
+            spin=float(actual_rotation[:,2]@combined);perpendicular=combined-spin*actual_rotation[:,2]
+            combined*=min(1.,.12/max(abs(spin),1e-12),.15/max(np.linalg.norm(perpendicular),1e-12))
+            if lever is not None:requested+=skew(lever)@((combined-omega)*DT)
+            requested*=min(1.,.008*DT/max(np.linalg.norm(requested),1e-12))
+            desired_center=actual_centers[module]+requested;omega=combined
         desired_rotation=Rotation.from_rotvec(omega*DT).as_matrix()@actual_rotation
         lower=np.maximum(-LIMIT,previous[active]-STEP);upper=np.minimum(LIMIT,previous[active]+STEP)
         seed=np.clip(previous[active],lower,upper)
@@ -256,6 +265,7 @@ class WholeCurveMapper:
             registered_math_root=state['root'].tolist(),physical_root_assigned=False,
             anchor_module=module,anchor_pipe_side=side,anchor_displacement_mm=(requested*1000).tolist(),
             anchor_omega_rad_s=omega.tolist(),anchor_contact_lever_mm=(lever*1000).tolist() if lever is not None else None,
+            explicit_local_roll_increment_rad=float(roll_increment),explicit_roll_target_applied=bool(roll_increment),
             free_root_variables=0,active_variables=active.tolist(),maximum_candidate_step_deg=float(np.degrees(abs(result.x-previous[active])).max()),geometry_q_rad=state['q'].tolist())
         return state['root'].copy(),state['q'].copy(),info
 

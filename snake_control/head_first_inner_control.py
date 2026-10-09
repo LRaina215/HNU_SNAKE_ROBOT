@@ -98,7 +98,7 @@ class HeadFirstInnerControl:
                 supply=(p-p[:n].mean(0))@rot+nominal[:n].mean(0);guide[min(22,prefix+5):]=supply[min(22,prefix+5):]
             self.kp+=np.clip(desired-self.kp,-127*DT/1.5,127*DT/1.5)
             if self.anchored_feed and not free:
-                _,q,projection=self.feed_mapper.solve(guide,self.before_feed_guide,data,forces,self.last,active_mask=desired>.5,node_weights=weights)
+                _,q,projection=self.feed_mapper.solve(guide,self.before_feed_guide,data,forces,self.last,active_mask=desired>.5,node_weights=weights,roll_increment=(inc*BETA/.029*factor if getattr(self,'explicit_anchor_roll',False) else 0.))
                 self.before_feed_guide=guide.copy()
             else:
                 q,projection=self.mapper.solve(guide,self.shift,self.feed_phase,self.last,node_weights=weights,orientation_override=self.route.head_orientation(self.mapper.rotation,self.shift,self.feed_phase),command_step=np.radians(20)*DT,active_mask=desired>.5,observed_q=data.qpos[self.qa])
