@@ -1,0 +1,13 @@
+{
+  "outcome": "no_executable_C03_candidate",
+  "physical_steps": 0,
+  "formal_dynamics_runs": 2,
+  "C03_formal_dynamics_started": false,
+  "release_rods": 12,
+  "release_length_mm": 774,
+  "posterior_source_rods": 9,
+  "posterior_support_length_mm": 580.5,
+  "classification": "Whole-prefix adaptation preparation, separate from C01/C02 open-loop baseline",
+  "requested_event_gating_implemented": false,
+  "reason": "Positive length margin did not yield valid initial+collision-free release+lower-inner upward hook shape; independent rod centerline check intersects solid target pipe"
+}
