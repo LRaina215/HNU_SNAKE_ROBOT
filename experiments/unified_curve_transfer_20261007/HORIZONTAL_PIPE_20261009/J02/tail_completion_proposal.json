@@ -1,0 +1,49 @@
+{
+  "executed": false,
+  "physical_steps": 0,
+  "proposal": "keep common material rolling phase fixed, advance remaining reference80mm and restore entry/tail stiffness using sustained physical near-pipe geometry plus coherent neighbouring winding, not signed time-angle threshold",
+  "targets_deg": [
+    30.022886084810562,
+    59.73085925204389,
+    61.719174098472,
+    33.66733363570588,
+    64.4662613162524,
+    17.68504235501766,
+    72.75587115735378,
+    -15.164435380572149,
+    64.19803487561114,
+    -42.28003297572457,
+    54.26316878893832,
+    -52.18728408965164,
+    54.73224839270317,
+    -68.56504065447496,
+    -41.68302955982963,
+    -65.38736017198964,
+    -87.99999999999848,
+    -51.75514438856385,
+    50.43601198721145,
+    -43.25683354714157
+  ],
+  "maximum_joint_deg": 87.99999999999848,
+  "fit": {
+    "front_fit_rms_mm": 18.01460583688555,
+    "whole_fit_rms_mm": 62.30538927784147,
+    "predicted_pipe_depth_mm": 3.9550740848470505,
+    "phase_rad": 22.841956290068243,
+    "shift_mm": 774.0,
+    "private_root": [
+      1.037845956519118,
+      0.5714274910678283,
+      1.058203190066924
+    ],
+    "private_head_tilt_rad": [
+      -0.05594699569026932,
+      -0.4999761172215351,
+      -0.06999998373235558
+    ],
+    "physical_root_assigned": false,
+    "evaluations": 84
+  },
+  "continuation_start": "J02 full saved INTEGRATION state, no return to artificial start",
+  "not_authorized_extra_dynamics": true
+}
