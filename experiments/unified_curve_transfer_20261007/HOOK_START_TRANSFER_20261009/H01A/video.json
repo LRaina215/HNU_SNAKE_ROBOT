@@ -1,0 +1,21 @@
+{
+  "fps": 20.0,
+  "frames": 1751,
+  "actual_seconds": 87.5000000004178,
+  "speed": 1.0,
+  "source": "saved actual qpos from lossless CLOSE1B restore through every physical step",
+  "readback": [
+    {
+      "frame": 0,
+      "readable": true
+    },
+    {
+      "frame": 875,
+      "readable": true
+    },
+    {
+      "frame": 1750,
+      "readable": true
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "joints": [
+    {
+      "joint": 1,
+      "actual_angle_min_deg": -65.92980372801252,
+      "actual_angle_max_deg": 66.25968327629161,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.4480528114156643,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 2,
+      "actual_angle_min_deg": -87.3791788553202,
+      "actual_angle_max_deg": 70.19785900166228,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.5770702614792471,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 3,
+      "actual_angle_min_deg": -71.57549738763092,
+      "actual_angle_max_deg": 72.26928824997599,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.5137868900788143,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 4,
+      "actual_angle_min_deg": -75.21092983896322,
+      "actual_angle_max_deg": 71.16483698717903,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.4305708871300313,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 5,
+      "actual_angle_min_deg": -71.6134139146768,
+      "actual_angle_max_deg": 71.71613853296738,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.422052743238192,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 6,
+      "actual_angle_min_deg": -79.77484855249094,
+      "actual_angle_max_deg": 71.34016152165466,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.4056314582933103,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 7,
+      "actual_angle_min_deg": -71.47717482772991,
+      "actual_angle_max_deg": 71.99205868961118,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 127.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.3448732657902935,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 8,
+      "actual_angle_min_deg": -73.28419890308511,
+      "actual_angle_max_deg": 71.26097397824996,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 63.5,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.4570486934746831,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 9,
+      "actual_angle_min_deg": -71.04635743317517,
+      "actual_angle_max_deg": 88.00278488585583,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 63.5,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.50151054173717,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 10,
+      "actual_angle_min_deg": -80.68191301704103,
+      "actual_angle_max_deg": 70.91359823319073,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 63.5,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.5993677039034893,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 11,
+      "actual_angle_min_deg": -89.40407453845134,
+      "actual_angle_max_deg": 77.38108079932624,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 31.75,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.3877664073733857,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 12,
+      "actual_angle_min_deg": -74.90885718951502,
+      "actual_angle_max_deg": 71.38372284595407,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 31.75,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.4838326660424648,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 13,
+      "actual_angle_min_deg": -82.98503767958712,
+      "actual_angle_max_deg": 90.14194572032835,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.6180428239319466,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 14,
+      "actual_angle_min_deg": -71.85308156443945,
+      "actual_angle_max_deg": 90.1808413064262,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.4664252210425122,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 15,
+      "actual_angle_min_deg": -90.13834987349681,
+      "actual_angle_max_deg": 72.20133811548415,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.47766129888117,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 16,
+      "actual_angle_min_deg": -88.35685987127128,
+      "actual_angle_max_deg": 71.95011714397972,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.5184055818418378,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 17,
+      "actual_angle_min_deg": -71.83297774942858,
+      "actual_angle_max_deg": 71.601230557064,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.6407514957740217,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 18,
+      "actual_angle_min_deg": -70.96814569580341,
+      "actual_angle_max_deg": 87.93963251622928,
+      "maximum_drive_torque_nm": 2.307343684136586,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.5136479198917852,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 19,
+      "actual_angle_min_deg": -42.49377108893079,
+      "actual_angle_max_deg": 88.03516115070117,
+      "maximum_drive_torque_nm": 2.355,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.3491308372124973,
+      "original_damping": 1.5
+    },
+    {
+      "joint": 20,
+      "actual_angle_min_deg": -49.59349499716373,
+      "actual_angle_max_deg": 61.41381580500875,
+      "maximum_drive_torque_nm": 1.8619333537114642,
+      "kp_min": 0.0,
+      "kp_final": 127.0,
+      "maximum_passive_torque_nm": 1.3862305312936387,
+      "original_damping": 1.5
+    }
+  ]
+}
