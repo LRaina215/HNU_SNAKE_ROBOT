@@ -56,13 +56,17 @@ class ThreeSegmentRoute:
         return p,v
 
 class ThreeSegmentTransfer:
-    def __init__(self,model,data,speed=.005,rate_deg_s=20.,roll_factor=None,bridge_gain=.25,adaptive_supply=False,route=None,source_start=15,intake_y=.15,preserve_preload=False,handoff_on_posterior_exit=False):
+    def __init__(self,model,data,speed=.005,rate_deg_s=20.,roll_factor=None,bridge_gain=.25,adaptive_supply=False,route=None,source_start=15,intake_y=.15,preserve_preload=False,handoff_on_posterior_exit=False,handoff_exit_count=None,continuous_reform_handoff=False,event_progress=False):
         self.m=model;self.mapper=HingePhaseMapper(model,data);self.qa=self.mapper.qa;self.va=self.mapper.va;self.route=ThreeSegmentRoute() if route is None else route
         self.custom_route=route is not None
+        self.winding_sign=float(getattr(self.route,'winding_sign',1.))
         self.front=FRONT;self.source_start=source_start;self.source_count=21-source_start;self.intake_y=intake_y
         self.total=getattr(self.route,'total',TOTAL);self.cut=getattr(self.route,'source_cut',CUT);self.join=getattr(self.route,'target_join',0.)
         self.preload=data.ctrl-data.qpos[self.qa] if preserve_preload else np.zeros(20)
         self.handoff_on_posterior_exit=handoff_on_posterior_exit
+        self.handoff_exit_count=self.source_count if handoff_exit_count is None else int(handoff_exit_count)
+        self.continuous_reform_handoff=continuous_reform_handoff;self.roll_mode_age=0.
+        self.event_progress=event_progress;self.observed_received=set();self.observed_exited=set()
         self.last=data.ctrl.copy();self.kp=np.full(20,127.);self.shift=0.;self.phase=0.;self.speed=speed;self.step=np.radians(rate_deg_s)*DT
         self.roll_factor=ALPHA/BETA**2 if roll_factor is None else roll_factor;self.bridge_gain=bridge_gain
         self.adaptive_supply=adaptive_supply;self.source_release_latch=set();self.free_mode_age=0.;self.free_supply_latch=False
@@ -70,10 +74,11 @@ class ThreeSegmentTransfer:
         self.coeff=np.zeros((2,3));self.receive_age=np.zeros(21);self.received=set(range(FRONT));self.engaged=set(range(FRONT))
         self.exit_age=np.zeros(21);self.exited=set();self.best_counts=0;self.last_progress=0.;self.failure=None
         self.initial_centers=.5*(nodes(data)[:-1]+nodes(data)[1:]);self.initial_head_axis=float(self.initial_centers[0,1])
+        self.progress_head_axis=self.initial_head_axis
 
     def command(self,data,t,forces,source_any):
         p=nodes(data);c=.5*(p[:-1]+p[1:]);rt=np.linalg.norm(c[:,[0,2]]-[1.1,1.],axis=1);rs=np.linalg.norm(c[:,[1,2]]-[0.,1.],axis=1)
-        near=(rt>.065)&(rt<.125)&(c[:,1]>self.intake_y);phi=np.unwrap(np.arctan2(c[:,2]-1,c[:,0]-1.1));da=np.diff(phi);dy=np.diff(c[:,1])
+        near=(rt>.065)&(rt<.125)&(c[:,1]>self.intake_y);phi=self.winding_sign*np.unwrap(np.arctan2(c[:,2]-1,c[:,0]-1.1));da=np.diff(phi);dy=np.diff(c[:,1])
         connected=np.zeros(21,bool);connected[:FRONT]=near[:FRONT]
         connected[1:]=near[1:]&near[:-1]&(da>.30)&(da<1.10)&(dy<-.002)&(dy>-.045)&(np.abs(dy+.180/(2*np.pi)*da)<.025)
         self.receive_age=np.where(connected,self.receive_age+DT,0.);self.received={j for j in range(21) if self.receive_age[j]>=1.};self.engaged.update(self.received)
@@ -82,7 +87,16 @@ class ThreeSegmentTransfer:
         self.exit_age=np.where(clear,self.exit_age+DT,0.);self.exited={j for j in range(self.source_start,21) if self.exit_age[j]>=.5}
         self.source_release_latch.update(self.exited)
         count=len(self.received)+len(self.exited)
-        if count>self.best_counts:self.best_counts=count;self.last_progress=t
+        new_intake=self.received-self.observed_received;new_exit=self.exited-self.observed_exited
+        self.observed_received.update(self.received);self.observed_exited.update(self.exited)
+        actual_prefix=0
+        while actual_prefix in self.received:actual_prefix+=1
+        continuous_intake=actual_prefix>=FRONT and forces[1,:FRONT].sum()>1. and c[0,1]-self.progress_head_axis>=.010
+        if self.event_progress:
+            if new_intake or new_exit or continuous_intake:self.last_progress=t
+            if continuous_intake:self.progress_head_axis=float(c[0,1])
+            self.best_counts=max(self.best_counts,count)
+        elif count>self.best_counts:self.best_counts=count;self.last_progress=t
         controlled=self.kp>.5 if self.custom_route else np.ones(20,dtype=bool)
         tracking=float(np.degrees(abs(self.last-data.qpos[self.qa])[controlled]).max()) if controlled.any() else 0.
         scale=float(np.clip((25.-tracking)/20.,.2,1.));increment=self.speed*DT*scale;self.shift=min(self.total,self.shift+increment)
@@ -91,9 +105,15 @@ class ThreeSegmentTransfer:
         axial_error=ALPHA*self.shift-(c[0,1]-self.initial_head_axis)
         fully_free=self.adaptive_supply and len(self.exited)==self.source_count and not source_any.any() and forces[0].sum()<.1
         posterior_released=self.adaptive_supply and len(self.exited)==self.source_count
-        self.free_supply_latch=self.free_supply_latch or fully_free or (self.handoff_on_posterior_exit and posterior_released)
+        handoff_ready=self.adaptive_supply and len(self.exited)>=self.handoff_exit_count
+        self.free_supply_latch=self.free_supply_latch or fully_free or (self.handoff_on_posterior_exit and handoff_ready)
         self.free_mode_age=self.free_mode_age+DT if self.free_supply_latch else 0.
-        handoff=float(np.clip(self.free_mode_age/1.5,0.,1.))
+        supply_handoff=float(np.clip(self.free_mode_age/1.5,0.,1.))
+        morph_complete=not hasattr(self.route,'blend') or self.route.blend(self.shift)>=1.-1e-12
+        if self.continuous_reform_handoff:
+            self.roll_mode_age=self.roll_mode_age+DT if self.free_supply_latch and morph_complete else 0.
+            handoff=float(np.clip(self.roll_mode_age/1.5,0.,1.))
+        else:handoff=supply_handoff
         factor=float((1-handoff)*np.clip(self.roll_factor+1.5*axial_error,.06,.65)+handoff*1.)
         self.phase+=increment*BETA/.029*factor
         guide,v=self.route.window(self.shift,self.coeff)
@@ -127,20 +147,29 @@ class ThreeSegmentTransfer:
             # Register only after both pipe supports are no longer required.
             supply=p.copy()
             if self.free_supply_latch:
+                reform_guide=guide.copy()
+                if self.continuous_reform_handoff:
+                    # Match the preceding partial-release branch. The front
+                    # stays on its original continuously morphing guide;
+                    # cleared, passive posterior nodes retain measured shape.
+                    for j in self.source_release_latch:
+                        if j>=active_end+1 and not carried_source[j] and j not in self.engaged:reform_guide[j+1]=p[j+1]
                 nominal,_=self.route.window(self.shift)
                 n=min(prefix+1,22);x=p[:n]-p[:n].mean(0);y=nominal[:n]-nominal[:n].mean(0)
                 u,_,vh=np.linalg.svd(x.T@y);rotation=u@vh
                 if np.linalg.det(rotation)<0:u[:,-1]*=-1;rotation=u@vh
                 supply=(p-p[:n].mean(0))@rotation+nominal[:n].mean(0)
                 guide=self.route.supply_target(v) if hasattr(self.route,'supply_target') else receiving(v)
+                if self.continuous_reform_handoff:guide=(1-handoff)*reform_guide+handoff*guide
                 weights[:]=0.;weights[:prefix+1]=3.;weights[prefix+1:min(22,prefix+5)]=.5
                 desired_kp[:]=0.;desired_kp[:min(20,prefix-1)]=127.;desired_kp[max(0,prefix-1):active_end]=63.5
-                guide[min(22,prefix+5):]=supply[min(22,prefix+5):]
+                rear=min(22,prefix+5)
+                guide[rear:]=((1-supply_handoff)*reform_guide[rear:]+supply_handoff*supply[rear:]) if self.continuous_reform_handoff else supply[rear:]
                 if self.handoff_on_posterior_exit:
                     for j in np.flatnonzero(carried_source):
                         if j>0:desired_kp[j-1]=127.
                         if j>=prefix:
-                            guide[j:j+2]=supply[j:j+2];weights[j:j+2]=np.maximum(weights[j:j+2],.75)
+                            guide[j:j+2]=((1-supply_handoff)*reform_guide[j:j+2]+supply_handoff*supply[j:j+2]) if self.continuous_reform_handoff else supply[j:j+2];weights[j:j+2]=np.maximum(weights[j:j+2],.75)
             else:
                 for j in self.source_release_latch:
                     if j>=active_end+1 and not carried_source[j] and j not in self.engaged:
@@ -178,9 +207,14 @@ class ThreeSegmentTransfer:
             head_axis_reference_error_mm=axial_error*1000,bridge_coefficients_mm=self.coeff*1000,projection=projection,
             adaptive_released_supply=self.adaptive_supply,fully_released_supply=fully_free,free_handoff_fraction=handoff,
             posterior_original_source_released=posterior_released,handoff_on_posterior_exit=self.handoff_on_posterior_exit,
+            handoff_exit_count=self.handoff_exit_count,
+            continuous_reform_handoff=self.continuous_reform_handoff,hook_morph_complete=morph_complete,
+            event_based_progress=self.event_progress,actual_new_intake_events=sorted(new_intake),actual_new_exit_events=sorted(new_exit),
+            actual_continuous_intake_progress=bool(continuous_intake),last_actual_progress_s=self.last_progress,
             source_release_latch=sorted(self.source_release_latch),free_supply_mode_latched=self.free_supply_latch,
             saved_clamp_preload_remaining_rad=preload,
             material_frame_head=orientation,material_frame_method='J03 target-pipe head screw followed by head-local roll; full unrotated source/bridge/target guide; exact physical hinge FK',
             control_layers=['common material shift','continuous transported roll frame','true20-hinge bounded numerical projection','state-based moving stiffness','smooth bridge-shape feedback'],
             yamada_compliance_enabled=False,maximum_dispatch_step_deg=float(np.degrees(abs(target-data.ctrl)).max()),failure=self.failure)
+        info['actual_winding_sign']=self.winding_sign
         return target,info

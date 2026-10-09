@@ -1,0 +1,38 @@
+{
+  "event_based_rule_used": false,
+  "registered_stop": "increase in maximum sum of current received and exited counts",
+  "last_maximum_count_time_s": 9.300000000000285,
+  "maximum_sum_count": 9,
+  "last_distinct_new_module_event_s": 9.999999999999897,
+  "last_actual_progress_s": 9.999999999999897,
+  "actual_seconds_since_last_actual_progress": 22.20000000001576,
+  "distinct_new_module_events": [
+    {
+      "t_s": 4.4999999999998375,
+      "new_actual_intake_modules": [
+        8
+      ],
+      "new_actual_exit_modules": []
+    },
+    {
+      "t_s": 9.300000000000285,
+      "new_actual_intake_modules": [],
+      "new_actual_exit_modules": [
+        17,
+        18
+      ]
+    },
+    {
+      "t_s": 9.999999999999897,
+      "new_actual_intake_modules": [],
+      "new_actual_exit_modules": [
+        19,
+        20
+      ]
+    }
+  ],
+  "continuous_intake_progress_times_s": [],
+  "stop_name": "front_bearing_collapsed_and_falling",
+  "physical_transfer_complete": false,
+  "limitation": "U01/U03 count stagnation was not45s without a new event; U04 event rule corrected without extending registered overall limits"
+}

@@ -1,0 +1,133 @@
+{
+  "sample_period_s": 0.01,
+  "maximum_pipe_depth_mm": 3.813142738935443,
+  "maximum_depth_time_s": 24.760000000007278,
+  "maximum_depth_contacts": [
+    {
+      "geom_names": [
+        "pipe_straight_04",
+        ""
+      ],
+      "body_names": [
+        "pipe_network",
+        "link3"
+      ],
+      "depth_mm": 3.813142738935443,
+      "position_mm": [
+        1082.624256831856,
+        153.91344652138517,
+        1053.5105544504759
+      ]
+    }
+  ],
+  "above3mm_intervals": [
+    {
+      "first_above3_sample_s": 23.490000000005725,
+      "last_above3_sample_s": 23.500000000005738,
+      "sample_span_s": 0.010000000000012221,
+      "sample_count": 2,
+      "estimated_sampled_duration_s": 0.02,
+      "preceding_below3_sample_s": 23.480000000005713,
+      "following_below3_sample_s": 23.51000000000575,
+      "max_depth_mm": 3.583980043087421
+    },
+    {
+      "first_above3_sample_s": 24.760000000007278,
+      "last_above3_sample_s": 24.760000000007278,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 24.750000000007265,
+      "following_below3_sample_s": 24.77000000000729,
+      "max_depth_mm": 3.813142738935443
+    },
+    {
+      "first_above3_sample_s": 24.790000000007314,
+      "last_above3_sample_s": 24.790000000007314,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 24.780000000007302,
+      "following_below3_sample_s": 24.800000000007326,
+      "max_depth_mm": 3.3692187991348885
+    },
+    {
+      "first_above3_sample_s": 25.72000000000845,
+      "last_above3_sample_s": 25.72000000000845,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 25.71000000000844,
+      "following_below3_sample_s": 25.730000000008463,
+      "max_depth_mm": 3.1089093289343204
+    },
+    {
+      "first_above3_sample_s": 25.89000000000866,
+      "last_above3_sample_s": 25.89000000000866,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 25.880000000008646,
+      "following_below3_sample_s": 25.90000000000867,
+      "max_depth_mm": 3.006618909846705
+    },
+    {
+      "first_above3_sample_s": 40.549999999996196,
+      "last_above3_sample_s": 40.55999999999617,
+      "sample_span_s": 0.009999999999976694,
+      "sample_count": 2,
+      "estimated_sampled_duration_s": 0.02,
+      "preceding_below3_sample_s": 40.53999999999622,
+      "following_below3_sample_s": 40.56999999999615,
+      "max_depth_mm": 3.3706576501294334
+    },
+    {
+      "first_above3_sample_s": 40.62999999999601,
+      "last_above3_sample_s": 40.639999999995986,
+      "sample_span_s": 0.009999999999976694,
+      "sample_count": 2,
+      "estimated_sampled_duration_s": 0.02,
+      "preceding_below3_sample_s": 40.61999999999603,
+      "following_below3_sample_s": 40.64999999999596,
+      "max_depth_mm": 3.5127635000418604
+    },
+    {
+      "first_above3_sample_s": 46.52999999998226,
+      "last_above3_sample_s": 46.52999999998226,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 46.51999999998228,
+      "following_below3_sample_s": 46.539999999982236,
+      "max_depth_mm": 3.2398726961184567
+    },
+    {
+      "first_above3_sample_s": 47.30999999998044,
+      "last_above3_sample_s": 47.30999999998044,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 47.299999999980464,
+      "following_below3_sample_s": 47.31999999998042,
+      "max_depth_mm": 3.0712853373464832
+    },
+    {
+      "first_above3_sample_s": 48.84999999997685,
+      "last_above3_sample_s": 48.84999999997685,
+      "sample_span_s": 0.0,
+      "sample_count": 1,
+      "estimated_sampled_duration_s": 0.01,
+      "preceding_below3_sample_s": 48.839999999976875,
+      "following_below3_sample_s": 48.85999999997683,
+      "max_depth_mm": 3.0271385018185386
+    }
+  ],
+  "largest_estimated_continuous_above3_duration_s": 0.02,
+  "last_actual_source_contact_time_s": 22.900000000005004,
+  "last_actual_source_bearing_time_s": 22.900000000005004,
+  "initial_front8_wrap_deg": 238.57063397065272,
+  "final_front8_wrap_deg": 166.11352181610266,
+  "initial_front9_wrap_deg": 267.80744327647386,
+  "final_front9_wrap_deg": 202.14726433395,
+  "final_all21_winding_deg": 287.4505860999913
+}

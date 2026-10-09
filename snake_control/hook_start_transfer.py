@@ -6,7 +6,8 @@ from snake_control.suspended_transfer_route import R,ALPHA,BETA
 from snake_control.suspended_supply_transfer import LINK
 
 class MeasuredHookRoute:
-    def __init__(self,initial_points,extension_length=2.5*LINK):
+    def __init__(self,initial_points,extension_length=2.5*LINK,winding_sign=1):
+        self.winding_sign=float(winding_sign)
         self.initial=np.asarray(initial_points).copy();self.knots=-np.arange(22)*LINK
         self.old=CubicSpline(self.knots[::-1],self.initial[::-1],axis=0)
         self.source_cut=-10*LINK;self.target_join=-8*LINK;self.total=21*LINK+extension_length
@@ -18,7 +19,7 @@ class MeasuredHookRoute:
         dr=float(self.t0@er);dp=float(self.t0@ep)/r0;dy=float(self.t0[1])
         def raw(u):
             radius=h00*r0+h10*extension_length*dr+h01*R
-            phi=h00*self.phi0+h10*extension_length*dp+h01*(self.phi0-BETA*u/R)+h11*extension_length*(-BETA/R)
+            phi=h00*self.phi0+h10*extension_length*dp+h01*(self.phi0-self.winding_sign*BETA*u/R)+h11*extension_length*(-self.winding_sign*BETA/R)
             y=h00*self.origin[1]+h10*extension_length*dy+h01*(self.origin[1]+ALPHA*u)+h11*extension_length*ALPHA
             return np.column_stack([1.1+radius*np.cos(phi),y,1+radius*np.sin(phi)])
         def length(u):return np.linalg.norm(np.diff(raw(u),axis=0),axis=1).sum()
@@ -26,7 +27,7 @@ class MeasuredHookRoute:
         self.handle=extension_length;self.extension=raw(self.helix_entry_parameter);self.arc=np.r_[0,np.cumsum(np.linalg.norm(np.diff(self.extension,axis=0),axis=1))]
 
     def helix(self,v):
-        v=np.atleast_1d(v);phi=self.phi0-BETA*v/R
+        v=np.atleast_1d(v);phi=self.phi0-self.winding_sign*BETA*v/R
         return np.column_stack([1.1+R*np.cos(phi),self.origin[1]+ALPHA*v,1+R*np.sin(phi)])
 
     def sample(self,v):

@@ -1,0 +1,26 @@
+{
+  "original_physics_equal": true,
+  "arrays": {
+    "dof_damping": true,
+    "dof_armature": true,
+    "actuator_gainprm": true,
+    "actuator_biasprm": true,
+    "actuator_ctrlrange": true,
+    "actuator_forcerange": true,
+    "geom_friction": true,
+    "geom_solref": true,
+    "geom_solimp": true,
+    "jnt_range": true,
+    "robot_body_mass": true,
+    "robot_body_inertia": true,
+    "gravity": true
+  },
+  "gravity": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "target_pipe_end_y_m": 2.0,
+  "initial_state_is_artificial": true,
+  "physical_steps_in_review": 0
+}

@@ -1,0 +1,22 @@
+{
+  "name": "U01",
+  "registered_utc": "2026-10-09T04:48:12.381923+00:00",
+  "first_candidate_maximum_dynamics_trials": 3,
+  "source_state": "initial_lower_state.npz: artificial construction before first step; CLOSE1B is geometric parent only",
+  "action": "lower bridge entry; mirrored hook reformation and opposite target winding, original gravity dynamics; retain H03 posterior handoff and actual middle source support",
+  "preload": "retain complete saved ctrl; preserve its all-joint preload while smooth fading with first200mm sharedshift, no special joint angles",
+  "physics": "original robot/gravity/friction/damping1.5/joint90deg/ctrl88deg/torque2.355Nm; target end extended toY2.0m before lossless initial restore",
+  "speed_mm_s": 5.0,
+  "rate_setting_deg_s": 20.0,
+  "complete_shift_mm": 838.5,
+  "max_actual_seconds": 420.0,
+  "max_wall_seconds": 600.0,
+  "deadline_utc": "2026-10-09T05:21:17+00:00",
+  "posterior_exit_roll_handoff": true,
+  "still_bearing_middle": "keep original stiffness and measured registered guide during full-roll posterior supply",
+  "complete": "whole reference window including connector passed; all21 center radii75-105mm, within6mm median; all adjacent negative raw winding / positive oriented winding and negativeY feed, local pitch error<8mm; pitch162-198mm and axisRMS<4mm; source absent, posterior bearing, allKp127, actual elapsed hold1s",
+  "stop": "ground; actualjoint>90.5deg; self>3mm; pipe>3mm sustained0.2s; nonfinite; supported front collapses/falls1s; no source exit or target intake45s after2rod action; full reference complete without shape30s; wall/deadline",
+  "yamada_compliance_enabled": false,
+  "actual_winding_sign": -1,
+  "active_upward_hook_acquisition_demonstrated": false
+}

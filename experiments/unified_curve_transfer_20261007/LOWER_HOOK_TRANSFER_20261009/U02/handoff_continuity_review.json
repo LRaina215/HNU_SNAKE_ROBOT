@@ -1,0 +1,29 @@
+{
+  "first_supply_handoff_s": 9.300000000000285,
+  "first_supply_handoff_shift_mm": 43.463868423402246,
+  "hook_morph_blend_at_supply_handoff": 0.12115610552652865,
+  "first_full_roll_s": 10.749999999999481,
+  "first_full_roll_shift_mm": 50.71386842340225,
+  "front9_node_reference_step_rms_mm": 127.05853822683687,
+  "front11_node_reference_step_range_mm": [
+    97.61751144105249,
+    164.48463568583128
+  ],
+  "all22_reference_step_rms_mm": 103.8267857676834,
+  "current_received_at_handoff": [
+    0,
+    1,
+    2,
+    3,
+    6,
+    7,
+    8
+  ],
+  "source_exited_at_handoff": [
+    17,
+    18
+  ],
+  "continuous_reform_handoff": false,
+  "recorded_commands_only": true,
+  "no_additional_dynamics": true
+}

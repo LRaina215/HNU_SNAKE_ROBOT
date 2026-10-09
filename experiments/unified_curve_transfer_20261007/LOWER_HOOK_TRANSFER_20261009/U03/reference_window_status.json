@@ -1,0 +1,21 @@
+{
+  "maximum_actual_reference_shift_mm": 219.90677946770623,
+  "windows": [
+    {
+      "planned_shift_mm": 0.0,
+      "reference_window_reached": true,
+      "actual_whole_shape_not_inferred_from_reference": true
+    },
+    {
+      "planned_shift_mm": 467.5551027887798,
+      "reference_window_reached": false,
+      "actual_whole_shape_not_inferred_from_reference": true
+    },
+    {
+      "planned_shift_mm": 935.1102055775594,
+      "reference_window_reached": false,
+      "actual_whole_shape_not_inferred_from_reference": true
+    }
+  ],
+  "whole_actual_transfer_verified": false
+}

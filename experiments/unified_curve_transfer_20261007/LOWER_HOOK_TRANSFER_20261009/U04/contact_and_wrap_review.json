@@ -1,0 +1,43 @@
+{
+  "sample_period_s": 0.01,
+  "maximum_pipe_depth_mm": 3.532377169914813,
+  "maximum_depth_time_s": 23.490000000005725,
+  "maximum_depth_contacts": [
+    {
+      "geom_names": [
+        "pipe_straight_04",
+        ""
+      ],
+      "body_names": [
+        "pipe_network",
+        "link2"
+      ],
+      "depth_mm": 3.532377169914813,
+      "position_mm": [
+        1061.0886011993493,
+        156.05286529671255,
+        1040.4536913262534
+      ]
+    }
+  ],
+  "above3mm_intervals": [
+    {
+      "first_above3_sample_s": 23.490000000005725,
+      "last_above3_sample_s": 23.500000000005738,
+      "sample_span_s": 0.010000000000012221,
+      "sample_count": 2,
+      "estimated_sampled_duration_s": 0.02,
+      "preceding_below3_sample_s": 23.480000000005713,
+      "following_below3_sample_s": 23.51000000000575,
+      "max_depth_mm": 3.532377169914813
+    }
+  ],
+  "largest_estimated_continuous_above3_duration_s": 0.02,
+  "last_actual_source_contact_time_s": 22.900000000005004,
+  "last_actual_source_bearing_time_s": 22.900000000005004,
+  "initial_front8_wrap_deg": 238.57063397065272,
+  "final_front8_wrap_deg": 161.14523025823857,
+  "initial_front9_wrap_deg": 267.80744327647386,
+  "final_front9_wrap_deg": 199.50457282779453,
+  "final_all21_winding_deg": 302.3376546909028
+}

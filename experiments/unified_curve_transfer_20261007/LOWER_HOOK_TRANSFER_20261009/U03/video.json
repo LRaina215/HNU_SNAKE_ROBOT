@@ -1,0 +1,21 @@
+{
+  "fps": 20.0,
+  "frames": 1211,
+  "actual_seconds": 60.4999999999497,
+  "speed": 1.0,
+  "source": "saved actual qpos; artificial lower placement then continuous original-gravity dynamics",
+  "readback": [
+    {
+      "frame": 0,
+      "readable": true
+    },
+    {
+      "frame": 605,
+      "readable": true
+    },
+    {
+      "frame": 1210,
+      "readable": true
+    }
+  ]
+}
