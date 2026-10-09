@@ -1,0 +1,21 @@
+{
+  "fps": 20.0,
+  "frames": 7693,
+  "actual_seconds": 384.5999999978173,
+  "speed": 1.0,
+  "source": "Saved actual qpos from one continuous dynamics run; replay data assignments only; no I01 state",
+  "readback": [
+    {
+      "frame": 0,
+      "readable": true
+    },
+    {
+      "frame": 3846,
+      "readable": true
+    },
+    {
+      "frame": 7692,
+      "readable": true
+    }
+  ]
+}

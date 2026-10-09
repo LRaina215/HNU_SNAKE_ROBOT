@@ -1,0 +1,5 @@
+{
+  "reason": "Camera follows falling robot height so the ground stop remains visible",
+  "dynamics_rerun": false,
+  "source": "validation/cmu_window_experiment.py video camera revision; original actual trace unchanged"
+}

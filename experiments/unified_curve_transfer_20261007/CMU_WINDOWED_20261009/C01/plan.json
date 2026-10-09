@@ -1,0 +1,21 @@
+{
+  "name": "C01",
+  "registered_utc": "2026-10-09T12:38:27.074871+00:00",
+  "maximum_trials": 3,
+  "method": "CMU equations8/9/12 direct alternating-axis sine waves; no world-curve inverse fit",
+  "bend": 8,
+  "frequency_cycles_s": 0.02,
+  "phase_rate_rad_s": -0.12566370614359174,
+  "window_rate_modules_s": 0.05649996090176993,
+  "equation10_interpretation": "Per-cycle travel pi*d_module; nt_dot=pi*d_module*f/link; printed inverse-speed equation is dimensionally inconsistent",
+  "settle_seconds": 0.5,
+  "maximum_actual_seconds": 450,
+  "maximum_wall_seconds": 800,
+  "deadline": "2026-10-09T12:56:59+00:00",
+  "physics": "original gravity, friction, damping1.5, Kp127, torque2.355Nm, actual90deg and command88deg",
+  "stop": "Ground; actual joint>90.5deg; self>3mm; pipe>3mm sustained0.2s; nonfinite; acquired grip falls1s; all-window without strict shape30s; deadline",
+  "completion": "Actual all21 single target coil, original source clear, posterior target force>0.2N, allKp127, hold1s",
+  "physical_root_reset_during_run": false,
+  "initial_state_is_artificial": true,
+  "yamada_compliance_enabled": false
+}

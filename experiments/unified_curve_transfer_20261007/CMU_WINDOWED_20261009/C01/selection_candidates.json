@@ -1,0 +1,90 @@
+[
+  {
+    "seam_x_m": 0.95,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 13.923830327863726,
+    "gap_lower_bound_mm": 71.87033585816917,
+    "release_length_margin_mm": 57.12966414183084,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.945,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 14.04246837663117,
+    "gap_lower_bound_mm": 76.38943105146193,
+    "release_length_margin_mm": 52.61056894853808,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.94,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 13.891251771401445,
+    "gap_lower_bound_mm": 80.96508615672587,
+    "release_length_margin_mm": 48.03491384327413,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9349999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 13.18424763915655,
+    "gap_lower_bound_mm": 85.58823036122469,
+    "release_length_margin_mm": 43.41176963877531,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9299999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 11.962651108963312,
+    "gap_lower_bound_mm": 90.25156606046262,
+    "release_length_margin_mm": 38.74843393953738,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9249999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 10.589901033864066,
+    "gap_lower_bound_mm": 94.9491715412308,
+    "release_length_margin_mm": 34.05082845876921,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9199999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 8.944669463872827,
+    "gap_lower_bound_mm": 99.67620165498913,
+    "release_length_margin_mm": 29.32379834501088,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9149999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 6.853639214105838,
+    "gap_lower_bound_mm": 104.42866070368844,
+    "release_length_margin_mm": 24.57133929631157,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9099999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 4.665848830192249,
+    "gap_lower_bound_mm": 109.20322878178129,
+    "release_length_margin_mm": 19.796771218218712,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.9049999999999999,
+    "initial_target_contacts": 1,
+    "initial_pipe_depth_mm": 2.113423503204422,
+    "gap_lower_bound_mm": 113.99712793033906,
+    "release_length_margin_mm": 15.002872069660944,
+    "admissible": false
+  },
+  {
+    "seam_x_m": 0.8999999999999999,
+    "initial_target_contacts": 0,
+    "initial_pipe_depth_mm": 0.4444443731441389,
+    "gap_lower_bound_mm": 118.80801814846534,
+    "release_length_margin_mm": 10.191981851534665,
+    "admissible": true
+  }
+]
