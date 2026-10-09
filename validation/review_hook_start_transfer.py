@@ -12,10 +12,11 @@ from validation.suspended_supply_experiment import write
 from validation.hook_start_transfer_experiment import shape_stats
 BASE=ROOT/'experiments/unified_curve_transfer_20261007/HOOK_START_TRANSFER_20261009'
 
-def review(case,lower_entry=False):
-    sign=-1 if lower_entry else 1;model_name='Snake_Robot_o20_lower_hook_transfer.xml' if lower_entry else 'Snake_Robot_o20_hook_start_transfer.xml'
+def review(case,lower_entry=False,model_name=None,initial_filename=None,initial_state_artificial=False):
+    sign=-1 if lower_entry else 1;model_name=model_name or ('Snake_Robot_o20_lower_hook_transfer.xml' if lower_entry else 'Snake_Robot_o20_hook_start_transfer.xml')
+    initial_filename=initial_filename or ('initial_lower_state.npz' if lower_entry else 'initial_saved_state.npz');artificial=lower_entry or initial_state_artificial
     z=np.load(case/'trace.npz');t=z['sim_time'];m=mujoco.MjModel.from_xml_path(str(case/'sources/mujoco_model'/model_name));d=mujoco.MjData(m)
-    restore_saved_state(m,d,case/('initial_lower_state.npz' if lower_entry else 'initial_saved_state.npz'));initial=dict(qpos=float(abs(d.qpos-z['qpos'][0]).max()),qvel=float(abs(d.qvel-z['qvel'][0]).max()),ctrl=float(abs(d.ctrl-z['ctrl'][0]).max()))
+    restore_saved_state(m,d,case/initial_filename);initial=dict(qpos=float(abs(d.qpos-z['qpos'][0]).max()),qvel=float(abs(d.qvel-z['qvel'][0]).max()),ctrl=float(abs(d.ctrl-z['ctrl'][0]).max()))
     ks=np.flatnonzero(t>=t[-1]-1.00001);rows=[];error=0.
     for i in ks:
         d.qpos[:]=z['qpos'][i];mujoco.mj_forward(m,d);error=max(error,float(abs(nodes(d)*1000-z['points_mm'][i]).max()))
@@ -37,8 +38,8 @@ def review(case,lower_entry=False):
         maximum_actual_joint_deg=float(np.degrees(abs(z['q']).max())),maximum_drive_torque_nm=float(abs(z['torque']).max()),maximum_pipe_depth_mm=float(z['pipe_depth_mm'].max()),
         ground=bool(z['ground'].any()),yamada_compliance_enabled=False)
     write(case/'actual_evidence_review.json',report)
-    if lower_entry:
-        report.update(initial_state_is_artificial=True,active_upward_hook_acquisition_demonstrated=False,actual_winding_sign=-1,initial_state_file='initial_lower_state.npz')
+    if artificial:
+        report.update(initial_state_is_artificial=True,active_upward_hook_acquisition_demonstrated=False,actual_winding_sign=sign,initial_state_file=initial_filename)
         write(case/'actual_evidence_review.json',report)
     depth=z['pipe_depth_mm'];imax=int(depth.argmax());d.qpos[:]=z['qpos'][imax];mujoco.mj_fwdPosition(m,d)
     pairs=[dict(geom_names=[m.geom(int(g)).name for g in [con.geom1,con.geom2]],body_names=[m.body(int(m.geom_bodyid[g])).name for g in [con.geom1,con.geom2]],depth_mm=float(-con.dist*1000),position_mm=con.pos*1000) for con in d.contact if -con.dist*1000>3]
@@ -70,7 +71,7 @@ def review(case,lower_entry=False):
         ax.text(*actual[0],'Head N0',fontsize=8);ax.text(*actual[-1],'Tail N21',fontsize=8)
         ax.set(xlabel='X(m)',ylabel='Y(m)',zlabel='Z UP(m)',title=f'Actual {t[i]:.2f}s / reference S={z["shift_mm"][i]:.1f}mm',xlim=limits[0],ylim=limits[1],zlim=limits[2]);ax.tick_params(labelsize=8,pad=0);ax.view_init(27,140);ax.legend(fontsize=8)
     fig.tight_layout();fig.savefig(case/'actual_and_executed_reference.png',dpi=150);plt.close(fig)
-    if lower_entry:
+    if artificial:
         windows=json.loads((case/'reference_initial_middle_final.json').read_text(encoding='utf-8'));fig=plt.figure(figsize=(16,6));marks=[]
         for panel,w in enumerate(windows):
             ax=fig.add_subplot(1,3,panel+1,projection='3d');p=np.asarray(w['reference_points_mm'])/1000;shift=float(w['material_coordinate_mm'][0])-float(windows[0]['material_coordinate_mm'][0]);reached=shift<=z['shift_mm'].max()+1e-6

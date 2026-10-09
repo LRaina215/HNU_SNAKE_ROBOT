@@ -1,0 +1,12 @@
+{
+  "python": "3.9.21 (main, Dec 11 2024, 16:35:24) [MSC v.1929 64 bit (AMD64)]",
+  "python_executable": "D:\\Anaconda\\envs\\mujoco\\python.exe",
+  "mujoco": "3.2.7",
+  "numpy": "1.23.5",
+  "scipy": "1.13.1",
+  "opencv": "4.11.0",
+  "matplotlib": "3.9.4",
+  "physics_timestep_s": 0.001,
+  "raw_record_period_s": 0.01,
+  "command_period_s": 0.05
+}

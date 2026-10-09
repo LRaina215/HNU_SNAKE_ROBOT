@@ -1,0 +1,19 @@
+{
+  "name": "I01",
+  "registered_utc": "2026-10-09T07:06:04.102063+00:00",
+  "first_candidate_maximum_dynamics_trials": 3,
+  "initial_state_is_artificial": true,
+  "action": "source+Y outlet, five-rod inner bridge, target-X upward hook; same shared material shift, whole-curve hinge projection and roll; U04 continuous front reform handoff",
+  "source_start_module": 14,
+  "complete_shift_mm": 774.0,
+  "speed_mm_s": 5.0,
+  "rate_setting_deg_s": 20,
+  "morph_length_mm": 200,
+  "max_actual_seconds": 420,
+  "max_wall_seconds": 600,
+  "deadline_utc": "2026-10-09T07:36:07+00:00",
+  "original_physics": "same robot/gravity/friction/drive/damping1.5/torque2.355Nm/actualjoint90deg/ctrl88deg; prior target length2m",
+  "complete": "whole material window; strict all21 radius/pitch/order/axis/localseam, source absent, posterior bearing, Kp127, actual elapsed1s",
+  "stop": "ground; actualjoint>90.5deg; self>3mm; pipe>3mm sustained0.2s; nonfinite; front bearing collapsed/falling1s; no actual new event or continuous intake45s; full window without shape30s; same overall limits",
+  "yamada_compliance_enabled": false
+}

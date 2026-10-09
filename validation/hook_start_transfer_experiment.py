@@ -79,8 +79,9 @@ def lower_diagrams(case,route,report):
     ax.view_init(27,140);ax.legend();fig.tight_layout();fig.savefig(case/'complete_reference_curve.png',dpi=150);plt.close(fig)
     write(case/'complete_reference_curve.json',dict(material_coordinate_mm=grid*1000,points_mm=p*1000,winding_sign=route.winding_sign,source_cut_mm=route.source_cut*1000,target_join_mm=0,measured_seed_morph_length_mm=route.morph_length*1000,initial_reference_is_measured_seed=True))
 
-def render(case,rows,lower_entry=False):
-    model_name='Snake_Robot_o20_lower_hook_transfer.xml' if lower_entry else 'Snake_Robot_o20_hook_start_transfer.xml'
+def render(case,rows,lower_entry=False,model_name=None,initial_label=None):
+    model_name=model_name or ('Snake_Robot_o20_lower_hook_transfer.xml' if lower_entry else 'Snake_Robot_o20_hook_start_transfer.xml')
+    initial_label=initial_label or ('Artificial lower hook' if lower_entry else 'CLOSE1B')
     m=mujoco.MjModel.from_xml_path(str(case/'sources/mujoco_model'/model_name));d=mujoco.MjData(m);ren=mujoco.Renderer(m,height=600,width=900);cam=mujoco.MjvCamera()
     ymax=max(r['centers_mm'][:,1].max() for r in rows)/1000;cam.lookat[:]=[.98,max(.3,ymax/2),.95];cam.distance=2.15;cam.azimuth=140;cam.elevation=-26
     source_start=json.loads((case/'initial_geometry.json').read_text())['source_start_module'];source_count=21-source_start
@@ -88,17 +89,18 @@ def render(case,rows,lower_entry=False):
     if not writer.isOpened():raise RuntimeError('Video writer unavailable')
     for fi,i in enumerate(ids):
         r=rows[i];d.qpos[:]=r['qpos'];mujoco.mj_forward(m,d);ren.update_scene(d,camera=cam);im=cv2.cvtColor(ren.render(),cv2.COLOR_RGB2BGR);panel=np.full((600,360,3),25,np.uint8)
-        initial_label='Artificial lower hook' if lower_entry else 'CLOSE1B'
         cv2.putText(im,f'{case.name} {initial_label} actual continuous {r["sim_time"]:.2f}s',(10,25),0,.6,(255,255,255),1)
         lines=['Saved true hook / one L-pipe',f'Shared shift {r["shift_mm"]:.1f}mm',f'Source clear {r["actual_exit_mask"][source_start:].sum()}/{source_count}',f'Target connected {r["actual_received_mask"].sum()}/21',f'Bearing N {r["contact_force_N"].sum(1).round(1)}',f'Front wrap8 {np.degrees(r["actual_front_span_rad"]):.1f}deg',f'Actual pipe/self {r["pipe_depth_mm"]:.2f}/{r["self_depth_mm"]:.2f}mm','Joint   Kp    DriveNm / original damping1.5']
         if lower_entry:lines[0]='Lower entry / gravity -9.81 unchanged'
+        if 'inner' in initial_label.lower():lines[0]='Inner hook / source+Y / target-X up'
         for j,line in enumerate(lines):cv2.putText(panel,line,(10,22+23*j),0,.43,(225,225,225),1)
         for j in range(20):cv2.putText(panel,f'{j+1:02d} {r["kp_nm_per_rad"][j]:5.1f} {r["torque"][j]:+4.2f}',(10+(j//10)*176,235+(j%10)*32),0,.43,(220,225,180),1)
         frame=np.hstack([im,panel]);writer.write(frame)
         if fi in {0,len(ids)//2,len(ids)-1}:cv2.imwrite(str(case/f'frame_{fi:05d}.jpg'),frame)
     writer.release();ren.close();cap=cv2.VideoCapture(str(case/'replay_1x.mp4'));n=int(cap.get(cv2.CAP_PROP_FRAME_COUNT));checks=[]
     for i in [0,n//2,n-1]:cap.set(cv2.CAP_PROP_POS_FRAMES,i);ok,_=cap.read();checks.append(dict(frame=i,readable=bool(ok)))
-    write(case/'video.json',dict(fps=cap.get(cv2.CAP_PROP_FPS),frames=n,actual_seconds=rows[-1]['sim_time'],speed=1.,source='saved actual qpos; artificial lower placement then continuous original-gravity dynamics' if lower_entry else 'saved actual qpos from lossless CLOSE1B restore through every physical step',readback=checks));cap.release()
+    source='saved actual qpos; artificial inner-side whole-curve placement then continuous original-gravity dynamics' if 'inner' in initial_label.lower() else 'saved actual qpos; artificial lower placement then continuous original-gravity dynamics' if lower_entry else 'saved actual qpos from lossless CLOSE1B restore through every physical step'
+    write(case/'video.json',dict(fps=cap.get(cv2.CAP_PROP_FPS),frames=n,actual_seconds=rows[-1]['sim_time'],speed=1.,source=source,readback=checks));cap.release()
 
 def run(args):
     global BASE,HMODEL

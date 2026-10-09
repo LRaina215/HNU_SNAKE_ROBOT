@@ -1,0 +1,205 @@
+{
+  "first_distinct_actual_new_target_registration_s": {
+    "9": 4.749999999999921,
+    "10": 32.35000000001531,
+    "11": 35.00000000000913,
+    "12": 59.5999999999518,
+    "13": 63.39999999994294,
+    "14": 83.00000000003226,
+    "15": 95.80000000009338,
+    "16": 109.55000000015903,
+    "17": 121.95000000021824,
+    "18": 134.20000000027673,
+    "19": 147.40000000033976,
+    "20": 160.45000000040207
+  },
+  "first_current_all21_registration_s": 160.45000000040207,
+  "first_source_module_target_registration_s": 83.00000000003226,
+  "tail_target_registration_s": 160.45000000040207,
+  "milestones": [
+    {
+      "actual_time_s": 0.0,
+      "shift_mm": 0.0,
+      "current_received_modules": [],
+      "source_contact_modules": [
+        14,
+        16,
+        18
+      ],
+      "source_target_force_n": [
+        8.945553394172673,
+        32.56714509947693
+      ],
+      "tail_radius_mm": 414.7199229991886,
+      "head_axis_advance_mm": 0.0
+    },
+    {
+      "actual_time_s": 18.37999999999948,
+      "shift_mm": 92.00000000000007,
+      "current_received_modules": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_contact_modules": [],
+      "source_target_force_n": [
+        0.0,
+        67.35234253843076
+      ],
+      "tail_radius_mm": 311.7606477253999,
+      "head_axis_advance_mm": -19.560348913661016
+    },
+    {
+      "actual_time_s": 43.74999999998874,
+      "shift_mm": 202.82070854553893,
+      "current_received_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "source_contact_modules": [],
+      "source_target_force_n": [
+        0.0,
+        78.73513256819693
+      ],
+      "tail_radius_mm": 587.7726198728545,
+      "head_axis_advance_mm": 63.568104932275105
+    },
+    {
+      "actual_time_s": 93.4800000000823,
+      "shift_mm": 316.9527094320513,
+      "current_received_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "source_contact_modules": [],
+      "source_target_force_n": [
+        0.0,
+        73.07236873373314
+      ],
+      "tail_radius_mm": 410.36654231393135,
+      "head_axis_advance_mm": 183.84453128328192
+    },
+    {
+      "actual_time_s": 83.00000000003226,
+      "shift_mm": 273.89022539550166,
+      "current_received_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "source_contact_modules": [],
+      "source_target_force_n": [
+        0.0,
+        58.786109243050525
+      ],
+      "tail_radius_mm": 450.22824043920644,
+      "head_axis_advance_mm": 132.3753713785469
+    },
+    {
+      "actual_time_s": 160.45000000040207,
+      "shift_mm": 646.5082842741186,
+      "current_received_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "source_contact_modules": [],
+      "source_target_force_n": [
+        0.0,
+        131.23121440457433
+      ],
+      "tail_radius_mm": 120.63924585861788,
+      "head_axis_advance_mm": 549.3921394831982
+    },
+    {
+      "actual_time_s": 186.9500000005286,
+      "shift_mm": 774.0,
+      "current_received_modules": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "source_contact_modules": [],
+      "source_target_force_n": [
+        0.0,
+        161.18911906848484
+      ],
+      "tail_radius_mm": 84.96541978695934,
+      "head_axis_advance_mm": 702.7913645140177
+    }
+  ],
+  "registration_requires_actual_radius_axis_order_and_pitch_for1s": true,
+  "registration_is_not_whole_success_without_final_shape_and_window": true,
+  "no_additional_dynamics": true
+}
