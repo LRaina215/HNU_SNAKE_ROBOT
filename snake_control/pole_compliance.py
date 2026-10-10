@@ -262,3 +262,8 @@ class ComplianceController:
         except (ValueError, KeyError, TypeError) as error:
             self.status = str(error)
             return None
+
+# 别名：弯曲轴入口（Adaptive_Pole_Climbing_CurvedAxis_Mujoco）运行时会把本模块的
+# ComplianceController 换成工厂函数；需要继承/实例化真类的地方（如 local_pitch_runtime）
+# 使用这个别名，保证在任何入口下都拿到 2023 控制器类本身。
+OriginalComplianceController = ComplianceController

@@ -10,7 +10,8 @@ import math
 import numpy as np
 from scipy.ndimage import gaussian_filter1d
 
-from snake_control.pole_compliance import ComplianceController, ComplianceParameters, build_backbone
+from snake_control.pole_compliance import ComplianceParameters, build_backbone
+from snake_control.pole_compliance import OriginalComplianceController as ComplianceController
 from snake_control.local_pitch_feedback import estimate_module_radius
 from snake_control.local_pitch_geometry import VariablePitchBackbone
 

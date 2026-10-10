@@ -111,6 +111,7 @@ def install(variant):
         return controller
 
     pole_compliance.ComplianceController = factory  # 原入口在 main() 内 from pole_compliance import，运行时生效
+    # 真类保留在 pole_compliance.OriginalComplianceController（local_pitch_runtime 继承用）
     gait.command_queue = StatusQueue(variant)
 
 
