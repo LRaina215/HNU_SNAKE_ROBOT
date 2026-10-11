@@ -1,0 +1,22 @@
+{
+  "t_s": 55.0,
+  "wall_s": 156.0,
+  "shift_mm": 65.6,
+  "stage": "located_open_upward_entry",
+  "actual_prefix": 0,
+  "actual_wrap": 0.0,
+  "source_support": 9,
+  "posterior_source_geometry": 7,
+  "head_mm": [
+    976.2005652636312,
+    2.8812859513113986,
+    907.322122448847
+  ],
+  "target_N": 0.0,
+  "tracking_deg": 0.2,
+  "projection_mm": 39.6,
+  "head_global_error_mm": 73.2,
+  "actual_progress_station_mm": 6.7,
+  "last_progress_s": 27.45,
+  "source_azimuth_deg": -42.5
+}

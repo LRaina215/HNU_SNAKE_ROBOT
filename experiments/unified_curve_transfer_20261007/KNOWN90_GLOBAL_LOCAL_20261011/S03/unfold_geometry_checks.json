@@ -1,0 +1,47 @@
+[
+  {
+    "shared_mm": 0.0,
+    "stage": "front_polar_unwinding",
+    "fit_mm": 1.7775495243047532,
+    "pipe_depth_mm": 0.4293601827503282,
+    "self_depth_mm": 0.0,
+    "maximum_joint_deg": 72.01729517897847,
+    "physical_steps": 0
+  },
+  {
+    "shared_mm": 250.0,
+    "stage": "front_polar_unwinding",
+    "fit_mm": 52.112344560732126,
+    "pipe_depth_mm": 1.4192531643495503,
+    "self_depth_mm": 0.0,
+    "maximum_joint_deg": 87.99694830238553,
+    "physical_steps": 0
+  },
+  {
+    "shared_mm": 500.0,
+    "stage": "open_lower_upward_approach",
+    "fit_mm": 24.527703464080812,
+    "pipe_depth_mm": 0.4174948900201263,
+    "self_depth_mm": 0.0,
+    "maximum_joint_deg": 87.99999999821324,
+    "physical_steps": 0
+  },
+  {
+    "shared_mm": 600.0,
+    "stage": "growing_first_target_wrap",
+    "fit_mm": 31.973231826388478,
+    "pipe_depth_mm": 0.4657556177735397,
+    "self_depth_mm": 0.0,
+    "maximum_joint_deg": 87.9999999999929,
+    "physical_steps": 0
+  },
+  {
+    "shared_mm": 922.5,
+    "stage": "continuous_single_helix_intake",
+    "fit_mm": 99.25843100176559,
+    "pipe_depth_mm": 5.2273914267785315,
+    "self_depth_mm": 0.0,
+    "maximum_joint_deg": 87.96764225528717,
+    "physical_steps": 0
+  }
+]

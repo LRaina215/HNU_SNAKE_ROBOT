@@ -1,0 +1,16 @@
+{
+  "paths": [
+    "snake_control/known90_global_local.py",
+    "validation/known90_global_local_experiment.py",
+    "validation/inner_ccw_compliance_experiment.py",
+    "snake_control/inner_ccw_compliance.py",
+    "snake_control/suspended_supply_transfer.py",
+    "snake_control/suspended_transfer_route.py",
+    "snake_control/spatial_bishop_backbone.py",
+    "snake_control/horizontal_pipe_roll.py",
+    "mujoco_model/Snake_Robot_o20_full_source_inner.xml",
+    "mujoco_model/asset/c_link_H.stl",
+    "mujoco_model/asset/c_link_V.stl"
+  ],
+  "hash_check": false
+}

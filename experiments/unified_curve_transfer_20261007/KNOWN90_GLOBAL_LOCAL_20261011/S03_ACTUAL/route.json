@@ -1,0 +1,22 @@
+{
+  "source_exit_m": [
+    0.7441223562004009,
+    0.030561643358283916,
+    0.9147459048483121
+  ],
+  "target_entry_m": [
+    1.020758675553724,
+    0.18,
+    0.95425
+  ],
+  "source_spatial_hand": 1,
+  "source_phi_rad": -1.2265895497247308,
+  "target_phi_rad": -2.6179938779914944,
+  "bridge_length_mm": 322.5,
+  "node_radius_mm": 91.5,
+  "pitch_mm": 180,
+  "initial_cut_module": 10,
+  "initial_front_release_mm": 645.0,
+  "first_target_modules": 5,
+  "remaining_source_modules": 11
+}
