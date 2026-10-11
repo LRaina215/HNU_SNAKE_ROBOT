@@ -1,0 +1,59 @@
+{
+  "physical_steps_added": 0,
+  "head_shift_end_mm": 278.1712618817246,
+  "reference_M14_axial_advance_mm": 81.82557670781284,
+  "actual_M14_axial_advance_mm": 35.021378510606496,
+  "reference_M14_orbit_deg": 163.6511534156259,
+  "actual_M14_orbit_deg": 19.472691383594665,
+  "actual_target_prefix_end": 0,
+  "execution_transition_rods_end": 4,
+  "actual_front_outside_source_geometry_prefix_rods": 1,
+  "actual_front_no_source_contact_prefix_rods": 2,
+  "departure_metric_limitation": "Geometric band74..118mm/X<1035 and source contact absence are diagnostics, not proof of an unwrapped lower transition or target capture.",
+  "anchor_modules": {
+    "16": 12,
+    "17": 3,
+    "18": 4723
+  },
+  "final_anchor_module": 18,
+  "maximum_private_anchor_vs_actual_increment_mm": 1.8384254904954364e-12,
+  "final_private_anchor_vs_actual_increment_mm": 5.112452503496413e-13,
+  "final_anchor_actual_to_execution_reference_mm": 149.12526805741234,
+  "maximum_anchor_actual_to_execution_reference_mm": 149.12526805741234,
+  "rear_joints": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "rear_joint_target_span_deg": [
+    80.31567944831437,
+    104.88765617421573,
+    59.657708868211586,
+    119.47485701026025,
+    69.65995028505463,
+    175.99999999998965,
+    55.95087616995484,
+    128.48304699783176
+  ],
+  "rear_final_target_vs_actual_deg": [
+    -0.30534430467828316,
+    2.3280951601236075,
+    -1.0496623124917883,
+    1.1028925519603732,
+    -1.2260758743152473,
+    0.8115913372260899,
+    0.014628011196790488,
+    0.018083532911149138
+  ],
+  "final_commanded_limit_joints": [
+    18,
+    19,
+    20
+  ],
+  "explanation": "The registered bearing origin is independent of the hinge variables: its position-error Jacobian is zero. Shared shift moves reference material points, but those accumulating bearing-position errors cannot be reduced by the current private registered hinge fit."
+}

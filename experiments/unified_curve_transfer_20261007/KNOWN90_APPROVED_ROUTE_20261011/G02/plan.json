@@ -1,0 +1,22 @@
+{
+  "name": "G02",
+  "variant": 2,
+  "speed_m_s": 0.005,
+  "local_shape_off": false,
+  "registered_utc": "2026-10-11T14:09:55.815662+00:00",
+  "round_start_utc": "2026-10-11T13:55:12+00:00",
+  "round_deadline_utc": "2026-10-11T15:25:12+00:00",
+  "maximum_actual_seconds": 600,
+  "maximum_candidates": 2,
+  "maximum_controls_after_success": 1,
+  "curve": "approved entire route, 21 exact 64.5mm rods, one common head curve station",
+  "local_feedback": "same material segment actual pose - execution reference, joint tracking, actuator load; bounded C1 bridge deflection; receiving radius only after wrap",
+  "source_sizing": "fixed -1.5mm node radius change for initial mechanism contact; no online source-radius changes",
+  "observations": "read-only MuJoCo actual pose allowed; contact identities/forces used by evaluator only",
+  "physical_root": "artificial placement before first mj_step; thereafter joint targets only",
+  "direction": "actual source centers theta=atan2(Z-1,-Y), tail looks +X; positive = CCW",
+  "stops": "600s;30s no new actual departure/upward/intake despite local adjustment;ground;joint or actuator limits;nonfinite;self collision >3mm;90-minute round deadline",
+  "physics": "original gravity, friction, masses, timestep and joint/torque limits; Kp127 with bridge-only load admittance to95.25",
+  "progress": "head on fixed approved route within50mm advances3mm, fixed E distance decreases3mm, sustained new wrap0.10rad or target prefix; no reference-only progress",
+  "comparator": "same initial pose, speed coordination, rolling, actuator limits and stopping; disable only feedback local curve changes"
+}

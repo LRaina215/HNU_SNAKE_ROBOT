@@ -1,0 +1,25 @@
+{
+  "t_s": 235.0,
+  "wall_s": 375.1,
+  "shift_mm": 274.8,
+  "actual_prefix": 0,
+  "actual_wrap": 0.0,
+  "source_contact_modules": 10,
+  "head_mm": [
+    993.7616060063563,
+    135.9721799191686,
+    1019.4317216782274
+  ],
+  "head_execution_error_mm": 105.5,
+  "tracking_deg": 5.6,
+  "projection_rms_mm": 157.0,
+  "best_entry_mm": 97.2,
+  "best_station_mm": 0.0,
+  "last_progress_s": 206.9,
+  "source_ccw_median_deg": 5.696890241200743,
+  "coeff_mm": [
+    -10.0,
+    -12.0,
+    12.0
+  ]
+}

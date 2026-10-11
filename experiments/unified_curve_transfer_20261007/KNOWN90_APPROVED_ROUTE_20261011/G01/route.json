@@ -1,0 +1,16 @@
+{
+  "source_exit_m": [
+    0.86,
+    0.0805403625519528,
+    0.9535
+  ],
+  "target_entry_m": [
+    1.0194596374480474,
+    0.2,
+    0.9535
+  ],
+  "target_phi_rad": -2.6179938779914944,
+  "bridge_length_mm": 298.1256920983445,
+  "final_shift_mm": 1741.9543491812806,
+  "approved_route_intent": "inner lower-to-upper progressive wrap; reverse hook is not active"
+}

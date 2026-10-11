@@ -1,0 +1,36 @@
+{
+  "threshold_bytes": 2000000,
+  "hash_check_performed": false,
+  "files": [
+    {
+      "path": "experiments/unified_curve_transfer_20261007/KNOWN90_APPROVED_ROUTE_20261011/G01/actual_continuous_1x.mp4",
+      "bytes": 30493877,
+      "retention": "local_only"
+    },
+    {
+      "path": "experiments/unified_curve_transfer_20261007/KNOWN90_APPROVED_ROUTE_20261011/G01/commands.json",
+      "bytes": 55944365,
+      "retention": "local_only"
+    },
+    {
+      "path": "experiments/unified_curve_transfer_20261007/KNOWN90_APPROVED_ROUTE_20261011/G01/trace.npz",
+      "bytes": 51447282,
+      "retention": "local_only"
+    },
+    {
+      "path": "experiments/unified_curve_transfer_20261007/KNOWN90_APPROVED_ROUTE_20261011/G02/actual_continuous_1x.mp4",
+      "bytes": 19337814,
+      "retention": "local_only"
+    },
+    {
+      "path": "experiments/unified_curve_transfer_20261007/KNOWN90_APPROVED_ROUTE_20261011/G02/commands.json",
+      "bytes": 36257018,
+      "retention": "local_only"
+    },
+    {
+      "path": "experiments/unified_curve_transfer_20261007/KNOWN90_APPROVED_ROUTE_20261011/G02/trace.npz",
+      "bytes": 33066689,
+      "retention": "local_only"
+    }
+  ]
+}

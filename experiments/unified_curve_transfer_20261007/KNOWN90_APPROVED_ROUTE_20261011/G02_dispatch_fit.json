@@ -1,0 +1,9 @@
+{
+  "shared_shift_mm": 0.25,
+  "projection_rms_mm": 24.462662566820104,
+  "maximum_dispatch_step_deg": 0.9999850391776711,
+  "maximum_reference_rod_length_error_mm": 5.689893001203927e-13,
+  "mapper_kind": "common_curve_bearing_transport",
+  "physical_root_or_joint_state_changed": false,
+  "physical_steps": 0
+}
