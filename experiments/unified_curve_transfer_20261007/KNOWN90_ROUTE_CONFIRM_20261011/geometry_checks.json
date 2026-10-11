@@ -1,0 +1,22 @@
+{
+  "dynamics_steps": 0,
+  "joint_IK_performed": false,
+  "windows_checked": 81,
+  "physical_rods": 21,
+  "rod_length_mm": 64.5,
+  "physical_body_length_mm": 1354.5,
+  "maximum_rod_length_error_mm": 2.3611668176215517e-10,
+  "minimum_conservative_pipe_clearance_mm": 2.2625064904402588,
+  "minimum_nonadjacent_rod_capsule_clearance_mm": 6.499999999807736,
+  "maximum_adjacent_centerline_turn_deg": 47.11254292958439,
+  "join_position_error_mm": [
+    0.0,
+    0.0
+  ],
+  "join_tangent_angle_error_deg": [
+    8.537736462515939e-07,
+    0.0
+  ],
+  "continuous_order": "P0=head, P21=tail; strictly decreasing curve station behind head",
+  "clearance_model": "finite segment / extended pipe-axis capsules; robot capsule radius29mm; conservative geometric envelope only"
+}
