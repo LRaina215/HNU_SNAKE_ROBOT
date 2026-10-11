@@ -1,0 +1,411 @@
+{
+  "new_dynamics_runs": 0,
+  "new_joint_IK_fits": 0,
+  "source_theta_convention": "theta=atan2(Z-1,-Y); viewed from tail toward +X: right=-Y, up=+Z",
+  "angle_is_material_center_orbit_not_joint_roll_phase": true,
+  "original_trials": [
+    {
+      "case": "C01",
+      "actual_seconds": 384.5999999978173,
+      "outcome": "whole_wave_without_strict_actual_shape_30s",
+      "front_acquisition": false,
+      "whole_transfer": false,
+      "initial_sine_amplitude_rad": 1.2351672327411283,
+      "spatial_rad_per_hinge": 0.19063617553842116,
+      "calibrated_signed_pitch_mm": 179.9999999982996,
+      "window_delta_rad": -1.5707963267948966,
+      "phase_rate_rad_s": -0.12566370614359174,
+      "window_rate_modules_s": 0.05649996090176993,
+      "nominal_feed_per_cycle_mm": 182.212373908208,
+      "rear_joints_J9_to_J20_tracking_max_deg_first_two_cycles": 2.94753899895194,
+      "rear_joints_J9_to_J20_actual_range_deg_first_two_cycles": [
+        142.22788464225536,
+        142.96912954593355,
+        143.00161653232,
+        142.8435522156282,
+        142.3975078122548,
+        142.04320876414138,
+        141.71917741607686,
+        141.38225301290382,
+        141.171194220316,
+        141.1459073350105,
+        141.30226746650501,
+        141.43758443069075
+      ],
+      "same_material_source_measurements": [
+        {
+          "rod_index": 14,
+          "samples": [
+            {
+              "t_s": 0.5000000000000003,
+              "axial_displacement_from_0p5s_mm": 0.0,
+              "orbit_from_0p5s_deg": 0.0,
+              "radius_mm": 87.62672938337987,
+              "source_contact": false,
+              "original_source_band": true
+            },
+            {
+              "t_s": 50.49999999997301,
+              "axial_displacement_from_0p5s_mm": 121.09807590015909,
+              "orbit_from_0p5s_deg": -5.524262836067099,
+              "radius_mm": 88.91533162027186,
+              "source_contact": false,
+              "original_source_band": true
+            },
+            {
+              "t_s": 100.50000000011582,
+              "axial_displacement_from_0p5s_mm": 163.70693625799782,
+              "orbit_from_0p5s_deg": -77.21401911468993,
+              "radius_mm": 87.71906462922587,
+              "source_contact": false,
+              "original_source_band": true
+            }
+          ]
+        },
+        {
+          "rod_index": 18,
+          "samples": [
+            {
+              "t_s": 0.5000000000000003,
+              "axial_displacement_from_0p5s_mm": 0.0,
+              "orbit_from_0p5s_deg": 0.0,
+              "radius_mm": 87.57155478264394,
+              "source_contact": false,
+              "original_source_band": true
+            },
+            {
+              "t_s": 50.49999999997301,
+              "axial_displacement_from_0p5s_mm": 118.20971490313559,
+              "orbit_from_0p5s_deg": -5.445587141349038,
+              "radius_mm": 85.108318099951,
+              "source_contact": true,
+              "original_source_band": true
+            },
+            {
+              "t_s": 100.50000000011582,
+              "axial_displacement_from_0p5s_mm": 157.22591618908365,
+              "orbit_from_0p5s_deg": -77.87746224721006,
+              "radius_mm": 84.79988046597283,
+              "source_contact": true,
+              "original_source_band": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "C02",
+      "actual_seconds": 260.0500000007625,
+      "outcome": "ground_contact",
+      "front_acquisition": false,
+      "whole_transfer": false,
+      "initial_sine_amplitude_rad": 1.2351672327411283,
+      "spatial_rad_per_hinge": 0.19063617553842116,
+      "calibrated_signed_pitch_mm": 179.9999999982996,
+      "window_delta_rad": 1.5707963267948966,
+      "phase_rate_rad_s": -0.12566370614359174,
+      "window_rate_modules_s": 0.05649996090176993,
+      "nominal_feed_per_cycle_mm": 182.212373908208,
+      "rear_joints_J9_to_J20_tracking_max_deg_first_two_cycles": 1.3323396548145692,
+      "rear_joints_J9_to_J20_actual_range_deg_first_two_cycles": [
+        141.83042458279857,
+        142.7578220013875,
+        142.833972067519,
+        142.53528728277843,
+        142.66571628522317,
+        142.19821047950586,
+        141.8789024074247,
+        141.8755290759017,
+        141.44953978861167,
+        141.35825486777617,
+        141.3106617913525,
+        141.36024647095113
+      ],
+      "same_material_source_measurements": [
+        {
+          "rod_index": 14,
+          "samples": [
+            {
+              "t_s": 0.5000000000000003,
+              "axial_displacement_from_0p5s_mm": 0.0,
+              "orbit_from_0p5s_deg": 0.0,
+              "radius_mm": 87.62672938337987,
+              "source_contact": false,
+              "original_source_band": true
+            },
+            {
+              "t_s": 50.49999999997301,
+              "axial_displacement_from_0p5s_mm": 121.71391038212376,
+              "orbit_from_0p5s_deg": -7.586906414516307,
+              "radius_mm": 89.08364537370753,
+              "source_contact": false,
+              "original_source_band": true
+            },
+            {
+              "t_s": 100.50000000011582,
+              "axial_displacement_from_0p5s_mm": 160.58035640328606,
+              "orbit_from_0p5s_deg": -96.87076168945293,
+              "radius_mm": 89.7799319522194,
+              "source_contact": false,
+              "original_source_band": true
+            }
+          ]
+        },
+        {
+          "rod_index": 18,
+          "samples": [
+            {
+              "t_s": 0.5000000000000003,
+              "axial_displacement_from_0p5s_mm": 0.0,
+              "orbit_from_0p5s_deg": 0.0,
+              "radius_mm": 87.57155478264394,
+              "source_contact": false,
+              "original_source_band": true
+            },
+            {
+              "t_s": 50.49999999997301,
+              "axial_displacement_from_0p5s_mm": 118.79469875170744,
+              "orbit_from_0p5s_deg": -7.596443969435323,
+              "radius_mm": 84.98935858589526,
+              "source_contact": true,
+              "original_source_band": true
+            },
+            {
+              "t_s": 100.50000000011582,
+              "axial_displacement_from_0p5s_mm": 159.45182710343443,
+              "orbit_from_0p5s_deg": -97.65626631694334,
+              "radius_mm": 84.8847414567642,
+              "source_contact": true,
+              "original_source_band": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "chirality_comparison": {
+    "source_axis": "+X, tail toward head",
+    "target_axis": "+Y, tail toward head",
+    "source_right_hand_angle": "atan2(Z-1,Y)",
+    "target_right_hand_angle": "atan2(-(Z-1),X-1.1)",
+    "current_preserved_initial_source_signed_pitch_mm": -182.15829464838308,
+    "approved_final_target_signed_pitch_mm": 179.99999999999991,
+    "current_initial_centers_mm": [
+      [
+        843.141689949739,
+        85.10157684760316,
+        1001.5141026743933
+      ],
+      [
+        828.2763324931825,
+        64.59258641726676,
+        1054.589971889422
+      ],
+      [
+        809.3992642180119,
+        18.519273405894268,
+        1082.7679683665235
+      ],
+      [
+        787.7450116245583,
+        -38.31262544689104,
+        1079.0048191788396
+      ],
+      [
+        771.4842622400888,
+        -75.22176537332574,
+        1043.391165252079
+      ],
+      [
+        748.5794862190935,
+        -85.96638634200559,
+        984.3382868618583
+      ],
+      [
+        733.4594821968843,
+        -62.839720033041665,
+        939.7123761789686
+      ],
+      [
+        710.7458535319362,
+        -8.61871333878422,
+        915.5961376708736
+      ],
+      [
+        693.1786697512476,
+        42.665202286414974,
+        925.3556123286367
+      ],
+      [
+        672.7096944666291,
+        78.46709042081982,
+        968.854781196577
+      ],
+      [
+        653.6735080530971,
+        83.98840783030359,
+        1024.393579000233
+      ],
+      [
+        637.4055115970897,
+        53.77581478074835,
+        1067.474274762573
+      ],
+      [
+        615.8463623040607,
+        -2.066947132332849,
+        1087.8269087497263
+      ],
+      [
+        600.8386756326198,
+        -49.757973860841396,
+        1071.5681626346986
+      ],
+      [
+        578.5895227501591,
+        -83.5156878623285,
+        1021.3731634600291
+      ],
+      [
+        563.6408406357505,
+        -81.47438215354227,
+        970.3896074104588
+      ],
+      [
+        542.9973255510901,
+        -42.5580092274047,
+        926.7304142893169
+      ],
+      [
+        524.9376884003105,
+        9.76419424896713,
+        913.0678922339013
+      ],
+      [
+        505.0741172666671,
+        57.641063583768876,
+        936.8057474534426
+      ],
+      [
+        484.14743646569593,
+        83.83599648208235,
+        987.2684657262841
+      ],
+      [
+        470.93877252650753,
+        75.4604242326062,
+        1041.120579723578
+      ]
+    ],
+    "approved_target_centers_mm": [
+      [
+        1085.9378659656586,
+        615.3898940766888,
+        1086.6285976562292
+      ],
+      [
+        1034.9222696093595,
+        596.0694338870753,
+        1058.8824808639013
+      ],
+      [
+        1012.4009963906841,
+        576.7489736974618,
+        1005.3546346410977
+      ],
+      [
+        1028.2349992456298,
+        557.4285135078483,
+        949.4822584411198
+      ],
+      [
+        1075.4913505628215,
+        538.1080533182347,
+        915.7291055687073
+      ],
+      [
+        1133.4788286808046,
+        518.7875931286214,
+        918.8740141776634
+      ],
+      [
+        1176.807581656198,
+        499.4671329390079,
+        957.5399841543708
+      ],
+      [
+        1186.5060891083724,
+        480.1466727493945,
+        1014.7970974403408
+      ],
+      [
+        1158.3278537542167,
+        460.8262125597811,
+        1065.5752927703056
+      ],
+      [
+        1104.6107327809689,
+        441.50575237016767,
+        1087.6413069774014
+      ],
+      [
+        1048.8747997045095,
+        422.18529218055426,
+        1071.3335225558824
+      ],
+      [
+        1015.5240661264171,
+        402.86483199094084,
+        1023.7923126591479
+      ],
+      [
+        1019.1611706720179,
+        383.54437180132743,
+        965.8336244479173
+      ],
+      [
+        1058.193604942731,
+        364.22391161171396,
+        922.8347041876974
+      ],
+      [
+        1115.530994269964,
+        344.9034514221005,
+        913.622654807693
+      ],
+      [
+        1166.0681284758136,
+        325.5829912324871,
+        942.230977633441
+      ],
+      [
+        1187.6772931506518,
+        306.26253104287366,
+        996.1335014212749
+      ],
+      [
+        1170.8969026294149,
+        286.94207085326025,
+        1051.7289739221635
+      ],
+      [
+        1123.0742609286608,
+        267.62161066364683,
+        1084.6748842814723
+      ],
+      [
+        1065.1485402926642,
+        248.3011504740334,
+        1080.5458459621136
+      ],
+      [
+        1022.4825521144161,
+        228.98069028441998,
+        1041.1497608594555
+      ]
+    ],
+    "current_initial_static_FK_evaluations": 1,
+    "initial_pose_replaced": false,
+    "note": "Known-axis geometric pitch estimate from saved/fixed point coordinates; no new joint fitting"
+  }
+}
