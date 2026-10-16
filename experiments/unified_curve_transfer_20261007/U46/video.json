@@ -1,7 +1,0 @@
-{
-  "fps": 20.0,
-  "frames": 80.0,
-  "physical_seconds": 3.949999999906595,
-  "speed": 1.0,
-  "source": "actual saved qpos only; one initial frame; reference is recorded separately in trace"
-}

@@ -1,9 +1,0 @@
-Traceback (most recent call last):
-  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\unified_curve_transfer_experiment.py", line 603, in <module>
-    run(args.name, args.initial, args.horizon, args.note, args.controller_state, args.preserve_grip_clearance, args.localized_yield, args.soft_positive_clearance, args.alternating_yield, args.global_route, args.coordinated, args.direct, args.articulated,args.sliding_friction,args.contact_tangent_scale,args.explicit_winding,args.night_policy,args.deadline_utc,args.adaptive_front_winding,args.unfolding_transfer,args.moving_compliance,args.fixed_spatial_shift)
-  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\validation\unified_curve_transfer_experiment.py", line 272, in run
-    from snake_control.fixed_spatial_shift_transfer import FixedSpatialShiftTransfer
-  File "D:\Desktop\SNAKE\Paper Code\Mujoco\Snake_Robot_Gait\snake_control\fixed_spatial_shift_transfer.py", line 147
-    info=dict(stage='fixed_spatial_curve_common_window',shift_mm=self.shift*1000,shift_speed_mm_s=self.speed*1000,
-    ^
-SyntaxError: invalid syntax

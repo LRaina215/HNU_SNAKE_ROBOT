@@ -1,6 +1,0 @@
-{
-  "physics_steps": 0,
-  "issue": "One-sided head curvature normal follows J1 axis and makes head twist identically constant; impossible all-module rolling target",
-  "correction": "Parallel transport nearest internal curvature normal to each endpoint; intrinsic internal frames and target phase unchanged",
-  "no_geometric_or_dynamics_threshold_relaxation": true
-}

@@ -1,8 +1,0 @@
-{
-  "change": "A11 unfolded rear lost source support and hung below target: curl free chain from tail toward the fitted target helix to reduce hanging moment; keep front grasp commands and actual-state continuity",
-  "variant": 11,
-  "seconds": 100.0,
-  "start": "experiments\\alternating_helix_transfer_20261007\\A11\\final_state.npz",
-  "physics": "unmodified original model; joint ctrl only",
-  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
-}

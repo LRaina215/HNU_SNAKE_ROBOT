@@ -1,0 +1,1 @@
+Registration focused_corrections.old_cases uses shorthand for unchanged cases. Precisely: M8+ remain excluded from local_front, as before; the original12N per-contact rule applies to eligible M0..M7 source/nonnegative-load/postcapture contacts. No direct relief offset is applied to M8+. Runtime and frozen code/registration/assets are unchanged.

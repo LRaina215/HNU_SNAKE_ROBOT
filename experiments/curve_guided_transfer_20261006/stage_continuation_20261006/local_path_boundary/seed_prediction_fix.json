@@ -1,8 +1,0 @@
-{
-  "physics_steps": 0,
-  "control_changed": false,
-  "issue": "translation-only seed retained prior joints, so closest-feasible repair did not track the prescribed material guide; d32.25 RMS29.21mm",
-  "correction": "include prescribed joint and SO3 progression from saved checked guide, with fixed old-reference boundary offset fading over64.5mm",
-  "changed_constraints": false,
-  "changed_initial_pose": false
-}

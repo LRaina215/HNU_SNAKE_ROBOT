@@ -1,8 +1,0 @@
-U67: 5.05s actual dynamics; posterior_source_support_below_two_1s; complete=False; error=None.
-Fixed front mean target-Y advance 0.312748mm; fixed rear mean source-X advance 1.636734mm.
-Sustained target admissions in this branch: [15]; no whole-body success credit.
-Final qualified source holders [16]; target holders [1, 3, 5, 6, 8, 15]; target normal-force total 71.197121N is not alone proof of stability.
-M15 final centre [1024.58707264953, 84.21239816130367, 1042.269316196669]mm; geometrically target-side True; minimum target force 3.436753N.
-Actual first saved ctrl error 0.0rad; max joint 87.165307deg; max torque 2.077403Nm; pipe penetration 0.897075mm; chord error 0.000076632mm.
-Original model, joint-only actuation, drive/ctrl/12mm curve/collision/complete rules retained. Only actual trace measures progress; private model predictions are not additional trials. Full states/frozen source/actual commands/1x replay preserved; large files remain local.
-Cancelling stale M20 release after actual M15 handover did not retain two source contacts in this late branch. Actual M15 still bears. The two-source stop itself is insufficient evidence of physical instability after target support handover; U69 performs finite continuation from U66 actual state.

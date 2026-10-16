@@ -1,0 +1,26 @@
+{
+  "source": "Original Step1 one-time source-helix/material calibration on its t0, not target geometry or a trajectory",
+  "constants": {
+    "radius": 0.0991869522236036,
+    "pitch": 0.18266863819422827,
+    "phi0": 2.0764251015918274,
+    "x0": 1.0711064385328986,
+    "beta": 9.674932139383555,
+    "a": 0.2812755938462173,
+    "feed_per_cycle": 7.9099945262477895,
+    "feed_early": 0.054,
+    "feed_late": 0.09,
+    "tail_u0": -1.3755759972105808,
+    "anchor_u0": -4.0,
+    "supply_anchor_normal": [
+      -0.10364644605769151,
+      0.9940549197600687,
+      -0.03335012324435423
+    ],
+    "gauge_angle": 2.0481385308991586,
+    "source_endpoint_x_m": 0.95
+  },
+  "initial": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\u03_global_curve_compliance_20261012\\STEP1_20261014\\N_SHAPE\\initial.npz",
+  "source_only_attributes": true,
+  "simulation_steps": 0
+}

@@ -1,8 +1,0 @@
-{
-  "integration_max_difference": 0.0,
-  "t0_ctrl_max_difference": 0.0,
-  "source": "experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
-  "no_physical_forward": true,
-  "timestep_s": 0.001,
-  "controller": "frozen open-loop targets only"
-}

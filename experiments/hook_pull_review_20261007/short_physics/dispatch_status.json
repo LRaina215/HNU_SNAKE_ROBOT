@@ -1,8 +1,0 @@
-{
-  "attempted_trials": 2,
-  "previous_new_attempts": 0,
-  "this_review_new_total": 2,
-  "review_cap": 4,
-  "dispatch_cap": 2,
-  "next": "STOP: preserve all failures and deliver for review; no additional budget use"
-}

@@ -1,6 +1,0 @@
-{
-  "uniform_phase_error_rad": 2.220446049250313e-16,
-  "adaptive_quadrature_error_rad": 3.3306690738754696e-16,
-  "reconstruction_frame_error": 2.369551543868198e-08,
-  "phase_budget_and_cycle_closure": true
-}

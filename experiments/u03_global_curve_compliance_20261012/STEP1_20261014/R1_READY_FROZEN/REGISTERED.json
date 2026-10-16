@@ -1,0 +1,124 @@
+{
+  "version": "R1",
+  "development_not_heldout": true,
+  "formal_result_limit": 12,
+  "nominal_baseline_reuse": "../A16",
+  "conditions": {
+    "NOM": {
+      "body": "head",
+      "world_force_N": [
+        0,
+        0,
+        0
+      ],
+      "interval_s": [
+        0,
+        0
+      ]
+    },
+    "RECEIVE_LAG": {
+      "body": "head",
+      "world_force_N": [
+        0,
+        -8,
+        0
+      ],
+      "interval_s": [
+        96,
+        102
+      ]
+    },
+    "SOURCE_DRAG": {
+      "body": "tail",
+      "world_force_N": [
+        -6,
+        0,
+        0
+      ],
+      "interval_s": [
+        108,
+        114
+      ]
+    }
+  },
+  "controllers": {
+    "OPEN": {
+      "speed": false,
+      "shape": false
+    },
+    "SPEED": {
+      "speed": true,
+      "shape": false
+    },
+    "SHAPE": {
+      "speed": false,
+      "shape": true
+    },
+    "JOINT": {
+      "speed": true,
+      "shape": true
+    }
+  },
+  "duration_s": 235,
+  "post_transfer_s": 50,
+  "initial": "original U03 initial.npz",
+  "runtime": "D:/Anaconda/envs/mujoco/python.exe; MuJoCo3.2.7 NumPy1.23.5 SciPy1.13.1; all numerical threads1",
+  "nominal_curve": "frozen A16; zero feedback command chain unchanged",
+  "shape": "legacy receiving normal coordinate plus one new source-exit curvature mode after material node15",
+  "source_gamma_max_per_m": 0.4,
+  "source_gamma_rate_max_per_m_s": 0.08,
+  "source_force_reference_N": 12,
+  "source_goal_gain_per_m_N": 0.015,
+  "source_depth_reference_m": 0.0008,
+  "source_depth_goal_gain": 0.08,
+  "source_direction_filter_s": 0.5,
+  "source_goal_tau_s": 0.4,
+  "source_return_tau_s": 0.8,
+  "progress_observer": "cumulative qualified sourceX/targetY increments with persistent material IDs and explicit unobserved intervals; role prediction anchors do not reset cumulative history",
+  "observer_contact_filter_s": 0.3,
+  "observer_speed_filter_s": 1.0,
+  "speed_regular_min_ratio": 0.55,
+  "speed_ratio_slew_per_s": 0.5,
+  "pause_deceleration_per_s": 1.0,
+  "pause_hold_s": 0.8,
+  "pause_cooldown_s": 3.8,
+  "speed_lead_deadband_m": 0.04,
+  "speed_lead_scale_m": 0.1,
+  "receiver_emergency_lead_m": 0.14,
+  "source_governor_force_N": [
+    18,
+    26
+  ],
+  "source_governor_depth_m": 0.0016,
+  "source_governor_tracking_deg": 3,
+  "source_emergency_stall_s": 0.4,
+  "target_emergency_stall_s": 0.6,
+  "geometry_acceptance": "A16 original finite target/all21/contact/angle/joint/torque/floor/self and50s+40mm; >=90deg same-direction rod spin",
+  "branching": "Run three new nominal variants first. If nominal fails, stop at development and diagnose; do not automatically dispatch the remaining matrix. No step2.",
+  "slow_control_condition": "Register matched fixed slow OPEN if apparent gains mainly result from sustained slowing; no automatic add-on when no such evidence",
+  "fixed_shape_control_condition": "requires separately preregistered new conditions if developer data imply fixed bias; not automatically performed",
+  "step2_authorized": false,
+  "source_direction_available_torque_Nm": 2.35,
+  "source_direction_available_tracking_deg": 1,
+  "preparation": "PREPARATION.json",
+  "planned_formal_cases": {
+    "NOM": [
+      "reused_A16",
+      "N_SPEED",
+      "N_SHAPE",
+      "N_JOINT"
+    ],
+    "RECEIVE_LAG": [
+      "L_OPEN",
+      "L_SPEED",
+      "L_SHAPE",
+      "L_JOINT"
+    ],
+    "SOURCE_DRAG": [
+      "D_OPEN",
+      "D_SPEED",
+      "D_SHAPE",
+      "D_JOINT"
+    ]
+  }
+}

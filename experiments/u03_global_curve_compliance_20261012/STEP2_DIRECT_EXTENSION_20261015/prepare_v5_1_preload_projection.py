@@ -1,0 +1,12 @@
+"""Keep source dynamics but project the original grip servo torque, not zero torque."""
+from pathlib import Path
+import json,shutil
+P=Path(__file__).resolve().parent;old=P/'CONTROLLER_V5_SOURCE_CONTACT_DYNAMICS';B=P/'CONTROLLER_V5_1_GRIP_PRELOAD_PROJECTION';B.mkdir(exist_ok=False)
+for f in list(old.glob('*.py'))+[old/n for n in ['GIVEN_INITIAL.npz','KNOWN_SOURCE_COIL_CALIBRATION.npz','KNOWN_SOURCE_COIL_CALIBRATION.json']]:shutil.copy2(f,B/f.name)
+f=B/'source_wrench_hold.py';s=f.read_text(encoding='utf-8');before="weight=self.p['torque_regularization_weight'];H+=weight*B[n:].T@B[n:]/limit**2;c-=weight*B[n:].T@bias[motor[n:]]/limit**2";after="weight=self.p['torque_regularization_weight'];nominal=np.clip(127*(plan.initial_ctrl-q),-2.355,2.355);H+=weight*B[n:].T@B[n:]/limit**2;c+=weight*B[n:].T@(nominal[n:]-bias[motor[n:]])/limit**2"
+if s.count(before)!=1:raise RuntimeError('Unexpected torque objective')
+s=s.replace(before,after).replace('source_hold_robot_mass_kg=0.)','source_hold_robot_mass_kg=0.,source_hold_nominal_position_torque_Nm=np.zeros(20),source_hold_torque_projection_delta_Nm=np.zeros(20))')
+s=s.replace("info['source_hold_total_predicted_torque_Nm']=torque;", "info['source_hold_total_predicted_torque_Nm']=torque;info['source_hold_nominal_position_torque_Nm']=nominal.copy();info['source_hold_torque_projection_delta_Nm']=torque-nominal;")
+f.write_text(s,encoding='utf-8');r=json.loads((old/'REGISTERED.json').read_text(encoding='utf-8'));r.update(version='DIRECT_EXTENSION_V5_1_GRIP_PRELOAD_PROJECTION',dynamics_authorized=False,independent_initial_and_chain_review_passed=False,current_code_independently_reviewed=False,new_dynamics_starts=0,prior_dynamics_starts_preserved=24,prior_version='V5 one actual5s source axial-drift failure preserved',revision_reason='V5 selected low-effort rear torques, reduced grip allocation98->46N, and source commands moved3deg while source shape unwound. Keep dynamics/contact constraints but center the torque objective on the original given source position servo, preserving grip preload.')
+r['source_hold']['torque_regularization_weight']=1.;r['source_hold']['torque_objective']='Project original source servo torque clip(127*(given_ctrl-actual_q),physical2.355Nm) toward dynamics/contact-compatible posterior torque with unchanged2.30Nm request bound. Source joint task/contact tasks unchanged.'
+(B/'REGISTERED.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(str(B))

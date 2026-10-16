@@ -1,1 +1,0 @@
-{"outcome":"reference_return_unpack_error_before_controller_creation_completed","physical_seconds":0,"actual_action_started":false,"complete":false,"note":"reference returns three arrays. Frozen failed source and log retained; fix is interface-only. N11S and N11F did not execute actual dynamics."}

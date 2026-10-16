@@ -1,9 +1,0 @@
-{
-  "source": "experiments\\unified_curve_transfer_20261007\\U06",
-  "reconstruction": "frozen feedback on original 100 Hz observations; no physics steps or curve fit",
-  "maximum_recorded_curve_parameter_error": 1.4663825709249068e-12,
-  "feedback_updates": 644,
-  "elapsed_s": 321.74999999748195,
-  "restored_shift_mm": 382.509010146766,
-  "last_ctrl_matches": true
-}

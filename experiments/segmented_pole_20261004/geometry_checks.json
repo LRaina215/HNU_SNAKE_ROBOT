@@ -1,9 +1,0 @@
-{
-  "straight_integral_error_rad": 3.0739346179586846e-08,
-  "same_axis_section_error_rad": 3.552713678800501e-15,
-  "zero_switch_error_rad": 5.551115123125783e-17,
-  "independent_quadrature_error_rad": 1.047045115457057e-06,
-  "tangent_derivative_error_per_mm": 1.9314758126220966e-12,
-  "boundary_persistence_and_contact_gate": true,
-  "reconstruction_frame_error": 6.569435551107006e-09
-}

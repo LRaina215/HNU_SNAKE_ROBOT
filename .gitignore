@@ -58,3 +58,34 @@ venv/
 /experiments/unified_curve_transfer_20261007/**/*.mp4
 /experiments/unified_curve_transfer_20261007/**/*.jpg
 /experiments/unified_curve_transfer_20261007/**/commands.json
+
+# Local scratch, logs and exported bundles.
+/tmp/
+*.log
+/docs/**/*.zip
+/*.pptx
+
+# Repository storage policy (supersedes older experiment-specific rules above).
+# Raw runs, media, arrays, checkpoints, JSON logs and repeated source/model
+# snapshots stay on the local machine. Publish descriptions and curated source.
+/experiments/**/*
+!/experiments/**/
+!/experiments/**/*.md
+!/experiments/*/*.py
+
+# Current global/local research: maintained stage code and the successful base.
+!/experiments/u03_global_curve_compliance_20261012/STEP*/*.py
+!/experiments/u03_global_curve_compliance_20261012/A16/*.py
+!/experiments/u03_global_curve_compliance_20261012/STEP1_20261014/R1_READY_FROZEN/*.py
+
+# Current Step2 implementation and the source templates used by its builder.
+!/experiments/u03_global_curve_compliance_20261012/STEP2_DIRECT_EXTENSION_20261015/CONTROLLER_V11_STEP1_ORIGINAL_ROLLING/*.py
+!/experiments/u03_global_curve_compliance_20261012/STEP2_DIRECT_EXTENSION_20261015/CONTROLLER_V7_FINAL_CONTRACT_R1/*.py
+!/experiments/u03_global_curve_compliance_20261012/STEP2_DIRECT_EXTENSION_20261015/CONTROLLER_V9_1_PRIOR_DOMAIN_BEARING/*.py
+
+# Small execution configuration is source input, not a recorded trajectory.
+!/experiments/u03_global_curve_compliance_20261012/STEP1_20261014/REGISTERED.json
+!/experiments/u03_global_curve_compliance_20261012/STEP1_20261014/R1_READY_FROZEN/REGISTERED.json
+!/experiments/u03_global_curve_compliance_20261012/STEP2_DIRECT_EXTENSION_20261015/STEP1_ORIGINAL_SOURCE_CONSTANTS.json
+!/experiments/u03_global_curve_compliance_20261012/STEP2_DIRECT_EXTENSION_20261015/CONTROLLER_V11_STEP1_ORIGINAL_ROLLING/REGISTERED.json
+!/experiments/u03_global_curve_compliance_20261012/STEP2_DIRECT_EXTENSION_20261015/CONTROLLER_V11_STEP1_ORIGINAL_ROLLING/STEP1_SOURCE_CONSTANTS.json

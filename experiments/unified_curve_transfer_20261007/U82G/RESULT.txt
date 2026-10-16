@@ -1,8 +1,0 @@
-U82G: actual43.30s from CLOSE1B; target_support_below_two_1s; complete=false.
-Fixed front target-Y mean net+19.337318mm; rear source-X mean net+37.957363mm; shared shift44.627624mm; no new target material.
-Actual front N0-N8 right-hand angle-4.812534 -> -2.595855rad; angle magnitude decreased while the front also loosened and fell away; this is not proof of correct wrapping and remains incorrect handedness. Axial fold count final2.
-Material-node guide projected onto finite-rod tangent constraints and interpolated at the same parameters; old body-integrated squeeze replaced with local contact-normal pressure curve feedback, existing force gain/cap/12mm shape cap retained. Early actual bilateral motion and untwisting improved over U80/U81 but no successful full transfer.
-At40.75s the complete reference jumped140.199761mm at node17, despite guide-only recorded step0.200228mm. This is not reference progress or physical travel. Ended with target M0 only; M6 loses target force. U83G uses nearest chord-sphere crossing, linear nodal field and bounds full feedback/phase reference steps.
-Max actual joint88.148590deg, drive torque2.355000Nm, ctrl step0.500000deg; first saved ctrl error0.0rad.
-Full integration/ctrl, controller, trace, commands, frozen sources, actual continuous1x video and small numeric summaries saved. Large files local; no root assignment, static dynamics test, SHA or Git operation.
-Review clarification: end-state front spread/downward sag and target M0-only contact are visible in the actual video. Final displacement includes the late release/sag interval and is not all valid material transport. Early bilateral axial motion is preserved as a separate fact; no extra comparison run is made.

@@ -1,8 +1,0 @@
-{
-  "physics_steps": 0,
-  "reason": "Internal discrete curvature twist mixes curvature shape with material rotation and duplicates head/internal neighbor; pipe-relative radial frame directly defines local roll",
-  "frame": "Known nominal target radial normal perpendicular to each module tangent, material y atan2 against normal/binormal",
-  "truth_in_control": false,
-  "thresholds_unchanged": true,
-  "numerical_units": "SLSQP variables scaled .1rad/10mm, same objective/constraints; fixes mixed-unit convergence, no model/control parameter change"
-}

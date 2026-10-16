@@ -13,7 +13,7 @@ Q=np.array([.82,0.,1.-R]);PHI=-np.pi/2
 
 def source_curve(u):
     u=np.atleast_1d(u);phi=PHI+BETA*u/R
-    return np.column_stack([Q[0]+ALPHA*u,R*np.cos(phi),1.+R*np.sin(phi)])
+    return np.column_stack([Q[0]+ALPHA*u,R*np.cos(phi),1.+R*np.sin(phi)])·
 
 class ThreeSegmentRoute:
     def __init__(self):

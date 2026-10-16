@@ -1,2 +1,0 @@
-U45：U44/action_t1p05_completed完整状态；未接触抓回仅检查限幅真实小步，保留原所有管面避让。
-Continue full U44 1.05s verified grasp handover state. For released uncontacted material restoring grasp, guard the actual bounded DT*velocity approach rather than the distant complete reference correction. Preserve checks on every original pipe face, solid/mesh interference, unchanged local pressure takeover at real contact, original 12mm shape cap, support/drive/shift/progress/continuous handover/completion rules. Continue restoration, rear release, feed and receiving material transfer.

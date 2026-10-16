@@ -1,0 +1,478 @@
+{
+  "conditions": {
+    "DIRECTION": {
+      "entry_m": [
+        1.1,
+        0.2,
+        1.0
+      ],
+      "axis": [
+        0.0697564737441253,
+        0.9975640502598242,
+        0.0
+      ],
+      "radius_m": 0.0565
+    },
+    "POSITION_RADIUS": {
+      "entry_m": [
+        1.106,
+        0.2,
+        1.004
+      ],
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "radius_m": 0.0585
+    }
+  },
+  "cases": [
+    {
+      "case": "T_UPDATE",
+      "condition": "DIRECTION",
+      "write_global": true
+    }
+  ],
+  "source_known": {
+    "center_yz_m": [
+      0.0,
+      1.0
+    ],
+    "radius_m": 0.0565,
+    "axial_bounds_m": [
+      -0.2,
+      1.1565
+    ],
+    "straight_end_x_m": 0.95,
+    "miter_plane_sum_xy_m": 1.1,
+    "branch_definition": "Known source straight and inlet miter wall; receiver outlet and straight excluded"
+  },
+  "estimated_contact_classes": {
+    "components": [
+      "known-source-consistent",
+      "receiver-cylinder-candidate-consistent",
+      "bridge-or-unknown"
+    ],
+    "receiver_axial_relative_bounds_m": [
+      -0.05,
+      1.0
+    ],
+    "receiver_surface_residual_bound_m": 0.012,
+    "receiver_normal_axis_abs_dot_bound": 0.25,
+    "receiver_radial_normal_min_dot": 0.9,
+    "front_confirmation_requires_qualified_geometry": false,
+    "local_receiving_observation": "qualified receiver supports or previously confirmed estimated target material chart; no bridge/unknown load is passed as receiving load"
+  },
+  "estimator": {
+    "window_s": 12.0,
+    "fit_interval_s": 1.0,
+    "axis_bound_deg": 12.0,
+    "center_bound_m": 0.02,
+    "radius_bound_m": 0.008,
+    "minimum_distinct_samples": 12,
+    "minimum_materials": 2,
+    "minimum_axial_span_m": 0.035,
+    "minimum_middle_normal_eigenvalue": 0.08,
+    "maximum_point_rms_m": 0.0015,
+    "maximum_normal_axis_rms": 0.08,
+    "maximum_normal_alignment_rms": 0.12,
+    "minimum_inlier_fraction": 0.65,
+    "axial_entry_estimated": false,
+    "axial_entry_prior_uncertainty_m": 0.04
+  },
+  "probe": {
+    "amplitude_per_m": 0.18,
+    "direction_duration_s": 4.0,
+    "directions": "Two4s signed curvature cycles on materials0..7 after raw non-source front contact; evidence uses transmitted/tracked probe field during candidate contact",
+    "posterior_support": "curvature probe support ends at material node8, source mode starts after node15; physical servo unchanged",
+    "contact_gated_clock": true,
+    "transmission_tracking_tolerance_per_m": 0.02,
+    "clock_rule": "Advance the same two4s cycles only with current raw front contact, joint tracking and transmitted previous probe within0.02/m of request; pause and fade probe to zero off-contact",
+    "tracking_hinges": [
+      0,
+      1
+    ],
+    "head_tracking_tolerance_deg": 2.0
+  },
+  "runtime": "D:/Anaconda/envs/mujoco/python.exe; MuJoCo3.2.7 NumPy1.23.5 SciPy1.13.1; OPENBLAS/MKL/OMP threads1",
+  "version": "STEP2_V11_STEP1_ORIGINAL_ROLLING",
+  "dynamics_authorized": true,
+  "independent_initial_and_chain_review_passed": false,
+  "scope": "Given all-source exit pose; stationary-source front release, contact/probe/wrap, then whole-body transfer and rolling",
+  "source_constants": {
+    "radius": 0.0991869522236036,
+    "pitch": 0.18266863819422827,
+    "phi0": 2.0764251015918274,
+    "x0": 1.0711064385328986,
+    "beta": 9.674932139383555,
+    "a": 0.2812755938462173,
+    "feed_per_cycle": 7.9099945262477895,
+    "feed_early": 0.054,
+    "feed_late": 0.09,
+    "tail_u0": -1.3755759972105808,
+    "anchor_u0": -4.0,
+    "supply_anchor_normal": [
+      -0.10364644605769151,
+      0.9940549197600687,
+      -0.03335012324435423
+    ],
+    "gauge_angle": 2.0481385308991586,
+    "source_endpoint_x_m": 0.95
+  },
+  "robot_weight_N": 28.017360000000007,
+  "initial_file": "initial.npz",
+  "initial_definition": "Exact original Step1 N_SHAPE physical t0 qpos/qvel/ctrl; all21 on source, no receiving pre-wrap; fresh data loaded exactly as Step1 runner, no intermediate checkpoint or joint replay",
+  "initial_static_equilibrium_exact": false,
+  "initial_stabilization_is_logged_from_t0": true,
+  "duration_s": 235.0,
+  "nominal_frequency_hz": 0.02,
+  "command_interval_s": 0.025,
+  "servo_slew_deg_s": 20.0,
+  "servo_limit_deg": 88.0,
+  "support": {
+    "initial_load_min_fraction": 0.9,
+    "initial_load_max_fraction": 1.1,
+    "initial_velocity_max": 0.03,
+    "initial_stable_s": 2.0,
+    "initial_settle_timeout_s": 10.0,
+    "rear_load_min_fraction_before_capture": 0.4,
+    "receiver_load_min_fraction_after_capture": 0.4,
+    "rear_low_load_max_s": 0.25,
+    "bridge_adjacent_materials": 3,
+    "source_tail_min_materials": 4,
+    "source_tail_min_winding_deg": 180.0,
+    "new_bridge_persistence_s": 0.1,
+    "source_min_normal_N": 0.5
+  },
+  "global_update": {
+    "interval_s": 0.2,
+    "gain": 0.8,
+    "center_rate_m_s": 0.0006,
+    "axis_rate_deg_s": 0.25,
+    "radius_rate_m_s": 0.00015,
+    "same_S_command_bound_deg": 0.1,
+    "material_node_step_m": 0.0004,
+    "backtracking_attempts": 7,
+    "theta_min_coherence": 0.7,
+    "theta_bound_deg": 15.0,
+    "theta_rate_deg_s": 0.25,
+    "G_position_step_m": 0.0004,
+    "G_tangent_step_deg": 0.1,
+    "G_curvature_step_per_m": 0.02,
+    "material_frame_step_deg": 0.1
+  },
+  "local_feedback": {
+    "receiving_delta_bound_m": 0.002,
+    "receiving_delta_rate_m_s": 0.00025,
+    "source_gamma_bound_per_m": 0.4,
+    "source_gamma_rate_per_m_s": 0.08,
+    "source_relief_enabled_before_capture": false,
+    "source_relief_requires_confirmed_front_and_current_receiver_bearing": true,
+    "front_relief_bound_per_m": 0.3,
+    "front_relief_rate_per_m_s": 0.06,
+    "front_force_threshold_N": 12.0,
+    "front_force_gain_per_m_N": 0.012,
+    "always_executed": true,
+    "initial_native_curve_preload_fade_S": null,
+    "initial_preload_policy": "Preserve posterior given grip before capture; allow physical support-preserving posture/slip, no source feed/roll command."
+  },
+  "probe_trigger": "First front material0..7 contact inconsistent with known source, before cylinder qualification; two4s signed cycles at0.18/m",
+  "probe_duration_reason": "Acquire both probe directions during the initial contact-to-wrap interval; old late-start14s directions do not protect this ordering. New source-start preregistration before any dynamics.",
+  "theta_estimation": "Circular phase = polar angle - winding_sign*2pi*axial/pitch, winding_sign=+1; subtract known front-only axial lead from nominal phase; original coherence, bounds and rates unchanged.",
+  "input_boundary": "Robot poses/joint telemetry and unlabeled contact point/normal/full world force/signed gap; known finite source; rough receiver prior. No receiver/elbow labels, true target axis/radius/mesh into controller.",
+  "common_pair": "Same given initial, controller, prior, sensor rules, probe, local modes, frequency, duration and safety; only global write permission differs in the final comparison.",
+  "all_source_start_gate": "Offline truth:all21 source envelope and target/elbow zero contact; online:all21 known source geometry and source load90..110%weight, allqvelmax<.03 for2s before any S advance. Full stabilization remains in logged t0 timeline.",
+  "rear_support_policy": "Select the contiguous known-source geometry/contact component with >=0.5N known-source normal load and greatest winding; require >=4 materials and >=180deg. Count known-source and persistent source-seen adjacent bridge contact vertical force, excluding qualified receiver. Require >=40%weight before receiver capture; fail after0.25s invalid. Preserve old tail-suffix diagnostics, initial90..110%,2s/10s and all threshold values.",
+  "acceptance": {
+    "original_all21_finite_target": true,
+    "post_transfer_s": 50,
+    "minimum_each_axial_advance_m": 0.04,
+    "minimum_each_same_direction_axial_spin_deg": 90,
+    "axis_angle_deg": 5,
+    "center_radius_m": [
+      0.07,
+      0.12
+    ],
+    "true_target_axial_bounds_m": [
+      0.15,
+      1.2
+    ],
+    "max_actual_joint_deg": 90.5,
+    "max_torque_Nm": 2.355,
+    "self_penetration_limit_m": 0.003,
+    "floor_contact_allowed": false,
+    "successful_causal_chain": "Real contact before evidence-driven geometry writes; bounded probing and wrap may overlap estimation; actual loaded wrap and small commanded/tracked motion before whole-body feed, all21 transfer then sustained motion.",
+    "source_initial_21": true,
+    "no_pre_acquired_target_wrap": true,
+    "initial_full_source_stabilization_required": true,
+    "front_capture_must_be_new_after_contact": true,
+    "simultaneous_source_target_bearing_fraction": 0.2,
+    "simultaneous_bearing_s": 0.5,
+    "required_chain": [
+      "full-source t0",
+      "logged full-source stabilization",
+      "curve-driven release and extension",
+      "raw front contact",
+      "two-direction contact evidence",
+      "reliable contact geometry",
+      "G write in enabled cases",
+      "new front wrap and bearing",
+      "all21 transfer",
+      "50s+ rolling"
+    ],
+    "no_commanded_source_feed_or_roll_before_capture": true,
+    "post_capture_feed_requires_measured_capture": true,
+    "source_support_criterion": "Contiguous known-source/observed persistent bearing component, >=4 materials and180deg winding, source normal>=0.5N and retained vertical>=40%robotweight before receiving capture; motion/slip reported, no12mm/12deg stop.",
+    "numeric_criteria_origin": "Inherited A16 physical envelope and50s/40mm/90deg sustained-motion diagnostics chosen for development reproducibility, not user hard numbers; final paired values will be registered after full development evidence."
+  },
+  "failure_policy": "Record every started case, fail/save if stabilization/acquisition/support/physical limits fail; no replacement later start or pose replay. Geometry-only success is insufficient.",
+  "first_run_policy": "Exact original initial retains its limited geometry/static review; require independent current-controller review with explicit initial binding and immutable code/physics snapshot before one diagnostic.",
+  "new_dynamics_starts": 0,
+  "base_initial_review_version": "FROM_SOURCE_R1_PREPARATION",
+  "independent_initial_review_retained": true,
+  "current_code_independently_reviewed": false,
+  "authorization_basis": "User explicitly authorizes necessary correction and continued validation after preserving common failures; no repeated permission required; current-version independent result review remains pending",
+  "prior_version": "V9_NATIVE_SOURCE_BALANCE",
+  "prior_dynamics_starts_preserved": 33,
+  "prior_results": "../R4_GEOMETRIC_C_LAYERING/COMPARISON.json",
+  "revision_reason": "User corrected rolling scope and original initialization: normal advance/rolling after the placed t0 is allowed. Withdraw no-feed-before-capture, changed initial, fixed-phase6 and replacement execution patches. Preserve all48 prior starts as historical failures/partial evidence. Directly restore Step1 complete release coordination, with rough prior and contact-driven G/C instead of target truth.",
+  "scientific_change": "Independent G guides -> fixed-material native curvature C -> separated local fields -> bounded original20-hinge servo. New source-hold/release/wrap/post-capture phase chain is a development revision, not an outcome of formal paired trials.",
+  "native_curve_projection": {
+    "released_hinges": 8,
+    "wrap_hinges": 14,
+    "curvature_bound_per_m": 24.0,
+    "curvature_rate_per_m_s": 1.5,
+    "activation": "After source stability; alpha uses8 curvature-integral coordinates, beta14, S only after capture",
+    "direction_solver": "SLSQP on20 native curvature-integral modes, with per-command20deg/s joint bounds,2mm C-node step, NativeCCD clearance plus original-algorithm known-source collision; exact feasible nonincreasing-objective backtracking",
+    "solver_iterations": 35,
+    "solver_candidate_backtracks": 13,
+    "command_filter_backtracks": 16,
+    "canonical_material_metric": "Fixed sigma=j*64.5mm in every phase,256 cells. Post preserves Step1 native q integration and represents identical native integrals via the fixed-sigma right inverse; spatial station is separate",
+    "canonical_C_decoder": "Native hinge FK registered at one measured bearing body. Bishop reconstruction is separately named diagnostic",
+    "previous_commanded_C_phase_initializer": "Only C geometry targets blend from private FK of previous commanded geometric C at wrap entry; independent G uses previous G and never actual fore-body FK",
+    "actual_root_write_allowed": false,
+    "target_truth_allowed": false,
+    "global_G_replacement_by_FK_allowed": false,
+    "registered_geometry_parameterization_changed": true,
+    "legacy_R5_bias_parameters_used": false
+  },
+  "prior_legacy_postwrap_starts_preserved": 8,
+  "experiment_role": "development_diagnostic",
+  "final_paired_comparison": false,
+  "full_step2_completion_by_this_single_diagnostic_allowed": false,
+  "validation_order": "One physical-t0 T_UPDATE diagnostic first; preserve any failure. Separate final 2 conditions x frozen/update G after continuous action evidence.",
+  "phase_coordinates": {
+    "alpha": "front release only, first8 hinges; freezes at measured first front non-source contact; source feed and roll zero",
+    "beta": "front wrapping only, first14 hinges; source feed and roll zero",
+    "S": "whole-body transport, starts only after measured front capture",
+    "post_capture_frequency_hz": 0.02
+  },
+  "controller_input_boundary": "Immutable given source setup; known source branch, rough receiver cylinder; robot joint telemetry and one measured bearing pose; unlabeled contact point/normal/force. No true receiver mesh or offline truth path into planner.",
+  "kinematic_solver": {
+    "max_iterations": 35,
+    "release_hinges": 8,
+    "wrap_hinges": 14,
+    "maximum_wrap_deg": 240.0,
+    "front_wrapping_axial_lead_m": 0.02,
+    "head_scale_m": 0.001,
+    "guide_weight": 0.02,
+    "tangent_weight": 2.0,
+    "known_source_original_collision_depth_m": 0.0025,
+    "clearance_scale_m": 0.001,
+    "rough_receiver_uncertainty_m": 0.02,
+    "rough_receiver_soft_scale_m": 0.006,
+    "position_step_m": 0.002,
+    "contact_step_allowance_m": 0.0001,
+    "receiver_winding_sign": 1.0,
+    "native_coiling_mode_weight": 50.0,
+    "fore_source_soft_penetration_m": 0.0008,
+    "wrap_body_position_weight_per_m": 250.0,
+    "head_target_terminal_depth_m": 0.0025,
+    "nominal_touchdown_inward_offset_m": 0.0025,
+    "native_curvature_cells": 256,
+    "material_link_length_m": 0.0645,
+    "joint_limit_deg": 88.0,
+    "geometry_query": "Private known source plus receiver cylinder inferred ONLY from registered rough axis/radius/centerline and known source end plane; NativeCCD plus original-algorithm known-source check, no integration",
+    "source_gravity_feedforward": true,
+    "source_known": {
+      "center_yz_m": [
+        0.0,
+        1.0
+      ],
+      "radius_m": 0.0565,
+      "axial_bounds_m": [
+        -0.2,
+        1.1565
+      ],
+      "straight_end_x_m": 0.95,
+      "miter_plane_sum_xy_m": 1.1,
+      "branch_definition": "Known source straight and inlet miter wall; receiver outlet and straight excluded"
+    },
+    "source_virtual_radius_m": 0.0991869522236036,
+    "source_axis_balance": {
+      "enabled": true,
+      "moment_scale_Nm": 0.02,
+      "activation_alpha": 0.1,
+      "target_net_moment_Nm": 0.0,
+      "source_axis": "Known source +X at registered center_yz",
+      "measured_non_source_loads": "Existing unlabeled world contact forces, classified only against known source; source friction loads are not credited",
+      "mass_scope": "Only21 robot bodies,2.856kg",
+      "scope": "Geometric C only during alpha/beta; immutable independent G, original native integral and original local front/probe/source-grip servo chain retained"
+    }
+  },
+  "acceptance_scope": "All prior full-transfer/rolling requirements retained. Acquisition rear rolling requirement removed because human explicitly requires stationary source before capture.",
+  "initial_review": "../../SUPERVISION/STEP2_direct_V3_positive_polar_review_20261015.json",
+  "focused_corrections": {
+    "source": "Old12mm/12degree precapture motion guards become diagnostics; no commanded source feed/roll before actual bearing capture",
+    "phase": "Front joint tracking controls pace; head world error remains logged. Wrap can continue while identification/probes accumulate.",
+    "capture": "Allow prior-cylinder wrap chart confirmation; require actual candidate receiving vertical load>=40%robotweight,2s wrap persistence plus0.5s loaded commanded/actual fore motion evidence before whole-body feed.",
+    "execution": "Same source grip, curve-guided C optimization/explicit local fields before capture; same Step1 native curve/rolling/material mapping after capture; this diagnostic tests the prior cutoff without assuming optimizer superiority.",
+    "gate": "Local necessary checks and frozen reproducible files; no independent per-version approval required by final contract"
+  },
+  "safety_stop": {
+    "pipe_depth_m": 0.003,
+    "pipe_depth_persistence_s": 0.3,
+    "self_depth_m": 0.003,
+    "floor_allowed": false,
+    "max_actual_joint_deg": 90.5,
+    "loss_all_contact_s": 0.5
+  },
+  "transmitted_command_history": {
+    "geometric_component": "Fixed native20 coordinates, linear blend by the exact common transmitted fraction",
+    "local_component": "Sent total minus sent geometric; requested local fields and separate transmitted probe remain logged",
+    "posterior_boundary": "Existing measured source joints only, with compensating preload preserving given total source command",
+    "G_input": "Independent given/rough construction unchanged"
+  },
+  "phase_progress_policy": {
+    "maximum_alpha_rate_per_s": 0.04,
+    "maximum_beta_rate_per_s": 0.025,
+    "rates": "Original registered maxima, no increase above baseline",
+    "common_fraction": "Still filters native command; not a separate phase clock multiplier",
+    "head_gate_m": 0.02,
+    "physical_joint_tracking": "Original progress_tracking_gate_deg retained"
+  },
+  "downward_contact_relief": {
+    "enabled": true,
+    "scope": "Pre-capture M0..M7 non-source contacts with aggregate worldFz<0 per material",
+    "normal_threshold_N": 1.3341600000000002,
+    "aggregation": "Sum normal load per rod; sum normal-load-weighted measured normal Jacobians, then normalize once per rod",
+    "gain_per_N": 0.012,
+    "rate_per_m_s": 0.06,
+    "maximum_per_m": 0.3,
+    "limitations": "This is a new software force policy; it does not establish actual pressure relief, physical probe delivery, wrap or source holding"
+  },
+  "command_aware_clearance": {
+    "enabled": true,
+    "geometric_constraints_retained": true,
+    "previous_local_offset": "previous_sent_total_native - optimization_start_geometric_native",
+    "command_constraints": "Measured planes min(-0.8mm,previous_command_gap-0.1mm); extra2mm command-node motion. Original source-original collision remains in geometric checks and final common filter.",
+    "current_local_change": "Still protected by unchanged total command filter",
+    "no_new_limits_or_gains": true,
+    "preload_baseline": "Existing virtual penetration of servo equilibrium command is preserved as the filter already does; no absolute command collision requirement is added."
+  },
+  "contact_entry_chart": {
+    "phase_origin": "atan2 of prescribed G head goal radial vector minus theta at wrap entry",
+    "axial_origin": "Prescribed G head goal relative rough-cylinder axial coordinate",
+    "virtual_radius": "rough radius+39mm, with only existing outer source-to-wrap blend",
+    "native_radius": "Immutable known-source calibrated node radii shifted by rough radius minus known-source radius; only existing outer C boundary blend",
+    "all_acceptance_and_physics_unchanged": true
+  },
+  "requirements": "STEP2_ROLLING_SCOPE_CLARIFIED_20261016",
+  "authorization_protocol": "User confirmed autonomous development; no per-version supervisor gate",
+  "current_code_self_checked": true,
+  "capture_motion_evidence": {
+    "minimum_loaded_s": 2.0,
+    "minimum_commanded_fore_motion_deg": 0.25,
+    "minimum_actual_fore_motion_deg": 0.25,
+    "minimum_receiving_vertical_fraction": 0.4,
+    "chart_wrap_persistence_s": 2.0,
+    "geometry_reliability_required": false,
+    "front_motion_hinges": 8,
+    "front_six_geometry_wrap_required": false,
+    "role": "Observed handoff evidence; does not lock normal precontact progression"
+  },
+  "duration_reason": "300s development budget: allow source-stationary acquisition in addition to original A16 transfer(~135.5s) and sustained motion evidence; final four budget/tolerances will be frozen from complete-action evidence, not called a user hard threshold.",
+  "execution_backend": "Original A16 continuous release/F/M/material gauge/common roll from original Step1 physical t0; Step2 prior/estimation/G writes and contact-based B1 C",
+  "evaluation_stop": "Only evaluator may stop after earliest registered50s actual complete action window; target truth never enters control",
+  "all_previous_actual_starts": 48,
+  "receiving_domain": {
+    "origin": "Prior entry is a coordinate chart, not a known physical endpoint",
+    "lower": "Known source miter plane intersected with prior cylinder, minus20mm conservative prior margin",
+    "upper_axial_m": 1.0,
+    "margin_m": 0.02
+  },
+  "autonomy": "STEP2_AUTONOMOUS_NO_PROCESS_HEARTBEAT_20261016",
+  "initial_source": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\u03_global_curve_compliance_20261012\\STEP1_20261014\\N_SHAPE\\initial.npz",
+  "per_version_supervisor_gate_required": false,
+  "process_heartbeat": false,
+  "settle_s": 0.5,
+  "normal_progression": "S=feed_per_cycle*0.02*max(0,t-0.5), F/M/common psi and grow(S/6) all original; normal precontact/prebearing advance is allowed, no locks",
+  "source_constants_provenance": "Known-source helix and material calibration from successful Step1 t0; no receiving pose/radius/trajectory in these constants",
+  "local_C": "Original B1 receiving radial deformation +/-2mm and late-source0.4/m mode; observation uses permitted pose/unlabeled contacts and applied G frame. Bounded two-direction probes added after real front contact.",
+  "historical_direct_extension": {
+    "released_hinges": 8,
+    "wrap_hinges": 14,
+    "release_duration_s": 25.0,
+    "wrap_duration_s": 40.0,
+    "release_ends_on_measured_contact": true,
+    "virtual_release_to_wrap_blend_beta": 0.2,
+    "maximum_wrap_deg": 240.0,
+    "identification_hold_wrap_deg": 120.0,
+    "beta_on_confidence_loss": "Hold current beta; never rewind to identification threshold",
+    "contact_timeout_after_alpha_s": 12.0,
+    "capture_timeout_after_release_s": 120.0,
+    "source_translation_guard_m": 0.012,
+    "source_orientation_guard_deg": 12.0,
+    "source_drift_guard_after_stable": true,
+    "progress_tracking_gate_deg": 5.0,
+    "receiver_winding_sign": 1.0,
+    "post_material_roll_sign": 1.0,
+    "preroll_command_rad": 0.0,
+    "source_feed_before_capture_m": 0.0,
+    "first_probe_requires_actual_contact": true,
+    "receiving_helix_radius_rule": "Keep Step1 receiving virtual G radius=rough pipe radius+39mm; model-aware C nodes separately use known-source physical stagger radii shifted ONLY by rough pipe radius-known source pipe radius, preserving64.5mm chords",
+    "source_motion_guard_is_diagnostic_only": true,
+    "head_world_progress_gate_required": false,
+    "wrap_waits_for_reliable_geometry": false,
+    "source_translation_guard_m_is_historical_diagnostic": 0.012
+  },
+  "historical_native_shape": {
+    "source_release_materials": 12.0,
+    "maximum_release_materials": 14.0,
+    "shape_rate_per_s": null,
+    "shape_max": 9.0,
+    "partial_bearing_fraction": 0.1,
+    "full_bearing_fraction": 0.4,
+    "partial_bearing_persistence_s": 0.5,
+    "release_rate_materials_s": 0.5,
+    "source_grip_fade_after_capture_s": 15.0,
+    "receiving_virtual_offset_m": 0.039,
+    "source_polar_endpoint_branch": "Original A16 continuous unwrapped 2pi+atan2 branch; checked on current given without replacing its state",
+    "initial_nominal_shape_phase": 6.0,
+    "source_grip": "Initial given controls behind material12; expand12to14 only with positive persistent receiving support; fade15s after capture",
+    "C_release": "Continuous native curvature interpolation from immutable initial to the full future A16-derived G; no playback, no intermediate A16 endpoint crossing",
+    "source_polar_X": "Distribute the X bridge across C2 controls because the original source-wait plateau relied on approach feed",
+    "bearing_trial": {
+      "amplitude_per_m": 0.1,
+      "period_s": 4.0,
+      "front_materials": 8
+    },
+    "shape_progress_definition": "Fixed full future A16-derived phase6 before bearing; phase6+min(S,3) after bearing. C native curvature release smooth(alpha)0to1 over25s; not the incompatible intermediate endpoint family.",
+    "precap_source_rolling_feed": 0,
+    "release_tracking_pause": false,
+    "native_command_cache": "Exact same parameter tuple; rebuild spatial spline on cache hit, reuse identical native q/info; no controller approximation."
+  },
+  "historical_source_balance": {
+    "first_hinge": 12,
+    "last_hinge": 19,
+    "offset_bound_deg": 25.0,
+    "rate_bound_deg_s": 4.0,
+    "gain_per_s": 0.7,
+    "regularization_Nm2_rad2": 0.01,
+    "leak_per_s": 0.05,
+    "post_capture_fade_s": 15.0,
+    "saturation_error_deg": 1.0,
+    "saturation_torque_Nm": 2.35
+  }
+}

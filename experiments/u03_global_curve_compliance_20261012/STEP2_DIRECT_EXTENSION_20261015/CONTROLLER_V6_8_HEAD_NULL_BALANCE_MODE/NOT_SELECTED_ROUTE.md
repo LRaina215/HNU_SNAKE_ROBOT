@@ -1,0 +1,1 @@
+Unfrozen offline prototype only; no REVIEW_REQUEST or dynamics gate,0 integration/actualstarts. Superseded before any physical start by explicit Step1/A16 curve-native inheritance steering. Preserve static audit; do not launch or continue patching this RoughPlanner branch.

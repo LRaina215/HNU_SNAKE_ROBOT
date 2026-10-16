@@ -1,8 +1,0 @@
-{
-  "change": "Continue actual A06 state: release source coils progressively to reserve four connector modules; rear feed now waits for measured 10 mm feed instead of unconditional 8 s switch",
-  "variant": 9,
-  "seconds": 240.0,
-  "start": "experiments\\alternating_helix_transfer_20261007\\A06\\final_state.npz",
-  "physics": "unmodified original model; joint ctrl only",
-  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
-}

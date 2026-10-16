@@ -1,2 +1,0 @@
-U48：U47/action_t0p05_completed完整状态；检查扣除拟释放M18，单项守卫试跑发生于后续动作协调指令到达前。
-Continue U47 actual full 0.05s M20 handover checkpoint. U47 actual M18 release lost replacement M20 at 2.15s but counted loaded M18 as its own replacement. Always exclude intended release rods from replacement-support checks; retain loaded candidate and restore free source span immediately, then original one-second continuity before new release. No motion redesign or support threshold/force/cap/drive/time increase. Continue actual rear release/feed and material transfer.

@@ -1,0 +1,11 @@
+"""Preserve completed V6.1 actual outcome and delivered geometric-state evidence."""
+from pathlib import Path
+import json,numpy as np
+P=Path(__file__).resolve().parent;s=(P/'analyze_v6_actual.py').read_text(encoding='utf-8').replace('CONTROLLER_V6_SOURCE_AXIS_BALANCE','CONTROLLER_V6_1_TRANSMITTED_C_STATE').replace('total_actual_starts=34','total_actual_starts=35').replace('V6 one actual development run','V6.1 one actual development run')
+exec(compile(s,str(P/'analyze_v6_actual.py'),'exec'),{'__file__':str(P/'analyze_v6_actual.py'),'__name__':'__main__'})
+C=P/'CONTROLLER_V6_1_TRANSMITTED_C_STATE/T_UPDATE';z=np.load(C/'trace.npz');out=json.loads((C/'OUTCOME_SUMMARY.json').read_text(encoding='utf-8'));ids=np.flatnonzero(z['eval_pipe_normal_N'][:,2:,:8].sum((1,2))>.02);errors=[];gaps=[]
+for j in range(len(z['t'])):
+    n=int(z['source_guard_material_start'][j]);candidate=z['geometric_candidate_native_command'][j];previous=z['previous_transmitted_geometric_native_command'][j];sent=z['geometric_native_command'][j];factor=z['command_filter_factor'][j]
+    errors.append(float(abs(sent-(previous+factor*(candidate-previous))).max()));gaps.append(float(abs(candidate[:n]-sent[:n]).max()*180/np.pi))
+out.update(first_sampled_true_receiver_contact_t=float(z['t'][ids[0]]) if len(ids) else None,maximum_true_receiver_contacting_front_materials=int((z['eval_pipe_normal_N'][:,2:,:8].sum(1)>.02).sum(1).max()),final_probe_contact_clock_s=float(z['probe_contact_clock_s'][-1]),minimum_sampled_true_receiver_Fz_N=float(z['eval_pipe_world_N'][:,2:,:,2].sum((1,2)).min()),maximum_sampled_true_receiver_Fz_N=float(z['eval_pipe_world_N'][:,2:,:,2].sum((1,2)).max()),final_command_filter_factor=float(z['command_filter_factor'][-1]),maximum_sampled_candidate_to_transmitted_free_C_gap_deg=max(gaps),maximum_sampled_transmitted_geometric_state_identity_error_rad=max(errors),maximum_global_updates=int(z['global_update_count'].max()),any_reliable_geometry=bool(z['geometry_reliable'].any()),interpretation='Actual outcome gates determine success. Command-state identities only establish transmitted-history consistency; true source hold, complete probing/fit, new wrap/capture and full action remain separate facts.')
+(C/'OUTCOME_SUMMARY.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(out,ensure_ascii=False,indent=2))

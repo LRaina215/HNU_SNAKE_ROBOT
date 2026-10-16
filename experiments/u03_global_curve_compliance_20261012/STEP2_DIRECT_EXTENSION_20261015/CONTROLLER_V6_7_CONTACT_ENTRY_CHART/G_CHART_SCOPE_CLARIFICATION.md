@@ -1,0 +1,5 @@
+# Scope of the nominal G entry-chart change
+
+V6.7 explicitly changes the registered prescribed wrap family. Its phase/axial origins are computed from that prescribed G family's own extension goal at alpha when the existing contact event stops release. No measured contact point/normal/force, actual-body FK or commanded-C point enters those origin computations. Contact already selected the phase transition and alpha in prior versions.
+
+This deterministic nominal-family initialization runs identically in G-frozen and G-updated cases. It does not change estimator geometry, rough receiver entry/axis/radius, theta, DirectUpdater write permissions or its reliable-evidence gate, and does not create a global_updates entry. Guide targets continue to vary with gait phases as they already do in either case. Subsequent evidence-driven geometry/theta writes still require the existing reliable-geometry chain. This is a new common registered controller definition; final four cases must use its separately frozen identical definition. This clarification describes existing frozen code and adds no runtime change or approval.

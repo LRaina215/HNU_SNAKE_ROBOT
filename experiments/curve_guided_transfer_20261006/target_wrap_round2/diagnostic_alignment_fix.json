@@ -1,6 +1,0 @@
-{
-  "physics_steps": 0,
-  "issue": "Nearest command timestamp could pick the next dispatch at a saved physical boundary",
-  "correction": "Use saved applied command_id; preserve prior derived timelines",
-  "raw_records_changed": false
-}

@@ -1,0 +1,37 @@
+"""Expose current correction and actual failure to shared supervision artifacts."""
+from pathlib import Path
+import datetime,json
+P=Path(__file__).resolve().parent; B=P/'CONTROLLER_V3_3_GRAVITY_SOURCE_CLASS'; old=P/'CONTROLLER_V3_POSITIVE_POLAR'; C=old/'T_UPDATE'
+reg=json.loads((B/'REGISTERED.json').read_text(encoding='utf-8'));result=json.loads((C/'result.json').read_text(encoding='utf-8'));stamp=datetime.datetime.now().astimezone().isoformat()
+stage='V3.2 actual single diagnostic failed at5.075s; focused V3.3 code frozen for independent review, zero V3.3 starts'
+for file in [P/'IMPLEMENTATION_PROGRESS.json',P/'PRECHECK_STATUS.json',P.parent/'CURRENT_STATUS.json',P.parent/'STEP2_FROM_SOURCE_20261015/CURRENT_STATUS.json']:
+    v=json.loads(file.read_text(encoding='utf-8-sig'))
+    v.update(executor_updated_at=stamp,executor_current_stage=stage,executor_current_controller=str(B),executor_current_controller_version=reg['version'],executor_new_initial_dynamics_starts=1,executor_dynamics_running=False,executor_direct_controller_review_passed=False,executor_current_version_dynamics_starts=0,executor_current_version_dynamics_authorized=False,executor_latest_actual_case=str(C),executor_latest_actual_result=result,executor_current_review_request=str(B/'REVIEW_REQUEST.json'),executor_outcome_report=str(P/'V3_2_ACTUAL_DIAGNOSTIC.md'))
+    if file.parent==P:
+        v.update(updated_at=stamp,dynamics_running=False,dynamics_authorized=False,step2_complete=False,latest_actual_case=str(C),latest_actual_result=result)
+    if file.name=='IMPLEMENTATION_PROGRESS.json':
+        v.update(current_stage=stage,controller_path=B.name,controller_version=reg['version'],code_frozen=True,current_initial=str(B.relative_to(P)/'GIVEN_INITIAL.npz'),controller_current_independent_review_passed=False,new_dynamics_starts=1,current_version_dynamics_starts=0,total_step2_starts=29,full_action_successes=0,review_materials_ready=True,review_request=str(B.relative_to(P)/'REVIEW_REQUEST.json'),review_snapshot=str(B.relative_to(P)/'REVIEW_SNAPSHOT'),
+            open_points=['V3.3 independent code review pending; V3.2 approval does not authorize this version','Corrected dynamic source hold/release and real receiver acquisition remain unverified','Reliable fit/G write, newly formed wrap/load, all21 transfer and50s rolling remain unverified'],
+            next='Independent focused V3.3 check then one T_UPDATE actual diagnostic; preserve prior case and do not launch final four-case batch.',current_initial_review_scope='Same original initial retains limited geometry/static review; new controller current-version review pending')
+        v['implemented']=[x.replace('runner with initial-byte/code-review binding, not started','runner with initial-byte/code-review binding; V3.2 ran once and failed') for x in v.get('implemented',[])]
+        v['confirmed'] += ['V3.2 actual physical-t0 diagnostic: release2.1s, stop5.075s on source motion12.146mm; target load0, no fit/G write/capture','V3.3 fixed-bearing gravity matches potential gradient; replay removes the single known-source seam false unknown; no new integration']
+    if file.name=='PRECHECK_STATUS.json':
+        v.update(new_initial_dynamics_starts=1,controller_independent_review_passed=False,controller_current_initial=str(B.relative_to(P)/'GIVEN_INITIAL.npz'),controller_phase_separation_implementation=stage,controller_current_initial_review_scope='Same original initial retains limited geometry/static review; V3.3 controller pending',controller_review_request=str(B.relative_to(P)/'REVIEW_REQUEST.json'),current_approved_controller_version=None,previous_approved_controller_version='DIRECT_EXTENSION_V3_2_POSITIVE_POLAR',current_controller_decision=str(B.relative_to(P)/'INDEPENDENT_CONTROLLER_REVIEW.json'),actual_source_dynamic_stability_verified=False)
+    file.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+text=f'''# Executor working state — {stamp}
+
+Current code: `{B.name}`, version `{reg['version']}`. Two confirmed implementation corrections only: fixed-bearing front gravity sign; known source straight-end mixed-normal classification. Same original prescribed initial, physics, gains, bounds, probes, estimator and phase gates. No subagents; no SHA; no extra initial search or full-path offline IK prerequisite. Current-version review pending, dynamics_authorized=false. Frozen packet REVIEW_REQUEST.json and REVIEW_SNAPSHOT. Parent reads shared artifacts; no authorization to app-message it back.
+
+Latest actual: `CONTROLLER_V3_POSITIVE_POLAR/T_UPDATE`, approved frozen V3.2 ran once from physical t=0; release2.100s, stop5.075s due stationary_source_boundary_drift. Exact final source motion12.145612mm/X10.389527mm/orientation4.99655deg. Source still bears~28N; receiver outlet/straight force0. The4.175s first unknown was M3 known X=.95 source seam with mixed edge normal, not target acquisition. S=0 and roll0. No reliable fit, G write, capture, full transfer or rolling. Entire Step2 incomplete; full-action successes0. See V3_2_ACTUAL_DIAGNOSTIC.md and case OUTCOME_SUMMARY.json. Preserve all actual data and code; never rerun/overwrite this case.
+
+V3.3 FOCUSED_CORRECTION_AUDIT.json: no integration; corrected holding torque matches finite-difference potential gradient at actual2.1/5s for8/14 front joints, worst error7.94e-9Nm. Old contact replay changes exactly one contact (source seam) to known source; no false front unknown remains in old trace. This is not a prediction of new dynamics or unique causal attribution for drift. CONTROLLER_ENTRY_AUDIT.json passes t0/hold continuity, native integral and no actual-pose write. Old V3.2 runtime still matches original frozen byte snapshot.
+
+NEXT: independent current-version focused code/initial/continuity check, then ONE T_UPDATE actual diagnostic from physical t=0. Review consumed only for that version/case; do not copy approval. Do not stop with prep-only final, and do not require perfect offline wrap IK before actual diagnostic. After actual action-chain success, separate two-prior×frozen/update final4 remains required. No Step3, no quota cutoff, no revised initial pose unless evidence requires it.
+
+Cumulative actual Step2 starts29:20 legacy source +8 older post-wrap +1 direct-extension V3.2. V3.3 starts0. Historical cost ledger PRIOR_STARTED_RUN_COSTS.json counts only the prior28. Failed actual video is untrimmed1x,51frames10fps t=0..5.0; exact stop state5.075 is saved separately and included in metrics. Parent reviews under EXP/SUPERVISION; never edit supervisor decisions.
+
+Runtime D:/Anaconda/envs/mujoco/python.exe, MuJoCo3.2.7/NumPy1.23.5/SciPy1.13.1, BLAS threads1. Original model mujoco_model/Snake_Robot_o20_Pipe_elbow90_horizontal.xml, actual flags0; private NativeCCD64 only.20 hinges21 rods64.5mm,2.355Nm,20deg/s,88deg ctrl/90.5deg actual,12mm source drift. Source straight01+inlet02 axis+X YZ(0,1),R.0565, seamX.95,miterX+Y1.1. Receiver outlet03+straight04 true geometry is offline evaluation only.
+
+G comes from immutable given/source plus registered rough cylinder. C uses fixed sigma j×64.5mm,256 cells, exact native integral; positive receiver polar winding and roll+1 preserve original chirality. α8/β14 hold posterior total commands, S/roll start after measured capture only. Post uses Step1 native q directly. Revisit CONTROLLER_DESIGN.md for full chain. V7 and CONTROLLER_V1/V2 are unselected archived prototypes; their claims do not describe current code.
+'''
+(P/'WORKING_STATE.md').write_text(text,encoding='utf-8');print(stage)

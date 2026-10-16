@@ -1,8 +1,0 @@
-U65: 3.00s actual dynamics; controller_exception; complete=False; error=ValueError('Reference link crosses original pipe solid: -8.539 mm').
-Fixed front mean target-Y advance -0.855212mm; fixed rear mean source-X advance 0.933571mm.
-M15 qualified actual target-cylinder contact remains positive throughout this trace: True; min force 1.906656N, final force 3.593362N.
-Original20-joint ctrl only; first saved ctrl error 0.0rad; max torque 1.981711Nm; pipe penetration 0.870427mm; reference chord error 0.000075592mm.
-New material admission is useful progress but is not whole-body transfer. Frozen source, full physical/controller states, actual100Hz trace, commands and1x replay retained; large files local.
-Direct U63 full264-dimensional integration/ctrl continuation preserves M15 contact since U63 50.55s: total actual continuous contact3.35s. Original1s confirmation met with minimum2 real source and5 target holders.
-Old initial_target_end=max(initial transient target contact) masked M15 in admissions; incoming registry code was misplaced and did not execute. Actual handover is established by full trace, not registry claim. Both corrected in U66.
-At3.00s M20 unload-to-feed reference persistence would cross original pipe solid by8.539mm. Failed proposal not dispatched; transactional rollback keeps valid protected curve export. U66 uses existing actual-support route registration instead of relaxing guard.

@@ -1,9 +1,0 @@
-﻿scene,method,seed,outcome,radius_valid_fraction,alpha_min_deg,alpha_max_deg,movement_steps,hold_max_retreat_mm,ground,first_motion_compliant,error
-pipe_straight_large,A,1,ground_collision,1.0,19.199353843731636,23.24933783238593,55,,True,True,
-pipe_straight_large,D,1,ground_collision,0.971900826446281,13.268887494021728,19.928541176019564,55,,True,True,
-pipe_straight_small,A,1,ground_collision,0.740495867768595,23.249361508757264,23.249361508757264,55,,True,True,
-pipe_straight_small,D,1,ground_collision,1.0,19.46892074317889,23.17372250921658,9,,True,True,物理限速与P可行区无交集，保持上一组目标；本步未执行
-pipe_taper_horizontal,A,1,success,0.9073710073710074,23.249361508757264,23.249361508757264,185,0.17060272792113196,False,True,
-pipe_taper_horizontal,D,1,target_rejection,1.0,20.262620890863513,23.17891636880222,8,,False,True,物理限速与P可行区无交集，保持上一组目标；本步未执行
-real_s2l,A,1,ground_collision,1.0,23.249361508757264,23.249361508757264,10,,True,True,
-real_s2l,D,1,ground_collision,1.0,20.420969121975528,23.174059635193306,8,,True,True,物理限速与P可行区无交集，保持上一组目标；本步未执行

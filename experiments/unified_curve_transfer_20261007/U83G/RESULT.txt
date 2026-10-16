@@ -1,7 +1,0 @@
-U83G: actual27.40s from CLOSE1B; normal diagnostic save; complete=false.
-Actual fixed front target-Y mean+2.793700mm, rear source-X mean+8.038369mm; shift15.162147mm; no new target material.
-Actual front N0-N8 right-hand span-4.812534 -> -4.750261rad; still opposite-handed.
-Nearest exact chord-sphere intersection and linear node interpolation remove distant crossing/cubic overshoot; largest recorded complete node step0.401891mm versus U82 140.200mm.
-However,491 of548 whole shape updates rejected under the node-step bound, so deformation largely stalled while target contacts were retained. U84 backtracks combined shape updates and scales soft-clearance trial budget; no new drive/pressure-force boost.
-A rejected whole shape update restored older accepted guide metadata. Acceptance counts and embedded actual angle in global_route_guidance can be stale; use actual trace positions and the actual_* summary instead. U84 explicitly replaces rejection telemetry.
-Full physical/controller final states, trace, commands, frozen source and actual1x video preserved. Continuations are intermediate evidence; final control version still requires a complete CLOSE1B run and final correct-handed climbing. No Git/public-document operation.

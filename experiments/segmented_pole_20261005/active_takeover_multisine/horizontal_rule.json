@@ -1,8 +1,0 @@
-{
-  "feature": "Minimum diagonal harmonic response magnitude over three simultaneous disjoint joint patterns",
-  "threshold": 0.48652475910129034,
-  "positive_training_max": 0.39370687117375003,
-  "negative_training_min": 0.5793426470288306,
-  "training_only": "Four horizontal saved states; vertical values do not select threshold",
-  "interpretation": "Response below threshold suggests mechanical constraint; does not identify force closure or prove support margin."
-}

@@ -1,8 +1,0 @@
-{
-  "last_applied_feed_mm": 80.625,
-  "original_derived_ledger_feed_mm": 80.87468393137567,
-  "next_feed2_target_not_generated_or_applied": true,
-  "reason": "pause gate checked before compute/dispatch; next loop variable is not applied progress",
-  "physical_end_s": 24.15,
-  "physics_steps_added": 0
-}

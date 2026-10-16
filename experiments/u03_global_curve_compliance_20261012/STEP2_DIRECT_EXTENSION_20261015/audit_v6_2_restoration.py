@@ -1,0 +1,23 @@
+"""One saved stalled C, three bounded solves, and a constructed phase-hold check."""
+import os
+for k in ['OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','OMP_NUM_THREADS']:os.environ[k]='1'
+from pathlib import Path
+import sys,json,numpy as np,mujoco
+P=Path(__file__).resolve().parent;B=P/'CONTROLLER_V6_2_FEASIBILITY_RESTORE';old=P/'CONTROLLER_V6_1_TRANSMITTED_C_STATE/T_UPDATE';sys.path.insert(0,str(B))
+from rough_planner import RoughPlanner
+from direct_controller import DirectController
+from geometry import Geometry
+from physics import MODEL
+for name in ['mj_step','mj_step1','mj_step2']:setattr(mujoco,name,lambda *a,**kw:(_ for _ in ()).throw(RuntimeError('No integration')))
+r=json.loads((B/'REGISTERED.json').read_text(encoding='utf-8'));initial=np.load(B/'GIVEN_INITIAL.npz');z=np.load(old/'trace.npz');j=int(np.argmin(abs(z['t']-5)));plan=RoughPlanner(Geometry.from_dict(r['conditions']['DIRECTION']),initial['qpos'],initial['ctrl'],r['kinematic_solver']);plan.q=z['geometric_native_command'][j].copy();plan.q[8:]=z['qpos'][j,plan.qa[8:]];plan.observe(z['qpos'][j],int(z['stance_anchor_material'][j]));records=[json.loads(line) for line in (old/'contact_evidence.jsonl').open(encoding='utf-8')];rec=min(records,key=lambda row:abs(row['t']-z['t'][j]));contacts=rec['contacts']
+for ct in contacts:
+    for key in ['point','normal','world_force_N']:ct[key]=np.asarray(ct[key],float)
+plan.observe_contacts(contacts);rows=[]
+for k in range(3):
+    previous=plan.q.copy();p0=plan.fk(previous);q,G,metric=plan.solve(float(z['alpha'][j]),0.,position_cap=.002,joint_step_rad=np.radians(.5));p1=plan.fk(q);metric.update(solve_index=k,maximum_node_step_mm=float(np.linalg.norm(p1[:8]-p0[:8],axis=1).max()*1000),maximum_joint_step_deg=float(abs(q-previous).max()*180/np.pi),native_integral_error_rad=float(abs(plan.coordinates.hinges(plan.coordinates.field(q))-q).max()));rows.append(metric)
+m=mujoco.MjModel.from_xml_path(str(MODEL));d=mujoco.MjData(m);mujoco.mj_setState(m,d,initial['state'],mujoco.mjtState.mjSTATE_INTEGRATION);mujoco.mj_forward(m,d);q0=d.qpos.copy();control=DirectController(m,d,r,'DIRECTION',True);control.command(d,0.);control.source_ready=True;control.first_release_t=0.;control.phase='front_release';control.stable_source_P=d.xpos[m.body('head').id:m.body('head').id+21].copy();control.stable_source_R=d.xmat[m.body('head').id:m.body('head').id+21].reshape(21,3,3).copy();control.alpha=.3;control.geometric_progress_ready=False;before=control.alpha;raw,info=control.command(d,.025)
+phase=dict(previous_geometric_ready=info['phase_geometric_progress_ready'],alpha_before=before,alpha_after=control.alpha,held=control.alpha==before,sent_head_error_m=info['sent_geometric_head_tracking_error_m'],ready_next=info['geometric_progress_ready_next_command'],actual_pose_unchanged=bool(np.array_equal(q0,d.qpos)),source_given_command_error_rad=float(abs(raw[8:]-initial['ctrl'][8:]).max()))
+enabled=DirectController(m,d,r,'DIRECTION',True);enabled.command(d,0.);enabled.source_ready=True;enabled.first_release_t=0.;enabled.phase='front_release';enabled.stable_source_P=control.stable_source_P.copy();enabled.stable_source_R=control.stable_source_R.copy();enabled.last_command_transmission_factor=.5;eraw,einfo=enabled.command(d,.025);enabled_phase=dict(alpha=enabled.alpha,expected_alpha=.0005,previous_ready=einfo['phase_geometric_progress_ready'],ready_next=einfo['geometric_progress_ready_next_command'],actual_pose_unchanged=bool(np.array_equal(q0,d.qpos)))
+passed=rows[0]['solution_kind']=='feasibility_restoration' and rows[0]['accepted'] and all(row['accepted'] and row['clearance_violation_m']<=.00005 and row['maximum_node_step_mm']<=2.000001 and row['maximum_joint_step_deg']<=.500001 and row['native_integral_error_rad']<1e-12 for row in rows) and phase['held'] and not phase['ready_next'] and phase['actual_pose_unchanged'] and phase['source_given_command_error_rad']<1e-12 and abs(enabled_phase['alpha']-.0005)<1e-12 and enabled_phase['previous_ready'] and enabled_phase['ready_next'] and enabled_phase['actual_pose_unchanged']
+out=dict(version=r['version'],simulation_steps=0,passed=passed,saved_state_time_s=float(z['t'][j]),scope='Three isolated local solves from the same saved5s physical observation, no time integration/full path; original source/clearance/motion/joint limits unchanged. Constructed false/true geometric-readiness states verify phase hold/progress and native/source identities.',restoration_rows=rows,phase_hold=phase,enabled_phase=enabled_phase)
+(B/'RESTORATION_AND_PHASE_AUDIT.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8');print(json.dumps(out,indent=2))

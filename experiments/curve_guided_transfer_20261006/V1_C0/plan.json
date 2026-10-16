@@ -1,9 +1,0 @@
-{
-  "condition": "C0",
-  "total_seconds": 45.25,
-  "feed_mm": 0.0,
-  "paired_initial": "D:/Desktop/SNAKE/Paper Code/Mujoco/Snake_Robot_Gait/experiments/curve_guided_transfer_20261006/initial_pose.npz",
-  "physics_parameters_changed": false,
-  "motion_definition": "D:/Desktop/SNAKE/Paper Code/Mujoco/Snake_Robot_Gait/experiments/curve_guided_transfer_20261006/motion_definition.md",
-  "operator_real_experiment": false
-}

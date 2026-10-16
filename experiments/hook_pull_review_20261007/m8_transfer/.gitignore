@@ -1,7 +1,0 @@
-actual/trace.npz
-actual/final_state.npz
-actual/exact_contacts.json
-actual/replay*.mp4
-actual/replay*.png
-reference/*.mp4
-reference/*.png

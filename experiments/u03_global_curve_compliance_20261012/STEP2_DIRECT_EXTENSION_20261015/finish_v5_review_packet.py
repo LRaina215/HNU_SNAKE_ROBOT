@@ -1,0 +1,27 @@
+"""Freeze a concrete posterior-only source dynamics revision and publish evidence."""
+from pathlib import Path
+import json,datetime,difflib
+P=Path(__file__).resolve().parent;B=P/'CONTROLLER_V5_SOURCE_CONTACT_DYNAMICS';old=P/'CONTROLLER_V4_1_ROBOT_MASS_HOLD';C=old/'T_UPDATE';r=json.loads((B/'REGISTERED.json').read_text(encoding='utf-8'))
+if (B/'REVIEW_SNAPSHOT').exists():raise RuntimeError('Already frozen')
+r['local_feedback']['initial_preload_policy']='Original fore given/gravity/probe/force chain retained. Posterior inverse-dynamics total torque becomes local servo preload after source stability, alpha0..0.1 blend; last full preload fades15s after capture.'
+r['source_hold']['contact_task_definition']='One strongest known-source point per retained material, midpoint reconstructed from point/normal/penetration. Body-local point and its observed world anchor persist while contact history is continuous. Independent Jacobian rows enforced with SVD; full acceleration residual must remain<=0.1m/s2.'
+(B/'REGISTERED.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+design='''# V5 后段源接触动力学保持
+
+真实依据：V4.1在11.125秒、alpha0.356时源段给定参考位移12.029mm早停，无目标接触。alpha>=0.15后后段实际力矩相对请求RMS误差0.0045Nm，请求主要已发送，但实际接触力分布不同、源侧继续周向转动。静态力矩分配没有证明接触保持；不能唯一归因。
+
+本版只改后段局部源侧控制。前部G、几何C、原生积分、重力补偿、试探和局部卸载保留。前部实际舵机力矩作为已知输入，不由此层重算或覆盖；其他已测接触力作为外载荷进入机器人动力学。使用私有机器人M、偏置及被动阻尼，联合求广义加速度、保留源接触力与后段总舵机力矩，使浮动基及前部已知驱动满足动力学，并使持续源接触点跟随其首次观测的世界位置。没有向实际模型施加外力或约束。
+
+机器人状态从关节角和同一承载位姿重建；速度由相邻重建姿态差分，Jdot方向导数只在私有机器人做位置积分，不做动力学积分。源接触点由无标签点/法向/侵入量重建中点，每材料取受力最大点；本体坐标点及世界锚在持续接触时保持。接触任务1Hz临界阻尼，校正加速度最大0.5m/s²；后段关节形状任务0.5Hz。接触Jacobian的独立行经SVD处理，完整任务残差超过0.1m/s²拒绝；保留0.5秒分配失败停止及alpha/beta暂停。
+
+后段力矩约束2.30Nm、保守mu1的16面内接摩擦锥、总法向力<=4倍机器人重量112.06944N。质量仅机器人2.856kg。后段控制目标为actual_q+tau/127，经同一局部曲率模态发送；前部仍原几何/重力/试探命令，不用actual_q替换G或前部参考。alpha前0.1段平滑介入，接管后最后预载沿原15秒窗口退去。真实物理kp127、2.355Nm、20deg/s、原L管及12mm源保持保护均不改。
+
+四个保存姿态的兼容求解、原t0命令检查以及一个15秒非零接触位移状态的完整命令检查已通过。后者独立按21杆质量/惯性求世界线/角动量平衡，不只复用QP等式残差；并核对前部力矩为已测输入、前部重力预载不变、G输入不变、实际姿态/控制量不被改写和原生积分/2mm命令限值。没有新动力学，不能当实际源保持、包绕或Step2成功。接触力矩、传感误差和软接触误差仍未建模，实际验证必需。
+
+独立当前版本核对后只做一个原始物理t0 T_UPDATE诊断，原235秒预算和停止条件保持。旧V3.2/V3.3/V4.1全部失败、V4审阅未通过0次积分均保留；累计31次实际启动。最终两先验×冻结/更新G四次仍待真实动作依据，不等离线全路径IK完美收敛才运行。
+'''
+(B/'CONTROLLER_DESIGN.md').write_text(design,encoding='utf-8')
+f=B/'prepare_review_snapshot.py';s=f.read_text(encoding='utf-8').replace("'../V3_3_ACTUAL_DIAGNOSTIC.md'","'../V4_1_ACTUAL_DIAGNOSTIC.md'").replace("'../CONTROLLER_V3_3_GRAVITY_SOURCE_CLASS/T_UPDATE/OUTCOME_SUMMARY.json'","'../CONTROLLER_V4_1_ROBOT_MASS_HOLD/T_UPDATE/OUTCOME_SUMMARY.json'").replace("'../CONTROLLER_V3_3_GRAVITY_SOURCE_CLASS/T_UPDATE/SOURCE_WRENCH_DIAGNOSIS.json'","'DYNAMIC_COMMAND_AUDIT.json'");f.write_text(s,encoding='utf-8')
+diff=[]
+for name in ['direct_controller.py','source_wrench_hold.py']:diff+=list(difflib.unified_diff((old/name).read_text(encoding='utf-8').splitlines(True),(B/name).read_text(encoding='utf-8').splitlines(True),fromfile='V4.1/'+name,tofile='V5/'+name))
+(B/'POSTERIOR_DYNAMICS_CHANGES.diff').write_text(''.join(diff),encoding='utf-8');print(str(B))

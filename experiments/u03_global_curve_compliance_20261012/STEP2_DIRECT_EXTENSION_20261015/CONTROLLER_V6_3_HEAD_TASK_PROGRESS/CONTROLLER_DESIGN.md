@@ -1,0 +1,17 @@
+# V6.3 bounded sent/actual head task for phase progress
+
+V6.2 was stopped-and-saved18.825s after alpha stayed0: initially accepted C candidates and~1..2mm sent-head errors were blocked by the optimization-start50um clearance gate. The fore release preload blend and moment-balance activation both require alpha to begin. Later C restoration also stalled. The shortened run had no contact/action; below-limit source drift at the stop is not extension success. See ../V6_2_ACTUAL_DIAGNOSTIC.md and ../CONTROLLER_V6_2_FEASIBILITY_RESTORE/T_UPDATE/READINESS_INTERLOCK_EVIDENCE.json.
+
+## Exact runtime change
+
+Only direct_controller.py behavior changes. Previous next-command phase readiness required accepted candidate, initial C clearance within50um and sent geometric head within20mm of the C head goal. It now requires max(sent geometric head error, observed actual robot head error)<=the same registered20mm rough receiver uncertainty. Existing actual joint tracking and previous common command-fraction phase speed limits remain. Solver-status and initial-clearance values stay logged and enforced by the existing C solver; they no longer prevent a small bounded phase lead that can initiate fore release. This is a changed progress policy, not proof that the interlock is mechanically solved.
+
+Actual head position is from the existing robot-state observation. It is used ONLY to bound phase progress. It does not change G geometry, overwrite G with actual whole-body FK, use receiver truth geometry/labels, or write actual robot state. The C head goal is the existing private geometric target. The20mm distance was introduced as task readiness in V6.2 and remains unchanged numerically. With a held C, phase can lead until this distance bound is reached; it cannot keep advancing toward a228mm error.
+
+The entire rough_planner.py is byte-identical to reviewed V6.2: bounded feasibility fallback, original nonlinear50um acceptance, original2mm/0.5degree per-command trust region, V6 source-axis objective and independent G construction remain. V6.1 transmitted geometric history, marginal joint-bounded probe accounting, original given source grip, all estimator/probe/capture requirements and postcapture mapping remain. Original initial, model/solver/friction/mass/actuator and all actual source12mm/12degree, penetration/self/floor/joint/torque guards are unchanged. Source feed and material rolling still require actual capture.
+
+## Limited checks
+
+CONTROLLER_ENTRY_AUDIT.json passes entry/hold/native/no-actual-pose-write checks. HEAD_TASK_PROGRESS_AUDIT.json deliberately uses a rejected-held-C stub to isolate the progress predicate: at4.279mm sent/actual head errors, the next alpha increment is0.001; at63.055mm, the next increment is0. Actual qpos is unchanged, retained source controls remain given, and native integral errors<1.2e-15rad. This constructed check is not a real C solve, dynamic release, source retention, complete probe, fit or contact witness. No full-path offline IK prerequisite or initial search is added.
+
+Request only one physical-t0 T_UPDATE development diagnostic after exact independent review. All36 actual starts and failures are preserved. This version has0 starts and all three dynamics gatesfalse. The unchanged runner requires exact approved version, original reviewed initial and byte-identical code/registration/model/assets (no SHA). No final-four comparison or action acceptance is requested here.

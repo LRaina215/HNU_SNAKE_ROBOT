@@ -1,0 +1,12 @@
+"""Read actual command-aware-clearance outcome after the sole case finishes."""
+from pathlib import Path
+import json,numpy as np,io,ast
+from contextlib import redirect_stdout
+P=Path(__file__).resolve().parent;B=P/'CONTROLLER_V6_6_COMMAND_AWARE_CLEARANCE';C=B/'T_UPDATE'
+assert (C/'DYNAMICS_START.json').exists() and (C/'result.json').exists()
+s=(P/'analyze_v6_4_actual.py').read_text(encoding='utf-8').replace('CONTROLLER_V6_4_NOMINAL_PHASE_TASK_GATE','CONTROLLER_V6_6_COMMAND_AWARE_CLEARANCE').replace('total_actual_starts=38','total_actual_starts=40').replace('V6.4 one actual development run','V6.6 one actual development run')
+with redirect_stdout(io.StringIO()):exec(compile(s,str(P/'analyze_v6_4_actual.py'),'exec'),{'__file__':str(P/'analyze_v6_4_actual.py'),'__name__':'__main__'})
+z=np.load(C/'trace.npz');out=json.loads((C/'OUTCOME_SUMMARY.json').read_text(encoding='utf-8'));metrics=[ast.literal_eval(str(v)) for v in z['planner_metrics']];post=z['t']>=18.;active=z['source_ready'];has=[v for v in metrics if 'command_incremental_clearance_violation_m' in v]
+out.update(total_actual_starts=40,maximum_requested_front_relief_per_m=float(np.linalg.norm(z['force_curvature_field'],axis=2).max()*1000),mean_common_fraction_after_18s=float(z['command_filter_factor'][post].mean()) if post.any() else None,median_common_fraction_after_18s=float(np.median(z['command_filter_factor'][post])) if post.any() else None,command_incremental_metrics_samples=len(has),maximum_accepted_command_incremental_violation_m=max([v['command_incremental_clearance_violation_m'] for v in has if v.get('accepted')]+[0.]),maximum_recorded_source_command_excess_m=float(z['command_known_source_excess_compression_m'].max()),maximum_recorded_measured_plane_excess_m=float(z['command_measured_plane_excess_compression_m'].max()),scope='Physical result and action evaluator determine success; command chart feasibility and higher filter factors alone are insufficient.')
+if (C/'ACTION_CHAIN_METRICS.json').exists():out['computed_actual_action_chain_complete']=json.loads((C/'ACTION_CHAIN_METRICS.json').read_text(encoding='utf-8'))['action_chain_complete']
+(C/'OUTCOME_SUMMARY.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(out,ensure_ascii=False,indent=2))

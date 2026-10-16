@@ -1,1 +1,0 @@
-No actual control command or dynamics step executed. Initialization mistakenly requested a new grip-clearance registration of the already registered U61 checkpoint; existing admission guard rejected it. Corrected invocation retains saved clearance registration. This is not an additional actual trial.

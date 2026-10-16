@@ -1,0 +1,23 @@
+# V6.1 transmitted geometric C state
+
+V6 reached a real receiving contact (first positive10Hz truth sample18.4s) but failed source drift at28.225s, with only head material0 contacting, no reliable fit or capture. Its probe contact clock stopped at1.6s. At25s the private geometric candidate was32.27degrees from the sent total native command, while requested local-mode joint equivalents were at most1.15degrees. The saved-state continuation diagnosis separates rate and contact-step filtering; neither private geometric state nor alpha/beta timing accounted for the fraction actually transmitted. See ../V6_ACTUAL_DIAGNOSTIC.md and ../CONTROLLER_V6_SOURCE_AXIS_BALANCE/T_UPDATE/COMMAND_STALL_DIAGNOSTIC.json. This diagnosis does not isolate the entire cause of source drift.
+
+## Runtime changes relative to exact frozen V6
+
+Only direct_controller.py runtime behavior changes. The original rough planner, V6 source-axis balance, known-source classifier, G builder, estimator, original geometry and all physical/contact/command limits are byte-identical to V6.
+
+1. Maintain transmitted_geometric in the fixed20-dimensional native coordinates, initialized from the original given geometric q. After the unchanged common command filter sends fraction f, update qG_sent <- qG_sent+f*(qG_candidate-qG_sent). Set private planner.q to this transmitted geometric state for the next optimization. The existing measured posterior boundary overwrite and compensating preload remain, so the total retained-source command stays given. G receives no actual whole-body FK or transmitted C points. The independent G phase/contact history is unchanged except for its rate below.
+2. Existing alpha/beta monotonic increments use the previous command's common transmitted fraction as a multiplier. Existing joint tracking gates and original maximum rates remain; no source feed/rolling starts before actual capture. No new gain or threshold is introduced. Post-capture S/rolling timing remains unchanged. Capture's geometric seed is the last transmitted geometric C, avoiding an unsent candidate at the phase boundary.
+3. Probe attribution now computes the joint-bounded marginal command clip(total)-clip(total-without-probe), then applies the same common transmission fraction to the existing applied-probe history. A probe pushing an already saturated joint receives zero marginal credit there. Existing contact, actual tracking, transmitted-probe tolerance, probe clock and estimator diversity/residual requirements remain.
+
+Logs distinguish geometric_candidate_native_command from the transmitted geometric_native_command/field. The latter plus transmitted_local_curvature_field integrates exactly to raw_native_command. Requested local fields remain logged; command_limit_and_rate_curvature_field closes their exact sum with the sent geometric field. The phase-progress fraction is the previous command fraction, while command_filter_factor is the current fraction. Both are explicit. This makes the command history reviewable without claiming perfect physical following.
+
+## Validation and limitations
+
+CONTROLLER_ENTRY_AUDIT.json passes original t0/hold/native/source-feed/no-actual-pose-write checks. TRANSMISSION_HISTORY_AUDIT.json runs three constructed nonzero-error control commands without any physical integration: candidate steps0.5degrees, sent steps0.186..0.195degrees, next solve starts exactly from the sent free geometric C, the phase fraction matches the scalar increment, and sent geometric/local fields sum to native command within6.7e-16rad. Posterior total controls remain given and actual qpos is unchanged. The four saturation examples credit0/1/0/-1degrees from requested2/2/-2/-2degrees. These are bookkeeping checks, not physical source retention, completed probes, feasible wrapping or reliable geometry.
+
+No clearance acceptance, actual12mm/12degree source guard,3mm penetration/self/floor rules, force relief threshold, physical mass/friction/actuator/solver, initial state or maximum phase speed is relaxed. Existing head tangent errors, local contact geometry, force balance and possible feasibility-restoration problems remain unresolved. A single original physical-t0 T_UPDATE diagnostic is requested after exact-version independent review, with failure retained. Do not rerun V6 or start the separate final4 comparison before complete actual action evidence.
+
+## Review guard
+
+direct_runner.py retains exact independent version/initial/code/registration/model/asset checks using byte comparison (no SHA). No approval is created by preparation. All34 prior actual starts are retained; this version has0 starts and no dynamic outcome yet.

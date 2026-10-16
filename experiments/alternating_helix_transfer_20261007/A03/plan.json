@@ -1,8 +1,0 @@
-{
-  "change": "A02 front developed local kinks at J5/J6 and lost wrap: regularize both segment clouds toward smooth helices, retain tighter rear radius, strengthen limit release",
-  "variant": 3,
-  "seconds": 120.0,
-  "start": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\hook_pull_20261006\\CLOSE1B\\final_state.npz",
-  "physics": "unmodified original model; joint ctrl only",
-  "feedback": "actual simulated pose, encoder and contact observations; not hardware-ready"
-}

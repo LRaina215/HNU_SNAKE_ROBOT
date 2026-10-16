@@ -1,3 +1,0 @@
-{
-  "error": "ValueError('Each lower bound must be strictly less than each upper bound.')"
-}

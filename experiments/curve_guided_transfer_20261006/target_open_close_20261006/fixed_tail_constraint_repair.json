@@ -1,7 +1,0 @@
-{
-  "physics_steps": 0,
-  "issue": "Fixed downstream source nominal conservative gap .0485037mm cannot reach .05mm by front changes",
-  "repair": "Constrain modifiable front modules0..9; fixed tail retains exact original geometry; all finite actual collisions still checked",
-  "new_radius_or_initial_search": false,
-  "preserved": "geometry_fixed_tail_constraint_attempt0.json + reference_fixed_tail_constraint_attempt0.npz"
-}
