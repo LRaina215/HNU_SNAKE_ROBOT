@@ -1,0 +1,319 @@
+{
+  "version": "STEP2_GENERALIZATION_FINAL_H_PAIR_FROZEN",
+  "requirements": "STEP2_GENERALIZATION_AUTONOMOUS_20261016",
+  "prepared_at": "2026-10-17T01:20:03.673799+08:00",
+  "prior_original_batch_actual_starts": 54,
+  "development": false,
+  "formal_four_case_batch": false,
+  "controller": {
+    "estimator": {
+      "window_s": 12.0,
+      "fit_interval_s": 1.0,
+      "axis_bound_deg": 12.0,
+      "center_bound_m": 0.02,
+      "radius_bound_m": 0.008,
+      "minimum_distinct_samples": 12,
+      "minimum_materials": 2,
+      "minimum_axial_span_m": 0.035,
+      "minimum_middle_normal_eigenvalue": 0.08,
+      "maximum_point_rms_m": 0.0015,
+      "maximum_normal_axis_rms": 0.08,
+      "maximum_normal_alignment_rms": 0.12,
+      "minimum_inlier_fraction": 0.65,
+      "axial_entry_estimated": false,
+      "axial_entry_prior_uncertainty_m": 0.04
+    },
+    "probe": {
+      "amplitude_per_m": 0.18,
+      "direction_duration_s": 4.0,
+      "directions": "Two4s signed curvature cycles on materials0..7 after raw non-source front contact; evidence uses transmitted/tracked probe field during candidate contact",
+      "posterior_support": "curvature probe support ends at material node8, source mode starts after node15; physical servo unchanged",
+      "contact_gated_clock": true,
+      "transmission_tracking_tolerance_per_m": 0.02,
+      "clock_rule": "Advance the same two4s cycles only with current raw front contact, joint tracking and transmitted previous probe within0.02/m of request; pause and fade probe to zero off-contact",
+      "tracking_hinges": [
+        0,
+        1
+      ],
+      "head_tracking_tolerance_deg": 2.0
+    },
+    "global_update": {
+      "interval_s": 0.2,
+      "gain": 0.8,
+      "center_rate_m_s": 0.0006,
+      "axis_rate_deg_s": 0.25,
+      "radius_rate_m_s": 0.00015,
+      "same_S_command_bound_deg": 0.1,
+      "material_node_step_m": 0.0004,
+      "backtracking_attempts": 7,
+      "theta_min_coherence": 0.7,
+      "theta_bound_deg": 15.0,
+      "theta_rate_deg_s": 0.25,
+      "G_position_step_m": 0.0004,
+      "G_tangent_step_deg": 0.1,
+      "G_curvature_step_per_m": 0.02,
+      "material_frame_step_deg": 0.1
+    },
+    "robot_weight_N": 28.017360000000007,
+    "nominal_frequency_hz": 0.02,
+    "command_interval_s": 0.025,
+    "servo_slew_deg_s": 20.0,
+    "servo_limit_deg": 88.0,
+    "settle_s": 0.5,
+    "source_constants": {
+      "radius": 0.0991869522236036,
+      "pitch": 0.18266863819422827,
+      "phi0": 2.0764251015918274,
+      "x0": 1.0711064385328986,
+      "beta": 9.674932139383555,
+      "a": 0.2812755938462173,
+      "feed_per_cycle": 7.9099945262477895,
+      "feed_early": 0.054,
+      "feed_late": 0.09,
+      "tail_u0": -1.3755759972105808,
+      "anchor_u0": -4.0,
+      "supply_anchor_normal": [
+        -0.10364644605769151,
+        0.9940549197600687,
+        -0.03335012324435423
+      ],
+      "gauge_angle": 2.0481385308991586,
+      "source_endpoint_x_m": 0.95
+    },
+    "gravity_contact_C": {
+      "minimum_axis_vertical_component": 0.5,
+      "minimum_receiving_share_after_capture": 0.6,
+      "inward_rate_gain_m_s": 0.0004,
+      "amplitude_bound_m": 0.002,
+      "rate_bound_m_s": 0.00025,
+      "material_window_half_width_m": 0.129,
+      "source_relief_requires_current_loaded_motion": true,
+      "grip_rule": "After measured first capture, if receiving vertical share is below60%W, bounded C rate cannot be outward and includes inward deficit feedback; original pressure relief remains when load share is sufficient.",
+      "minimum_upward_progress_m_s": 0.0015,
+      "progress_filter_s": 2.0,
+      "progress_grip_rate_gain_m_s": 0.00015,
+      "source_relief_load_target_N": 2.0,
+      "future_target_parameter_m": 8.0,
+      "source_relief_curvature_bound_per_m": 2.0,
+      "source_relief_curvature_rate_per_m_s": 0.4,
+      "source_relief_force_gain_per_m_N": 0.15,
+      "source_relief_depth_gain_per_m": 0.08
+    }
+  },
+  "scenes": {
+    "H60": {
+      "model_file": "scenes/H60/model.xml",
+      "initial_file": "scenes/H60/initial.npz",
+      "evaluation_file": "scenes/H60/evaluation_truth.json",
+      "source_frame_rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source_frame_origin_m": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "source_frame_provenance": "Source X and the registered prior approach-plane projection, not target truth. Vertical frame changes planning coordinates/initial roll, not world gravity.",
+      "prior": {
+        "entry_m": [
+          1.2000000000000002,
+          0.17320508075688773,
+          1.0
+        ],
+        "axis": [
+          0.43837114678907746,
+          0.898794046299167,
+          0.0
+        ],
+        "radius_m": 0.0565
+      },
+      "source_known": {
+        "center_yz_m": [
+          0.0,
+          1.0
+        ],
+        "radius_m": 0.0565,
+        "axial_bounds_m": [
+          -0.2,
+          1.132620290209214
+        ],
+        "straight_end_x_m": 0.95,
+        "miter_plane_normal": [
+          0.8660254037844387,
+          0.5,
+          0.0
+        ],
+        "miter_plane_offset_m": 0.9526279441628827,
+        "branch_definition": "Known source straight and source-side miter only"
+      },
+      "initial_provenance": "Original Step1 full-source t0, rigidly rolled about known source X by the prior-derived frame; joint angles/velocities/controls unchanged. No pre-acquired receiving contact.",
+      "camera": {
+        "lookat": [
+          1.03,
+          0.15,
+          1.0
+        ],
+        "distance": 1.9,
+        "views": [
+          [
+            -90,
+            0
+          ],
+          [
+            140,
+            -26
+          ]
+        ]
+      }
+    },
+    "VERTICAL_UP": {
+      "model_file": "scenes/VERTICAL_UP/model.xml",
+      "initial_file": "scenes/VERTICAL_UP/initial.npz",
+      "evaluation_file": "scenes/VERTICAL_UP/evaluation_truth.json",
+      "source_frame_rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "source_frame_origin_m": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "source_frame_provenance": "Source X and the registered prior approach-plane projection, not target truth. Vertical frame changes planning coordinates/initial roll, not world gravity.",
+      "prior": {
+        "entry_m": [
+          1.1,
+          0.19999999999999996,
+          1.0
+        ],
+        "axis": [
+          0.0697564737441253,
+          0.9975640502598242,
+          0.0
+        ],
+        "radius_m": 0.0565
+      },
+      "source_known": {
+        "center_yz_m": [
+          0.0,
+          1.0
+        ],
+        "radius_m": 0.0565,
+        "axial_bounds_m": [
+          -0.2,
+          1.1565
+        ],
+        "straight_end_x_m": 0.95,
+        "miter_plane_normal": [
+          0.7071067811865475,
+          0.7071067811865475,
+          0.0
+        ],
+        "miter_plane_offset_m": 0.7778174593052023,
+        "branch_definition": "Known source straight and source-side miter only"
+      },
+      "initial_provenance": "Original Step1 full-source t0, rigidly rolled about known source X by the prior-derived frame; joint angles/velocities/controls unchanged. No pre-acquired receiving contact.",
+      "camera": {
+        "lookat": [
+          1.03,
+          0.0,
+          1.45
+        ],
+        "distance": 2.6,
+        "views": [
+          [
+            105,
+            -5
+          ],
+          [
+            145,
+            -25
+          ]
+        ]
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "H_FROZEN",
+      "scene": "H60",
+      "write_global": false
+    },
+    {
+      "case": "H_UPDATE",
+      "scene": "H60",
+      "write_global": true
+    }
+  ],
+  "duration_s": 400.0,
+  "duration_reason": "Vertical actual progress may be slower than level transfer.1500um/s minimum C progress target needs~170s to lift remaining250mm plus acquisition and50s continuation;400s maximum. Analytic future helix is extended in vertical planning to avoid spline-end extrapolation, while actual pipe remains finite and unchanged.",
+  "acceptance": {
+    "post_transfer_s": 50.0,
+    "minimum_each_axial_advance_m": 0.04,
+    "minimum_each_same_direction_axial_spin_deg": 90.0,
+    "axis_angle_deg": 5.0,
+    "center_radius_m": [
+      0.07,
+      0.12
+    ],
+    "max_actual_joint_deg": 90.5,
+    "max_torque_Nm": 2.355,
+    "pipe_depth_m": 0.003,
+    "pipe_depth_persistence_s": 0.3,
+    "self_depth_m": 0.003,
+    "spin_method": "Consecutive actual orientation rotation-vector increments projected on mean actual rod tangent; instantaneous velocity integral retained as a distinct diagnostic, no old exact-spin claim."
+  },
+  "physical_subtrees_unchanged": {
+    "H60": {
+      "./worldbody/body[@name='head']": true,
+      "option": true,
+      "actuator": true
+    },
+    "VERTICAL_UP": {
+      "./worldbody/body[@name='head']": true,
+      "option": true,
+      "actuator": true
+    }
+  },
+  "adaptation": "General source/prior frame, arbitrary miter contact domain and arbitrary true-axis evaluation; successful A16 family/F/M/material/native coordination unchanged. Gravity remains world-down.",
+  "runtime": "MuJoCo3.2.7 NumPy1.23.5 SciPy1.13.1; all computational thread counts1",
+  "revision_reason": "G03 late source relief is active96.6% after100s but mean0.176/m produces only~1.067mm linearized outward motion while source normal load remains13.76N and tail remains hooked. Test increased source C authority, not material phase feedback: phase diagnosis is confounded by tangent mismatch.",
+  "formal_horizontal_pair": true,
+  "original_planned_formal_cases": 4,
+  "unstarted_vertical_formal_reason": "No complete vertical development action; TASK failure-delivery clause and DEVELOPMENT_STOP_POLICY_20261017 apply",
+  "development_source_version": "STEP2_GENERALIZATION_G06_SOURCE_RELEASE_AUTHORITY",
+  "frozen_at": "2026-10-17T01:50:40.509968+08:00",
+  "formal_policy": "Run every registered case once, no retry or mid-batch changes. Within each scene only G write permission differs. Failures/no benefit retained.",
+  "development_evidence": {
+    "H60": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\u03_global_curve_compliance_20261012\\STEP2_GENERALIZATION_20261016\\CONTROLLER_G01_SOURCE_FRAME\\H_DEV",
+    "VERTICAL_UP": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\u03_global_curve_compliance_20261012\\STEP2_GENERALIZATION_20261016\\CONTROLLER_G06_SOURCE_RELEASE_AUTHORITY\\V_DEV",
+    "horizontal_inheritance": "D:\\Desktop\\SNAKE\\Paper Code\\Mujoco\\Snake_Robot_Gait\\experiments\\u03_global_curve_compliance_20261012\\STEP2_GENERALIZATION_20261016\\HORIZONTAL_INHERITANCE_EQUIVALENCE.json"
+  }
+}

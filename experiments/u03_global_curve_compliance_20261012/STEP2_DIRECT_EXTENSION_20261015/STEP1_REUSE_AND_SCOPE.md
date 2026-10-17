@@ -1,3 +1,21 @@
+# Current authority: original Step1 rolling coordination restored
+
+STEP2_ROLLING_SCOPE_CLARIFIED_20261016 and STEP2_AUTONOMOUS_NO_PROCESS_HEARTBEAT_20261016 supersede the old constrained-source interpretations below. Source S/feed/roll before contact/bearing are allowed as the normal placed-t0 action, and the prior changed initial is not locked. Process heartbeat cancelled; only final stage review remains.
+
+The restored mechanism starts from STEP1_20261014/N_SHAPE/initial.npz byte-for-byte. It reuses the actual complete A16 continuous source-polar release, X wait,75mm receiving lead, material chord window, F/M and common psi. S grows normally from0 after the original0.5s settle at0.02Hz. No fixedphase6, staged S locks, replacement stance optimizer or initial joint interpolation survives. Three algebraic states match original Step1 G exactly and q below3.3e-15rad; one B1 radial/source-C state below1.4e-15rad. This was zero integration, not an old Step1 physics rerun. The actual new case has the registered4deg prior, unlabeled contact fitting/probes/G writes and B1 C using applied G, never accurate receiving geometry.
+
+Current revision CONTROLLER_V11_1_PROBE_VECTOR_OWNERSHIP/T_UPDATE completed the continuous action at186.4s: all21 in the finite receiving straight from136.4s, then50s with each actual axial advance>=221.5mm and rod axial spin>=245deg. Contact25.175s, reliable fit and first G write57.9s, validated loaded-motion capture86.55s,640 bounded G writes. FINAL_CONTRACT_METRICS.json is the completed saved-trace audit; result.json intentionally retains the runner's pending-audit success=null placeholder. Actual contact sliding and acquisition saturation are costs, not erased by success. This is executor evidence awaiting independent stage review.
+
+V11 case49 is preserved as an incomplete148.75s diagnostic: nominal sampling aliased the caller's probe array to zero, so real probe commands were sent but the estimator evidence channel remained zero and G was never written. V11.1 only fixes array ownership; it does not relax identification, alter the successful Step1 family or claim retrospective G updates. The formal CONTROLLER_V11_1_FINAL_FOUR_FROZEN freezes the passed revision and original initial, runs the two registered priors with frozen/update G each, and changes only G write permission within a prior. No mid-batch tuning or added experiments.
+
+Original source-only helix/material calibration is retained. Target jets are parameterized by prior/applied G from the beginning. B1 radial/late-source C mechanics and original physical driver remain; original true target labels/Y/radius in observation are replaced by permitted robot/contact measurements and the applied-G frame. Contact estimator geometry cannot bypass frozen G into the C route. G0/currentG/C/actual and all costs are logged. Normal source advance is measured, not rejected. Source material motion is not mislabeled pure sliding.
+
+All48 prior actual starts and their failures/partial bearing evidence are preserved. The unstarted V10.1 moving-window preparation is not selected. None demonstrates full action. Current start count/session/results are in CURRENT_STATUS.json. Finish one actual full action, then frozen2priorx2Gwrite four cases, deliver stage materials, mark ready_for_independent_review and stop experiments. No per-version/process supervision gate.
+
+---
+
+# Historical implementation audit (superseded where conflicting)
+
 # Step1/A16 reuse, differences and current final-contract choice
 
 Authority: STEP2_FINAL_20261016 in the public task. Optimizers are optional; neither retaining nor forbidding one is a research goal. This record distinguishes actual reuse from identities that merely share notation.
